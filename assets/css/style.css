@@ -252,16 +252,20 @@ h1, h2, h3, h4, h5, h6 {
   background: #57aae1;
   color: #fff;
 }
-
-@media (max-width: 768px) {
+  
+  @media (max-width: 768px) {
   .appointment-btn {
     margin: 0 48px 0 0;
     padding: 6px 18px;
   }
 }
+  
+/*--------------------------------------------------------------
+  # Disable Mobile Navigation Menu
+--------------------------------------------------------------*/
 
 /* Mobile Navigation */
-.mobile-nav-toggle {
+/* .mobile-nav-toggle {
   position: fixed;
   right: 15px;
   top: 15px;
@@ -384,7 +388,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .mobile-nav-active .mobile-nav-toggle i {
   color: #fff;
-}
+} */
 
 /*--------------------------------------------------------------
 # Hero Section
