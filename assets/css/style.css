@@ -230,6 +230,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 991px) {
+ .nav-menu .drop-down .drop-down ul {
+    display: block !important;
+   
+ .mobile-nav-toggle {
+   display: none !important;
+  }
+}
+
 /* Get Startet Button */
 .appointment-btn {
   background: #3498db;
