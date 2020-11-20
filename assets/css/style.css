@@ -230,14 +230,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-width: 991px) {
- .nav-menu .drop-down .drop-down ul {
-    display: block !important;
-   
- .mobile-nav-toggle {
-   display: none !important;
-  }
-}
 
 /* Get Startet Button */
 .appointment-btn {
@@ -263,6 +255,16 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
   # Disable Mobile Navigation Menu
 --------------------------------------------------------------*/
+
+@media (max-width: 991px) {
+ .collapse {
+    display: block !important;
+   
+ .mobile-nav {
+   display: none !important;
+  }
+}
+
 
 /* Mobile Navigation */
 /* .mobile-nav-toggle {
