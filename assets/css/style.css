@@ -1545,12 +1545,12 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background: #f8f8f8;
+  background: #f3f9fd;
   min-height: 40px;
-  margin-top: 86px;
+  margin-top: 130px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .breadcrumbs {
     margin-top: 72px;
   }
