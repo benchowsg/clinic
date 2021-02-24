@@ -458,16 +458,16 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero h1 {
   margin: 10px 0 10px 0;
-  font-size: 48px;
+  font-size: 55px;
   font-weight: 800;
-  line-height: 56px;
+  line-height: 60px;
   color: black;
 }
 
 #hero h2 {
   color: #484848;
   margin: 10px 0 50px 0;
-  font-size: 24px;
+  font-size: 35px;
 }
 
 #hero .btn-get-started {
