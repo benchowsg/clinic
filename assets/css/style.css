@@ -646,7 +646,7 @@ section {
 # About Us
 --------------------------------------------------------------*/
 .about .content {
-  background-color: #cce8ff;
+  background-color: #3498db;
   padding: 40px;
 }
 
@@ -654,6 +654,9 @@ section {
   font-weight: 800;
   font-size: 20px;
 }
+
+.about .content p {
+  color: #fff;
 
 .about .content ul {
   list-style: none;
