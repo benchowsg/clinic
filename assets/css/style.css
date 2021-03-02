@@ -656,7 +656,9 @@ section {
 }
 
 .about .content p {
-  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  color: #444444;
 }
 
 .about .content ul {
