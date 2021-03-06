@@ -1806,6 +1806,22 @@ section {
   font-family: "Open Sans", sans-serif;
 }
 
+.footer .social-links a {
+  color: #437099;
+  padding-left: 15px;
+  display: inline-block;
+  line-height: 1px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #1977cc;
+}
+
+.footer .social-links a:first-child {
+  border-left: 0;
+}
+
 .footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
