@@ -473,9 +473,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
-  font-weight: 800;
   font-size: 16px;
-  letter-spacing: 1px;
   display: inline-block;
   padding: 10px 30px;
   border-radius: 50px;
