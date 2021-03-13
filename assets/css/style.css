@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #444444;
 }
 
@@ -189,7 +189,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 0 12px 25px;
   transition: 0.3s;
   font-size: 14px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
@@ -474,7 +474,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 16px;
   letter-spacing: 1px;
@@ -770,7 +770,7 @@ section {
   margin-top: 20px;
   color: #484848;
   font-size: 15px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   transition: ease-in-out 0.3s;
 }
 
@@ -1290,7 +1290,7 @@ section {
   font-size: 42px;
   color: #3498db;
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-bottom: 20px;
 }
 
@@ -1390,7 +1390,7 @@ section {
   line-height: 26px;
   font-weight: 500;
   margin: 0 0 10px 32px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .faq .faq-item p {
