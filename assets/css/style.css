@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #444444;
 }
 
@@ -28,7 +28,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -189,7 +189,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 0 12px 25px;
   transition: 0.3s;
   font-size: 14px;
-  font-family: "Montserrat", sans-serif;
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
@@ -1390,7 +1389,6 @@ section {
   line-height: 26px;
   font-weight: 500;
   margin: 0 0 10px 32px;
-  font-family: "Montserrat", sans-serif;
 }
 
 .faq .faq-item p {
