@@ -18,13 +18,13 @@ body {
 }
 
 a {
-  color: #194a6b;
+  color: #3498db;
   text-decoration: none;
 }
 
 a:hover {
   color: #4f91bd;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
