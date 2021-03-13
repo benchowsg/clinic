@@ -1795,10 +1795,10 @@ section {
 }
 
 #footer .footer-top .footer-info .logo span {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #012970;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 45px;
+  color: #3498db;
   margin-top: 3px;
 }
 
