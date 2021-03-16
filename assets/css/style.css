@@ -837,12 +837,12 @@ section {
 # More Services
 --------------------------------------------------------------*/
 .more-services {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .more-services .card {
   border: 0;
-  padding: 160px 20px 20px 20px;
+  padding: 10px 20px 20px 20px;
   position: relative;
   width: 100%;
   background-size: cover;
