@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
 }
 
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -473,7 +474,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
-  font-size: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
   display: inline-block;
   padding: 10px 30px;
   border-radius: 50px;
@@ -483,6 +485,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started:hover {
+  font-family: "Montserrat", sans-serif;
   background: #3498db;
   color: #fff;
 }
