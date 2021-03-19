@@ -1,6 +1,2 @@
-Thanks for downloading this template!
+Thanks for visiting A Healing Heart Medical Clinic.
 
-Template Name: Vesperr
-Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
