@@ -1366,6 +1366,7 @@ section {
 --------------------------------------------------------------*/
 .faq .faq-list {
   padding: 0 100px;
+  background-color: #f7fbfe;
 }
 
 .faq .faq-list ul {
