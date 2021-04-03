@@ -1365,7 +1365,7 @@ section {
 # F.A.Q
 --------------------------------------------------------------*/
 .faq .faq-list {
-  padding: 0 100px;
+  padding: 30px 100px;
   background-color: #f7fbfe;
 }
 
@@ -1437,7 +1437,7 @@ section {
 
 @media (max-width: 1200px) {
   .faq .faq-list {
-    padding: 0;
+    padding: 30px;
   }
 }
 
