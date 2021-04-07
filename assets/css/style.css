@@ -1766,7 +1766,6 @@ section {
 #footer .footer-newsletter {
   padding: 50px 0;
   background: #f7fbfe;
-  border-top: 1px solid #e1ecff;
 }
 
 #footer .footer-newsletter h4 {
@@ -1790,7 +1789,13 @@ section {
 #footer .footer-newsletter form input[type="email"] {
   border: 0;
   padding: 8px;
-  width: calc(100% - 140px);
+  width: calc(60% - 140px);
+}
+
+#footer .footer-newsletter form input[type="name"] {
+  border: 0;
+  padding: 8px;
+  width: calc(60% - 140px);
 }
 
 #footer .footer-newsletter form input[type="submit"] {
