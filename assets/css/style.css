@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   color: #444444;
 }
 
@@ -28,7 +28,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 
@@ -474,7 +474,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   font-size: 20px;
   display: inline-block;
   padding: 10px 30px;
@@ -485,7 +485,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started:hover {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   background: #3498db;
   color: #fff;
 }
@@ -764,7 +764,7 @@ section {
   margin-top: 20px;
   color: #484848;
   font-size: 15px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   transition: ease-in-out 0.3s;
 }
 
@@ -1284,7 +1284,7 @@ section {
   font-size: 42px;
   color: #3498db;
   font-weight: 500;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Trebuchet MS", sans-serif;
   margin-bottom: 20px;
 }
 
