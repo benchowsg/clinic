@@ -460,7 +460,7 @@
     <div class="footer-top">
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-6 footer-info">
+          <div class="col-lg-4 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
             <span>A Healing Heart Medical Clinic</span>
             </a>
@@ -475,7 +475,7 @@
               </div>
           </div>
 
-          <div class="col-lg-3 footer-links">
+          <div class="col-lg-2 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
@@ -486,16 +486,26 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 footer-contact text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              XXXX<br>
-              XXXX<br>
-              Singapore <br><br>
-              <strong>Phone:</strong> 6xxx xxxx<br>
-              <strong>Email:</strong> contact@ahealingheartmedical.com<br>
-            </p>
-
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <h4>Send Us A Message</h4>
+          <script type="text/javascript">var submitted=false;</script>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='/thank-you-message';}"></iframe>
+          <form class="form-inline" action=" " method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+             <label class="sr-only" for="name">Name</label>
+                 <div class="form-row">
+                    <div class="form-group">
+                       <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                    </div>
+                    <div class="form-group">
+                       <input type="text" name="email" class="form-control" placeholder="Your Email" required="">
+                    </div>
+                    <div class="form-group">
+                       <textarea class="form-control" name="message" placeholder="Please write something here" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 120px;"></textarea>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button>
+                    </div>
+                </div>
+            </form>
           </div>
 
         </div>
