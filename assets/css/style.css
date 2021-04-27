@@ -615,7 +615,7 @@ section {
 }
 
 .section-title p {
-  font-size: 20px;
+  font-size: 23px;
   letter-spacing: 2px;
   font-weight: 1000;
   margin: 0;
@@ -626,15 +626,15 @@ section {
 .section-title h2 {
   margin: 10px 0 0 0;
   padding: 0;
-  font-size: 38px;
-  line-height: 42px;
-  font-weight: 700;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 100;
   color: #012970;
 }
 
 @media (max-width: 768px) {
   .section-title p {
-    font-size: 28px;
+    font-size: 23px;
     line-height: 32px;
   }
 }
