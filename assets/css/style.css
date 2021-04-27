@@ -1499,8 +1499,10 @@ section {
 
 .contact .info p {
   padding: 10px;
-  line-height: 28px;
+  line-height: 20px;
   font-size: 20px;
+  color: #012970;
+  font-weight: 400;
 }
 
 .contact .php-email-form .validate {
