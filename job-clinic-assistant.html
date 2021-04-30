@@ -27,12 +27,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Vesperr - v3.0.2
-  * Template URL: https://bootstrapmade.com/vesperr-free-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+ <!-- Schema for Job -->
   
   <title>Clinic Assistant</title>
     <script type="application/ld+json">
@@ -86,12 +81,14 @@
       }
     }
     </script>
+   <!-- End Schema for Job -->
+  
   
 </head>
 
 <body>
   <!-- ======= Top Bar ======= -->
-  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+  <!-- <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
       <i class="icofont-envelope">
@@ -102,10 +99,6 @@
         <a href="#">+65 6xxx xxxx</a>
     </div>
     <div class="social-links">
-      <a href="#" class="twitter">
-        <i class="icofont-twitter">
-        </i>
-      </a>
       <a href="#" class="facebook">
         <i class="icofont-facebook">
         </i>
@@ -120,55 +113,26 @@
       </a>
     </div>
   </div>
-</div>
+</div> -->
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-        <!-- <div class="logo mr-auto"> -->
-        <!-- <h1 class="text-light"><a href="index.html"><span>Clinic</span></a></h1> -->
-        <!-- Uncomment below if you prefer to use an image logo -->
         
         <a href="index.html" class="logo d-flex align-items-center">
            <img src="assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.png" alt="A Healing Heart Medical Clinic" class="img-fluid">
         </a>
-      
-
+   <!-- nav-menu -->  
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-         <!-- <li class="active"><a href="#index.html">Home</a></li> -->
           <li><a href="/">Who We Are</a></li>
           <li><a href="/intermediate-care-services">Intermediate Care Services</a></li>
-          <!-- <li><a href="./health-tips.html">Health Tips</a></li> -->
-         <!-- <li><a href="#portfolio">Portfolio</a></li> -->
-          <!-- <li><a href="#team">Team</a></li> -->
-          <li><a href="#openinghours">Opening Hours</a></li>
+          <li><a href="/job">Job Opening</a></li>
           <li><a href="#location">Location</a></li>
-         <!-- <li><a href="#pricing">Pricing</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li> -->
-          
-
-         <!-- <li class="get-started"><a href="#about">Book Appointment</a></li> -->
         </ul>
-      </nav><!-- .nav-menu -->
+      </nav>
           <a href="#appointment" class="appointment-btn scrollto">Make an Appointment</a>
     </div>
+    <!-- end nav-menu -->
   </header><!-- End Header -->
 
   <main id="main">
@@ -244,8 +208,8 @@
   <!-- ======= Footer ======= -->
 
     <div class="section-title">
-          <h2>Sign up for the latest updates</h2>
-          <p>Our Newsletter</p>
+          <p>Sign up for the latest updates</p>
+          <h2>e-Newsletter</h2>
    </div>
    <footer id="footer" class="footer">
     <div class="footer-newsletter">
@@ -253,12 +217,10 @@
         <div class="row justify-content-center">
           <div class="col-lg-12 text-center">
            <script type="text/javascript">var submitted=false;</script>
-           <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='/thank-you-subscribe';}"></iframe>
-           <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScxsEDwmzjWXoQtK-G4QHexNQQSv3wsrEC7yTEC_9A7O0H5ng/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;"> 
-           <label class="sr-only" for="name">Name</label>
-              <input name="entry.841217208" type="name" class="form-control mb-2 mr-sm-2" id="name" placeholder="Your Name" required>
+           <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='/thank-you';}"></iframe>
+           <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScCKV-J3lIVu7nLFWkGKMcae1fk3lDcZN4W4XHsdQOalpgSPg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
            <label class="sr-only" for="email">Email</label>
-              <input name="entry.1067179827" type="email" class="form-control" id="email" placeholder="Your Email" required>
+              <input name="entry.227748236" type="email" class="form-control mb-2 mr-sm-2" id="email" placeholder="Your Email Address" required>
            <label class="sr-only" for="subscribe">Subscribe</label>
               <input type="submit" value="Subscribe">
           </form>
@@ -267,45 +229,72 @@
        </div>
      </div>
 
+
+
     <div class="footer-top">
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-6 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
+          <div class="col-lg-4 footer-info">
+            <a href="/index" class="logo d-flex align-items-center">
             <span>A Healing Heart Medical Clinic</span>
             </a>
-            <p>We are a growing medical clinic group that focuses on preventive medicine, chronic cardiology care and post-hospitalisation recovery.</p>
+            <p>We are a growing medical clinic group that focuses on intermediate care services in preventive medicine, chronic cardiology care and post-hospitalisation recovery.</p>
             <br><br>
-             <h4>Follow us!</h4>
-             <div class="social-links">
-                <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
-              </div>
+             <h4>Opening Hours</h4>
+             <p>Mon to Fri: 9AM to 12.30PM, 2PM to 6PM
+             <br>Sat: 9AM to 1PM
+             <br>Closed on Sun and Public Holidays</p>
+             <br><br>                                                 
+             <h4>Call Us</h4>
+              <p>68XX XXXX <br>(Operational during opening hours)</p>
           </div>
 
           <div class="col-lg-3 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Get an appointment</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/who-we-are">Who We Are</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/intermediate-care-services">Intermediate Care Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Make an Appointment</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/job">Job Opening</a></li>
             </ul>
+              <br><br>
+               <h4>Follow us!</h4>
+             <div class="social-links">
+                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="icofont-linkedin"></i></a>
+              </div>
+              
           </div>
 
-          <div class="col-lg-3 footer-contact text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              XXXX<br>
-              XXXX<br>
-              Singapore <br><br>
-              <strong>Phone:</strong> 6xxx xxxx<br>
-              <strong>Email:</strong> contact@ahealingheartmedical.com<br>
-            </p>
-
+          <div class="col-lg-5 footer-message">
+            <h4>Send Us A Message</h4>
+               <script type="text/javascript">var submitted=false;</script>
+               <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='/thank-you';}"></iframe>
+            <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+               
+                 <div class="form-row">
+                    <div class="form-group">
+                       <label class="sr-only" for="name">Name</label>
+                       <input name="entry.755572643" type="text" id="name" class="form-control mb-2 mr-sm-2" placeholder="Your Name" required="">
+                    </div>
+                    <div class="form-group">
+                       <label class="sr-only" for="email">Email</label>
+                       <input name="entry.243023388" type="text" id="email" class="form-control mb-2 mr-sm-2" placeholder="Your Email" required="">
+                    </div>
+                    <div class="form-group">
+                       <label class="sr-only" for="message">Message</label>
+                       <textarea name="entry.866906219" id="message" class="form-control mb-2 mr-sm-2"  placeholder="Please write something here" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 120px;"></textarea>
+                    </div>
+                    <!-- <div class="form-group form-check">
+                       <label class="form-check-label" for="yessubscribe">I want to subscribe to newsletter.</label>
+                       <input name="entry.1527534892_sentinel" type="checkbox" id="yessubscribe" class="form-check-input" data-answer-value="Yes" role="checkbox">
+                    </div> -->
+                       <label class="sr-only" for="sendmessage">Send</label>
+                       <input type="submit" value="Send Message">
+                    </div>
+                </div>
+            </form>
           </div>
 
         </div>
