@@ -1976,17 +1976,8 @@ section {
 /*--------------------------------------------------------------
 # Responsive Table
 --------------------------------------------------------------*/
-
-table.responsive-table thead {
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 50px;
-  line-height: 3em;
-  background: #eee;
-  table-layout: fixed;
-  display: table;
+th {
+position: sticky;
+top: 0; /* Don't forget this, required for the stickiness */
 }
 
