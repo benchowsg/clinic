@@ -1875,7 +1875,7 @@ section {
 @media (max-width: 992px) {
   .footer .footer-bottom {
      position: fixed;
-     padding: 20px;
+     padding: 10px;
      left: 0;
      bottom: 0;
      width: 100%;
