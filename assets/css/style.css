@@ -1871,6 +1871,20 @@ section {
   }
 }
 
+
+@media (max-width: 992px) {
+  .footer .footer-bottom {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: #3498db;
+     color: black;
+     text-align: center;
+  }
+}  
+  
+
 #footer .footer-top .footer-info {
   margin-bottom: 30px;
 }
@@ -1977,6 +1991,7 @@ section {
   font-size: 13px;
   color: #012970;
 }
+
 
 
 /*--------------------------------------------------------------
