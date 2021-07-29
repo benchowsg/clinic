@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>A Healing Heart Medical Clinic | Healthcare Blog</title>
+  <meta name="description" content="We are an intermediate care services clinic that provides general health, post-hospitalisation recovery and chronic health management.">
+  <meta name="keywords" content="Heart Failure, Heart Disease, Chest Pain" >
+
+  <!-- Favicons -->
+  <link href="assets/img/logo/A-Healing-Heart-Medical-Clinic-Favicon.png" rel="icon">
+  <link href="assets/img/logo/A-Healing-Heart-Medical-Clinic-Favicon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198086076-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-198086076-1');
+</script>
+
+</head>
+
+<body>
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+      <i class="icofont-envelope">
+      </i>
+      <a href="mailto:contact@ahealingheartmedical.com">contact@ahealingheartmedical.com</a>
+      <i class="icofont-phone">
+        </i>
+        <a href="tel:+6569621362">+65 6962 1362</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/ahealingheartmedical" class="facebook">
+        <i class="icofont-facebook">
+        </i>
+      </a>
+      <a href="https://www.instagram.com/ahealingheartmedical/" class="instagram">
+        <i class="icofont-instagram">
+        </i>
+      </a>
+      <a href="https://www.linkedin.com/company/ahealingheartmedical" class=linkedin">
+        <i class="icofont-linkedin">
+        </i>
+      </a>
+    </div>
+  </div>
+</div>
+                                   
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+        
+        <a href="/" class="logo d-flex align-items-center">
+           <img src="assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.png" alt="A Healing Heart Medical Clinic" class="img-fluid">
+        </a>
+<!-- nav-menu -->  
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/who-we-are">Who We Are</a></li>
+          <li class="drop-down"><a href="/general-health"><span>General Health</span><i class="bi bi-chevron-down"></i></a>
+            <ul>
+               <li><a href="/general-health">General Health</a></li> 
+               <li><a href="/health-screening">Health Screening</a></li> 
+            </ul>
+          </li>
+          <li class="drop-down"><a href="/intermediate-care-services"><span>Intermediate Care</span><i class="bi bi-chevron-down"></i></a>
+             <ul>
+               <li><a href="/intermediate-care-services">Intermediate Care Services</a></li>
+               <li><a href="/preventive-medicine">Preventive Medicine</a></li>
+               <li><a href="/rapid-blood-test-services">Rapid Blood Test Services</a></li>
+               <li><a href="/chronic-cardiology-care">General Cardiology Care</a></li>
+               <li><a href="/post-hospitalisation-recovery">Post-Hospitalisation Care</a></li>
+             </ul>
+          </li>
+          <li><a href="/location">Location</a></li>
+          <li><a href="/how-to-make-an-appointment">Guide</a></li>
+          <li><a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789" target="_blank">Book Online</a></li>
+        </ul>
+      </nav>
+     </div>
+    <!-- end nav-menu -->
+  </header><!-- End Header -->
+
+
+     <!-- ======= Main and Breadcrumbs Section ======= -->
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li>Healthcare Blog</li>
+            <li>Heart Failure</li>
+          </ol>
+        </div>
+       <br><h1>7 Things You Should Know About Heart Failure</h1>
+      </div>
+    </section>
+   <!-- ======= End Breadcrumbs Section ======= -->
+
+  <!-- ======= Main Content ======= -->
+    <section class="inner-page">
+      <div class="container container-vertical-default">
+       <div class="row vertical-default">
+        <div class="col-18 col-md-9 order-1 align-top" style="padding: 20px;">
+        <img src="assets/img/blog/7-things-you-should-know-about-heart-failure.webp" class="img-fluid" alt="Things To Know About Heart Failure. Photo by shayne_ch13, freepik">
+        <br>
+        <em>Photo: Shayne_ch13, Freepik</em>
+        <p></p>
+        <p class="font-weight-light">Written by Dr Gerald Thang</p>
+        <h4>1. Symptoms of Heart Failure.</h4>
+        <p>
+        Shortness of breath, leg swelling, water in the lungs, decreased stamina are just a few of the common symptoms of heart failure.
+        <br><br>The heart is like an engine pump &mdash; it transports blood around the body, provides nutrients to the body, and keeps us alive. If the pump weakens or fails, blood doesn’t get pumped as efficiently. Hence, water leaks out into the body tissue resulting in water retention or edema. As edema occurs, the lung function drops due to decreased oxygen transfer across the lungs. Most people will think it is shortness of breath and a drop in stamina.
+        </p>
+        <h4>2. Heart failure is not always due to a heart attack</h4>
+        <p>
+        While heart attack commonly results in heart failure due to the death of heart muscles during a heart attack, it is not the only cause. 
+        <br><br>
+        Long-term stress or injury from these factors (below) can cause and result in heart failure:
+        </p>
+        <ul>
+            <li>Uncontrolled hypertension</li>
+            <li>Obstructive sleep apnea</li>
+            <li>Chronic lung disease</li>
+            <li>Kidney failure</li>
+            <li>Viral infections</li>
+            <li>Thyroid disease </li>
+            <li>Irregular heart rate/arrhythmias</li>
+            <li>Rarer disease such as sarcoidosis or amyloidosis</li>
+        </ul>  
+        <h4>3.	Four Stages of Heart Failure</h4>
+        <p>
+        According to the New York Heart Association (NYHA) Functional Classification of Heart Failure, there are four classes:                                                      
+        </p>
+        <p>
+        Class I: Patients <u>without limitation</u> of physical activity.
+        <br><br>Class II: Patients with <u>slight limitation</u> of physical capacity in which <u>marked increase in physical activity</u> leads to fatigue, palpitations, dyspnea, or angina pain; they are comfortable at rest.
+        <br><br>Class III: Patients with <u>marked limitation</u> of physical activity in which <u>minimal ordinary activity</u> results in fatigue, palpitation, dyspnea, or angina pain; they are comfortable at rest.
+        <br><br>Class IV: Patients who are <u>not only unable to carry on any physical activity without discomfort</u> but who also have symptoms of heart failure or the angina syndrome even at rest; the patient's discomfort increases if any physical activity is undertaken.
+        </p>
+        <h4>4.	What are the different types of heart failure?</h4>
+        <p>
+        Heart failure can be classified as <i>acute</i> or <i>chronic</i> heart failure. 
+        <br><br>Acute heart failure is usually triggered or a complication of onset of another disease such as sudden heart attack, severe infections, such as pneumonia or bacterial infections in the bloodstream, or even trauma from a severe car accident. 
+        <br><br>Chronic heart failure is a longer-term sequela of old heart attack, kidney failure, chronic lung disease, or even chronic myocarditis in HIV patients.
+        </p>
+        <h4>5.	What can worsen heart failure?</h4>
+        <p>
+        Triggers that exacerbate heart failure include:
+        </p>
+        <ol type="a">
+            <li>Worsening of the root causes causing heart failure in the first place</li>
+            <li>Fluid indiscretion by drinking too much water</li>
+            <li>Inability to pass out the excessive water adequately</li>
+            <li>Not taking medications or not taking medications on time and in the correct doses</li>
+            <li>New infection resulting in additional stress on the heart that is not usually there</li>
+        </ol>
+        <h4>6.	Heart failure can be treated, and worsening can be prevented and even reversed</h4>
+        <p>Heart failure treatment is no longer just restricted to diuretics to help you pass out excessive water.</p>
+        <p>We must always treat the root cause of heart failure first.</p>
+        <p>There are many other medications besides diuretics. ACE inhibitors (angiotensin-converting enzyme inhibitors) and ARBs (angiotensin receptor blockers) are medicines that are also shown to increase survival by decreasing systemic resistance.</p>
+        <p>Newer agents such as combination drugs, such as Entresto (sacubitril/valsartan) is a relatively new class of drugs called angiotensin receptor neprilysin inhibitor (ARNI).</p>
+        <p>Cardiac specific beta-blockers, e.g. bisoprolol, metoprolol control heart rate and increase cardiac output and ejection fraction and provide a beneficial response to circulating epinephrine.</p>
+        <p>Spironolactone is a potassium-sparing diuretic that has long term benefits for heart failure patient.</p>
+        <p>Digoxin (Lanoxin) is a heart medication that may help increase cardiac output and control symptoms.</p>
+        <p>Lifestyle risk factor modification is another cornerstone of prevention of congestive heart failure, and these include weight loss, exercise and stop smoking.</p>
+        <p>People with end-stage congestive heart failure may require invasive treatments including left ventricular assist devices (LVAD), an implanted artificial pump that helps increase the heart's ability to squeeze, and heart transplantation.</p>
+        <p>In patients who are not transplant candidates, LVAD may be a permanent treatment. In all patients with heart failure, cardiac reconditioning is of benefit to the patient.</p>
+        <p>As heart failure is usually a complication of another disease, the above measures constitute tertiary prevention which is to reverse or prevent complications from getting worse and this is another core of Preventive Medicine.</p>
+        <h4>7.	Heart failure can be detected even if asymptomatic</h4>
+        <p>You <b>do not need to wait</b> till you have symptoms before you check for heart failure. When one has a heart attack or chronic lung or kidney disease, you can screen for asymptomatic heart failure by doing an echocardiogram of the heart. This is a specialized ultrasound scan of the heart with real-time measurements of the blood flow and heart muscle contractions in the heart. With this, the heart function can be ascertained. Together with a treadmill stress test, the functional capacity of your body can be assessed as well.</p>
+        <p>MRI Heart has also progressed to allow us to have a clearer insight into the structure of the heart muscle itself and diagnose intracardiac ischemia/structural heart disease even before it becomes apparent to the patient himself.</p>
+        <p></p>
+      </div>
+                                                                             
+ <!-- ======= Side Bar ======= -->    
+                                                                             
+      <div class="col-12 col-md-3 order-2 align-top" style="padding: 20px;">
+        
+          <div class="card">
+              <div class="card-body">
+                   <h5 class="card-title">Health Screening</h5>
+                        <p class="card-text">Get diagnosed and treated early. We have designed health screening packages for all, starting from $20.</p>
+                        <a href="/health-screening" class="btn btn-outline-primary">Learn more</a>
+              </div>
+         </div>
+      <p></p>
+         <div class="card">
+              <div class="card-body">
+                   <h5 class="card-title">Rapid Blood Tests</h5>
+                        <p class="card-text">Our clinic has rapid blood tests. Know your actual blood oxygen and carbon dioxide in minutes.</p>
+                        <a href="/rapid-blood-test-services" class="btn btn-outline-primary">Learn more</a>
+              </div>
+         </div>
+     </div>
+ 
+<!-- ======= End of Side Bar ======= -->         
+                                                                          
+ </div>
+ </div>
+ </section>
+
+  </main>
+  <!-- ======= End of Main Content ======= -->
+
+                                                                          
+<!-- ======= Footer ======= -->
+
+    <div class="section-title">
+          <p>Sign up for the latest updates</p>
+          <h2>e-Newsletter</h2>
+   </div>
+   <footer id="footer" class="footer">
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+           <script type="text/javascript">var submitted=false;</script>
+           <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='/thank-you';}"></iframe>
+           <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScCKV-J3lIVu7nLFWkGKMcae1fk3lDcZN4W4XHsdQOalpgSPg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+           <label class="sr-only" for="email">Email</label>
+              <input name="entry.227748236" type="email" class="form-control mb-2 mr-sm-2" id="email" placeholder="Your Email Address" required>
+           <label class="sr-only" for="subscribe">Subscribe</label>
+              <input type="submit" value="Subscribe">
+          </form>
+          </div>
+        </div>
+       </div>
+     </div>
+
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          
+          <div class="col-lg-4 footer-info">
+            
+            <div itemscope itemtype="http://schema.org/LocalBusiness">
+            <a href="/index" class="logo d-flex align-items-center">
+            <span itemprop="name">A Healing Heart Medical Clinic</span>
+            </a>
+            <p>We are a growing medical clinic group that focuses on intermediate care services in preventive medicine, chronic cardiology care and post-hospitalisation recovery.</p>
+            <br><br>
+             <h4>Opening Hours</h4>
+             <p>Mon to Fri: 9AM to 12.30PM, 2PM to 6PM
+             <br>Sat: 9AM to 1PM
+             <br>Closed on Sun and Public Holidays</p>
+             <br><br>                                                 
+             <h4>Call or WhatsApp Us</h4>
+                <span itemprop="telephone"><a href="tel:+6569621362">Call 6962 1362</a><br>
+                <a href="https://wa.me/6569621362" target="_blank">Click here to Whatsapp us</a><br>
+                (Operational during opening hours)</span>
+            </div>
+            
+          </div>
+
+          <div class="col-lg-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="/who-we-are">Who We Are</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/general-health">General Health Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/intermediate-care-services">Intermediate Care Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789" target="_blank">Make an Appointment</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/how-to-make-an-appointment">Guide to Appointment</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/location">Location</a></li>
+            </ul>
+              <br><br>
+               <h4>Follow us!</h4>
+             <div class="social-links">
+                <a href="https://www.facebook.com/ahealingheartmedical" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="https://www.instagram.com/ahealingheartmedical" class="instagram"><i class="icofont-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/ahealingheartmedical" class="linkedin"><i class="icofont-linkedin"></i></a>
+              </div>
+              
+          </div>
+
+          <div class="col-lg-5 footer-message">
+            <h4>Send Us A Message</h4>
+               <script type="text/javascript">var submitted=false;</script>
+               <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='/thank-you';}"></iframe>
+            <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+               
+                 <div class="form-row">
+                    <div class="form-group">
+                       <label class="sr-only" for="name">Name</label>
+                       <input name="entry.755572643" type="text" id="name" class="form-control mb-2 mr-sm-2" placeholder="Your Name" required="">
+                    </div>
+                    <div class="form-group">
+                       <label class="sr-only" for="email">Email</label>
+                       <input name="entry.243023388" type="text" id="email" class="form-control mb-2 mr-sm-2" placeholder="Your Email" required="">
+                    </div>
+                    <div class="form-group">
+                       <label class="sr-only" for="message">Message</label>
+                       <textarea name="entry.866906219" id="message" class="form-control mb-2 mr-sm-2"  placeholder="Please write something here" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 120px;"></textarea>
+                    </div>
+                    <!-- <div class="form-group form-check">
+                       <label class="form-check-label" for="yessubscribe">I want to subscribe to newsletter.</label>
+                       <input name="entry.1527534892_sentinel" type="checkbox" id="yessubscribe" class="form-check-input" data-answer-value="Yes" role="checkbox">
+                    </div> -->
+                       <label class="sr-only" for="sendmessage">Send</label>
+                       <input type="submit" value="Send Message">
+                    </div>
+                </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+         <div class="footer-bottom d-lg-none">
+             <table class="table table-borderless">
+               <thead>
+                 <tr>
+                   <th scope="col"><a href="tel:+6569621362" class="appointment-btn scrollto">Call 6962 1362</a></th>
+                   <th scope="col"><a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789" target="_blank" class="appointment-btn scrollto">Book Online</a></th>
+                 </tr>
+               </thead>
+             </table> 
+         </div>                                                       
+     </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>A Healing Heart Medical Clinic</span></strong>. &reg; All Rights Reserved
+      </div>
+    </div>
+  </footer>
+                       
+                       
+                       
+ <!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
