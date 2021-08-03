@@ -29,15 +29,25 @@
   <link href="assets/css/style.css" rel="stylesheet">
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198086076-1">
-</script>
-<script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-198086076-1">
+  </script>
+  <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-198086076-1');
-</script>
+  </script>
+  
+  <!-- Remove Google Map Scripts -->
+  <script type="text/javascript">
+    var scripts = document.querySelectorAll("script[src*='maps.googleapis.com/maps-api-v3']");
+    for(var i = 0; i < scripts.length; i++) {
+        scripts[i].parentNode.removeChild(scripts[i]);
+    }
+  </script>
+  
+  
 
 </head>
 
