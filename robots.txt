@@ -1,0 +1,5 @@
+User-agent:*
+Allow:/
+Disallow:/nocrawl/
+Sitemap: https://www.ahealingheartmedical.com/sitemap.xml
+
