@@ -464,6 +464,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   margin-top:20px;
+  background: #fef8f5;
 }
 
 #hero h1 {
