@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   display: none;
   right: 15px;
-  bottom: 120px;
+  bottom: 150px;
   z-index: 99999;
 }
 
