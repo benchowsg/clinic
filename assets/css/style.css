@@ -161,14 +161,14 @@ h1, h2, h3, h4, h5, h6 {
 #header {
   z-index: 997;
   transition: all 0.5s;
-  padding: 48px 0 15px 0;
+  padding: 48px 0 20px 0;
   background: #fff;
   box-shadow: 0px 10px 40px rgb(0, 0, 0, 0.1);
 }
 
 #header.header-scrolled {
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-  padding: 48px 0 15px 0;
+  padding: 48px 0 20px 0;
   background: #fff;
 }
 
@@ -196,14 +196,14 @@ h1, h2, h3, h4, h5, h6 {
   #header {
     background: #fff;
     top: 0;
-    padding: 20px 0 15px 0;
+    padding: 20px 0 20px 0;
   }
   #header .logo h1 {
     font-size: 28px;
   }
   #header.header-scrolled {
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-  padding: 20px 0 15px 0;
+  padding: 20px 0 20px 0;
   background: #fff;
   }
 }
