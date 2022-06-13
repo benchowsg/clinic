@@ -1490,8 +1490,8 @@ section {
 # F.A.Q Internal Page
 --------------------------------------------------------------*/
 .faqint .faqint-list {
-  padding: 30px 100px;
-  background-color: #f7fbfe;
+  padding: 30px 30px;
+  background-color: #e6eef4;
 }
 
 .faqint .faqint-list ul {
