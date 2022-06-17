@@ -1560,7 +1560,7 @@ section {
   display: none;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 800px) {
   .faqint .faqint-list {
     padding: 30px;
   }
