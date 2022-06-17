@@ -32,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -1538,6 +1539,11 @@ section {
 .faqint .faqint-list p {
   margin-bottom: 0;
   padding: 10px 0 0 0;
+}
+
+.faqint .faqint-list .tab {
+  display: inline-block;
+  margin-left: 40px;
 }
 
 .faqint .faqint-list .icon-show {
