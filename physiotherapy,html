@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>A Healing Heart Medical Clinic | Physiotherapy</title>
+  <meta name="description" content="We work closely with physiotherapists at A Healing Heart Medical Clinic.">
+  <meta name="keywords" content="physiotherapy, reconditioning, regain strength, regain function, post-covid, stamina" >
+
+  <!-- Favicons -->
+  <link href="assets/img/logo/A-Healing-Heart-Medical-Clinic-Favicon.png" rel="icon">
+  <link href="assets/img/logo/A-Healing-Heart-Medical-Clinic-Favicon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198086076-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-198086076-1');
+</script>
+  
+</head>
+
+<body oncopy="return false" oncut="return false" onpaste="return false">
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+      <i class="icofont-envelope">
+      </i>
+      <a href="mailto:contact@ahealingheartmedical.com">contact@ahealingheartmedical.com</a>
+      <i class="icofont-phone">
+        </i>
+        <a href="tel:+6569621362">+65 6962 1362</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/ahealingheartmedical" class="facebook">
+        <i class="icofont-facebook">
+        </i>
+      </a>
+      <a href="https://www.instagram.com/ahealingheartmedical/" class="instagram">
+        <i class="icofont-instagram">
+        </i>
+      </a>
+      <a href="https://www.linkedin.com/company/ahealingheartmedical" class=linkedin">
+        <i class="icofont-linkedin">
+        </i>
+      </a>
+    </div>
+  </div>
+</div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+        
+        <a href="/" class="logo d-flex align-items-center">
+           <img src="assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.png" alt="A Healing Heart Medical Clinic" class="img-fluid">
+        </a>
+  
+<!-- nav-menu -->  
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/who-we-are">Who We Are</a></li>
+          <li class="drop-down"><a href="/general-health"><span>General Health</span><i class="bi bi-chevron-down"></i></a>
+            <ul>
+               <li><a href="/general-health">General Health</a></li> 
+               <li><a href="/health-screening">Health Screening</a></li> 
+               <li><a href="/heart-health-screening">Heart Health Screening</a></li> 
+               <li><a href="/wellness">Hormonal and Wellness</a></li> 
+            </ul>
+          </li>
+          <li class="drop-down"><a href="/intermediate-care-services"><span>Intermediate Care</span><i class="bi bi-chevron-down"></i></a>
+             <ul>
+               <li><a href="/intermediate-care-services">Intermediate Care Services</a></li>
+               <li><a href="/chronic-cardiology-care">Cardiology</a></li>
+               <li><a href="/endoscopy">Endoscopy</a></li>
+               <li><a href="/ophthalmology">Ophthalmology</a></li>
+               <li><a href="/physiotherapy">Physiotherapy</a></li>
+               <li><a href="/rapid-blood-test-services">Rapid Blood Test Services</a></li>
+               <li><a href="/preventive-medicine">Preventive Medicine</a></li>
+               <li><a href="/post-hospitalisation-recovery">Post-Hospitalisation Care</a></li>
+             </ul>
+          </li>
+          <li class="drop-down"><a href="/pcr-test"><span>COVID-19</span><i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/pcr-test">Travel Tests</a></li>
+              <li><a href="/pre-event-test">Local Tests</a></li>
+              <li><a href="/serology">Serology Test and Update NIR</a></li>
+            </ul>
+          </li>
+          <li><a href="/location">Location</a></li>
+          <li><a href="/booking">Book Online</a></li>
+        </ul>
+      </nav>
+     </div>
+    <!-- end nav-menu -->
+                                                                                                                                          
+  </header><!-- End Header -->
+  
+  <main id="main">
+                 
+                 
+  <!-- Banner Bar -->
+  <div class="p-5 text-center bg-image" style="
+      background-color:#3498db;
+      height: 210px;
+      margin-top: 90px;
+    ">
+    
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1>Endoscopy</h1>
+                    
+        </div>
+      </div>
+    
+  </div>
+  <!-- Banner Bar -->   
+                               
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs2">
+      <div class="container">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/intermediate-care-services">Intermediate Care Services</a></li>
+          <li>Endoscopy</li>
+        </ol>
+      </div>
+    </section>
+   <!-- End Breadcrumbs -->
+
+                                                   
+                                                   
+   <!-- ======= Internal Content Section ======= -->
+    <section id="faqint" class="faqint">
+    <div class="container container-vertical-default">                             
+    <div class="row">
+    <div class="col-sm-7 d-flex flex-column justify-content-top">
+                  <h3>Primary Prevention:</h3>
+                  <em>When physical stamina drop has not yet set in</em><br>
+                  <p>Pre-conditioning is not a familiar concept to most people. At A Healing Heart Medical, we aim to introduce this to our patients.</p>
+                  <p>Pre-conditioning is a process whereby we aim to boost your health, stamina and endurance to a higher level before a potential stressful event or procedure/operation so that your chance of a better outcome would be higher.</p>
+                  <p>Our qualified team of doctors, nurses and therapists are here to micromanage your every step in this process. As pre-conditioning will require certain period of time for optimal effect, do come to us earlier to kick start your journey.</p>
+                  <p>It is suitable for people who have:</p>        
+                          <ul>
+                              <li>stroke</li>
+                              <li>heart disease</li>
+                              <li>lung disease</li>
+                              <li>kidney disease</li>
+                              <li>diabetes</li>
+                              <li>hypertension</li>
+                              <li>arthritis</li>
+                              <li>feeling breathless</li>
+                              <li>post-COVID infection</li>
+                              <li>obese</li>
+                              <li>pre- and post-operation</li>
+                              <li>cancer</li>
+                              <li>injury</li>
+                          </ul>
+                  <br><h3>Stamina Assessment and Health Screening</h3>
+                  <p>We all think that we know our own strength and weaknesses. But do we truly know our benchmark? At A Healing Heart Medical, we will help you to find out. Together with our therapists, we will assess both your physical function and medical screening to find out where you stand at this point in time.</p>                                                              
+                  
+                  <br><h3>Secondary Prevention:</h3>
+                  <em>When disease has already set in and we seek to prevent or reduce your drop in physical function</em><br>
+                  <p>Life is unpredictable even in this era of medical advances. Sometimes after operation or long periods of bed rest (e.g., after heart attack or stroke, our bodies) can get de-conditioned very rapidly where we lose our hard-earned stamina, physical and mental strength within 2-3 weeks.</p>
+                  <p>There will be some rehabilitation at hospitals but usually these will not be enough.</p>
+                  <p>At A Healing Heart Medical, we work hand in hand with our physiotherapists to guide you back and recondition your body both physically and micromanaging your pre-existing conditions and medications. Your progress will be shared seamlessly between different members of the team, and we will walk with you along the path of reconditioning.</p>
+  
+    </div>
+                                                                
+    <div class="col-sm-5 d-flex flex-column justify-content-top">    
+      <div class="container">
+                            
+        <div class="faqint-list">
+            <h4>Frequently Asked Questions</h4>
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-comment-detail icon-help"></i> <a href="#faq-list-1" class="collapsed" data-toggle="collapse">What is physiotherapy?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse" data-parent=".faqint-list">
+                <p>
+                  Physiotherapy helps to enable persons who are affected by injury, illnesses, or disabilities to regain and optimise their movement and function. At A Healing Heart Medical, we work closely with our physiotherapist to help patients achieve their full potential so that they can continue to live a full and active lifestyle as much as possible. 
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-comment-detail icon-help"></i> <a data-toggle="collapse" href="#faq-list-2" class="collapsed">Why should you see a physiotherapist?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-parent=".faqint-list">
+                <p>
+                  A physiotherapist will be able to assess the nature and extend of your medical problems, set goals based on what is most important to you, provide treatment, support, and advise, guide you through regular training and evaluate your progress systematically. The role is different from a physical trainer. 
+                </p>
+              </div>
+            </li>
+            
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-comment-detail icon-help"></i> <a data-toggle="collapse" href="#faq-list-3" class="collapsed">When should you start physiotherapy?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-parent=".faqint-list">
+                <p>
+                  We recommend that you start physiotherapy as soon as possible to speed up recovery. Over time, targeted physiotherapy can help improve your mobility and activity levels and improve the quality of your life.
+                </p>
+              </div>
+            </li>
+                                                 
+          </ul>
+        </div>
+                    
+      </div>
+    </div>
+   
+    </div>
+    </div>                                                                              
+    </section>
+                                                                              
+   <!-- ======= End Internal Content Section ======= -->                         
+                           
+    
+                                                                         
+  </main><!-- End #main -->
+  
+ <!-- ======= Footer ======= -->
+
+    <div class="section-title">
+          <p>Sign up for the latest updates</p>
+          <h2>e-Newsletter</h2>
+   </div>
+   <footer id="footer" class="footer">
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+           <script type="text/javascript">var submitted=false;</script>
+           <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='/thank-you';}"></iframe>
+           <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScCKV-J3lIVu7nLFWkGKMcae1fk3lDcZN4W4XHsdQOalpgSPg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+           <label class="sr-only" for="email">Email</label>
+              <input name="entry.227748236" type="email" class="form-control mb-2 mr-sm-2" id="email" placeholder="Your Email Address" required>
+           <label class="sr-only" for="subscribe">Subscribe</label>
+              <input type="submit" value="Subscribe">
+          </form>
+          </div>
+        </div>
+       </div>
+     </div>
+
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          
+          <div class="col-lg-4 footer-info">
+            
+            <div itemscope itemtype="http://schema.org/LocalBusiness">
+            <a href="/index" class="logo d-flex align-items-center">
+            <span itemprop="name">A Healing Heart Medical Clinic</span>
+            </a>
+            <p>We are a growing medical clinic group that focuses on intermediate care services in preventive medicine, chronic cardiology care and post-hospitalisation recovery.</p>
+            <br><br>
+             <h4>Opening Hours</h4>
+             <p>Mon to Fri: 9AM to 12.30PM, 2PM to 6PM
+             <br>Sat: 9AM to 1PM
+             <br>Closed on Sun and Public Holidays</p>
+             <br><br>                                                 
+             <h4>Call or WhatsApp Us</h4>
+                <span itemprop="telephone"><a href="tel:+6569621362">Call 6962 1362</a><br>
+                <a href="https://wa.me/6569621362" target="_blank">Click here to Whatsapp us</a><br>
+                (Operational during opening hours)</span>
+            </div>
+            
+          </div>
+
+          <div class="col-lg-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="/who-we-are">Who We Are</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/general-health">General Health Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/intermediate-care-services">Intermediate Care Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/pcr-test">PCR Test</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/booking">Make an Appointment</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/how-to-make-an-appointment">Guide to Appointment</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/location">Location</a></li>
+            </ul>
+              <br><br>
+               <h4>Follow us!</h4>
+             <div class="social-links">
+                <a href="https://www.facebook.com/ahealingheartmedical" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="https://www.instagram.com/ahealingheartmedical" class="instagram"><i class="icofont-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/ahealingheartmedical" class="linkedin"><i class="icofont-linkedin"></i></a>
+              </div>
+              
+          </div>
+
+          <div class="col-lg-5 footer-message">
+            <h4>Send Us A Message</h4>
+               <script type="text/javascript">var submitted=false;</script>
+               <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='/thank-you';}"></iframe>
+            <form class="form-inline" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+               
+                 <div class="form-row">
+                    <div class="form-group">
+                       <label class="sr-only" for="name">Name</label>
+                       <input name="entry.755572643" type="text" id="name" class="form-control mb-2 mr-sm-2" placeholder="Your Name" required="">
+                    </div>
+                    <div class="form-group">
+                       <label class="sr-only" for="email">Email</label>
+                       <input name="entry.243023388" type="text" id="email" class="form-control mb-2 mr-sm-2" placeholder="Your Email" required="">
+                    </div>
+                    <div class="form-group">
+                       <label class="sr-only" for="message">Message</label>
+                       <textarea name="entry.866906219" id="message" class="form-control mb-2 mr-sm-2"  placeholder="Please write something here" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 120px;"></textarea>
+                    </div>
+                    <!-- <div class="form-group form-check">
+                       <label class="form-check-label" for="yessubscribe">I want to subscribe to newsletter.</label>
+                       <input name="entry.1527534892_sentinel" type="checkbox" id="yessubscribe" class="form-check-input" data-answer-value="Yes" role="checkbox">
+                    </div> -->
+                       <label class="sr-only" for="sendmessage">Send</label>
+                       <input type="submit" value="Send Message">
+                    </div>
+                </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+         <div class="footer-bottom d-lg-none">
+             <table class="table table-borderless">
+               <thead>
+                 <tr>
+                   <th scope="col"><a href="tel:+6569621362" class="appointment-btn scrollto">Call 6962 1362</a></th>
+                   <th scope="col"><a href="/booking" class="appointment-btn scrollto">Book Online</a></th>
+                 </tr>
+               </thead>
+             </table> 
+         </div>                                                       
+     </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>A Healing Heart Medical Clinic</span></strong>. &reg; All Rights Reserved
+      </div>
+    </div>
+  </footer>
+                       
+                       
+                       
+ <!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
