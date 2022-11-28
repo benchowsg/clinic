@@ -500,10 +500,11 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  margin-top:20px;
+  min-height: 50vh;
   background: url("../img/hero-bg.png") center center;
   background-size: cover;
   position: relative;
+  padding: 100px 0 60px;
 }
 
 #hero h1 {
@@ -525,6 +526,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   display: inline-block;
   padding: 10px 28px;
+  margin-left: 25px;
   border-radius: 4px;
   transition: 0.5s;
   color: #3498db;
