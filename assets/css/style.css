@@ -556,13 +556,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 992px) {
   #hero .animated {
-    max-width: 90%;
+    max-width: 45%;
   }
 }
 
 @media (max-width: 991px) {
   #hero .animated {
-    max-width: 90%;
+    max-width: 60%;
   }
 }
 
