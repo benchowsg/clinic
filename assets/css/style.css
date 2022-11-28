@@ -541,29 +541,22 @@ h1, h2, h3, h4, h5, h6 {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
 
-@media (min-width: 1024px) {
-  #hero {
-    background-attachment: fixed;
+@media (min-width: 992px) {
+  #hero .animated {
+    max-width: 45%;
   }
 }
 
 @media (max-width: 991px) {
-  #hero {
-    height: 100vh;
-  }
   #hero .animated {
-    -webkit-animation: none;
-    animation: none;
-  }
-  #hero .hero-img {
-    text-align: center;
-  }
-  #hero .hero-img img {
-    width: 50%;
+    max-width: 60%;
   }
 }
 
 @media (max-width: 768px) {
+  #hero .animated {
+    max-width: 70%;
+  }
   #hero {
    margin-top: 40px;
   }
@@ -576,9 +569,6 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 22px;
     margin-bottom: 30px;
   }
-  #hero .hero-img img {
-    width: 90%;
-  }
 }
 
 @media (max-width: 575px) {
@@ -586,6 +576,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 80%;
   }
 }
+
 
 @-webkit-keyframes up-down {
   0% {
