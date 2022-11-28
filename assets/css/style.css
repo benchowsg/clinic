@@ -570,22 +570,10 @@ h1, h2, h3, h4, h5, h6 {
   #hero .animated {
     max-width: 90%;
   }
-  #hero {
-   margin-top: 40px;
-  }
-  #hero h1 {
-    font-size: 36px;
-    line-height: 36px;
-  }
-  #hero h2 {
-    font-size: 30px;
-    line-height: 40px;
-    margin-bottom: 20px;
-  }
 }
 
 @media (max-width: 575px) {
-  #hero .hero-img img {
+  #hero .animated {
     width: 80%;
   }
 }
