@@ -526,6 +526,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   display: inline-block;
   padding: 10px 28px;
+  border-radius: 4px;
+  transition: 0.5s;
+  color: #3498db;
+  border: 2px solid #3498db;
+}
+
+#hero .btn-get-started1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  padding: 10px 28px;
   margin-left: 25px;
   border-radius: 4px;
   transition: 0.5s;
@@ -545,19 +556,19 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 992px) {
   #hero .animated {
-    max-width: 45%;
+    max-width: 90%;
   }
 }
 
 @media (max-width: 991px) {
   #hero .animated {
-    max-width: 60%;
+    max-width: 90%;
   }
 }
 
 @media (max-width: 768px) {
   #hero .animated {
-    max-width: 70%;
+    max-width: 90%;
   }
   #hero {
    margin-top: 40px;
@@ -567,9 +578,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 36px;
   }
   #hero h2 {
-    font-size: 22px;
-    line-height: 22px;
-    margin-bottom: 30px;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 20px;
   }
 }
 
