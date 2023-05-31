@@ -1,45 +1,5 @@
 // header.js
 
-// Function to generate the header
-function generateHeader() {
-  var header = document.createElement('header');
-  header.id = 'header';
-  header.classList.add('header', 'fixed-top');
-
-  var container = document.createElement('div');
-  container.classList.add('container-fluid', 'container-xl', 'd-flex', 'align-items-center', 'justify-content-between');
-
-  // Create the logo element
-  var logo = createLogo();
-
-  // Create the navigation element
-  var navigation = createNavigation();
-
-  // Append the logo and navigation to the container
-  container.appendChild(logo);
-  container.appendChild(navigation);
-
-  // Append the container to the header
-  header.appendChild(container);
-
-  // Append the header to the body of the page
-  document.body.insertBefore(header, document.body.firstChild);
-}
-
-// Function to create the logo element
-function createLogo() {
-  var logoLink = document.createElement('a');
-  logoLink.href = '/';
-  logoLink.classList.add('logo', 'd-flex', 'align-items-center');
-
-  var logoImg = document.createElement('img');
-  logoImg.src = 'assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.png';
-  logoImg.alt = 'A Healing Heart Medical Clinic';
-  logoImg.classList.add('img-fluid');
-
-  logoLink.appendChild(logoImg);
-  return logoLink;
-}
 
 // Function to generate the navigation menu
 function generateNavigation() {
