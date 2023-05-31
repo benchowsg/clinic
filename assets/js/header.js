@@ -82,6 +82,7 @@ function generateNavigation() {
 
   // Create the navigation menu
   var menu = document.createElement('ul');
+  menu.classList.add('nav-menu');
   navItems.forEach(function(item) {
     var li = document.createElement('li');
     var a = document.createElement('a');
@@ -113,3 +114,4 @@ function generateNavigation() {
 
 // Call the function to generate the navigation menu
 generateNavigation();
+
