@@ -551,6 +551,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
+#hero .btn-get-started1:hover {
+  font-family: "Poppins", sans-serif;
+  background: #3498db;
+  color: #fff;
+}
+
 #hero .animated {
   animation: up-down 2s ease-in-out infinite alternate-reverse both;
 }
