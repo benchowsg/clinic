@@ -508,18 +508,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero h1 {
+  color: #3498db;
   margin: 10px 0 10px 0;
   font-size: 48px;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 55px;
-  color: #3498db;
 }
 
 #hero h2 {
   color: #3498db;
   margin: 10px 0 10px 0;
   font-size: 32px;
-  font-weight: bolder;
+  font-weight: 400;
+}
+
+#hero h4 {
+  color: #28282B;
+  margin: 10px 0 10px 0;
+  font-size: 20px;
+  font-weight: 100;
 }
 
 #hero .btn-get-started {
