@@ -2314,11 +2314,6 @@ top: 0; /* Don't forget this, required for the stickiness */
 # Blog Posts
 --------------------------------------------------------------*/
 
-.section-post {
-  padding: 140px 0 50px 0;
-  overflow: hidden;
-}
-
 .post-entry-1 {
   margin-bottom: 30px;
 }
