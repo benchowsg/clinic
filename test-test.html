@@ -337,6 +337,23 @@ Breasts, Scrotum, Prostate, Lumps, etc. 甲状腺、颈部、腹部、肝脏、�
               
           </div>
 
+
+<div aria-live="assertive" aria-atomic="true" class="toast" style="position: absolute; top: 20px; right: 20px;" data-autohide="false">
+  <div class="toast-header">
+    <img src="path/to/image.png" class="rounded mr-2" alt="A Healing Heart Medical Clinic">
+    <strong class="mr-auto">A Healing Heart Medical Clinic</strong>
+    <small>Just now</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Welcome to A Healing Heart Medical! Check out our latest updates.
+  </div>
+</div>
+
+          
+
           <div class="col-lg-5 footer-message">
             <h4>Send Us A Message</h4>
                <script type="text/javascript">var submitted=false;</script>
@@ -405,9 +422,19 @@ Breasts, Scrotum, Prostate, Lumps, etc. 甲状腺、颈部、腹部、肝脏、�
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/popper.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Initiate the toast with javascript -->
+  <script>
+  $(document).ready(function(){
+    $('.toast').toast('show');
+  });
+  </script>
 
                                  
   <!-- WhatsApp Script -->
