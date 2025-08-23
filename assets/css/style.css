@@ -704,11 +704,11 @@ section {
 
 .about .content h3 {
   font-weight: 800;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .about .content p {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #444444;
 }
 
@@ -741,7 +741,7 @@ section {
 
 .about .content .btn-learn-more {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
   letter-spacing: 1px;
   display: inline-block;
   padding: 12px 32px;
@@ -2200,5 +2200,6 @@ th {
 position: sticky;
 top: 0; /* Don't forget this, required for the stickiness */
 }
+
 
 
