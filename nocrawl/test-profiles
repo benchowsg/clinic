@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Section</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .team-content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0.5rem 0 0;
+    }
+
+    .team-title {
+      font-style: italic;
+      color: #666;
+      margin: 0.25rem 0 1rem;
+    }
+
+    .bio-wrapper {
+      position: relative;
+      overflow: hidden;
+      max-height: 100px;
+      transition: max-height 0.3s ease;
+    }
+
+    .bio-wrapper.expanded {
+      max-height: 1000px;
+    }
+
+    .fade-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, white);
+      transition: opacity 0.3s ease;
+    }
+
+    .bio-wrapper.expanded .fade-overlay {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .read-more-btn {
+      margin-top: 1rem;
+      background: none;
+      border: none;
+      color: #0077aa;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 0;
+      text-align: left;
+    }
+
+    .read-more-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meet Our Team</h1>
+
+  <div class="team-grid">
+
+    <!-- Team Card -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/400x250" alt="Dr. Jane Doe" class="team-photo" />
+      <div class="team-content">
+        <div>
+          <h3 class="team-name">Dr. Jane Doe</h3>
+          <p class="team-title">Chief Medical Officer</p>
+
+          <div class="bio-wrapper">
+            <p class="bio">
+              Dr. Jane Doe is a medical expert with over 15 years of experience in clinical leadership, public health, and patient-centered innovation. Her work focuses on integrating research-backed practices with personalized care to improve outcomes...
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Copy this block for each team member -->
+    <div class="team-card">
+      <img src="https://via.placeholder.com/400x250" alt="John Smith" class="team-photo" />
+      <div class="team-content">
+        <div>
+          <h3 class="team-name">John Smith</h3>
+          <p class="team-title">Chief Operating Officer</p>
+
+          <div class="bio-wrapper">
+            <p class="bio">
+              John has led operations and business strategy across several health-tech startups, with a focus on scaling impact and improving access to care through digital and hybrid models...
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Add more cards here -->
+
+  </div>
+
+  <script>
+    document.querySelectorAll('.read-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const wrapper = button.previousElementSibling.querySelector('.bio-wrapper');
+        wrapper.classList.toggle('expanded');
+        button.textContent = wrapper.classList.contains('expanded') ? 'Read Less' : 'Read More';
+      });
+    });
+  </script>
+
+</body>
+</html>
