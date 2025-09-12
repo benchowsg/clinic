@@ -123,203 +123,156 @@
 </script>
 
 
- <style>
-    /* Base Styles */
+<style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #fff;
-      color: #333;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #fff;
       margin: 0;
-      padding: 0;
+      color: #2c3e50;
+      line-height: 1.6;
     }
-
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
     h1 {
-      text-align: center;
-      color: #0a3d62; /* dark blue */
-      margin: 2rem 0 1rem;
-      font-weight: 700;
-    }
-
-    /* Founder Section */
-    .founder-section {
-      display: flex;
-      max-width: 1000px;
-      margin: 3rem auto 4rem;
-      padding: 2rem;
-      background-color: #f7f9fc;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .founder-image {
-      width: 250px;
-      height: 250px;
-      border-radius: 8px; /* squared corners */
-      object-fit: cover;
-      user-select: none;
-      flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .founder-text {
-      flex: 1;
-      color: #333;
-    }
-
-    .founder-text h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
       color: #0a3d62;
       font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
     }
-
-    .founder-text p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #555;
-      margin-bottom: 1rem;
+    p.subtitle {
+      color: #34495e;
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 1.125rem;
     }
-
-    /* Team Grid */
+    /* Grid for team */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
       gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto 4rem;
-      padding: 0 1rem;
     }
-
-    /* Team Card */
+    /* On smaller screens, switch to 1 or 2 columns */
+    @media (max-width: 900px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+    }
+    @media (max-width: 600px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Card */
     .team-card {
-      background: #fff;
+      background: #fefefe;
+      border: 1px solid #e0e6ed;
       border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(15, 39, 59, 0.1);
       overflow: hidden;
+      transition: box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
-      height: 450px; /* fixed height to prevent jumps */
-      transition: box-shadow 0.3s ease;
+      cursor: default;
     }
-
     .team-card:hover {
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 15px rgba(15, 39, 59, 0.2);
     }
-
+    /* Image */
     .team-photo {
       width: 100%;
-      height: 250px;
+      height: 240px;
       object-fit: cover;
-      border-radius: 8px 8px 0 0; /* rounded top corners only */
-      user-select: none;
+      border-bottom: 4px solid #0a3d62;
+      border-radius: 8px 8px 0 0;
     }
-
-    .team-content {
-      padding: 1.25rem 1.5rem 1.5rem;
+    /* Info */
+    .team-info {
+      padding: 1.5rem;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      text-align: center;
     }
-
-    .team-name {
+    .team-info h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.4rem;
       font-weight: 700;
-      font-size: 1.3rem;
       color: #0a3d62;
-      margin: 0.5rem 0 0.25rem;
     }
-
-    .team-title {
-      font-style: italic;
+    .team-info .title {
       font-size: 1rem;
-      color: #555;
+      color: #7f8c8d;
       margin-bottom: 1rem;
+      font-weight: 500;
     }
-
     .bio-wrapper {
       position: relative;
-      overflow: hidden;
       flex-grow: 1;
-      user-select: text;
-      text-align: left;
-    }
-
-    .bio {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #555;
-      max-height: 4.5em; /* about 3 lines */
       overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      transition: max-height 0.3s ease;
+      max-height: 4.5em; /* ~3 lines */
+      transition: max-height 0.4s ease;
     }
-
-    .bio.expanded {
-      max-height: 200px;
-      overflow-y: auto;
-      display: block;
+    .bio-wrapper.expanded {
+      max-height: 100vh; /* expand fully */
     }
-
+    .bio {
+      font-size: 0.95rem;
+      color: #34495e;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
     .fade-overlay {
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 2.5em;
-      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+      height: 2.2em;
+      background: linear-gradient(transparent, white);
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-
-    .bio.expanded + .fade-overlay {
+    .bio-wrapper.expanded .fade-overlay {
       opacity: 0;
     }
-
+    /* Button */
     .read-more-btn {
-      margin-top: 1rem;
-      align-self: center;
+      align-self: flex-start;
+      background: transparent;
+      border: 2px solid #0a3d62;
+      color: #0a3d62;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .read-more-btn:hover {
       background-color: #0a3d62;
       color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 0.5rem 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      user-select: none;
-      width: max-content;
-      white-space: nowrap;
     }
-
-    .read-more-btn:hover {
-      background-color: #07406e;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .founder-section {
-        flex-direction: column;
-        text-align: center;
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .team-photo {
+        height: 180px;
       }
-
-      .founder-image {
-        margin-bottom: 1.5rem;
-        width: 200px;
-        height: 200px;
+      h1 {
+        font-size: 2rem;
       }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-      }
-
-      .team-card {
-        height: auto;
+      .team-info h3 {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -540,131 +493,134 @@
 
     <!-- Meet our team section -->
 
-<h1>Meet Our Team</h1>
+   <header class="hero">
+      <h1>Meet Our Team</h1>
+      <p class="subtitle">Dedicated professionals committed to your health and well-being.</p>
+    </header>
 
-  <div class="team-grid">
+    <section class="team-grid" aria-label="Our Team Members">
 
-    <!-- Team Card 1 -->
-    <div class="team-card">
-      <img
-        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
-        alt="Farz"
-        class="team-photo"
-      />
-      <div class="team-content">
-        <h3 class="team-name">Farz A.</h3>
-        <p class="team-title">Chief Technology Officer</p>
-        <div class="bio-wrapper">
-          <p class="bio">
-            Farz has over a decade of experience in building scalable systems and leading engineering teams. He specializes in cloud infrastructure, microservices architecture, and guiding product-platform alignment. Passionate about turning complex technical challenges into reliable user experiences, he also mentors startups and contributes to open-source projects.
-          </p>
-          <div class="fade-overlay"></div>
+      <!-- Profile 1 -->
+      <article class="team-card">
+        <img
+          src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
+          alt="Dr. Farz Ahmad"
+          class="team-photo"
+        />
+        <div class="team-info">
+          <h3>Dr. Farz Ahmad</h3>
+          <p class="title">Founder & Medical Director</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Dr. Farz Ahmad is a compassionate general practitioner with over 15 years of experience. He focuses on holistic care and bridging conventional medicine with personalized wellness plans to support patients’ lifelong health.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
-        <button class="read-more-btn">Read More</button>
-      </div>
-    </div>
+      </article>
 
-    <!-- Team Card 2 -->
-    <div class="team-card">
-      <img
-        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
-        alt="Liu Qing"
-        class="team-photo"
-      />
-      <div class="team-content">
-        <h3 class="team-name">Liu Qing</h3>
-        <p class="team-title">Head of Research & Analytics</p>
-        <div class="bio-wrapper">
-          <p class="bio">
-            Liu Qing leads the data and insights team, using statistical modeling and qualitative research to inform strategy. She has overseen projects ranging from market research to patient outcome studies, ensuring decisions are evidence-based and that user feedback is incorporated into every product iteration. Outside work, she enjoys teaching and community science initiatives.
-          </p>
-          <div class="fade-overlay"></div>
+      <!-- Profile 2 -->
+      <article class="team-card">
+        <img
+          src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
+          alt="Dr. Liu Qing"
+          class="team-photo"
+        />
+        <div class="team-info">
+          <h3>Dr. Liu Qing</h3>
+          <p class="title">Senior Physician</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Dr. Liu Qing specializes in integrative medicine combining western approaches with traditional therapies. Her patient-centered approach promotes overall well-being through evidence-based treatments.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
-        <button class="read-more-btn">Read More</button>
-      </div>
-    </div>
+      </article>
 
-    <!-- Team Card 3 -->
-    <div class="team-card">
-      <img
-        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
-        alt="Zenn Lee"
-        class="team-photo"
-      />
-      <div class="team-content">
-        <h3 class="team-name">Zenn Lee</h3>
-        <p class="team-title">Product Designer</p>
-        <div class="bio-wrapper">
-          <p class="bio">
-            Zenn is passionate about creating intuitive and beautiful user experiences. With a background in both graphic design and UX research, Zenn bridges the gap between aesthetics and functionality. She leads the design language efforts and collaborates closely with engineers to bring ideas to life.
-          </p>
-          <div class="fade-overlay"></div>
+      <!-- Profile 3 -->
+      <article class="team-card">
+        <img
+          src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
+          alt="Zenn Tan"
+          class="team-photo"
+        />
+        <div class="team-info">
+          <h3>Zenn Tan</h3>
+          <p class="title">Physiotherapist</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Zenn Tan is passionate about helping patients recover and regain strength through personalized physiotherapy programs. His holistic approach emphasizes patient education and active healing.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
-        <button class="read-more-btn">Read More</button>
-      </div>
-    </div>
+      </article>
 
-    <!-- Team Card 4 -->
-    <div class="team-card">
-      <img
-        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
-        alt="Alex Johnson"
-        class="team-photo"
-      />
-      <div class="team-content">
-        <h3 class="team-name">Alex Johnson</h3>
-        <p class="team-title">Senior Software Engineer</p>
-        <div class="bio-wrapper">
-          <p class="bio">
-            Alex is a software engineer with a passion for creating efficient and scalable backend systems. He enjoys tackling complex problems and optimizing performance while maintaining clean and maintainable codebases.
-          </p>
-          <div class="fade-overlay"></div>
+      <!-- Profile 4 -->
+      <article class="team-card">
+        <img
+          src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
+          alt="Dr. Farz Ahmad"
+          class="team-photo"
+        />
+        <div class="team-info">
+          <h3>Dr. Farz Ahmad</h3>
+          <p class="title">Founder & Medical Director</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Dr. Farz Ahmad is a compassionate general practitioner with over 15 years of experience. He focuses on holistic care and bridging conventional medicine with personalized wellness plans to support patients’ lifelong health.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
-        <button class="read-more-btn">Read More</button>
-      </div>
-    </div>
+      </article>
 
-    <!-- Team Card 5 -->
-    <div class="team-card">
-      <img
-        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
-        alt="Emily Davis"
-        class="team-photo"
-      />
-      <div class="team-content">
-        <h3 class="team-name">Emily Davis</h3>
-        <p class="team-title">Data Scientist</p>
-        <div class="bio-wrapper">
-          <p class="bio">
-            Emily analyzes large datasets to discover actionable insights that drive product improvements. She loves working with data visualization and machine learning to turn raw data into meaningful stories.
-          </p>
-          <div class="fade-overlay"></div>
+      <!-- Profile 5 -->
+      <article class="team-card">
+        <img
+          src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
+          alt="Dr. Liu Qing"
+          class="team-photo"
+        />
+        <div class="team-info">
+          <h3>Dr. Liu Qing</h3>
+          <p class="title">Senior Physician</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Dr. Liu Qing specializes in integrative medicine combining western approaches with traditional therapies. Her patient-centered approach promotes overall well-being through evidence-based treatments.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
-        <button class="read-more-btn">Read More</button>
-      </div>
-    </div>
+      </article>
 
-    <!-- Team Card 6 -->
-    <div class="team-card">
-      <img
-        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
-        alt="Michael Lee"
-        class="team-photo"
-      />
-      <div class="team-content">
-        <h3 class="team-name">Michael Lee</h3>
-        <p class="team-title">UX Researcher</p>
-        <div class="bio-wrapper">
-          <p class="bio">
-            Michael specializes in user experience research, conducting interviews and usability tests to help design teams build products that resonate with end-users and meet their needs.
-          </p>
-          <div class="fade-overlay"></div>
+      <!-- Profile 6 -->
+      <article class="team-card">
+        <img
+          src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
+          alt="Zenn Tan"
+          class="team-photo"
+        />
+        <div class="team-info">
+          <h3>Zenn Tan</h3>
+          <p class="title">Physiotherapist</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Zenn Tan is passionate about helping patients recover and regain strength through personalized physiotherapy programs. His holistic approach emphasizes patient education and active healing.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
-        <button class="read-more-btn">Read More</button>
-      </div>
-    </div>
+      </article>
 
-  </div>
+    </section>
 <!-- End meet our team section -->
 
    <!-- Join Our Team CTA -->
