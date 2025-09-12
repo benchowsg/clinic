@@ -2,78 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Team Profiles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet Our Team</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background: #f9f9f9;
+      font-family: 'Helvetica Neue', sans-serif, Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 2rem 1rem 1rem;
+      font-size: 2.5rem;
       color: #333;
     }
 
     .team-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
-      align-items: start; /* Allows independent card heights */
-    }
-
-    @media (min-width: 768px) {
-      .team-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      padding: 2rem;
+      justify-items: center;
+      max-width: 1200px;
+      margin: 0 auto 4rem;
     }
 
     .team-card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      width: 100%;
+      max-width: 350px;
+      transition: transform 0.3s ease;
       display: flex;
       flex-direction: column;
+      cursor: default;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
     .team-photo {
       width: 100%;
       height: 250px;
       object-fit: cover;
+      border-bottom: 2px solid #eee;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      user-select: none;
     }
 
     .team-content {
-      padding: 1rem;
+      padding: 1.5rem 1.5rem 2rem;
+      text-align: center;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
     }
 
     .team-name {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 0.5rem 0 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #222;
+      margin: 0.5rem 0 0.3rem;
+      user-select: text;
     }
 
     .team-title {
+      font-size: 1.1rem;
+      color: #777;
+      margin: 0 0 1rem;
       font-style: italic;
-      color: #666;
-      margin-bottom: 0.75rem;
+      user-select: text;
     }
 
     .bio-wrapper {
       position: relative;
+      overflow: hidden;
+      min-height: 4.8em; /* approx 3 lines */
+      user-select: text;
+      flex-grow: 1;
     }
 
     .bio {
-      display: -webkit-box;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin: 0;
+      max-height: 4.8em;
+      overflow: hidden;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      position: relative;
-      min-height: 4.5em; /* Prevent layout jump */
+      display: -webkit-box;
+      transition: max-height 0.3s ease;
     }
 
     .bio.expanded {
-      -webkit-line-clamp: unset;
-      overflow: visible;
+      max-height: none;
+      display: block;
     }
 
     .fade-overlay {
@@ -82,7 +115,7 @@
       left: 0;
       right: 0;
       height: 2em;
-      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
@@ -92,20 +125,28 @@
     }
 
     .read-more-btn {
-      margin-top: 1rem;
-      align-self: start;
-      background: #0077aa;
-      color: white;
+      background-color: #0077cc;
+      color: #fff;
       border: none;
-      border-radius: 4px;
-      padding: 0.5rem 1rem;
-      font-weight: bold;
+      border-radius: 8px;
+      padding: 0.5rem 1.25rem;
+      font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease;
+      margin-top: 1rem;
+      align-self: center;
+      user-select: none;
     }
 
     .read-more-btn:hover {
-      background: #005f88;
+      background-color: #005fa3;
+    }
+
+    @media (max-width: 480px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -114,16 +155,19 @@
   <h1>Meet Our Team</h1>
 
   <div class="team-grid">
-
     <!-- Profile 1 -->
     <div class="team-card">
-      <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng" alt="Farz" class="team-photo" />
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
+        alt="Farz"
+        class="team-photo"
+      />
       <div class="team-content">
         <h3 class="team-name">Farz A.</h3>
         <p class="team-title">Chief Technology Officer</p>
         <div class="bio-wrapper">
           <p class="bio">
-            Farz has more than a decade of experience in building scalable systems and leading engineering teams. He specialises in cloud infrastructure, microservices architecture, and guiding product‑platform alignment. He also mentors startups and contributes to open‑source projects. His passion lies in turning complex technical challenges into reliable user experiences.
+            Farz has over a decade of experience in building scalable systems and leading engineering teams. He specializes in cloud infrastructure, microservices architecture, and guiding product-platform alignment. Passionate about turning complex technical challenges into reliable user experiences, he also mentors startups and contributes to open-source projects.
           </p>
           <div class="fade-overlay"></div>
         </div>
@@ -133,13 +177,17 @@
 
     <!-- Profile 2 -->
     <div class="team-card">
-      <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg" alt="Liu Qing" class="team-photo" />
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
+        alt="Liu Qing"
+        class="team-photo"
+      />
       <div class="team-content">
         <h3 class="team-name">Liu Qing</h3>
         <p class="team-title">Head of Research & Analytics</p>
         <div class="bio-wrapper">
           <p class="bio">
-            Liu Qing leads the data and insights team, using statistical modelling and qualitative research to inform strategy. Over the years, she has overseen projects ranging from market research to patient outcome studies. Her work ensures decisions are evidence‑based and that user feedback is incorporated into every product iteration. Outside work, she enjoys teaching and community science initiatives.
+            Liu Qing leads the data and insights team, using statistical modeling and qualitative research to inform strategy. She has overseen projects ranging from market research to patient outcome studies, ensuring decisions are evidence-based and that user feedback is incorporated into every product iteration. Outside work, she enjoys teaching and community science initiatives.
           </p>
           <div class="fade-overlay"></div>
         </div>
@@ -149,13 +197,17 @@
 
     <!-- Profile 3 -->
     <div class="team-card">
-      <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg" alt="Zenn Lee" class="team-photo" />
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
+        alt="Zenn Lee"
+        class="team-photo"
+      />
       <div class="team-content">
         <h3 class="team-name">Zenn Lee</h3>
         <p class="team-title">Senior Product Designer</p>
         <div class="bio-wrapper">
           <p class="bio">
-            Zenn is a designer with a flair for intuitive user interfaces and elegant visual design. She has crafted end‑to‑end designs for web and mobile applications, collaborating closely with engineering and product teams. Her strengths include UX research, prototyping, and usability testing. She believes good design balances beauty with function, and that every pixel matters.
+            Zenn is a designer with a flair for intuitive user interfaces and elegant visual design. She has crafted end-to-end designs for web and mobile applications, collaborating closely with engineering and product teams. Her strengths include UX research, prototyping, and usability testing. She believes good design balances beauty with function, and that every pixel matters.
           </p>
           <div class="fade-overlay"></div>
         </div>
@@ -163,30 +215,87 @@
       </div>
     </div>
 
+    <!-- Profile 4 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
+        alt="Alex R."
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Alex R.</h3>
+        <p class="team-title">Lead Software Engineer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Alex specializes in backend development and cloud integration, ensuring robust and scalable solutions. With a strong focus on code quality and team mentorship, he drives innovation and supports cross-functional collaboration. Outside the office, Alex is an avid cyclist and tech blogger.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Profile 5 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
+        alt="Emily S."
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Emily S.</h3>
+        <p class="team-title">Data Scientist</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Emily applies machine learning techniques to uncover patterns and insights that help guide strategic business decisions. Passionate about data storytelling and visualization, she bridges the gap between complex datasets and actionable outcomes. She’s also a volunteer tutor for coding workshops.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Profile 6 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
+        alt="Sophia M."
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Sophia M.</h3>
+        <p class="team-title">UX/UI Designer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Sophia is passionate about creating seamless user journeys and compelling visuals. She collaborates closely with developers to ensure designs are implemented perfectly. When not designing, she enjoys photography and exploring new art forms.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
   </div>
 
   <script>
     document.querySelectorAll('.read-more-btn').forEach(button => {
       button.addEventListener('click', () => {
         const contentDiv = button.parentElement;
-        const thisBio = contentDiv.querySelector('.bio');
-        const thisOverlay = contentDiv.querySelector('.fade-overlay');
-        const isExpanding = !thisBio.classList.contains('expanded');
+        const bio = contentDiv.querySelector('.bio');
+        const fade = contentDiv.querySelector('.fade-overlay');
+        const isExpanded = bio.classList.contains('expanded');
 
-        // Collapse all other bios
-        document.querySelectorAll('.bio').forEach(bio => bio.classList.remove('expanded'));
-        document.querySelectorAll('.fade-overlay').forEach(overlay => overlay.style.display = 'block');
-        document.querySelectorAll('.read-more-btn').forEach(btn => btn.textContent = 'Read More');
+        // Collapse all bios first
+        document.querySelectorAll('.bio').forEach(b => b.classList.remove('expanded'));
+        document.querySelectorAll('.fade-overlay').forEach(f => (f.style.opacity = '1'));
+        document.querySelectorAll('.read-more-btn').forEach(btn => (btn.textContent = 'Read More'));
 
-        // Expand this one
-        if (isExpanding) {
-          thisBio.classList.add('expanded');
-          thisOverlay.style.display = 'none';
+        if (!isExpanded) {
+          bio.classList.add('expanded');
+          fade.style.opacity = '0';
           button.textContent = 'Read Less';
         }
       });
     });
   </script>
-
 </body>
 </html>
