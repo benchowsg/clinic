@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Team Profiles Demo</title>
+  <title>Team Profiles</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,6 +15,7 @@
     .team-grid {
       display: grid;
       gap: 2rem;
+      align-items: start; /* Allows independent card heights */
     }
 
     @media (min-width: 768px) {
@@ -42,8 +43,6 @@
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
     }
 
     .team-name {
@@ -69,7 +68,7 @@
       overflow: hidden;
       transition: all 0.3s ease;
       position: relative;
-      min-height: 4.5em;
+      min-height: 4.5em; /* Prevent layout jump */
     }
 
     .bio.expanded {
@@ -120,16 +119,13 @@
     <div class="team-card">
       <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng" alt="Farz" class="team-photo" />
       <div class="team-content">
-        <div>
-          <h3 class="team-name">Farz A.</h3>
-          <p class="team-title">Chief Technology Officer</p>
-
-          <div class="bio-wrapper">
-            <p class="bio">
-              Farz has more than a decade of experience in building scalable systems and leading engineering teams. He specialises in cloud infrastructure, microservices architecture, and guiding product‑platform alignment. He also mentors startups and contributes to open‑source projects. His passion lies in turning complex technical challenges into reliable user experiences...
-            </p>
-            <div class="fade-overlay"></div>
-          </div>
+        <h3 class="team-name">Farz A.</h3>
+        <p class="team-title">Chief Technology Officer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Farz has more than a decade of experience in building scalable systems and leading engineering teams. He specialises in cloud infrastructure, microservices architecture, and guiding product‑platform alignment. He also mentors startups and contributes to open‑source projects. His passion lies in turning complex technical challenges into reliable user experiences.
+          </p>
+          <div class="fade-overlay"></div>
         </div>
         <button class="read-more-btn">Read More</button>
       </div>
@@ -139,16 +135,13 @@
     <div class="team-card">
       <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg" alt="Liu Qing" class="team-photo" />
       <div class="team-content">
-        <div>
-          <h3 class="team-name">Liu Qing</h3>
-          <p class="team-title">Head of Research & Analytics</p>
-
-          <div class="bio-wrapper">
-            <p class="bio">
-              Liu Qing leads the data and insights team, using statistical modelling and qualitative research to inform strategy. Over the years, she has overseen projects ranging from market research to patient outcome studies. Her work ensures decisions are evidence‑based and that user feedback is incorporated into every product iteration. Outside work, she enjoys teaching and community science initiatives...
-            </p>
-            <div class="fade-overlay"></div>
-          </div>
+        <h3 class="team-name">Liu Qing</h3>
+        <p class="team-title">Head of Research & Analytics</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Liu Qing leads the data and insights team, using statistical modelling and qualitative research to inform strategy. Over the years, she has overseen projects ranging from market research to patient outcome studies. Her work ensures decisions are evidence‑based and that user feedback is incorporated into every product iteration. Outside work, she enjoys teaching and community science initiatives.
+          </p>
+          <div class="fade-overlay"></div>
         </div>
         <button class="read-more-btn">Read More</button>
       </div>
@@ -156,18 +149,15 @@
 
     <!-- Profile 3 -->
     <div class="team-card">
-      <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg" alt="Zenn" class="team-photo" />
+      <img src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg" alt="Zenn Lee" class="team-photo" />
       <div class="team-content">
-        <div>
-          <h3 class="team-name">Zenn Lee</h3>
-          <p class="team-title">Senior Product Designer</p>
-
-          <div class="bio-wrapper">
-            <p class="bio">
-              Zenn is a designer with a flair for intuitive user interfaces and elegant visual design. She has crafted end‑to‑end designs for web and mobile applications, collaborating closely with engineering and product teams. Her strengths include UX research, prototyping, and usability testing. She believes good design balances beauty with function, and that every pixel matters...
-            </p>
-            <div class="fade-overlay"></div>
-          </div>
+        <h3 class="team-name">Zenn Lee</h3>
+        <p class="team-title">Senior Product Designer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Zenn is a designer with a flair for intuitive user interfaces and elegant visual design. She has crafted end‑to‑end designs for web and mobile applications, collaborating closely with engineering and product teams. Her strengths include UX research, prototyping, and usability testing. She believes good design balances beauty with function, and that every pixel matters.
+          </p>
+          <div class="fade-overlay"></div>
         </div>
         <button class="read-more-btn">Read More</button>
       </div>
@@ -179,11 +169,21 @@
     document.querySelectorAll('.read-more-btn').forEach(button => {
       button.addEventListener('click', () => {
         const contentDiv = button.parentElement;
-        const bio = contentDiv.querySelector('.bio');
-        const overlay = contentDiv.querySelector('.fade-overlay');
-        const isExpanded = bio.classList.toggle('expanded');
-        overlay.style.display = isExpanded ? 'none' : 'block';
-        button.textContent = isExpanded ? 'Read Less' : 'Read More';
+        const thisBio = contentDiv.querySelector('.bio');
+        const thisOverlay = contentDiv.querySelector('.fade-overlay');
+        const isExpanding = !thisBio.classList.contains('expanded');
+
+        // Collapse all other bios
+        document.querySelectorAll('.bio').forEach(bio => bio.classList.remove('expanded'));
+        document.querySelectorAll('.fade-overlay').forEach(overlay => overlay.style.display = 'block');
+        document.querySelectorAll('.read-more-btn').forEach(btn => btn.textContent = 'Read More');
+
+        // Expand this one
+        if (isExpanding) {
+          thisBio.classList.add('expanded');
+          thisOverlay.style.display = 'none';
+          button.textContent = 'Read Less';
+        }
       });
     });
   </script>
