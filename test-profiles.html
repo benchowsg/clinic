@@ -28,7 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FWS6R7S77W"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,7 +36,7 @@
   gtag('js', new Date());
 
   gtag('config', 'G-FWS6R7S77W');
-</script>
+</script> -->
 
 <!-- Schema.org JSON-LD markup -->
 <script type="application/ld+json">
@@ -122,6 +122,208 @@
 ]
 </script>
 
+
+ <style>
+    /* Base Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0a3d62; /* dark blue */
+      margin: 2rem 0 1rem;
+      font-weight: 700;
+    }
+
+    /* Founder Section */
+    .founder-section {
+      display: flex;
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 2rem;
+      background-color: #f7f9fc;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .founder-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 8px; /* squared corners */
+      object-fit: cover;
+      user-select: none;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .founder-text {
+      flex: 1;
+      color: #333;
+    }
+
+    .founder-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #0a3d62;
+      font-weight: 700;
+    }
+
+    .founder-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* Team Card */
+    .team-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 450px; /* fixed height to prevent jumps */
+      transition: box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0; /* rounded top corners only */
+      user-select: none;
+    }
+
+    .team-content {
+      padding: 1.25rem 1.5rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .team-name {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #0a3d62;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .team-title {
+      font-style: italic;
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .bio-wrapper {
+      position: relative;
+      overflow: hidden;
+      flex-grow: 1;
+      user-select: text;
+      text-align: left;
+    }
+
+    .bio {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+      max-height: 4.5em; /* about 3 lines */
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      transition: max-height 0.3s ease;
+    }
+
+    .bio.expanded {
+      max-height: 200px;
+      overflow-y: auto;
+      display: block;
+    }
+
+    .fade-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2.5em;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .bio.expanded + .fade-overlay {
+      opacity: 0;
+    }
+
+    .read-more-btn {
+      margin-top: 1rem;
+      align-self: center;
+      background-color: #0a3d62;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      width: max-content;
+      white-space: nowrap;
+    }
+
+    .read-more-btn:hover {
+      background-color: #07406e;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .founder-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .founder-image {
+        margin-bottom: 1.5rem;
+        width: 200px;
+        height: 200px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      .team-card {
+        height: auto;
+      }
+    }
+  </style>
+
   
 </head>
 
@@ -146,7 +348,7 @@
         <i class="icofont-instagram">
         </i>
       </a>
-      <a href="https://www.linkedin.com/company/ahealingheartmedical" class=linkedin">
+      <a href="https://www.linkedin.com/company/ahealingheartmedical" class="linkedin">
         <i class="icofont-linkedin">
         </i>
       </a>
@@ -336,6 +538,135 @@
     </section>
     <!-- End About Us Section -->
 
+    <!-- Meet our team section -->
+
+<h1>Meet Our Team</h1>
+
+  <div class="team-grid">
+
+    <!-- Team Card 1 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
+        alt="Farz"
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Farz A.</h3>
+        <p class="team-title">Chief Technology Officer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Farz has over a decade of experience in building scalable systems and leading engineering teams. He specializes in cloud infrastructure, microservices architecture, and guiding product-platform alignment. Passionate about turning complex technical challenges into reliable user experiences, he also mentors startups and contributes to open-source projects.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Team Card 2 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
+        alt="Liu Qing"
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Liu Qing</h3>
+        <p class="team-title">Head of Research & Analytics</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Liu Qing leads the data and insights team, using statistical modeling and qualitative research to inform strategy. She has overseen projects ranging from market research to patient outcome studies, ensuring decisions are evidence-based and that user feedback is incorporated into every product iteration. Outside work, she enjoys teaching and community science initiatives.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Team Card 3 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
+        alt="Zenn Lee"
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Zenn Lee</h3>
+        <p class="team-title">Product Designer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Zenn is passionate about creating intuitive and beautiful user experiences. With a background in both graphic design and UX research, Zenn bridges the gap between aesthetics and functionality. She leads the design language efforts and collaborates closely with engineers to bring ideas to life.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Team Card 4 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/ca8205b9-5921-4c18-8bc2-1038d7945646/Farz.png?content-type=image%2Fpng"
+        alt="Alex Johnson"
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Alex Johnson</h3>
+        <p class="team-title">Senior Software Engineer</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Alex is a software engineer with a passion for creating efficient and scalable backend systems. He enjoys tackling complex problems and optimizing performance while maintaining clean and maintainable codebases.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Team Card 5 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/c01e6cc7-5f78-489e-9d8d-249f8e6c1b8a/Liu+Qing.jpg?content-type=image%2Fjpeg"
+        alt="Emily Davis"
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Emily Davis</h3>
+        <p class="team-title">Data Scientist</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Emily analyzes large datasets to discover actionable insights that drive product improvements. She loves working with data visualization and machine learning to turn raw data into meaningful stories.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+    <!-- Team Card 6 -->
+    <div class="team-card">
+      <img
+        src="https://images.squarespace-cdn.com/content/5dcc065b3a3dc42110df8d3b/d6e4eeef-9a4e-4953-ac8a-e8d6dadaa7f6/Zenn.jpg?content-type=image%2Fjpeg"
+        alt="Michael Lee"
+        class="team-photo"
+      />
+      <div class="team-content">
+        <h3 class="team-name">Michael Lee</h3>
+        <p class="team-title">UX Researcher</p>
+        <div class="bio-wrapper">
+          <p class="bio">
+            Michael specializes in user experience research, conducting interviews and usability tests to help design teams build products that resonate with end-users and meet their needs.
+          </p>
+          <div class="fade-overlay"></div>
+        </div>
+        <button class="read-more-btn">Read More</button>
+      </div>
+    </div>
+
+  </div>
+<!-- End meet our team section -->
+
    <!-- Join Our Team CTA -->
 <section class="py-5 bg-light">
   <div class="container">
@@ -498,6 +829,41 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+    <!-- Bio Card Style -->
+     <script>
+    // Only one bio open at a time
+    const buttons = document.querySelectorAll('.read-more-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.team-card');
+        const bio = card.querySelector('.bio');
+        const fade = card.querySelector('.fade-overlay');
+
+        const isExpanded = bio.classList.contains('expanded');
+
+        // Close all other bios
+        document.querySelectorAll('.bio.expanded').forEach(otherBio => {
+          if (otherBio !== bio) {
+            otherBio.classList.remove('expanded');
+            otherBio.nextElementSibling.style.opacity = '1';
+            otherBio.closest('.team-card').querySelector('.read-more-btn').textContent = 'Read More';
+          }
+        });
+
+        if (!isExpanded) {
+          bio.classList.add('expanded');
+          fade.style.opacity = '0';
+          btn.textContent = 'Show Less';
+        } else {
+          bio.classList.remove('expanded');
+          fade.style.opacity = '1';
+          btn.textContent = 'Read More';
+        }
+      });
+    });
+  </script>
 
 </body>
 
