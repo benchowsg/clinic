@@ -153,6 +153,11 @@
       flex-direction: column;
       cursor: default;
     }
+/* When a card is expanded, span all columns */
+.team-card.expanded {
+  grid-column: 1 / -1; /* spans from first to last grid line */
+}
+
     .team-card:hover {
       box-shadow: 0 6px 15px rgba(15, 39, 59, 0.2);
     }
