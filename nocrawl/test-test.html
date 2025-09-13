@@ -176,16 +176,18 @@
   </div>
 
   <script>
-    document.querySelectorAll('.read-more-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const contentDiv = button.parentElement;
-        const bio = contentDiv.querySelector('.bio');
-        const overlay = contentDiv.querySelector('.fade-overlay');
-        const isExpanded = bio.classList.toggle('expanded');
-        overlay.style.display = isExpanded ? 'none' : 'block';
-        button.textContent = isExpanded ? 'Read Less' : 'Read More';
-      });
-    });
+document.querySelectorAll('.read-more-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.team-card');         // only this card
+    const bio = card.querySelector('.bio');            // only this bio
+    const overlay = card.querySelector('.fade-overlay'); // only this overlay
+
+    const isExpanded = bio.classList.toggle('expanded');
+    overlay.style.display = isExpanded ? 'none' : 'block';
+    button.textContent = isExpanded ? 'Read Less' : 'Read More';
+  });
+});
+
   </script>
 
 </body>
