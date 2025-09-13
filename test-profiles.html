@@ -196,7 +196,7 @@
 
     .bio {
       display: -webkit-box;
-      -webkit-line-clamp: 3; /* Adjust for featured card */
+      -webkit-line-clamp: 5; /* Adjust for featured card */
       -webkit-box-orient: vertical;
       overflow: hidden;
       transition: all 0.3s ease;
@@ -214,7 +214,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 2em;
+      height: 5em;
       background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -268,7 +268,7 @@
 /* === Featured Profile Layout === */
 .featured-profile {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 2:1 layout */
+  grid-template-columns: 1fr; /* leave it as it is */
   gap: 2rem;
   margin-bottom: 3rem;
   background: #fff;
@@ -434,9 +434,10 @@
       </div>
 
     </section>
-
-    <section class="featured-profile">
+    
       <div class="container aos-init aos-animate" data-aos="fade-up">
+        <section class="featured-profile">
+
         <div class="row gx-0">
 
           <div class="col-lg-8 d-flex flex-column justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
@@ -454,7 +455,7 @@
               <div class="fade-overlay"></div>
             </div>
 
-            <button class="read-more-btn">Read More</button>
+            <button class="read-more-btn" aria-expanded="false">Read More</button>
         </div>
       </div>
 
@@ -463,10 +464,11 @@
           </div>
 
         </div>
-      </div>
-    </section>
-    
+
+      </section>
+    </div>
     <p></p>
+    
 <!--      <div class="container aos-init aos-animate" data-aos="fade-up">
         <div class="row gx-0">
           
