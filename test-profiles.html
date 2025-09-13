@@ -211,21 +211,26 @@
 
     .fade-overlay {
       position: absolute;
+      top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 5em;
-      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
-      pointer-events: none;
+      /* height: 5rem; */
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+      pointer-events: auto;
       transition: opacity 0.3s ease;
+      z-index: 1;
     }
 
     .bio.expanded + .fade-overlay {
       opacity: 0;
+      pointer-events: none;  /* allows clicking through */
     }
 
     .read-more-btn {
       margin-top: 1rem;
+      margin-bottom: 1rem;
+      z-index: 2;           /* Make button appear above overlay */
       align-self: start;
       background: #0077aa;
       color: white;
