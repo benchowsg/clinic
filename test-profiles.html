@@ -127,129 +127,133 @@
     /* Grid for team */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
-    /* On smaller screens, switch to 1 or 2 columns */
-    @media (max-width: 900px) {
+
+    @media (min-width: 768px) {
       .team-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
     }
-    @media (max-width: 600px) {
-      .team-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    /* Card */
+
     .team-card {
-      background: #fefefe;
-      border: 1px solid #e0e6ed;
+      background: #fff;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(15, 39, 59, 0.1);
-      overflow: visible;
-      transition: box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      cursor: default;
+      align-self: start; /* Makes cards grow individually */
     }
-/* When a card is expanded, span all columns */
-.team-card.expanded {
-  grid-column: 1 / -1; /* spans from first to last grid line */
-}
 
-    .team-card:hover {
-      box-shadow: 0 6px 15px rgba(15, 39, 59, 0.2);
-    }
-    /* Image */
     .team-photo {
       width: 100%;
-      height: 240px;
+      height: 250px;
       object-fit: cover;
-      border-bottom: 4px solid #0a3d62;
-      border-radius: 8px 8px 0 0;
     }
-    /* Info */
-    .team-info {
-      padding: 1.5rem;
-      flex-grow: 1;
+
+    .team-content {
+      padding: 1rem;
       display: flex;
       flex-direction: column;
-      min-height: 0;
+      justify-content: space-between;
+      height: 100%;
     }
-    .team-info h3 {
-      margin: 0 0 0.25rem 0;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #0a3d62;
+
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0.5rem 0 0;
     }
-    .team-info .title {
-      font-size: 1rem;
-      color: #7f8c8d;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+
+    .team-title {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 0.75rem;
     }
+
+    .team-grid {
+      display: grid;
+      gap: 2rem;
+      align-items: start; /* 👈 Ensure items don't stretch vertically */
+    }
+
+
     .bio-wrapper {
       position: relative;
-      overflow: hidden;
-      max-height: 4.5em; /* ~3 lines */
-      transition: max-height 0.4s ease;
     }
-    .bio-wrapper.expanded {
-      max-height: none; /* no limit */
+
+    .bio {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+      min-height: 4.5em;
+    }
+
+    .bio.expanded {
+      -webkit-line-clamp: unset;
       overflow: visible;
     }
-    .bio {
-      font-size: 0.95rem;
-      color: #34495e;
-      margin: 0 0 1rem 0;
-      line-height: 1.5;
-    }
+
     .fade-overlay {
-      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 2.2em;
-      background: linear-gradient(transparent, white);
+      height: 2em;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    .bio-wrapper.expanded .fade-overlay {
+
+    .bio.expanded + .fade-overlay {
       opacity: 0;
     }
-    /* Button */
+
     .read-more-btn {
-      align-self: flex-start;
-      background: transparent;
-      border: 2px solid #0a3d62;
-      color: #0a3d62;
-      padding: 0.4rem 1.2rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      user-select: none;
-      margin-top: auto; /* push button down if content is short */
-    }
-    .read-more-btn:hover {
-      background-color: #0a3d62;
+      margin-top: 1rem;
+      align-self: start;
+      background: #0077aa;
       color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
-    /* Responsive tweaks */
-    @media (max-width: 480px) {
-      .team-photo {
-        height: 180px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .team-info h3 {
-        font-size: 1.2rem;
-      }
+
+    .read-more-btn:hover {
+      background: #005f88;
     }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start; /* prevents equal height forcing */
+    }  
+
+
+    .card.expanded {
+      max-height: 500px;
+    }
+
+    .extra-content {
+      display: none;
+    }
+    .show .extra-content {
+     display: block;
+    }
+
+    .team-row {
+      display: flex;
+      align-items: flex-start; /* ✅ lets cards grow individually */
+    }
+
+  
   </style>
 
   
@@ -744,39 +748,21 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+
+    
     <!-- Bio Card Style -->
      <script>
-    // Only one bio open at a time
-    const buttons = document.querySelectorAll('.read-more-btn');
+document.querySelectorAll('.read-more-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.team-card');         // only this card
+    const bio = card.querySelector('.bio');            // only this bio
+    const overlay = card.querySelector('.fade-overlay'); // only this overlay
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.team-card');
-        const bio = card.querySelector('.bio');
-        const fade = card.querySelector('.fade-overlay');
-
-        const isExpanded = bio.classList.contains('expanded');
-
-        // Close all other bios
-        document.querySelectorAll('.bio.expanded').forEach(otherBio => {
-          if (otherBio !== bio) {
-            otherBio.classList.remove('expanded');
-            otherBio.nextElementSibling.style.opacity = '1';
-            otherBio.closest('.team-card').querySelector('.read-more-btn').textContent = 'Read More';
-          }
-        });
-
-        if (!isExpanded) {
-          bio.classList.add('expanded');
-          fade.style.opacity = '0';
-          btn.textContent = 'Show Less';
-        } else {
-          bio.classList.remove('expanded');
-          fade.style.opacity = '1';
-          btn.textContent = 'Read More';
-        }
-      });
-    });
+    const isExpanded = bio.classList.toggle('expanded');
+    overlay.style.display = isExpanded ? 'none' : 'block';
+    button.textContent = isExpanded ? 'Read Less' : 'Read More';
+  });
+});
   </script>
 
 </body>
