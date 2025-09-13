@@ -191,11 +191,12 @@
 
     .bio-wrapper {
       position: relative;
+      margin-top: 1rem;
     }
 
     .bio {
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 3; /* Adjust for featured card */
       -webkit-box-orient: vertical;
       overflow: hidden;
       transition: all 0.3s ease;
@@ -263,6 +264,41 @@
       align-items: flex-start; /* ✅ lets cards grow individually */
     }
 
+
+/* === Featured Profile Layout === */
+.featured-profile {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 2:1 layout */
+  gap: 2rem;
+  margin-bottom: 3rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+  padding: 2rem;
+  align-items: center;
+}
+
+.featured-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  max-height: 350px;
+  border-left: 5px solid #0077aa; /* accent line (optional) */
+}
+
+/* Reuse existing bio and button styles */
+
+
+
+  
   
   </style>
 
@@ -397,6 +433,9 @@
         </div>
       </div>
 
+    </section>
+
+    <section class="featured-profile">
       <div class="container aos-init aos-animate" data-aos="fade-up">
         <div class="row gx-0">
 
@@ -404,13 +443,20 @@
             <div class="content">
             <h2>Meet Dr Gerald Thang</h2>
             <h3>Founder, CEO, and Medical Director</h3>
+            <div class="bio-wrapper">
+              <div class="bio">
             <p>Dr Gerald Thang is our Founder, CEO and Medical Director of A Healing Heart Medical. Gerald graduated from National University of Singapore, Yong Loo Lin School of Medicine in 2006. With great passion for Cardiology, Gerald achieved Diploma of Cardiology conferred jointly by Academy of Medicine, Singapore and the Chapter of Cardiologists, Singapore in 2016. He also achieved Membership of the Royal Colleges of Physicians of the United Kingdom in 2019 with distinction achieved in PACES. He was also conferred the honour of MRCPS by University of Glasgow (UK) in 2019.</p>
             <p>Gerald founded A Healing Heart Medical with the vision of providing an ideal healing place for all our patients and caring not just our physical heart but also our emotional heart. He has sought qualified and like-minded medical personnel to provide the best possible care for patients. In addition, Gerald strongly believes in integration of advanced medical devices along with traditional medical examination which together with the irreplaceable human touch, brings our patients on the optimal healing path.</p>
             <p>Gerald also seeks to bring forth the Intermediate Care Model to Singapore. Since working in restructured Hospitals SGH, TTSH, KTPH, community hospital AMKCH and Polyclinics, Gerald became keenly aware of the need for a middle tier of healthcare in Singapore. There are many patients who do not quite need the specialist's high level of care and yet would require significantly more attention and medical resources than what most general practices can offer practically. Together with like-minded fellow medical personnel, Gerald has set out to establish an Intermediate Care Facility: A Healing Heart Medical Clinic.</p>
             <p>With this goal in mind, Gerald is also constantly seeking to further his knowledge. He has embarked on a Graduate Diploma program in Family Medicine to expand his knowledge of Primary Health Care. In his free time, he loves to spend time with his family and furkids. </p>
             <p>Gerald espouses the ideals of 4 Neutrals for A Healing Heart Medical: Age Neutral, Race Neutral, Gender Neutral and Religion Neutral. With these 4 Neutrals in mind, A Healing Heart Medical seeks to provide optimal working and healing environs to our staff and our healing patients.</p>  
             </div>
+              <div class="fade-overlay"></div>
             </div>
+
+            <button class="read-more-btn">Read More</button>
+        </div>
+      </div>
 
           <div class="col-lg-4 align-top aos-init aos-animate" data-aos="zoom-out" data-aos-delay="200">
             <img src="assets/img/team/Dr-Gerald-Thang-Staff-Profile.webp" class="img-fluid" alt="Dr Gerald Thang Founder and Medical Director">
@@ -418,6 +464,8 @@
 
         </div>
       </div>
+    </section>
+    
     <p></p>
 <!--      <div class="container aos-init aos-animate" data-aos="fade-up">
         <div class="row gx-0">
