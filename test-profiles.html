@@ -453,9 +453,10 @@
             <p>Gerald espouses the ideals of 4 Neutrals for A Healing Heart Medical: Age Neutral, Race Neutral, Gender Neutral and Religion Neutral. With these 4 Neutrals in mind, A Healing Heart Medical seeks to provide optimal working and healing environs to our staff and our healing patients.</p>  
             </div>
               <div class="fade-overlay"></div>
+               <button class="read-more-btn" aria-expanded="false">Read More</button>
             </div>
 
-            <button class="read-more-btn" aria-expanded="false">Read More</button>
+           
         </div>
       </div>
 
@@ -464,9 +465,9 @@
           </div>
 
         </div>
-
       </section>
     </div>
+    
     <p></p>
     
 <!--      <div class="container aos-init aos-animate" data-aos="fade-up">
@@ -814,13 +815,16 @@
      <script>
 document.querySelectorAll('.read-more-btn').forEach(button => {
   button.addEventListener('click', () => {
-    const card = button.closest('.team-card');         // only this card
-    const bio = card.querySelector('.bio');            // only this bio
-    const overlay = card.querySelector('.fade-overlay'); // only this overlay
+    const container = button.closest('.team-card') || button.closest('.bio-wrapper');
+    if (!container) return;  // safety check
+    
+    const bio = container.querySelector('.bio');            // only this bio
+    const overlay = container.querySelector('.fade-overlay'); // only this overlay
 
     const isExpanded = bio.classList.toggle('expanded');
     overlay.style.display = isExpanded ? 'none' : 'block';
     button.textContent = isExpanded ? 'Read Less' : 'Read More';
+    button.setAttribute('aria-expanded', isExpanded);
   });
 });
   </script>
