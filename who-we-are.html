@@ -569,6 +569,28 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+
+     
+  <!-- Bio Card Style -->
+     <script>
+document.querySelectorAll('.read-more-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const container = button.closest('.team-card') || button.closest('.bio-wrapper');
+    if (!container) return;  // safety check
+    
+    const bio = container.querySelector('.bio');            // only this bio
+    const overlay = container.querySelector('.fade-overlay'); // only this overlay
+
+    const isExpanded = bio.classList.toggle('expanded');
+    overlay.style.display = isExpanded ? 'none' : 'block';
+    button.textContent = isExpanded ? 'Read Less' : 'Read More';
+    button.setAttribute('aria-expanded', isExpanded);
+  });
+});
+  </script>
+
+    
+
 </body>
 
 </html>
