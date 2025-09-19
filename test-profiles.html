@@ -202,6 +202,7 @@
       transition: all 0.3s ease;
       position: relative;
       min-height: 4.5em;
+      z-index: 0;
     }
 
     .bio.expanded {
@@ -219,7 +220,7 @@
       background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
       pointer-events: auto;
       transition: opacity 0.3s ease;
-      z-index: 1; /* Ensure this is lower than the button */
+      z-index: 0; /* Ensure this is lower than the button */
     }
 
     .bio.expanded + .fade-overlay {
@@ -229,7 +230,7 @@
 
     .read-more-btn {
       position: relative;
-      z-index: 2;           /* Ensure this is higher than the overlay */
+      z-index: 0;           /* Ensure this is higher than the overlay */
       align-self: start;
       background: #0077aa;
       color: white;
