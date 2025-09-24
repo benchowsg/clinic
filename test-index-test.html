@@ -30,54 +30,69 @@
 
   <style>
 /* CSS */
-.services {
-  display: grid;
-  gap: 2rem;
-  /* you can adjust columns or use responsive layout */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  padding: 2rem;
-}
-
-.service-card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* hover effect */
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.service-card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.service-card h3 {
-  margin: 1rem;
-  font-size: 1.25rem;
-}
-
-.service-card p {
-  margin: 0 1rem 1rem 1rem;
-  flex-grow: 1;
-  /* ensures description takes up leftover space */
-}
-
-.service-card a {
-  display: block;
-  margin: 0 1rem 1rem 1rem;
-  text-decoration: none;
-  color: #0066cc;
-  font-weight: bold;
-}
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .cards-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-content h3 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: #222;
+    }
+    .card-content p {
+      margin: 0 0 1.5rem;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+    .card-content a {
+      align-self: start;
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: 1px solid #0066cc;
+      border-radius: 4px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .card-content a:hover {
+      background-color: #0066cc;
+      color: white;
+    }
 </style>
 
 </head>
@@ -207,26 +222,30 @@
 
     <!-- EXPERIMENT SERVICES SECTION -->
 
-    <section class="services">
-    <div class="service-card">
-      <img src="https://via.placeholder.com/300x200" alt="Hire Purchase">
-      <h3>Hire Purchase</h3>
-      <p>Acquire your company vehicles with a flexible Hire Purchase and enjoy terms up to 10 years.</p>
-      <a href="#">More</a>
+ <section class="cards-container">
+    <div class="card">
+      <img src="https://via.placeholder.com/400x250" alt="Service 1">
+      <div class="card-content">
+        <h3>Service One</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque.</p>
+        <a href="#">More</a>
+      </div>
     </div>
-
-    <div class="service-card">
-      <img src="https://via.placeholder.com/300x200" alt="Floor Stock Financing">
-      <h3>Floor Stock Financing</h3>
-      <p>Maintain ideal inventory levels and keep your showcase fully stocked with flexible Floor Stock Financing.</p>
-      <a href="#">More</a>
+    <div class="card">
+      <img src="https://via.placeholder.com/400x250" alt="Service 2">
+      <div class="card-content">
+        <h3>Service Two</h3>
+        <p>Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada.</p>
+        <a href="#">More</a>
+      </div>
     </div>
-
-    <div class="service-card">
-      <img src="https://via.placeholder.com/300x200" alt="Business Property Loans">
-      <h3>Business Property Loans</h3>
-      <p>Grow your business by purchasing or refinancing commercial properties under your company's name.</p>
-      <a href="#">More</a>
+    <div class="card">
+      <img src="https://via.placeholder.com/400x250" alt="Service 3">
+      <div class="card-content">
+        <h3>Service Three</h3>
+        <p>Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt.</p>
+        <a href="#">More</a>
+      </div>
     </div>
   </section>
 
