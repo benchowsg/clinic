@@ -28,72 +28,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <style>
-/* CSS */
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    .cards-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    .card img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 1.5rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-content h3 {
-      margin: 0 0 1rem;
-      font-size: 1.5rem;
-      line-height: 1.2;
-      color: #222;
-    }
-    .card-content p {
-      margin: 0 0 1.5rem;
-      flex-grow: 1;
-      line-height: 1.5;
-    }
-    .card-content a {
-      align-self: start;
-      text-decoration: none;
-      color: #0066cc;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border: 1px solid #0066cc;
-      border-radius: 4px;
-      transition: background-color 0.2s, color 0.2s;
-    }
-    .card-content a:hover {
-      background-color: #0066cc;
-      color: white;
-    }
-</style>
 
 </head>
 
@@ -222,33 +156,61 @@
 
     <!-- EXPERIMENT SERVICES SECTION -->
 
- <section class="cards-container">
-    <div class="card">
-      <img src="https://via.placeholder.com/400x250" alt="Service 1">
-      <div class="card-content">
-        <h3>Service One</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent scelerisque.</p>
-        <a href="#">More</a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/400x250" alt="Service 2">
-      <div class="card-content">
-        <h3>Service Two</h3>
-        <p>Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada.</p>
-        <a href="#">More</a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://via.placeholder.com/400x250" alt="Service 3">
-      <div class="card-content">
-        <h3>Service Three</h3>
-        <p>Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt.</p>
-        <a href="#">More</a>
-      </div>
-    </div>
-  </section>
+<section aria-label="Our Team Members">
+  <div class="container">
+    <div class="team-grid">
+      
+      <!-- Profile 1 -->
+      <article class="team-card">
+        <img src="/assets/img/profiles/Corp-Yan-Ying.webp" alt="Ng Yan Ying, Principal Physiotherapist" class="team-photo" />
+        <div class="team-info">
+          <h3>Ng Yan Ying</h3>
+          <p class="title">Principal Physiotherapist</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Yan Ying is a principal physiotherapist with over 11 years of experience in both cardiorespiratory and musculoskeletal rehabilitation. A co-founder of Heart and Lung Physio, she treats a wide range of conditions—from post-operative orthopedic care to chronic disease management. Her specialties include dry needling, cancer rehabilitation, and personalized weight management programs aimed at long-term health and prevention.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
+        </div>
+      </article>
 
+      <!-- Profile 2 -->
+      <article class="team-card">
+        <img src="/assets/img/profiles/Corp-Jaclyn.webp" alt="Jaclyn Chow, Senior Physiotherapist" class="team-photo" />
+        <div class="team-info">
+          <h3>Jaclyn Chow</h3>
+          <p class="title">Senior Physiotherapist</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Jaclyn is a senior physiotherapist with over 15 years of experience in cardiorespiratory care. As co-founder of Heart and Lung Physio, she specializes in cardiac and pulmonary rehabilitation, chest physiotherapy, cancer recovery, and post-COVID rehab. Jaclyn also supports patients with POTS and weight management through individualized programs focused on improving breathing, endurance, and overall well-being.
+            </p>
+          <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
+        </div>
+      </article>
+
+      <!-- Profile 3 -->
+      <article class="team-card">
+        <img src="/assets/img/profiles/Staff-Abigail-Ashvina.webp" alt="Abigail Ashvina, Clinic Nurse" class="team-photo" />
+        <div class="team-info">
+          <h3>Abigail Ashvina</h3>
+          <p class="title">Lead Clinic Nurse</p>
+          <div class="bio-wrapper">
+            <p class="bio">
+              Abigail's passion for nursing started early, leading her to take on part-time clinic assistant roles while completing her nursing studies. She began her career in home care, supporting patients with limited mobility, and later spent four years in a government hospital’s Geriatric department. Now, as part of the A Healing Heart Medical team, Abigail continues to provide compassionate, patient-centered care to our community.
+            </p>
+            <div class="fade-overlay"></div>
+          </div>
+          <button class="read-more-btn" aria-expanded="false">Read More</button>
+        </div>
+      </article>
+
+          </div> <!-- end .team-grid -->
+  </div> <!-- end .container -->
+</section>
                                                      
     <!-- ======= More Services Section ======= -->
     <section id="more-services" class="more-services">
