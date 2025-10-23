@@ -81,6 +81,24 @@
 
   gtag('config', 'G-FWS6R7S77W');
 </script>
+
+  <!-- Toggle Expand -->
+      <script>
+        // JavaScript for the Click-to-Expand functionality
+        function toggleDetails() {
+            const details = document.getElementById('fullTimeDetails');
+            const button = document.getElementById('toggleButton');
+            
+            // The robust check: if display is 'none' (initial state) or empty (not yet set), show it.
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+                button.textContent = 'Hide Full Job Details ↑';
+            } else {
+                details.style.display = 'none';
+                button.textContent = 'View Full Responsibilities, Requirements, & Hours ↓';
+            }
+        }
+    </script>
   
 </head>
   
@@ -222,6 +240,7 @@
                 <p><strong>About the Role:</strong> Provide high-quality patient care in a dynamic environment, assisting the doctor with clinical procedures, nurse counselling, and managing patient coordination.</p>
                 <p><strong>Clinic Location:</strong> Conveniently located within walking distance of Aljunied and Paya Lebar MRT stations, with a bus stop right in front.</p>
             </div>
+          
             <!-- Toggle Button (The Click-to-Expand control) -->
             <button id="toggleButton" onclick="toggleDetails()">
                 View Full Responsibilities, Requirements, & Hours ↓
