@@ -83,7 +83,91 @@
 </script>
 
   <!-- Toggle Expand -->
-      <script>
+    <style>
+        /* General Reset and Typography */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        /* Main Content Wrapper */
+        #main-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        /* Headings */
+        h1 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #004d99; /* Dark Blue */
+        }
+        h2, h3, h4 {
+            color: #0056b3; /* Slightly lighter blue */
+            margin-top: 20px;
+        }
+        /* Lists */
+        ul {
+            margin-left: 20px;
+            padding-left: 0;
+            list-style: disc;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+        
+        /* Style for the Toggle Button */
+        #toggleButton {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 6px;
+            background-color: #007bff; /* Primary Blue */
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #toggleButton:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Style for the final application link/button */
+        #apply-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 15px 20px;
+            margin-top: 30px;
+            background-color: #28a745; /* Green for action */
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+        #apply-button:hover {
+            background-color: #1e7e34;
+        }
+        
+        /* Hidden content container styling */
+        #fullTimeDetails {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+    </style>
+    
+    <script>
         // JavaScript for the Click-to-Expand functionality
         function toggleDetails() {
             const details = document.getElementById('fullTimeDetails');
