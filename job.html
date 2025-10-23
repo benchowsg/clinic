@@ -82,55 +82,116 @@
   gtag('config', 'G-FWS6R7S77W');
 </script>
 
-  <!-- Toggle Expand -->
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Style for the Toggle Button */
+        /* Custom styles, mostly for the buttons the user created, adapted for modern design */
+        :root {
+            --primary-blue: #3498db;
+            --secondary-pink: #ed81a1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light background */
+        }
+
+        /* --- Header/Navigation Styling (Simplified Tailwind-style) --- */
+        #topbar {
+            background: var(--primary-blue);
+            color: white;
+            font-size: 0.875rem; /* text-sm */
+        }
+
+        #header {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+
+        /* Adjusting the user's custom button styles to look cleaner */
         #toggleButton {
             display: block;
             width: 100%;
             padding: 12px 20px;
             margin: 20px 0;
             border: none;
-            border-radius: 6px;
-            background-color: #007bff; /* Primary Blue */
+            border-radius: 0.5rem;
+            background-color: var(--primary-blue);
             color: white;
-            font-size: 18px;
+            font-size: 1.125rem; /* text-lg */
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         #toggleButton:hover {
             background-color: #0056b3;
         }
-        
+
         /* Style for the final application link/button */
-        #apply-button {
+        #apply-button, .apply-button-locum {
             display: block;
             width: 100%;
             text-align: center;
             padding: 15px 20px;
             margin-top: 30px;
-            background-color: #ed81a1; /* Pink for action */
+            background-color: var(--secondary-pink);
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 1.125rem; /* text-lg */
             font-weight: bold;
-            border-radius: 6px;
+            border-radius: 0.5rem;
             transition: background-color 0.3s ease;
         }
-        #apply-button:hover {
+        #apply-button:hover, .apply-button-locum:hover {
             background-color: #e75480;
         }
+
+        /* Banner Style */
+        .banner-bar {
+            background-color: var(--primary-blue);
+            height: 210px;
+            margin-top: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-bar h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+        }
+
+        /* General Content Reset */
+        h1, h2, h3, h4, p, ul {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            padding-left: 0;
+        }
+
+        /* Customizing for the Job Sections */
+        #full-time-section, #locum-section {
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            background-color: white;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
     </style>
-    
+
     <script>
         // JavaScript for the Click-to-Expand functionality
         function toggleDetails() {
             const details = document.getElementById('fullTimeDetails');
             const button = document.getElementById('toggleButton');
-            
-            // The robust check: if display is 'none' (initial state) or empty (not yet set), show it.
+
+            // Toggle logic
             if (details.style.display === 'none' || details.style.display === '') {
                 details.style.display = 'block';
                 button.textContent = 'Hide Full Job Details ↑';
@@ -250,197 +311,224 @@
     </section>
    <!-- End Breadcrumbs -->
 
-    <!-- ======== Content ======= -->                                                     
-<section id="faqint" class="faqint">
-  <div class="container container-vertical-default">
-    <div class="row">
-      <div class="col-lg-7 d-flex flex-column justify-content-top">
-    <!-- Main Header -->
-        <h1>Join Our Nursing Team</h1>
-        <p>Join a dedicated team that values <strong>collaborative care</strong> and <strong>personal growth</strong>. We're committed to creating a supporting environment where every nurse is a respected partner in our mission to deliver exceptional patient outcomes. Whether you're seeking stability or flexibility, we have a role for you.</p>
+        <!-- ======== Content - FIXED TWO-COLUMN LAYOUT ======= -->
+        <section id="faqint" class="py-12 md:py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- This is the corrected ROW/COLUMN structure -->
+                <div class="flex flex-col lg:flex-row lg:space-x-10">
 
-        <!-- Full-Time Nurse Section -->
-        <div id="full-time-section">
-            <h2>Full-Time Registered Nurse</h2>
-            <p><em>Plant your roots and grow your career</em></p>
-            
-            <p>If you're looking for stability, career progression, and a close-knit team, our full-time roles offer a chance to truly invest in your future and ours.</p>
-            
-            <h3>Why Join Us Full-Time?</h3>
-            
-            <ul>
-                <li><strong>Financial Stability:</strong> Enjoy guaranteed hours, a competitive salary structure, and a monthly performance-based bonus.</li>
-                <li><strong>Comprehensive Family Health Support:</strong> Access to medical and dental care, plus the unique benefit of consultation with a doctor and medication coverage for yourself and your immediate family members (e.g., spouse or parents, and children below 18 years old).</li>
-                <li><strong>Goodwill Leave (Time for Life & Growth):</strong> We believe in supporting your whole life. Besides statutory leave, we provide up to 2 days of Goodwill Leave annually. Use this to take additional time with family or to pursue relevant short courses and personal interests for self-development.</li>
-                <li><strong>Statutory Support:</strong> Access to required statutory annual leave, medical leave, childcare leave and maternity leave to ensure you are supported when you need it most.</li>
-                <li><strong>Supportive Team:</strong> Be a core member of our staff with full access to internal resources and mentorship, fostering a community of care.</li>
-            </ul>
-            <!-- Key Summary & Location (Visible) -->
-            <div id="summary-location">
-                <h4>Key Role Summary & Location</h4>
-                <p><strong>About the Role:</strong> Provide high-quality patient care in a dynamic environment, assisting the doctor with clinical procedures, nurse counselling, and managing patient coordination.</p>
-                <p><strong>Clinic Location:</strong> Conveniently located within walking distance of Aljunied and Paya Lebar MRT stations, with a bus stop right in front.</p>
+                    <!-- COLUMN 1: Main Job Descriptions (Takes 7/12 width on large screens) -->
+                    <div class="w-full lg:w-7/12 order-2 lg:order-1">
+                        
+                        <h1 class="text-3xl font-bold mb-4 text-gray-900">Join Our Nursing Team</h1>
+                        <p class="mb-8 text-gray-600">Join a dedicated team that values **collaborative care** and **personal growth**. We're committed to creating a supporting environment where every nurse is a respected partner in our mission to deliver exceptional patient outcomes. Whether you're seeking stability or flexibility, we have a role for you.</p>
+
+                        <!-- Full-Time Nurse Section -->
+                        <div id="full-time-section">
+                            <h2 class="text-2xl font-semibold text-blue-800 mb-2">Full-Time Registered Nurse</h2>
+                            <p class="italic text-gray-500 mb-4">Plant your roots and grow your career</p>
+                            
+                            <p class="mb-4">If you're looking for stability, career progression, and a close-knit team, our full-time roles offer a chance to truly invest in your future and ours.</p>
+                            
+                            <h3 class="text-xl font-semibold mt-6 mb-3">Why Join Us Full-Time?</h3>
+                            
+                            <ul class="list-disc space-y-2 text-gray-700">
+                                <li><strong>Financial Stability:</strong> Enjoy guaranteed hours, a competitive salary structure, and a monthly performance-based bonus.</li>
+                                <li><strong>Comprehensive Family Health Support:</strong> Access to medical and dental care, plus consultation with a doctor and medication coverage for yourself and your immediate family members.</li>
+                                <li><strong>Goodwill Leave (Time for Life & Growth):</strong> Besides statutory leave, we provide up to 2 days of Goodwill Leave annually for family time or professional development.</li>
+                                <li><strong>Statutory Support:</strong> Access to required statutory annual leave, medical leave, childcare leave and maternity leave.</li>
+                                <li><strong>Supportive Team:</strong> Be a core member of our staff with full access to internal resources and mentorship.</li>
+                            </ul>
+
+                            <!-- Key Summary & Location (Visible) -->
+                            <div id="summary-location" class="mt-6 border-t pt-4">
+                                <h4 class="text-lg font-bold mb-2">Key Role Summary & Location</h4>
+                                <p class="mb-1"><strong>About the Role:</strong> Provide high-quality patient care in a dynamic environment, assisting the doctor with clinical procedures, nurse counselling, and managing patient coordination.</p>
+                                <p><strong>Clinic Location:</strong> Conveniently located within walking distance of Aljunied and Paya Lebar MRT stations, with a bus stop right in front.</p>
+                            </div>
+                        
+                            <!-- Toggle Button (The Click-to-Expand control) -->
+                            <button id="toggleButton" onclick="toggleDetails()">
+                                View Full Responsibilities, Requirements, & Hours ↓
+                            </button>
+
+                            <!-- Hidden Content (Detailed Job Description) -->
+                            <div id="fullTimeDetails" style="display: none;">
+                                
+                                <h4 class="text-xl font-bold mt-6 mb-4 text-gray-800">Full Job Details</h4>
+
+                                <!-- Working Hours -->
+                                <div class="mb-4">
+                                    <p class="font-semibold text-gray-700">Working Hours:</p>
+                                    <ul class="list-inside list-disc text-gray-600">
+                                        <li><strong>Monday to Friday:</strong> 9:00am – 6:00pm (Lunch break: 12:30pm – 2:00pm)</li>
+                                        <li><strong>Saturday:</strong> 9:00am – 1:00pm</li>
+                                        <li>Closed on Sundays and Public Holidays.</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Key Responsibilities -->
+                                <div class="mb-4">
+                                    <p class="font-semibold text-gray-700">Key Responsibilities:</p>
+                                    <ul class="list-inside list-disc text-gray-600">
+                                        <li>Perform blood draws, vaccinations, and clinical procedures (e.g., blood glucose monitoring, ECG, swab tests).</li>
+                                        <li>Manage patient registration, appointments, and care coordination.</li>
+                                        <li>Handle CHAS, MediSave, and insurance claims, as well as general enquiries and billing.</li>
+                                        <li>Dispense medication (under doctor’s supervision) and assist during consultations.</li>
+                                        <li>Liaise with external laboratories and medical suppliers.</li>
+                                        <li>Maintain a clean, safe, and patient-friendly clinical environment.</li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Education & Certification -->
+                                <div class="mb-4">
+                                    <p class="font-semibold text-gray-700">Education & Certification:</p>
+                                    <ul class="list-inside list-disc text-gray-600">
+                                        <li>Minimum: Nitec or Diploma in Nursing.</li>
+                                        <li>Valid, Registration with the Singapore Nursing Board.</li>
+                                        <li>Valid, Certified in BCLS / AED.</li>
+                                        <li>Valid, Certificate in Phlebotomy (preferred but not required).</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Experience -->
+                                <div class="mb-4">
+                                    <p class="font-semibold text-gray-700">Experience:</p>
+                                    <ul class="list-inside list-disc text-gray-600">
+                                        <li>Minimum 2 years of full-time experience in a clinic or hospital setting.</li>
+                                        <li>Minimum 2 years of practical experience in blood-taking procedures.</li>
+                                    </ul>
+                                </div>
+
+                                <!-- General Requirements -->
+                                <div class="mb-4">
+                                    <p class="font-semibold text-gray-700">General Requirements:</p>
+                                    <ul class="list-inside list-disc text-gray-600">
+                                        <li>Comfortable with using clinic management software and digital systems.</li>
+                                        <li>Familiarity with claims processing (CHAS, MediSave, insurance) is an advantage.</li>
+                                        <li>Good communication and interpersonal skills.</li>
+                                        <li>Ability to document triage properly is appreciated.</li>
+                                        <li>Fluent in English; proficiency in a second language or dialect is a bonus.</li>
+                                        <li>Reliable, team-oriented, and able to work independently when needed.</li>
+                                        <li>Able to start work immediately or within short notice.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Final Application Button -->
+                            <a href="https://www.mycareersfuture.gov.sg/companies/healing-heart-medical-202113244D" target="_blank" id="apply-button-ft">
+                                Apply Now for the Full-Time Nurse Position
+                            </a>
+                        </div>
+                        
+                        <hr class="my-10">
+
+                        <!-- Locum Nurse Section -->
+                        <div id="locum-section">
+                            <h2 class="text-2xl font-semibold text-blue-800 mb-2">Locum Nurse Opportunities</h2>
+                            <p class="italic text-gray-500 mb-4">Maximize Your Flexibility and Earnings</p>
+                            <p class="mb-4">If you are seeking **maximum control over your schedule** and a way to apply your skills without the constraints of a full-time commitment, our locum roles offer excellent pay and professional autonomy.</p>
+                            
+                            <h3 class="text-xl font-semibold mt-6 mb-3">Why Join Us as a Locum?</h3>
+                            <ul class="list-disc space-y-2 text-gray-700">
+                                <li><strong>Competitive Hourly Rate:</strong> Earn between **S$23.00 to S$28.00 per hour**, based on your experience and specific qualifications.</li>
+                                <li><strong>Total Flexibility:</strong> Choose assignments that fit your life. You manage your schedule and take on shifts as a self-employed professional.</li>
+                                <li><strong>Essential Experience:</strong> Gain exposure to **intermediate care services**, including preventive medicine and chronic care management.</li>
+                            </ul>
+                            
+                            <h3 class="text-xl font-semibold mt-6 mb-3">Availability Requirements</h3>
+                            <p class="mb-4">We require locum nurses to ensure consistent coverage for our patients. Please ensure you can commit to the following:</p>
+
+                            <ul class="list-disc space-y-2 text-gray-700">
+                                <li><strong>Weekdays:</strong> Must be able to accept full-day weekday assignments.</li>
+                                <li><strong>Saturdays:</strong> Consistent availability to accept assignments on Saturdays is essential.</li>
+                            </ul>
+
+                            <h3 class="text-xl font-semibold mt-6 mb-3 text-red-600">Important: Contract Status & Compensation Transparency</h3>
+                            <ul class="list-disc space-y-2 text-gray-700">
+                                <li><strong>Contract Type</strong>: This is a Contract for Service (Self-Employed Person - SEP) engagement.</li>
+                                <li><strong>Compensation is All-Inclusive</strong>: You will **NOT receive** employer CPF contributions, paid annual leave, paid sick leave, or other statutory employee benefits.</li>
+                                <li><strong>Nationality</strong>: Only Singapore Citizens and Permanent Residents are eligible.</li>
+                                <li><strong>Experience: Applicants must have an active role as a nurse in clinic or hospital within the last three months.</strong></li>
+                            </ul>
+
+                            <!-- Education & Certification (Repeated for Locum) -->
+                            <p class="font-semibold text-gray-700 mt-6">Education & Certification:</p>
+                            <ul class="list-inside list-disc text-gray-600">
+                                <li>Minimum: Nitec or Diploma in Nursing.</li>
+                                <li>Valid, Registration with the Singapore Nursing Board.</li>
+                                <li>Valid, Certified in BCLS / AED.</li>
+                            </ul>
+
+                            <!-- Final Application Button for Locum -->
+                            <a href="mailto:contact@ahealingheartmedical.com" class="apply-button-locum" style="background-color: var(--primary-blue); margin-top: 15px;">
+                                Ready for Flexible Work? Email Your Resume.
+                            </a>
+                        </div>
+                        
+                        <div class="mt-10 p-6 bg-gray-50 border border-gray-200 rounded-lg">
+                            <h3 class="text-xl font-bold mb-3">Send Us Your Resume</h3>
+                            <p class="mb-2">If you're interested, please send your resume with contact details and availability to <a href="mailto:contact@ahealingheartmedical.com" class="text-blue-600 hover:underline">contact@ahealingheartmedical.com</a>.</p>
+                            <p>Alternatively, you can view our job openings and apply via <a href="https://www.mycareersfuture.gov.sg/companies/healing-heart-medical-202113244D" target="_blank" class="text-blue-600 hover:underline">CareersFuture.gov.sg</a>.</p>
+                            <p class="mt-4 italic">Shortlisted candidates will be contacted for an interview.</p>
+                        </div>
+                        
+                    </div>
+                    <!-- END COLUMN 1 -->
+
+
+                    <!-- COLUMN 2: Sidebar/Summary (Takes 5/12 width on large screens) -->
+                    <!-- This is the missing column that creates the two-column effect -->
+                    <div class="w-full lg:w-5/12 order-1 lg:order-2 mt-8 lg:mt-0">
+                        <div class="sticky top-20 p-6 bg-white border border-blue-200 rounded-lg shadow-xl">
+                            <h2 class="text-2xl font-extrabold text-blue-700 mb-4 border-b pb-2">Job Quick Summary</h2>
+                            <ul class="space-y-3 text-base text-gray-700">
+                                <li class="font-medium flex items-start">
+                                    <span class="mr-2 text-blue-500">❖</span>
+                                    <span class="flex-1"><strong class="text-gray-900">Positions:</strong> Full-Time Registered Nurse & Locum Nurse.</span>
+                                </li>
+                                <li class="font-medium flex items-start">
+                                    <span class="mr-2 text-blue-500">❖</span>
+                                    <span class="flex-1"><strong class="text-gray-900">Location:</strong> Geylang East, Singapore (Aljunied/Paya Lebar MRT).</span>
+                                </li>
+                                <li class="font-medium flex items-start">
+                                    <span class="mr-2 text-blue-500">❖</span>
+                                    <span class="flex-1"><strong class="text-gray-900">Salary (FT):</strong> S$2800 - S$4000/month (before bonus).</span>
+                                </li>
+                                <li class="font-medium flex items-start">
+                                    <span class="mr-2 text-blue-500">❖</span>
+                                    <span class="flex-1"><strong class="text-gray-900">Rate (Locum):</strong> S$23.00 - S$28.00 per hour (SEP).</span>
+                                </li>
+                                <li class="font-medium flex items-start">
+                                    <span class="mr-2 text-blue-500">❖</span>
+                                    <span class="flex-1"><strong class="text-gray-900">Experience Req:</strong> Minimum 2 years in clinic/hospital setting.</span>
+                                </li>
+                            </ul>
+
+                            <hr class="my-6">
+                            
+                            <h3 class="text-lg font-bold mb-3 text-gray-800">Ready to apply?</h3>
+                            
+                            <a href="#full-time-section" class="mt-4 block text-center py-3 px-4 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg transition duration-150 shadow-md">
+                                View Full-Time Details
+                            </a>
+                            <a href="#locum-section" class="mt-3 block text-center py-3 px-4 border border-blue-500 text-blue-500 hover:bg-blue-50 transition duration-150 font-semibold rounded-lg">
+                                View Locum Details
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END COLUMN 2 -->
+
+                </div>
+                <!-- End of Row Container -->
+
             </div>
-          
-            <!-- Toggle Button (The Click-to-Expand control) -->
-            <button id="toggleButton" onclick="toggleDetails()">
-                View Full Responsibilities, Requirements, & Hours ↓
-            </button>
+        </section>
+        <!-- End Content -->
 
-            <!-- Hidden Content (Detailed Job Description) -->
-            <div id="fullTimeDetails" style="display: none;">
-                
-                <h4>Full Job Details</h4>
-
-                <!-- Working Hours -->
-                <div>
-                    <p><strong>Working Hours:</strong></p>
-                    <ul>
-                        <li><strong>Monday to Friday:</strong> 9:00am – 6:00pm (Lunch break: 12:30pm – 2:00pm)</li>
-                        <li><strong>Saturday:</strong> 9:00am – 1:00pm</li>
-                        <li>Closed on Sundays and Public Holidays.</li>
-                    </ul>
-                </div>
-
-                <!-- Key Responsibilities -->
-                <div>
-                    <p><strong>Key Responsibilities:</strong></p>
-                    <ul>
-                        <li>Perform blood draws, vaccinations, and clinical procedures (e.g., blood glucose monitoring, ECG, swab tests).</li>
-                        <li>Manage patient registration, appointments, and care coordination.</li>
-                        <li>Handle CHAS, MediSave, and insurance claims, as well as general enquiries and billing.</li>
-                        <li>Dispense medication (under doctor’s supervision) and assist during consultations.</li>
-                        <li>Liaise with external laboratories and medical suppliers.</li>
-                        <li>Maintain a clean, safe, and patient-friendly clinical environment.</li>
-                    </ul>
-                </div>
-                
-                <!-- Education & Certification -->
-                <div>
-                    <p><strong>Education & Certification:</strong></p>
-                    <ul>
-                        <li>Minimum: Nitec or Diploma in Nursing.</li>
-                        <li>Valid, Registration with the Singapore Nursing Board.</li>
-                        <li>Valid, Certified in BCLS / AED.</li>
-                        <li>Valid, Certificate in Phlebotomy (preferred but not required).</li>
-                    </ul>
-                </div>
-
-                <!-- Experience -->
-                <div>
-                    <p><strong>Experience:</strong></p>
-                    <ul>
-                        <li>Minimum 2 years of full-time experience in a clinic or hospital setting.</li>
-                        <li>Minimum 2 years of practical experience in blood-taking procedures.</li>
-                    </ul>
-                </div>
-
-                <!-- General Requirements -->
-                <div>
-                    <p><strong>General Requirements:</strong></p>
-                    <ul>
-                        <li>Comfortable with using clinic management software and digital systems.</li>
-                        <li>Familiarity with claims processing (CHAS, MediSave, insurance) is an advantage.</li>
-                        <li>Good communication and interpersonal skills.</li>
-                        <li>Ability to document triage properly is appreciated.</li>
-                        <li>Fluent in English; proficiency in a second language or dialect is a bonus.</li>
-                        <li>Reliable, team-oriented, and able to work independently when needed.</li>
-                        <li>Able to start work immediately or within short notice.</li>
-                    </ul>
-                </div>
-                
-                <!-- Detailed Clinic Location -->
-                <div>
-                    <p><strong>Clinic Location (Detailed):</strong></p>
-                    <ul>
-                        <li>Located along Sims Avenue, in front of a bus stop.</li>
-                        <li>Bus numbers: 2, 2A, 13, 21, 26, 40, 51, 67, 137, 853M.</li>
-                    </ul>
-                </div>
-
-                <!-- Staff Benefits (The list you provided) -->
-                <div>
-                    <p><strong>Staff Benefits Summary:</strong></p>
-                    <ul>
-                        <li>Monthly performance-based bonus</li>
-                        <li>Medical and dental benefits</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Final Application Button -->
-            <a href="https://www.mycareersfuture.gov.sg/companies/healing-heart-medical-202113244D" target="_blank" id="apply-button">
-                Apply Now for the Full-Time Nurse Position
-            </a>
-            
-        </div>
-<hr>
-  <!-- Locum Nurse Section -->
-        <div id="locum-section">
-            <h2>Locum Nurse Opportunities</h2>
-            <p><em>Maximize Your Flexibility and Earnings</em></p>
-            <p>If you are seeking <strong>maximum control over your schedule</strong> and a way to apply your skills without the constraints of a full-time commitment, our locum roles offer excellent pay and professional autonomy.</p>            <h3>Why Join Us as a Locum?</h3>
-            <ul>
-                <li><strong>Competitive Hourly Rate:</strong> Earn between <strong>S$23.00 to S$28.00 per hour</strong>, based on your experience and specific qualifications.</li>
-                <li><strong>Total Flexibility:</strong> Choose assignments that fit your life. With the assignments available, you manage your schedule and take on shifts as a self-employed professional.</li>
-                <li><strong>Essential Experience:</strong> Gain exposure to <strong>intermediate care services</strong>, including preventive medicine and chronic care management.</li>
-                <li><strong>Supportive Environment:</strong> Work alongside our dedicated team in a professional, nuturing, and collaborative clinic setting.</li>
-            </ul>
-            <h3>Availability Requirements</h3>
-            <p>We require locum nurses to ensure consistent coverage for our patients. Please ensure you can commit to the following:</p>
-
-            <ul>
-                <li><strong>Weekdays:</strong> Must be able to accept full-day weekday assignments.</li>
-                <li><strong>Saturdays:</strong> Consistent availability to accept assignments on Saturdays is essential to meet our core clinic operational needs.</li>
-            </ul>
-
-            <h3><strong>Important: Contract Status & Compensation Transparency</strong></h3>
-            <p>To maintain full transparency, please review the specific contract terms for this role. This section outlines the legal status and responsibilities for self-employed professionals:</p>
-
-            <ul>
-                <li><strong>Contract Type</strong>: This is a Contract for Service (Self-Employed Person - SEP) engagement.</li>
-                <li><strong>Employment Act</strong>: As an SEP, you are not covered by the Employment Act.</li>
-                <li><strong>Compensation is All-Inclusive</strong>: The hourly rate is all-inclusive. You will <strong>NOT receive</strong> employer CPF contributions, paid annual leave, paid sick leave, or other statutory employee benefits.</li>
-                <li><strong>CPF/Medisave</strong>: Singapore Citizens/Permanent Residents are personally responsible for making mandatory <strong>CPF MediSave contributions</strong> in accordance with IRAS requirements.</li>
-                <li><strong>Nationality</strong>: Due to the employment requirements, only Singapore Citizens and Permanent Residents are eligible.</li>
-                <li><strong>Experience: Applicants must have an active role as a nurse in clinic or hospital within the last three months.</strong></li>
-            </ul>
-
-             <!-- Education & Certification -->
-                    <p><strong>Education & Certification:</strong></p>
-                    <ul>
-                        <li>Minimum: Nitec or Diploma in Nursing.</li>
-                        <li>Valid, Registration with the Singapore Nursing Board.</li>
-                        <li>Valid, Certified in BCLS / AED.</li>
-                        <li>Valid, Certificate in Phlebotomy (preferred but not required).</li>
-                    </ul>
-
-            <!-- Final Application Button for Locum -->
-            <a href="mailto:contact@ahealingheartmedical.com" class="apply-button">
-                Ready for Flexible Work? Email Your Resume.
-            </a>
-
-        </div>
-
-<section id="faqint" class="faqint">
-  <div class="container container-vertical-default">                             
-    <div class="row">
-     <div class="col-lg-7 d-flex flex-column justify-content-top">
-        <div class="container">
-          <h3>Send Us Your Resume</h3>
-          <p>If you're interested, please send your resume with contact details and availability to <a href="mailto:contact@ahealingheartmedical.com">contact@ahealingheartmedical.com</a>.</p>
-          <p>Alternatively, you can view our job openings and apply via <a href="https://www.mycareersfuture.gov.sg/companies/healing-heart-medical-202113244D" target="_blank">CareersFuture.gov.sg</a>.</p>
-          <p>Shortlisted candidates will be contacted for an interview.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== End Content ====== -->
-    
-                                                                         
-  </main><!-- End #main -->
+    </main>
+    <!-- End #main -->
 
  <!-- ======= Footer ======= -->
 
