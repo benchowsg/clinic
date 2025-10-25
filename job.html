@@ -88,7 +88,7 @@
     <!-- Load Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-      <style>
+    <style>
         :root {
             --bs-primary: #3498db; /* Primary Blue */
             --bs-secondary: #ed81a1; /* Secondary Pink */
@@ -98,6 +98,18 @@
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
         }
+        
+        /* --- Link Styling Update --- */
+        /* Remove underline from all non-button/non-tab links by default */
+        a:not(.btn):not(.list-group-item) {
+            text-decoration: none !important;
+        }
+
+        /* Add underline back only on hover for visual feedback */
+        a:not(.btn):not(.list-group-item):hover {
+            text-decoration: underline !important;
+        }
+        /* -------------------------- */
 
         /* Adjust the fixed header space */
         .banner-bar {
@@ -279,10 +291,12 @@
                     <!-- Left Column: Tab Navigation (3/12 width) -->
                     <div class="col-lg-3 col-md-4">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-fulltime-list" data-bs-toggle="list" href="#list-fulltime" role="tab" aria-controls="list-fulltime">
+                            <!-- FIX: Added data-bs-target for reliability -->
+                            <a class="list-group-item list-group-item-action active" id="list-fulltime-list" data-bs-toggle="list" href="#list-fulltime" data-bs-target="#list-fulltime" role="tab" aria-controls="list-fulltime">
                                 <i class="fa fa-heart me-2 text-danger"></i>Full-Time Nurse
                             </a>
-                            <a class="list-group-item list-group-item-action" id="list-locum-list" data-bs-toggle="list" href="#list-locum" role="tab" aria-controls="list-locum">
+                            <!-- FIX: Added data-bs-target for reliability -->
+                            <a class="list-group-item list-group-item-action" id="list-locum-list" data-bs-toggle="list" href="#list-locum" data-bs-target="#list-locum" role="tab" aria-controls="list-locum">
                                 <i class="fa fa-suitcase me-2 text-success"></i>Locum Nurse
                             </a>
                             <!-- Direct CTA/Link -->
@@ -387,7 +401,7 @@
                 <!-- Final Application Summary below the tabs -->
                 <div class="text-center mt-5 pt-4 border-top">
                     <h3 class="h4 fw-bold mb-3">How to Apply</h3>
-                    <p class="text-muted">Please send your resume with contact details and availability to <a href="mailto:contact@ahealingheartmedical.com" class="text-primary text-decoration-none fw-bold">contact@ahealingheartmedical.com</a>.</p>
+                    <p class="text-muted">Please send your resume with contact details and availability to <a href="mailto:contact@ahealingheartmedical.com" class="text-primary fw-bold">contact@ahealingheartmedical.com</a>.</p>
                     <p class="mt-4 fst-italic">Shortlisted candidates will be contacted for an interview.</p>
                 </div>
             </div>
