@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Healing Heart Medical - Mobile Optimized Homepage</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>A Healing Heart Medical Clinic</title>
+  <meta name="description" content="We are a Medisave-approved and CHAS accredited clinic providing general health and intermediate care services to patients.">
+  <meta name="keywords" content="clinic, heart failure, medical clinic, doctor, post-hospitalisation, chronic health, cardiology, preventive medicine, health screening, rapid blood tests" >
+
+  <link rel="canonical" href="https://www.ahealingheartmedical.com/" />
+  
+  <link href="assets/img/logo/A-Healing-Heart-Medical-Clinic-Favicon.png" rel="icon">
+  <link href="assets/img/logo/A-Healing-Heart-Medical-Clinic-Favicon.png" rel="apple-touch-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FWS6R7S77W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FWS6R7S77W');
+</script>
+  
+  <script type="application/ld+json">...</script>
+  <script type="application/ld+json">...</script>
     <style>
-        /* Base styles from previous revisions */
         .triage-section { background-color: #f8f9fa; }
         .nav-pills .nav-link { 
             color: #555; background-color: #fff; border: 1px solid #e9ecef; margin: 0 8px; border-radius: 50px; 
             padding: 12px 30px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .nav-pills .nav-link.active { 
+            /* Using default BS blue, ensure this matches your style.css primary color */
             background-color: #0d6efd; color: #fff; border-color: #0d6efd; box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
         }
         .service-card { 
@@ -34,203 +65,365 @@
         }
         .main-footer { background-color: #343a40; color: #f8f9fa; }
         
-        /* 🔥 NEW: Padding to prevent content being hidden by the sticky footer (Approx. 60px high) */
+        /* Padding to prevent content being hidden by the sticky mobile footer */
         body { 
             padding-bottom: 70px; 
         }
         .mobile-sticky-footer {
             height: 60px; 
-            z-index: 1030; /* Ensure it is above other elements */
+            z-index: 1030;
         }
     </style>
 </head>
-<body>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
-            <div class="container">
-                <a class="navbar-brand fw-bold" href="#">A Healing Heart Medical</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+<body oncopy="return false" oncut="return false" onpaste="return false">
+  
+  <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+    <div class="container d-flex">
+      <div class="contact-info mr-auto">
+      <i class="icofont-envelope">
+      </i>
+      <a href="mailto:contact@ahealingheartmedical.com">contact@ahealingheartmedical.com</a>
+      <i class="icofont-phone">
+        </i>
+        <a href="tel:+6569621362">+65 6962 1362</a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.facebook.com/ahealingheartmedical" class="facebook">
+        <i class="icofont-facebook">
+        </i>
+      </a>
+      <a href="https://www.instagram.com/ahealingheartmedical/" class="instagram">
+        <i class="icofont-instagram">
+        </i>
+      </a>
+      <a href="https://www.linkedin.com/company/ahealingheartmedical" class=linkedin">
+        <i class="icofont-linkedin">
+        </i>
+      </a>
+    </div>
+  </div>
+</div>
+                                   
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+        
+        <a href="/" class="logo d-flex align-items-center">
+           <img src="assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.png" alt="A Healing Heart Medical Clinic" class="img-fluid">
+        </a>
+
+  <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="/who-we-are">Who We Are</a></li>
+          <li class="drop-down"><a href="/preventive-medicine"><span>Preventive Medicine</span><i class="bi bi-chevron-down"></i></a>
+            <ul>
+               <li><a href="/preventive-medicine">Preventive Medicine</a></li>
+               <li><a href="/general-health">General Health</a></li> 
+               <li><a href="/health-screening">Health Screening</a></li>
+               <li><a href="/osteoporosis">Osteoporosis</a></li>                                           
+               <li><a href="/vaccination">Vaccination</a></li> 
+               <li><a href="/covid-19">COVID-19 Related</a></li>                           
+            </ul>
+          </li>
+          <li class="drop-down"><a href="/intermediate-care-services"><span>Intermediate Care</span><i class="bi bi-chevron-down"></i></a>
+             <ul>
+               <li><a href="/intermediate-care-services">Intermediate Care Services</a></li>
+               <li><a href="/chronic-cardiology-care">Cardiology</a></li>
+               <li><a href="/regenerative-medicine">Regenerative Medicine</a></li>
+               <li><a href="/derma-clinica">Derma Clinica - Skincare</a></li>
+               <li><a href="/rapid-blood-test-services">Rapid Blood Test Services</a></li>
+               <li><a href="/hormonal-and-wellness">Hormonal and Wellness</a></li>                                   
+               <li><a href="/post-hospitalisation-recovery">Post-Hospitalisation Care</a></li>
+               <li><a href="/endoscopy">Endoscopy</a></li>
+               <li><a href="/ophthalmology">Ophthalmology</a></li>
+               <li><a href="/physiotherapy">Physiotherapy</a></li>
+             </ul>
+          </li>
+          <li><a href="/location">Location</a></li>
+          <li><a href="/booking">Book Online</a></li>
+          <li><a href="/job">Career</a></li>
+        </ul>
+      </nav>
+     </div>
+    </header><section id="hero" class="hero d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1>Medical care that goes beyond the basics</h1>
+              <h4>We manage heart risk, chronic fatigue, hormonal imbalance, and complex symptoms when general care isn't enough.</span></h4>
+              <div class="d-flex">
+              <a href="/booking" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Book now</span>
+              </a>
+              <a href="/services" class="btn-get-started1 scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Explore our services</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+            </div>
+            <div class="col-lg-7 order-1 order-lg-2 d-none d-lg-block hero-img aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+              <img src="assets/img/about-AHH-banner-web.png" class="img-fluid animated">
+            </div>
+            
+         </div>
+        </div>
+
+</section>
+  
+  <main id="main">
+
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4">Our Core Focus Areas</h2>
+    <div class="row">
+      
+      <div class="col-md-3 mb-4">
+        <i class="fas fa-heartbeat fa-3x mb-3" style="color: #3498db;"></i>
+        <h5>Cardiology</h5>
+        <p>Heart health, early detection, and care for your most vital organ.</p>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <i class="fas fa-stethoscope fa-3x mb-3" style="color: #3498db;"></i>
+        <h5>Preventive Health</h5>
+        <p>Comprehensive screenings and personalised advice to help you stay ahead and manage health risks.</p>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <i class="fas fa-hospital-user fa-3x mb-3" style="color: #3498db;"></i>
+        <h5>Post-Hospitalisation</h5>
+        <p>Continuity of care after hospital discharge to ensure smooth recovery and monitoring.</p>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <i class="fas fa-leaf fa-3x mb-3" style="color: #3498db;"></i>
+        <h5>Regenerative & Metabolic Care</h5>
+        <p>Medically guided therapies for growth hormones, weight, hair, and bone health.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <section id="about" class="about">
+                                     
+        <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <p>We Are</p>
+          <h2>Advanced Physicians</h2>
+        </div>
+      </div>
+
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+        <div class="row gx-0">
+
+<div class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+  <div class="content">
+    <p class="lead">Welcome to <b>A Healing Heart Medical Clinic</b>, where your healing journey begins.</p>
+    <p class="lead">We support patients with evolving, unclear, or complex symptoms that may not always be resolved in a standard consult.</p>
+    <p class="lead">Our team bridges the gap between general practice and specialist care, providing personalised assessments, ongoing guidance, and practical solutions tailored to your health needs.</p>
+    <p class="lead">We offer general care, preventive medicine, and intermediate care for people at different stages of health, taking the time to understand the full picture.</p>
+    <p class="lead">For urgent clarity, we provide rapid diagnostic tests for chest pain, suspected heart failure, haemoglobin, kidney health, and more, so you get answers without unnecessary delays.</p>
+    <p class="lead">Our role is to walk alongside you: tracking recovery, explaining results, and guiding your next steps with confidence.</p>
+    <div class="read-more"><a href="/who-we-are"><i class="icofont-arrow-right"></i> Read About Our Staff</a></div>
+  </div>
+</div>
+
+
+          <div class="col-lg-6 d-flex align-items-center aos-init aos-animate" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="img-fluid" alt="A Healing Heart Medical Team. Dr Gerald Thang">
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+    <p></p>
+
+
+    <section class="triage-section py-5">
+        <div class="container">
+            
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="fw-bold display-6">Medical Care That Goes Beyond the Basics.</h2>
+                    <p class="text-muted lead">
+                        We bridge the gap between General Practice and Specialist care. <br>
+                        Select a category to find your path to healing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-auto">
+                    <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
+                        <li class="nav-item mb-2 mb-sm-0" role="presentation">
+                            <button class="nav-link active" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab">
+                                ⚡ Acute & Urgent
+                            </button>
+                        </li>
+                        <li class="nav-item mb-2 mb-sm-0" role="presentation">
+                            <button class="nav-link" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab">
+                                🤝 Principal Physician Care
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-diag-tab" data-bs-toggle="pill" data-bs-target="#pills-diag" type="button" role="tab">
+                                🔬 Diagnostics & Screening
+                            </button>
+                        </li>
                     </ul>
-                    <a href="LINK_TO_BOOKING" class="btn btn-primary ms-lg-3 d-none d-lg-block">Book Appointment</a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <main role="main">
 
-        <section class="triage-section py-5">
-            <div class="container">
+            <div class="tab-content" id="pills-tabContent">
                 
-                <div class="row text-center mb-5">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="fw-bold display-6">Medical Care That Goes Beyond the Basics.</h2>
-                        <p class="text-muted lead">
-                            We bridge the gap between General Practice and Specialist care. <br>
-                            Select a category to find your path to healing.
-                        </p>
+                <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                    <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
+                                    <p class="small text-muted mb-0">We perform **stat ECGs & Cardiac Enzyme tests** on-site to rule out emergencies immediately.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-lungs"></i></div>
+                                    <h5 class="card-title fw-bold">Breathlessness</h5>
+                                    <p class="small text-muted mb-0">Don't guess. We check oxygen saturation and use **medical-grade nebulizers** to stabilize you.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-scissors"></i></div>
+                                    <h5 class="card-title fw-bold">Minor Surgery</h5>
+                                    <p class="small text-muted mb-0">Lacerations, cysts, or foreign bodies. Done here in a **sterile setting**, faster than A&E.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                                    <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
+                                    <p class="small text-muted mb-0">Quick blood tests for Dengue, Kidney Health, and **Heart Failure Index** to get timely clarity.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row justify-content-center mb-5">
-                    <div class="col-auto">
-                        <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
-                            <li class="nav-item mb-2 mb-sm-0" role="presentation">
-                                <button class="nav-link active" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab">
-                                    ⚡ Acute & Urgent
-                                </button>
-                            </li>
-                            <li class="nav-item mb-2 mb-sm-0" role="presentation">
-                                <button class="nav-link" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab">
-                                    🤝 Principal Physician Care
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-diag-tab" data-bs-toggle="pill" data-bs-target="#pills-diag" type="button" role="tab">
-                                    🔬 Diagnostics & Screening
-                                </button>
-                            </li>
-                        </ul>
+                <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-12 text-center mb-2">
+                            <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">The Healing Heart Approach</span>
+                            <h4 class="h5 fw-normal text-muted">"We manage heart risk, chronic fatigue, and complex symptoms when general care isn't enough."</h4>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 shadow-sm">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title fw-bold text-primary"><i class="bi bi-droplet me-2"></i>Diabetes & Metabolic</h5>
+                                    <p class="small text-muted mt-3">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 shadow-sm">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title fw-bold text-primary"><i class="bi bi-heart-pulse me-2"></i>Heart & Hypertension</h5>
+                                    <p class="small text-muted mt-3">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 shadow-sm">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title fw-bold text-primary"><i class="bi bi-person-fill-gear me-2"></i>Hormonal & Regenerative Health</h5>
+                                    <p class="small text-muted mt-3">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 shadow-sm">
+                                <div class="card-body p-0">
+                                    <h5 class="card-title fw-bold text-primary"><i class="bi bi-hospital me-2"></i>Post-Hospital Recovery</h5>
+                                    <p class="small text-muted mt-3">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tab-content" id="pills-tabContent">
-                    
-                    <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
-                        <div class="row g-4">
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 text-center shadow-sm">
-                                    <div class="card-body p-0">
-                                        <div class="icon-box"><i class="bi bi-activity"></i></div>
-                                        <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
-                                        <p class="small text-muted mb-0">We perform **stat ECGs & Cardiac Enzyme tests** on-site to rule out emergencies immediately.</p>
-                                    </div>
+                <div class="tab-pane fade" id="pills-diag" role="tabpanel">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="card service-card p-5 border-0 shadow text-center">
+                                <div class="icon-box mx-auto mb-4" style="width:80px; height:80px; font-size:2rem;"><i class="bi bi-clipboard-data"></i></div>
+                                <h3 class="fw-bold">Health Screening with a Strategy</h3>
+                                <p class="lead text-muted my-3">
+                                    We help identify early risk factors. **Dr. Thang explains what they mean for *your* strategy**, not just the numbers.
+                                </p>
+                                <hr class="w-50 mx-auto my-4">
+                                <div class="row text-start justify-content-center">
+                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Ultrasound Scans</div>
+                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Specialist-Linked Services (e.g., Endoscopy)</div>
+                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>ECG & Advanced Blood Markers</div>
+                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Osteoporosis Screening</div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 text-center shadow-sm">
-                                    <div class="card-body p-0">
-                                        <div class="icon-box"><i class="bi bi-lungs"></i></div>
-                                        <h5 class="card-title fw-bold">Breathlessness</h5>
-                                        <p class="small text-muted mb-0">Don't guess. We check oxygen saturation and use **medical-grade nebulizers** to stabilize you.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 text-center shadow-sm">
-                                    <div class="card-body p-0">
-                                        <div class="icon-box"><i class="bi bi-scissors"></i></div>
-                                        <h5 class="card-title fw-bold">Minor Surgery</h5>
-                                        <p class="small text-muted mb-0">Lacerations, cysts, or foreign bodies. Done here in a **sterile setting**, faster than A&E.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 text-center shadow-sm">
-                                    <div class="card-body p-0">
-                                        <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
-                                        <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
-                                        <p class="small text-muted mb-0">Quick blood tests for Dengue, Kidney Health, and **Heart Failure Index** to get timely clarity.</p>
-                                    </div>
+                                <div class="mt-5">
+                                    <button class="btn btn-outline-primary rounded-pill px-4">View Screening Packages</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-12 text-center mb-2">
-                                <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">The Healing Heart Approach</span>
-                                <h4 class="h5 fw-normal text-muted">"We manage heart risk, chronic fatigue, and complex symptoms when general care isn't enough."</h4>
-                            </div>
-                            
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 shadow-sm">
-                                    <div class="card-body p-0">
-                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-droplet me-2"></i>Diabetes & Metabolic</h5>
-                                        <p class="small text-muted mt-3">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 shadow-sm">
-                                    <div class="card-body p-0">
-                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-heart-pulse me-2"></i>Heart & Hypertension</h5>
-                                        <p class="small text-muted mt-3">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 shadow-sm">
-                                    <div class="card-body p-0">
-                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-person-fill-gear me-2"></i>Hormonal & Regenerative Health</h5>
-                                        <p class="small text-muted mt-3">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-3">
-                                <div class="card service-card p-4 shadow-sm">
-                                    <div class="card-body p-0">
-                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-hospital me-2"></i>Post-Hospital Recovery</h5>
-                                        <p class="small text-muted mt-3">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-diag" role="tabpanel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="card service-card p-5 border-0 shadow text-center">
-                                    <div class="icon-box mx-auto mb-4" style="width:80px; height:80px; font-size:2rem;"><i class="bi bi-clipboard-data"></i></div>
-                                    <h3 class="fw-bold">Health Screening with a Strategy</h3>
-                                    <p class="lead text-muted my-3">
-                                        We help identify early risk factors. **Dr. Thang explains what they mean for *your* strategy**, not just the numbers.
-                                    </p>
-                                    <hr class="w-50 mx-auto my-4">
-                                    <div class="row text-start justify-content-center">
-                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Ultrasound Scans</div>
-                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Specialist-Linked Services (e.g., Endoscopy)</div>
-                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>ECG & Advanced Blood Markers</div>
-                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Osteoporosis Screening</div>
-                                    </div>
-                                    <div class="mt-5">
-                                        <button class="btn btn-outline-primary rounded-pill px-4">View Screening Packages</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> 
-                <div class="row mt-5 text-center d-none d-sm-flex">
-                    <div class="col-12">
-                        <div class="d-inline-block bg-white px-4 py-2 rounded-pill shadow-sm mb-3 border">
-                            <small class="text-muted fw-bold">Practicing the 4 Neutrals: Age • Race • Gender • Religion Neutral</small>
-                        </div>
-                        <br>
-                        <a href="LINK_TO_WHATSAPP" class="btn btn-primary btn-lg rounded-pill px-5 shadow">
-                            <i class="bi bi-whatsapp me-2"></i> Call or WhatsApp Us
-                        </a>
                     </div>
                 </div>
 
+            </div> 
+            <div class="row mt-5 text-center d-none d-sm-flex">
+                <div class="col-12">
+                    <div class="d-inline-block bg-white px-4 py-2 rounded-pill shadow-sm mb-3 border">
+                        <small class="text-muted fw-bold">Practicing the 4 Neutrals: Age • Race • Gender • Religion Neutral</small>
+                    </div>
+                    <br>
+                    <a href="LINK_TO_WHATSAPP" class="btn btn-primary btn-lg rounded-pill px-5 shadow">
+                        <i class="bi bi-whatsapp me-2"></i> Call or WhatsApp Us
+                    </a>
+                </div>
             </div>
-        </section>
-        </main>
+
+        </div>
+    </section>
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+           <p></p>
+           <h2>Healthcare Blog</h2>
+        </div>
+      </div>
+   </section><section id="more-services" class="more-services"> 
+    <div class="container">
+        <div class="row">
+              <div class="col-lg-4">
+                    <div class="card">
+                         <img src="/assets/img/blog/doctor-taking-blood-pressure-thumb.webp" class="card-img-top" alt="Blood Pressure Measurement">
+                         <div class="card-body">
+                              <h5 class="card-title">Things You Need To Know About Hypertension</h5>
+</main>
+    
     <div class="mobile-sticky-footer fixed-bottom d-flex d-lg-none bg-white border-top shadow-lg p-2">
-        <a href="tel:65XXXXXXXX" class="btn btn-outline-primary w-50 me-1">
+        <a href="tel:+6569621362" class="btn btn-outline-primary w-50 me-1">
             <i class="bi bi-telephone-fill"></i> Call Us
         </a>
-        <a href="LINK_TO_BOOKING" class="btn btn-primary w-50 ms-1">
+        <a href="/booking" class="btn btn-primary w-50 ms-1">
             <i class="bi bi-calendar-check"></i> Book Appointment
         </a>
     </div>
@@ -239,7 +432,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold text-white">A Healing Heart Medical</h5>
-                    <p class="small">#01-11 Geylang East, Singapore 380000</p>
+                    <p class="small">134 Geylang East Ave 1, #01-227, Singapore 380134</p>
                     <a href="https://maps.app.goo.gl/" class="text-info small">Get Directions <i class="bi bi-geo-alt-fill"></i></a>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -262,9 +455,22 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function(){
+            // Initializes Aos (from your existing code)
+            AOS.init({
+                duration: 1000,
+                easing: "ease-in-out",
+                once: true,
+                mirror: false
+            });
+
+            // Initializes Bootstrap components (like tooltips, if you use them)
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
