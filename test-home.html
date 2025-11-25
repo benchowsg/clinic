@@ -34,12 +34,13 @@
         }
         .main-footer { background-color: #343a40; color: #f8f9fa; }
         
-        /* 🔥 NEW: Padding to prevent content being hidden by the sticky footer */
+        /* 🔥 NEW: Padding to prevent content being hidden by the sticky footer (Approx. 60px high) */
         body { 
-            padding-bottom: 70px; /* Adjust this value based on the height of your actual sticky footer */
+            padding-bottom: 70px; 
         }
         .mobile-sticky-footer {
-            height: 60px; /* Set height for visual clarity */
+            height: 60px; 
+            z-index: 1030; /* Ensure it is above other elements */
         }
     </style>
 </head>
@@ -102,9 +103,112 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     
-                    <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">... Acute Tab Content ...</div>
-                    <div class="tab-pane fade" id="pills-chronic" role="tabpanel">... Chronic Tab Content ...</div>
-                    <div class="tab-pane fade" id="pills-diag" role="tabpanel">... Diagnostics Tab Content ...</div>
+                    <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
+                        <div class="row g-4">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 text-center shadow-sm">
+                                    <div class="card-body p-0">
+                                        <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                        <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
+                                        <p class="small text-muted mb-0">We perform **stat ECGs & Cardiac Enzyme tests** on-site to rule out emergencies immediately.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 text-center shadow-sm">
+                                    <div class="card-body p-0">
+                                        <div class="icon-box"><i class="bi bi-lungs"></i></div>
+                                        <h5 class="card-title fw-bold">Breathlessness</h5>
+                                        <p class="small text-muted mb-0">Don't guess. We check oxygen saturation and use **medical-grade nebulizers** to stabilize you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 text-center shadow-sm">
+                                    <div class="card-body p-0">
+                                        <div class="icon-box"><i class="bi bi-scissors"></i></div>
+                                        <h5 class="card-title fw-bold">Minor Surgery</h5>
+                                        <p class="small text-muted mb-0">Lacerations, cysts, or foreign bodies. Done here in a **sterile setting**, faster than A&E.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 text-center shadow-sm">
+                                    <div class="card-body p-0">
+                                        <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                                        <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
+                                        <p class="small text-muted mb-0">Quick blood tests for Dengue, Kidney Health, and **Heart Failure Index** to get timely clarity.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-12 text-center mb-2">
+                                <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">The Healing Heart Approach</span>
+                                <h4 class="h5 fw-normal text-muted">"We manage heart risk, chronic fatigue, and complex symptoms when general care isn't enough."</h4>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 shadow-sm">
+                                    <div class="card-body p-0">
+                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-droplet me-2"></i>Diabetes & Metabolic</h5>
+                                        <p class="small text-muted mt-3">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 shadow-sm">
+                                    <div class="card-body p-0">
+                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-heart-pulse me-2"></i>Heart & Hypertension</h5>
+                                        <p class="small text-muted mt-3">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 shadow-sm">
+                                    <div class="card-body p-0">
+                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-person-fill-gear me-2"></i>Hormonal & Regenerative Health</h5>
+                                        <p class="small text-muted mt-3">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="card service-card p-4 shadow-sm">
+                                    <div class="card-body p-0">
+                                        <h5 class="card-title fw-bold text-primary"><i class="bi bi-hospital me-2"></i>Post-Hospital Recovery</h5>
+                                        <p class="small text-muted mt-3">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-diag" role="tabpanel">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card service-card p-5 border-0 shadow text-center">
+                                    <div class="icon-box mx-auto mb-4" style="width:80px; height:80px; font-size:2rem;"><i class="bi bi-clipboard-data"></i></div>
+                                    <h3 class="fw-bold">Health Screening with a Strategy</h3>
+                                    <p class="lead text-muted my-3">
+                                        We help identify early risk factors. **Dr. Thang explains what they mean for *your* strategy**, not just the numbers.
+                                    </p>
+                                    <hr class="w-50 mx-auto my-4">
+                                    <div class="row text-start justify-content-center">
+                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Ultrasound Scans</div>
+                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Specialist-Linked Services (e.g., Endoscopy)</div>
+                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>ECG & Advanced Blood Markers</div>
+                                        <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Osteoporosis Screening</div>
+                                    </div>
+                                    <div class="mt-5">
+                                        <button class="btn btn-outline-primary rounded-pill px-4">View Screening Packages</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div> 
                 <div class="row mt-5 text-center d-none d-sm-flex">
@@ -132,8 +236,29 @@
     </div>
     <footer class="main-footer pt-5 pb-4">
         <div class="container">
-            ... Your existing address, hours, and quick links content ...
-            <p class="text-center text-white-50 small mt-4">© 2026 A Healing Heart Medical. All Rights Reserved.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-white">A Healing Heart Medical</h5>
+                    <p class="small">#01-11 Geylang East, Singapore 380000</p>
+                    <a href="https://maps.app.goo.gl/" class="text-info small">Get Directions <i class="bi bi-geo-alt-fill"></i></a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-white">Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Our Team (Dr. Thang)</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Post-Hospitalisation FAQs</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Terms & Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-white">Hours & Contact</h5>
+                    <p class="small mb-1">Mon - Fri: 9am - 5pm</p>
+                    <p class="small mb-3">Sat: 9am - 1pm</p>
+                    <p class="lead fw-bold text-warning">Call: 6962 1362</p>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <p class="text-center text-white-50 small">© 2026 A Healing Heart Medical. All Rights Reserved.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
