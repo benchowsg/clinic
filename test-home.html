@@ -1,75 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Healing Heart - Service Triage</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <style>
-        /* Custom Styles for 2026 "Soft" Look */
-        .help-section {
-            background-color: #f8f9fa; /* Light grey background */
+        /* Section Background */
+        .triage-section {
+            background-color: #f8f9fa;
         }
+
+        /* Nav Pills (The Buttons) */
         .nav-pills .nav-link {
-            color: #495057;
+            color: #555;
             background-color: #fff;
-            border: 1px solid #dee2e6;
-            margin: 0 5px;
-            border-radius: 50px; /* Pill shape */
-            padding: 10px 25px;
+            border: 1px solid #e9ecef;
+            margin: 0 8px;
+            border-radius: 50px;
+            padding: 12px 30px;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
+
+        .nav-pills .nav-link:hover {
+            background-color: #f1f1f1;
+            transform: translateY(-2px);
+        }
+
         .nav-pills .nav-link.active {
-            background-color: #0d6efd; /* Use your brand primary color here */
+            background-color: #0d6efd; /* Use Your Brand Primary Color */
             color: #fff;
             border-color: #0d6efd;
-            box-shadow: 0 4px 6px rgba(13, 110, 253, 0.3);
+            box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
         }
+
+        /* The Service Cards */
         .service-card {
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
+            background: #fff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            height: 100%; /* Ensures cards are same height */
+            height: 100%;
         }
+
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08) !important;
+            cursor: pointer;
         }
-        .card-icon {
-            font-size: 2rem;
+
+        /* Icon Styling */
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(13, 110, 253, 0.1);
             color: #0d6efd;
-            margin-bottom: 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem auto;
+            transition: background-color 0.3s;
         }
-        .card-text-sm {
-            font-size: 0.9rem;
-            color: #6c757d;
+
+        .service-card:hover .icon-box {
+            background-color: #0d6efd;
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
-<section class="help-section py-5">
+<section class="triage-section py-5">
     <div class="container">
         
         <div class="row text-center mb-5">
-            <div class="col-12">
-                <h2 class="fw-bold">How can we help you today?</h2>
-                <p class="text-muted">Select a category to find the right care.</p>
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold display-6">Medical Care That Goes Beyond the Basics.</h2>
+                <p class="text-muted lead">
+                    We bridge the gap between General Practice and Specialist care. <br>
+                    Select a category to find your path to healing.
+                </p>
             </div>
         </div>
 
-        <div class="row justify-content-center mb-4">
+        <div class="row justify-content-center mb-5">
             <div class="col-auto">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab">⚡ Immediate Relief</button>
+                <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
+                    <li class="nav-item mb-2 mb-sm-0" role="presentation">
+                        <button class="nav-link active" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab">
+                            ⚡ Acute & Urgent
+                        </button>
+                    </li>
+                    <li class="nav-item mb-2 mb-sm-0" role="presentation">
+                        <button class="nav-link" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab">
+                            🤝 Principal Physician Care
+                        </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab">❤️ Long-Term Conditions</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-checkup-tab" data-bs-toggle="pill" data-bs-target="#pills-checkup" type="button" role="tab">🩺 Health Screening</button>
+                        <button class="nav-link" id="pills-diag-tab" data-bs-toggle="pill" data-bs-target="#pills-diag" type="button" role="tab">
+                            🔬 Diagnostics & Screening
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -79,39 +116,39 @@
             
             <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
                 <div class="row g-4">
-                    <div class="col-md-4 col-lg-3">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-lungs"></i></div>
-                                <h5 class="card-title">Breathlessness</h5>
-                                <p class="card-text-sm">On-site nebulizers and oxygen monitoring to stabilize you quickly.</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
+                                <p class="small text-muted mb-0">We perform **stat ECGs & Cardiac Enzyme tests** on-site to rule out emergencies immediately.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-3">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-activity"></i></div>
-                                <h5 class="card-title">Chest Discomfort</h5>
-                                <p class="card-text-sm">Immediate ECG & Cardiac Enzyme tests to rule out heart attacks.</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-lungs"></i></div>
+                                <h5 class="card-title fw-bold">Breathlessness</h5>
+                                <p class="small text-muted mb-0">Don't guess. We check oxygen saturation and use **medical-grade nebulizers** to stabilize you.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-3">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-bandaid"></i></div>
-                                <h5 class="card-title">Cuts & Wounds</h5>
-                                <p class="card-text-sm">Surgical cleaning, stitching, and dressing without the A&E wait.</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-scissors"></i></div>
+                                <h5 class="card-title fw-bold">Minor Surgery</h5>
+                                <p class="small text-muted mb-0">Lacerations, cysts, or foreign bodies. Done here in a **sterile setting**, faster than A&E.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-3">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-thermometer-high"></i></div>
-                                <h5 class="card-title">High Fever</h5>
-                                <p class="card-text-sm">Rapid blood testing to identify Dengue or infections promptly.</p>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                                <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
+                                <p class="small text-muted mb-0">Quick blood tests for Dengue, Kidney Health, and **Heart Failure Index** to get timely clarity.</p>
                             </div>
                         </div>
                     </div>
@@ -119,57 +156,80 @@
             </div>
 
             <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
-                <div class="row g-4">
-                    <div class="col-md-4 col-lg-4">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-heart-pulse"></i></div>
-                                <h5 class="card-title">Hypertension</h5>
-                                <p class="card-text-sm">Personalized medication plans to protect your heart and kidneys.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-droplet"></i></div>
-                                <h5 class="card-title">Diabetes Care</h5>
-                                <p class="card-text-sm">Holistic management including foot, eye, and kidney screening.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-lg-4">
-                        <div class="card service-card p-3 text-center">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-clipboard-heart"></i></div>
-                                <h5 class="card-title">Post-Hospital Care</h5>
-                                <p class="card-text-sm">We take over from the specialist to manage your recovery locally.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-checkup" role="tabpanel">
                 <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 text-center">
-                        <div class="card service-card p-4">
-                            <div class="card-body">
-                                <div class="card-icon"><i class="bi bi-search"></i></div>
-                                <h4>Comprehensive Screening</h4>
-                                <p>From ultrasound scans to full blood panels. We don't just give you a report; Dr. Thang explains what it means for <em>you</em>.</p>
-                                <a href="#" class="btn btn-outline-primary mt-3">View Screening Packages</a>
+                    <div class="col-12 text-center mb-2">
+                        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill">The Healing Heart Approach</span>
+                        <h4 class="h5 fw-normal text-muted">"We manage heart risk, chronic fatigue, and complex symptoms when general care isn't enough."</h4>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 shadow-sm">
+                            <div class="card-body p-0">
+                                <h5 class="card-title fw-bold text-primary"><i class="bi bi-droplet me-2"></i>Diabetes & Metabolic</h5>
+                                <p class="small text-muted mt-3">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 shadow-sm">
+                            <div class="card-body p-0">
+                                <h5 class="card-title fw-bold text-primary"><i class="bi bi-heart-pulse me-2"></i>Heart & Hypertension</h5>
+                                <p class="small text-muted mt-3">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 shadow-sm">
+                            <div class="card-body p-0">
+                                <h5 class="card-title fw-bold text-primary"><i class="bi bi-person-fill-gear me-2"></i>Hormonal & Regenerative Health</h5>
+                                <p class="small text-muted mt-3">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 shadow-sm">
+                            <div class="card-body p-0">
+                                <h5 class="card-title fw-bold text-primary"><i class="bi bi-hospital me-2"></i>Post-Hospital Recovery</h5>
+                                <p class="small text-muted mt-3">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div> <div class="row mt-5 text-center">
+            <div class="tab-pane fade" id="pills-diag" role="tabpanel">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card service-card p-5 border-0 shadow text-center">
+                            <div class="icon-box mx-auto mb-4" style="width:80px; height:80px; font-size:2rem;"><i class="bi bi-clipboard-data"></i></div>
+                            <h3 class="fw-bold">Health Screening with a Strategy</h3>
+                            <p class="lead text-muted my-3">
+                                We help identify early risk factors through medical screenings. **Dr. Thang explains what they mean for *your* strategy**, not just the numbers.
+                            </p>
+                            <hr class="w-50 mx-auto my-4">
+                            <div class="row text-start justify-content-center">
+                                <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Ultrasound Scans</div>
+                                <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Specialist-Linked Services (e.g., Endoscopy)</div>
+                                <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>ECG & Advanced Blood Markers</div>
+                                <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Osteoporosis Screening</div>
+                            </div>
+                            <div class="mt-5">
+                                <button class="btn btn-outline-primary rounded-pill px-4">View Screening Packages</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+        <div class="row mt-5 text-center">
             <div class="col-12">
-                <p class="mb-3">Not sure what you need? Send us a message.</p>
-                <a href="#" class="btn btn-primary btn-lg rounded-pill px-5">
-                    <i class="bi bi-whatsapp"></i> WhatsApp Us Now
+                <div class="d-inline-block bg-white px-4 py-2 rounded-pill shadow-sm mb-3 border">
+                    <small class="text-muted fw-bold">Practicing the 4 Neutrals: Age • Race • Gender • Religion Neutral</small>
+                </div>
+                <br>
+                <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 shadow">
+                    <i class="bi bi-whatsapp me-2"></i> Call or WhatsApp Us
                 </a>
             </div>
         </div>
@@ -178,5 +238,16 @@
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        // Initializes Bootstrap components like Tooltips and ensures smooth tab operation
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    });
+</script>
+
 </body>
 </html>
