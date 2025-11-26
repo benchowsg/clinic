@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -126,7 +129,42 @@
   ]
 }
 </script>
-
+  
+    <style>
+        .triage-section { background-color: #f8f9fa; }
+        .nav-pills .nav-link { 
+            color: #555; background-color: #fff; border: 1px solid #e9ecef; margin: 0 8px; border-radius: 50px; 
+            padding: 12px 30px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .nav-pills .nav-link.active { 
+            /* Using default BS blue, ensure this matches your style.css primary color */
+            background-color: #0d6efd; color: #fff; border-color: #0d6efd; box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+        }
+        .service-card { 
+            border: none; border-radius: 16px; background: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%;
+        }
+        .service-card:hover { 
+            transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08) !important; cursor: pointer;
+        }
+        .icon-box {
+            width: 60px; height: 60px; background-color: rgba(13, 110, 253, 0.1); color: #0d6efd; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem auto;
+            transition: background-color 0.3s;
+        }
+        .service-card:hover .icon-box {
+            background-color: #0d6efd; color: #fff;
+        }
+        .main-footer { background-color: #343a40; color: #f8f9fa; }
+        
+        /* Padding to prevent content being hidden by the sticky mobile footer */
+        body { 
+            padding-bottom: 70px; 
+        }
+        .mobile-sticky-footer {
+            height: 60px; 
+            z-index: 1030;
+        }
+    </style>
 </head>
 
 <body oncopy="return false" oncut="return false" onpaste="return false">
@@ -153,8 +191,7 @@
         </div>
     </div>
 </div>
-                                   
-  <header id="header" class="header fixed-top">
+<header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         
         <a href="/" class="logo d-flex align-items-center">
@@ -503,15 +540,15 @@
             <p class="text-center text-white-50 small">© 2026 A Healing Heart Medical. All Rights Reserved.</p>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
     <script src="assets/vendor/venobox/venobox.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function(){
-            // Initializes Aos (from your existing code)
+            // Initializes Aos 
             AOS.init({
                 duration: 1000,
                 easing: "ease-in-out",
@@ -519,7 +556,7 @@
                 mirror: false
             });
 
-            // Initializes Bootstrap components (like tooltips, if you use them)
+            // Initializes Bootstrap components (like tooltips)
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
