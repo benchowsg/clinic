@@ -143,6 +143,13 @@
         .service-card { 
             border: none; border-radius: 16px; background: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%;
         }
+        /* Ensure card body allows button to be at bottom */
+        .service-card .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
         .service-card:hover { 
             transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08) !important; cursor: pointer;
         }
@@ -164,10 +171,15 @@
             height: 60px; 
             z-index: 1030;
         }
+        /* Style for the button inside the card */
+        .service-card a.btn {
+            width: 90%; /* Make button fill most of the card width */
+            margin-top: 15px; /* Add margin above button */
+        }
     </style>
 </head>
 
-
+<body oncopy="return false" oncut="return false" onpaste="return false">
   
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
@@ -365,155 +377,167 @@
 
             <div class="tab-content" id="pills-tabContent">
                 
-            <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
+                <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
+                    
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-10 mx-auto">
+                            <p class="lead text-muted">
+                                For critical, time-sensitive symptoms, we provide immediate clinical assessment and advanced on-site testing by a **Cardiology-trained physician** for rapid diagnosis and stabilization.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                    <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
+                                    <p class="small text-muted mb-3">Immediate, **expert cardiac assessment** with on-site **stat ECGs & Cardiac Enzyme tests** for urgent risk stratification.</p>
+                                    <a href="/chronic-cardiology-care" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-person-fill-slash"></i></div>
+                                    <h5 class="card-title fw-bold">Urgent Pain Assessment</h5>
+                                    <p class="small text-muted mb-3">Rapid clinical evaluation of severe, acute back, joint, or nerve pain that requires immediate advanced management planning.</p>
+                                    <a href="/intermediate-care-services" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                                    <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
+                                    <p class="small text-muted mb-3">Expedited, high-sensitivity point-of-care testing for **Cardiac Enzymes (Troponin I)** and **Kidney function (Chem 8)**.</p>
+                                    <a href="/rapid-blood-test-services" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-droplet-fill"></i></div>
+                                    <h5 class="card-title fw-bold">Acute Diabetic & Kidney Care</h5>
+                                    <p class="small text-muted mb-3">Urgent stabilization of blood sugar and rapid assessment of acute kidney injury using advanced on-site testing.</p>
+                                    <a href="/intermediate-care-services" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
+                    
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-10 mx-auto">
+                            <p class="lead text-muted">
+                                We serve as your medical partner, specializing in long-term, integrated care for complex, multi-systemic disorders under **Internal Medicine/Endocrine guidance.**
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-droplet"></i></div>
+                                    <h5 class="card-title fw-bold">Diabetes & Metabolic</h5>
+                                    <p class="small text-muted mb-3">Advanced management of Diabetes, Thyroid, and Obesity-related disorders, focusing on **endocrine stability**.</p>
+                                    <a href="/hormonal-and-wellness" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-heart-pulse"></i></div>
+                                    <h5 class="card-title fw-bold">Heart & Hypertension</h5>
+                                    <p class="small text-muted mb-3">Precise medication plans and long-term care for individuals with cardiovascular and associated diabetic risk.</p>
+                                    <a href="/chronic-cardiology-care" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-person-fill-gear"></i></div>
+                                    <h5 class="card-title fw-bold">Hormonal & Regenerative Health</h5>
+                                    <p class="small text-muted mb-3">Medically guided therapies for chronic fatigue, subclinical issues, and imbalances (e.g., bone/hair health).</p>
+                                    <a href="/regenerative-medicine" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-hospital"></i></div>
+                                    <h5 class="card-title fw-bold">Post-Hospital Recovery</h5>
+                                    <p class="small text-muted mb-3">Consolidating confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
+                                    <a href="/post-hospitalisation-recovery" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="row text-center mb-5">
-                    <div class="col-lg-10 mx-auto">
-                        <p class="lead text-muted">
-                            For critical, time-sensitive symptoms, we provide immediate clinical assessment and advanced on-site testing for rapid diagnosis and stabilization.
-                        </p>
+                <div class="tab-pane fade" id="pills-diag" role="tabpanel">
+                    
+                    <div class="row text-center mb-5">
+                        <div class="col-lg-10 mx-auto">
+                            <p class="lead text-muted">
+                                Our screening packages are designed for high-risk individuals, combining advanced **Cardiology and Endocrine** diagnostics for early detection of complex chronic conditions.
+                            </p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-activity"></i></div>
-                                <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
-                                <p class="small text-muted mb-0">Immediate cardiac assessment with on-site **stat ECGs & Cardiac Enzyme tests** for urgent risk stratification.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                    <h5 class="card-title fw-bold">Cardiovascular Risk</h5>
+                                    <p class="small text-muted mb-3">Advanced heart profiling, combining **Cardiology-trained ECG interpretation** with comprehensive lipid markers.</p>
+                                    <a href="/health-screening" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-person-fill-slash"></i></div>
-                                <h5 class="card-title fw-bold">Urgent Pain Assessment</h5>
-                                <p class="small text-muted mb-0">Rapid clinical evaluation of severe, acute back, joint, or nerve pain that requires immediate advanced management planning.</p>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-search"></i></div>
+                                    <h5 class="card-title fw-bold">Metabolic & Organ Health</h5>
+                                    <p class="small text-muted mb-3">Comprehensive endocrine/internal medicine blood work for early detection of fatty liver and kidney dysfunction.</p>
+                                    <a href="/health-screening" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
-                                <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
-                                <p class="small text-muted mb-0">Expedited, high-sensitivity point-of-care testing for **cardiac markers**, **electrolytes (Chem 8)**, and infectious disease, ensuring critical clarity.</p>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-app-indicator"></i></div>
+                                    <h5 class="card-title fw-bold">Cancer & Ultrasound</h5>
+                                    <p class="small text-muted mb-3">Tumour markers (gender-specific) and on-site ultrasound for vital organ screening (liver, kidney, prostate).</p>
+                                    <a href="/health-screening" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-droplet-fill"></i></div>
-                                <h5 class="card-title fw-bold">Acute Diabetic & Kidney Care</h5>
-                                <p class="small text-muted mb-0">Urgent stabilization of dangerously **high or low blood sugar** and rapid assessment of acute kidney injury using advanced point-of-care testing.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
-                
-                <div class="row text-center mb-5">
-                    <div class="col-lg-10 mx-auto">
-                        <p class="lead text-muted">
-                            We serve as your comprehensive medical partner, specializing in coordinating long-term management and personalized care for complex, evolving conditions.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-droplet"></i></div>
-                                <h5 class="card-title fw-bold">Diabetes & Metabolic</h5>
-                                <p class="small text-muted mb-0">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-heart-pulse"></i></div>
-                                <h5 class="card-title fw-bold">Heart & Hypertension</h5>
-                                <p class="small text-muted mb-0">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-person-fill-gear"></i></div>
-                                <h5 class="card-title fw-bold">Hormonal & Regenerative Health</h5>
-                                <p class="small text-muted mb-0">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-hospital"></i></div>
-                                <h5 class="card-title fw-bold">Post-Hospital Recovery</h5>
-                                <p class="small text-muted mb-0">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card service-card p-4 text-center shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="icon-box"><i class="bi bi-wallet2"></i></div>
+                                    <h5 class="card-title fw-bold">Executive & Custom</h5>
+                                    <p class="small text-muted mb-3">Full-spectrum packages designed for corporate health or tailored to unique genetic and lifestyle needs.</p>
+                                    <a href="/health-screening" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="tab-pane fade" id="pills-diag" role="tabpanel">
-                
-                <div class="row text-center mb-5">
-                    <div class="col-lg-10 mx-auto">
-                        <p class="lead text-muted">
-                            Our screening packages are designed for high-risk individuals, focusing on intermediate-level diagnostics for early detection of chronic conditions.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-activity"></i></div>
-                                <h5 class="card-title fw-bold">Cardiovascular Risk</h5>
-                                <p class="small text-muted mb-0">Advanced heart health profiling including ECG, lipid subfractions, and specialized cardiac markers.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-search"></i></div>
-                                <h5 class="card-title fw-bold">Metabolic & Organ Health</h5>
-                                <p class="small text-muted mb-0">Comprehensive blood work for kidney, liver, diabetic risk, and hormonal balance (thyroid, vitamins).</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-app-indicator"></i></div>
-                                <h5 class="card-title fw-bold">Cancer & Ultrasound</h5>
-                                <p class="small text-muted mb-0">Tumour markers (gender-specific) and on-site ultrasound for vital organ screening (liver, kidney, prostate).</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card service-card p-4 text-center shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="icon-box"><i class="bi bi-wallet2"></i></div>
-                                <h5 class="card-title fw-bold">Executive & Custom</h5>
-                                <p class="small text-muted mb-0">Full-spectrum packages designed for corporate health or tailored to unique genetic and lifestyle needs.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div> 
             <div class="row mt-5 text-center d-none d-sm-flex">
                 <div class="col-12">
@@ -710,9 +734,10 @@
                     id: 'PkgF', 
                     name: 'Diamond Diagnostics Package (Regeneration Plus)', 
                     focus: 'Advanced Organ & Bone Imaging',
-                    description: 'Ideal for those on our Regenerative protocols. Includes 2 organ ultrasounds (e.g., Liver + Kidney) OR 1 ultrasound + Bone Density Scan.',
+                    // Updated description for Endocrine focus
+                    description: 'The ultimate diagnostic bundle for metabolic conditions. Overseen by our Endocrine/Internal Medicine Physician, it includes dual-organ ultrasound screening (Liver/Kidney) and Bone Mineral Density assessment.',
                     keywords: ['bone_density', 'ultrasound', 'hormones'],
-                    requiredScore: 3 // Higher priority/score than PkgC due to cost/complexity
+                    requiredScore: 3 
                 },
                 // Mid-to-High Tiers:
                 {
