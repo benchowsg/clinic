@@ -301,7 +301,7 @@
         </div>
       </div>
 
-      <div class="container aos-init aos-animate" data-aos="fade-up">
+      <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
         <div class="row gx-0">
 
 <div class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
@@ -333,7 +333,7 @@
             
             <div class="row text-center mb-5">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="fw-bold display-6">Your Path to Advanced Care.</h2>
+                    <h2 class="fw-bold display-6">Your Path to Advanced Care</h2>
                     <p class="text-muted lead">
                         We bridge the gap between General Practice and Specialist care.<br>
                         Select a category to find your path to healing.
@@ -345,17 +345,17 @@
                 <div class="col-auto">
                     <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
                         <li class="nav-item mb-2 mb-sm-0" role="presentation">
-                            <button class="nav-link active" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab">
+                            <button class="nav-link active fw-bold" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab" aria-controls="pills-acute" aria-selected="true">
                                 ⚡ Acute & Urgent
                             </button>
                         </li>
                         <li class="nav-item mb-2 mb-sm-0" role="presentation">
-                            <button class="nav-link" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab">
+                            <button class="nav-link fw-bold" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab" aria-controls="pills-chronic" aria-selected="false">
                                 🤝 Principal Physician Care
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-diag-tab" data-bs-toggle="pill" data-bs-target="#pills-diag" type="button" role="tab">
+                            <button class="nav-link fw-bold" id="pills-diag-tab" data-bs-toggle="pill" data-bs-target="#pills-diag" type="button" role="tab" aria-controls="pills-diag" aria-selected="false">
                                 🔬 Diagnostics & Screening
                             </button>
                         </li>
@@ -365,127 +365,155 @@
 
             <div class="tab-content" id="pills-tabContent">
                 
-<div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
-<div class="row text-center mb-5">
-    <div class="col-lg-10 mx-auto">
-        <p class="lead text-muted">
-            For critical, time-sensitive symptoms, we provide immediate clinical assessment and advanced on-site testing for rapid diagnosis and stabilisation.
-        </p>
-    </div>
-</div>
-  
-    <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-activity"></i></div>
-                    <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
-                    <p class="small text-muted mb-0">Cardiac assessment with on-site tests for urgent differential diagnosis and risk stratification.</p>
+            <div class="tab-pane fade show active" id="pills-acute" role="tabpanel">
+                
+                <div class="row text-center mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <p class="lead text-muted">
+                            For critical, time-sensitive symptoms, we provide immediate clinical assessment and advanced on-site testing for rapid diagnosis and stabilization.
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-lungs"></i></div>
-                    <h5 class="card-title fw-bold">Urgent Pain Assessment</h5>
-                    <p class="small text-muted mb-0">Clinical evaluation of severe, acute back, joint, or nerve pain that requires immediate advanced management planning.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
-                    <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
-                    <p class="small text-muted mb-0">Expedited, high-sensitivity investigation for cardiac markers, electrolytes, and infectious disease, ensuring critical clarity.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-droplet-fill"></i></div>
-                    <h5 class="card-title fw-bold">Acute Diabetic & Kidney Care</h5>
-                    <p class="small text-muted mb-0">Stabilization for sudden low or high blood sugar, and rapid assessment of acute kidney concerns with on-site tests.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="tab-pane fade" id="pills-chronic" role="tabpanel">
-  <div class="row text-center mb-5">
-        <div class="col-lg-10 mx-auto">
-            <p class="lead text-muted">
-                We serve as your comprehensive medical partner, specialising in coordinating long-term management and personalised care for complex, evolving conditions.
-            </p>
-        </div>
-    </div>
-    <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-droplet"></i></div>
-                    <h5 class="card-title fw-bold">Diabetes & Metabolic</h5>
-                    <p class="small text-muted mb-0">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-heart-pulse"></i></div>
-                    <h5 class="card-title fw-bold">Heart & Hypertension</h5>
-                    <p class="small text-muted mb-0">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-person-fill-gear"></i></div>
-                    <h5 class="card-title fw-bold">Hormonal & Regenerative Health</h5>
-                    <p class="small text-muted mb-0">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div class="card service-card p-4 text-center shadow-sm">
-                <div class="card-body p-0">
-                    <div class="icon-box"><i class="bi bi-hospital"></i></div>
-                    <h5 class="card-title fw-bold">Post-Hospital Recovery</h5>
-                    <p class="small text-muted mb-0">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                <div class="tab-pane fade" id="pills-diag" role="tabpanel">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="card service-card p-5 border-0 shadow text-center">
-                                <div class="icon-box mx-auto mb-4" style="width:80px; height:80px; font-size:2rem;"><i class="bi bi-clipboard-data"></i></div>
-                                <h3 class="fw-bold">Health Screening with a Strategy</h3>
-                                <p class="lead text-muted my-3">
-                                    We help identify early risk factors. **Dr. Thang explains what they mean for *your* strategy**, not just the numbers.
-                                </p>
-                                <hr class="w-50 mx-auto my-4">
-                                <div class="row text-start justify-content-center">
-                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Ultrasound Scans</div>
-                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Specialist-Linked Services (e.g., Endoscopy)</div>
-                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>ECG & Advanced Blood Markers</div>
-                                    <div class="col-md-5"><i class="bi bi-check-circle-fill text-success me-2"></i>Osteoporosis Screening</div>
-                                </div>
-                                <div class="mt-5">
-                                    <button class="btn btn-outline-primary rounded-pill px-4">View Screening Packages</button>
-                                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                <h5 class="card-title fw-bold">Chest Pain & Heart</h5>
+                                <p class="small text-muted mb-0">Immediate cardiac assessment with on-site **stat ECGs & Cardiac Enzyme tests** for urgent risk stratification.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-person-fill-slash"></i></div>
+                                <h5 class="card-title fw-bold">Urgent Pain Assessment</h5>
+                                <p class="small text-muted mb-0">Rapid clinical evaluation of severe, acute back, joint, or nerve pain that requires immediate advanced management planning.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-speedometer2"></i></div>
+                                <h5 class="card-title fw-bold">Rapid Diagnostics</h5>
+                                <p class="small text-muted mb-0">Expedited, high-sensitivity point-of-care testing for **cardiac markers**, **electrolytes (Chem 8)**, and infectious disease, ensuring critical clarity.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-droplet-fill"></i></div>
+                                <h5 class="card-title fw-bold">Acute Diabetic & Kidney Care</h5>
+                                <p class="small text-muted mb-0">Urgent stabilization of dangerously **high or low blood sugar** and rapid assessment of acute kidney injury using advanced point-of-care testing.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div class="tab-pane fade" id="pills-chronic" role="tabpanel">
+                
+                <div class="row text-center mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <p class="lead text-muted">
+                            We serve as your comprehensive medical partner, specializing in coordinating long-term management and personalized care for complex, evolving conditions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-droplet"></i></div>
+                                <h5 class="card-title fw-bold">Diabetes & Metabolic</h5>
+                                <p class="small text-muted mb-0">Holistic management including foot, eye, and kidney screening to prevent complications.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-heart-pulse"></i></div>
+                                <h5 class="card-title fw-bold">Heart & Hypertension</h5>
+                                <p class="small text-muted mb-0">Precise medication plans and long-term care for individuals with cardiovascular risk.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-person-fill-gear"></i></div>
+                                <h5 class="card-title fw-bold">Hormonal & Regenerative Health</h5>
+                                <p class="small text-muted mb-0">Medically guided therapies for chronic fatigue, hormonal imbalance, and bone/hair health.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-hospital"></i></div>
+                                <h5 class="card-title fw-bold">Post-Hospital Recovery</h5>
+                                <p class="small text-muted mb-0">We consolidate confused discharge notes into one clear plan for smooth recovery and monitoring.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="pills-diag" role="tabpanel">
+                
+                <div class="row text-center mb-5">
+                    <div class="col-lg-10 mx-auto">
+                        <p class="lead text-muted">
+                            Our screening packages are designed for high-risk individuals, focusing on intermediate-level diagnostics for early detection of chronic conditions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-activity"></i></div>
+                                <h5 class="card-title fw-bold">Cardiovascular Risk</h5>
+                                <p class="small text-muted mb-0">Advanced heart health profiling including ECG, lipid subfractions, and specialized cardiac markers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-search"></i></div>
+                                <h5 class="card-title fw-bold">Metabolic & Organ Health</h5>
+                                <p class="small text-muted mb-0">Comprehensive blood work for kidney, liver, diabetic risk, and hormonal balance (thyroid, vitamins).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-app-indicator"></i></div>
+                                <h5 class="card-title fw-bold">Cancer & Ultrasound</h5>
+                                <p class="small text-muted mb-0">Tumour markers (gender-specific) and on-site ultrasound for vital organ screening (liver, kidney, prostate).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card p-4 text-center shadow-sm">
+                            <div class="card-body p-0">
+                                <div class="icon-box"><i class="bi bi-wallet2"></i></div>
+                                <h5 class="card-title fw-bold">Executive & Custom</h5>
+                                <p class="small text-muted mb-0">Full-spectrum packages designed for corporate health or tailored to unique genetic and lifestyle needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div> 
             <div class="row mt-5 text-center d-none d-sm-flex">
                 <div class="col-12">
@@ -496,6 +524,105 @@
                     <a href="LINK_TO_WHATSAPP" class="btn btn-primary btn-lg rounded-pill px-5 shadow">
                         <i class="bi bi-whatsapp me-2"></i> Call or WhatsApp Us
                     </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="health-check-tool" class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="fw-bold display-6">Find Your Perfect Health Screen</h2>
+                    <p class="text-muted lead">
+                        Check your known risk factors and desired advanced tests below to instantly match with our most suitable package.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="form-check form-check-lg p-4 bg-white border border-secondary rounded shadow-sm">
+                        <input class="form-check-input" type="checkbox" value="select_all" id="checkAll">
+                        <label class="form-check-label h5 fw-bold text-primary" for="checkAll">
+                            <i class="bi bi-star-fill me-2"></i> I want the most comprehensive full-body check (Select All)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card p-4 shadow-lg h-100 border-primary border-3">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i> I have known conditions or risk factors:</h5>
+                        <div id="risk-checklist">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="diabetes" id="checkDiabetes">
+                                <label class="form-check-label" for="checkDiabetes">Diabetes or high blood sugar concerns</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="hypertension" id="checkHypertension">
+                                <label class="form-check-label" for="checkHypertension">High blood pressure (Hypertension)</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="cholesterol" id="checkCholesterol">
+                                <label class="form-check-label" for="checkCholesterol">High cholesterol / Lipid concerns</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="fatigue" id="checkFatigue">
+                                <label class="form-check-label" for="checkFatigue">Chronic fatigue, joint pain, or hormonal issues</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="cancer_risk" id="checkCancerRisk">
+                                <label class="form-check-label" for="checkCancerRisk">Strong family history of Cancer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card p-4 shadow-lg h-100 border-primary border-3">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-search-heart me-2"></i> I am specifically looking for these investigations:</h5>
+                        <div id="test-checklist">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="ultrasound" id="checkUltrasound">
+                                <label class="form-check-label" for="checkUltrasound">Internal organ **Ultrasound** scan (e.g., Liver, Kidney)</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="cancer_markers" id="checkCancerMarkers">
+                                <label class="form-check-label" for="checkCancerMarkers">Advanced **Cancer Markers** (Tumour markers)</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="cardiac_markers" id="checkCardiacMarkers">
+                                <label class="form-check-label" for="checkCardiacMarkers">Specific **Cardiac Risk** assessment (e.g., ECG, BNP)</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="bone_density" id="checkBoneDensity">
+                                <label class="form-check-label" for="checkBoneDensity">**Bone Density** scan / Osteoporosis risk assessment</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="hormones" id="checkHormones">
+                                <label class="form-check-label" for="checkHormones">Detailed **Hormone Profile** (Thyroid, Testosterone, etc.)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card p-4 shadow-lg bg-white" id="recommendation-card">
+                        <h4 class="text-center fw-bold text-primary mb-3">Your Recommended Package</h4>
+                        <div id="recommendation-result">
+                            <p class="text-center text-muted lead my-3">
+                                <i class="bi bi-check-circle-fill me-2"></i> Select your conditions and desired tests above to instantly find your most suitable screening package.
+                            </p>
+                        </div>
+                        <div class="text-center mt-3 d-none" id="booking-prompt">
+                            <a href="#contact" class="btn btn-primary btn-lg">Contact Us to Customize / Book</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -561,8 +688,145 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            // Initializes Aos 
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkAllInput = document.getElementById('checkAll');
+            const checklistInputs = document.querySelectorAll('#risk-checklist input, #test-checklist input');
+            const resultDiv = document.getElementById('recommendation-result');
+            const bookingPrompt = document.getElementById('booking-prompt');
+
+            // Define Packages
+            const packages = [
+                // Top Tier: Recognized immediately by 'select_all'
+                {
+                    id: 'PkgE', 
+                    name: 'Executive Health Plus', 
+                    focus: 'Maximum Coverage',
+                    description: 'Our most comprehensive check, covering all high-risk areas including Advanced Cardiac, Full Organ Ultrasound, and detailed Hormonal Profiles.',
+                    keywords: ['select_all'], 
+                    requiredScore: 5
+                },
+                // Mid-to-High Tiers:
+                {
+                    id: 'PkgC', 
+                    name: 'Advanced Cardiovascular Health', 
+                    focus: 'Heart and Blood Vessels',
+                    description: 'Specialized screening featuring advanced cardiac markers (e.g., BNP, Trop-I), ECG, and detailed lipid subfractions (LDL quality).',
+                    keywords: ['hypertension', 'cholesterol', 'cardiac_markers'],
+                    requiredScore: 3
+                },
+                {
+                    id: 'PkgD', 
+                    name: 'Advanced Organ & Bone Scan', 
+                    focus: 'Age-Related Risk',
+                    description: 'Combines general metabolic checks with cancer markers, a thorough internal organ ultrasound, and bone health assessment.',
+                    keywords: ['ultrasound', 'bone_density', 'cancer_markers', 'cancer_risk'],
+                    requiredScore: 2
+                },
+                {
+                    id: 'PkgB', 
+                    name: 'Metabolic & Wellness Profile', 
+                    focus: 'Hormone, Organ, and Fatigue',
+                    description: 'Focuses on hormonal balance, thyroid health, organ function (Liver/Kidney), and comprehensive vitamin panels often associated with chronic fatigue.',
+                    keywords: ['diabetes', 'fatigue', 'ultrasound', 'hormones'],
+                    requiredScore: 2
+                },
+                // Core Tier
+                {
+                    id: 'PkgA', 
+                    name: 'Core Metabolic Health', 
+                    focus: 'Baseline Check',
+                    description: 'A focused, essential health screen covering key markers for diabetes, cholesterol, and basic organ function. Ideal for routine follow-up.',
+                    keywords: ['diabetes', 'hypertension', 'cholesterol'],
+                    requiredScore: 1
+                }
+            ];
+
+            // Function to handle the "Select All" checkbox
+            function handleCheckAll() {
+                const isChecked = checkAllInput.checked;
+                checklistInputs.forEach(input => {
+                    input.checked = isChecked;
+                });
+                updateRecommendation();
+            }
+
+            // Function to handle individual checks (and potentially uncheck "Select All")
+            function handleIndividualCheck() {
+                const allChecked = Array.from(checklistInputs).every(input => input.checked);
+                if (checkAllInput.checked !== allChecked) {
+                    checkAllInput.checked = allChecked;
+                }
+                updateRecommendation();
+            }
+
+            function updateRecommendation() {
+                const selectedKeywords = [];
+                let totalScore = 0;
+                
+                // 1. Collect all selected keywords and calculate score
+                if (checkAllInput.checked) {
+                    selectedKeywords.push('select_all');
+                }
+
+                checklistInputs.forEach(input => {
+                    if (input.checked) {
+                        selectedKeywords.push(input.value);
+                        totalScore++;
+                    }
+                });
+
+                // 2. Determine the best package match
+                let bestMatch = null;
+
+                if (totalScore === 0) {
+                    resultDiv.innerHTML = `<p class="text-center text-muted lead my-3"><i class="bi bi-check-circle-fill me-2"></i> Select your conditions and desired tests above to instantly find your most suitable screening package.</p>`;
+                    bookingPrompt.classList.add('d-none');
+                    return;
+                }
+
+                // Sort packages by requiredScore descending to ensure the most comprehensive matches win
+                packages.sort((a, b) => b.requiredScore - a.requiredScore); 
+
+                for (const pkg of packages) {
+                    // Check for explicit 'select_all' trigger first
+                    if (selectedKeywords.includes('select_all') && pkg.id === 'PkgE') {
+                        bestMatch = pkg;
+                        break;
+                    }
+                    
+                    // Check for keyword overlap for standard selections
+                    const overlapCount = pkg.keywords.filter(keyword => selectedKeywords.includes(keyword)).length;
+                    
+                    if (overlapCount >= pkg.requiredScore) {
+                        bestMatch = pkg;
+                        break; 
+                    }
+                }
+                
+                // 3. Display the result
+                if (bestMatch) {
+                    resultDiv.innerHTML = `
+                        <h5 class="fw-bold text-primary text-center">${bestMatch.name} (<span class="badge bg-primary">${bestMatch.focus}</span>)</h5>
+                        <p class="text-muted text-center">${bestMatch.description}</p>
+                        <p class="text-center small text-success fw-bold">This package addresses your primary concerns and desired advanced testing.</p>
+                    `;
+                    bookingPrompt.classList.remove('d-none');
+                } else {
+                     resultDiv.innerHTML = `<p class="text-center text-muted lead my-3">Based on your selection, the **Core Metabolic Health** package is the minimum recommended, but please check more options or contact us for a custom screen.</p>`;
+                     bookingPrompt.classList.remove('d-none');
+                }
+            }
+
+            // Attach event listeners
+            checkAllInput.addEventListener('change', handleCheckAll);
+            checklistInputs.forEach(input => {
+                input.addEventListener('change', handleIndividualCheck);
+            });
+
+            // Run once on load to show initial prompt
+            updateRecommendation();
+
+            // Initializes Aos (Kept existing initialization logic)
             AOS.init({
                 duration: 1000,
                 easing: "ease-in-out",
@@ -577,6 +841,5 @@
             });
         });
     </script>
-
-</body>
+    </body>
 </html>
