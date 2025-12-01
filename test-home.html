@@ -529,7 +529,7 @@
 
         </div>
     </section>
-    <section id="health-check-tool" class="py-5 bg-light">
+    <section id="health-check-tool" class="py-5">
         <div class="container">
             <div class="row text-center mb-5">
                 <div class="col-lg-10 mx-auto">
@@ -542,9 +542,9 @@
             
             <div class="row mb-4">
                 <div class="col-12">
-                    <div class="form-check form-check-lg p-4 bg-white border border-secondary rounded shadow-sm">
-                        <input class="form-check-input" type="checkbox" value="select_all" id="checkAll">
-                        <label class="form-check-label h5 fw-bold text-primary" for="checkAll">
+                    <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-secondary rounded shadow-sm">
+                        <input class="form-check-input" type="checkbox" value="select_all" id="checkAll" style="margin-top: 0.5rem;">
+                        <label class="form-check-label h5 fw-bold text-primary ms-3" for="checkAll">
                             <i class="bi bi-star-fill me-2"></i> I want the most comprehensive full-body check (Select All)
                         </label>
                     </div>
@@ -586,7 +586,7 @@
                         <div id="test-checklist">
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" value="ultrasound" id="checkUltrasound">
-                                <label class="form-check-label" for="checkUltrasound">Internal organ **Ultrasound** scan (e.g., Liver, Kidney)</label>
+                                <label class="form-check-label" for="checkUltrasound">Single internal organ **Ultrasound** scan (e.g., Liver)</label>
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" value="cancer_markers" id="checkCancerMarkers">
@@ -598,7 +598,7 @@
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" value="bone_density" id="checkBoneDensity">
-                                <label class="form-check-label" for="checkBoneDensity">**Bone Density** scan / Osteoporosis risk assessment</label>
+                                <label class="form-check-label" for="checkBoneDensity">**Bone Density** scan + **2-Organ Ultrasound** bundle</label>
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" value="hormones" id="checkHormones">
@@ -696,14 +696,23 @@
 
             // Define Packages
             const packages = [
-                // Top Tier: Recognized immediately by 'select_all'
+                // Top Tier 1: FULL EXECUTIVE (Select All)
                 {
                     id: 'PkgE', 
                     name: 'Executive Health Plus', 
                     focus: 'Maximum Coverage',
-                    description: 'Our most comprehensive check, covering all high-risk areas including Advanced Cardiac, Full Organ Ultrasound, and detailed Hormonal Profiles.',
+                    description: 'Our most comprehensive screen, covering all high-risk areas including Advanced Cardiac, Full Organ Ultrasound, and detailed Hormonal Profiles.',
                     keywords: ['select_all'], 
                     requiredScore: 5
+                },
+                // Top Tier 2: DIAMOND DIAGNOSTICS (New Add-on Focus)
+                {
+                    id: 'PkgF', 
+                    name: 'Diamond Diagnostics Package (Regeneration Plus)', 
+                    focus: 'Advanced Organ & Bone Imaging',
+                    description: 'Ideal for those on our Regenerative protocols. Includes 2 organ ultrasounds (e.g., Liver + Kidney) OR 1 ultrasound + Bone Density Scan.',
+                    keywords: ['bone_density', 'ultrasound', 'hormones'],
+                    requiredScore: 3 // Higher priority/score than PkgC due to cost/complexity
                 },
                 // Mid-to-High Tiers:
                 {
@@ -716,18 +725,18 @@
                 },
                 {
                     id: 'PkgD', 
-                    name: 'Advanced Organ & Bone Scan', 
+                    name: 'Advanced Organ & Cancer Scan', 
                     focus: 'Age-Related Risk',
-                    description: 'Combines general metabolic checks with cancer markers, a thorough internal organ ultrasound, and bone health assessment.',
-                    keywords: ['ultrasound', 'bone_density', 'cancer_markers', 'cancer_risk'],
+                    description: 'Combines general metabolic checks with cancer markers and a thorough single internal organ ultrasound.',
+                    keywords: ['ultrasound', 'cancer_markers', 'cancer_risk'],
                     requiredScore: 2
                 },
                 {
                     id: 'PkgB', 
-                    name: 'Metabolic & Wellness Profile', 
+                    name: 'Metabolic Health & Regeneration', 
                     focus: 'Hormone, Organ, and Fatigue',
-                    description: 'Focuses on hormonal balance, thyroid health, organ function (Liver/Kidney), and comprehensive vitamin panels often associated with chronic fatigue.',
-                    keywords: ['diabetes', 'fatigue', 'ultrasound', 'hormones'],
+                    description: 'Focused on hormonal balance, thyroid health, organ function (Liver/Kidney), and comprehensive vitamin panels often associated with chronic fatigue.',
+                    keywords: ['diabetes', 'fatigue', 'hormones'], 
                     requiredScore: 2
                 },
                 // Core Tier
