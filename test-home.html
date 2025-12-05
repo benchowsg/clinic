@@ -131,6 +131,18 @@
 </script>
   
     <style>
+        /* New Style for Checkboxes: Makes them darker and more prominent */
+        input[type="checkbox"].form-check-input {
+            border: 2px solid #555 !important; /* Darker border color */
+            width: 1.25em;
+            height: 1.25em;
+        }
+        input[type="checkbox"].form-check-input:checked {
+            background-color: #0d6efd; /* Use primary blue for filled state */
+            border-color: #0d6efd !important;
+        }
+        /* End New Checkbox Style */
+        
         .triage-section { background-color: #f8f9fa; }
         .nav-pills .nav-link { 
             color: #555; background-color: #fff; border: 1px solid #e9ecef; margin: 0 8px; border-radius: 50px; 
@@ -469,17 +481,17 @@
                 <div class="col-auto">
                     <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
                         <li class="nav-item mb-2 mb-sm-0" role="presentation">
-                            <button class="nav-link active fw-bold" id="pills-acute-tab" data-bs-toggle="pill" data-bs-target="#pills-acute" type="button" role="tab" aria-controls="pills-acute" aria-selected="true">
+                            <button class="nav-link active fw-bold" id="pills-acute-tab" data-bs-toggle="tab" data-bs-target="#pills-acute" type="button" role="tab" aria-controls="pills-acute" aria-selected="true">
                                 ⚡ Acute & Urgent
                             </button>
                         </li>
                         <li class="nav-item mb-2 mb-sm-0" role="presentation">
-                            <button class="nav-link fw-bold" id="pills-chronic-tab" data-bs-toggle="pill" data-bs-target="#pills-chronic" type="button" role="tab" aria-controls="pills-chronic" aria-selected="false">
+                            <button class="nav-link fw-bold" id="pills-chronic-tab" data-bs-toggle="tab" data-bs-target="#pills-chronic" type="button" role="tab" aria-controls="pills-chronic" aria-selected="false">
                                 🤝 Principal Physician Care
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-bold" id="pills-diag-tab" data-bs-toggle="pill" data-bs-target="#pills-diag" type="button" role="tab" aria-controls="pills-diag" aria-selected="false">
+                            <button class="nav-link fw-bold" id="pills-diag-tab" data-bs-toggle="tab" data-bs-target="#pills-diag" type="button" role="tab" aria-controls="pills-diag" aria-selected="false">
                                 🔬 Diagnostics & Screening
                             </button>
                         </li>
@@ -621,7 +633,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="card service-card p-4 text-center shadow-sm">
                                 <div class="card-body p-0">
-                                    <div class="icon-box"><i class="bi bi-search"></i></div>
+                            <div class="icon-box"><i class="bi bi-search"></i></div>
                                     <h5 class="card-title fw-bold">Metabolic & Organ Health</h5>
                                     <p class="small text-muted mb-3">Comprehensive endocrine/internal medicine blood work for early detection of fatty liver and kidney dysfunction.</p>
                                     <a href="/health-screening" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
@@ -670,16 +682,16 @@
         
         <div class="row mb-4 g-2">
              <div class="col-md-6">
-                <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-primary rounded shadow-sm">
-                    <input class="form-check-input" type="checkbox" value="ultimate_check" id="checkUltimate" style="margin-top: 0.5rem;">
+                <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-primary rounded shadow-sm d-flex align-items-start">
+                    <input class="form-check-input flex-shrink-0" type="checkbox" value="ultimate_check" id="checkUltimate" style="margin-top: 0.25rem;"> 
                     <label class="form-check-label h5 fw-bold text-primary ms-3" for="checkUltimate">
                         <i class="bi bi-shield-lock-fill me-2"></i> **I want the most thorough, complete check-up available.**
                     </label>
                 </div>
             </div>
             <div class="col-md-6">
-                 <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-secondary rounded shadow-sm">
-                    <input class="form-check-input" type="checkbox" value="cardiac_definitive" id="checkCardiacDefinitive" style="margin-top: 0.5rem;">
+                 <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-secondary rounded shadow-sm d-flex align-items-start">
+                    <input class="form-check-input flex-shrink-0" type="checkbox" value="cardiac_definitive" id="checkCardiacDefinitive" style="margin-top: 0.25rem;"> 
                     <label class="form-check-label h5 fw-bold text-primary ms-3" for="checkCardiacDefinitive">
                         <i class="bi bi-heart-pulse-fill me-2"></i> **I want the highest level of detail for my heart health.**
                     </label>
@@ -778,6 +790,7 @@
 </section>
 </main> 
   
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('.form-check-input');
