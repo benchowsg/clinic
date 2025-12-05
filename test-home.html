@@ -569,10 +569,10 @@
                                 <div class="card-body p-0">
                                     <div class="icon-box"><i class="bi bi-heart-pulse"></i></div>
                                     <h5 class="card-title fw-bold">Heart & Hypertension</h5>
-                                    <p class="small text-muted mb-3">Precise medication plans and long-term care for individuals with cardiovascular and associated diabetic risk.</p>
-                                    <a href="/chronic-cardiology-care" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
-                                </div>
+                                <p class="small text-muted mb-3">Precise medication plans and long-term care for individuals with cardiovascular and associated diabetic risk.</p>
+                                <a href="/chronic-cardiology-care" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
                             </div>
+                        </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="card service-card p-4 text-center shadow-sm">
@@ -602,7 +602,7 @@
                     <div class="row text-center mb-5">
                         <div class="col-lg-10 mx-auto">
                             <p class="lead text-muted">
-                                Our screening packages are designed for high-risk individuals, combining advanced **Cardiology and Endocrine** diagnostics for early detection of complex chronic conditions.
+                                Screening packages combining advanced **Cardiology and Endocrine** diagnostics for early detection of chronic conditions.
                             </p>
                         </div>
                     </div>
@@ -651,19 +651,6 @@
                     </div>
                 </div>
 
-            </div> 
-            
-        </div>
-
-        <div class="row mt-5 text-center d-none d-sm-flex">
-            <div class="col-12">
-                <div class="d-inline-block bg-white px-4 py-2 rounded-pill shadow-sm mb-3 border">
-                    <small class="text-muted fw-bold">Practicing the 4 Neutrals: Age • Race • Gender • Religion Neutral</small>
-                </div>
-                <br>
-                <a href="LINK_TO_WHATSAPP" class="btn btn-primary btn-lg rounded-pill px-5 shadow">
-                    <i class="bi bi-whatsapp me-2"></i> Call or WhatsApp Us
-                </a>
             </div>
         </div>
 
@@ -681,70 +668,90 @@
             </div>
         </div>
         
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-secondary rounded shadow-sm">
-                    <input class="form-check-input" type="checkbox" value="select_all" id="checkAll" style="margin-top: 0.5rem;">
-                    <label class="form-check-label h5 fw-bold text-primary ms-3" for="checkAll">
-                        <i class="bi bi-star-fill me-2"></i> I want the most comprehensive full-body check (Select All)
+        <div class="row mb-4 g-2">
+             <div class="col-md-6">
+                <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-primary rounded shadow-sm">
+                    <input class="form-check-input" type="checkbox" value="ultimate_check" id="checkUltimate" style="margin-top: 0.5rem;">
+                    <label class="form-check-label h5 fw-bold text-primary ms-3" for="checkUltimate">
+                        <i class="bi bi-shield-lock-fill me-2"></i> **I want the most thorough, complete check-up available.**
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                 <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-secondary rounded shadow-sm">
+                    <input class="form-check-input" type="checkbox" value="cardiac_definitive" id="checkCardiacDefinitive" style="margin-top: 0.5rem;">
+                    <label class="form-check-label h5 fw-bold text-primary ms-3" for="checkCardiacDefinitive">
+                        <i class="bi bi-heart-pulse-fill me-2"></i> **I want the highest level of detail for my heart health.**
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4 mt-1">
             <div class="col-md-6">
                 <div class="card p-4 shadow-lg h-100 border-primary border-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i> I have known conditions or risk factors:</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i> **Group 2: I have known conditions or risk factors:**</h5>
                     <div id="risk-checklist">
+                        
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="diabetes" id="checkDiabetes">
-                            <label class="form-check-label" for="checkDiabetes">Diabetes or high blood sugar concerns</label>
+                            <input class="form-check-input" type="checkbox" value="fatigue_metabolic" id="checkFatigueMetabolic">
+                            <label class="form-check-label" for="checkFatigueMetabolic">I am **constantly tired,** or concerned about my **metabolism/weight.**</label>
                         </div>
+
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="hypertension" id="checkHypertension">
-                            <label class="form-check-label" for="checkHypertension">High blood pressure (Hypertension)</label>
+                            <input class="form-check-input" type="checkbox" value="cardiac_family" id="checkCardiacFamily">
+                            <label class="form-check-label" for="checkCardiacFamily">I have a **family history of heart disease** or high cholesterol.</label>
                         </div>
+                        
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="cholesterol" id="checkCholesterol">
-                            <label class="form-check-label" for="checkCholesterol">High cholesterol / Lipid concerns</label>
+                            <input class="form-check-input" type="checkbox" value="cancer_family" id="checkCancerFamily">
+                            <label class="form-check-label" for="checkCancerFamily">I need to screen for **known cancer risks** in my family.</label>
                         </div>
+
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="fatigue" id="checkFatigue">
-                            <label class="form-check-label" for="checkFatigue">Chronic fatigue, joint pain, or hormonal issues</label>
+                            <input class="form-check-input" type="checkbox" value="structural_check" id="checkStructuralCheck">
+                            <label class="form-check-label" for="checkStructuralCheck">I need a structural screening of **organs and vessels.**</label>
                         </div>
+
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="cancer_risk" id="checkCancerRisk">
-                            <label class="form-check-label" for="checkCancerRisk">Strong family history of Cancer</label>
+                            <input class="form-check-input" type="checkbox" value="hepatitis_risk" id="checkHepatitisRisk">
+                            <label class="form-check-label" for="checkHepatitisRisk">I am concerned about my risk for **Hepatitis** (A, B, or C).</label>
                         </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="card p-4 shadow-lg h-100 border-primary border-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-search-heart me-2"></i> I am specifically looking for these investigations:</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-search-heart me-2"></i> **Group 3: I am specifically looking for these investigations:**</h5>
                     <div id="test-checklist">
+                        
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="ultrasound" id="checkUltrasound">
-                            <label class="form-check-label" for="checkUltrasound">Single internal organ **Ultrasound** scan (e.g., Liver)</label>
+                            <input class="form-check-input" type="checkbox" value="wellness_core" id="checkWellnessCore">
+                            <label class="form-check-label" for="checkWellnessCore">I need my **core energy hormones** checked (Thyroid, Vitamin D).</label>
                         </div>
+                        
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="cancer_markers" id="checkCancerMarkers">
-                            <label class="form-check-label" for="checkCancerMarkers">Advanced **Cancer Markers** (Tumour markers)</label>
+                            <input class="form-check-input" type="checkbox" value="sex_hormones" id="checkSexHormones">
+                            <label class="form-check-label" for="checkSexHormones">I need my specialized **sex hormones** analyzed (Testosterone, Estrogen).</label>
                         </div>
+
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="cardiac_markers" id="checkCardiacMarkers">
-                            <label class="form-check-label" for="checkCardiacMarkers">Specific **Cardiac Risk** assessment (e.g., ECG, BNP)</label>
+                            <input class="form-check-input" type="checkbox" value="lpa_marker" id="checkLpaMarker">
+                            <label class="form-check-label" for="checkLpaMarker">I specifically want the genetic cardiac marker **Lipoprotein (A)** checked.</label>
                         </div>
+
                         <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="bone_density" id="checkBoneDensity">
-                            <label class="form-check-label" for="checkBoneDensity">**Bone Density** scan + **2-Organ Ultrasound** bundle</label>
+                            <input class="form-check-input" type="checkbox" value="ultrasound_scan" id="checkUltrasoundScan">
+                            <label class="form-check-label" for="checkUltrasoundScan">I require a **structural Ultrasound scan** of my abdomen.</label>
                         </div>
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="hormones" id="checkHormones">
-                            <label class="form-check-label" for="checkHormones">Detailed **Hormone Profile** (Thyroid, Testosterone, etc.)</label>
+                        
+                         <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" value="ct_calcium" id="checkCTCalcium">
+                            <label class="form-check-label" for="checkCTCalcium">I need the **definitive blockage test** (**CT Calcium Score**).</label>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -761,7 +768,7 @@
                         </p>
                     </div>
                     <div class="text-center mt-3 d-none" id="booking-prompt">
-                        <a href="#contact" class="btn btn-primary btn-lg">Contact Us to Customize / Book</a>
+                        <a href="/booking" class="btn btn-primary btn-lg">Book Recommended Package</a>
                     </div>
                 </div>
             </div>
@@ -769,274 +776,129 @@
 
     </div>
 </section>
-<section id="about" class="about">
-                                     
-    <div class="container">
-    <div class="section-title" data-aos="fade-up">
-      <p>We Are</p>
-      <h2>Advanced Physicians</h2>
-    </div>
-  </div>
-
-  <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-    <div class="row gx-0">
-
-<div class="col-lg-6 d-flex flex-column justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-  <div class="content">
-    <p class="lead">Welcome to <b>A Healing Heart Medical Clinic</b>, where your healing journey begins.</p>
-    <p class="lead">We support patients with evolving, unclear, or complex symptoms that may not always be resolved in a standard consult.</p>
-    <p class="lead">Our team bridges the gap between general practice and specialist care, providing personalised assessments, ongoing guidance, and practical solutions tailored to your health needs.</p>
-    <p class="lead">We offer general care, preventive medicine, and intermediate care for people at different stages of health, taking the time to understand the full picture.</p>
-    <p class="lead">For urgent clarity, we provide rapid diagnostic tests for chest pain, suspected heart failure, haemoglobin, kidney health, and more, so you get answers without unnecessary delays.</p>
-    <p class="lead">Our role is to walk alongside you: tracking recovery, explaining results, and guiding your next steps with confidence.</p>
-    <div class="read-more"><a href="/who-we-are"><i class="icofont-arrow-right"></i> Read About Our Staff</a></div>
-  </div>
-</div>
-
-
-      <div class="col-lg-6 d-flex align-items-center aos-init aos-animate" data-aos="zoom-out" data-aos-delay="200">
-        <img src="assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="img-fluid" alt="A Healing Heart Medical Team. Dr Gerald Thang">
-      </div>
-
-    </div>
-  </div>
-
-</section>
-<p></p>
-
-
-<section id="services" class="services">
-    <div class="container">
-
-      <div class="section-title" data-aos="fade-up">
-         <p></p>
-         <h2>Healthcare Blog</h2>
-      </div>
-    </div>
- </section>
- <section id="more-services" class="more-services"> 
-    <div class="container">
-        <div class="row">
-              <div class="col-lg-4">
-                    <div class="card">
-                         <img src="/assets/img/blog/doctor-taking-blood-pressure-thumb.webp" class="card-img-top" alt="Blood Pressure Measurement">
-                         <div class="card-body">
-                              <h5 class="card-title">Things You Need To Know About Hypertension</h5>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-
-</main>
-    
-<div class="mobile-sticky-footer fixed-bottom d-flex d-lg-none bg-white border-top shadow-lg p-2">
-    <a href="tel:+6569621362" class="btn btn-outline-primary w-50 me-1">
-        <i class="bi bi-telephone-fill"></i> Call Us
-    </a>
-    <a href="/booking" class="btn btn-primary w-50 ms-1">
-        <i class="bi bi-calendar-check"></i> Book Appointment
-    </a>
-</div>
-
-<footer class="main-footer pt-5 pb-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <h5 class="fw-bold text-white">A Healing Heart Medical</h5>
-                <p class="small">134 Geylang East Ave 1, #01-227, Singapore 380134</p>
-                <a href="https://maps.app.goo.gl/" class="text-info small">Get Directions <i class="bi bi-geo-alt-fill"></i></a>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5 class="fw-bold text-white">Quick Links</h5>
-                <ul class="list-unstyled small">
-                    <li><a href="#" class="text-white-50 text-decoration-none">Our Team (Dr. Thang)</a></li>
-                    <li><a href="#" class="text-white-50 text-decoration-none">Post-Hospitalisation FAQs</a></li>
-                    <li><a href="#" class="text-white-50 text-decoration-none">Terms & Privacy</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-4">
-                <h5 class="fw-bold text-white">Hours & Contact</h5>
-                <p class="small mb-1">Mon - Fri: 9am - 5pm</p>
-                <p class="small mb-3">Sat: 9am - 1pm</p>
-                <p class="lead fw-bold text-warning">Call: 6962 1362</p>
-            </div>
-        </div>
-        <hr class="my-4 border-secondary">
-        <p class="text-center text-white-50 small">© 2026 A Healing Heart Medical. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="assets/vendor/venobox/venobox.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+</main> 
+  
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const checkAllInput = document.getElementById('checkAll');
-        const checklistInputs = document.querySelectorAll('#risk-checklist input, #test-checklist input');
-        const resultDiv = document.getElementById('recommendation-result');
-        const bookingPrompt = document.getElementById('booking-prompt');
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.form-check-input');
+    const recommendationResult = document.getElementById('recommendation-result');
+    const bookingPrompt = document.getElementById('booking-prompt');
 
-        // Define Packages
-        const packages = [
-            // Top Tier 1: FULL EXECUTIVE (Select All)
-            {
-                id: 'PkgE', 
-                name: 'Executive Health Plus', 
-                focus: 'Maximum Coverage',
-                description: 'Our most comprehensive screen, covering all high-risk areas including Advanced Cardiac, Full Organ Ultrasound, and detailed Hormonal Profiles.',
-                keywords: ['select_all'], 
-                requiredScore: 5
-            },
-            // Top Tier 2: DIAMOND DIAGNOSTICS (New Add-on Focus)
-            {
-                id: 'PkgF', 
-                name: 'Diamond Diagnostics Package (Regeneration Plus)', 
-                focus: 'Advanced Organ & Bone Imaging',
-                // Updated description for Endocrine focus
-                description: 'The ultimate diagnostic bundle for metabolic conditions. Overseen by our Endocrine/Internal Medicine Physician, it includes dual-organ ultrasound screening (Liver/Kidney) and Bone Mineral Density assessment.',
-                keywords: ['bone_density', 'ultrasound', 'hormones'],
-                requiredScore: 3 
-            },
-            // Mid-to-High Tiers:
-            {
-                id: 'PkgC', 
-                name: 'Advanced Cardiovascular Health', 
-                focus: 'Heart and Blood Vessels',
-                description: 'Specialized screening featuring advanced cardiac markers (e.g., BNP, Trop-I), ECG, and detailed lipid subfractions (LDL quality).',
-                keywords: ['hypertension', 'cholesterol', 'cardiac_markers'],
-                requiredScore: 3
-            },
-            {
-                id: 'PkgD', 
-                name: 'Advanced Organ & Cancer Scan', 
-                focus: 'Age-Related Risk',
-                description: 'Combines general metabolic checks with cancer markers and a thorough single internal organ ultrasound.',
-                keywords: ['ultrasound', 'cancer_markers', 'cancer_risk'],
-                requiredScore: 2
-            },
-            {
-                id: 'PkgB', 
-                name: 'Metabolic Health & Regeneration', 
-                focus: 'Hormone, Organ, and Fatigue',
-                description: 'Focused on hormonal balance, thyroid health, organ function (Liver/Kidney), and comprehensive vitamin panels often associated with chronic fatigue.',
-                keywords: ['diabetes', 'fatigue', 'hormones'], 
-                requiredScore: 2
-            },
-            // Core Tier
-            {
-                id: 'PkgA', 
-                name: 'Core Metabolic Health', 
-                focus: 'Baseline Check',
-                description: 'A focused, essential health screen covering key markers for diabetes, cholesterol, and basic organ function. Ideal for routine follow-up.',
-                keywords: ['diabetes', 'hypertension', 'cholesterol'],
-                requiredScore: 1
+    // 1. Define the package data
+    const packages = {
+        'Foun': { name: '1. Foundational', price: 'S$108', desc: 'The essential, low-cost baseline check.' },
+        'Well': { name: '2. Wellness', price: 'S$418', desc: 'Solves common issues like fatigue; includes TSH, Vitamin D, and Basic Cancer Markers.' },
+        'Regen': { name: '3. Regenerative', price: 'S$618', desc: 'Advanced optimization package including Full Cancer Markers and Male/Female Hormones.' },
+        'Invest': { name: '4. Investigative', price: 'S$1098', desc: 'The ultimate check: Combines Regenerative tests with Ultrasound and structural checks.' },
+        'CRisk': { name: '5. Cardiac Risk', price: 'S$278', desc: 'Focuses on core cardiac blood markers (Apo B/A1, HSCRP).' },
+        'CAssur': { name: '6. Cardiac Assurance', price: 'S$538', desc: 'Advanced risk assessment including Lipoprotein (A) and full metabolic panel.' },
+        'DCard': { name: '7. Definitive Cardiac', price: 'S$938', desc: 'Includes the essential CT Coronary Artery Calcium Score for blockage clarity.' }
+    };
+
+    // 2. Define the scoring logic (mapping checkbox values to packages)
+    const packageMapping = {
+        // Group 1: I Want It All
+        'ultimate_check': ['Invest'],
+        'cardiac_definitive': ['DCard'],
+        
+        // Group 2: Known Risk Factors
+        'fatigue_metabolic': ['Well'], 
+        'cardiac_family': ['CRisk', 'CAssur'], // Recommend both low and mid-tier options for cardiac family risk
+        'cancer_family': ['Regen'],
+        'structural_check': ['Invest'],
+        'hepatitis_risk': ['Well', 'Regen'], // Recommend Wellness (A/B) or Regenerative (A/B/C)
+        
+        // Group 3: Specific Investigations (Lowest-cost option that includes the test)
+        'wellness_core': ['Well'], 
+        'sex_hormones': ['Regen'],
+        'lpa_marker': ['CAssur'],
+        'ultrasound_scan': ['Invest'], 
+        'ct_calcium': ['DCard'] 
+    };
+
+    function updateRecommendation() {
+        const scores = { 'Foun': 0, 'Well': 0, 'Regen': 0, 'Invest': 0, 'CRisk': 0, 'CAssur': 0, 'DCard': 0 };
+        const checkedValues = [];
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                checkedValues.push(checkbox.value);
             }
-        ];
-
-        // Function to handle the "Select All" checkbox
-        function handleCheckAll() {
-            const isChecked = checkAllInput.checked;
-            checklistInputs.forEach(input => {
-                input.checked = isChecked;
-            });
-            updateRecommendation();
-        }
-
-        // Function to handle individual checks (and potentially uncheck "Select All")
-        function handleIndividualCheck() {
-            const allChecked = Array.from(checklistInputs).every(input => input.checked);
-            if (checkAllInput.checked !== allChecked) {
-                checkAllInput.checked = allChecked;
-            }
-            updateRecommendation();
-        }
-
-        function updateRecommendation() {
-            const selectedKeywords = [];
-            let totalScore = 0;
-            
-            // 1. Collect all selected keywords and calculate score
-            if (checkAllInput.checked) {
-                selectedKeywords.push('select_all');
-            }
-
-            checklistInputs.forEach(input => {
-                if (input.checked) {
-                    selectedKeywords.push(input.value);
-                    totalScore++;
-                }
-            });
-
-            // 2. Determine the best package match
-            let bestMatch = null;
-
-            if (totalScore === 0) {
-                resultDiv.innerHTML = `<p class="text-center text-muted lead my-3"><i class="bi bi-check-circle-fill me-2"></i> Select your conditions and desired tests above to instantly find your most suitable screening package.</p>`;
-                bookingPrompt.classList.add('d-none');
-                return;
-            }
-
-            // Sort packages by requiredScore descending to ensure the most comprehensive matches win
-            packages.sort((a, b) => b.requiredScore - a.requiredScore); 
-
-            for (const pkg of packages) {
-                // Check for explicit 'select_all' trigger first
-                if (selectedKeywords.includes('select_all') && pkg.id === 'PkgE') {
-                    bestMatch = pkg;
-                    break;
-                }
-                
-                // Check for keyword overlap for standard selections
-                const overlapCount = pkg.keywords.filter(keyword => selectedKeywords.includes(keyword)).length;
-                
-                if (overlapCount >= pkg.requiredScore) {
-                    bestMatch = pkg;
-                    break; 
-                }
-            }
-            
-            // 3. Display the result
-            if (bestMatch) {
-                resultDiv.innerHTML = `
-                    <h5 class="fw-bold text-primary text-center">${bestMatch.name} (<span class="badge bg-primary">${bestMatch.focus}</span>)</h5>
-                    <p class="text-muted text-center">${bestMatch.description}</p>
-                    <p class="text-center small text-success fw-bold">This package addresses your primary concerns and desired advanced testing.</p>
-                `;
-                bookingPrompt.classList.remove('d-none');
-            } else {
-                 resultDiv.innerHTML = `<p class="text-center text-muted lead my-3">Based on your selection, the **Core Metabolic Health** package is the minimum recommended, but please check more options or contact us for a custom screen.</p>`;
-                 bookingPrompt.classList.remove('d-none');
-            }
-        }
-
-        // Attach event listeners
-        checkAllInput.addEventListener('change', handleCheckAll);
-        checklistInputs.forEach(input => {
-            input.addEventListener('change', handleIndividualCheck);
         });
 
-        // Run once on load to show initial prompt
-        updateRecommendation();
+        if (checkedValues.length === 0) {
+            recommendationResult.innerHTML = `
+                <p class="text-center text-muted lead my-3">
+                    <i class="bi bi-check-circle-fill me-2"></i> Select your conditions and desired tests above to instantly find your most suitable screening package.
+                </p>`;
+            bookingPrompt.classList.add('d-none');
+            return;
+        }
 
-        // Initializes Aos (Kept existing initialization logic)
-        AOS.init({
-            duration: 1000,
-            easing: "ease-in-out",
-            once: true,
-            mirror: false
+        // Tally scores based on checked boxes
+        checkedValues.forEach(value => {
+            if (packageMapping[value]) {
+                packageMapping[value].forEach(pkgKey => {
+                    scores[pkgKey]++;
+                });
+            }
         });
 
-        // Initializes Bootstrap components (like tooltips)
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        });
+        // Find the package(s) with the highest score
+        let maxScore = 0;
+        let topPackages = [];
+        for (const pkgKey in scores) {
+            if (scores[pkgKey] > maxScore) {
+                maxScore = scores[pkgKey];
+                topPackages = [pkgKey];
+            } else if (scores[pkgKey] === maxScore && maxScore > 0) {
+                topPackages.push(pkgKey);
+            }
+        }
+        
+        // Determine the final result display
+        let html = '';
+        
+        if (topPackages.length === 1) {
+            const pkg = packages[topPackages[0]];
+            html = `
+                <h5 class="text-center text-success fw-bold">${pkg.name} (${pkg.price})</h5>
+                <p class="text-center text-muted lead">${pkg.desc}</p>
+                <p class="text-center fw-bold">This package best aligns with your ${maxScore} specific requests.</p>
+            `;
+        } else if (topPackages.length > 1) {
+            const listItems = topPackages.map(key => `
+                <li><strong>${packages[key].name} (${packages[key].price})</strong>: ${packages[key].desc}</li>
+            `).join('');
+
+            html = `
+                <h5 class="text-center text-warning fw-bold">Multiple Matches Found (${maxScore} requests):</h5>
+                <p class="text-center text-muted lead">The following packages equally meet the most requirements:</p>
+                <ul class="list-unstyled text-start mx-auto" style="max-width: 400px;">${listItems}</ul>
+            `;
+        } else {
+             // If only low-score, niche options are selected (like only 'Foun' or 'CRisk')
+             html = `
+                <p class="text-center text-muted lead my-3">
+                    Based on your selection, these are your most relevant options.
+                </p>
+                <h5 class="text-center text-info fw-bold">${packages['Foun'].name} (${packages['Foun'].price})</h5>
+                <p class="text-center text-muted small">${packages['Foun'].desc}</p>
+             `;
+        }
+
+        recommendationResult.innerHTML = html;
+        bookingPrompt.classList.remove('d-none'); // Show the booking button once a selection is made
+    }
+
+    // Attach event listener to all checkboxes
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateRecommendation);
     });
+
+    // Initial run to set the default state
+    updateRecommendation();
+});
 </script>
 </body>
 </html>
