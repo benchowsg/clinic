@@ -680,60 +680,61 @@
             </div>
         </div>
         
-<div class="row mb-4 g-2">
+<div class="row g-4 mt-1">
              <div class="col-md-6">
-                <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-primary rounded shadow-sm d-flex align-items-start">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="ultimate_check" id="checkUltimate"> 
-                    <label class="form-check-label ms-3" for="checkUltimate">
-                        <span class="d-block text-primary fw-bold mb-1">
-                            <i class="bi bi-shield-lock-fill me-2"></i> **I want the most thorough, complete check-up available.**
-                        </span>
-                        <small class="text-muted d-block mt-1">Select this option to include all major systems (Metabolic, Organ, Cardio, Ultrasound).</small>
-                    </label>
+                <div class="card p-4 shadow-lg h-100 border-primary border-3">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i> Group A: I want the most comprehensive health screening:</h5>
+                    <div id="checkUltimate">
+                        <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="ultimate_check" id="checkUltimate"> 
+                    <label class="form-check-label" for="checkUltimate">I want the most thorough, complete check-up available.</label>
+                        </div>
+                    </div>
                 </div>
-            </div>
+             </div>
             <div class="col-md-6">
-                 <div class="form-check form-check-lg p-3 py-4 px-4 bg-white border border-secondary rounded shadow-sm d-flex align-items-start">
-                    <input class="form-check-input flex-shrink-0" type="checkbox" value="cardiac_definitive" id="checkCardiacDefinitive"> 
-                    <label class="form-check-label ms-3" for="checkCardiacDefinitive">
-                        <span class="d-block text-primary fw-bold mb-1">
-                            <i class="bi bi-heart-pulse-fill me-2"></i> **I want the highest level of detail for my heart health.**
-                        </span>
-                        <small class="text-muted d-block mt-1">Select this option to include the Definitive CT Calcium Score.</small>
-                    </label>
-                </div>
+                 <div class="card p-4 shadow-lg h-100 border-primary border-3">
+                    <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i>Group B: I am most concerned about heart risks and issues.</h5>
+                     <div id="cardiac_definitive">
+                         <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="cardiac_definitive" id="checkCardiacDefinitive"> 
+                    <label class="form-check-label" for="checkCardiacDefinitive">
+                       I want the highest level of detail for my heart health.</label>
+                          </div>
+                    </div>
+                 </div>
             </div>
         </div>
 
-        <div class="row g-4 mt-1">
+<div class="row g-4 mt-1">
             <div class="col-md-6">
                 <div class="card p-4 shadow-lg h-100 border-primary border-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i> **Group 2: I have known conditions or risk factors:**</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-person-lines-fill me-2"></i>Group 4: I have known conditions or risk factors:</h5>
                     <div id="risk-checklist">
                         
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="fatigue_metabolic" id="checkFatigueMetabolic">
-                            <label class="form-check-label" for="checkFatigueMetabolic">I am **constantly tired,** or concerned about my **metabolism/weight.**</label>
+                            <label class="form-check-label" for="checkFatigueMetabolic">I am constantly tired, or concerned about my metabolism, weight issues, skin condition, and hair loss.</label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="cardiac_family" id="checkCardiacFamily">
-                            <label class="form-check-label" for="checkCardiacFamily">I have a **family history of heart disease** or high cholesterol.</label>
+                            <label class="form-check-label" for="checkCardiacFamily">I have a family history of heart disease or high cholesterol.</label>
                         </div>
                         
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="cancer_family" id="checkCancerFamily">
-                            <label class="form-check-label" for="checkCancerFamily">I need to screen for **known cancer risks** in my family.</label>
+                            <label class="form-check-label" for="checkCancerFamily">I need to screen for known cancer risks in my family.</label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="structural_check" id="checkStructuralCheck">
-                            <label class="form-check-label" for="checkStructuralCheck">I need a structural screening of **organs and vessels.**</label>
+                            <label class="form-check-label" for="checkStructuralCheck">I need a structural screening of organs and blood vessels.</label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="hepatitis_risk" id="checkHepatitisRisk">
-                            <label class="form-check-label" for="checkHepatitisRisk">I am concerned about my risk for **Hepatitis** (A, B, or C).</label>
+                            <label class="form-check-label" for="checkHepatitisRisk">I am concerned about my risk for Hepatitis A, B, and C.</label>
                         </div>
 
                     </div>
@@ -742,32 +743,32 @@
 
             <div class="col-md-6">
                 <div class="card p-4 shadow-lg h-100 border-primary border-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-search-heart me-2"></i> **Group 3: I am specifically looking for these investigations:**</h5>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-search-heart me-2"></i>Group D: I am specifically looking for these investigations:</h5>
                     <div id="test-checklist">
                         
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="wellness_core" id="checkWellnessCore">
-                            <label class="form-check-label" for="checkWellnessCore">I need my **core energy hormones** checked (Thyroid, Vitamin D).</label>
+                            <label class="form-check-label" for="checkWellnessCore">I need my core energy hormones like thyroid and vitamin levels checked.</label>
                         </div>
                         
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="sex_hormones" id="checkSexHormones">
-                            <label class="form-check-label" for="checkSexHormones">I need my specialized **sex hormones** analyzed (Testosterone, Estrogen).</label>
+                            <label class="form-check-label" for="checkSexHormones">I need my sex hormones analysed periodically because they are low or high.</label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="lpa_marker" id="checkLpaMarker">
-                            <label class="form-check-label" for="checkLpaMarker">I specifically want the genetic cardiac marker **Lipoprotein (A)** checked.</label>
+                            <label class="form-check-label" for="checkLpaMarker">I specifically want the genetic cardiac marker checked because I am at high risk.</label>
                         </div>
 
                         <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="ultrasound_scan" id="checkUltrasoundScan">
-                            <label class="form-check-label" for="checkUltrasoundScan">I require a **structural Ultrasound scan** of my abdomen.</label>
+                            <label class="form-check-label" for="checkUltrasoundScan">I require a structural Ultrasound scan on several parts of my body.</label>
                         </div>
                         
                          <div class="form-check mb-2">
                             <input class="form-check-input" type="checkbox" value="ct_calcium" id="checkCTCalcium">
-                            <label class="form-check-label" for="checkCTCalcium">I need the **definitive blockage test** (**CT Calcium Score**).</label>
+                            <label class="form-check-label" for="checkCTCalcium">I need the definitive heart blockage check to ensure I am all clear.</label>
                         </div>
 
                     </div>
