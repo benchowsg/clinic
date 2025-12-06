@@ -809,10 +809,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'Foun': { name: 'Package 1: Foundational', price: 'S$108', desc: 'The essential baseline check that includes high cholesterol, diabetes, high blood pressure, and urine tests.' },
         'Well': { name: 'Package 2: Wellness', price: 'S$418', desc: 'Checks common yet essential issues like fatigue, thyroid, and cancer markers.' },
         'Regen': { name: 'Package 3: Regenerative', price: 'S$618', desc: 'Checks more in depth including full cancer markers and hormones.' },
-        'Invest': { name: 'Package 4: Investigative', price: 'S$1098', desc: 'The ultimate check that combines package 4 (Regenerative) with 2 ultrasounds, such as prostate, breasts, abdominal, and more to choose from.' },
+        'Invest': { name: 'Package 4: Investigative', price: 'S$1098', desc: 'The ultimate check that combines blood tests with 2 ultrasounds, such as prostate, breasts, abdominal, and more to choose from.' },
         'CRisk': { name: 'Package 5: Cardiac Risk', price: 'S$278', desc: 'Focuses on core cardiac blood markers like fatty protein and systemic inflammation.' },
-        'CAssur': { name: 'Package 6: Cardiac Assurance', price: 'S$538', desc: 'Advanced heart risk assessment including your body's chemical balance, metabolism, and genetic lipoprotein. Suitable for those with a family history of early heart disease.' },
-        'DCard': { name: 'Package 7: Definitive Cardiac', price: 'S$938', desc: 'Definitive screening to understand the amount of hardened plaque in your heart's arteries, which helps predict overall future risk. This is the essential CT Coronary Artery Calcium Score for blockage clarity.' }
+        'CAssur': { name: 'Package 6: Cardiac Assurance', price: 'S$538', desc: 'Advanced heart risk assessment including your body\'s chemical balance, metabolism, and genetic lipoprotein. Suitable for those with a family history of early heart disease.' },
+        'DCard': { name: 'Package 7: Definitive Cardiac', price: 'S$938', desc: 'Definitive screening to understand the amount of hardened plaque in your heart\'s arteries, which helps predict overall future risk. This is the essential CT Coronary Artery Calcium Score for blockage clarity.' }
     };
 
     // 2. Define the scoring logic (mapping checkbox values to packages)
@@ -897,7 +897,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="list-unstyled text-start mx-auto" style="max-width: 400px;">${listItems}</ul>
             `;
         } else {
-             // If only low-score, niche options are selected (like only 'Foun' or 'CRisk')
+             // Fallback to foundational if maxScore is 0 (shouldn't happen with the current logic, but safe to keep)
              html = `
                 <p class="text-center text-muted lead my-3">
                     Based on your selection, these are your most relevant options.
