@@ -3,145 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Screening | Discovery Wellness</title>
+    <title>Health Screening Packages</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         :root {
-            --primary-blue: #2a5298;
-            --accent-teal: #00a8cc;
+            --primary-blue: #1a3a5f;
+            --accent-gold: #b8860b;
+            --soft-bg: #f4f7f9;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
-        .hero-section { background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); color: white; padding: 60px 0; }
-        .card { border: none; transition: transform 0.3s; border-radius: 15px; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .price-tag { font-size: 2rem; font-weight: bold; color: var(--primary-blue); }
-        .feature-icon { color: var(--accent-teal); margin-right: 10px; }
-        .pillar-box { border-left: 4px solid var(--accent-teal); padding-left: 15px; }
-        .nav-pills .nav-link.active { background-color: var(--primary-blue); }
+        body { font-family: 'Inter', sans-serif; background-color: var(--soft-bg); }
+        .hero-title { color: var(--primary-blue); font-weight: 800; }
+        .card-package { border: none; border-radius: 16px; transition: 0.3s; }
+        .card-package:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .price { font-size: 2.5rem; font-weight: 700; color: var(--primary-blue); }
+        .addon-box { 
+            background: white; 
+            border: 2px dashed #00a8cc; 
+            border-radius: 16px; 
+            padding: 30px;
+        }
+        .set-badge { background-color: #e1f5fe; color: #01579b; font-weight: 600; padding: 5px 12px; border-radius: 20px; display: inline-block; margin-bottom: 5px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
-<header class="hero-section text-center">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Discovery Wellness</h1>
-        <p class="lead">Personalized health screenings focused on your future vitality.</p>
-    </div>
-</header>
-
-<div class="container my-5">
-    
-    <div class="row mb-5 text-center">
-        <div class="col-md-4 mb-3">
-            <div class="pillar-box">
-                <h5>(1) Future Risk</h5>
-                <p class="text-muted small">Advanced screening for cardiovascular & metabolic trends.</p>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="pillar-box">
-                <h5>(2) Organ Health</h5>
-                <p class="text-muted small">In-depth analysis of liver, kidney, and thyroid function.</p>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3">
-            <div class="pillar-box">
-                <h5>(3) Current Vitality</h5>
-                <p class="text-muted small">Assessing hormones, vitamins, and daily energy markers.</p>
-            </div>
-        </div>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="hero-title mb-3">Discovery Wellness Screening</h1>
+        <p class="text-muted mx-auto" style="max-width: 600px;">
+            Choose a foundation for your health journey based on <strong>Future Risk</strong>, <strong>Organ Health</strong>, and <strong>Current Vitality</strong>.
+        </p>
     </div>
 
-    <div class="row g-4">
-        
-        <div class="col-lg-3 col-md-6">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title h5">Foundational</h3>
-                    <div class="price-tag mb-3">$108</div>
-                    <p class="text-muted small">Essential screening for basic metabolic health.</p>
-                    <hr>
-                    <ul class="list-unstyled small">
-                        <li><i class="bi bi-check2 feature-icon"></i>Cholesterol & Diabetes</li>
-                        <li><i class="bi bi-check2 feature-icon"></i>Full Blood Count</li>
-                        <li><i class="bi bi-check2 feature-icon"></i>Liver & Kidney Panels</li>
-                        <li><i class="bi bi-check2 feature-icon"></i>Urine Analysis</li>
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+            <div class="card card-package h-100 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="text-uppercase text-muted fw-bold small">Essential Check</h5>
+                    <h2 class="card-title fw-bold">Foundational</h2>
+                    <div class="price my-3">$108</div>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 text-muted small"><i class="bi bi-shield-check text-primary me-2"></i>Cholesterol & Diabetes Panel</li>
+                        <li class="mb-2 text-muted small"><i class="bi bi-shield-check text-primary me-2"></i>Kidney & Liver Function</li>
+                        <li class="mb-2 text-muted small"><i class="bi bi-shield-check text-primary me-2"></i>Full Blood Count & Urine</li>
                     </ul>
-                </div>
-                <div class="card-footer bg-transparent border-0 pb-4">
-                    <button class="btn btn-outline-primary w-100">Select Package</button>
+                    <button class="btn btn-outline-primary w-100 mt-3 rounded-pill">Select Package</button>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6">
-            <div class="card h-100 shadow border border-primary">
-                <div class="card-body">
-                    <span class="badge bg-primary mb-2">Most Popular</span>
-                    <h3 class="card-title h5">Wellness</h3>
-                    <div class="price-tag mb-3">$468</div>
-                    <p class="text-muted small">Comprehensive prevention + Cancer Markers.</p>
-                    <hr>
-                    <ul class="list-unstyled small">
-                        <li><strong>Includes Foundational +</strong></li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Cancer Markers (4-5 types)</li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Chest X-Ray & ECG</li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Vitamin D & Thyroid</li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Hepatitis A & B</li>
+        <div class="col-lg-4">
+            <div class="card card-package h-100 shadow border-primary" style="border-width: 2px !important;">
+                <div class="card-body p-4">
+                    <span class="badge bg-primary mb-2 rounded-pill">Recommended</span>
+                    <h5 class="text-uppercase text-muted fw-bold small">Comprehensive</h5>
+                    <h2 class="card-title fw-bold">Wellness</h2>
+                    <div class="price my-3">$468</div>
+                    <p class="small fw-bold">Includes Foundational +</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 text-muted small"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Cancer Markers (Liver, Colon, Pancreas, etc.)</li>
+                        <li class="mb-2 text-muted small"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Imaging: Chest X-Ray & 12-Lead ECG</li>
+                        <li class="mb-2 text-muted small"><i class="bi bi-plus-circle-fill text-primary me-2"></i>Thyroid (TSH/FT4) & Vitamin D</li>
                     </ul>
-                </div>
-                <div class="card-footer bg-transparent border-0 pb-4">
-                    <button class="btn btn-primary w-100">Select Package</button>
+                    <button class="btn btn-primary w-100 mt-3 rounded-pill shadow-sm">Select Package</button>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title h5">Regenerative</h3>
-                    <div class="price-tag mb-3">$668</div>
-                    <p class="text-muted small">Hormonal balance and longevity optimization.</p>
-                    <hr>
-                    <ul class="list-unstyled small">
-                        <li><strong>Includes Wellness +</strong></li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Full Hormone Panel</li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Fasting Insulin</li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Cardiac Lp(a) Risk</li>
-                        <li><i class="bi bi-plus-lg feature-icon"></i>Nose Cancer (EBV)</li>
+        <div class="col-lg-4">
+            <div class="card card-package h-100 shadow-sm">
+                <div class="card-body p-4">
+                    <h5 class="text-uppercase text-muted fw-bold small">Longevity & Performance</h5>
+                    <h2 class="card-title fw-bold">Regenerative</h2>
+                    <div class="price my-3">$668</div>
+                    <p class="small fw-bold">Includes Wellness +</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 text-muted small"><i class="bi bi-lightning-fill text-warning me-2"></i>Full Hormone Panel (Male/Female)</li>
+                        <li class="mb-2 text-muted small"><i class="bi bi-lightning-fill text-warning me-2"></i>Fasting Insulin & Cardiac LP(a)</li>
+                        <li class="mb-2 text-muted small"><i class="bi bi-lightning-fill text-warning me-2"></i>Nose Cancer & Hep C Markers</li>
                     </ul>
-                </div>
-                <div class="card-footer bg-transparent border-0 pb-4">
-                    <button class="btn btn-outline-primary w-100">Select Package</button>
+                    <button class="btn btn-outline-primary w-100 mt-3 rounded-pill">Select Package</button>
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-3 col-md-6">
-            <div class="card h-100 shadow-sm bg-light">
-                <div class="card-body">
-                    <h3 class="card-title h5 text-primary">Diamond</h3>
-                    <div class="price-tag mb-3">$1268</div>
-                    <p class="text-muted small">The ultimate assessment with medical imaging.</p>
-                    <hr>
-                    <ul class="list-unstyled small">
-                        <li><strong>Regenerative Pack +</strong></li>
-                        <li class="mt-2 text-primary fw-bold">Any 1 Ultrasound Set:</li>
-                        <li>• Set 1: Breast + Pelvis</li>
-                        <li>• Set 2: Breast + Thyroid</li>
-                        <li>• Set 3: Pelvis + Abdomen</li>
-                        <li class="small text-muted">+ 4 more set options</li>
-                    </ul>
-                </div>
-                <div class="card-footer bg-transparent border-0 pb-4">
-                    <button class="btn btn-dark w-100">Select Package</button>
-                </div>
-            </div>
-        </div>
-
     </div>
+
+    <div class="addon-box shadow-sm">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0 border-end-lg">
+                <h3 class="fw-bold mb-1">Premium Imaging Add-On</h3>
+                <p class="text-info fw-bold mb-2">+ $600 with any package</p>
+                <p class="text-muted small mb-0">Enhance your screening with a focused 2-Ultrasound set for deep organ visualization.</p>
+            </div>
+            <div class="col-lg-8">
+                <div class="ps-lg-4">
+                    <p class="fw-bold small text-uppercase mb-3">Choose one set below:</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="set-badge">Set 1: Breasts + Pelvis</span>
+                        <span class="set-badge">Set 2: Breasts + Thyroid</span>
+                        <span class="set-badge">Set 3: Pelvis + Abdomen</span>
+                        <span class="set-badge">Set 4: Prostate + Abdomen</span>
+                        <span class="set-badge">Set 5: Prostate + Testes</span>
+                        <span class="set-badge">Set 6: Testes + Abdomen</span>
+                        <span class="set-badge">Set 7: Hepatobiliary + Kidney/Ureters/Bladder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
