@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Screening | Discovery Wellness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2a5298;
+            --accent-teal: #00a8cc;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; }
+        .hero-section { background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%); color: white; padding: 60px 0; }
+        .card { border: none; transition: transform 0.3s; border-radius: 15px; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .price-tag { font-size: 2rem; font-weight: bold; color: var(--primary-blue); }
+        .feature-icon { color: var(--accent-teal); margin-right: 10px; }
+        .pillar-box { border-left: 4px solid var(--accent-teal); padding-left: 15px; }
+        .nav-pills .nav-link.active { background-color: var(--primary-blue); }
+    </style>
+</head>
+<body>
+
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Discovery Wellness</h1>
+        <p class="lead">Personalized health screenings focused on your future vitality.</p>
+    </div>
+</header>
+
+<div class="container my-5">
+    
+    <div class="row mb-5 text-center">
+        <div class="col-md-4 mb-3">
+            <div class="pillar-box">
+                <h5>(1) Future Risk</h5>
+                <p class="text-muted small">Advanced screening for cardiovascular & metabolic trends.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="pillar-box">
+                <h5>(2) Organ Health</h5>
+                <p class="text-muted small">In-depth analysis of liver, kidney, and thyroid function.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="pillar-box">
+                <h5>(3) Current Vitality</h5>
+                <p class="text-muted small">Assessing hormones, vitamins, and daily energy markers.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title h5">Foundational</h3>
+                    <div class="price-tag mb-3">$108</div>
+                    <p class="text-muted small">Essential screening for basic metabolic health.</p>
+                    <hr>
+                    <ul class="list-unstyled small">
+                        <li><i class="bi bi-check2 feature-icon"></i>Cholesterol & Diabetes</li>
+                        <li><i class="bi bi-check2 feature-icon"></i>Full Blood Count</li>
+                        <li><i class="bi bi-check2 feature-icon"></i>Liver & Kidney Panels</li>
+                        <li><i class="bi bi-check2 feature-icon"></i>Urine Analysis</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-4">
+                    <button class="btn btn-outline-primary w-100">Select Package</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 shadow border border-primary">
+                <div class="card-body">
+                    <span class="badge bg-primary mb-2">Most Popular</span>
+                    <h3 class="card-title h5">Wellness</h3>
+                    <div class="price-tag mb-3">$468</div>
+                    <p class="text-muted small">Comprehensive prevention + Cancer Markers.</p>
+                    <hr>
+                    <ul class="list-unstyled small">
+                        <li><strong>Includes Foundational +</strong></li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Cancer Markers (4-5 types)</li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Chest X-Ray & ECG</li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Vitamin D & Thyroid</li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Hepatitis A & B</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-4">
+                    <button class="btn btn-primary w-100">Select Package</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title h5">Regenerative</h3>
+                    <div class="price-tag mb-3">$668</div>
+                    <p class="text-muted small">Hormonal balance and longevity optimization.</p>
+                    <hr>
+                    <ul class="list-unstyled small">
+                        <li><strong>Includes Wellness +</strong></li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Full Hormone Panel</li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Fasting Insulin</li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Cardiac Lp(a) Risk</li>
+                        <li><i class="bi bi-plus-lg feature-icon"></i>Nose Cancer (EBV)</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-4">
+                    <button class="btn btn-outline-primary w-100">Select Package</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card h-100 shadow-sm bg-light">
+                <div class="card-body">
+                    <h3 class="card-title h5 text-primary">Diamond</h3>
+                    <div class="price-tag mb-3">$1268</div>
+                    <p class="text-muted small">The ultimate assessment with medical imaging.</p>
+                    <hr>
+                    <ul class="list-unstyled small">
+                        <li><strong>Regenerative Pack +</strong></li>
+                        <li class="mt-2 text-primary fw-bold">Any 1 Ultrasound Set:</li>
+                        <li>• Set 1: Breast + Pelvis</li>
+                        <li>• Set 2: Breast + Thyroid</li>
+                        <li>• Set 3: Pelvis + Abdomen</li>
+                        <li class="small text-muted">+ 4 more set options</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-4">
+                    <button class="btn btn-dark w-100">Select Package</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
