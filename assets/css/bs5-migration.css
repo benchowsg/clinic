@@ -27,31 +27,31 @@
   }
 }
 
-/* 2. Mobile Styling (Below 992px) - CLOSES THE GAP */
+/* 2. Mobile Styling (Below 992px) - FORCED GAP CLOSURE */
 @media (max-width: 991px) {
+  /* Remove any potential space from the topbar container */
   #topbar {
     display: none !important;
     height: 0 !important;
-    visibility: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important; /* Removes it from the flow entirely */
   }
 
   .navbar.fixed-top {
-    top: 0 !important; /* Forces nav to the very top edge */
-    padding: 15px 0 !important; 
+    top: 0 !important;
+    margin-top: 0 !important;
+    position: fixed !important;
+    padding: 12px 0 !important; 
     background: #fff !important;
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-    border: none !important;
+    /* This ensures it sits at the very top of the viewport */
+    transform: translate3d(0, 0, 0); 
   }
 
   body {
-    /* Adjust this 80px: If the Hero text is hidden by logo, increase it. 
-       If there is a white gap, decrease it. */
-    padding-top: 80px !important; 
+    /* We reset the margin and only use padding to move the content down */
     margin-top: 0 !important;
-  }
-
-  .navbar-brand img {
-    max-height: 45px;
+    padding-top: 75px !important; 
   }
 }
 
