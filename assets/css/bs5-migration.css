@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HEADER & NAVIGATION RESET (Matches Original Design)
+   HEADER & NAVIGATION RESET (V3 - Mobile Gap & Hamburger Fix)
    ========================================================================== */
 
 /* 1. Desktop Styling (Above 992px) */
@@ -8,50 +8,85 @@
     height: 40px;
     background: #fff;
     display: flex !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
     z-index: 1060;
   }
 
   .navbar.fixed-top {
-    /* This replicates your original #header padding (48px - 40px topbar) */
     padding: 20px 0; 
-    top: 40px; 
+    top: 40px !important; 
     background: #fff;
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
     border: none !important;
-    transition: all 0.5s;
   }
 
   body {
-    /* 40px topbar + ~80px navbar height */
-    padding-top: 125px !important; 
+    padding-top: 130px !important; 
   }
 }
 
-/* 2. Mobile Styling (Below 992px) */
+/* 2. Mobile Styling (Below 992px) - CLOSES THE GAP */
 @media (max-width: 991px) {
   #topbar {
-    display: none !important; /* Hide topbar to close the gap */
+    display: none !important;
+    height: 0 !important;
+    visibility: hidden;
   }
 
   .navbar.fixed-top {
-    top: 0 !important; /* Move to the absolute top */
-    padding: 20px 0 !important; /* Matches your mobile #header padding */
+    top: 0 !important; /* Forces nav to the very top edge */
+    padding: 15px 0 !important; 
     background: #fff !important;
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
     border: none !important;
   }
 
   body {
-    padding-top: 90px !important; /* Proper spacing for mobile logo */
+    /* Adjust this 80px: If the Hero text is hidden by logo, increase it. 
+       If there is a white gap, decrease it. */
+    padding-top: 80px !important; 
+    margin-top: 0 !important;
   }
-  
-  /* Ensure the logo stays consistent with your old CSS */
+
   .navbar-brand img {
-    max-height: 50px;
+    max-height: 45px;
   }
 }
 
-/* 3. Dropdown & Link Cleanup */
+/* 3. Hamburger Toggle Fix (Thickness & No Border) */
+.navbar-toggler {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+/* Custom 3-line icon */
+.navbar-toggler-icon {
+  background-image: none !important; /* Remove default BS5 icon */
+  display: block;
+  width: 24px;
+  height: 2px; /* Control thickness of the middle line */
+  background-color: #43a7d5; /* Your light blue */
+  position: relative;
+}
+
+/* Control thickness of top and bottom lines */
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
+  width: 24px;
+  height: 2px; 
+  background-color: #43a7d5;
+  position: absolute;
+  left: 0;
+}
+
+.navbar-toggler-icon::before { top: -8px; } /* Gap between lines */
+.navbar-toggler-icon::after { top: 8px; }
+
+/* 4. Dropdown & Link Cleanup */
 .navbar-nav .nav-link {
   color: #222222;
   font-weight: 500;
@@ -63,7 +98,7 @@
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* 4. Footer Line Removal */
+/* 5. Footer Line Removal */
 #footer, #footer .border-top {
   border: none !important;
 }
