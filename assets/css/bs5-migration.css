@@ -1,92 +1,69 @@
 /* ==========================================================================
-   BOOTSTRAP 5 MIGRATION OVERRIDES (V2 - Mobile Fix)
+   HEADER & NAVIGATION RESET (Matches Original Design)
    ========================================================================== */
 
-/* 1. Typography & Branding - Restores original clinic look */
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
-}
-
-/* 2. Desktop Layout (Screens wider than 991px) */
+/* 1. Desktop Styling (Above 992px) */
 @media (min-width: 992px) {
-  body {
-    padding-top: 130px !important; /* Space for Topbar + Navbar */
-  }
   #topbar {
     height: 40px;
-    z-index: 1060;
     background: #fff;
     display: flex !important;
+    z-index: 1060;
   }
+
   .navbar.fixed-top {
-    top: 40px; /* Sits below topbar */
-    z-index: 1050;
+    /* This replicates your original #header padding (48px - 40px topbar) */
+    padding: 20px 0; 
+    top: 40px; 
+    background: #fff;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    border: none !important;
+    transition: all 0.5s;
+  }
+
+  body {
+    /* 40px topbar + ~80px navbar height */
+    padding-top: 125px !important; 
   }
 }
 
-/* 3. Mobile Layout Fixes (The "Weird Spacing" fix) */
+/* 2. Mobile Styling (Below 992px) */
 @media (max-width: 991px) {
-  body {
-    padding-top: 80px !important; /* Proper gap for mobile logo only */
-  }
-  
   #topbar {
-    display: none !important; /* Hide topbar on mobile like original site */
+    display: none !important; /* Hide topbar to close the gap */
   }
 
   .navbar.fixed-top {
-    top: 0 !important; /* Stick to absolute top */
+    top: 0 !important; /* Move to the absolute top */
+    padding: 20px 0 !important; /* Matches your mobile #header padding */
     background: #fff !important;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    border: none !important;
+  }
+
+  body {
+    padding-top: 90px !important; /* Proper spacing for mobile logo */
   }
   
-  /* Ensure the mobile logo doesn't look too small/large */
+  /* Ensure the logo stays consistent with your old CSS */
   .navbar-brand img {
     max-height: 50px;
   }
 }
 
-/* 4. Dropdown Menus */
+/* 3. Dropdown & Link Cleanup */
+.navbar-nav .nav-link {
+  color: #222222;
+  font-weight: 500;
+  padding: 10px 15px !important;
+}
+
 .navbar-nav .dropdown-menu {
   border: none;
-  border-radius: 8px;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-nav .dropdown-item:hover {
-  background-color: #f8f9fa;
-  color: #3fbbc0;
-}
-
-/* 5. Navbar Toggler Fix */
-.navbar-toggler {
-  border: none;
-}
-.navbar-toggler:focus {
-  box-shadow: none;
-}
-
-/* 6. Fix for 'Get Started' Buttons in Hero */
-.btn-get-started {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 10px 30px;
-  border-radius: 50px;
-  transition: 0.5s;
-  color: #fff;
-  background: #3fbbc0;
-  text-decoration: none;
-}
-
-.btn-get-started:hover {
-  background: #329ea1;
-  color: #fff;
+/* 4. Footer Line Removal */
+#footer, #footer .border-top {
+  border: none !important;
 }
