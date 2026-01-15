@@ -1,0 +1,16 @@
+title: A Healing Heart Medical Clinic
+email: contact@ahealingheartmedical.com
+description: >-
+  Advanced physicians providing cardiology and intermediate care in Singapore.
+baseurl: "" # Leave this empty
+url: "https://www.ahealingheartmedical.com"
+
+# Exclude these from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - .sass-cache
+  - .jekyll-cache
+  - .bundle
+  - vendor
