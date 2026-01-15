@@ -106,7 +106,7 @@
 /* --- Hero Button Customization --- */
 
 /* The Primary "Book Now" Button */
-.btn-get-started {
+.btn-book-now {
   background: #3fbbc0 !important; /* Your brand teal/green */
   color: #fff !important;
   border: 2px solid #3fbbc0 !important;
@@ -118,7 +118,7 @@
   transition: 0.3s;
 }
 
-.btn-get-started:hover {
+.btn-book-now:hover {
   background: #34a2a7 !important;
   border-color: #34a2a7 !important;
   color: #fff !important;
