@@ -232,3 +232,27 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
+
+/* ==========================================================================
+   FAQ Accordion
+   ========================================================================== */
+
+.accordion-button:not(.collapsed) {
+  background-color: #f8fdff;
+  color: #43a7d5;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0,0,0,.125);
+}
+
+.accordion-item {
+  overflow: hidden; /* Keeps the rounded corners clean */
+}
+
+.accordion-button {
+  padding: 1.25rem;
+  color: #2c4964;
+}
