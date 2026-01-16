@@ -145,11 +145,12 @@
 
 /* 1. The Solid Button (Book Now) */
 .btn-get-started {
-  background: #3fbbc0 !important;
-  color: #fff !important;
-  border: 3px solid #3fbbc0 !important; /* Thicker 3px border */
+  background: transparent !important;
+  color: #43a7d5 !important;
+  /* This 3px solid line is what was missing */
+  border: 3px solid #43a7d5 !important; 
   border-radius: 50px !important;
-  padding: 12px 35px !important; /* Slightly larger for better "hit" area */
+  padding: 12px 35px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   display: inline-block !important;
