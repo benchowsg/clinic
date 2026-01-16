@@ -149,7 +149,7 @@
   color: #43a7d5 !important;
   /* This 3px solid line is what was missing */
   border: 3px solid #43a7d5 !important; 
-  border-radius: 50px !important;
+  border-radius: 10px !important;
   padding: 12px 35px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
@@ -168,7 +168,7 @@
   color: #43a7d5 !important;
   /* This 3px solid line is what was missing */
   border: 3px solid #43a7d5 !important; 
-  border-radius: 50px !important;
+  border-radius: 10px !important;
   padding: 12px 35px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
