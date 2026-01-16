@@ -136,36 +136,31 @@
   }
 }
 
-/* --- Hero Button Customization --- */
+/* --- Unified Hero Buttons --- */
 
-/* The Primary "Book Now" Button */
-.btn-book-now {
-  background: #3fbbc0 !important; /* Your brand teal/green */
+/* 1. The Solid Button (Book Now) */
+.btn-get-started {
+  background: #3fbbc0 !important;
   color: #fff !important;
-  border: 2px solid #3fbbc0 !important;
+  border: 3px solid #3fbbc0 !important; /* Thicker 3px border */
   border-radius: 50px !important;
-  padding: 10px 30px !important;
-  font-weight: 500;
-  text-decoration: none;
+  padding: 12px 35px !important; /* Slightly larger for better "hit" area */
+  font-weight: 600 !important;
+  text-decoration: none !important;
   display: inline-block !important;
   transition: 0.3s;
 }
 
-.btn-book-now:hover {
-  background: #34a2a7 !important;
-  border-color: #34a2a7 !important;
-  color: #fff !important;
-}
-
-/* The Secondary "Explore Services" Button */
+/* 2. The Outline Button (Explore Services) */
 .btn-outline-clinic {
   background: transparent !important;
-  color: #43a7d5 !important; /* Your brand blue */
-  border: 2px solid #43a7d5 !important;
+  color: #43a7d5 !important;
+  /* This 3px solid line is what was missing */
+  border: 3px solid #43a7d5 !important; 
   border-radius: 50px !important;
-  padding: 10px 30px !important;
-  font-weight: 500;
-  text-decoration: none;
+  padding: 12px 35px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
   display: inline-block !important;
   transition: 0.3s;
 }
