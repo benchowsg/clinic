@@ -98,7 +98,10 @@
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Footer Customization --- */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 #footer, #footer .border-top {
   border: none !important;
 }
@@ -136,7 +139,9 @@
   }
 }
 
-/* --- Unified Hero Buttons --- */
+/* ==========================================================================
+   Hero Buttons
+   ========================================================================== */
 
 /* 1. The Solid Button (Book Now) */
 .btn-get-started {
@@ -168,4 +173,48 @@
 .btn-outline-clinic:hover {
   background: #43a7d5 !important;
   color: #fff !important;
+}
+
+/* ==========================================================================
+   User Centric Action-Oriented Titles
+   ========================================================================== */
+
+.service-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none !important;
+  color: #2c4964;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+}
+
+.service-tile i {
+  font-size: 2.5rem;
+  color: #43a7d5;
+  margin-bottom: 15px;
+}
+
+.service-tile span {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.service-tile:hover {
+  transform: translateY(-5px);
+  border-color: #43a7d5;
+  box-shadow: 0 10px 25px rgba(67, 167, 213, 0.2);
+}
+
+/* Mobile adjustments for 2-column grid */
+@media (max-width: 576px) {
+  .service-tile i { font-size: 2rem; }
+  .service-tile span { font-size: 0.9rem; }
 }
