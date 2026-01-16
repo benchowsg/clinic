@@ -229,9 +229,9 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   position: relative;
   color: #555555;
-  padding: 8px 0 12px 25px;
+  padding: 8px 25px 12px 25px;
   transition: 0.3s;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
@@ -2395,5 +2395,6 @@ top: 0; /* Don't forget this, required for the stickiness */
 .show .extra-content {
   display: block;
 }
+
 
 
