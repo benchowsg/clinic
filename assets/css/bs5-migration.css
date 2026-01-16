@@ -148,9 +148,9 @@
   background: transparent !important;
   color: #43a7d5 !important;
   /* This 3px solid line is what was missing */
-  border: 3px solid #43a7d5 !important; 
+  border: 2px solid #43a7d5 !important; 
   border-radius: 10px !important;
-  padding: 12px 35px !important;
+  padding: 12px 15px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   display: inline-block !important;
@@ -167,9 +167,9 @@
   background: transparent !important;
   color: #43a7d5 !important;
   /* This 3px solid line is what was missing */
-  border: 3px solid #43a7d5 !important; 
+  border: 2px solid #43a7d5 !important; 
   border-radius: 10px !important;
-  padding: 12px 35px !important;
+  padding: 12px 15px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   display: inline-block !important;
