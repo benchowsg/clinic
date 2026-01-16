@@ -179,42 +179,50 @@
    User Centric Action-Oriented Titles
    ========================================================================== */
 
+.service-navigation {
+  background-color: #f8fbfe !important;
+}
+
 .service-tile {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ffffff !important;
+  padding: 25px 10px !important;
+  border-radius: 15px !important;
+  text-decoration: none !important;
+  border: 1px solid #e1e8ed !important;
+  height: 100% !important;
+  transition: all 0.3s ease !important;
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  background: #f0f7fa;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  padding: 30px 20px;
-  border-radius: 15px;
-  text-align: center;
-  text-decoration: none !important;
-  color: #2c4964;
-  height: 100%;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  border: 1px solid #eee;
+  margin-bottom: 12px;
 }
 
+/* Target the icofont inside the circle */
 .service-tile i {
-  font-size: 2.5rem;
-  color: #43a7d5;
-  margin-bottom: 15px;
+  color: #43a7d5 !important;
+  font-size: 24px !important;
 }
 
-.service-tile span {
-  font-weight: 600;
-  font-size: 1rem;
+.service-tile p {
+  color: #2c4964 !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  margin: 0 !important;
 }
 
 .service-tile:hover {
+  border-color: #43a7d5 !important;
   transform: translateY(-5px);
-  border-color: #43a7d5;
-  box-shadow: 0 10px 25px rgba(67, 167, 213, 0.2);
-}
-
-/* Mobile adjustments for 2-column grid */
-@media (max-width: 576px) {
-  .service-tile i { font-size: 2rem; }
-  .service-tile span { font-size: 0.9rem; }
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
