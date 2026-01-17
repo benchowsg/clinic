@@ -256,3 +256,44 @@
   padding: 1.25rem;
   color: #2c4964;
 }
+
+/* ==========================================================================
+   Booking Button
+   ========================================================================== */
+
+.booking-mini-tile {
+  display: flex;
+  flex-direction: column; /* Stacks icon on top of text */
+  align-items: center;    /* Centers them horizontally */
+  justify-content: center;/* Centers them vertically */
+  text-align: center;
+  
+  padding: 20px 10px;
+  min-height: 120px;      /* Ensures all boxes are the same height */
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;    /* Rounded corners for the 'nice' look */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.booking-mini-tile:hover {
+  background: #f8fdff;
+  border-color: #43a7d5;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(67, 167, 213, 0.1);
+}
+
+.icon-box {
+  font-size: 2rem;
+  color: #43a7d5;
+  margin-bottom: 10px;    /* Pushes the text down */
+}
+
+.tile-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2c4964;
+  line-height: 1.2;
+}
