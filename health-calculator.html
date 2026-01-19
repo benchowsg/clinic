@@ -2,7 +2,7 @@
 layout: default
 permalink: /health-calculator
 title: Heart Risk & Metabolic Trajectory Calculator | A Healing Heart Medical
-description: Use our clinical tool to estimate your 10-year cardiovascular risk and understand your health trajectory.
+description: Use our clinical tool based on ACC/AHA guidelines to estimate your 10-year cardiovascular risk and understand your health trajectory.
 ---
 
 <main id="main" class="mt-5 pt-5">
@@ -10,7 +10,10 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
     <div class="container">
       <div class="section-title text-center mb-5">
         <h2 class="fw-bold" style="color: #2c4964;">Heart Risk & Trajectory Estimator</h2>
-        <p class="text-muted">Enter your clinical markers to see your 10-year risk profile.</p>
+        <p class="text-muted mx-auto" style="max-width: 800px;">
+          Our estimator is based on the <strong>ACC/AHA Pooled Cohort Equations</strong>, the global gold standard for predicting 10-year cardiovascular risk. 
+          Use this tool to understand your metabolic trajectory and build a personalized prevention roadmap with our clinical team.
+        </p>
       </div>
 
       <div class="row g-4">
@@ -43,27 +46,27 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
               <input type="number" id="hdl" class="form-control" placeholder="e.g. 1.2">
             </div>
 
-<div class="mb-3">
-  <label class="form-label d-flex justify-content-between">
-    <span>Systolic Blood Pressure</span>
-    <button type="button" class="btn btn-link p-0 text-decoration-none small" onclick="toggleBPInfo()">
-      <i class="fa-solid fa-circle-info me-1"></i>What is this?
-    </button>
-  </label>
-  <input type="number" id="sbp" class="form-control" placeholder="e.g. 130">
-  
-  <div id="bpInfoBox" class="mt-2 d-none">
-    <div class="alert alert-light border small shadow-sm p-2" style="background-color: #f8fbfe;">
-      <strong>Systolic Pressure</strong> is the top number on your reading. It measures the force your heart exerts on artery walls each time it beats.
-      <hr class="my-1">
-      <ul class="mb-0 list-unstyled">
-        <li><span class="text-success">●</span> 120 or less: Normal</li>
-        <li><span class="text-warning">●</span> 130-139: Elevated</li>
-        <li><span class="text-danger">●</span> 140+: High</li>
-      </ul>
-    </div>
-  </div>
-</div>
+            <div class="mb-3">
+              <label class="form-label d-flex justify-content-between">
+                <span>Systolic Blood Pressure</span>
+                <button type="button" class="btn btn-link p-0 text-decoration-none small" onclick="toggleBPInfo()">
+                  <i class="fa-solid fa-circle-info me-1"></i>What is this?
+                </button>
+              </label>
+              <input type="number" id="sbp" class="form-control" placeholder="e.g. 130">
+              
+              <div id="bpInfoBox" class="mt-2 d-none">
+                <div class="alert alert-light border small shadow-sm p-2" style="background-color: #f8fbfe;">
+                  <strong>Systolic Pressure</strong> is the top number on your reading. It measures the force your heart exerts on artery walls each time it beats.
+                  <hr class="my-1">
+                  <ul class="mb-0 list-unstyled">
+                    <li><span class="text-success">●</span> 120 or less: Normal</li>
+                    <li><span class="text-warning">●</span> 130-139: Elevated</li>
+                    <li><span class="text-danger">●</span> 140+: High</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
             <div class="mb-4">
               <div class="form-check form-switch mb-2">
@@ -106,6 +109,41 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
       </div>
     </div>
   </section>
+
+  <section class="py-5 border-top bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h5 class="fw-bold mb-3"><i class="fa-solid fa-microscope me-2 text-primary"></i>Scientific Foundation</h5>
+          <p class="small text-muted mb-4">
+            The <strong>A Healing Heart Health Estimator</strong> utilizes the <strong>ASCVD (Atherosclerotic Cardiovascular Disease) Risk Algorithm</strong>. This model was developed by the American College of Cardiology (ACC) and the American Heart Association (AHA) to identify individuals who may benefit from preventive therapies.
+          </p>
+          
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Clinical References</h6>
+              <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
+                <li class="mb-2">1. Goff DC Jr, et al. 2013 ACC/AHA Guideline on the Assessment of Cardiovascular Risk. <em>Circulation</em>.</li>
+                <li class="mb-2">2. Grundy SM, et al. 2018 AHA/ACC Guideline on the Management of Blood Cholesterol. <em>Journal of the American College of Cardiology</em>.</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Regional Considerations</h6>
+              <p class="text-muted" style="font-size: 0.85rem;">
+                While highly validated for adults aged 20-79, this estimator is a screening tool. For the Singapore population, factors such as family history and specific ethnic risk enhancers are vital considerations that Dr. Gerald Thang integrates during clinical consultations.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-top text-center">
+            <p class="extra-small text-muted mb-0" style="font-size: 0.75rem;">
+              <strong>Disclaimer:</strong> This tool is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script type="text/javascript">
@@ -117,8 +155,8 @@ function toggleBPInfo() {
         infoBox.classList.add('d-none');
     }
 }
+
 function calculateRisk() {
-    // 1. Inputs
     const age = parseInt(document.getElementById('age').value);
     const tcRaw = parseFloat(document.getElementById('tc').value);
     const hdlRaw = parseFloat(document.getElementById('hdl').value);
@@ -127,13 +165,11 @@ function calculateRisk() {
     const smoker = document.getElementById('smoker').checked;
     const diabetes = document.getElementById('diabetes').checked;
 
-    // 2. Validation
     if (isNaN(age) || isNaN(tcRaw) || isNaN(hdlRaw) || isNaN(sbp)) {
         alert("Please enter all medical values to calculate your risk.");
         return;
     }
 
-    // 3. UI Setup
     const placeholder = document.getElementById('placeholderText');
     const resultDiv = document.getElementById('actualResult');
     const resultCard = document.getElementById('resultCard');
@@ -147,7 +183,6 @@ function calculateRisk() {
     resultCard.style.backgroundColor = "#ffffff";
     resultCard.style.border = "2px solid #43a7d5";
 
-    // 4. Age Boundary Checks
     if (age < 20) {
         scoreDisplay.innerText = "N/A";
         levelDisplay.innerText = "Early Prevention Phase";
@@ -164,11 +199,9 @@ function calculateRisk() {
         return;
     }
 
-    // 5. Conversion Logic
     const tc = isMmol ? (tcRaw * 38.67) : tcRaw;
     const hdl = isMmol ? (hdlRaw * 38.67) : hdlRaw;
 
-    // 6. Scoring Logic
     let score = 0;
     if (age >= 45) score += 3;
     if (age >= 60) score += 5;
@@ -177,7 +210,6 @@ function calculateRisk() {
     if (smoker) score += 5;
     if (diabetes) score += 6;
 
-    // 7. Final Output
     scoreDisplay.innerText = score + "%";
 
     if (score < 5) {
@@ -193,7 +225,8 @@ function calculateRisk() {
         levelDisplay.style.color = "#dc3545";
         noteDisplay.innerHTML = "<strong>Trajectory:</strong> Critical. Immediate clinical consultation required to stabilize markers and prevent events.";
     }
-  
+}
+</script>
 
 }
 </script>
