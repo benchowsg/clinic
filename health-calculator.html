@@ -76,6 +76,7 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
   </div>
 </main>
 
+<script type="text/javascript">
 function calculateRisk() {
     // Basic inputs
     let age = parseInt(document.getElementById('age').value);
@@ -115,3 +116,4 @@ function calculateRisk() {
         noteDisplay.innerText = "Your trajectory indicates potential for cardiovascular events. Immediate targeted therapy is recommended.";
     }
 }
+</script>
