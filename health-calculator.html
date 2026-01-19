@@ -13,42 +13,43 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
 
     <div class="row g-4">
       <div class="col-lg-5">
-        <div class="card border-0 shadow-sm p-4 rounded-4">
-          <h5 class="mb-4 fw-bold"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Lab Data</h5>
-          
-          <div class="mb-3">
-            <label class="form-label">Age (20-79)</label>
-            <input type="number" id="age" class="form-control" placeholder="45">
-          </div>
+<div class="card border-0 shadow-sm p-4 rounded-4">
+  <h5 class="mb-4 fw-bold"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Lab Data</h5>
+  
+  <div class="mb-4">
+    <label class="small fw-bold text-muted text-uppercase">Cholesterol Units</label>
+    <div class="btn-group w-100" role="group">
+      <input type="radio" class="btn-check" name="unit" id="unitMmol" checked>
+      <label class="btn btn-outline-primary btn-sm" for="unitMmol">mmol/L (SG Standard)</label>
+      <input type="radio" class="btn-check" name="unit" id="unitMg" >
+      <label class="btn btn-outline-primary btn-sm" for="unitMg">mg/dL</label>
+    </div>
+  </div>
 
-          <div class="mb-3">
-            <label class="form-label">Total Cholesterol (mg/dL)</label>
-            <input type="number" id="tc" class="form-control" placeholder="200">
-          </div>
+  <div class="mb-3">
+    <label class="form-label">Total Cholesterol</label>
+    <input type="number" id="tc" class="form-control" placeholder="e.g. 5.2">
+  </div>
 
-          <div class="mb-3">
-            <label class="form-label">HDL Cholesterol (mg/dL)</label>
-            <input type="number" id="hdl" class="form-control" placeholder="50">
-          </div>
+  <div class="mb-3">
+    <label class="form-label">HDL Cholesterol</label>
+    <input type="number" id="hdl" class="form-control" placeholder="e.g. 1.2">
+  </div>
 
-          <div class="mb-3">
-            <label class="form-label">Systolic Blood Pressure (mmHg)</label>
-            <input type="number" id="sbp" class="form-control" placeholder="130">
-          </div>
-
-          <div class="mb-3">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="smoker">
-              <label class="form-check-label">Current Smoker?</label>
-            </div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="diabetes">
-              <label class="form-check-label">History of Diabetes?</label>
-            </div>
-          </div>
-
-          <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Calculate My Roadmap</button>
-        </div>
+  <div class="mb-3">
+    <label class="form-label d-flex justify-content-between">
+      Systolic Blood Pressure 
+      <small class="text-primary" style="cursor:help;" title="This is the TOP number on your BP monitor.">What is this?</small>
+    </label>
+    <input type="number" id="sbp" class="form-control" placeholder="130">
+    <div class="form-text mt-2" style="font-size: 0.75rem;">
+        Typical ranges: <strong>120</strong> (Normal), <strong>135</strong> (Mildly High), <strong>150+</strong> (High)
+    </div>
+  </div>
+  
+  <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Calculate My Roadmap</button>
+</div>
+        
       </div>
 
       <div class="col-lg-7">
@@ -78,42 +79,79 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
 
 <script type="text/javascript">
 function calculateRisk() {
-    // Basic inputs
-    let age = parseInt(document.getElementById('age').value);
-    let sbp = parseInt(document.getElementById('sbp').value);
-    let smoker = document.getElementById('smoker').checked;
-    let diabetes = document.getElementById('diabetes').checked;
+    // 1. Grab all inputs from the form
+    const age = parseInt(document.getElementById('age').value);
+    const tcRaw = parseFloat(document.getElementById('tc').value);
+    const hdlRaw = parseFloat(document.getElementById('hdl').value);
+    const sbp = parseInt(document.getElementById('sbp').value);
+    const isMmol = document.getElementById('unitMmol').checked;
+    const smoker = document.getElementById('smoker').checked;
+    const diabetes = document.getElementById('diabetes').checked;
 
-    // Show result card
+    // 2. Simple Validation: Ensure all numbers are entered
+    if (isNaN(age) || isNaN(tcRaw) || isNaN(hdlRaw) || isNaN(sbp)) {
+        alert("Please enter all medical values to calculate your risk.");
+        return;
+    }
+
+    // 3. Conversion Logic
+    // If user selected mmol/L (Singapore standard), convert to mg/dL for the formula
+    const tc = isMmol ? (tcRaw * 38.67) : tcRaw;
+    const hdl = isMmol ? (hdlRaw * 38.67) : hdlRaw;
+
+    // 4. Clinical Logic (Simplified ASCVD Point System)
+    let score = 0;
+
+    // Age weighting
+    if (age >= 40 && age < 50) score += 2;
+    if (age >= 50 && age < 60) score += 5;
+    if (age >= 60) score += 8;
+
+    // Blood Pressure weighting
+    if (sbp >= 130 && sbp < 140) score += 2;
+    if (sbp >= 140 && sbp < 160) score += 5;
+    if (sbp >= 160) score += 8;
+
+    // Cholesterol Ratios (Total/HDL is a major trajectory marker)
+    const ratio = tc / hdl;
+    if (ratio >= 4.5 && ratio < 6) score += 3;
+    if (ratio >= 6) score += 6;
+
+    // Lifestyle/Condition weighting
+    if (smoker) score += 5;
+    if (diabetes) score += 6;
+
+    // 5. Update the UI
+    // Hide the placeholder, show the result card
     document.getElementById('placeholderText').classList.add('d-none');
     document.getElementById('actualResult').classList.remove('d-none');
     document.getElementById('resultCard').classList.remove('bg-light');
+    document.getElementById('resultCard').style.border = "2px solid #43a7d5";
 
-    // Simple Risk Weighting (Educational purposes)
-    let baseScore = (age > 50 ? 5 : 2);
-    if(smoker) baseScore += 4;
-    if(diabetes) baseScore += 5;
-    if(sbp > 140) baseScore += 3;
+    // Update Percentage Score
+    const scoreDisplay = document.getElementById('scorePercent');
+    const levelDisplay = document.getElementById('riskLevel');
+    const noteDisplay = document.getElementById('trajectoryNote');
 
-    // Display
-    let scoreDisplay = document.getElementById('scorePercent');
-    let levelDisplay = document.getElementById('riskLevel');
-    let noteDisplay = document.getElementById('trajectoryNote');
+    scoreDisplay.innerText = score + "%";
 
-    scoreDisplay.innerText = baseScore + "%";
-
-    if(baseScore < 5) {
-        levelDisplay.innerText = "Low Risk";
-        levelDisplay.style.color = "#198754";
-        noteDisplay.innerText = "Your trajectory is stable. Focus on foundational health habits.";
-    } else if(baseScore < 10) {
+    // 6. Risk Triage Categorization
+    if (score < 5) {
+        levelDisplay.innerText = "Low Risk Profile";
+        levelDisplay.style.color = "#198754"; // Green
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Stable. Focus on foundational wellness and annual biomarker tracking.";
+    } else if (score < 10) {
         levelDisplay.innerText = "Borderline Risk";
-        levelDisplay.style.color = "#0dcaf0";
-        noteDisplay.innerText = "Your trajectory suggests rising risk factors. Early lifestyle intervention can 'bend the curve'.";
+        levelDisplay.style.color = "#0dcaf0"; // Blue
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Rising. Early lifestyle intervention can 'bend the curve' and prevent future escalation.";
+    } else if (score < 20) {
+        levelDisplay.innerText = "Intermediate Risk";
+        levelDisplay.style.color = "#ffc107"; // Yellow
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Concerning. Targeted therapy and specific lifestyle prescriptions are recommended.";
     } else {
-        levelDisplay.innerText = "Intermediate/High Risk";
-        levelDisplay.style.color = "#dc3545";
-        noteDisplay.innerText = "Your trajectory indicates potential for cardiovascular events. Immediate targeted therapy is recommended.";
+        levelDisplay.innerText = "High Risk Profile";
+        levelDisplay.style.color = "#dc3545"; // Red
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Critical. Immediate clinical consultation required to stabilize markers and prevent events.";
     }
 }
 </script>
