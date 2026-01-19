@@ -75,3 +75,43 @@ description: Use our clinical tool to estimate your 10-year cardiovascular risk 
     </div>
   </div>
 </main>
+
+function calculateRisk() {
+    // Basic inputs
+    let age = parseInt(document.getElementById('age').value);
+    let sbp = parseInt(document.getElementById('sbp').value);
+    let smoker = document.getElementById('smoker').checked;
+    let diabetes = document.getElementById('diabetes').checked;
+
+    // Show result card
+    document.getElementById('placeholderText').classList.add('d-none');
+    document.getElementById('actualResult').classList.remove('d-none');
+    document.getElementById('resultCard').classList.remove('bg-light');
+
+    // Simple Risk Weighting (Educational purposes)
+    let baseScore = (age > 50 ? 5 : 2);
+    if(smoker) baseScore += 4;
+    if(diabetes) baseScore += 5;
+    if(sbp > 140) baseScore += 3;
+
+    // Display
+    let scoreDisplay = document.getElementById('scorePercent');
+    let levelDisplay = document.getElementById('riskLevel');
+    let noteDisplay = document.getElementById('trajectoryNote');
+
+    scoreDisplay.innerText = baseScore + "%";
+
+    if(baseScore < 5) {
+        levelDisplay.innerText = "Low Risk";
+        levelDisplay.style.color = "#198754";
+        noteDisplay.innerText = "Your trajectory is stable. Focus on foundational health habits.";
+    } else if(baseScore < 10) {
+        levelDisplay.innerText = "Borderline Risk";
+        levelDisplay.style.color = "#0dcaf0";
+        noteDisplay.innerText = "Your trajectory suggests rising risk factors. Early lifestyle intervention can 'bend the curve'.";
+    } else {
+        levelDisplay.innerText = "Intermediate/High Risk";
+        levelDisplay.style.color = "#dc3545";
+        noteDisplay.innerText = "Your trajectory indicates potential for cardiovascular events. Immediate targeted therapy is recommended.";
+    }
+}
