@@ -6,146 +6,156 @@ description: Discover our "Data-First" approach to preventive medicine. We monit
 ---
 
 <style>
-  /* Match the icon box styling from your site */
   #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
     text-transform: none !important;
     letter-spacing: normal !important;
   }
-  
-  .services .icon-box {
-    text-align: center;
-    border: 1px solid #dce8f3;
-    padding: 80px 20px;
-    transition: all ease-in-out 0.3s;
+
+  /* Hero Section */
+  .hero-preventive {
+    padding: 100px 0 60px 0;
     background: #fff;
-    border-radius: 5px;
+  }
+
+  /* 3 Boxes Section */
+  .reason-box {
+    padding: 40px;
+    box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+    background: #fff;
     height: 100%;
+    border-radius: 10px;
+    border-bottom: 3px solid #3498db;
   }
-
-  .services .icon-box .icon {
-    margin: 0 auto 15px auto;
-    padding-top: 10px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    background: #3498db; /* Your preferred blue */
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .services .icon-box .icon i {
-    color: #fff;
-    font-size: 28px;
-  }
-
-  /* Your requested Yellow Hover */
-  .services .icon-box:hover {
-    border-color: #ffc107;
-    box-shadow: 0px 0 25px 0 rgba(0, 0, 0, 0.1);
+  
+  .reason-box:hover {
+    border-bottom: 3px solid #ffc107;
     transform: translateY(-5px);
   }
-  
-  .services .icon-box:hover .icon {
-    background: #ffc107;
-  }
-  
-  .services .icon-box:hover .icon i {
-    color: #2c4964;
-  }
 
-  .services .icon-box h4 {
+  .reason-box h4 {
     font-weight: 700;
+    color: #2c4964;
     margin-bottom: 15px;
-    font-size: 24px;
   }
 
-  .services .icon-box p {
-    line-height: 24px;
-    font-size: 14px;
-    margin-bottom: 0;
+  /* Why Choose Us Section */
+  .why-choose-us {
+    background: #f9fbfd;
+    padding: 60px 0;
   }
 
-  .cta-box {
-    background: #f1f7fb;
-    padding: 60px;
-    border-radius: 10px;
+  .check-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .check-list li {
+    padding-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .check-list i {
+    color: #3498db;
+    margin-right: 15px;
+    margin-top: 5px;
+  }
+
+  /* CTA Style */
+  .cta-footer {
+    padding: 80px 0;
     text-align: center;
-    margin-top: 40px;
   }
 </style>
 
 <main id="main">
 
-  <section id="services" class="services">
+  <section class="hero-preventive">
     <div class="container">
-
-      <div class="section-title text-center mb-5">
-        <p>At A Healing Heart, we believe that the best medicine is keeping you well. Our preventive model moves beyond generic checklists to focus on **Early Signal Detection** and long-term vitality architecture.</p>
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <h1 class="display-4 fw-bold" style="color: #2c4964;">Preventive Health</h1>
+          <h4 class="text-primary fw-bold mb-4">The A Healing Heart Standard</h4>
+          <p class="lead">
+            Our mission is to move medicine from reactive repair to **proactive architecture**. We don't just "check" your health; we manage your biological environment to ensure your health span matches your life span.
+          </p>
+          <p>
+            The A Healing Heart Standard means every data point from your screening is interpreted through a clinical lens to create a 10-year roadmap for vitality.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <img src="/assets/img/preventive-mission.jpg" class="img-fluid rounded-4 shadow" alt="A Healing Heart Preventive Mission">
+        </div>
       </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-heartbeat"></i></div>
-            <h4><a href="/general-health" style="color: #2c4964; text-decoration: none;">General Health</a></h4>
-            <p>Moving from reactive to proactive care. We provide deep-dive assessments to identify silent indicators of chronic conditions before they impact your life.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-stethoscope"></i></div>
-            <h4><a href="/health-screening" style="color: #2c4964; text-decoration: none;">Health Screening</a></h4>
-            <p>Our clinical screenings are the foundation of prevention. From basic wellness to executive MRI packages, we find the data needed to manage your future.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-syringe"></i></div>
-            <h4><a href="/vaccination" style="color: #2c4964; text-decoration: none;">Vaccinations</a></h4>
-            <p>Strategic immunization plans for all life stages, ensuring your immune system is fortified against both seasonal and age-related health risks.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-bone"></i></div>
-            <h4><a href="/osteoporosis" style="color: #2c4964; text-decoration: none;">Osteoporosis</a></h4>
-            <p>Protecting your structural longevity. We focus on early bone density management and nutritional optimization for long-term mobility.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-user-md"></i></div>
-            <h4>Biological Intelligence</h4>
-            <p>Proprietary risk mapping for diabetes and hypertension, focusing on "medication micromanagement" to achieve optimal systemic balance.</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="fas fa-chart-line"></i></div>
-            <h4>Longevity Path</h4>
-            <p>Custom health roadmaps directed by Dr. Gerald Thang’s medical team to ensure your health span matches your life span.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="cta-box">
-        <h3 class="fw-bold" style="color: #2c4964;">Everything Starts with a Baseline</h3>
-        <p>Prevention is only as good as the data behind it. Explore our screening tiers to begin your journey.</p>
-        <a href="/health-screening" class="btn btn-primary px-5 py-3 rounded-pill fw-bold" style="background: #3498db; border: none;">View Health Screening Tiers</a>
-      </div>
-
     </div>
   </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="section-title text-center mb-5">
+        <h2 class="fw-bold" style="color: #2c4964;">When to Seek Preventive Care?</h2>
+        <p class="text-muted">Proactive medicine is for those who value clarity over guesswork.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="reason-box">
+            <h4>Silent Risk Detection</h4>
+            <p>If you have a family history of heart disease, diabetes, or hypertension, you require biological monitoring long before physical symptoms appear.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="reason-box">
+            <h4>Performance Optimization</h4>
+            <p>For high-performers who cannot afford "down-time." We optimize your metabolic and hormonal environment to maintain peak mental and physical output.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="reason-box">
+            <h4>Structural Longevity</h4>
+            <p>If you are entering a life stage where bone density and muscle resilience are critical to maintaining your independent lifestyle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose-us">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4" style="color: #2c4964;">Why Patients Choose Our Preventive Model</h2>
+          <p class="mb-4">We bridge the gap between a standard clinic and a specialist center, providing a higher bandwidth of diagnostic intelligence.</p>
+          
+          <ul class="check-list">
+            <li><i class="fas fa-check-circle"></i> <div><strong>Clinical Interpretation:</strong> We don't just hand you a report. Dr. Gerald Thang interprets your data to identify "hidden signals" in your biomarkers.</div></li>
+            <li><i class="fas fa-check-circle"></i> <div><strong>Medication Micromanagement:</strong> We ensure your prescriptions are calibrated for long-term systemic balance, not just short-term symptom relief.</div></li>
+            <li><i class="fas fa-check-circle"></i> <div><strong>Continuity of Care:</strong> Unlike one-off screenings, we provide the infrastructure for ongoing monitoring and rapid re-assessment.</div></li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-footer">
+    <div class="container">
+      <div class="p-5 rounded-4 bg-white shadow-sm border">
+        <h2 class="fw-bold mb-3" style="color: #2c4964;">Architect Your Future Health</h2>
+        <p class="mb-5 text-muted mx-auto" style="max-width: 600px;">
+          Prevention is an active choice. Schedule a consultation to begin your personalized health roadmap.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="/booking" class="btn btn-primary rounded-pill px-5 py-3 fw-bold" style="background-color: #3498db; border: none; transition: 0.3s;" onmouseover="this.style.backgroundColor='#ffc107'; this.style.color='#2c4964'" onmouseout="this.style.backgroundColor='#3498db'; this.style.color='#fff'">Book Appointment Online</a>
+          <a href="/health-screening" class="btn btn-outline-dark rounded-pill px-5 py-3 fw-bold">View Screening Tiers</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
                 <p></p>          <p></p>
 
