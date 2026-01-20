@@ -2,6 +2,7 @@
 layout: default
 permalink: /test-reg
 title: Regenerative Medicine & Vitality | A Healing Heart Medical Clinic
+description: Restore your body's natural balance through data-driven regenerative health protocols in Singapore.
 ---
 
 <style>
@@ -10,69 +11,85 @@ title: Regenerative Medicine & Vitality | A Healing Heart Medical Clinic
     letter-spacing: normal !important;
   }
   
-  .hero-regen {
+  /* LIGHT HERO THEME (Matches Cardiology) */
+  .hero-light {
     background-color: #f8f9fa !important; 
-    min-height: 45vh;
+    min-height: 40vh;
     display: flex;
     align-items: center;
+    color: #3498DB !important; 
     border-bottom: 1px solid #e9ecef;
   }
 
-  .text-vitality-blue { color: #3498DB !important; }
-  .bg-vitality-blue { background-color: #3498DB !important; }
-
-  .btn-regen {
+  /* BUTTON STYLES WITH YELLOW HOVER */
+  .btn-sync-primary {
     background-color: #3498DB;
     color: white;
     border: none;
     transition: all 0.3s ease;
   }
 
-  .btn-regen:hover {
+  .btn-sync-primary:hover {
     background-color: #ffc107 !important;
     color: #2c4964 !important;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
 
-  .regen-card {
-    border-radius: 20px;
-    background: #ffffff;
-    border: 1px solid #eef2f6;
-    transition: all 0.3s ease;
-    height: 100%;
-  }
-
-  .regen-card:hover {
-    border-color: #ffc107;
-    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
-  }
-
-  .icon-box {
-    width: 60px;
-    height: 60px;
-    background: rgba(52, 152, 219, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .btn-sync-outline {
+    border: 2px solid #3498DB;
     color: #3498DB;
-    margin-bottom: 20px;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .btn-sync-outline:hover {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #2c4964 !important;
+  }
+
+  /* SYNC CARD */
+  .sync-card {
+    border-radius: 20px;
+    background: #ffffff !important;
+    color: #3498DB !important;
+    box-shadow: 0 10px 40px rgba(52, 152, 219, 0.08);
+    padding: 2.5rem;
+    border: 1px solid #eef2f6;
+    transition: border-color 0.3s ease;
+  }
+
+  .sync-card:hover {
+    border-color: #ffc107;
+  }
+
+  .tier-row:hover {
+    background-color: #fff9e6;
+    padding-left: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .check-icon {
+    color: #3498DB;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    margin-top: 3px;
   }
 </style>
 
 <main id="main">
-  <section class="hero-regen pt-5">
+  <section class="hero-light pt-5">
     <div class="container py-5 mt-4">
       <div class="row align-items-center">
-        <div class="col-lg-7 text-center text-lg-start">
-          <h1 class="display-4 fw-bold mb-3 text-vitality-blue">Regenerative Medicine</h1>
-          <h3 class="h4 mb-4 text-secondary">Beyond Survival. Towards Peak Vitality.</h3>
-          <p class="lead mb-4 text-muted">
-            Regenerative medicine at A Healing Heart is about restoring the body's natural balance. We focus on the biological markers that govern your energy, recovery, and long-term resilience.
+        <div class="col-lg-8 text-center text-lg-start">
+          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Regenerative Medicine</h1>
+          <p class="lead mb-4" style="color: #4a5568;">
+            Beyond traditional repair. We focus on the biological environment that governs your energy, recovery speed, and cellular resilience.
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-             <a href="#who-it-is-for" class="btn btn-regen rounded-pill px-5 py-2 fw-bold">Is this for me?</a>
-             <a href="/health-screening" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold" style="color: #3498DB; border-color: #3498DB;">View Wellness Packs</a>
+             <a href="#who-it-is-for" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">Is this for me?</a>
+             <a href="/health-screening" class="btn btn-sync-outline rounded-pill px-5 py-2 fw-bold">View Vitality Tiers</a>
           </div>
         </div>
       </div>
@@ -81,60 +98,70 @@ title: Regenerative Medicine & Vitality | A Healing Heart Medical Clinic
 
   <section id="who-it-is-for" class="py-5 bg-white">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold text-vitality-blue">Who Benefits Most?</h2>
-        <p class="text-muted">Our regenerative pathways are designed for those who refuse to accept "feeling tired" or "aging" as an unchangeable baseline.</p>
-      </div>
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="fw-bold" style="color: #3498DB;">Restoring Your Biological Baseline</h2>
+          <p class="mt-4">Regenerative medicine at A Healing Heart is designed for those who seek to optimize their internal health environment rather than just treating symptoms.</p>
+          
+          <div class="mt-5">
+            <div class="d-flex mb-4">
+              <i class="fa-solid fa-circle-check check-icon"></i>
+              <div>
+                <h6 class="fw-bold mb-1" style="color: #3498DB;">The High-Performer</h6>
+                <p class="small text-muted">For professionals needing to sustain mental clarity and metabolic energy under high-stress conditions.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4">
+              <i class="fa-solid fa-circle-check check-icon"></i>
+              <div>
+                <h6 class="fw-bold mb-1" style="color: #3498DB;">The Longevity Advocate</h6>
+                <p class="small text-muted">For individuals 40+ aiming to preserve bone density, hormonal balance, and systemic resilience.</p>
+              </div>
+            </div>
+            <div class="d-flex">
+              <i class="fa-solid fa-circle-check check-icon"></i>
+              <div>
+                <h6 class="fw-bold mb-1" style="color: #3498DB;">The Post-Illness Reset</h6>
+                <p class="small text-muted">For those looking to restore foundational vitality and nutritional balance after a major health event.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="regen-card p-4">
-            <div class="icon-box"><i class="fa-solid fa-bolt-lightning fa-xl"></i></div>
-            <h5 class="fw-bold">The Peak Performer</h5>
-            <p class="small text-muted">Individuals facing high-stress environments who need to optimize hormonal health, metabolic efficiency, and mental clarity to stay ahead.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="regen-card p-4">
-            <div class="icon-box"><i class="fa-solid fa-hourglass-half fa-xl"></i></div>
-            <h5 class="fw-bold">Proactive Longevity</h5>
-            <p class="small text-muted">Those aged 40+ looking to maintain bone density, muscle mass, and metabolic health through science-backed biological monitoring.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="regen-card p-4">
-            <div class="icon-box"><i class="fa-solid fa-heart-pulse fa-xl"></i></div>
-            <h5 class="fw-bold">Complex Recovery</h5>
-            <p class="small text-muted">Patients recovering from major illness or surgery who require a specialized approach to restore their body's foundational vitality.</p>
+        <div class="col-lg-6">
+          <div class="sync-card">
+            <h4 class="fw-bold mb-3" style="color: #3498DB;">The Gateway to Vitality</h4>
+            <p class="text-muted small mb-4">Regenerative treatment is only effective when guided by precise data. Select a Wellness Pack to begin your assessment:</p>
+            
+            <div class="mb-4">
+              <div class="tier-row d-flex justify-content-between align-items-center border-bottom py-3">
+                <span class="fw-bold">Regenerative Health Pack</span>
+                <a href="/health-screening" class="btn btn-sm btn-light rounded-pill px-3">View Pack</a>
+              </div>
+              <div class="tier-row d-flex justify-content-between align-items-center border-bottom py-3">
+                <span class="fw-bold">Wellness Health Pack</span>
+                <a href="/health-screening" class="btn btn-sm btn-light rounded-pill px-3">View Pack</a>
+              </div>
+            </div>
+            
+            <p class="small text-center text-muted"><em>Proprietary nutritional and hormonal assessments led by Dr. Gerald Thang.</em></p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5" style="background-color: #f1f4f8;">
+  
+
+  <section class="py-5 text-center" style="background-color: #f1f4f8;">
     <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <h2 class="fw-bold text-vitality-blue">Data-Driven Restoration</h2>
-          <p class="mt-4">We don't guess with your health. Our regenerative protocols are anchored in our <strong>Wellness & Regenerative Health Packs</strong>. These screenings look at the inflammatory and hormonal markers that standard check-ups often overlook.</p>
-          <ul class="list-unstyled mt-4">
-            <li class="mb-3"><i class="fa-solid fa-check text-success me-2"></i> Targeted Hormonal Profiling</li>
-            <li class="mb-3"><i class="fa-solid fa-check text-success me-2"></i> Advanced Inflammatory Analysis</li>
-            <li class="mb-3"><i class="fa-solid fa-check text-success me-2"></i> Metabolic Resilience Baseline</li>
-          </ul>
-        </div>
-        <div class="col-lg-6">
-          <div class="p-5 rounded-4 bg-white shadow-sm border-start border-5 border-warning">
-            <h4 class="fw-bold text-vitality-blue">Start Your Vitality Screen</h4>
-            <p class="small text-muted mb-4">Choose the regenerative health pack that aligns with your lifestyle goals.</p>
-            <div class="d-grid gap-3">
-              <a href="/health-screening" class="btn btn-outline-dark rounded-pill fw-bold py-2">Regenerative Health Pack (Peak)</a>
-              <a href="/health-screening" class="btn btn-outline-dark rounded-pill fw-bold py-2">Wellness Health Pack (Optimise)</a>
-            </div>
-            <p class="text-center mt-3 mb-0 small"><a href="/booking" class="text-vitality-blue fw-bold">Or book a consultation with Dr. Gerald &rarr;</a></p>
-          </div>
-        </div>
+      <h2 class="fw-bold mb-4" style="color: #3498DB;">Prioritize Your Future Vitality</h2>
+      <p class="mb-5 text-muted mx-auto" style="max-width: 600px;">
+        Discover the biological markers that are holding you back. Book your regenerative consultation today.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-3 fw-bold shadow">Book Online Now</a>
+        <a href="tel:+6569621362" class="btn btn-sync-outline rounded-pill px-5 py-3 fw-bold">Call 6962 1362</a>
       </div>
     </div>
   </section>
