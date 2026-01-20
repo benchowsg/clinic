@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /health-calculator
-title: Heart Risk & Metabolic Trajectory Calculator | A Healing Heart Medical
+title: Singapore Heart Risk & Metabolic Trajectory Calculator | A Healing Heart Medical
 description: Estimate your cardiovascular risk using Asian-calibrated clinical insights. Understand your health trajectory within the Singapore context.
 ---
 
@@ -18,13 +18,20 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
     border-radius: 50px;
     font-weight: 600;
   }
+  .bp-info-box {
+    background-color: #f8fbfe;
+    border: 1px solid #d1e7ff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+  }
 </style>
 
 <main id="main" class="mt-5 pt-5">
   <section class="py-5">
     <div class="container">
       <div class="section-title text-center mb-5">
-        <h2 class="fw-bold" style="color: #2c4964;">Heart Risk & Trajectory Estimator</h2>
+        <h2 class="fw-bold" style="color: #2c4964;">Singapore Heart Risk & Trajectory Estimator</h2>
         <div class="mt-4 pt-4 border-top">
           <p class="text-muted mt-3 mb-0" style="font-size: 1.05rem; line-height: 1.6; max-width: 850px; margin: 0 auto; text-align: left !important;">
             Our estimator is adapted from the <strong>ACC/AHA Pooled Cohort Equations</strong> and refined for the <strong>Asian phenotype</strong>. In Singapore, factors like ethnicity and lower BMI thresholds significantly impact metabolic risk. Use this tool to visualize your trajectory and build a personalized prevention roadmap.
@@ -38,7 +45,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
             <h5 class="mb-4 fw-bold text-dark"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Your Profile</h5>
             
             <div class="mb-4">
-              <label class="small fw-bold text-muted text-uppercase mb-2" style="letter-spacing: 0.5px;">Ethnicity (Risk Enhancer)</label>
+              <label class="small fw-bold text-muted text-uppercase mb-2" style="letter-spacing: 0.5px;">Ethnicity</label>
               <select id="ethnicity" class="form-select border-2">
                 <option value="chinese">Chinese</option>
                 <option value="malay">Malay</option>
@@ -51,7 +58,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               <label class="small fw-bold text-muted text-uppercase mb-2" style="letter-spacing: 0.5px;">Cholesterol Units</label>
               <div class="btn-group w-100" role="group">
                 <input type="radio" class="btn-check" name="unit" id="unitMmol" checked>
-                <label class="btn btn-outline-primary btn-sm" for="unitMmol">mmol/L (SG Standard)</label>
+                <label class="btn btn-outline-primary btn-sm" for="unitMmol">mmol/L</label>
                 <input type="radio" class="btn-check" name="unit" id="unitMg">
                 <label class="btn btn-outline-primary btn-sm" for="unitMg">mg/dL</label>
               </div>
@@ -63,8 +70,25 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
                 <input type="number" id="age" class="form-control" placeholder="45">
               </div>
               <div class="col-6 mb-3">
-                <label class="form-label fw-semibold">Systolic BP</label>
+                <div class="d-flex justify-content-between">
+                  <label class="form-label fw-semibold">Systolic BP</label>
+                  <button type="button" class="btn btn-link p-0 text-decoration-none small fw-bold" style="font-size: 0.75rem;" onclick="toggleBPInfo()">
+                    <i class="fa-solid fa-circle-info"></i> Info
+                  </button>
+                </div>
                 <input type="number" id="sbp" class="form-control" placeholder="130">
+              </div>
+            </div>
+
+            <div id="bpInfoBox" class="d-none mb-3">
+              <div class="bp-info-box small shadow-sm">
+                <strong>What is Systolic Pressure?</strong>
+                <p class="mb-2 mt-1 text-muted">This is the "top number" on your blood pressure reading. It measures the pressure in your arteries when your heart beats.</p>
+                <ul class="list-unstyled mb-0">
+                  <li><span class="text-success fw-bold">● Normal:</span> 120 or less</li>
+                  <li><span class="text-warning fw-bold">● Elevated:</span> 120-129</li>
+                  <li><span class="text-danger fw-bold">● High (Hypertension):</span> 130 or more</li>
+                </ul>
               </div>
             </div>
 
@@ -186,7 +210,6 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
       </div>
     </div>
   </section>
-  
 
   <section class="py-5 border-top bg-light">
     <div class="container">
@@ -224,6 +247,11 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
 </main>
 
 <script type="text/javascript">
+function toggleBPInfo() {
+    const infoBox = document.getElementById('bpInfoBox');
+    infoBox.classList.toggle('d-none');
+}
+
 function calculateRisk() {
     const age = parseInt(document.getElementById('age').value);
     const tcRaw = parseFloat(document.getElementById('tc').value);
