@@ -43,22 +43,70 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
   </section>
 
   <section class="pb-5">
-    <div class="container">
-      <div class="card border-0 rounded-4 subsidy-banner p-4 shadow-sm">
-        <div class="row align-items-center">
-          <div class="col-md-1 text-center d-none d-md-block">
-            <i class="fa-solid fa-address-card fa-3x opacity-50"></i>
-          </div>
-          <div class="col-md-8">
-            <h5 class="fw-bold mb-1">CHAS, Merdeka & Pioneer Generation Subsidies</h5>
-            <p class="mb-0 opacity-75 small">Eligible Singaporeans pay as little as $0 to $18 for key vaccinations like the Flu Jab. MediSave can also be used for your out-of-pocket costs.</p>
-          </div>
-          <div class="col-md-3 text-md-end mt-3 mt-md-0">
-            <a href="#pricing" class="btn btn-outline-light rounded-pill px-4 btn-sm">Check Eligibility</a>
-          </div>
+<div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+  <div class="card-header p-4" style="background-color: #2c4964; color: white;">
+    <h4 class="mb-0 fw-bold"><i class="fa-solid fa-hand-holding-heart me-2 text-warning"></i>Vaccination Subsidy Checker</h4>
+    <p class="small mb-0 opacity-75">Calculate your out-of-pocket cost based on your CHAS/Generation status</p>
+  </div>
+  
+  <div class="card-body p-4 bg-white">
+    <form id="subsidyForm">
+      <div class="row g-3">
+        <div class="col-md-12">
+          <label class="form-label fw-bold small text-uppercase text-muted">1. Select Your Status</label>
+          <select class="form-select border-2" id="cardType" onchange="calculateSubsidy()">
+            <optgroup label="Priority Generations (High Subsidy)">
+              <option value="PG">Pioneer Generation (PG)</option>
+              <option value="MG">Merdeka Generation (MG)</option>
+            </optgroup>
+            <optgroup label="CHAS Cardholders">
+              <option value="Blue">CHAS Blue</option>
+              <option value="Orange">CHAS Orange</option>
+            </optgroup>
+            <optgroup label="General">
+              <option value="Green">CHAS Green / Non-CHAS</option>
+              <option value="PR">Permanent Resident (PR)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="col-md-12">
+          <label class="form-label fw-bold small text-uppercase text-muted">2. Select Vaccine</label>
+          <select class="form-select border-2" id="vaccineType" onchange="calculateSubsidy()">
+            <option value="flu">Influenza (Flu Jab)</option>
+            <option value="ppsv23">Pneumococcal (PPSV23)</option>
+            <option value="pcv13">Pneumococcal (PCV13)</option>
+            <option value="pcv20">Pneumococcal (PCV20) - Latest Standard</option>
+            <option value="shingrix">Shingles (Shingrix) - Per Dose</option>
+          </select>
         </div>
       </div>
-    </div>
+
+      <div class="mt-4 p-4 rounded-4 border" id="resultBox" style="background-color: #f8fbfe; border-style: dashed !important;">
+        <div class="row align-items-center">
+          <div class="col-sm-7">
+            <span class="text-muted small d-block mb-1" id="statusLabel">Estimated Co-payment:</span>
+            <h2 class="fw-bold mb-0" id="estimatedPrice" style="color: #2c4964;">$0.00</h2>
+          </div>
+          <div class="col-sm-5 text-sm-end mt-3 mt-sm-0">
+            <div id="subsidyBadge" class="badge rounded-pill px-3 py-2" style="background-color: #198754;">Fully Subsidised</div>
+          </div>
+        </div>
+        
+        <div class="mt-3 pt-3 border-top">
+          <p class="extra-small text-muted mb-0" style="font-size: 0.8rem; line-height: 1.4;">
+            <i class="fa-solid fa-circle-info me-1 text-primary"></i> 
+            <span id="eligibilityText">PG & MG patients enjoy $0 co-payment for Flu and PPSV23 at our clinic.</span>
+          </p>
+        </div>
+      </div>
+
+      <a href="/booking" class="btn btn-primary w-100 rounded-pill py-3 fw-bold mt-4 shadow-sm">
+        Book My Vaccination Appointment
+      </a>
+    </form>
+  </div>
+</div>
   </section>
 
   <section class="py-5 bg-light">
@@ -165,3 +213,68 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
     </div>
   </section>
 </main>
+
+
+<script>
+function calculateSubsidy() {
+  const card = document.getElementById('cardType').value;
+  const vaccine = document.getElementById('vaccineType').value;
+  const priceDisplay = document.getElementById('estimatedPrice');
+  const badge = document.getElementById('subsidyBadge');
+  const elText = document.getElementById('eligibilityText');
+  
+  let price = "";
+  let isFull = false;
+
+  // Logic for PG/MG $0 specific vaccines
+  if (card === "PG" || card === "MG") {
+    if (vaccine === "flu" || vaccine === "ppsv23") {
+      price = "$0.00";
+      isFull = true;
+    } else if (vaccine === "pcv13") {
+      price = card === "PG" ? "$16.00" : "$28.00";
+    } else if (vaccine === "pcv20") {
+      price = card === "PG" ? "$17.00" : "$34.00";
+    } else if (vaccine === "shingrix") {
+      price = "$75.00"; // Standard NAIS subsidy cap
+    }
+  } 
+  // Logic for Blue/Orange
+  else if (card === "Blue" || card === "Orange") {
+    const rates = {
+      'flu': '$18.00',
+      'ppsv23': '$18.00',
+      'pcv13': '$43.00',
+      'pcv20': '$34.00',
+      'shingrix': '$75.00'
+    };
+    price = rates[vaccine];
+  }
+  // Logic for Green/PR
+  else {
+    const rates = {
+      'flu': '$35.00',
+      'ppsv23': '$70.00',
+      'pcv13': '$160.00',
+      'pcv20': '$180.00',
+      'shingrix': '$280.00'
+    };
+    price = rates[vaccine];
+  }
+
+  // Update UI
+  priceDisplay.innerText = price;
+  if (isFull) {
+    badge.innerText = "Fully Subsidised";
+    badge.style.backgroundColor = "#198754";
+    elText.innerText = "Pioneer and Merdeka Generation enjoy $0 co-payment for this vaccine under NAIS guidelines.";
+  } else {
+    badge.innerText = "Subsidised Rate";
+    badge.style.backgroundColor = "#0d6efd";
+    elText.innerText = "Rate shown is the capped co-payment for Singapore Citizens. MediSave may be used for PCV and Shingrix.";
+  }
+}
+
+// Initialize on load
+window.onload = calculateSubsidy;
+</script>
