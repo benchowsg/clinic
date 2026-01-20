@@ -105,9 +105,9 @@ title: Vaccinations & Subsidies | A Healing Heart Medical
             <div class="mt-4 p-4 rounded-4 border" id="resultBox" style="background-color: #f8fbfe; border-style: dashed !important;">
               <div class="row align-items-center">
                 <div class="col-sm-7">
-                  <span class="text-muted small d-block mb-1">Clinic Rate (Co-payment):</span>
+                  <span class="text-muted small d-block mb-1">Price Per Dose (Co-payment, if any):</span>
                   <h2 class="fw-bold mb-0 text-corporate-navy" id="estimatedPrice">$0.00</h2>
-                  <small class="text-success fw-bold" id="clinicExclusive" style="display:none;">*Special Clinic Rate for PG/MG at A Healing Heart</small>
+                  <small class="text-success fw-bold" id="clinicExclusive" style="display:none;">*Special Clinic Rate for Pioneer & Merdeka Card Holders at A Healing Heart only.</small>
                 </div>
                 <div class="col-sm-5 text-sm-end mt-3 mt-sm-0">
                   <div id="subsidyBadge" class="badge rounded-pill px-3 py-2" style="background-color: #198754;">Fully Subsidised</div>
@@ -142,7 +142,7 @@ title: Vaccinations & Subsidies | A Healing Heart Medical
               <tr class="vaccine-row">
                 <td class="ps-4 py-3"><strong>Influenza (Flu)</strong></td>
                 <td><small>Annual (1 dose/year)</small></td>
-                <td><span class="status-tag bg-success-subtle text-success">CHAS (PG/MG $0)</span></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS / Medisave</span></td>
               </tr>
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Prevenar 13 (PCV13)</strong></td>
@@ -152,32 +152,32 @@ title: Vaccinations & Subsidies | A Healing Heart Medical
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Pneumovax 23 (PPSV23)</strong></td>
                 <td><small>2nd Dose (1yr after PCV13)</small></td>
-                <td><span class="status-tag bg-success-subtle text-success">CHAS (PG/MG $0)</span></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS / Medisave </span></td>
               </tr>
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Prevenar 20 (PCV20)</strong></td>
                 <td><small>Single Dose (Complete Coverage)</small></td>
-                <td><span class="status-tag bg-success-subtle text-success">CHAS / MediSave</span></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS</span></td>
               </tr>
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Hepatitis B</strong></td>
-                <td><small>3 Doses (0, 2, 6 months)</small></td>
-                <td><span class="status-tag bg-success-subtle text-success">CHAS (PG/MG $0)</span></td>
+                <td><small>Up to 3 Doses (0, 2, 6 months)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS / Medisave</span></td>
               </tr>
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Shingrix (Shingles)</strong></td>
                 <td><small>2 Doses (2-6 months apart)</small></td>
-                <td><span class="status-tag bg-success-subtle text-success">CHAS / MediSave</span></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS</span></td>
               </tr>
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Twinrix (Hep A & B)</strong></td>
                 <td><small>3 Doses (0, 1, 6 months)</small></td>
-                <td><span class="status-tag bg-secondary-subtle text-muted">Private / MediSave*</span></td>
+                <td><span class="status-tag bg-secondary-subtle text-muted">No Subsidy*</span></td>
               </tr>
               <tr class="vaccine-row">
                 <td class="ps-4"><strong>Gardasil 9 (HPV)</strong></td>
                 <td><small>3 Doses (0, 2, 6 months)</small></td>
-                <td><span class="status-tag bg-secondary-subtle text-muted">NCIS / MediSave*</span></td>
+                <td><span class="status-tag bg-secondary-subtle text-muted">No Subsidy*</span></td>
               </tr>
             </tbody>
           </table>
@@ -200,25 +200,25 @@ const criteriaMap = {
   'shingrix': [
     { value: 'age', text: 'Age 60 and above' },
     { value: 'immuno', text: 'Age 18-59 with Immunocompromising conditions' },
-    { value: 'none', text: 'None of the above' }
+    { value: 'none', text: 'None of the above (or with Pre-Diabetes, Hypertension, Hyperlipidemia)' }
   ],
   'hepb': [
-    { value: 'low_antibody', text: 'Documented low/no antibody levels' },
+    { value: 'low_antibody', text: 'Documented low/no antibody levels via blood test' },
     { value: 'none', text: 'Unknown antibody status / Prior 6 doses received' }
   ],
   'default': [
     { value: 'age', text: 'Age 65 and above' },
-    { value: 'chronic', text: 'Have Chronic Condition (Heart, Lung, Kidney, Liver, or Diabetes)' },
-    { value: 'none', text: 'None of the above (e.g. Pre-Diabetes/HTN/HLD only)' }
+    { value: 'chronic', text: 'Have Chronic Condition (Heart, Lung, Kidney, Liver, or Diabetes) or Immunocompromised' },
+    { value: 'none', text: 'None of the above (or with Pre-Diabetes, Hypertension, Hyperlipidemia)' }
   ]
 };
 
 const scheduleMap = {
   'flu': 'Recommended <strong>annually</strong> to protect against seasonal viral mutations.',
   'pcv13': 'Usually the <strong>first dose</strong> of the pneumonia series. Follow with Pneumovax 23 <strong>one year later</strong>.',
-  'ppsv23': 'Usually the <strong>second dose</strong> in the series. Take 1 year after Prevenar 13.',
+  'ppsv23': 'The <strong>second dose</strong> in the series. Taken 1 year after Prevenar 13.',
   'pcv20': 'Latest standard. <strong>One jab only</strong> for protection against 20 strains.',
-  'hepb': 'Requires antibody test first. Schedule is <strong>3 doses (0, 2, and 6 months apart)</strong>. Subsidised up to 6 doses/lifetime.',
+  'hepb': 'Requires Hepatitis B Antibody blood test first. Schedule is up to <strong>3 doses (0, 2, and 6 months apart)</strong>. Subsidised up to 6 doses per lifetime.',
   'shingrix': 'For those who had <strong>Chicken Pox</strong> before. Requires <strong>2 doses</strong>, taken 2-6 months apart.'
 };
 
@@ -265,11 +265,11 @@ function calculateSubsidy() {
   } else {
     const rates = {
       'flu': {'PG':'$0', 'MG':'$0', 'Blue':'$18', 'Orange':'$18', 'Green':'$35'},
-      'ppsv23': {'PG':'$0', 'MG':'$0', 'Blue':'$18', 'Orange':'$18', 'Green':'$70'},
-      'hepb': {'PG':'$0', 'MG':'$0', 'Blue':'$18', 'Orange':'$18', 'Green':'$35'},
-      'pcv13': {'PG':'$16', 'MG':'$28', 'Blue':'$43', 'Orange':'$43', 'Green':'$160'},
+      'ppsv23': {'PG':'$0', 'MG':'$0', 'Blue':'$22', 'Orange':'$22', 'Green':'$43'},
+      'hepb': {'PG':'$0', 'MG':'$0', 'Blue':'$19', 'Orange':'$19', 'Green':'$38'},
+      'pcv13': {'PG':'$16', 'MG':'$31', 'Blue':'$31', 'Orange':'$31', 'Green':'$63'},
       'pcv20': {'PG':'$17', 'MG':'$34', 'Blue':'$34', 'Orange':'$34', 'Green':'$68'},
-      'shingrix': {'PG':'$75', 'MG':'$75', 'Blue':'$75', 'Orange':'$75', 'Green':'$150'}
+      'shingrix': {'PG':'$38', 'MG':'$75', 'Blue':'$75', 'Orange':'$75', 'Green':'$150'}
     };
 
     const finalCard = card === "NA" ? "Green" : card;
