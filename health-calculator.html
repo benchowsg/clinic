@@ -80,17 +80,31 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               </div>
             </div>
 
-            <div id="bpInfoBox" class="d-none mb-3">
-              <div class="bp-info-box small shadow-sm">
-                <strong>What is Systolic Pressure?</strong>
-                <p class="mb-2 mt-1 text-muted">This is the "top number" on your blood pressure reading. It measures the pressure in your arteries when your heart beats.</p>
-                <ul class="list-unstyled mb-0">
-                  <li><span class="text-success fw-bold">● Normal:</span> 120 or less</li>
-                  <li><span class="text-warning fw-bold">● Elevated:</span> 120-129</li>
-                  <li><span class="text-danger fw-bold">● High (Hypertension):</span> 130 or more</li>
-                </ul>
-              </div>
-            </div>
+<div id="bpInfoBox" class="d-none mb-3">
+  <div class="bp-info-box small shadow-sm" style="border-left: 4px solid #3498db;">
+    <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Singapore MOH Clinical Benchmarks</h6>
+    <p class="mb-2 text-muted" style="font-size: 0.8rem;">Systolic pressure measures the force against artery walls during a heartbeat. Local guidelines emphasize tighter control to prevent stroke and heart failure.</p>
+    
+    <ul class="list-unstyled mb-0" style="font-size: 0.8rem;">
+      <li class="d-flex justify-content-between mb-1">
+        <span><i class="fa-solid fa-circle text-success me-1" style="font-size: 0.5rem;"></i> Optimal</span>
+        <span class="fw-bold">&lt; 120 mmHg</span>
+      </li>
+      <li class="d-flex justify-content-between mb-1">
+        <span><i class="fa-solid fa-circle text-warning me-1" style="font-size: 0.5rem;"></i> Normal/High-Normal</span>
+        <span class="fw-bold">120 – 129 mmHg</span>
+      </li>
+      <li class="d-flex justify-content-between text-danger fw-bold">
+        <span><i class="fa-solid fa-circle me-1" style="font-size: 0.5rem;"></i> Hypertension</span>
+        <span>130+ mmHg</span>
+      </li>
+    </ul>
+    <hr class="my-2">
+    <p class="extra-small text-muted mb-0" style="font-size: 0.7rem; font-style: italic;">
+      Note: For patients with Diabetes or Kidney Disease, MOH recommends a target of &lt; 130/80 mmHg.
+    </p>
+  </div>
+</div>
 
             <div class="row">
               <div class="col-6 mb-3">
@@ -230,8 +244,9 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
             <div class="col-md-6">
               <h6 class="fw-bold small text-muted text-uppercase mb-2">Clinical References</h6>
               <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
-                <li class="mb-2">1. MOH Singapore: Clinical Practice Guidelines on Lipid Management.</li>
+                <li class="mb-2">1. MOH Singapore: Clinical Practice Guidelines on Hypertension and Lipid Management.</li>
                 <li class="mb-2">2. WHO Expert Consultation: BMI thresholds for Asian populations.</li>
+                <li class="mb-2">3. Singapore Heart Foundation Hypertension Management Standards.</li>
               </ul>
             </div>
           </div>
