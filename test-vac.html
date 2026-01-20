@@ -1,8 +1,7 @@
 ---
 layout: default
-permalink: /test-vac
-title: Subsidised Vaccinations (CHAS & MediSave) | A Healing Heart Medical
-description: Access subsidised vaccinations under NAIS and NCIS at A Healing Heart Medical. We provide Influenza, PCV20, Shingrix, and more for Singaporeans.
+permalink: /vaccination
+title: Vaccinations & Subsidies | A Healing Heart Medical
 ---
 
 <style>  
@@ -11,16 +10,8 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
     letter-spacing: normal !important;
   }
 
-  .vaccine-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #f0f0f0 !important;
-    background: #fff;
-  }
-  
-  .vaccine-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
-    border-color: #3498db !important;
+  .vaccine-row:hover {
+    background-color: #f8fbfe;
   }
 
   .bg-corporate-navy {
@@ -30,14 +21,29 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
   .text-corporate-navy {
     color: #2c4964 !important;
   }
+
+  .recommendation-box {
+    background-color: #fff9db;
+    border-left: 4px solid #fcc419;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .status-tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+  }
 </style>
 
 <main id="main" class="mt-5 pt-5 text-start">
   <section class="py-5">
     <div class="container">
-       <h1 class="fw-bold text-corporate-navy">Vaccination</h1>
+       <h1 class="fw-bold text-corporate-navy">Our Vaccinations</h1>
       <p class="text-muted mt-3" style="max-width: 800px;">
-        Preventive health starts with protection. As a <strong>CHAS and MediSave-accredited</strong> clinic, we offer a comprehensive range of subsidised vaccinations for adults and children.
+        We provide a full suite of vaccinations for adults and children. As a <strong>CHAS & MediSave-accredited</strong> clinic, we help you maximize your subsidies for essential protection.
       </p>
     </div>
   </section>
@@ -45,9 +51,8 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
   <section class="pb-5">
     <div class="container">
       <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
-        <div class="card-header p-4 bg-corporate-navy text-white">
-          <h4 class="mb-0 fw-bold"><i class="fa-solid fa-clipboard-check me-2 text-warning"></i>Vaccination Subsidy Checker</h4>
-          <p class="small mb-0 opacity-75">Singapore Ministry of Health (MOH) Subsidy Framework</p>
+        <div class="card-header p-4 bg-corporate-navy text-white text-center">
+          <h4 class="mb-0 fw-bold"><i class="fa-solid fa-calculator me-2 text-warning"></i>Clinic Subsidy & Schedule Estimator</h4>
         </div>
         
         <div class="card-body p-4 bg-white">
@@ -57,11 +62,11 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
                 <label class="form-label fw-bold small text-muted">1. SELECT VACCINE</label>
                 <select class="form-select border-2" id="vaccineType" onchange="updateCriteriaOptions(); calculateSubsidy();">
                   <option value="flu">Influenza (Flu Jab)</option>
-                  <option value="ppsv23">Pneumococcal (PPSV23)</option>
-                  <option value="pcv13">Pneumococcal (PCV13)</option>
-                  <option value="pcv20">Pneumococcal (PCV20) - Latest Standard</option>
-                  <option value="shingrix">Shingles (Shingrix) - Per Dose</option>
-                  <option value="hepb">Hepatitis B (Dose 1-3)</option>
+                  <option value="pcv13">Prevenar 13 (Pneumococcal)</option>
+                  <option value="ppsv23">Pneumovax 23 (Pneumococcal)</option>
+                  <option value="pcv20">Prevenar 20 (Latest Pneumococcal)</option>
+                  <option value="shingrix">Shingrix (Shingles)</option>
+                  <option value="hepb">Hepatitis B</option>
                 </select>
               </div>
 
@@ -91,7 +96,7 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
               </div>
 
               <div class="col-md-12">
-                <label class="form-label fw-bold small text-muted">4. DO YOU MEET THE ELIGIBILITY CRITERIA?</label>
+                <label class="form-label fw-bold small text-muted">4. ELIGIBILITY CRITERIA</label>
                 <select class="form-select border-2" id="medicalCriteria" onchange="calculateSubsidy()">
                   </select>
               </div>
@@ -100,32 +105,97 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
             <div class="mt-4 p-4 rounded-4 border" id="resultBox" style="background-color: #f8fbfe; border-style: dashed !important;">
               <div class="row align-items-center">
                 <div class="col-sm-7">
-                  <span class="text-muted small d-block mb-1">Estimated Co-payment:</span>
+                  <span class="text-muted small d-block mb-1">Clinic Rate (Co-payment):</span>
                   <h2 class="fw-bold mb-0 text-corporate-navy" id="estimatedPrice">$0.00</h2>
+                  <small class="text-success fw-bold" id="clinicExclusive" style="display:none;">*Special Clinic Rate for PG/MG at A Healing Heart</small>
                 </div>
                 <div class="col-sm-5 text-sm-end mt-3 mt-sm-0">
                   <div id="subsidyBadge" class="badge rounded-pill px-3 py-2" style="background-color: #198754;">Fully Subsidised</div>
                 </div>
               </div>
               
-              <div class="mt-3 pt-3 border-top">
-                <div id="clinicalNote" class="small text-dark" style="line-height: 1.5;"></div>
+              <div class="recommendation-box">
+                <h6 class="fw-bold mb-1" style="color: #856404;"><i class="fa-solid fa-clock me-2"></i>Dosage & Schedule</h6>
+                <div id="scheduleText" class="small" style="color: #856404; line-height: 1.4;"></div>
               </div>
             </div>
-
-            <a href="/booking" class="btn btn-primary w-100 rounded-pill py-3 fw-bold mt-4 shadow-sm">
-              Book Vaccination Appointment
-            </a>
           </form>
         </div>
       </div>
     </div>
   </section>
-  
-  </main>
+
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h3 class="fw-bold text-corporate-navy mb-4 text-center">Vaccine Directory</h3>
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="table-responsive">
+          <table class="table align-middle mb-0">
+            <thead class="bg-corporate-navy text-white">
+              <tr>
+                <th class="ps-4 py-3">Vaccine Name</th>
+                <th>Doses / Schedule</th>
+                <th>Subsidies</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="vaccine-row">
+                <td class="ps-4 py-3"><strong>Influenza (Flu)</strong></td>
+                <td><small>Annual (1 dose/year)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS (PG/MG $0)</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Prevenar 13 (PCV13)</strong></td>
+                <td><small>1st Dose (Follow with PPSV23 after 1yr)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS / MediSave</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Pneumovax 23 (PPSV23)</strong></td>
+                <td><small>2nd Dose (1yr after PCV13)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS (PG/MG $0)</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Prevenar 20 (PCV20)</strong></td>
+                <td><small>Single Dose (Complete Coverage)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS / MediSave</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Hepatitis B</strong></td>
+                <td><small>3 Doses (0, 2, 6 months)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS (PG/MG $0)</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Shingrix (Shingles)</strong></td>
+                <td><small>2 Doses (2-6 months apart)</small></td>
+                <td><span class="status-tag bg-success-subtle text-success">CHAS / MediSave</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Twinrix (Hep A & B)</strong></td>
+                <td><small>3 Doses (0, 1, 6 months)</small></td>
+                <td><span class="status-tag bg-secondary-subtle text-muted">Private / MediSave*</span></td>
+              </tr>
+              <tr class="vaccine-row">
+                <td class="ps-4"><strong>Gardasil 9 (HPV)</strong></td>
+                <td><small>3 Doses (0, 2, 6 months)</small></td>
+                <td><span class="status-tag bg-secondary-subtle text-muted">NCIS / MediSave*</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mt-3 small text-muted text-center">*MediSave use for Twinrix/Gardasil is subject to patient age and MOH limits.</p>
+    </div>
+  </section>
+
+  <section class="py-5 bg-white border-top">
+    <div class="container text-center">
+      <h5 class="fw-bold mb-3 text-corporate-navy">Ready for your vaccination?</h5>
+      <a href="/booking" class="btn btn-primary rounded-pill px-5 py-3 shadow-sm fw-bold">Book My Appointment</a>
+    </div>
+  </section>
+</main>
 
 <script>
-// Define criteria options based on vaccine
 const criteriaMap = {
   'shingrix': [
     { value: 'age', text: 'Age 60 and above' },
@@ -143,11 +213,19 @@ const criteriaMap = {
   ]
 };
 
+const scheduleMap = {
+  'flu': 'Recommended <strong>annually</strong> to protect against seasonal viral mutations.',
+  'pcv13': 'Usually the <strong>first dose</strong> of the pneumonia series. Follow with Pneumovax 23 <strong>one year later</strong>.',
+  'ppsv23': 'Usually the <strong>second dose</strong> in the series. Take 1 year after Prevenar 13.',
+  'pcv20': 'Latest standard. <strong>One jab only</strong> for protection against 20 strains.',
+  'hepb': 'Requires antibody test first. Schedule is <strong>3 doses (0, 2, and 6 months apart)</strong>. Subsidised up to 6 doses/lifetime.',
+  'shingrix': 'For those who had <strong>Chicken Pox</strong> before. Requires <strong>2 doses</strong>, taken 2-6 months apart.'
+};
+
 function updateCriteriaOptions() {
   const vaccine = document.getElementById('vaccineType').value;
   const criteriaSelect = document.getElementById('medicalCriteria');
   const options = criteriaMap[vaccine] || criteriaMap['default'];
-  
   criteriaSelect.innerHTML = options.map(opt => `<option value="${opt.value}">${opt.text}</option>`).join('');
 }
 
@@ -155,17 +233,14 @@ function toggleCardStatus() {
   const citizen = document.getElementById('citizenship').value;
   const cardSelect = document.getElementById('cardType');
   const naOption = document.getElementById('optNA');
-  
   if (citizen !== "SC") {
     naOption.style.display = "block";
     cardSelect.value = "NA";
     cardSelect.disabled = true;
-    cardSelect.classList.add('bg-light');
   } else {
     naOption.style.display = "none";
     if (cardSelect.value === "NA") cardSelect.value = "PG";
     cardSelect.disabled = false;
-    cardSelect.classList.remove('bg-light');
   }
 }
 
@@ -177,58 +252,40 @@ function calculateSubsidy() {
   
   const priceDisplay = document.getElementById('estimatedPrice');
   const badge = document.getElementById('subsidyBadge');
-  const noteArea = document.getElementById('clinicalNote');
+  const scheduleArea = document.getElementById('scheduleText');
+  const exclusiveText = document.getElementById('clinicExclusive');
 
-  let price = "";
-  let badgeColor = "#0d6efd";
-  let badgeText = "Subsidised Rate";
-  let clinicalMsg = "";
+  scheduleArea.innerHTML = scheduleMap[vaccine] || "Consult our doctor for the recommended schedule.";
 
-  if (citizen !== "SC") {
-    price = "Private Rate";
-    badgeText = "No CHAS Subsidy";
-    badgeColor = "#6c757d";
-    clinicalMsg = `CHAS/NAIS subsidies are for Singapore Citizens only. PRs & Foreigners may use MediSave for specific vaccines.`;
-  } 
-  else if (medical === 'none') {
-    price = "Private Rate";
-    badgeText = "Criteria Not Met";
-    badgeColor = "#dc3545";
-    clinicalMsg = `Per MOH guidelines, pre-diabetes, hypertension, or hyperlipidemia alone do not qualify for adult vaccination subsidies.`;
-  }
-  else {
-    // Pricing logic
+  if (citizen !== "SC" || medical === 'none') {
+    priceDisplay.innerText = "Private Rate";
+    badge.innerText = (citizen !== "SC") ? "No CHAS" : "No Subsidy";
+    badge.style.backgroundColor = "#6c757d";
+    exclusiveText.style.display = "none";
+  } else {
     const rates = {
       'flu': {'PG':'$0', 'MG':'$0', 'Blue':'$18', 'Orange':'$18', 'Green':'$35'},
       'ppsv23': {'PG':'$0', 'MG':'$0', 'Blue':'$18', 'Orange':'$18', 'Green':'$70'},
+      'hepb': {'PG':'$0', 'MG':'$0', 'Blue':'$18', 'Orange':'$18', 'Green':'$35'},
       'pcv13': {'PG':'$16', 'MG':'$28', 'Blue':'$43', 'Orange':'$43', 'Green':'$160'},
       'pcv20': {'PG':'$17', 'MG':'$34', 'Blue':'$34', 'Orange':'$34', 'Green':'$68'},
-      'shingrix': {'PG':'$75', 'MG':'$75', 'Blue':'$75', 'Orange':'$75', 'Green':'$150'},
-      'hepb': {'PG':'$9', 'MG':'$18', 'Blue':'$18', 'Orange':'$18', 'Green':'$35'}
+      'shingrix': {'PG':'$75', 'MG':'$75', 'Blue':'$75', 'Orange':'$75', 'Green':'$150'}
     };
 
     const finalCard = card === "NA" ? "Green" : card;
-    price = (rates[vaccine][finalCard] === '$0') ? "$0.00" : (rates[vaccine][finalCard] || "Private");
+    const rawPrice = rates[vaccine][finalCard];
+    priceDisplay.innerText = (rawPrice === '$0') ? "$0.00" : rawPrice;
     
-    if (price === "$0.00") {
-      badgeText = "Fully Subsidised";
-      badgeColor = "#198754";
-    }
-
-    // Specific messages
-    if (vaccine === 'hepb') {
-      clinicalMsg = `Requires antibody test proof. Lifetime max 6 doses.`;
-    } else if (vaccine === 'shingrix') {
-      clinicalMsg = `Subsidies apply for seniors 60+ or immunocompromised adults.`;
+    if (rawPrice === '$0') {
+      badge.innerText = "Fully Subsidised";
+      badge.style.backgroundColor = "#198754";
+      exclusiveText.style.display = "block";
     } else {
-      clinicalMsg = `Subsidised rate for eligible Singapore Citizens.`;
+      badge.innerText = "Subsidised Rate";
+      badge.style.backgroundColor = "#0d6efd";
+      exclusiveText.style.display = "none";
     }
   }
-
-  priceDisplay.innerText = price;
-  badge.innerText = badgeText;
-  badge.style.backgroundColor = badgeColor;
-  noteArea.innerHTML = clinicalMsg;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
