@@ -1,12 +1,11 @@
 ---
 layout: default
-permalink: /test-vac
+permalink: /vaccination
 title: Subsidised Vaccinations (CHAS & MediSave) | A Healing Heart Medical
 description: Access subsidised vaccinations under NAIS and NCIS at A Healing Heart Medical. We provide Influenza, PCV20, Shingrix, and more for Singaporeans.
 ---
 
 <style>  
-  /* Resetting unwanted transformations */
   #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a, #main select, #main option {
     text-transform: none !important;
     letter-spacing: normal !important;
@@ -33,17 +32,12 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
     font-size: 1.25rem;
   }
 
-  /* Matching your corporate navy */
   .bg-corporate-navy {
     background-color: #2c4964 !important;
   }
 
   .text-corporate-navy {
     color: #2c4964 !important;
-  }
-
-  .border-corporate {
-    border-color: #2c4964 !important;
   }
 </style>
 
@@ -70,7 +64,7 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label fw-bold small text-muted">CITIZENSHIP</label>
-                <select class="form-select border-2" id="citizenship" onchange="calculateSubsidy()">
+                <select class="form-select border-2" id="citizenship" onchange="toggleCardStatus(); calculateSubsidy();">
                   <option value="SC">Singapore Citizen</option>
                   <option value="PR">Permanent Resident</option>
                   <option value="Foreigner">Foreigner</option>
@@ -80,11 +74,12 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
               <div class="col-md-6">
                 <label class="form-label fw-bold small text-muted">CHAS / GENERATION CARD</label>
                 <select class="form-select border-2" id="cardType" onchange="calculateSubsidy()">
-                  <optgroup label="Priority Generations">
+                  <option value="NA" id="optNA" style="display:none;">Not Applicable</option>
+                  <optgroup label="Priority Generations" id="grpPriority">
                     <option value="PG">Pioneer Generation (PG)</option>
                     <option value="MG">Merdeka Generation (MG)</option>
                   </optgroup>
-                  <optgroup label="CHAS Card">
+                  <optgroup label="CHAS Card" id="grpChas">
                     <option value="Blue">CHAS Blue</option>
                     <option value="Orange">CHAS Orange</option>
                     <option value="Green">CHAS Green / None</option>
@@ -142,95 +137,28 @@ description: Access subsidised vaccinations under NAIS and NCIS at A Healing Hea
     </div>
   </section>
 
-  <section class="py-5 bg-light">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 vaccine-card">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div class="icon-box bg-primary-subtle p-3 rounded-3 text-primary"><i class="fa-solid fa-virus"></i></div>
-              <span class="badge bg-success-subtle text-success rounded-pill px-3">Annual</span>
-            </div>
-            <h5 class="fw-bold text-corporate-navy">Influenza (Flu)</h5>
-            <p class="small text-muted mb-4">Recommended annually for high-risk groups to protect against evolving viral strains.</p>
-            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-              <span class="small text-muted fw-bold">CHAS Subsidised</span>
-              <i class="fa-solid fa-circle-check text-success"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 vaccine-card">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div class="icon-box bg-info-subtle p-3 rounded-3 text-info"><i class="fa-solid fa-lungs"></i></div>
-              <span class="badge bg-primary-subtle text-primary rounded-pill px-3">New Standard</span>
-            </div>
-            <h5 class="fw-bold text-corporate-navy">Pneumococcal (PCV20)</h5>
-            <p class="small text-muted mb-4">Broad-spectrum protection against 20 strains of pneumonia. Highly recommended for cardiac patients.</p>
-            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-              <span class="small text-muted fw-bold">MediSave Eligible</span>
-              <i class="fa-solid fa-circle-check text-success"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4 p-4 vaccine-card">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div class="icon-box bg-danger-subtle p-3 rounded-3 text-danger"><i class="fa-solid fa-shield-halved"></i></div>
-              <span class="badge bg-warning-subtle text-warning rounded-pill px-3">2-Dose Series</span>
-            </div>
-            <h5 class="fw-bold text-corporate-navy">Shingles (Shingrix)</h5>
-            <p class="small text-muted mb-4">90%+ effective in preventing shingles and post-herpetic neuralgia in seniors.</p>
-            <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-              <span class="small text-muted fw-bold">Subsidies Available</span>
-              <i class="fa-solid fa-circle-check text-success"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="py-5 bg-white">
-    <div class="container">
-      <div class="mb-4">
-        <h4 class="fw-bold text-corporate-navy">Out-of-Pocket Estimates</h4>
-        <p class="text-muted small">Capped subsidised rates for Singapore Citizens at CHAS clinics.</p>
-      </div>
-      <div class="card border-0 shadow-sm rounded-4 overflow-hidden border">
-        <div class="table-responsive">
-          <table class="table mb-0 align-middle">
-            <thead class="bg-light">
-              <tr class="small text-muted text-uppercase">
-                <th class="ps-4 py-3">Vaccine Type</th>
-                <th>PG / MG / CHAS Blue</th>
-                <th>CHAS Orange</th>
-                <th>Non-CHAS / Others</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="ps-4 py-3 fw-bold">Influenza (Flu)</td><td>$0 - $9</td><td>$18</td><td>$35</td></tr>
-              <tr><td class="ps-4 py-3 fw-bold">PPSV23 / PCV20</td><td>$0 - $34</td><td>$18 - $34</td><td>$70 - $130</td></tr>
-              <tr><td class="ps-4 py-3 fw-bold">Shingrix (per dose)</td><td>$75</td><td>$75</td><td>$150 - $280</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-5 bg-white border-top">
-    <div class="container text-center">
-      <h5 class="fw-bold mb-3 text-corporate-navy">Unsure which vaccine you need?</h5>
-      <p class="text-muted mb-4 small">Our doctors can review your immunisation records via HealthHub to recommend the right schedule for you.</p>
-      <a href="/booking" class="btn btn-dark rounded-pill px-5 py-3 shadow-sm">Book a Consultation</a>
-    </div>
-  </section>
-</main>
+  </main>
 
 <script>
+// Function to handle the auto-switching of the Card dropdown
+function toggleCardStatus() {
+  const citizen = document.getElementById('citizenship').value;
+  const cardSelect = document.getElementById('cardType');
+  const naOption = document.getElementById('optNA');
+  
+  if (citizen !== "SC") {
+    naOption.style.display = "block";
+    cardSelect.value = "NA";
+    cardSelect.disabled = true;
+    cardSelect.classList.add('bg-light');
+  } else {
+    naOption.style.display = "none";
+    if (cardSelect.value === "NA") cardSelect.value = "PG";
+    cardSelect.disabled = false;
+    cardSelect.classList.remove('bg-light');
+  }
+}
+
 function calculateSubsidy() {
   const citizen = document.getElementById('citizenship').value;
   const card = document.getElementById('cardType').value;
@@ -246,35 +174,30 @@ function calculateSubsidy() {
   let badgeText = "Subsidised Rate";
   let clinicalMsg = "";
 
-  // 1. GATEKEEPER: Citizenship
   if (citizen !== "SC") {
     price = "Private Rate";
     badgeText = "No CHAS Subsidy";
     badgeColor = "#6c757d";
     clinicalMsg = `<span class="text-danger fw-bold">Note:</span> CHAS/NAIS subsidies are for Singapore Citizens only. PRs & Foreigners pay private rates but may use MediSave if eligible.`;
   } 
-  // 2. GATEKEEPER: Medical Condition
   else if (medical === "none" && vaccine !== "hepb") {
     price = "Private Rate";
     badgeText = "Criteria Not Met";
     badgeColor = "#dc3545";
     clinicalMsg = `<span class="text-danger fw-bold">Criteria Alert:</span> Per MOH guidelines, Pre-Diabetes, Hypertension, or Hyperlipidemia alone do not qualify for vaccination subsidies. You must be 65+ or have a qualifying chronic condition.`;
   }
-  // 3. LOGIC: Hepatitis B
   else if (vaccine === "hepb") {
     if (card === "PG") price = "$0.00 - $9.00";
-    else if (card === "MG" || card === "Blue") price = "$18.00";
+    else if (card === "MG" || card === "Blue" || card === "Orange") price = "$18.00";
     else price = "$35.00";
     clinicalMsg = `<strong>Hepatitis B Clause:</strong> Requires antibody test proof of low levels. Lifetime max of 6 subsidised doses (including childhood).`;
   }
-  // 4. LOGIC: PG/MG $0 Specials
   else if ((card === "PG" || card === "MG") && (vaccine === "flu" || vaccine === "ppsv23")) {
     price = "$0.00";
     badgeText = "Fully Subsidised";
     badgeColor = "#198754";
     clinicalMsg = `Pioneer & Merdeka Generation enjoy $0 co-payment for Flu and PPSV23 when meeting clinical criteria.`;
   }
-  // 5. GENERAL CHAS RATES
   else {
     const rates = {
       'flu': {'PG':'$9', 'MG':'$18', 'Blue':'$18', 'Orange':'$18', 'Green':'$35'},
@@ -283,7 +206,9 @@ function calculateSubsidy() {
       'pcv20': {'PG':'$17', 'MG':'$34', 'Blue':'$34', 'Orange':'$34', 'Green':'$68'},
       'shingrix': {'PG':'$75', 'MG':'$75', 'Blue':'$75', 'Orange':'$75', 'Green':'$150'}
     };
-    price = "$" + rates[vaccine][card];
+    // Safety check for NA value
+    const finalCard = card === "NA" ? "Green" : card;
+    price = "$" + (rates[vaccine][finalCard] || "Private");
     clinicalMsg = `Subsidised rate for Singapore Citizens meeting NAIS age or medical criteria.`;
   }
 
@@ -293,5 +218,8 @@ function calculateSubsidy() {
   noteArea.innerHTML = clinicalMsg;
 }
 
-document.addEventListener('DOMContentLoaded', calculateSubsidy);
+document.addEventListener('DOMContentLoaded', function() {
+  toggleCardStatus();
+  calculateSubsidy();
+});
 </script>
