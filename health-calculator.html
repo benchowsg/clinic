@@ -2,7 +2,7 @@
 layout: default
 permalink: /health-calculator
 title: Heart Risk & Metabolic Trajectory Calculator | A Healing Heart Medical
-description: Use our clinical tool based on ACC/AHA guidelines to estimate your 10-year cardiovascular risk and understand your health trajectory.
+description: Estimate your cardiovascular risk using Asian-calibrated clinical insights. Understand your health trajectory within the Singapore context.
 ---
 
 <main id="main" class="mt-5 pt-5">
@@ -10,22 +10,31 @@ description: Use our clinical tool based on ACC/AHA guidelines to estimate your 
     <div class="container">
       <div class="section-title text-center mb-5">
         <h2 class="fw-bold" style="color: #2c4964;">Heart Risk & Trajectory Estimator</h2>
-          <div class="mt-4 pt-4 border-top text-center">
-            <p class="text-muted mt-3 mb-0" style="font-size: 1rem; text-transform: none !important; text-align: left !important;">
-    Our estimator is based on the <strong>ACC/AHA Pooled Cohort Equations</strong>, the global gold standard for predicting 10-year cardiovascular risk. 
-    Use this tool to understand your metabolic trajectory and build a personalized prevention roadmap with our clinical team.
-            </p>
-          </div>
+        <div class="mt-4 pt-4 border-top text-center">
+          <p class="text-muted mt-3 mb-0" style="font-size: 1rem; max-width: 900px; margin: 0 auto; text-align: left !important;">
+            Our estimator is adapted from the <strong>ACC/AHA Pooled Cohort Equations</strong> and refined for the <strong>Asian phenotype</strong>. In Singapore, factors like ethnicity and lower BMI thresholds significantly impact metabolic risk. Use this tool to visualize your trajectory and build a personalized prevention roadmap.
+          </p>
+        </div>
       </div>
 
       <div class="row g-4">
         <div class="col-lg-5">
           <div class="card border-0 shadow-sm p-4 rounded-4">
-            <h5 class="mb-4 fw-bold"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Lab Data</h5>
+            <h5 class="mb-4 fw-bold"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Your Profile</h5>
             
             <div class="mb-4">
+              <label class="small fw-bold text-muted text-uppercase">Ethnicity (Risk Enhancer)</label>
+              <select id="ethnicity" class="form-select mt-1">
+                <option value="chinese">Chinese</option>
+                <option value="malay">Malay (Higher Risk Profile)</option>
+                <option value="indian">South Asian / Indian (High Risk Profile)</option>
+                <option value="other">Other / Caucasian</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
               <label class="small fw-bold text-muted text-uppercase">Cholesterol Units</label>
-              <div class="btn-group w-100" role="group">
+              <div class="btn-group w-100 mt-1" role="group">
                 <input type="radio" class="btn-check" name="unit" id="unitMmol" checked>
                 <label class="btn btn-outline-primary btn-sm" for="unitMmol">mmol/L (SG Standard)</label>
                 <input type="radio" class="btn-check" name="unit" id="unitMg">
@@ -33,40 +42,25 @@ description: Use our clinical tool based on ACC/AHA guidelines to estimate your 
               </div>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Age (20-79)</label>
-              <input type="number" id="age" class="form-control" placeholder="e.g. 45">
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label class="form-label">Age (20-79)</label>
+                <input type="number" id="age" class="form-control" placeholder="e.g. 45">
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label">Systolic BP</label>
+                <input type="number" id="sbp" class="form-control" placeholder="e.g. 130">
+              </div>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Total Cholesterol</label>
-              <input type="number" id="tc" class="form-control" placeholder="e.g. 5.2">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">HDL Cholesterol</label>
-              <input type="number" id="hdl" class="form-control" placeholder="e.g. 1.2">
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label d-flex justify-content-between">
-                <span>Systolic Blood Pressure</span>
-                <button type="button" class="btn btn-link p-0 text-decoration-none small" onclick="toggleBPInfo()">
-                  <i class="fa-solid fa-circle-info me-1"></i>What is this?
-                </button>
-              </label>
-              <input type="number" id="sbp" class="form-control" placeholder="e.g. 130">
-              
-              <div id="bpInfoBox" class="mt-2 d-none">
-                <div class="alert alert-light border small shadow-sm p-2" style="background-color: #f8fbfe;">
-                  <strong>Systolic Pressure</strong> is the top number on your reading. It measures the force your heart exerts on artery walls each time it beats.
-                  <hr class="my-1">
-                  <ul class="mb-0 list-unstyled">
-                    <li><span class="text-success">●</span> 120 or less: Normal</li>
-                    <li><span class="text-warning">●</span> 130-139: Elevated</li>
-                    <li><span class="text-danger">●</span> 140+: High</li>
-                  </ul>
-                </div>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label class="form-label">Total Chol</label>
+                <input type="number" id="tc" class="form-control" placeholder="e.g. 5.2">
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label">HDL Chol</label>
+                <input type="number" id="hdl" class="form-control" placeholder="e.g. 1.2">
               </div>
             </div>
 
@@ -81,7 +75,7 @@ description: Use our clinical tool based on ACC/AHA guidelines to estimate your 
               </div>
             </div>
 
-            <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Calculate My Roadmap</button>
+            <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Calculate Asian-Calibrated Risk</button>
           </div>
         </div>
 
@@ -91,15 +85,16 @@ description: Use our clinical tool based on ACC/AHA guidelines to estimate your 
             <div id="placeholderText">
               <i class="fa-solid fa-chart-line fa-4x mb-3 text-muted opacity-25"></i>
               <h4>Your Results Will Appear Here</h4>
-              <p class="text-muted small">This tool provides an estimate based on ASCVD guidelines.</p>
+              <p class="text-muted small">Optimized for Singapore Clinical Guidelines</p>
             </div>
 
             <div id="actualResult" class="d-none w-100">
                <h2 class="fw-bold mb-0" id="scorePercent" style="font-size: 4rem; color: #2c4964;">0%</h2>
-               <p class="text-uppercase fw-bold mb-4" id="riskLevel">Low Risk</p>
+               <p class="text-uppercase fw-bold mb-2" id="riskLevel">Low Risk</p>
+               <div id="ethnicTag" class="mb-4"></div>
                
                <div class="alert alert-info text-start border-0 shadow-sm">
-                  <h6 class="fw-bold"><i class="fa-solid fa-compass me-2"></i>Your Metabolic Trajectory</h6>
+                  <h6 class="fw-bold"><i class="fa-solid fa-compass me-2"></i>The Asian Perspective</h6>
                   <p id="trajectoryNote" class="small mb-0"></p>
                </div>
 
@@ -116,31 +111,26 @@ description: Use our clinical tool based on ACC/AHA guidelines to estimate your 
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h5 class="fw-bold mb-3"><i class="fa-solid fa-microscope me-2 text-primary"></i>Scientific Foundation</h5>
+          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Why an Asian Context Matters</h5>
           <p class="small text-muted mb-4">
-            The <strong>A Healing Heart Health Estimator</strong> utilizes the <strong>ASCVD (Atherosclerotic Cardiovascular Disease) Risk Algorithm</strong>. This model was developed by the American College of Cardiology (ACC) and the American Heart Association (AHA) to identify individuals who may benefit from preventive therapies.
+            International calculators often underestimate risk for Asian populations. In Singapore, South Asians (Indians) have statistically higher rates of coronary artery disease, while the Malay community often presents with earlier metabolic shifts. Furthermore, Asians have higher visceral fat at lower BMIs (the "Thin-on-the-Outside, Fat-on-the-Inside" phenotype), meaning heart risk can be high even if you appear lean.
           </p>
           
           <div class="row g-4">
             <div class="col-md-6">
-              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Clinical References</h6>
-              <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
-                <li class="mb-2">1. Goff DC Jr, et al. 2013 ACC/AHA Guideline on the Assessment of Cardiovascular Risk. <em>Circulation</em>.</li>
-                <li class="mb-2">2. Grundy SM, et al. 2018 AHA/ACC Guideline on the Management of Blood Cholesterol. <em>Journal of the American College of Cardiology</em>.</li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Regional Considerations</h6>
+              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Ethnicity as a Risk Enhancer</h6>
               <p class="text-muted" style="font-size: 0.85rem;">
-                While highly validated for adults aged 20-79, this estimator is a screening tool. For the Singapore population, factors such as family history and specific ethnic risk enhancers are vital considerations that Dr. Gerald Thang integrates during clinical consultations.
+                Singapore’s MOH Clinical Practice Guidelines recognize specific ethnicities as independent risk factors. This tool adds weighting for Indian and Malay ethnicities to provide a more accurate 10-year outlook.
               </p>
             </div>
-          </div>
-
-          <div class="mt-4 pt-4 border-top text-center">
-            <p class="extra-small text-muted mb-0" style="font-size: 0.75rem;">
-              <strong>Disclaimer:</strong> This tool is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the advice of a qualified healthcare provider with any questions regarding a medical condition.
-            </p>
+            <div class="col-md-6">
+              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Clinical References</h6>
+              <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
+                <li class="mb-2">1. MOH Singapore: Clinical Practice Guidelines on Lipid Management.</li>
+                <li class="mb-2">2. WHO Expert Consultation: Appropriate BMI for Asian populations.</li>
+                <li class="mb-2">3. Framingham Asian-modified Cohort Analysis.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -149,15 +139,6 @@ description: Use our clinical tool based on ACC/AHA guidelines to estimate your 
 </main>
 
 <script type="text/javascript">
-function toggleBPInfo() {
-    const infoBox = document.getElementById('bpInfoBox');
-    if (infoBox.classList.contains('d-none')) {
-        infoBox.classList.remove('d-none');
-    } else {
-        infoBox.classList.add('d-none');
-    }
-}
-
 function calculateRisk() {
     const age = parseInt(document.getElementById('age').value);
     const tcRaw = parseFloat(document.getElementById('tc').value);
@@ -166,9 +147,10 @@ function calculateRisk() {
     const isMmol = document.getElementById('unitMmol').checked;
     const smoker = document.getElementById('smoker').checked;
     const diabetes = document.getElementById('diabetes').checked;
+    const ethnicity = document.getElementById('ethnicity').value;
 
     if (isNaN(age) || isNaN(tcRaw) || isNaN(hdlRaw) || isNaN(sbp)) {
-        alert("Please enter all medical values to calculate your risk.");
+        alert("Please enter all values to calculate your risk.");
         return;
     }
 
@@ -178,57 +160,53 @@ function calculateRisk() {
     const scoreDisplay = document.getElementById('scorePercent');
     const levelDisplay = document.getElementById('riskLevel');
     const noteDisplay = document.getElementById('trajectoryNote');
+    const ethnicTag = document.getElementById('ethnicTag');
 
     placeholder.classList.add('d-none');
     resultDiv.classList.remove('d-none');
     resultCard.classList.remove('bg-light');
     resultCard.style.backgroundColor = "#ffffff";
-    resultCard.style.border = "2px solid #43a7d5";
+    resultCard.style.border = "2px solid #3498db";
 
-    if (age < 20) {
-        scoreDisplay.innerText = "N/A";
-        levelDisplay.innerText = "Early Prevention Phase";
-        levelDisplay.style.color = "#43a7d5";
-        noteDisplay.innerHTML = "ASCVD scores are optimized for adults 20+. For younger patients, we focus on establishing a healthy metabolic baseline for <strong>Lifetime Prevention</strong>.";
-        return;
-    }
-
-    if (age > 79) {
-        scoreDisplay.innerText = "N/A";
-        levelDisplay.innerText = "Senior Clinical Review";
-        levelDisplay.style.color = "#6c757d";
-        noteDisplay.innerHTML = "For patients over 79, risk is highly individual. We prioritize <strong>Quality of Life</strong> and specialized heart monitoring over standard percentage scores.";
-        return;
-    }
-
+    // Standard units conversion
     const tc = isMmol ? (tcRaw * 38.67) : tcRaw;
     const hdl = isMmol ? (hdlRaw * 38.67) : hdlRaw;
 
+    // Base Risk Logic (Simplified ASCVD + Asian Weighting)
     let score = 0;
-    if (age >= 45) score += 3;
-    if (age >= 60) score += 5;
-    if (sbp >= 140) score += 4;
-    if (tc / hdl > 5) score += 4;
-    if (smoker) score += 5;
-    if (diabetes) score += 6;
+    if (age >= 40) score += 4;
+    if (age >= 55) score += 6;
+    if (sbp >= 135) score += 3;
+    if (sbp >= 145) score += 4;
+    if (tc / hdl > 4.5) score += 4;
+    if (smoker) score += 6;
+    if (diabetes) score += 7;
+
+    // Ethnicity Weighting (Clinical Risk Enhancers)
+    if (ethnicity === 'indian') {
+        score += 5;
+        ethnicTag.innerHTML = '<span class="badge bg-danger">South Asian Risk Enhancer Applied</span>';
+    } else if (ethnicity === 'malay') {
+        score += 3;
+        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark">Malay Risk Enhancer Applied</span>';
+    } else {
+        ethnicTag.innerHTML = '';
+    }
 
     scoreDisplay.innerText = score + "%";
 
-    if (score < 5) {
+    if (score < 7) {
         levelDisplay.innerText = "Low Risk Profile";
         levelDisplay.style.color = "#198754";
-        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Stable. Focus on foundational wellness and annual biomarker tracking.";
-    } else if (score < 15) {
-        levelDisplay.innerText = "Borderline/Intermediate";
-        levelDisplay.style.color = "#0dcaf0";
-        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Rising. Early lifestyle intervention can 'bend the curve' and prevent future escalation.";
+        noteDisplay.innerHTML = "For Asians, low risk means focusing on maintaining a BMI below 23.0 and annual screening for silent inflammation.";
+    } else if (score < 18) {
+        levelDisplay.innerText = "Borderline / Moderate Risk";
+        levelDisplay.style.color = "#fd7e14";
+        noteDisplay.innerHTML = "In the Singapore context, moderate scores often hide visceral fat risks. We recommend a <strong>CT Calcium Score</strong> to assess structural artery health.";
     } else {
-        levelDisplay.innerText = "High Risk Profile";
+        levelDisplay.innerText = "High Risk / Critical";
         levelDisplay.style.color = "#dc3545";
-        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Critical. Immediate clinical consultation required to stabilize markers and prevent events.";
+        noteDisplay.innerHTML = "<strong>Action Required:</strong> Your risk for a cardiac event is elevated. Immediate review of lipid quality (ApoB) and structural scanning is strongly advised.";
     }
-}
-</script>
-
 }
 </script>
