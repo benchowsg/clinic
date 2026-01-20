@@ -5,13 +5,28 @@ title: Heart Risk & Metabolic Trajectory Calculator | A Healing Heart Medical
 description: Estimate your cardiovascular risk using Asian-calibrated clinical insights. Understand your health trajectory within the Singapore context.
 ---
 
+<style>
+  /* Ensuring clean typography and natural letter spacing */
+  #main p, #main label, #main h2, #main h3, #main h5, #main h6 {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .risk-badge {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+  }
+</style>
+
 <main id="main" class="mt-5 pt-5">
   <section class="py-5">
     <div class="container">
       <div class="section-title text-center mb-5">
         <h2 class="fw-bold" style="color: #2c4964;">Heart Risk & Trajectory Estimator</h2>
-        <div class="mt-4 pt-4 border-top text-center">
-          <p class="text-muted mt-3 mb-0" style="font-size: 1rem; max-width: 900px; margin: 0 auto; text-align: left !important;">
+        <div class="mt-4 pt-4 border-top">
+          <p class="text-muted mt-3 mb-0" style="font-size: 1.05rem; line-height: 1.6; max-width: 850px; margin: 0 auto; text-align: left !important;">
             Our estimator is adapted from the <strong>ACC/AHA Pooled Cohort Equations</strong> and refined for the <strong>Asian phenotype</strong>. In Singapore, factors like ethnicity and lower BMI thresholds significantly impact metabolic risk. Use this tool to visualize your trajectory and build a personalized prevention roadmap.
           </p>
         </div>
@@ -20,21 +35,21 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
       <div class="row g-4">
         <div class="col-lg-5">
           <div class="card border-0 shadow-sm p-4 rounded-4">
-            <h5 class="mb-4 fw-bold"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Your Profile</h5>
+            <h5 class="mb-4 fw-bold text-dark"><i class="fa-solid fa-vial me-2 text-primary"></i>Enter Your Profile</h5>
             
             <div class="mb-4">
-              <label class="small fw-bold text-muted text-uppercase">Ethnicity (Risk Enhancer)</label>
-              <select id="ethnicity" class="form-select mt-1">
+              <label class="small fw-bold text-muted text-uppercase mb-2" style="letter-spacing: 0.5px;">Ethnicity (Risk Enhancer)</label>
+              <select id="ethnicity" class="form-select border-2">
                 <option value="chinese">Chinese</option>
-                <option value="malay">Malay (Higher Risk Profile)</option>
-                <option value="indian">South Asian / Indian (High Risk Profile)</option>
+                <option value="malay">Malay</option>
+                <option value="indian">South Asian / Indian</option>
                 <option value="other">Other / Caucasian</option>
               </select>
             </div>
 
             <div class="mb-4">
-              <label class="small fw-bold text-muted text-uppercase">Cholesterol Units</label>
-              <div class="btn-group w-100 mt-1" role="group">
+              <label class="small fw-bold text-muted text-uppercase mb-2" style="letter-spacing: 0.5px;">Cholesterol Units</label>
+              <div class="btn-group w-100" role="group">
                 <input type="radio" class="btn-check" name="unit" id="unitMmol" checked>
                 <label class="btn btn-outline-primary btn-sm" for="unitMmol">mmol/L (SG Standard)</label>
                 <input type="radio" class="btn-check" name="unit" id="unitMg">
@@ -44,27 +59,27 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
 
             <div class="row">
               <div class="col-6 mb-3">
-                <label class="form-label">Age (20-79)</label>
-                <input type="number" id="age" class="form-control" placeholder="e.g. 45">
+                <label class="form-label fw-semibold">Age (20-79)</label>
+                <input type="number" id="age" class="form-control" placeholder="45">
               </div>
               <div class="col-6 mb-3">
-                <label class="form-label">Systolic BP</label>
-                <input type="number" id="sbp" class="form-control" placeholder="e.g. 130">
+                <label class="form-label fw-semibold">Systolic BP</label>
+                <input type="number" id="sbp" class="form-control" placeholder="130">
               </div>
             </div>
 
             <div class="row">
               <div class="col-6 mb-3">
-                <label class="form-label">Total Chol</label>
-                <input type="number" id="tc" class="form-control" placeholder="e.g. 5.2">
+                <label class="form-label fw-semibold">Total Chol</label>
+                <input type="number" id="tc" class="form-control" placeholder="5.2">
               </div>
               <div class="col-6 mb-3">
-                <label class="form-label">HDL Chol</label>
-                <input type="number" id="hdl" class="form-control" placeholder="e.g. 1.2">
+                <label class="form-label fw-semibold">HDL Chol</label>
+                <input type="number" id="hdl" class="form-control" placeholder="1.2">
               </div>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-4 pt-2">
               <div class="form-check form-switch mb-2">
                 <input class="form-check-input" type="checkbox" id="smoker">
                 <label class="form-check-label" for="smoker">Current Smoker?</label>
@@ -75,31 +90,31 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               </div>
             </div>
 
-            <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Calculate Asian-Calibrated Risk</button>
+            <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm">Calculate Asian-Calibrated Risk</button>
           </div>
         </div>
 
         <div class="col-lg-7">
-          <div id="resultCard" class="card border-0 shadow-sm p-4 rounded-4 h-100 text-center d-flex align-items-center justify-content-center bg-light" style="transition: all 0.5s ease;">
+          <div id="resultCard" class="card border-0 shadow-sm p-4 rounded-4 h-100 text-center d-flex align-items-center justify-content-center bg-light" style="transition: all 0.4s ease-in-out;">
             
             <div id="placeholderText">
-              <i class="fa-solid fa-chart-line fa-4x mb-3 text-muted opacity-25"></i>
-              <h4>Your Results Will Appear Here</h4>
-              <p class="text-muted small">Optimized for Singapore Clinical Guidelines</p>
+              <i class="fa-solid fa-heart-pulse fa-4x mb-3 text-muted opacity-25"></i>
+              <h4 class="fw-bold">Your Results Will Appear Here</h4>
+              <p class="text-muted small">Calculation is optimized for Singapore clinical guidelines.</p>
             </div>
 
             <div id="actualResult" class="d-none w-100">
-               <h2 class="fw-bold mb-0" id="scorePercent" style="font-size: 4rem; color: #2c4964;">0%</h2>
-               <p class="text-uppercase fw-bold mb-2" id="riskLevel">Low Risk</p>
+               <h2 class="fw-bold mb-0" id="scorePercent" style="font-size: 4.5rem; color: #2c4964; line-height: 1;">0%</h2>
+               <p class="fw-bold mb-2" id="riskLevel" style="font-size: 1.25rem;">Low Risk</p>
                <div id="ethnicTag" class="mb-4"></div>
                
-               <div class="alert alert-info text-start border-0 shadow-sm">
-                  <h6 class="fw-bold"><i class="fa-solid fa-compass me-2"></i>The Asian Perspective</h6>
-                  <p id="trajectoryNote" class="small mb-0"></p>
+               <div class="alert alert-info text-start border-0 shadow-sm p-4" style="background-color: #f0f7ff;">
+                  <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-compass me-2"></i>The Asian Perspective</h6>
+                  <p id="trajectoryNote" class="small mb-0 text-dark" style="line-height: 1.5;"></p>
                </div>
 
-               <a href="/booking" class="btn btn-dark btn-lg w-100 rounded-pill mt-3">Book Professional Review</a>
-               <button onclick="location.reload()" class="btn btn-link btn-sm mt-2 text-muted">Reset Calculator</button>
+               <a href="/booking" class="btn btn-dark btn-lg w-100 rounded-pill mt-3 shadow-sm">Book Professional Review</a>
+               <button onclick="location.reload()" class="btn btn-link btn-sm mt-3 text-muted text-decoration-none">Reset Calculator</button>
             </div>
           </div>
         </div>
@@ -107,30 +122,100 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
     </div>
   </section>
 
+  <section class="py-5 bg-white border-top">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <h3 class="fw-bold mb-4" style="color: #2c4964;">Why Ethnicity & BMI Matter</h3>
+          <p class="text-muted" style="line-height: 1.6;">
+            Medical research in Singapore proves that Asians face higher cardiovascular risks at a <strong>lower BMI</strong> than Westerners. This is due to the "Asian Phenotype"—higher visceral fat (internal fat) even if you appear slim.
+          </p>
+          
+          <div class="d-flex align-items-start mb-4">
+            <div class="bg-primary-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-dna text-primary"></i></div>
+            <div>
+              <h6 class="fw-bold mb-1">Genetic Risk Multipliers</h6>
+              <p class="small text-muted mb-0">South Asian (Indian) and Malay ethnicities are clinically recognized independent risk factors for earlier coronary artery disease.</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start">
+            <div class="bg-danger-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-weight-scale text-danger"></i></div>
+            <div>
+              <h6 class="fw-bold mb-1">Asian BMI Thresholds</h6>
+              <p class="small text-muted mb-0">Health risks for Asians escalate at a BMI of <strong>23.0</strong>, whereas Western standards often don't flag risk until 25.0.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card border-0 shadow-sm overflow-hidden rounded-4">
+            <div class="card-header bg-dark text-white py-3">
+              <h6 class="mb-0 fw-bold">BMI Categories: Asian vs. International</h6>
+            </div>
+            <div class="table-responsive">
+              <table class="table mb-0 text-center align-middle">
+                <thead class="table-light small">
+                  <tr>
+                    <th>Category</th>
+                    <th>Asian BMI</th>
+                    <th>Western BMI</th>
+                  </tr>
+                </thead>
+                <tbody style="font-size: 0.95rem;">
+                  <tr>
+                    <td class="fw-bold text-start ps-4">Healthy</td>
+                    <td><span class="badge bg-success risk-badge">18.5 – 22.9</span></td>
+                    <td><span class="badge bg-secondary opacity-50 risk-badge">18.5 – 24.9</span></td>
+                  </tr>
+                  <tr class="table-warning" style="background-color: #fffdf5;">
+                    <td class="fw-bold text-start ps-4">Overweight</td>
+                    <td><span class="badge bg-warning text-dark risk-badge">23.0 – 27.4</span></td>
+                    <td><span class="badge bg-secondary opacity-50 risk-badge">25.0 – 29.9</span></td>
+                  </tr>
+                  <tr class="table-danger" style="background-color: #fff5f5;">
+                    <td class="fw-bold text-start ps-4">Obese</td>
+                    <td><span class="badge bg-danger risk-badge">27.5+</span></td>
+                    <td><span class="badge bg-secondary opacity-50 risk-badge">30.0+</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
   <section class="py-5 border-top bg-light">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Why an Asian Context Matters</h5>
+          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Scientific Foundation</h5>
           <p class="small text-muted mb-4">
-            International calculators often underestimate risk for Asian populations. In Singapore, South Asians (Indians) have statistically higher rates of coronary artery disease, while the Malay community often presents with earlier metabolic shifts. Furthermore, Asians have higher visceral fat at lower BMIs (the "Thin-on-the-Outside, Fat-on-the-Inside" phenotype), meaning heart risk can be high even if you appear lean.
+            International calculators often underestimate risk for Asian populations. This tool incorporates weighting based on Singapore's MOH Clinical Practice Guidelines to provide a more accurate local outlook.
           </p>
           
           <div class="row g-4">
             <div class="col-md-6">
-              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Ethnicity as a Risk Enhancer</h6>
+              <h6 class="fw-bold small text-muted text-uppercase mb-2">Ethnicity & BMI</h6>
               <p class="text-muted" style="font-size: 0.85rem;">
-                Singapore’s MOH Clinical Practice Guidelines recognize specific ethnicities as independent risk factors. This tool adds weighting for Indian and Malay ethnicities to provide a more accurate 10-year outlook.
+                Singapore guidelines recognize specific ethnicities as "risk enhancers." Furthermore, the "Thin-on-the-Outside, Fat-on-the-Inside" (TOFI) phenotype is common in local populations, necessitating lower intervention thresholds.
               </p>
             </div>
             <div class="col-md-6">
-              <h6 class="fw-bold small text-uppercase" style="color: #2c4964;">Clinical References</h6>
+              <h6 class="fw-bold small text-muted text-uppercase mb-2">Clinical References</h6>
               <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
                 <li class="mb-2">1. MOH Singapore: Clinical Practice Guidelines on Lipid Management.</li>
-                <li class="mb-2">2. WHO Expert Consultation: Appropriate BMI for Asian populations.</li>
-                <li class="mb-2">3. Framingham Asian-modified Cohort Analysis.</li>
+                <li class="mb-2">2. WHO Expert Consultation: BMI thresholds for Asian populations.</li>
               </ul>
             </div>
+          </div>
+          <div class="mt-4 pt-4 border-top text-center">
+            <p class="extra-small text-muted" style="font-size: 0.75rem;">
+              <strong>Disclaimer:</strong> This tool is for educational purposes and is not a substitute for professional medical advice.
+            </p>
           </div>
         </div>
       </div>
@@ -150,7 +235,7 @@ function calculateRisk() {
     const ethnicity = document.getElementById('ethnicity').value;
 
     if (isNaN(age) || isNaN(tcRaw) || isNaN(hdlRaw) || isNaN(sbp)) {
-        alert("Please enter all values to calculate your risk.");
+        alert("Please enter your clinical values to calculate your risk.");
         return;
     }
 
@@ -168,29 +253,26 @@ function calculateRisk() {
     resultCard.style.backgroundColor = "#ffffff";
     resultCard.style.border = "2px solid #3498db";
 
-    // Standard units conversion
     const tc = isMmol ? (tcRaw * 38.67) : tcRaw;
     const hdl = isMmol ? (hdlRaw * 38.67) : hdlRaw;
 
-    // Base Risk Logic (Simplified ASCVD + Asian Weighting)
     let score = 0;
     if (age >= 40) score += 4;
     if (age >= 55) score += 6;
     if (sbp >= 135) score += 3;
-    if (sbp >= 145) score += 4;
     if (tc / hdl > 4.5) score += 4;
     if (smoker) score += 6;
     if (diabetes) score += 7;
 
-    // Ethnicity Weighting (Clinical Risk Enhancers)
+    // Apply Ethnicity Weighting
     if (ethnicity === 'indian') {
         score += 5;
-        ethnicTag.innerHTML = '<span class="badge bg-danger">South Asian Risk Enhancer Applied</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">South Asian Risk Enhancer Applied</span>';
     } else if (ethnicity === 'malay') {
         score += 3;
-        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark">Malay Risk Enhancer Applied</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Malay Risk Enhancer Applied</span>';
     } else {
-        ethnicTag.innerHTML = '';
+        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Standard Risk Calibration</span>';
     }
 
     scoreDisplay.innerText = score + "%";
@@ -198,15 +280,15 @@ function calculateRisk() {
     if (score < 7) {
         levelDisplay.innerText = "Low Risk Profile";
         levelDisplay.style.color = "#198754";
-        noteDisplay.innerHTML = "For Asians, low risk means focusing on maintaining a BMI below 23.0 and annual screening for silent inflammation.";
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Stable. In the Asian context, focus on maintaining a BMI below 23.0 and regular screening for silent arterial inflammation.";
     } else if (score < 18) {
-        levelDisplay.innerText = "Borderline / Moderate Risk";
+        levelDisplay.innerText = "Moderate Risk Profile";
         levelDisplay.style.color = "#fd7e14";
-        noteDisplay.innerHTML = "In the Singapore context, moderate scores often hide visceral fat risks. We recommend a <strong>CT Calcium Score</strong> to assess structural artery health.";
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Rising. This score suggests a need for deeper structural investigation. A <strong>CT Calcium Score</strong> is recommended to check for physical plaque buildup.";
     } else {
-        levelDisplay.innerText = "High Risk / Critical";
+        levelDisplay.innerText = "High Risk Profile";
         levelDisplay.style.color = "#dc3545";
-        noteDisplay.innerHTML = "<strong>Action Required:</strong> Your risk for a cardiac event is elevated. Immediate review of lipid quality (ApoB) and structural scanning is strongly advised.";
+        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Critical. Immediate clinical consultation is required. We prioritize assessing arterial blockages and stabilizing lipid quality to prevent a cardiac event.";
     }
 }
 </script>
