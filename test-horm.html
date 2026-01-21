@@ -11,6 +11,7 @@ description: Specialized hormonal calibration for testosterone deficiency, PCOS,
     letter-spacing: normal !important;
   }
   
+  /* LIGHT HERO THEME (Matches Cardiology) */
   .hero-light {
     background-color: #f8f9fa !important; 
     min-height: 40vh;
@@ -20,6 +21,7 @@ description: Specialized hormonal calibration for testosterone deficiency, PCOS,
     border-bottom: 1px solid #e9ecef;
   }
 
+  /* BUTTON STYLES WITH YELLOW HOVER */
   .btn-sync-primary {
     background-color: #3498DB;
     color: white;
@@ -34,6 +36,20 @@ description: Specialized hormonal calibration for testosterone deficiency, PCOS,
     box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
 
+  .btn-sync-outline {
+    border: 2px solid #3498DB;
+    color: #3498DB;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .btn-sync-outline:hover {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #2c4964 !important;
+  }
+
+  /* SYNC CARD */
   .sync-card {
     border-radius: 20px;
     background: #ffffff !important;
@@ -41,16 +57,26 @@ description: Specialized hormonal calibration for testosterone deficiency, PCOS,
     box-shadow: 0 10px 40px rgba(52, 152, 219, 0.08);
     padding: 2.5rem;
     border: 1px solid #eef2f6;
+    transition: border-color 0.3s ease;
   }
 
-  .advantage-icon {
+  .sync-card:hover {
+    border-color: #ffc107;
+  }
+
+  .tier-row:hover {
+    background-color: #fff9e6;
+    padding-left: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .check-icon {
     color: #3498DB;
     font-size: 1.2rem;
     margin-right: 15px;
     margin-top: 3px;
   }
 </style>
-
 <main id="main">
   <section class="hero-light pt-5">
     <div class="container py-5 mt-4">
