@@ -1,35 +1,62 @@
-<footer id="footer" class="footer mt-5">
+<script type="text/javascript">var submitted=false;</script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+        onload="if(submitted) { alert('Thank you! Your message has been sent. We will get back to you shortly.'); window.location.reload(); }">
+</iframe>
+
+<footer id="footer" class="footer mt-5" style="border-top: 1px solid #eee;">
   
   <div class="footer-top py-5">
     <div class="container">
       <div class="row gy-4">
+        
         <div class="col-lg-4 footer-info">
           <a href="/" class="logo d-flex align-items-center mb-3">
-            <h1 style="font-size: 24px; color: #2c4964; font-weight: 700;">A Healing Heart Medical Clinic</h1>
+            <h1 style="font-size: 24px; color: #2c4964; font-weight: 700; margin-bottom: 0;">A Healing Heart Medical</h1>
           </a>
-          <p>We are a Medisave-approved and CHAS-accredited medical clinic.</p>
-          <h4 class="mt-4">Opening Hours</h4>
-          <p>Mon to Fri: 9.30AM to 12.30PM, 2.30PM to 6PM<br>Sat: 9.30AM to 1PM<br>Closed on Sun and PH</p>
+          <p class="text-muted">An intermediate care medical clinic. <br>Medisave-approved and CHAS-accredited.</p>
+          <h5 class="mt-4 fw-bold" style="color: #2c4964;">Opening Hours</h5>
+          <p class="small">
+            <strong>Mon to Fri:</strong> 9.30AM – 12.30PM, 2.30PM – 6PM<br>
+            <strong>Sat:</strong> 9.30AM – 1PM<br>
+            <span class="text-danger">Closed on Sundays & PH</span>
+          </p>
         </div>
 
         <div class="col-lg-3 footer-links">
-          <h4>Useful Links</h4>
+          <h5 class="fw-bold mb-3" style="color: #2c4964;">Quick Links</h5>
           <ul class="list-unstyled">
-            <li><i class="bi bi-chevron-right"></i> <a href="/who-we-are">Who We Are</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="/booking">Make an Appointment</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="/location">Location</a></li>
+            <li class="mb-2"><a href="/who-we-are" class="text-decoration-none text-muted">Who We Are</a></li>
+            <li class="mb-2"><a href="/booking" class="text-decoration-none text-muted">Make an Appointment</a></li>
+            <li class="mb-2"><a href="/location" class="text-decoration-none text-muted">Our Location</a></li>
+            <li class="mb-2"><a href="/rapid-diagnostics" class="text-decoration-none text-muted">Rapid Diagnostics</a></li>
           </ul>
-          <h4 class="mt-4">Address</h4>
-          <p>134 Geylang East Avenue 1, #01-227<br>Singapore 380134</p>
+          <h5 class="mt-4 fw-bold" style="color: #2c4964;">Clinic Address</h5>
+          <p class="small text-muted">134 Geylang East Avenue 1, #01-227<br>Singapore 380134</p>
         </div>
 
         <div class="col-lg-5 footer-message">
-          <h4>Send Us A Message</h4>
-          <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-            <input name="entry.755572643" type="text" class="form-control mb-2" placeholder="Your Name" required>
-            <input name="entry.243023388" type="email" class="form-control mb-2" placeholder="Your Email" required>
-            <textarea name="entry.866906219" class="form-control mb-2" placeholder="Please write something here" rows="4"></textarea>
-            <input type="submit" class="btn w-100" value="Send Message" style="background: #43a7d5; color: white;">
+          <h5 class="fw-bold mb-3" style="color: #2c4964;">Send Us A Message</h5>
+          <p class="small text-muted mb-3">Have a question about our diagnostic tests or optimization protocols? Drop us a note.</p>
+          
+          <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" 
+                method="POST" 
+                target="hidden_iframe" 
+                onsubmit="submitted=true;">
+            
+            <div class="row g-2">
+              <div class="col-md-6">
+                <input name="entry.755572643" type="text" class="form-control mb-2" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input name="entry.243023388" type="email" class="form-control mb-2" placeholder="Your Email" required>
+              </div>
+            </div>
+            
+            <textarea name="entry.866906219" class="form-control mb-2" placeholder="How can we help you today?" rows="4" required></textarea>
+            
+            <button type="submit" class="btn w-100 fw-bold py-2" style="background: #3498DB; color: white; border: none; border-radius: 8px;">
+              Send Message
+            </button>
           </form>
         </div>
       </div>
@@ -40,22 +67,24 @@
     <div class="footer-bottom py-3">
       <div class="row g-2">
         <div class="col-6">
-          <a href="tel:+6569621362" class="btn btn-primary w-100 py-2" style="background: #3fbbc0; border: none; font-size: 14px;">Call 6962 1362</a>
+          <a href="tel:+6569621362" class="btn w-100 py-2 fw-bold" style="background: #3fbbc0; border: none; color: white; font-size: 14px;">Call 6962 1362</a>
         </div>
         <div class="col-6">
-          <a href="/booking" class="btn btn-primary w-100 py-2" style="background: #43a7d5; border: none; font-size: 14px;">Book Online</a>
+          <a href="/booking" class="btn w-100 py-2 fw-bold" style="background: #3498DB; border: none; color: white; font-size: 14px;">Book Online</a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="container border-top pt-4">
-    <div class="d-flex justify-content-center align-items-center mb-3">
-      <span class="text-warning" style="font-size: 1.2rem;">★★★★★</span>
-      <span class="ms-2 fw-bold">5.0 / 5 based on 189 reviews</span>
+    <div class="d-flex flex-column align-items-center mb-3">
+      <div class="mb-1">
+        <span class="text-warning" style="font-size: 1.2rem;">★★★★★</span>
+      </div>
+      <span class="fw-bold" style="color: #2c4964;">4.8 / 5.0 based on 106 Google Reviews</span>
     </div>
-    <div class="copyright text-center pb-4">
-      © Copyright <strong><span>A Healing Heart Medical Clinic</span></strong>. All Rights Reserved
+    <div class="copyright text-center pb-4 small text-muted">
+      &copy; Copyright <strong><span>A Healing Heart Medical Clinic</span></strong>. All Rights Reserved
     </div>
   </div>
 </footer>
