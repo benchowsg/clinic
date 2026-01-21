@@ -2,7 +2,7 @@
 layout: default
 permalink: /cardiology
 title: Cardiology Care | A Healing Heart Medical Clinic
-description: Managing heart health through data-driven care and specialist-grade diagnostics.
+description: Bridging the gap between heart diagnosis and long-term recovery with continuous monitoring.
 ---
 
 <style>
@@ -17,7 +17,7 @@ description: Managing heart health through data-driven care and specialist-grade
     min-height: 40vh;
     display: flex;
     align-items: center;
-    color: #2c4964 !important;
+    color: #3498DB !important; 
     border-bottom: 1px solid #e9ecef;
   }
 
@@ -30,8 +30,8 @@ description: Managing heart health through data-driven care and specialist-grade
   }
 
   .btn-sync-primary:hover {
-    background-color: #ffc107 !important; /* Yellow hover */
-    color: #3498DB !important;
+    background-color: #ffc107 !important;
+    color: #2c4964 !important;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
@@ -46,7 +46,7 @@ description: Managing heart health through data-driven care and specialist-grade
   .btn-sync-outline:hover {
     background-color: #ffc107 !important;
     border-color: #ffc107 !important;
-    color: #3498DB !important;
+    color: #2c4964 !important;
   }
 
   /* SYNC CARD */
@@ -54,38 +54,19 @@ description: Managing heart health through data-driven care and specialist-grade
     border-radius: 20px;
     background: #ffffff !important;
     color: #3498DB !important;
-    box-shadow: 0 10px 40px rgba(44, 73, 100, 0.08);
+    box-shadow: 0 10px 40px rgba(52, 152, 219, 0.08);
     padding: 2.5rem;
     border: 1px solid #eef2f6;
     transition: border-color 0.3s ease;
   }
 
-  .sync-card:hover {
-    border-color: #ffc107;
-  }
+  .sync-card:hover { border-color: #ffc107; }
 
-  .tier-row {
-    transition: all 0.2s ease;
-    cursor: pointer;
-  }
-
-  .tier-row:hover {
-    background-color: #fff9e6; /* Very light yellow tint */
-    padding-left: 10px;
-  }
-
-  .step-number {
-    background-color: #3498DB;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-    flex-shrink: 0;
+  .advantage-icon {
+    color: #3498DB;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    margin-top: 3px;
   }
 </style>
 
@@ -95,9 +76,11 @@ description: Managing heart health through data-driven care and specialist-grade
       <div class="row align-items-center">
         <div class="col-lg-8 text-center text-lg-start">
           <h1 class="display-4 fw-bold mb-3" style="color: #2c4964;">Cardiology Care</h1>
+          <h2 class="h3 fw-bold mb-4" style="color: #2c4964;">The A Healing Heart Advantage</h2>
           <p class="lead mb-4" style="color: #4a5568;">
-            Managing a heart condition requires more than medication, it requires continuous measurement. At A Healing Heart, we bridge the gap between initial diagnosis and long-term recovery.
+            Managing a heart condition requires more than medication; it requires continuous monitoring and measurement. At A Healing Heart, we bridge the gap between initial diagnosis and long-term recovery.
           </p>
+          <a href="#the-bridge" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">Why Choose Us?</a>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
              <a href="/heart-health-screening" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">View Cardiac Heart Screening</a>
           </div>
@@ -106,59 +89,74 @@ description: Managing heart health through data-driven care and specialist-grade
     </div>
   </section>
 
-<section id="care-model" class="py-5 bg-white">
-  <div class="container">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-6">
-        <h2 class="fw-bold" style="color: #3498DB;">The "A Healing Heart" Advantage</h2>
-        <p class="mt-4">Generic heart care often focuses on the symptoms of today. We take a long-term approach to protect your heart by closing the gap between screening and vitality.</p>
-        
-        <div class="mt-5">
-          <div class="d-flex mb-4">
-            <div class="me-3"><i class="fa-solid fa-circle-check" style="color: #3498DB;"></i></div>
-            <div>
-              <h6 class="fw-bold mb-1" style="color: #3498DB;">Eliminating the "Wait and See" Approach</h6>
-              <p class="small text-muted">We use high-definition data from our <a href="/heart-health-screening" style="color: #3498DB; text-decoration: underline;">Cardiac Heart Screening</a> to act before minor issues become serious conditions.</p>
-            </div>
-          </div>
-          <div class="d-flex mb-4">
-            <div class="me-3"><i class="fa-solid fa-circle-check" style="color: #3498DB;"></i></div>
-            <div>
-              <h6 class="fw-bold mb-1" style="color: #3498DB;">Medication Micromanagement</h6>
-              <p class="small text-muted">Leveraging Dr. Gerald’s cardiology expertise to ensure your prescriptions are perfectly balanced with your body's changing biomarkers.</p>
-            </div>
-          </div>
-          <div class="d-flex">
-            <div class="me-3"><i class="fa-solid fa-circle-check" style="color: #3498DB;"></i></div>
-            <div>
-              <h6 class="fw-bold mb-1" style="color: #3498DB;">Integrated Recovery Pillars</h6>
-              <p class="small text-muted">Beyond medicine, we synchronize psychological wellness and physical rehabilitation to ensure your heart heals holistically.</p>
-            </div>
+<main id="main">
+  <section class="hero-light pt-5">
+    <div class="container py-5 mt-4">
+      <div class="row align-items-center">
+        <div class="col-lg-8 text-center text-lg-start">
+          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Chronic Cardiology Care</h1>
+          <h2 class="h3 fw-bold mb-4" style="color: #2c4964;">The A Healing Heart Advantage</h2>
+          <p class="lead mb-4" style="color: #4a5568;">
+            Managing a heart condition requires more than medication; it requires **continuous monitoring and measurement**. We bridge the gap between initial diagnosis and long-term recovery.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+             <a href="#the-bridge" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">Why Our Model?</a>
+             <a href="/heart-health-screening" class="btn btn-sync-outline rounded-pill px-5 py-2 fw-bold">View Cardiac Tiers</a>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="the-bridge" class="py-5 bg-white">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <h2 class="fw-bold" style="color: #3498DB;">Bridging the Gap in Heart Care</h2>
+          <p class="mt-4">Standard management often leaves patients in a cycle of "waiting for the next appointment." Our clinical advantage is built on proactive, data-led oversight:</p>
+          
+          <div class="mt-5">
+            <div class="d-flex mb-4">
+              <i class="fa-solid fa-bridge advantage-icon"></i>
+              <div>
+                <h6 class="fw-bold mb-1" style="color: #3498DB;">Transition Management</h6>
+                <p class="small text-muted">We provide a seamless pathway for patients moving from hospital discharge to stable, long-term cardiovascular health.</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4">
+              <i class="fa-solid fa-microscope advantage-icon"></i>
+              <div>
+                <h6 class="fw-bold mb-1" style="color: #3498DB;">Precision Measurement</h6>
+                <p class="small text-muted">We utilize rapid cardiac biomarkers and advanced imaging to ensure your treatment is based on today’s data, not last year’s trends.</p>
+              </div>
+            </div>
+            <div class="d-flex">
+              <i class="fa-solid fa-heart-pulse advantage-icon"></i>
+              <div>
+                <h6 class="fw-bold mb-1" style="color: #3498DB;">Active Recovery</h6>
+                <p class="small text-muted">Beyond medication, we integrate clinical monitoring with lifestyle calibration to help your heart actually recover its capacity.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="col-lg-6">
           <div class="sync-card">
-            <h4 class="fw-bold mb-3" style="color: #2c4964;">Which Cardiac Heart Screening is Right?</h4>
-            <p class="text-muted small mb-4">Management is only as good as the data behind it. Select a screening tier to begin your personalized care journey:</p>
+            <h4 class="fw-bold mb-3" style="color: #3498DB;">Baseline Assessments</h4>
+            <p class="text-muted small mb-4">Effective management is powered by measurement. Choose a tier to establish your current cardiac baseline:</p>
             
             <div class="mb-4">
-              <div class="tier-row d-flex justify-content-between align-items-center border-bottom py-3">
-                <span class="fw-bold">Cardiac Foundation</span>
-                <a href="/heart-health-screening" class="btn btn-sm btn-light rounded-pill px-3">The Essential</a>
+              <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+                <span class="fw-bold">Cardiac Executive</span>
+                <span class="badge rounded-pill" style="background-color: rgba(52, 152, 219, 0.1); color: #3498DB;">Primary Assessment</span>
               </div>
-              <div class="tier-row d-flex justify-content-between align-items-center border-bottom py-3">
-                <span class="fw-bold">Cardiac Assurance</span>
-                <a href="/heart-health-screening" class="btn btn-sm btn-light rounded-pill px-3">Advanced Biology</a>
-              </div>
-              <div class="tier-row d-flex justify-content-between align-items-center border-bottom py-3">
-                <span class="fw-bold">Definitive Cardiac</span>
-                <a href="/heart-health-screening" class="btn btn-sm btn-light rounded-pill px-3">The Gold Standard</a>
+              <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+                <span class="fw-bold">Cardiac Excellence</span>
+                <span class="badge rounded-pill" style="background-color: rgba(52, 152, 219, 0.1); color: #3498DB;">Advanced MRI Tier</span>
               </div>
             </div>
             
-            <p class="small text-center text-muted"><em>Not sure? Dr. Gerald Thang will advise during your consultation.</em></p>
+            <a href="/heart-health-screening" class="btn btn-sync-primary w-100 rounded-pill py-3 fw-bold">Compare Cardiac Packages</a>
           </div>
         </div>
       </div>
@@ -167,11 +165,37 @@ description: Managing heart health through data-driven care and specialist-grade
 
   
 
-  <section class="py-5 text-center" style="background-color: #f1f4f8;">
+  <section class="py-5" style="background-color: #f8f9fa;">
+    <div class="container text-center">
+      <h3 class="fw-bold mb-4" style="color: #3498DB;">Intermediate Care Model Benefits</h3>
+      <div class="row g-4 text-start mt-2">
+        <div class="col-md-4">
+          <div class="p-4 bg-white rounded-4 h-100 shadow-sm border-top border-5" style="border-top-color: #3498DB !important;">
+            <h6 class="fw-bold">Continuous Monitoring</h6>
+            <p class="small text-muted mb-0">Regular, high-cadence check-ins that catch physiological shifts before they become clinical complications.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-white rounded-4 h-100 shadow-sm border-top border-5" style="border-top-color: #3498DB !important;">
+            <h6 class="fw-bold">Specialist-Grade Depth</h6>
+            <p class="small text-muted mb-0">Under the direction of Dr. Gerald Thang, we provide the clinical depth of a hospital setting in a personal clinic environment.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 bg-white rounded-4 h-100 shadow-sm border-top border-5" style="border-top-color: #3498DB !important;">
+            <h6 class="fw-bold">Integrated Support</h6>
+            <p class="small text-muted mb-0">Access to a multidisciplinary team to manage the emotional and physical facets of chronic heart health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 text-center bg-white">
     <div class="container">
-      <h2 class="fw-bold mb-4" style="color: #2c4964;">Take the First Step</h2>
+      <h2 class="fw-bold mb-4" style="color: #3498DB;">Don't Settle for Management. Seek Recovery.</h2>
       <p class="mb-5 text-muted mx-auto" style="max-width: 600px;">
-        Connect your screening to a long-term care plan. Book a deep-dive consultation today.
+        Join the patients who have chosen a more proactive path to heart health. Book your consultation today.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-3 fw-bold shadow">Book Online Now</a>
