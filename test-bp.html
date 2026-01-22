@@ -16,25 +16,40 @@ description: Personalized management for Hypertension and High Cholesterol in Si
 
   /* Exactly matching the Cardiology Hero structure */
   .preventive-hero {
-    background: #f8f9fa;
-    padding: 120px 0 60px 0;
-    margin-top: 50px;
-    border-bottom: 1px solid #eef2f6;
+    background-color: #f8f9fa !important; 
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    color: #3498DB !important; 
+    border-bottom: 1px solid #e9ecef;
   }
 
-  /* Custom override to ensure the outline button is visible on white/gray bg */
-  .btn-outline-primary-custom {
-    border: 2px solid #3498db;
-    color: #3498db !important;
-    padding: 10px 30px;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: 0.3s;
-    display: inline-block;
+  /* BUTTON STYLES WITH YELLOW HOVER */
+  .btn-sync-primary {
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
   }
-  .btn-outline-primary-custom:hover {
-    background: #3498db;
-    color: #fff !important;
+
+  .btn-sync-primary:hover {
+    background-color: #ffc107 !important;
+    color: #2c4964 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+  }
+
+  .btn-sync-outline {
+    border: 2px solid #3498DB;
+    color: #3498DB;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .btn-sync-outline:hover {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #2c4964 !important;
   }
 
   .persona-card { 
@@ -62,21 +77,21 @@ description: Personalized management for Hypertension and High Cholesterol in Si
 
 <main id="main">
 
-  <section class="preventive-hero">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="fw-bold" style="color: #2c4964; font-size: 3rem; margin-bottom: 10px;">Blood Pressure & Cholesterol</h1>
-          <h2 class="h4 fw-bold" style="color: #3498DB; margin-bottom: 25px;">The "A Healing Heart" Advantage</h2>
-          <p class="text-muted" style="max-width: 800px; font-size: 1.15rem; line-height: 1.8; margin-bottom: 40px;">
+  <section class="preventive-hero pt-5">
+    <div class="container py-5 mt-4">
+      <div class="row align-items-center">
+        <div class="col-lg-8 text-center text-lg-start">
+          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Blood Pressure & Cholesterol</h1>
+          <h2 class="h3 fw-bold mb-4" style="color: #2c4964;">The "A Healing Heart" Advantage</h2>
+          <p class="lead mb-4" style="color: #4a5568;">
             Hypertension and high cholesterol are often silent. Whether you are seeking early detection or struggling to hit your targets despite lifestyle changes, we provide clinical precision to protect your heart.
           </p>
-          <div class="d-flex flex-wrap gap-3">
-            <a href="/heart-risk-calculator" class="btn-get-started scrollto" style="background: #3498db; color: white; padding: 12px 30px; border-radius: 4px; font-weight: 600; text-decoration: none;">
-              <i class="fa-solid fa-calculator me-2"></i> Heart Risk Calculator
+          <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+            <a href="/heart-risk-calculator" class=btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">
+              Heart Risk Calculator
             </a>
-            <a href="/heart-health-screening" class="btn-outline-primary-custom">
-              View Cardiac Screenings
+            <a href="/health-screening" class="btn btn-sync-outline rounded-pill px-5 py-2 fw-bold">
+              View Health Screenings
             </a>
           </div>
         </div>
