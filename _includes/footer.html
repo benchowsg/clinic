@@ -3,8 +3,17 @@
         onload="if(submitted) { alert('Thank you! Your message has been sent. We will get back to you shortly.'); window.location.reload(); }">
 </iframe>
 
+<div id="whatsapp-container" style="position:fixed; bottom:100px; right:20px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end;">
+  <div id="wa-bubble" style="background: white; color: #2c4964; padding: 10px 18px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 14px; font-weight: 600; border: 1px solid #eef2f6; position: relative; display: none; white-space: nowrap;">
+    Questions? Chat with us!
+    <div style="position: absolute; bottom: -8px; right: 20px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid white;"></div>
+  </div>
+  <a href="https://wa.me/6569621362?text=I'd%20like%20to%20enquire%20about%20your%20Intermediate%20Care%20services" target="_blank" rel="noopener noreferrer" style="width:60px; height:60px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center; text-decoration:none;">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
+
 <footer id="footer" class="footer mt-5" style="border-top: 1px solid #eee; background: #fff;">
-  
   <div class="footer-top py-5">
     <div class="container">
       <div class="row gy-4">
@@ -40,50 +49,42 @@
 
         <div class="col-lg-5 footer-message">
           <h5 class="fw-bold mb-3" style="color: #2c4964;">Send Us A Message</h5>
-          
-          <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" 
-                method="POST" 
-                target="hidden_iframe" 
-                onsubmit="submitted=true;">
-            
+          <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrwGA9XxxIJFqzb4NLYfYMyYjAEvAefS-KkdIyQIKQHxMOaQ/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
             <div class="row g-2 mb-2">
-              <div class="col-md-6">
-                <input name="entry.755572643" type="text" class="form-control border shadow-sm" style="padding: 10px;" placeholder="Your Name" required>
-              </div>
-              <div class="col-md-6">
-                <input name="entry.243023388" type="email" class="form-control border shadow-sm" style="padding: 10px;" placeholder="Your Email" required>
-              </div>
+              <div class="col-md-6"><input name="entry.755572643" type="text" class="form-control border shadow-sm" style="padding: 10px;" placeholder="Your Name" required></div>
+              <div class="col-md-6"><input name="entry.243023388" type="email" class="form-control border shadow-sm" style="padding: 10px;" placeholder="Your Email" required></div>
             </div>
-            
             <textarea name="entry.866906219" class="form-control border shadow-sm mb-3" style="padding: 10px;" placeholder="How can we help you today?" rows="4" required></textarea>
-            
-            <button type="submit" class="btn w-100 fw-bold py-2" style="background: #3498DB; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);">
-              Send Message
-            </button>
+            <button type="submit" class="btn w-100 fw-bold py-2" style="background: #3498DB; color: white; border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);">Send Message</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container d-lg-none">
-    <div class="footer-bottom py-3">
-      <div class="row g-2">
-        <div class="col-6">
-          <a href="tel:+6569621362" class="btn w-100 py-2 fw-bold" style="background: #3fbbc0; border: none; color: white; font-size: 14px;">Call 6962 1362</a>
-        </div>
-        <div class="col-6">
-          <a href="/booking" class="btn w-100 py-2 fw-bold" style="background: #3498DB; border: none; color: white; font-size: 14px;">Book Online</a>
-        </div>
+  <div class="fixed-bottom bg-white border-top d-lg-none py-2 px-3 shadow-lg">
+    <div class="row g-2">
+      <div class="col-4">
+        <a href="tel:+6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3fbbc0; border: none; font-size: 12px; border-radius: 8px;">
+          <i class="fa-solid fa-phone me-1"></i> Call
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="https://wa.me/6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #25d366; border: none; font-size: 12px; border-radius: 8px;">
+          <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="/booking" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3498DB; border: none; font-size: 12px; border-radius: 8px;">
+          <i class="fa-solid fa-calendar-check me-1"></i> Book
+        </a>
       </div>
     </div>
   </div>
 
   <div class="container border-top pt-4">
     <div class="d-flex flex-column align-items-center mb-3">
-      <div class="mb-1">
-        <span class="text-warning" style="font-size: 1.2rem;">★★★★★</span>
-      </div>
+      <div class="mb-1"><span class="text-warning" style="font-size: 1.2rem;">★★★★★</span></div>
       <span class="fw-bold" style="color: #2c4964;">4.8 / 5.0 based on 106 Google Reviews</span>
     </div>
     <div class="copyright text-center pb-4 small text-muted">
@@ -91,3 +92,15 @@
     </div>
   </div>
 </footer>
+
+<script>
+  window.addEventListener('load', function() {
+    const bubble = document.getElementById('wa-bubble');
+    setTimeout(() => { bubble.style.display = 'block'; }, 3000); 
+    setTimeout(() => {
+      bubble.style.opacity = '0';
+      bubble.style.transition = 'opacity 1s ease';
+      setTimeout(() => { bubble.style.display = 'none'; }, 1000);
+    }, 12000); 
+  });
+</script>
