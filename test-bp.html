@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /test-bp
+permalink: /hypertension-cholesterol-management
 title: Blood Pressure & Cholesterol Management | A Healing Heart Medical
 description: Personalized management for Hypertension and High Cholesterol in Singapore. We help the undiagnosed, the struggling, and those with family history.
 ---
@@ -8,46 +8,33 @@ description: Personalized management for Hypertension and High Cholesterol in Si
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+  /* Prevents the theme from forcing all-caps or weird spacing */
   #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
     text-transform: none !important;
     letter-spacing: normal !important;
   }
 
-  /* Cardiology Style Hero - Left Aligned */
+  /* Exactly matching the Cardiology Hero structure */
   .preventive-hero {
-    background-color: #f8f9fa !important; 
-    min-height: 40vh;
-    display: flex;
-    align-items: center;
-    color: #3498DB !important; 
-    border-bottom: 1px solid #e9ecef;
+    background: #f8f9fa;
+    padding: 120px 0 60px 0;
+    margin-top: 50px;
+    border-bottom: 1px solid #eef2f6;
   }
 
-  .hero-advantage-link {
-    background-color: #3498DB;
-    color: white;
-    border: none;
-    transition: all 0.3s ease;
+  /* Custom override to ensure the outline button is visible on white/gray bg */
+  .btn-outline-primary-custom {
+    border: 2px solid #3498db;
+    color: #3498db !important;
+    padding: 10px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
   }
-
-  .hero-advantage-link:hover {
-    background-color: #ffc107 !important;
-    color: #2c4964 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
-  }
-
-  .hero-outline-link {
-    border: 2px solid #3498DB;
-    color: #3498DB;
-    background: transparent;
-    transition: all 0.3s ease;
-  }
-
-  .hero-outline-link:hover {
-    background-color: #ffc107 !important;
-    border-color: #ffc107 !important;
-    color: #2c4964 !important;
+  .btn-outline-primary-custom:hover {
+    background: #3498db;
+    color: #fff !important;
   }
 
   .persona-card { 
@@ -59,11 +46,9 @@ description: Personalized management for Hypertension and High Cholesterol in Si
     transition: 0.3s; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.02);
   }
-
   .persona-card:hover { 
     transform: translateY(-5px); 
     border-color: #3498DB; 
-    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
   }
 
   .metric-box {
@@ -81,14 +66,18 @@ description: Personalized management for Hypertension and High Cholesterol in Si
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="fw-bold" style="color: #2c4964; font-size: 3rem;">Blood Pressure & Cholesterol</h1>
-          <h2 class="h4 mt-3 fw-bold" style="color: #3498DB;">The "A Healing Heart" Advantage</h2>
-          <p class="mt-4 text-muted" style="max-width: 750px; font-size: 1.1rem; line-height: 1.8;">
+          <h1 class="fw-bold" style="color: #2c4964; font-size: 3rem; margin-bottom: 10px;">Blood Pressure & Cholesterol</h1>
+          <h2 class="h4 fw-bold" style="color: #3498DB; margin-bottom: 25px;">The "A Healing Heart" Advantage</h2>
+          <p class="text-muted" style="max-width: 800px; font-size: 1.15rem; line-height: 1.8; margin-bottom: 40px;">
             Hypertension and high cholesterol are often silent. Whether you are seeking early detection or struggling to hit your targets despite lifestyle changes, we provide clinical precision to protect your heart.
           </p>
-          <div class="mt-5">
-            <a href="/heart-risk-calculator" class="hero-advantage-link"><i class="fa-solid fa-calculator me-2"></i> Heart Risk Calculator</a>
-            <a href="/heart-health-screening" class="hero-outline-link">View Cardiac Screenings</a>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="/heart-risk-calculator" class="btn-get-started scrollto" style="background: #3498db; color: white; padding: 12px 30px; border-radius: 4px; font-weight: 600; text-decoration: none;">
+              <i class="fa-solid fa-calculator me-2"></i> Heart Risk Calculator
+            </a>
+            <a href="/heart-health-screening" class="btn-outline-primary-custom">
+              View Cardiac Screenings
+            </a>
           </div>
         </div>
       </div>
@@ -106,9 +95,9 @@ description: Personalized management for Hypertension and High Cholesterol in Si
         <div class="col-md-6 col-lg-3">
           <div class="persona-card">
             <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-magnifying-glass me-2"></i>The Proactive</h6>
-            <p class="small">"I have a family history, or I haven't checked in a long time."</p>
+            <p class="small">"I have a family history, or I haven't checked my numbers in a long time."</p>
             <hr>
-            <p class="small text-muted"><strong>Our Focus:</strong> Early detection through high-sensitivity screening and cardiovascular risk stratification.</p>
+            <p class="small text-muted">Early detection through high-sensitivity screening and cardiovascular risk stratification.</p>
           </div>
         </div>
 
@@ -117,7 +106,7 @@ description: Personalized management for Hypertension and High Cholesterol in Si
             <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-stethoscope me-2"></i>Newly Diagnosed</h6>
             <p class="small">"I just found out my levels are high. I want to know if I need medication forever."</p>
             <hr>
-            <p class="small text-muted"><strong>Our Focus:</strong> "Trial of Lifestyle" programs—optimizing diet and habits before committing to chronic medication.</p>
+            <p class="small text-muted">"Trial of Lifestyle" programs—optimizing diet before committing to chronic medication.</p>
           </div>
         </div>
 
@@ -126,16 +115,16 @@ description: Personalized management for Hypertension and High Cholesterol in Si
             <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-person-running me-2"></i>The Plateau</h6>
             <p class="small">"I've changed my diet and I exercise, but my numbers won't budge."</p>
             <hr>
-            <p class="small text-muted"><strong>Our Focus:</strong> Investigating metabolic resistance and refining clinical strategies to break through the plateau.</p>
+            <p class="small text-muted">Investigating metabolic resistance and refining clinical strategies.</p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="persona-card">
             <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-shield-heart me-2"></i>The Managed</h6>
-            <p class="small">"I'm on medication, but I'm worried about side effects or my future heart health."</p>
+            <p class="small">"I'm on medication, but I'm worried about side effects or future health."</p>
             <hr>
-            <p class="small text-muted"><strong>Our Focus:</strong> Medication optimization—ensuring the lowest effective dose with the highest heart protection.</p>
+            <p class="small text-muted">Medication optimization—ensuring the lowest effective dose with highest protection.</p>
           </div>
         </div>
       </div>
@@ -154,21 +143,21 @@ description: Personalized management for Hypertension and High Cholesterol in Si
               <div class="me-3 text-primary"><i class="fa-solid fa-heart-pulse fa-2xl"></i></div>
               <div>
                 <h6 class="fw-bold">Arterial Health Assessment</h6>
-                <p class="small text-muted">We don't just look at what's in your blood; we assess if it's actually causing plaque buildup in your arteries.</p>
+                <p class="small text-muted">We assess if high levels are actually causing plaque buildup in your arteries.</p>
               </div>
             </div>
             <div class="d-flex mb-4">
               <div class="me-3 text-primary"><i class="fa-solid fa-flask-vial fa-2xl"></i></div>
               <div>
                 <h6 class="fw-bold">Rapid Metabolic Diagnostics</h6>
-                <p class="small text-muted">Our in-house blood tests allow us to monitor your progress and pivot your treatment plan in real-time.</p>
+                <p class="small text-muted">In-house blood tests allow us to monitor your progress in real-time.</p>
               </div>
             </div>
             <div class="d-flex">
               <div class="me-3 text-primary"><i class="fa-solid fa-apple-whole fa-2xl"></i></div>
               <div>
                 <h6 class="fw-bold">Lifestyle Synergy</h6>
-                <p class="small text-muted">Personalized salt-reduction strategies, sleep hygiene, and stress management integrated into clinical care.</p>
+                <p class="small text-muted">Personalized salt-reduction and stress management integrated into clinical care.</p>
               </div>
             </div>
           </div>
@@ -177,31 +166,10 @@ description: Personalized management for Hypertension and High Cholesterol in Si
         <div class="col-lg-6">
           <div class="p-5 bg-white rounded-5 shadow-sm border">
             <h4 class="fw-bold mb-4 text-center">General Target Guidelines</h4>
-            
-            <div class="metric-box">
-              <div class="d-flex justify-content-between">
-                <strong>Blood Pressure</strong>
-                <span class="badge bg-primary rounded-pill">&lt; 130/80 mmHg</span>
-              </div>
-            </div>
-
-            <div class="metric-box">
-              <div class="d-flex justify-content-between">
-                <strong>LDL Cholesterol</strong>
-                <span class="badge bg-primary rounded-pill">Risk-Adjusted Target</span>
-              </div>
-            </div>
-
-            <div class="metric-box">
-              <div class="d-flex justify-content-between">
-                <strong>HbA1c (Blood Sugar)</strong>
-                <span class="badge bg-primary rounded-pill">&lt; 6.0% (Preventive)</span>
-              </div>
-            </div>
-
-            <p class="x-small text-muted mt-3 text-center" style="font-size: 0.75rem;">
-              *Targets are generalized. Your personal clinical target will be set by our physicians based on your age, history, and risk factors.
-            </p>
+            <div class="metric-box"><div class="d-flex justify-content-between"><strong>Blood Pressure</strong><span class="badge bg-primary rounded-pill">&lt; 130/80 mmHg</span></div></div>
+            <div class="metric-box"><div class="d-flex justify-content-between"><strong>LDL Cholesterol</strong><span class="badge bg-primary rounded-pill">Risk-Adjusted</span></div></div>
+            <div class="metric-box"><div class="d-flex justify-content-between"><strong>HbA1c</strong><span class="badge bg-primary rounded-pill">&lt; 6.0%</span></div></div>
+            <p class="x-small text-muted mt-3 text-center" style="font-size: 0.75rem;">*Targets are personalized by our physicians based on your individual risk.</p>
           </div>
         </div>
       </div>
@@ -211,10 +179,10 @@ description: Personalized management for Hypertension and High Cholesterol in Si
   <section class="py-5 text-center">
     <div class="container">
       <h2 class="fw-bold mb-4" style="color: #2c4964;">Take Control of Your Numbers</h2>
-      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Don't wait for a symptom to appear. Join our preventive management program and build a foundation for long-term heart health.</p>
+      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Don't wait for a symptom to appear. Join our preventive management program today.</p>
       <div class="d-flex justify-content-center gap-3">
-        <a href="/booking" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow" style="background: #3498DB; border: none;">Book Consultation</a>
-        <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20discuss%20managing%20my%20blood%20pressure%20and%20cholesterol." class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow" style="background-color: #25d366; border: none;">
+        <a href="/booking" class="btn-get-started scrollto" style="background: #3498db; color: white; padding: 12px 40px; border-radius: 50px; text-decoration: none; font-weight: 600;">Book Consultation</a>
+        <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20discuss%20managing%20my%20blood%20pressure%20and%20cholesterol." class="btn-get-started scrollto" style="background: #25d366; color: white; padding: 12px 40px; border-radius: 50px; text-decoration: none; font-weight: 600;">
           <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
         </a>
       </div>
