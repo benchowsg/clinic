@@ -8,12 +8,13 @@
     Questions? Chat with us!
     <div style="position: absolute; bottom: -8px; right: 20px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid white;"></div>
   </div>
-  <a href="https://wa.me/6569621362?text=I'd%20like%20to%20enquire%20about%20your%20Intermediate%20Care%20services" target="_blank" rel="noopener noreferrer" style="width:60px; height:60px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center; text-decoration:none;">
+  <a id="smart-wa-link" href="https://wa.me/6569621362" target="_blank" rel="noopener noreferrer" style="width:60px; height:60px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center; text-decoration:none;">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 </div>
 
 <footer id="footer" class="footer mt-5" style="border-top: 1px solid #eee; background: #fff;">
+  
   <div class="footer-top py-5">
     <div class="container">
       <div class="row gy-4">
@@ -62,32 +63,32 @@
     </div>
   </div>
 
-  <div class="fixed-bottom bg-white border-top d-lg-none py-2 px-3 shadow-lg">
-    <div class="row g-2">
+  <div class="fixed-bottom bg-white border-top d-lg-none py-2 px-3 shadow-lg" style="z-index: 9998;">
+    <div class="row g-2 text-center">
       <div class="col-4">
-        <a href="tel:+6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3fbbc0; border: none; font-size: 12px; border-radius: 8px;">
+        <a href="tel:+6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3fbbc0; border: none; font-size: 11px; border-radius: 8px;">
           <i class="fa-solid fa-phone me-1"></i> Call
         </a>
       </div>
       <div class="col-4">
-        <a href="https://wa.me/6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #25d366; border: none; font-size: 12px; border-radius: 8px;">
+        <a id="smart-wa-mobile" href="https://wa.me/6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #25d366; border: none; font-size: 11px; border-radius: 8px;">
           <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
         </a>
       </div>
       <div class="col-4">
-        <a href="/booking" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3498DB; border: none; font-size: 12px; border-radius: 8px;">
+        <a href="/booking" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3498DB; border: none; font-size: 11px; border-radius: 8px;">
           <i class="fa-solid fa-calendar-check me-1"></i> Book
         </a>
       </div>
     </div>
   </div>
 
-  <div class="container border-top pt-4">
+  <div class="container border-top pt-4 text-center">
     <div class="d-flex flex-column align-items-center mb-3">
       <div class="mb-1"><span class="text-warning" style="font-size: 1.2rem;">★★★★★</span></div>
       <span class="fw-bold" style="color: #2c4964;">4.8 / 5.0 based on 106 Google Reviews</span>
     </div>
-    <div class="copyright text-center pb-4 small text-muted">
+    <div class="copyright pb-4 small text-muted">
       &copy; Copyright <strong><span>A Healing Heart Medical Clinic</span></strong>. All Rights Reserved
     </div>
   </div>
@@ -95,12 +96,55 @@
 
 <script>
   window.addEventListener('load', function() {
+    // 1. WhatsApp Smart Link Logic
+    var floatingLink = document.getElementById('smart-wa-link');
+    var mobileLink = document.getElementById('smart-wa-mobile');
+    var currentPage = window.location.pathname;
+    
+    // Set the initial default
+    var defaultMsg = "Hi A Healing Heart Medical, I'd like to enquire about your services.";
+
+    // Logic to change message based on URL - ALWAYS update defaultMsg
+    if (currentPage.includes("post-hospitalisation-recovery")) {
+      defaultMsg = "Hi A Healing Heart Medical, I'm enquiring about post-hospital recovery care.";
+    } else if (currentPage.includes("location")) {
+      defaultMsg = "Hi A Healing Heart Medical, I am looking for your clinic location.";
+    } else if (currentPage.includes("health-screening")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book a health screening.";
+    } else if (currentPage.includes("heart-health-screening")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book a cardiac heart screening.";
+    } else if (currentPage.includes("vaccination")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book a vaccination appointment.";
+    } else if (currentPage.includes("cardiology")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book an appointment regarding my heart condition.";
+    } else if (currentPage.includes("rapid-diagnostics")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book an appointment for rapid diagnostics.";
+    } else if (currentPage.includes("regenerative-medicine")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book an appointment for regenerative medicine.";
+    } else if (currentPage.includes("skin-hair-care")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book an appointment for skin/hair care.";
+    } else if (currentPage.includes("hormone-optimization")) {
+      defaultMsg = "Hi A Healing Heart, I'd like to book an appointment for hormonal issues.";
+    }
+
+    // Now finalUrl uses the updated defaultMsg correctly
+    var finalUrl = "https://wa.me/6569621362?text=" + encodeURIComponent(defaultMsg);
+    
+    if(floatingLink) floatingLink.href = finalUrl;
+    if(mobileLink) mobileLink.href = finalUrl;
+
+    // 2. Attention Bubble Logic
     const bubble = document.getElementById('wa-bubble');
-    setTimeout(() => { bubble.style.display = 'block'; }, 3000); 
-    setTimeout(() => {
-      bubble.style.opacity = '0';
-      bubble.style.transition = 'opacity 1s ease';
-      setTimeout(() => { bubble.style.display = 'none'; }, 1000);
-    }, 12000); 
+    if (bubble) {
+      setTimeout(() => { 
+        bubble.style.display = 'block'; 
+      }, 3000); 
+      
+      setTimeout(() => {
+        bubble.style.opacity = '0';
+        bubble.style.transition = 'opacity 1s ease';
+        setTimeout(() => { bubble.style.display = 'none'; }, 1000);
+      }, 12000);
+    }
   });
 </script>
