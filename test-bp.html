@@ -15,41 +15,39 @@ description: Personalized management for Hypertension and High Cholesterol in Si
 
   /* Cardiology Style Hero - Left Aligned */
   .preventive-hero {
-    background: #f8f9fa;
-    padding: 100px 0 60px 0;
-    margin-top: 80px;
-    border-bottom: 1px solid #eef2f6;
+    background-color: #f8f9fa !important; 
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    color: #3498DB !important; 
+    border-bottom: 1px solid #e9ecef;
   }
 
   .hero-advantage-link {
-    display: inline-block;
-    background: #3498db;
-    color: #fff !important;
-    padding: 10px 25px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    margin-right: 10px;
-    transition: 0.3s;
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
   }
 
   .hero-advantage-link:hover {
-    background: #2980b9;
+    background-color: #ffc107 !important;
+    color: #2c4964 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
 
   .hero-outline-link {
-    display: inline-block;
-    border: 1px solid #3498db;
-    color: #3498db !important;
-    padding: 10px 25px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
+    border: 2px solid #3498DB;
+    color: #3498DB;
+    background: transparent;
+    transition: all 0.3s ease;
   }
 
   .hero-outline-link:hover {
-    background: #f0f7ff;
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #2c4964 !important;
   }
 
   .persona-card { 
@@ -108,7 +106,7 @@ description: Personalized management for Hypertension and High Cholesterol in Si
         <div class="col-md-6 col-lg-3">
           <div class="persona-card">
             <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-magnifying-glass me-2"></i>The Proactive</h6>
-            <p class="small">"I have a family history, or I haven't checked my numbers in a long time."</p>
+            <p class="small">"I have a family history, or I haven't checked in a long time."</p>
             <hr>
             <p class="small text-muted"><strong>Our Focus:</strong> Early detection through high-sensitivity screening and cardiovascular risk stratification.</p>
           </div>
