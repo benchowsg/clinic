@@ -2,18 +2,19 @@
 layout: default
 permalink: /diabetes-weight-management
 title: Diabetes & Weight Management | A Healing Heart Medical
-description: Systemic management for Diabetes and Weight in Singapore. Move beyond blood sugar monitoring to long-term metabolic recovery and weight control.
+description: Systemic management for Diabetes and Weight in Singapore. Move beyond blood sugar monitoring to long-term heart protection and weight control.
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+  /* Global reset for this page to match theme branding */
   #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
     text-transform: none !important;
     letter-spacing: normal !important;
   }
 
-  /* Cardiology Style Hero - Left Aligned */
+  /* Exactly matching the Hypertension/Cholesterol Hero structure */
   .preventive-hero {
     background: #f8f9fa;
     padding: 120px 0 60px 0;
@@ -21,11 +22,12 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     border-bottom: 1px solid #eef2f6;
   }
 
+  /* Pill-shaped buttons to match reference page */
   .btn-get-started-custom {
     background: #3498db;
     color: white !important;
-    padding: 12px 30px;
-    border-radius: 4px;
+    padding: 12px 40px;
+    border-radius: 50px;
     font-weight: 600;
     text-decoration: none;
     transition: 0.3s;
@@ -33,16 +35,44 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
   }
   .btn-get-started-custom:hover { background: #2980b9; }
 
-  .btn-outline-custom {
+  .btn-outline-primary-custom {
     border: 2px solid #3498db;
     color: #3498db !important;
-    padding: 10px 30px;
-    border-radius: 4px;
+    padding: 12px 40px;
+    border-radius: 50px;
     font-weight: 600;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
   }
+  .btn-outline-primary-custom:hover {
+    background: #3498db;
+    color: #fff !important;
+  }
+
+  /* INFOGRAPHIC STYLING */
+  .cycle-container {
+    padding: 20px;
+    border-left: 2px dashed #3498db;
+    margin-left: 20px;
+  }
+  .cycle-step {
+    position: relative;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+  .cycle-step::before {
+    content: "\f107"; /* FontAwesome Down Arrow */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: -11px;
+    top: 0;
+    background: #f8f9fa;
+    color: #3498db;
+    padding: 5px 0;
+  }
+  .cycle-step:last-child::before { content: "\f01e"; } /* Reset Icon */
 
   .systemic-card {
     background: #fff;
@@ -51,16 +81,22 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     border: 1px solid #eef2f6;
     height: 100%;
     transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
   }
-  .systemic-card:hover { border-color: #3498db; transform: translateY(-5px); }
+  .systemic-card:hover { 
+    border-color: #3498db; 
+    transform: translateY(-5px); 
+  }
   
-  .impact-box {
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    border-left: 5px solid #e74c3c;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  .lead-in-box {
+    background: linear-gradient(135deg, #2c4964 0%, #1a3044 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
   }
 </style>
 
@@ -71,13 +107,13 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
       <div class="row">
         <div class="col-lg-12">
           <h1 class="fw-bold" style="color: #2c4964; font-size: 3rem; margin-bottom: 10px;">Diabetes & Weight</h1>
-          <h2 class="h4 fw-bold" style="color: #3498DB; margin-bottom: 25px;">The "A Healing Heart" Advantage</h2>
+          <h2 class="h4 fw-bold" style="color: #3498DB; margin-bottom: 25px;">Metabolic Precision for Heart Protection</h2>
           <p class="text-muted" style="max-width: 800px; font-size: 1.15rem; line-height: 1.8; margin-bottom: 40px;">
-            Diabetes is not just a high sugar reading; it is a systemic metabolic challenge. We move beyond "managing numbers" to focus on protecting your organs, stabilizing your weight, and reversing metabolic decline through a data-led, periodic approach.
+            Diabetes is a systemic vascular threat. At A Healing Heart, we don't just manage blood sugar; we target the metabolic root causes to prevent long-term cardiovascular damage and stabilize weight through clinical intervention.
           </p>
           <div class="d-flex flex-wrap gap-3">
             <a href="/booking" class="btn-get-started-custom">Book Metabolic Assessment</a>
-            <a href="https://wa.me/6569621362" class="btn-outline-custom">WhatsApp Inquiry</a>
+            <a href="https://wa.me/6569621362" class="btn-outline-primary-custom">WhatsApp Inquiry</a>
           </div>
         </div>
       </div>
@@ -88,18 +124,37 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <h2 class="fw-bold mb-4" style="color: #2c4964;">The Weight-Sugar Cycle</h2>
-          <p class="text-muted">High blood sugar and weight gain are deeply linked through <strong>Insulin Resistance</strong>. When insulin levels remain high, the body enters a "fat storage" mode, making weight loss nearly impossible despite dieting.</p>
+          <h2 class="fw-bold mb-4" style="color: #2c4964;">Understanding the Weight-Sugar Cycle</h2>
+          <p class="text-muted">When your body becomes resistant to insulin, it stops using sugar for energy and starts storing it as fat. This creates a dangerous loop that puts immense pressure on your heart and arteries.</p>
           
-          <div class="impact-box">
-            <h6 class="fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i>Long-Term Effects of Poor Control</h6>
-            <p class="small text-muted mb-0">Uncontrolled sugar leads to microvascular damage, affecting the heart, kidneys, and nervous system. Early, systemic intervention is the only way to ensure long-term organ preservation.</p>
+          <div class="p-4 rounded-4" style="background: #fff5f5; border-left: 5px solid #e74c3c;">
+             <p class="small mb-0"><strong>The Heart Link:</strong> High insulin levels cause the body to retain sodium and increase sympathetic nervous activity, directly raising blood pressure and heart strain. Over time, this accelerates arterial hardening (atherosclerosis).</p>
           </div>
-
-          <p class="text-muted">Our goal is to break this cycle by improving <strong>insulin sensitivity</strong>, not just masking the symptoms with increasing doses of medication.</p>
         </div>
-        <div class="col-lg-6 text-center">
-            
+        
+        <div class="col-lg-6">
+          <div class="cycle-container">
+            <div class="cycle-step">
+              <h6 class="fw-bold mb-1">High Glucose Intake</h6>
+              <p class="small text-muted">Blood sugar levels spike after meals, requiring an insulin response.</p>
+            </div>
+            <div class="cycle-step">
+              <h6 class="fw-bold mb-1">Insulin Overproduction</h6>
+              <p class="small text-muted">The pancreas works overtime to move excess sugar into cells.</p>
+            </div>
+            <div class="cycle-step">
+              <h6 class="fw-bold mb-1">Insulin Resistance</h6>
+              <p class="small text-muted">Cells "ignore" insulin signals; sugar remains trapped in the blood.</p>
+            </div>
+            <div class="cycle-step">
+              <h6 class="fw-bold mb-1">Fat Storage Mode</h6>
+              <p class="small text-muted">Excess sugar is converted to visceral fat, particularly around the midsection.</p>
+            </div>
+            <div class="cycle-step">
+              <h6 class="fw-bold mb-1">Increased Inflammation</h6>
+              <p class="small text-muted">Weight gain worsens resistance and inflammatory markers, restarting the cycle.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -109,59 +164,80 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="fw-bold" style="color: #2c4964;">Our Systemic Management Framework</h2>
-        <p class="text-muted">Diabetes cannot be managed with a "one-off" consultation. It requires periodic oversight.</p>
+        <p class="text-muted">Moving from reactive care to proactive, long-term organ preservation.</p>
       </div>
 
       <div class="row g-4">
         <div class="col-md-4">
           <div class="systemic-card">
-            <div class="text-primary mb-3"><i class="fa-solid fa-calendar-check fa-2xl"></i></div>
-            <h5 class="fw-bold">Periodic Monitoring</h5>
-            <p class="small text-muted">Regular HbA1c tracking and metabolic reviews every 3–6 months to catch physiological shifts before they become clinical complications.</p>
+            <div class="text-primary mb-3"><i class="fa-solid fa-clock-rotate-left fa-2xl"></i></div>
+            <h5 class="fw-bold">Periodic Oversight</h5>
+            <p class="small text-muted">Quarterly metabolic reviews (HbA1c, Lipids, Uric Acid) to ensure your heart and vessels are not under silent stress from fluctuating levels.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="systemic-card">
-            <div class="text-primary mb-3"><i class="fa-solid fa-dna fa-2xl"></i></div>
-            <h5 class="fw-bold">Hormonal Synergy</h5>
-            <p class="small text-muted">We assess how other hormones (Thyroid, Cortisol, Growth Hormone) are impacting your blood sugar and weight loss plateau.</p>
+            <div class="text-primary mb-3"><i class="fa-solid fa-microscope fa-2xl"></i></div>
+            <h5 class="fw-bold">Hormonal Analysis</h5>
+            <p class="small text-muted">Investigating cortisol, thyroid, and growth hormone interactions that often cause weight loss plateaus in diabetic patients.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="systemic-card">
-            <div class="text-primary mb-3"><i class="fa-solid fa-Stethoscope fa-2xl"></i></div>
+            <div class="text-primary mb-3"><i class="fa-solid fa-shield-heart fa-2xl"></i></div>
             <h5 class="fw-bold">Organ Protection</h5>
-            <p class="small text-muted">Systemic screening of kidney function and cardiovascular risk to ensure your diabetes management is actually protecting your heart.</p>
+            <p class="small text-muted">Active screening of renal (kidney) and cardiac function to prevent the systemic microvascular complications of diabetes.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5">
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="lead-in-box shadow-lg">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h3 class="fw-bold">Why Weight Control is the Best Prevention</h3>
+            <p class="mb-0">Losing just 5-10% of body weight can improve insulin sensitivity so significantly that many patients can reduce or even eliminate their need for chronic diabetes medication. It remains the most powerful "drug-free" intervention to lower your lifetime cardiac risk.</p>
+          </div>
+          <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <i class="fa-solid fa-heart-circle-check fa-4xl opacity-50"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-white">
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-lg-6">
-            
-        </div>
-        <div class="col-lg-6">
           <h2 class="fw-bold mb-4" style="color: #2c4964;">Clinical Weight Management</h2>
-          <p class="text-muted">Weight loss in diabetic or pre-diabetic patients requires a different strategy than general fitness. We focus on:</p>
+          <p class="text-muted">General weight loss advice often fails diabetic patients because their hormones are structurally working against them. Our approach focuses on metabolic correction to protect your cardiovascular system:</p>
           
           <ul class="list-unstyled mt-4">
-            <li class="mb-3 d-flex align-items-start">
-              <i class="fa-solid fa-circle-check text-primary mt-1 me-2"></i>
-              <div><strong>GLP-1 Optimization:</strong> Utilizing modern clinical pathways that manage sugar while suppressing appetite and protecting the heart.</div>
+            <li class="mb-4 d-flex align-items-start">
+              <div class="me-3 text-primary"><i class="fa-solid fa-vial-circle-check fa-xl"></i></div>
+              <div><strong>GLP-1 Pathways:</strong> Modern therapeutic options that regulate appetite while providing significant cardiovascular protection and glucose stability.</div>
             </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="fa-solid fa-circle-check text-primary mt-1 me-2"></i>
-              <div><strong>Visceral Fat Reduction:</strong> Targeting the dangerous fat around organs that drives insulin resistance.</div>
+            <li class="mb-4 d-flex align-items-start">
+              <div class="me-3 text-primary"><i class="fa-solid fa-weight-hanging fa-xl"></i></div>
+              <div><strong>Visceral Fat Targeting:</strong> Focusing on the inflammatory fat around your organs that drives arterial stiffening and hypertension.</div>
             </li>
-            <li class="mb-3 d-flex align-items-start">
-              <i class="fa-solid fa-circle-check text-primary mt-1 me-2"></i>
-              <div><strong>Nutritional Architecture:</strong> Personalized plans that stabilize glucose spikes without extreme deprivation.</div>
+            <li class="mb-0 d-flex align-items-start">
+              <div class="me-3 text-primary"><i class="fa-solid fa-apple-whole fa-xl"></i></div>
+              <div><strong>Sustainable Glucose Guarding:</strong> Nutrition that prevents the sharp insulin spikes that trigger fat storage and damage delicate blood vessels.</div>
             </li>
           </ul>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5 bg-light rounded-5 border text-center">
+             <h4 class="fw-bold mb-3">Target Metabolic Goals</h4>
+             <p class="display-6 fw-bold text-primary mb-2">HbA1c < 6.5%</p>
+             <p class="text-muted">Achieving this through sustainable weight management reduces heart failure risk by up to 20%.</p>
+             
+          </div>
         </div>
       </div>
     </div>
@@ -170,10 +246,10 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
   <section class="py-5 text-center bg-light">
     <div class="container">
       <h2 class="fw-bold mb-4" style="color: #2c4964;">Start Your Metabolic Recovery</h2>
-      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Better long-term health starts with a systemic plan. Book a consultation to assess your metabolic health today.</p>
+      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Better long-term heart health starts with metabolic control. Book your consultation today to build your systemic health plan.</p>
       <div class="d-flex justify-content-center gap-3">
-        <a href="/booking" class="btn-get-started-custom" style="padding: 12px 40px; border-radius: 50px;">Book Consultation</a>
-        <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20discuss%20diabetes%20and%20weight%20management." class="btn-get-started-custom" style="background: #25d366; padding: 12px 40px; border-radius: 50px;">
+        <a href="/booking" class="btn-get-started-custom">Book Consultation</a>
+        <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20discuss%20diabetes%20and%20weight%20management." class="btn-get-started-custom" style="background: #25d366;">
           <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
         </a>
       </div>
