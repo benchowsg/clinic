@@ -8,6 +8,22 @@ description: Moving beyond inhalers to comprehensive cardiopulmonary care. We tr
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+    /* Prevents the theme from forcing all-caps or weird spacing */
+  #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  /* Exactly matching the Cardiology Hero structure */
+  .preventive-hero {
+    background-color: #f8f9fa !important; 
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    color: #3498DB !important; 
+    border-bottom: 1px solid #e9ecef;
+  }
+  
   /* JOURNEY PROFILES: Custom Shadow & Hover */
   .profile-card {
     transition: all 0.3s ease;
