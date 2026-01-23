@@ -6,50 +6,24 @@ description: Select an assessment for heart, lung, or bone health, or manage you
 ---
 
 <style>
-  .booking-card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: none;
-    background: #fff;
-  }
-  .booking-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
-  }
+  .booking-card { transition: transform 0.2s ease; border: none; background: #fff; }
+  .booking-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important; }
+  
   .btn-booking {
-    text-align: left;
-    padding: 12px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.2s;
-    border: 1px solid #e9ecef;
-    color: #495057;
-    background: #fdfdfd;
-    text-decoration: none;
+    text-align: left; padding: 12px 15px; border-radius: 10px; margin-bottom: 10px;
+    font-weight: 500; display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.2s; border: 1px solid #e9ecef; color: #495057; background: #fdfdfd;
+    text-decoration: none; font-size: 0.95rem;
   }
-  .btn-booking:hover {
-    background: #f8f9fa;
-    border-color: #43a7d5;
-    color: #43a7d5;
-  }
-  .btn-booking i {
-    font-size: 0.8rem;
-    opacity: 0.5;
-  }
+  .btn-booking:hover { background: #f8f9fa; border-color: #43a7d5; color: #43a7d5; }
+
+  /* Specific color for Rapid Services */
+  .btn-rapid:hover { border-color: #e74c3c; color: #e74c3c; }
+  
   .category-icon {
-    width: 45px;
-    height: 45px;
-    background: #f0f7fa;
-    color: #43a7d5;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
+    width: 45px; height: 45px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 15px; font-size: 1.2rem;
   }
 </style>
 
@@ -68,18 +42,16 @@ description: Select an assessment for heart, lung, or bone health, or manage you
       </p>
     </div>
 
-    <div class="row g-4">
-      
+<div class="row g-4 mb-4">
       <div class="col-lg-6">
         <div class="p-4 rounded shadow-sm booking-card h-100 border-top border-4 border-primary">
-          <div class="category-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <div class="category-icon" style="background: #f0f7fa; color: #43a7d5;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
           <h4 class="fw-bold" style="color: #2c4964;">Identify a Concern</h4>
-          <p class="small text-muted mb-4">Select an assessment if you have new symptoms, a family history of illness, or need a health baseline.</p>
-          
+          <p class="small text-muted mb-4">New symptoms? Get clarity with our focused assessments.</p>
           <div class="d-flex flex-column">
             <a href="#" class="btn-booking">Cardiac Heart Screening <i class="fa-solid fa-chevron-right"></i></a>
             <a href="#" class="btn-booking">Asthma & Lung Assessment <i class="fa-solid fa-chevron-right"></i></a>
-            <a href="#" class="btn-booking">Bone Health (Osteoporosis) Assessment <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">Bone Health & Osteoporosis Assessment <i class="fa-solid fa-chevron-right"></i></a>
             <a href="#" class="btn-booking">General Health Screening <i class="fa-solid fa-chevron-right"></i></a>
           </div>
         </div>
@@ -89,8 +61,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
         <div class="p-4 rounded shadow-sm booking-card h-100 border-top border-4 border-info">
           <div class="category-icon" style="background: #eefafb; color: #17a2b8;"><i class="fa-solid fa-heart-circle-check"></i></div>
           <h4 class="fw-bold" style="color: #2c4964;">Manage a Condition</h4>
-          <p class="small text-muted mb-4">Select a management plan for ongoing chronic care, metabolic optimization, or recovery guidance.</p>
-          
+          <p class="small text-muted mb-4">Ongoing care and specialized treatments for chronic health.</p>
           <div class="d-flex flex-column">
             <a href="#" class="btn-booking">Chronic Disease Management (BP/Diabetes) <i class="fa-solid fa-chevron-right"></i></a>
             <a href="#" class="btn-booking">Advanced Bone Treatment (Bi-annual) <i class="fa-solid fa-chevron-right"></i></a>
@@ -99,40 +70,34 @@ description: Select an assessment for heart, lung, or bone health, or manage you
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-12 mt-4">
-        <div class="p-4 rounded shadow-sm bg-white border">
-          <div class="row align-items-center">
-            <div class="col-md-4">
-              <h5 class="fw-bold mb-1" style="color: #2c4964;">Routine & Rapid Services</h5>
-              <p class="small text-muted mb-lg-0">Standard consults and vaccinations.</p>
-            </div>
-            <div class="col-md-8">
-              <div class="row g-2">
-                <div class="col-md-4">
-                  <a href="#" class="btn-booking mb-0 small">General Consult (Fever/Cough)</a>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="btn-booking mb-0 small">Rapid Blood Test Services</a>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="btn-booking mb-0 small">Vaccinations (Flu/HPVs)</a>
-                </div>
-              </div>
-            </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="p-4 rounded shadow-sm bg-white border-top border-4 border-danger">
+          <h5 class="fw-bold" style="color: #2c4964;"><i class="fa-solid fa-bolt-lightning text-danger me-2"></i>Rapid Diagnostics</h5>
+          <p class="small text-muted mb-3">When you need medical clarity without the wait.</p>
+          <div class="row g-2">
+            <div class="col-12"><a href="#" class="btn-booking btn-rapid">Rapid Blood Tests (Chest Pain/Markers) <i class="fa-solid fa-chevron-right"></i></a></div>
+            <div class="col-12"><a href="#" class="btn-booking btn-rapid">Urgent Consult (Fever/Cough/Cold) <i class="fa-solid fa-chevron-right"></i></a></div>
           </div>
         </div>
       </div>
 
-    </div>
-
-    <div class="text-center mt-5">
-      <p class="text-muted mb-2">Not sure which one to pick?</p>
-      <a href="https://wa.me/yournumber" class="text-primary fw-bold text-decoration-none">
-        <i class="fa-brands fa-whatsapp me-1"></i> Chat with our team on WhatsApp
-      </a>
+      <div class="col-lg-6">
+        <div class="p-4 rounded shadow-sm bg-white border-top border-4 border-secondary">
+          <h5 class="fw-bold" style="color: #2c4964;"><i class="fa-solid fa-calendar-day text-secondary me-2"></i>Routine Services</h5>
+          <p class="small text-muted mb-3">Standard preventive care and medical check-ups.</p>
+          <div class="row g-2">
+            <div class="col-sm-6"><a href="#" class="btn-booking small">Vaccinations (Flu/HPV) <i class="fa-solid fa-chevron-right"></i></a></div>
+            <div class="col-sm-6"><a href="#" class="btn-booking small">Work/Visa Medicals <i class="fa-solid fa-chevron-right"></i></a></div>
+            <div class="col-12"><a href="#" class="btn-booking small">HealthierSG Health Plan Discussion <i class="fa-solid fa-chevron-right"></i></a></div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
+
 </main>
