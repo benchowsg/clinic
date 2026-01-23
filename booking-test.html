@@ -5,6 +5,17 @@ permalink: /booking-test
 description: Select an assessment for heart, lung, or bone health, or manage your existing chronic conditions with our intermediate care team.
 ---
 
+Certainly. Moving the Chronic Management services into buttons alongside the Work & Routine section creates a very tactile, easy-to-use sidebar. This also distinguishes "one-off" Diagnostic Screenings (on the left) from "ongoing" Management care (on the right).
+
+Here is the updated sidebar code. I’ve styled the Chronic Management buttons to look slightly more "clinical" than the work medicals to maintain that professional distinction.
+
+YAML
+---
+layout: default
+title: Book an Appointment | A Healing Heart Medical Clinic
+permalink: /booking
+---
+
 <style>
   :root {
     --clinic-primary: #2c4964;
@@ -63,28 +74,36 @@ description: Select an assessment for heart, lung, or bone health, or manage you
     margin-bottom: 0;
   }
 
-  /* Routine Service Buttons */
-  .btn-routine {
+  /* Sidebar Buttons */
+  .btn-sidebar {
     background: #f8fafd;
     border: 1px solid #e9ecef;
     color: var(--clinic-primary);
     font-size: 0.8rem;
     font-weight: 600;
-    padding: 12px 10px;
+    padding: 12px 8px;
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+    gap: 6px;
     transition: all 0.2s;
+    height: 100%;
   }
 
-  .btn-routine:hover {
+  .btn-sidebar:hover {
     background: #fff;
     border-color: var(--clinic-accent);
     color: var(--clinic-accent);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+
+  .btn-sidebar i {
+    font-size: 1.1rem;
+    opacity: 0.8;
   }
 
   .section-label {
@@ -93,7 +112,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
     text-uppercase;
     letter-spacing: 1.5px;
     color: #adb5bd;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: block;
   }
 </style>
@@ -119,7 +138,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
             </div>
             <div>
               <h4 class="fw-bold mb-0" style="color: var(--clinic-primary);">General Medical Consultation</h4>
-              <p class="text-muted small mb-0">For fever, flu, or a first-time general visit.</p>
+              <p class="text-muted small mb-0">For fever, flu, cough, or a first-time general visit.</p>
             </div>
           </div>
           <a href="#" class="btn btn-primary px-4 py-2 fw-bold rounded-pill">Book Now</a>
@@ -128,14 +147,14 @@ description: Select an assessment for heart, lung, or bone health, or manage you
         <div class="row g-5">
           
           <div class="col-lg-8">
-            <span class="section-label">Clinical Screenings & Rapid Diagnostics</span>
+            <span class="section-label">Diagnostic Screenings & Assessments</span>
             <div class="row g-3">
               
               <div class="col-md-6">
                 <a href="#" class="screening-card" style="border-left: 4px solid var(--clinic-accent);">
                   <i class="fa-solid fa-vial-circle-check"></i>
                   <h6>Rapid Blood Test</h6>
-                  <p>Same-day intermediate care diagnostics for cardiac markers and inflammation.</p>
+                  <p>Same-day results for urgent cardiac markers and inflammatory checks.</p>
                 </a>
               </div>
 
@@ -143,7 +162,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
                 <a href="#" class="screening-card">
                   <i class="fa-solid fa-heart-pulse"></i>
                   <h6>Cardiac Heart Screening</h6>
-                  <p>Cardiology-led heart risk assessment, ECG, and cardiovascular mapping.</p>
+                  <p>Specialized heart risk assessment and cardiovascular mapping.</p>
                 </a>
               </div>
 
@@ -151,7 +170,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
                 <a href="#" class="screening-card">
                   <i class="fa-solid fa-notes-medical"></i>
                   <h6>General Health Screening</h6>
-                  <p>Comprehensive health baseline including full blood profile and physical.</p>
+                  <p>Comprehensive health baseline including full clinical blood profile.</p>
                 </a>
               </div>
 
@@ -159,7 +178,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
                 <a href="#" class="screening-card">
                   <i class="fa-solid fa-lungs"></i>
                   <h6>Asthma & Lung Assessment</h6>
-                  <p>Spirometry and lung function tests for chronic breathing concerns.</p>
+                  <p>Functional lung tests for chronic breathing or cough concerns.</p>
                 </a>
               </div>
 
@@ -167,7 +186,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
                 <a href="#" class="screening-card">
                   <i class="fa-solid fa-bone"></i>
                   <h6>Bone Health Assessment</h6>
-                  <p>Fracture risk calculation and clinical review for Osteoporosis.</p>
+                  <p>Clinical review and fracture risk calculation for Osteoporosis.</p>
                 </a>
               </div>
 
@@ -175,7 +194,7 @@ description: Select an assessment for heart, lung, or bone health, or manage you
                 <a href="#" class="screening-card">
                   <i class="fa-solid fa-gauge-high"></i>
                   <h6>Thyroid & Fatigue Assessment</h6>
-                  <p>Metabolic screening for chronic exhaustion and hormonal balance.</p>
+                  <p>Hormonal screening for unexplained exhaustion and metabolism.</p>
                 </a>
               </div>
 
@@ -185,22 +204,62 @@ description: Select an assessment for heart, lung, or bone health, or manage you
           <div class="col-lg-4">
             
             <div class="mb-5">
-              <span class="section-label">Routine & Work Services</span>
+              <span class="section-label">Chronic Management</span>
               <div class="row g-2">
-                <div class="col-6"><a href="#" class="btn-routine"><i class="fa-solid fa-id-card"></i>MOM/ICA</a></div>
-                <div class="col-6"><a href="#" class="btn-routine"><i class="fa-solid fa-syringe"></i>Vaccine</a></div>
-                <div class="col-6"><a href="#" class="btn-routine"><i class="fa-solid fa-graduation-cap"></i>Student</a></div>
-                <div class="col-6"><a href="#" class="btn-routine"><i class="fa-solid fa-house-user"></i>HealthierSG</a></div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-chart-line"></i>
+                        BP & Cholesterol
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-droplet"></i>
+                        Diabetes Care
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-capsules"></i>
+                        Osteoporosis Tx
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-person-arrow-up-from-line"></i>
+                        Hormone Optm.
+                    </a>
+                </div>
               </div>
             </div>
 
-            <div class="mb-5">
-              <span class="section-label">Chronic Management</span>
-              <div class="list-group list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent px-0 border-0 small py-2 text-muted"><i class="fa-solid fa-chevron-right me-2 small"></i> BP & Cholesterol</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent px-0 border-0 small py-2 text-muted"><i class="fa-solid fa-chevron-right me-2 small"></i> Diabetes Management</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent px-0 border-0 small py-2 text-muted"><i class="fa-solid fa-chevron-right me-2 small"></i> Osteoporosis Treatment</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent px-0 border-0 small py-2 text-muted"><i class="fa-solid fa-chevron-right me-2 small"></i> Hormone Optimization</a>
+            <div>
+              <span class="section-label">Work & Routine Services</span>
+              <div class="row g-2">
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-id-card"></i>
+                        MOM/ICA/6ME
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-syringe"></i>
+                        Vaccination
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Student Pass
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn-sidebar">
+                        <i class="fa-solid fa-house-user"></i>
+                        HealthierSG
+                    </a>
+                </div>
               </div>
             </div>
 
@@ -210,9 +269,10 @@ description: Select an assessment for heart, lung, or bone health, or manage you
       </div>
     </div>
 
-    <div class="text-center mt-5">
-      <a href="#" class="text-muted small text-decoration-none">
-        <i class="fa-solid fa-stethoscope me-1"></i> Not sure? <strong>Book a Diagnostic Review for complex cases →</strong>
+    <div class="text-center mt-5 pt-4 border-top">
+      <p class="small text-muted mb-1">Unsure where your symptoms fit?</p>
+      <a href="#" class="fw-bold text-dark text-decoration-none">
+        Book a Diagnostic Review for Complex Symptoms →
       </a>
     </div>
 
