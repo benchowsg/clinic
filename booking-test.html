@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Book an Appointment | A Healing Heart Medical Clinic
-permalink: /booking-test
+permalink: /booking
 description: Select an assessment for heart, lung, or bone health, or manage your existing chronic conditions with our intermediate care team.
 ---
 
@@ -53,10 +53,86 @@ description: Select an assessment for heart, lung, or bone health, or manage you
   }
 </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<main id="main" class="mt-5 pt-5">
+
 <section class="py-5" style="background: #f8fafd;">
   <div class="container">
     
     <div class="text-center mb-5">
       <h1 class="fw-bold" style="color: #2c4964;">Book Your Appointment</h1>
       <p class="text-muted mx-auto" style="max-width: 600px;">
-        To ensure
+        To ensure a focused consultation, please select the category that best matches your needs today.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      
+      <div class="col-lg-6">
+        <div class="p-4 rounded shadow-sm booking-card h-100 border-top border-4 border-primary">
+          <div class="category-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h4 class="fw-bold" style="color: #2c4964;">Identify a Concern</h4>
+          <p class="small text-muted mb-4">Select an assessment if you have new symptoms, a family history of illness, or need a health baseline.</p>
+          
+          <div class="d-flex flex-column">
+            <a href="#" class="btn-booking">Cardiac Heart Screening <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">Asthma & Lung Assessment <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">Bone Health (Osteoporosis) Assessment <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">General Health Screening <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="p-4 rounded shadow-sm booking-card h-100 border-top border-4 border-info">
+          <div class="category-icon" style="background: #eefafb; color: #17a2b8;"><i class="fa-solid fa-heart-circle-check"></i></div>
+          <h4 class="fw-bold" style="color: #2c4964;">Manage a Condition</h4>
+          <p class="small text-muted mb-4">Select a management plan for ongoing chronic care, metabolic optimization, or recovery guidance.</p>
+          
+          <div class="d-flex flex-column">
+            <a href="#" class="btn-booking">Chronic Disease Management (BP/Diabetes) <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">Advanced Bone Treatment (Bi-annual) <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">Hormonal & Wellness Optimization <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" class="btn-booking">Post-Hospitalisation Recovery <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 mt-4">
+        <div class="p-4 rounded shadow-sm bg-white border">
+          <div class="row align-items-center">
+            <div class="col-md-4">
+              <h5 class="fw-bold mb-1" style="color: #2c4964;">Routine & Rapid Services</h5>
+              <p class="small text-muted mb-lg-0">Standard consults and vaccinations.</p>
+            </div>
+            <div class="col-md-8">
+              <div class="row g-2">
+                <div class="col-md-4">
+                  <a href="#" class="btn-booking mb-0 small">General Consult (Fever/Cough)</a>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="btn-booking mb-0 small">Rapid Blood Test Services</a>
+                </div>
+                <div class="col-md-4">
+                  <a href="#" class="btn-booking mb-0 small">Vaccinations (Flu/HPVs)</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-5">
+      <p class="text-muted mb-2">Not sure which one to pick?</p>
+      <a href="https://wa.me/yournumber" class="text-primary fw-bold text-decoration-none">
+        <i class="fa-brands fa-whatsapp me-1"></i> Chat with our team on WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+</main>
