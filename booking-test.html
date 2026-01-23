@@ -25,6 +25,34 @@ description: Select an assessment for heart, lung, or bone health, or manage you
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 15px; font-size: 1.2rem;
   }
+
+  <style>
+  .expertise-card {
+    transition: all 0.3s ease;
+    border: none;
+    background: #fff;
+    border-radius: 12px;
+  }
+  .expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+  }
+  .btn-spec {
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .zone-heart { border-top: 5px solid #e74c3c; } /* Red for Heart */
+  .zone-resp { border-top: 5px solid #3498db; }  /* Blue for Lungs */
+  .zone-meta { border-top: 5px solid #9b59b6; }  /* Purple for Metabolic */
+  .zone-bone { border-top: 5px solid #2ecc71; }  /* Green for Bone */
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -54,67 +82,73 @@ description: Select an assessment for heart, lung, or bone health, or manage you
 
 <div class="row g-4">
       
-      <div class="col-lg-6">
-        <div class="p-4 rounded shadow-sm bg-white h-100 border-top border-4 border-info">
-          <div class="d-flex align-items-center mb-3">
-            <div class="me-3 text-info"><i class="fa-solid fa-heart-circle-check fa-2x"></i></div>
-            <h4 class="fw-bold mb-0" style="color: #2c4964;">Heart & Respiratory Care</h4>
-          </div>
-          <p class="text-muted small">Specialized diagnostic screening and chronic management for chest and breathing concerns.</p>
-          
-          <div class="row g-2 mt-2">
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-info w-100 text-start small">Cardiac Heart Screening</a></div>
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-info w-100 text-start small">Asthma & Lung Assessment</a></div>
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-info w-100 text-start small">BP & Cholesterol Mgmt</a></div>
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-info w-100 text-start small">Chest Pain/Palpitation Review</a></div>
+      <div class="col-lg-3 col-md-6">
+        <div class="p-4 shadow-sm expertise-card h-100 zone-heart">
+          <i class="fa-solid fa-heart-pulse fa-2x mb-3 text-danger"></i>
+          <h5 class="fw-bold">Heart & Circulation</h5>
+          <div class="mt-3">
+            <a href="#" class="btn-spec btn-outline-danger">Cardiac Screening</a>
+            <a href="#" class="btn-spec btn-outline-danger">BP & Cholesterol</a>
+            <a href="#" class="btn-spec btn-outline-danger">Chest Pain Review</a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="p-4 rounded shadow-sm bg-white h-100 border-top border-4 border-primary">
-          <div class="d-flex align-items-center mb-3">
-            <div class="me-3 text-primary"><i class="fa-solid fa-dna fa-2x"></i></div>
-            <h4 class="fw-bold mb-0" style="color: #2c4964;">Metabolic & Bone Health</h4>
-          </div>
-          <p class="text-muted small">Advanced care for hormonal balance, metabolic resilience, and skeletal strength.</p>
-          
-          <div class="row g-2 mt-2">
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-primary w-100 text-start small">Thyroid & Fatigue Assessment</a></div>
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-primary w-100 text-start small">Osteoporosis Assessment</a></div>
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-primary w-100 text-start small">Diabetes & Sugar Mgmt</a></div>
-            <div class="col-sm-6"><a href="#" class="btn btn-outline-primary w-100 text-start small">Advanced Bone Treatment</a></div>
+      <div class="col-lg-3 col-md-6">
+        <div class="p-4 shadow-sm expertise-card h-100 zone-resp">
+          <i class="fa-solid fa-lungs fa-2x mb-3 text-primary"></i>
+          <h5 class="fw-bold">Respiratory & Lung</h5>
+          <div class="mt-3">
+            <a href="#" class="btn-spec btn-outline-primary">Asthma Assessment</a>
+            <a href="#" class="btn-spec btn-outline-primary">Chronic Cough</a>
+            <a href="#" class="btn-spec btn-outline-primary">Lung Recovery</a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-12">
-        <div class="p-4 rounded shadow-sm bg-light border">
-          <div class="row align-items-center">
-            <div class="col-lg-3">
-              <h5 class="fw-bold mb-1" style="color: #2c4964;">Routine & Rapid Services</h5>
-              <p class="small text-muted mb-lg-0">Blood tests, medicals, and vaccinations.</p>
-            </div>
-            <div class="col-lg-9">
-              <div class="row g-2">
-                <div class="col-md-3"><a href="#" class="btn btn-white border w-100 small">Rapid Blood Tests</a></div>
-                <div class="col-md-3"><a href="#" class="btn btn-white border w-100 small">MOM/ICA/Work Medical</a></div>
-                <div class="col-md-3"><a href="#" class="btn btn-white border w-100 small">Vaccinations (Flu/HPV)</a></div>
-                <div class="col-md-3"><a href="#" class="btn btn-white border w-100 small">HealthierSG Enrollment</a></div>
-              </div>
-            </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="p-4 shadow-sm expertise-card h-100 zone-meta">
+          <i class="fa-solid fa-dna fa-2x mb-3 text-secondary" style="color: #9b59b6 !important;"></i>
+          <h5 class="fw-bold">Thyroid & Metabolic</h5>
+          <div class="mt-3">
+            <a href="#" class="btn-spec btn-outline-secondary">Thyroid & Fatigue</a>
+            <a href="#" class="btn-spec btn-outline-secondary">Diabetes Mgmt</a>
+            <a href="#" class="btn-spec btn-outline-secondary">Weight Optimization</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="p-4 shadow-sm expertise-card h-100 zone-bone">
+          <i class="fa-solid fa-bone fa-2x mb-3 text-success"></i>
+          <h5 class="fw-bold">Bone & Joint</h5>
+          <div class="mt-3">
+            <a href="#" class="btn-spec btn-outline-success">Osteoporosis Screen</a>
+            <a href="#" class="btn-spec btn-outline-success">Bone Treatment</a>
+            <a href="#" class="btn-spec btn-outline-success">Arthritis Pain</a>
           </div>
         </div>
       </div>
 
     </div>
 
-    <div class="text-center mt-5">
-      <div class="p-4 border rounded-3 bg-white d-inline-block shadow-sm">
-         <i class="fa-solid fa-stethoscope me-2 text-muted"></i>
-         <span class="text-muted">Not sure?</span> 
-         <a href="#" class="fw-bold text-primary text-decoration-none ms-2">Book a Diagnostic Review for Complex Symptoms & Second Opinions →</a>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="p-3 bg-white border rounded shadow-sm d-md-flex align-items-center justify-content-between">
+          <span class="small fw-bold text-muted text-uppercase">Routine & Rapid Services:</span>
+          <div class="d-flex flex-wrap gap-2 mt-2 mt-md-0">
+            <a href="#" class="badge bg-light text-dark border p-2 text-decoration-none">Rapid Blood Tests</a>
+            <a href="#" class="badge bg-light text-dark border p-2 text-decoration-none">MOM / ICA Medicals</a>
+            <a href="#" class="badge bg-light text-dark border p-2 text-decoration-none">Vaccinations</a>
+            <a href="#" class="badge bg-light text-dark border p-2 text-decoration-none">HealthierSG</a>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <p class="small text-muted mb-0">Unclear symptoms or need a second opinion?</p>
+      <a href="#" class="fw-bold text-dark text-decoration-none">Book a Diagnostic Review for Complex Cases →</a>
     </div>
 
   </div>
