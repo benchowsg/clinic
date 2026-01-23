@@ -4,102 +4,91 @@ title: Book an Appointment | A Healing Heart Medical Clinic
 permalink: /booking-test
 description: Select an assessment for heart, lung, or bone health, or manage your existing chronic conditions with our intermediate care team.
 ---
+Here is the clean, organized code structured exactly as you requested: YAML Frontmatter, the CSS Styles, and the Main HTML Body.
 
+This version uses the "Three-Lane" strategy to ensure your Rapid Blood Tests and Cardiology expertise aren't buried, while keeping the general consultation easy to find.
+
+1. The YAML
+YAML
+---
+layout: default
+title: Book an Appointment | A Healing Heart Medical Clinic
+permalink: /booking
+---
+2. The Styles
+HTML
 <style>
   :root {
-    --clinic-primary: #2c4964;
-    --clinic-accent: #43a7d5;
-    --clinic-bg: #fdfdfd;
+    --clinic-dark: #2c4964;
+    --clinic-blue: #43a7d5;
+    --clinic-light: #f8fafd;
   }
 
-  /* Main Action Bar */
-  .hero-booking-bar {
+  .booking-section { background-color: var(--clinic-light); }
+
+  /* Top Hero Bar */
+  .hero-pathway {
     background: #fff;
     border: 1px solid #eef2f6;
-    border-radius: 15px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    border-radius: 50px;
+    padding: 15px 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    margin-bottom: 40px;
+    transition: all 0.3s ease;
   }
+  .hero-pathway:hover { border-color: var(--clinic-blue); }
 
-  /* Diagnostic Cards */
-  .screening-card {
+  /* Main Diagnostic Cards */
+  .diag-card {
     background: #fff;
     border: 1px solid #f0f3f7;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 25px;
     height: 100%;
     transition: all 0.3s ease;
-    text-decoration: none !important;
     display: flex;
     flex-direction: column;
+    text-decoration: none !important;
+  }
+  .diag-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+    border-color: var(--clinic-blue);
   }
 
-  .screening-card:hover {
-    border-color: var(--clinic-accent);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    transform: translateY(-3px);
-  }
-
-  .screening-card i {
-    font-size: 1.4rem;
-    color: var(--clinic-accent);
-    margin-bottom: 12px;
-  }
-
-  .screening-card h6 {
-    color: var(--clinic-primary);
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .screening-card p {
-    font-size: 0.85rem;
-    color: #6c757d;
-    line-height: 1.4;
-    margin-bottom: 0;
+  /* Rapid Test Featured Card */
+  .rapid-card {
+    border-left: 6px solid #e74c3c !important;
+    background: linear-gradient(to right, #ffffff, #fff9f9);
   }
 
   /* Sidebar Buttons */
-  .btn-sidebar {
-    background: #f8fafd;
+  .btn-action {
+    background: #fff;
     border: 1px solid #e9ecef;
-    color: var(--clinic-primary);
-    font-size: 0.8rem;
+    color: var(--clinic-dark);
+    font-size: 0.85rem;
     font-weight: 600;
-    padding: 12px 8px;
+    padding: 12px;
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
+    gap: 5px;
     transition: all 0.2s;
-    height: 100%;
+  }
+  .btn-action:hover {
+    background: var(--clinic-dark);
+    color: #fff;
+    border-color: var(--clinic-dark);
   }
 
-  .btn-sidebar:hover {
-    background: #fff;
-    border-color: var(--clinic-accent);
-    color: var(--clinic-accent);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  }
-
-  .btn-sidebar i {
-    font-size: 1.1rem;
-    opacity: 0.8;
-  }
-
-  .section-label {
-    font-size: 1.5rem;
+  .section-tag {
+    font-size: 0.75rem;
     font-weight: 800;
     text-uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     color: #adb5bd;
     margin-bottom: 15px;
     display: block;
@@ -111,156 +100,112 @@ description: Select an assessment for heart, lung, or bone health, or manage you
 
 <main id="main" class="mt-5 pt-5">
 
-   <section class="py-5" style="background-color: #fbfcfd;">
+<section class="py-5 booking-section">
   <div class="container">
     
-    <div class="row justify-content-center">
+    <div class="text-center mb-5">
+      <h1 class="fw-bold" style="color: var(--clinic-dark);">Direct Access Booking</h1>
+      <p class="text-muted">Specialized in Cardiology, Respiratory, and Rapid Diagnostics.</p>
+    </div>
+
+    <div class="row justify-content-center mb-5">
       <div class="col-lg-11">
-        
-        <div class="hero-booking-bar">
+        <div class="hero-pathway d-md-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center">
-            <div class="me-3 d-none d-md-block">
-              <div style="width: 50px; height: 50px; background: #eef7fd; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <i class="fa-solid fa-user-doctor text-primary"></i>
-              </div>
-            </div>
+            <i class="fa-solid fa-stethoscope text-primary fs-4 me-3"></i>
             <div>
-              <h4 class="fw-bold mb-0" style="color: var(--clinic-primary);">General Medical Consultation</h4>
-              <p class="text-muted small mb-0">For fever, flu, cough, diarrohea, or a first-time general visit.</p>
+              <span class="fw-bold d-block" style="color: var(--clinic-dark);">General Medical Consultation</span>
+              <span class="text-muted small">For fever, flu, cough, or first-time general visits.</span>
             </div>
           </div>
-          <a href="#" class="btn btn-primary px-4 py-2 fw-bold rounded-pill">Select</a>
-        </div>
-
-        <div class="row g-5">
-          
-          <div class="col-lg-8">
-            <span class="section-label">Diagnostic Screenings & Assessments</span>
-            <div class="row g-3">
-              
-              <div class="col-md-6">
-                <a href="#" class="screening-card" style="border-left: 4px solid var(--clinic-accent);">
-                  <i class="fa-solid fa-vial-circle-check"></i>
-                  <h6>Rapid Blood Test</h6>
-                  <p>Same-day results for chest pain, shortness of breath, leg swelling, heart attack, heart failure, and inflammatory checks.</p>
-                </a>
-              </div>
-
-              <div class="col-md-6">
-                <a href="#" class="screening-card">
-                  <i class="fa-solid fa-heart-pulse"></i>
-                  <h6>Cardiac Heart Screening</h6>
-                  <p>Advanced heart risk assessment and cardiovascular screening.</p>
-                </a>
-              </div>
-
-              <div class="col-md-6">
-                <a href="#" class="screening-card">
-                  <i class="fa-solid fa-notes-medical"></i>
-                  <h6>General Health Screening</h6>
-                  <p>Comprehensive health screening for everyone.</p>
-                </a>
-              </div>
-
-              <div class="col-md-6">
-                <a href="#" class="screening-card">
-                  <i class="fa-solid fa-lungs"></i>
-                  <h6>Asthma & Lung</h6>
-                  <p>Functional lung tests for chronic breathing or chronic cough concerns.</p>
-                </a>
-              </div>
-
-              <div class="col-md-6">
-                <a href="#" class="screening-card">
-                  <i class="fa-solid fa-bone"></i>
-                  <h6>Bone Health</h6>
-                  <p>Clinical review and fracture risk calculation for Osteoporosis, Osteopenia, and arthritis.</p>
-                </a>
-              </div>
-
-              <div class="col-md-6">
-                <a href="#" class="screening-card">
-                  <i class="fa-solid fa-gauge-high"></i>
-                  <h6>Hormone / Vitamin Deficiency</h6>
-                  <p>Hormonal screening for unexplained exhaustion, metabolism, muscle loss, short stature, hair loss, or weight gain.</p>
-                </a>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            
-            <div class="mb-5">
-              <span class="section-label">Chronic Management</span>
-              <div class="row g-2">
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-chart-line"></i>
-                        High Blood Pressure
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-droplet"></i>
-                        High Cholesterol
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-capsules"></i>
-                        Diabetes
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-person-arrow-up-from-line"></i>
-                        Post-Hospital
-                    </a>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <span class="section-label">Work & Routine Services</span>
-              <div class="row g-2">
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-id-card"></i>
-                        MOM (Work Permit)/LTA (Driving License)
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-syringe"></i>
-                        Vaccination 
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        6ME (Domestic Helper/Female Work Permit)
-                    </a>
-                </div>
-                <div class="col-6">
-                    <a href="#" class="btn-sidebar">
-                        <i class="fa-solid fa-house-user"></i>
-                        Healthier SG
-                    </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
+          <a href="#" class="btn btn-primary px-5 rounded-pill fw-bold mt-3 mt-md-0">Book Now</a>
         </div>
       </div>
     </div>
 
+    <div class="row g-4">
+      
+      <div class="col-lg-8">
+        <span class="section-tag">Intermediate Care & Diagnostics</span>
+        
+        <div class="row g-3">
+          <div class="col-12">
+            <a href="#" class="diag-card rapid-card">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <span class="badge bg-danger mb-2">Intermediate Care</span>
+                  <h5 class="fw-bold text-dark">Rapid Blood Diagnostics</h5>
+                  <p class="text-muted mb-0">Same-day results for Cardiac Markers, Inflammation, and Heart Failure indicators. Bridge the gap to hospital care.</p>
+                </div>
+                <i class="fa-solid fa-bolt-lightning text-danger fs-3"></i>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6">
+            <div class="diag-card">
+              <i class="fa-solid fa-magnifying-glass-chart text-primary"></i>
+              <h6 class="fw-bold">Health & Heart Screenings</h6>
+              <p class="small text-muted mb-3">Comprehensive cardiac risk mapping and general health assessments.</p>
+              <div class="d-grid gap-2">
+                <a href="#" class="btn btn-outline-primary btn-sm text-start fw-bold">Cardiac Heart Screening</a>
+                <a href="#" class="btn btn-outline-primary btn-sm text-start">General Health Screening</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row g-2">
+              <div class="col-12">
+                <a href="#" class="diag-card py-3">
+                  <h6 class="fw-bold mb-1 small"><i class="fa-solid fa-lungs text-info me-2"></i>Lung & Asthma</h6>
+                  <p class="extra-small text-muted mb-0">Spirometry & chronic cough review.</p>
+                </a>
+              </div>
+              <div class="col-12">
+                <a href="#" class="diag-card py-3">
+                  <h6 class="fw-bold mb-1 small"><i class="fa-solid fa-bone text-success me-2"></i>Bone & Joint Care</h6>
+                  <p class="extra-small text-muted mb-0">Osteoporosis & FRAX assessment.</p>
+                </a>
+              </div>
+              <div class="col-12">
+                <a href="#" class="diag-card py-3">
+                  <h6 class="fw-bold mb-1 small"><i class="fa-solid fa-gauge-high text-warning me-2"></i>Thyroid & Fatigue</h6>
+                  <p class="extra-small text-muted mb-0">Metabolic & hormonal screening.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        
+        <div class="mb-5">
+          <span class="section-tag">Care Management</span>
+          <div class="row g-2">
+            <div class="col-6"><a href="#" class="btn-action"><i class="fa-solid fa-chart-line"></i>BP/Cholesterol</a></div>
+            <div class="col-6"><a href="#" class="btn-action"><i class="fa-solid fa-droplet"></i>Diabetes Care</a></div>
+            <div class="col-12"><a href="#" class="btn-action flex-row gap-3"><i class="fa-solid fa-capsules"></i> Osteoporosis Follow-up</a></div>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-tag">Work & Routine</span>
+          <div class="row g-2">
+            <div class="col-6"><a href="#" class="btn-action"><i class="fa-solid fa-id-card"></i>MOM / ICA</a></div>
+            <div class="col-6"><a href="#" class="btn-action"><i class="fa-solid fa-syringe"></i>Vaccination</a></div>
+            <div class="col-6"><a href="#" class="btn-action"><i class="fa-solid fa-graduation-cap"></i>Student Pass</a></div>
+            <div class="col-6"><a href="#" class="btn-action"><i class="fa-solid fa-house-user"></i>HealthierSG</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="text-center mt-5 pt-4 border-top">
-      <p class="small text-muted mb-1">Unsure where your symptoms fit?</p>
-      <a href="#" class="fw-bold text-dark text-decoration-none">
-        Book a Diagnostic Review for Complex Symptoms →
+      <a href="#" class="text-muted small text-decoration-none">
+        <i class="fa-solid fa-circle-question me-1"></i> Not sure? <strong>Book a Diagnostic Review for Complex Symptoms →</strong>
       </a>
     </div>
 
