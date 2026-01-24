@@ -7,55 +7,52 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
 ---
 
 <style>
-  .triage-section { padding: 60px 0; background: #fbfcfd; }
+  /* Direct Access / Triage Styling */
+  .triage-section { background-color: #f8fafd; padding: 60px 0; }
   .triage-card {
     background: #fff;
+    border: 1px solid #eef2f6;
     border-radius: 20px;
     padding: 30px;
     height: 100%;
-    border: 1px solid #eef2f6;
     transition: 0.3s;
     display: flex;
     flex-direction: column;
+    text-align: left;
   }
-  .triage-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-  
+  .triage-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.05); border-color: #43a7d5; }
   .triage-badge {
     display: inline-block;
     padding: 4px 12px;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
-  
-  /* Quick Access Bar for Acute Care */
-  .acute-bar {
+  .acute-banner {
     background: #fff;
     border: 1px solid #eef2f6;
     border-radius: 50px;
-    padding: 15px 30px;
-    margin-bottom: 40px;
+    padding: 15px 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   }
 </style>
 
-  <section class="hero-section pt-5" style="background: linear-gradient(45deg, #f0f9ff 0%, #ffffff 100%);">
-<div class="container py-5 mt-4">
-    <div class="row align-items-center">
-      <div class="col-lg-8 text-center text-lg-start">
-        <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">
-          Osteoporosis and Bone Care
-        </h1>
-        <h2 class="h3 fw-bold mb-4" style="color: #2c4964;">Strengthen your foundation. Stop the silent decline of Osteoporosis.</h2>
-        <p class="lead text-muted mb-4" style="font-size: 20px;">
-          Bone loss doesn't have symptoms until something breaks. We help you move beyond daily pills with advanced, twice-yearly treatments that protect your independence and reduce fracture risk.
-        </p>
-        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-          <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">Get Bone Assessment</a>
-          <a href="https://wa.me/6569621362" target="_blank" rel="noopener noreferrer" class="btn btn-sync-outline rounded-pill px-5 py-2 fw-bold"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp Us</a>
-        </div>
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+        <h1 class="visually-hidden">A Healing Heart Medical: Cardiology & Chronic Care Clinic Singapore</h1>
+          <p style="color: #2c4964; font-size: 48px; font-weight: 700; line-height: 1.2;">Medical care that goes beyond the basics</p>
+        <h2 style="color: #43a7d5; font-size: 24px; font-weight: 400; margin-bottom: 30px;">We manage heart risk, chronic fatigue, hormonal imbalance, and complex symptoms when general care isn't enough.</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start gap-4 mt-4">
+            <a href="/booking" class="btn-outline-clinic">Book now</a>
+            <a href="/health-calculator" class="btn-outline-clinic">Heart Risk Calculator</a>
+          </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 hero-img d-none d-lg-block">
+        <img src="assets/img/about-AHH-banner-web.png" class="img-fluid animated" alt="A Healing Heart Medical Clinic - Advanced Cardiology and Chronic Care in Singapore">
       </div>
     </div>
   </div>
@@ -66,66 +63,155 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
     
     <div class="row justify-content-center mb-5">
       <div class="col-lg-10">
-        <div class="acute-bar d-md-flex align-items-center justify-content-between text-center text-md-start">
+        <div class="acute-banner d-md-flex align-items-center justify-content-between text-center text-md-start">
           <div>
             <span class="badge bg-info me-2">Acute Care</span>
             <strong style="color: #2c4964;">Feeling unwell today?</strong> 
-            <span class="text-muted ms-2 small">Cough, flu, fever, or stomach upset.</span>
+            <span class="text-muted ms-2 small">Book for cough, cold, flu, or general acute symptoms.</span>
           </div>
-          <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold mt-3 mt-md-0">Book General Consult</a>
+          <a href="/booking" class="btn btn-primary btn-sm rounded-pill px-4 fw-bold mt-3 mt-md-0">Book General Consult</a>
         </div>
       </div>
     </div>
 
     <div class="text-center mb-5">
-      <h2 class="fw-bold" style="color: #2c4964;">Specialized Care & Diagnostics</h2>
-      <p class="text-muted">Choose a pathway below for directed medical attention.</p>
+      <h2 class="fw-bold" style="color: #2c4964;">How can we help you today?</h2>
+      <p class="text-muted">Select a pathway for targeted diagnostic and clinical care.</p>
     </div>
 
     <div class="row g-4">
-      
       <div class="col-lg-4">
         <div class="triage-card" style="border-top: 5px solid #e74c3c;">
-          <span class="triage-badge" style="background: #fdf2f2; color: #e74c3c;">Urgent & Discovery</span>
-          <h4 class="fw-bold">I need answers fast</h4>
-          <p class="small text-muted mb-4">For chest pain, breathlessness, or symptoms requiring immediate clinical data.</p>
-          <ul class="list-unstyled small mb-auto">
-            <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i><strong>Rapid Bloods:</strong> Cardiac markers today.</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i><strong>Heart Monitoring:</strong> Holter & ECG.</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i><strong>Scheduled Scans:</strong> Rapid imaging access.</li>
+          <span class="triage-badge" style="background: #fff1f0; color: #e74c3c;">Answers & Discovery</span>
+          <h4 class="fw-bold mb-3">I need answers fast</h4>
+          <p class="small text-muted mb-4">For chest pain, breathlessness, or symptoms requiring same-day data.</p>
+          
+          <ul class="list-unstyled small mb-auto mt-3">
+            <li class="mb-2"><i class="fa-solid fa-bolt text-danger me-2"></i><strong>Rapid Bloods:</strong> Same-day markers.</li>
+            <li class="mb-2"><i class="fa-solid fa-heart-pulse text-danger me-2"></i><strong>Heart Monitoring:</strong> Holter & ECG.</li>
+            <li class="mb-2"><i class="fa-solid fa-clock text-danger me-2"></i><strong>Scheduled Scans:</strong> Rapid imaging.</li>
           </ul>
-          <a href="/rapid-diagnostics" class="btn btn-danger w-100 mt-4 fw-bold">Start Diagnostics</a>
+          <a href="/booking" class="btn btn-danger w-100 mt-4 py-2 fw-bold">Book Diagnostic Access</a>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="triage-card" style="border-top: 5px solid #3498db;">
-          <span class="triage-badge" style="background: #eff7fd; color: #3498db;">Existing Conditions</span>
-          <h4 class="fw-bold">I need to manage my care</h4>
-          <p class="small text-muted mb-4">Follow-up care for chronic conditions and specialist-level management.</p>
+          <span class="triage-badge" style="background: #e6f7ff; color: #3498db;">Existing Conditions</span>
+          <h4 class="fw-bold mb-3">Management & Recovery</h4>
+          <p class="small text-muted mb-4">Optimizing care for chronic conditions or post-hospitalization recovery.</p>
           <ul class="list-unstyled small mb-auto">
-            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Condition Review:</strong> Heart, Lung, Bone.</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Medication:</strong> Optimization & repeats.</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Recovery:</strong> Post-hospitalization support.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Chronic Care:</strong> Diabetes, BP, Heart.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Bone & Joint:</strong> Osteoporosis care.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Recovery:</strong> Post-Hospital support.</li>
           </ul>
-          <a href="/booking" class="btn btn-primary w-100 mt-4 fw-bold">Book Management</a>
+          <a href="/booking" class="btn btn-primary w-100 mt-4 py-2 fw-bold">Book Follow-up</a>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="triage-card" style="border-top: 5px solid #2ecc71;">
-          <span class="triage-badge" style="background: #f0fdf4; color: #2ecc71;">Routine & Preventive</span>
-          <h4 class="fw-bold">I need a check-up</h4>
-          <p class="small text-muted mb-4">Routine medical assessments, statutory checks, and wellness mapping.</p>
+          <span class="triage-badge" style="background: #f6ffed; color: #2ecc71;">Routine & Preventive</span>
+          <h4 class="fw-bold mb-3">Check-ups & Statutory</h4>
+          <p class="small text-muted mb-4">Keeping you healthy and meeting statutory medical requirements.</p>
           <ul class="list-unstyled small mb-auto">
-            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Screenings:</strong> Heart & General Health.</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Statutory:</strong> MOM / ICA / LTA Medicals.</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Protection:</strong> Vaccinations & Wellness.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Screening:</strong> Heart & Health Mapping.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Statutory:</strong> MOM / ICA / LTA / Student.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Vaccination:</strong> Routine protection.</li>
           </ul>
-          <a href="/health-screening" class="btn btn-success w-100 mt-4 fw-bold" style="background-color: #2ecc71; border:none;">Book Screening</a>
+          <a href="/booking" class="btn btn-success w-100 mt-4 py-2 fw-bold" style="background-color: #2ecc71; border:none;">Book Routine Care</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
+<section id="service-navigation" class="service-navigation py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="fw-bold" style="color: #2c4964;">Explore Our Expertise</h2>
+      <p class="text-muted">Detailed insights into our medical services. Click to read.</p>
+    </div>
+      
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <a href="/cardiology" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
+          <p>Cardiology</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/hypertension-cholesterol-management" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-gauge-high"></i></div>
+          <p>BP & Cholesterol</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/diabetes-weight-management" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-syringe"></i></div>
+          <p>Diabetes & Weight</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/health-screening" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-user-check"></i></div>
+          <p>Health Screening</p>
+        </a>
+      </div>
+    </div>
+    <p></p>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <a href="/asthma-lung-management" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-lungs"></i></div>
+          <p>Asthma & Lung</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/osteoporosis-bone-care" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-bone"></i></div>
+          <p>Osteoporosis & Bone</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/hormone-optimization" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-dna"></i></div>
+          <p>Hormonal & Wellness</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="skin-hair-care" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-user-circle"></i></div>
+          <p>Skin & Hair Care</p>
+        </a>
+      </div>
+    </div>
+    <p></p>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <a href="/regenerative-medicine" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-user-doctor"></i></div>
+          <p>Regenerative Medicine</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/rapid-diagnostics" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-droplet"></i></div>
+          <p>Rapid Diagnostics</p>
+        </a>
+      </div> 
+      <div class="col-6 col-md-3">
+        <a href="/vaccination" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-shield-virus"></i></div>
+          <p>Vaccination</p>
+        </a>
+      </div>
+      <div class="col-6 col-md-3">
+        <a href="/post-hospitalisation-recovery" class="service-tile">
+          <div class="icon-circle"><i class="fa-solid fa-bed-pulse"></i></div>
+          <p>Post-Hospital Care</p>
+        </a>
+      </div>
     </div>
   </div>
 </section>
