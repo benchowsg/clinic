@@ -7,143 +7,102 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
 ---
 
 <style>
-  .symptom-section { background-color: #fff; padding: 80px 0; }
-  
-  .symptom-card {
-    border: 1px solid #f0f3f7;
-    border-radius: 20px;
-    padding: 35px;
-    height: 100%;
-    transition: all 0.3s ease;
+  .triage-section { padding: 60px 0; background: #fbfcfd; }
+  .triage-card {
     background: #fff;
-    position: relative;
-    overflow: hidden;
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%;
+    border: 1px solid #eef2f6;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
   }
+  .triage-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
   
-  .symptom-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(44, 73, 100, 0.08);
-  }
-
-  .accent-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-  }
-
-  .symptom-icon {
-    font-size: 2rem;
-    margin-bottom: 20px;
+  .triage-badge {
     display: inline-block;
-  }
-
-  .symptom-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #2c4964;
+    padding: 4px 12px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
     margin-bottom: 15px;
   }
-
-  .symptom-card ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 25px;
-  }
-
-  .symptom-card ul li {
-    font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-  }
-
-  .symptom-card ul li i {
-    font-size: 0.8rem;
-    margin-right: 10px;
-    color: #43a7d5;
-  }
-
-  .btn-symptom {
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 12px 20px;
-    border-radius: 10px;
-    transition: 0.2s;
-    width: 100%;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  /* Specific Logic Colors */
-  .urgent { border-top: 5px solid #e74c3c; }
-  .urgent .symptom-icon { color: #e74c3c; }
-  .btn-urgent { background: #e74c3c; color: #fff; }
-  .btn-urgent:hover { background: #c0392b; color: #fff; }
-
-  .specialist { border-top: 5px solid #3498db; }
-  .specialist .symptom-icon { color: #3498db; }
-  .btn-specialist { background: #3498db; color: #fff; }
   
-  .wellness { border-top: 5px solid #2ecc71; }
-  .wellness .symptom-icon { color: #2ecc71; }
-  .btn-wellness { background: #f8fafd; color: #2c4964; border: 1px solid #dee2e6; }
+  /* Quick Access Bar for Acute Care */
+  .acute-bar {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 50px;
+    padding: 15px 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
 </style>
 
-<section class="symptom-section">
+<section class="triage-section">
   <div class="container">
     
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="acute-bar d-md-flex align-items-center justify-content-between text-center text-md-start">
+          <div>
+            <span class="badge bg-info me-2">Acute Care</span>
+            <strong style="color: #2c4964;">Feeling unwell today?</strong> 
+            <span class="text-muted ms-2 small">Cough, flu, fever, or stomach upset.</span>
+          </div>
+          <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold mt-3 mt-md-0">Book General Consult</a>
+        </div>
+      </div>
+    </div>
+
     <div class="text-center mb-5">
-      <h2 class="fw-bold" style="color: #2c4964;">How can we help you today?</h2>
-      <p class="text-muted">Select the concern that matches your symptoms for specialized diagnostic care.</p>
+      <h2 class="fw-bold" style="color: #2c4964;">Specialized Care & Diagnostics</h2>
+      <p class="text-muted">Choose a pathway below for directed medical attention.</p>
     </div>
 
     <div class="row g-4">
       
       <div class="col-lg-4">
-        <div class="symptom-card urgent">
-          <div class="symptom-icon"><i class="fa-solid fa-heart-circle-exclamation"></i></div>
-          <h3>Chest Pain & Urgent Concerns</h3>
-          <p class="small text-muted">For those requiring immediate clinical answers and bridge-to-hospital diagnostics.</p>
-          <ul>
-            <li><i class="fa-solid fa-check"></i> Same-Day Cardiac Markers</li>
-            <li><i class="fa-solid fa-check"></i> Rapid Inflammation Scans</li>
-            <li><i class="fa-solid fa-check"></i> Intermediate Cardiac Review</li>
+        <div class="triage-card" style="border-top: 5px solid #e74c3c;">
+          <span class="triage-badge" style="background: #fdf2f2; color: #e74c3c;">Urgent & Discovery</span>
+          <h4 class="fw-bold">I need answers fast</h4>
+          <p class="small text-muted mb-4">For chest pain, breathlessness, or symptoms requiring immediate clinical data.</p>
+          <ul class="list-unstyled small mb-auto">
+            <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i><strong>Rapid Bloods:</strong> Cardiac markers today.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i><strong>Heart Monitoring:</strong> Holter & ECG.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-danger me-2"></i><strong>Scheduled Scans:</strong> Rapid imaging access.</li>
           </ul>
-          <a href="/rapid-diagnostics" class="btn-symptom btn-urgent">Get Urgent Answers</a>
+          <a href="/rapid-diagnostics" class="btn btn-danger w-100 mt-4 fw-bold">Start Diagnostics</a>
         </div>
       </div>
 
       <div class="col-lg-4">
-        <div class="symptom-card specialist">
-          <div class="symptom-icon"><i class="fa-solid fa-stethoscope"></i></div>
-          <h3>Specialized Clinical Care</h3>
-          <p class="small text-muted">Targeted expert review for chronic or recurring medical symptoms.</p>
-          <ul>
-            <li><i class="fa-solid fa-check"></i> Breathlessness & Lung Care</li>
-            <li><i class="fa-solid fa-check"></i> Heart Condition Management</li>
-            <li><i class="fa-solid fa-check"></i> Bone Health & Osteoporosis</li>
+        <div class="triage-card" style="border-top: 5px solid #3498db;">
+          <span class="triage-badge" style="background: #eff7fd; color: #3498db;">Existing Conditions</span>
+          <h4 class="fw-bold">I need to manage my care</h4>
+          <p class="small text-muted mb-4">Follow-up care for chronic conditions and specialist-level management.</p>
+          <ul class="list-unstyled small mb-auto">
+            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Condition Review:</strong> Heart, Lung, Bone.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Medication:</strong> Optimization & repeats.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Recovery:</strong> Post-hospitalization support.</li>
           </ul>
-          <a href="/booking" class="btn-symptom btn-specialist">Consult a Specialist</a>
+          <a href="/booking" class="btn btn-primary w-100 mt-4 fw-bold">Book Management</a>
         </div>
       </div>
 
       <div class="col-lg-4">
-        <div class="symptom-card wellness">
-          <div class="symptom-icon"><i class="fa-solid fa-clipboard-user"></i></div>
-          <h3>Wellness & Screenings</h3>
-          <p class="small text-muted">Comprehensive health mapping to identify risks before symptoms appear.</p>
-          <ul>
-            <li><i class="fa-solid fa-check"></i> Full General Health Screen</li>
-            <li><i class="fa-solid fa-check"></i> Cardiac Risk Mapping</li>
-            <li><i class="fa-solid fa-check"></i> Hormonal & Wellness Lab</li>
+        <div class="triage-card" style="border-top: 5px solid #2ecc71;">
+          <span class="triage-badge" style="background: #f0fdf4; color: #2ecc71;">Routine & Preventive</span>
+          <h4 class="fw-bold">I need a check-up</h4>
+          <p class="small text-muted mb-4">Routine medical assessments, statutory checks, and wellness mapping.</p>
+          <ul class="list-unstyled small mb-auto">
+            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Screenings:</strong> Heart & General Health.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Statutory:</strong> MOM / ICA / LTA Medicals.</li>
+            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Protection:</strong> Vaccinations & Wellness.</li>
           </ul>
-          <a href="/health-screening" class="btn-symptom btn-wellness">Book My Check-up</a>
+          <a href="/health-screening" class="btn btn-success w-100 mt-4 fw-bold" style="background-color: #2ecc71; border:none;">Book Screening</a>
         </div>
       </div>
 
