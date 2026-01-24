@@ -3,7 +3,7 @@
         onload="if(submitted) { alert('Thank you! Your message has been sent. We will get back to you shortly.'); window.location.reload(); }">
 </iframe>
 
-<div id="whatsapp-container" style="position:fixed; bottom:100px; right:20px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end;">
+<div id="whatsapp-container" class="d-none d-lg-flex" style="position:fixed; bottom:100px; right:20px; z-index:9999; flex-direction:column; align-items:flex-end;">
   <div id="wa-bubble" style="background: white; color: #2c4964; padding: 10px 18px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 12px; font-size: 14px; font-weight: 600; border: 1px solid #eef2f6; position: relative; display: none; white-space: nowrap;">
     Questions? Chat with us!
     <div style="position: absolute; bottom: -8px; right: 20px; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid white;"></div>
@@ -13,7 +13,7 @@
   </a>
 </div>
 
-<footer id="footer" class="footer mt-5" style="border-top: 1px solid #eee; background: #fff;">
+<footer id="footer" class="footer mt-5" style="border-top: 1px solid #eee; background: #fff; padding-bottom: 100px;">
   
   <div class="footer-top py-5">
     <div class="container">
@@ -63,24 +63,83 @@
     </div>
   </div>
 
-  <div class="fixed-bottom bg-white border-top d-lg-none py-2 px-3 shadow-lg" style="z-index: 9998;">
-    <div class="row g-2 text-center">
-      <div class="col-4">
-        <a href="tel:+6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3fbbc0; border: none; font-size: 11px; border-radius: 8px;">
-          <i class="fa-solid fa-phone me-1"></i> Call
-        </a>
-      </div>
-      <div class="col-4">
-        <a id="smart-wa-mobile" href="https://wa.me/6569621362" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #25d366; border: none; font-size: 11px; border-radius: 8px;">
-          <i class="fa-brands fa-whatsapp me-1"></i> WhatsApp
-        </a>
-      </div>
-      <div class="col-4">
-        <a href="/booking" class="btn w-100 py-2 fw-bold text-white d-flex align-items-center justify-content-center" style="background: #3498DB; border: none; font-size: 11px; border-radius: 8px;">
-          <i class="fa-solid fa-calendar-check me-1"></i> Book
-        </a>
-      </div>
-    </div>
+  <style>
+    @media (max-width: 991.98px) {
+      .mobile-floating-dock {
+        position: fixed;
+        bottom: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 400px;
+        z-index: 10000;
+        
+        /* Glassmorphism Effect */
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 12px 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .mobile-dock-item {
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        transition: transform 0.2s ease;
+        color: #2c4964;
+      }
+
+      .mobile-dock-item:active {
+        transform: scale(0.9);
+      }
+
+      .mobile-dock-item i {
+        font-size: 1.4rem;
+        margin-bottom: 2px;
+      }
+
+      .mobile-dock-item span {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Distinct Brand Colors */
+      .item-call i { color: #3fbbc0; }
+      .item-whatsapp i { color: #25d366; }
+      .item-book i { color: #3498DB; }
+    }
+
+    /* Hide the floating dock on Desktop */
+    @media (min-width: 992px) {
+      .mobile-floating-dock { display: none !important; }
+    }
+  </style>
+
+  <div class="mobile-floating-dock">
+    <a href="tel:+6569621362" class="mobile-dock-item item-call">
+      <i class="fa-solid fa-phone"></i>
+      <span>Call</span>
+    </a>
+    <a id="smart-wa-mobile" href="https://wa.me/6569621362" class="mobile-dock-item item-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="/booking" class="mobile-dock-item item-book">
+      <i class="fa-solid fa-calendar-check"></i>
+      <span>Book</span>
+    </a>
   </div>
 
   <div class="container border-top pt-4 text-center">
@@ -96,15 +155,12 @@
 
 <script>
   window.addEventListener('load', function() {
-    // 1. WhatsApp Smart Link Logic
     var floatingLink = document.getElementById('smart-wa-link');
     var mobileLink = document.getElementById('smart-wa-mobile');
     var currentPage = window.location.pathname;
     
-    // Set the initial default
     var defaultMsg = "Hi A Healing Heart Medical, I'd like to enquire about your services.";
 
-    // Logic to change message based on URL - ALWAYS update defaultMsg
     if (currentPage.includes("post-hospitalisation-recovery")) {
       defaultMsg = "Hi A Healing Heart Medical, I'm enquiring about post-hospital recovery care.";
     } else if (currentPage.includes("location")) {
@@ -127,19 +183,14 @@
       defaultMsg = "Hi A Healing Heart, I'd like to book an appointment for hormonal issues.";
     }
 
-    // Now finalUrl uses the updated defaultMsg correctly
     var finalUrl = "https://wa.me/6569621362?text=" + encodeURIComponent(defaultMsg);
     
     if(floatingLink) floatingLink.href = finalUrl;
     if(mobileLink) mobileLink.href = finalUrl;
 
-    // 2. Attention Bubble Logic
     const bubble = document.getElementById('wa-bubble');
     if (bubble) {
-      setTimeout(() => { 
-        bubble.style.display = 'block'; 
-      }, 3000); 
-      
+      setTimeout(() => { bubble.style.display = 'block'; }, 3000); 
       setTimeout(() => {
         bubble.style.opacity = '0';
         bubble.style.transition = 'opacity 1s ease';
