@@ -37,6 +37,42 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
     padding: 15px 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   }
+
+  /* Mobile-specific adjustments for the Acute Bar */
+  @media (max-width: 767px) {
+    .acute-banner {
+      border-radius: 20px !important; /* Less "pill" shaped on mobile for better text spacing */
+      padding: 20px !important;
+      text-align: center !important;
+    }
+    .acute-banner .badge {
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .acute-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .acute-banner strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    .acute-banner .text-muted {
+      display: block;
+      margin-bottom: 15px;
+      margin-left: 0 !important;
+    }
+    .acute-btn-container {
+      width: 100%;
+    }
+    .acute-btn-container .btn {
+      width: 100%; /* Full width button on mobile for easier thumb tapping */
+      padding: 12px;
+    }
+  }
+  
 </style>
 
 <section id="hero" class="hero d-flex align-items-center">
@@ -113,20 +149,29 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
       </div>
     </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="acute-banner d-md-flex align-items-center justify-content-between text-center text-md-start">
-          <div>
-            <span class="badge bg-info me-2">Acute Care</span>
-            <strong style="color: #2c4964;">Feeling unwell today?</strong> 
-            <span class="text-muted ms-2 small">Book for cough, cold, flu, pain or general acute symptoms.</span>
-          </div>
-          <div class="mt-3 mt-md-0">
-             <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Book General Consult</a>
-          </div>
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    <div class="acute-banner d-flex flex-column flex-md-row align-items-center justify-content-between">
+      
+      <div class="acute-content mb-3 mb-md-0">
+        <span class="badge bg-info">Acute Care</span>
+        <div class="mt-2 mt-md-0 d-inline-block">
+          <strong style="color: #2c4964;">Feeling unwell today?</strong> 
+          <span class="text-muted ms-md-2 small">Cough, flu, fever, or stomach upset.</span>
         </div>
       </div>
+
+      <div class="acute-btn-container text-center">
+        <img src="assets/img/chas-medisave-logos.png" alt="CHAS/Medisave" style="height: 25px; margin-right: 12px;" class="d-none d-md-inline">
+        
+        <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">
+          Book General Consult
+        </a>
+      </div>
+
     </div>
+  </div>
+</div>
 
   </div>
 </section>
