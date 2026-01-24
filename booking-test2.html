@@ -67,6 +67,13 @@ description: Schedule your clinical assessment, chronic disease management, or h
     .booking-tile i { font-size: 2rem; }
     .booking-tile span { font-size: 0.9rem; }
   }
+
+  /* A specific color for Statutory */
+  .tile-statutory:hover { border-color: #6c757d; box-shadow: 0 10px 20px rgba(108, 117, 125, 0.1); }
+  .tile-statutory:hover i { color: #6c757d; transform: scale(1.1); }
+  
+  .statutory-header { border-left-color: #6c757d; }
+  
 </style>
 
 <main id="main" class="booking-container">
@@ -119,48 +126,52 @@ description: Schedule your clinical assessment, chronic disease management, or h
           <span>Bone Health / Osteoporosis</span>
         </a>
       </div>
-       <div class="col-6 col-md-3">
-        <a href="#" class="booking-tile tile-mgmt">
-          <i class="fa-solid fa-weight-scale" style="color:#43a7d5;"></i>
-          <span>Weight Management</span>
-        </a>
-      </div>
     </div>
 
-    <h5 class="category-header routine-header">Health Screening & Statutory</h5>
+    <h5 class="category-header routine-header">Health Screening & Wellness</h5>
     <div class="row g-3 mb-5">
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/GU5RnW5" class="booking-tile tile-routine">
           <i class="fa-solid fa-shield-heart" style="color:#25d366;"></i>
           <span>General Health Screening</span>
         </a>
       </div>
-      <div class="col-6 col-md-3">
+      <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VTixxPs" class="booking-tile tile-routine">
           <i class="fa-solid fa-heart-pulse" style="color:#25d366;"></i>
           <span>Cardiac Assessment Screening</span>
         </a>
       </div>
-      <div class="col-6 col-md-3">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SyZNo5Y" class="booking-tile tile-routine">
-          <i class="fa-solid fa-file-medical" style="color:#25d366;"></i>
-          <span>Statutory Medicals (MOM/ICA/LTA)</span>
-        </a>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/5nbX7A2" class="booking-tile tile-routine">
-          <i class="fa-solid fa-syringe" style="color:#25d366;"></i>
-          <span>Vaccinations</span>
+      <div class="col-6 col-md-4">
+        <a href="#" class="booking-tile tile-routine">
+          <i class="fa-solid fa-weight-scale" style="color:#25d366;"></i>
+          <span>Weight Management Consult</span>
         </a>
       </div>
     </div>
 
-    <h5 class="category-header" style="border-left-color: #6c757d;">Acute Medical Care</h5>
+    <h5 class="category-header statutory-header">Statutory Medicals & Immunisation</h5>
+    <div class="row g-3 mb-5">
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SyZNo5Y" class="booking-tile tile-statutory">
+          <i class="fa-solid fa-file-medical" style="color:#6c757d;"></i>
+          <span>Statutory Medicals<br><small class="fw-normal text-muted">(MOM / ICA / LTA / Student)</small></span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/5nbX7A2" class="booking-tile tile-statutory">
+          <i class="fa-solid fa-syringe" style="color:#6c757d;"></i>
+          <span>Vaccinations<br><small class="fw-normal text-muted">(Flu / NAIS Schedule)</small></span>
+        </a>
+      </div>
+    </div>
+
+    <h5 class="category-header" style="border-left-color: #43a7d5;">Acute Medical Care</h5>
     <div class="row g-3 mb-5">
       <div class="col-12 col-md-6">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VSYAIdE" class="booking-tile tile-mgmt">
-          <i class="fa-solid fa-head-side-mask" style="color:#6c757d;"></i>
-          <span>Acute Consultation<br><small class="fw-normal text-muted">(Cough, Cold, Fever, Flu symptoms)</small></span>
+          <i class="fa-solid fa-head-side-mask" style="color:#43a7d5;"></i>
+          <span>Acute Consultation<br><small class="fw-normal text-muted">(Cough, Cold, Fever, or Flu symptoms)</small></span>
         </a>
       </div>
     </div>
