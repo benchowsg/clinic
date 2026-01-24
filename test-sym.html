@@ -7,8 +7,9 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
 ---
 
 <style>
-  /* Direct Access / Triage Styling */
-  .triage-section { background-color: #f8fafd; padding: 60px 0; }
+  /* Triage Section Styling with Corporate Colors */
+  .triage-section { background-color: #fbfcfd; padding: 60px 0; }
+  
   .triage-card {
     background: #fff;
     border: 1px solid #eef2f6;
@@ -20,7 +21,11 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
     flex-direction: column;
     text-align: left;
   }
-  .triage-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.05); border-color: #43a7d5; }
+  .triage-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05); 
+  }
+
   .triage-badge {
     display: inline-block;
     padding: 4px 12px;
@@ -30,6 +35,24 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
     text-transform: uppercase;
     margin-bottom: 20px;
   }
+
+  /* Color Variations */
+  .urgent-border { border-top: 5px solid #ff4f81; }
+  .urgent-badge { background: #fff0f3; color: #ff4f81; }
+  .btn-urgent { background: #ff4f81; color: #fff; border: none; }
+  .btn-urgent:hover { background: #e64472; color: #fff; }
+
+  .mgmt-border { border-top: 5px solid #43a7d5; }
+  .mgmt-badge { background: #f0f7fa; color: #43a7d5; }
+  .btn-mgmt { background: #43a7d5; color: #fff; border: none; }
+  .btn-mgmt:hover { background: #3894bd; color: #fff; }
+
+  .routine-border { border-top: 5px solid #25d366; }
+  .routine-badge { background: #e9fbf0; color: #25d366; }
+  .btn-routine { background: #25d366; color: #fff; border: none; }
+  .btn-routine:hover { background: #1eb959; color: #fff; }
+
+  /* Acute Bar Mobile-First Fix */
   .acute-banner {
     background: #fff;
     border: 1px solid #eef2f6;
@@ -38,41 +61,19 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   }
 
-  /* Mobile-specific adjustments for the Acute Bar */
   @media (max-width: 767px) {
     .acute-banner {
-      border-radius: 20px !important; /* Less "pill" shaped on mobile for better text spacing */
-      padding: 20px !important;
-      text-align: center !important;
-    }
-    .acute-banner .badge {
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-    .acute-content {
-      display: flex;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
       flex-direction: column;
-      align-items: center;
     }
-    .acute-banner strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-    .acute-banner .text-muted {
-      display: block;
-      margin-bottom: 15px;
-      margin-left: 0 !important;
-    }
-    .acute-btn-container {
-      width: 100%;
-    }
-    .acute-btn-container .btn {
-      width: 100%; /* Full width button on mobile for easier thumb tapping */
-      padding: 12px;
-    }
+    .acute-content { margin-bottom: 15px; }
+    .acute-banner strong { display: block; margin-top: 10px; }
+    .acute-banner .text-muted { display: block; margin-left: 0 !important; margin-top: 5px; }
+    .acute-btn-container { width: 100%; }
+    .acute-btn-container .btn { width: 100%; padding: 10px; }
   }
-  
 </style>
 
 <section id="hero" class="hero d-flex align-items-center">
@@ -104,73 +105,67 @@ description: Homepage section to convert high-anxiety patients (e.g., chest pain
 
     <div class="row g-4 mb-5">
       <div class="col-lg-4">
-        <div class="triage-card" style="border-top: 5px solid #e74c3c;">
-          <span class="triage-badge" style="background: #fff1f0; color: #e74c3c;">Answers & Discovery</span>
+        <div class="triage-card urgent-border">
+          <span class="triage-badge urgent-badge">Answers & Discovery</span>
           <h4 class="fw-bold mb-3">I need answers fast</h4>
-          <p class="small text-muted mb-4">For chest pain, breathlessness, palpitations, pain, or symptoms that require urgent attention.</p>
+          <p class="small text-muted mb-4">For chest pain, breathlessness, or symptoms requiring same-day clinical data.</p>
           
-          <ul class="list-unstyled small mb-auto mt-3">
-            <li class="mb-2"><i class="fa-solid fa-bolt text-danger me-2"></i><strong>Rapid Diagnostics:</strong> Same-day cardiac markers</li>
-            <li class="mb-2"><i class="fa-solid fa-heart-pulse text-danger me-2"></i><strong>Heart Monitoring:</strong> Holter & ECG</li>
-            <li class="mb-2"><i class="fa-solid fa-clock text-danger me-2"></i><strong>Scheduled Scans:</strong> X-Ray, Ultrasound, MRI, CT imaging</li>
+          <ul class="list-unstyled small mb-auto mt-2">
+            <li class="mb-2"><i class="fa-solid fa-bolt me-2" style="color:#ff4f81;"></i><strong>Rapid Bloods:</strong> Same-day markers.</li>
+            <li class="mb-2"><i class="fa-solid fa-heart-pulse me-2" style="color:#ff4f81;"></i><strong>Heart Monitoring:</strong> Holter & ECG.</li>
+            <li class="mb-2"><i class="fa-solid fa-clock me-2" style="color:#ff4f81;"></i><strong>Scheduled Scans:</strong> Rapid imaging.</li>
           </ul>
-          <a href="/booking" class="btn btn-danger w-100 mt-4 py-2 fw-bold">Book Diagnostic Access</a>
+          <a href="/booking" class="btn btn-urgent w-100 mt-4 py-2 fw-bold">Book Diagnostic Access</a>
         </div>
       </div>
 
       <div class="col-lg-4">
-        <div class="triage-card" style="border-top: 5px solid #3498db;">
-          <span class="triage-badge" style="background: #e6f7ff; color: #3498db;">Existing Conditions</span>
+        <div class="triage-card mgmt-border">
+          <span class="triage-badge mgmt-badge">Existing Conditions</span>
           <h4 class="fw-bold mb-3">Management & Recovery</h4>
           <p class="small text-muted mb-4">Optimizing care for chronic conditions or post-hospitalization recovery.</p>
           
-          <ul class="list-unstyled small mb-auto mt-3">
-            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Chronic Care:</strong> Heart, Diabetes, Blood Pressure, Cholesterol, Osteoporosis, etc</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Hormonal:</strong> Hormonal and Vitamin Deficiencies</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i><strong>Recovery:</strong> Post-Hospital and Wound Care</li>
+          <ul class="list-unstyled small mb-auto mt-2">
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Chronic Care:</strong> Diabetes, BP, Heart.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Bone & Joint:</strong> Osteoporosis care.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Recovery:</strong> Post-Hospital support.</li>
           </ul>
-          <a href="/booking" class="btn btn-primary w-100 mt-4 py-2 fw-bold">Book Follow-up</a>
+          <a href="/booking" class="btn btn-mgmt w-100 mt-4 py-2 fw-bold">Book Follow-up</a>
         </div>
       </div>
 
       <div class="col-lg-4">
-        <div class="triage-card" style="border-top: 5px solid #2ecc71;">
-          <span class="triage-badge" style="background: #f6ffed; color: #2ecc71;">Routine & Preventive</span>
+        <div class="triage-card routine-border">
+          <span class="triage-badge routine-badge">Routine & Preventive</span>
           <h4 class="fw-bold mb-3">Check-ups & Statutory</h4>
           <p class="small text-muted mb-4">Keeping you healthy and meeting statutory medical requirements.</p>
           
-          <ul class="list-unstyled small mb-auto mt-3">
-            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Screening:</strong> General Health, Heart Screening</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Statutory:</strong> MOM / ICA / LTA Check-up</li>
-            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><strong>Vaccination:</strong> Routine protection</li>
+          <ul class="list-unstyled small mb-auto mt-2">
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Screening:</strong> Heart & Health Mapping.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Statutory:</strong> MOM / ICA / LTA / Student.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Vaccination:</strong> Routine protection.</li>
           </ul>
-          <a href="/booking" class="btn btn-success w-100 mt-4 py-2 fw-bold" style="background-color: #2ecc71; border:none;">Book Routine Care</a>
+          <a href="/booking" class="btn btn-routine w-100 mt-4 py-2 fw-bold">Book Routine Care</a>
         </div>
       </div>
     </div>
 
-<div class="row justify-content-center">
-  <div class="col-lg-10">
-    <div class="acute-banner d-flex flex-column flex-md-row align-items-center justify-content-between">
-      
-      <div class="acute-content mb-3 mb-md-0">
-        <span class="badge bg-info">Acute Care</span>
-        <div class="mt-2 mt-md-0 d-inline-block">
-          <strong style="color: #2c4964;">Feeling unwell today?</strong> 
-          <span class="text-muted ms-md-2 small">Cough, flu, fever, or stomach upset.</span>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="acute-banner d-flex align-items-center justify-content-between">
+          <div class="acute-content">
+            <span class="badge" style="background-color: #43a7d5;">Acute Care</span>
+            <strong style="color: #2c4964;" class="ms-md-2">Feeling unwell today?</strong> 
+            <span class="text-muted ms-md-2 small">Cough, flu, fever, pain or stomach upset.</span>
+          </div>
+          <div class="acute-btn-container">
+            <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold" style="color: #43a7d5; border-color: #43a7d5;">
+              Book General Consult
+            </a>
+          </div>
         </div>
       </div>
-
-      <div class="acute-btn-container text-center">
-        
-        <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">
-          Book General Consult
-        </a>
-      </div>
-
     </div>
-  </div>
-</div>
 
   </div>
 </section>
