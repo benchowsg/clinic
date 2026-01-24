@@ -5,30 +5,175 @@ title: Cardiology & Chronic Care Clinic Singapore | A Healing Heart Medical Clin
 description: Cardiology and Chronic Disease Management in Singapore. Specialising in heart risk, diabetes, and complex medical symptoms.
 ---
 
+<style>
+  /* Triage Section Styling with Corporate Colors */
+  .triage-section { background-color: #fbfcfd; padding: 60px 0; }
+  
+  .triage-card {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .triage-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05); 
+  }
+
+  .triage-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* Color Variations */
+  .urgent-border { border-top: 5px solid #ff4f81; }
+  .urgent-badge { background: #fff0f3; color: #ff4f81; }
+  .btn-urgent { background: #ff4f81; color: #fff; border: none; }
+  .btn-urgent:hover { background: #e64472; color: #fff; }
+
+  .mgmt-border { border-top: 5px solid #43a7d5; }
+  .mgmt-badge { background: #f0f7fa; color: #43a7d5; }
+  .btn-mgmt { background: #43a7d5; color: #fff; border: none; }
+  .btn-mgmt:hover { background: #3894bd; color: #fff; }
+
+  .routine-border { border-top: 5px solid #25d366; }
+  .routine-badge { background: #e9fbf0; color: #25d366; }
+  .btn-routine { background: #25d366; color: #fff; border: none; }
+  .btn-routine:hover { background: #1eb959; color: #fff; }
+
+  /* Acute Bar Mobile-First Fix */
+  .acute-banner {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 50px;
+    padding: 15px 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  @media (max-width: 767px) {
+    .acute-banner {
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      flex-direction: column;
+    }
+    .acute-content { margin-bottom: 15px; }
+    .acute-banner strong { display: block; margin-top: 10px; }
+    .acute-banner .text-muted { display: block; margin-left: 0 !important; margin-top: 5px; }
+    .acute-btn-container { width: 100%; }
+    .acute-btn-container .btn { width: 100%; padding: 10px; }
+  }
+</style>
+
 <section id="hero" class="hero d-flex align-items-center">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
         <h1 class="visually-hidden">A Healing Heart Medical: Cardiology & Chronic Care Clinic Singapore</h1>
-          <p style="color: #2c4964; font-size: 48px; font-weight: 700; line-height: 1.2;">Medical care that goes beyond the basics</p>
-        <h2 style="color: #43a7d5; font-size: 24px; font-weight: 400; margin-bottom: 30px;">We manage heart risk, chronic fatigue, hormonal imbalance, and complex symptoms when general care isn't enough.</h2>
+          <p style="color: #2c4964; font-size: 48px; font-weight: 700; line-height: 1.2;">Comprehensive Care for Complex Medical Needs</p>
+        <h2 style="color: #43a7d5; font-size: 24px; font-weight: 400; margin-bottom: 30px;">Providing clinical assessment for cardiac risks, chronic conditions, and symptoms requiring detailed investigation.</h2>
           <div class="d-flex justify-content-center justify-content-lg-start gap-4 mt-4">
-            <a href="/booking" class="btn-outline-clinic">Book now</a>
+            <a href="/booking" class="btn-outline-clinic">Book Appointment</a>
             <a href="/health-calculator" class="btn-outline-clinic">Heart Risk Calculator</a>
           </div>
       </div>
       <div class="col-lg-6 order-1 order-lg-2 hero-img d-none d-lg-block">
-        <img src="assets/img/about-AHH-banner-web.png" class="img-fluid animated" alt="A Healing Heart Medical Clinic - Advanced Cardiology and Chronic Care in Singapore">
+        <img src="assets/img/about-AHH-banner-web.png" class="img-fluid animated" alt="A Healing Heart Medical Clinic - Cardiology and Chronic Care in Singapore">
       </div>
     </div>
+  </div>
+</section>
+
+<section class="triage-section">
+  <div class="container">
+    
+    <div class="text-center mb-5">
+      <h2 class="fw-bold" style="color: #2c4964;">How can we help you today?</h2>
+      <p class="text-muted">Select a care pathway for clinical diagnostics and medical management.</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-lg-4">
+        <div class="triage-card urgent-border">
+          <span class="triage-badge urgent-badge">Clinical Diagnostics</span>
+          <h4 class="fw-bold mb-3">Urgent Symptom Evaluation</h4>
+          <p class="small text-muted mb-4">Clinical assessment for chest pain, palpitations, or acute breathlessness.</p>
+          
+          <ul class="list-unstyled small mb-auto mt-2">
+            <li class="mb-2"><i class="fa-solid fa-vial me-2" style="color:#ff4f81;"></i><strong>Rapid Diagnostics:</strong> Same-day cardiac markers.</li>
+            <li class="mb-2"><i class="fa-solid fa-heart-pulse me-2" style="color:#ff4f81;"></i><strong>Heart Monitoring:</strong> ECG & Holter monitoring.</li>
+            <li class="mb-2"><i class="fa-solid fa-file-waveform me-2" style="color:#ff4f81;"></i><strong>Priority Imaging:</strong> Ultrasound, CT, and MRI scans.</li>
+          </ul>
+          <a href="/booking" class="btn btn-urgent w-100 mt-4 py-2 fw-bold">Book Clinical Assessment</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="triage-card mgmt-border">
+          <span class="triage-badge mgmt-badge">Chronic Disease Care</span>
+          <h4 class="fw-bold mb-3">Medical Management</h4>
+          <p class="small text-muted mb-4">Management of long-term conditions and post-hospitalization recovery support.</p>
+          
+          <ul class="list-unstyled small mb-auto mt-2">
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Chronic Conditions:</strong> Diabetes, BP, & Lipid care.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Hormonal Health:</strong> Clinical evaluation and management.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Recovery Care:</strong> Post-surgical and wound management.</li>
+          </ul>
+          <a href="/booking" class="btn btn-mgmt w-100 mt-4 py-2 fw-bold">Book Management</a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="triage-card routine-border">
+          <span class="triage-badge routine-badge">Health Screening</span>
+          <h4 class="fw-bold mb-3">Preventive Care</h4>
+          <p class="small text-muted mb-4">Assessing health status through screenings and statutory medical requirements.</p>
+          
+          <ul class="list-unstyled small mb-auto mt-2">
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Health Screening:</strong> Evidence-based assessments.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Statutory Medicals:</strong> MOM, ICA, and LTA check-ups.</li>
+            <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Vaccinations:</strong> National Adult Immunisation Schedule.</li>
+          </ul>
+          <a href="/booking" class="btn btn-routine w-100 mt-4 py-2 fw-bold">Book Screening</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="acute-banner d-flex align-items-center justify-content-between">
+          <div class="acute-content">
+            <span class="badge" style="background-color: #43a7d5;">Acute</span>
+            <strong style="color: #2c4964;" class="ms-md-2">Your current symptoms include:</strong> 
+            <span class="text-muted ms-md-2 small"> Cough, flu, fever, or common acute symptoms.</span>
+          </div>
+          <div class="acute-btn-container">
+            <a href="/booking" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold" style="color: #43a7d5; border-color: #43a7d5;">
+              Book General Consult
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <section id="service-navigation" class="service-navigation py-5">
   <div class="container">
     <div class="text-center mb-5" data-aos="fade-up">
-      <h2 class="fw-bold" style="color: #2c4964;">What are you seeking today?</h2>
-      <p class="text-muted">Direct access to your needs. Click to read.</p>
+      <h2 class="fw-bold" style="color: #2c4964;">Explore Our Expertise</h2>
+      <p class="text-muted">Detailed insights into our medical services. Click to read.</p>
     </div>
       
     <div class="row g-3">
