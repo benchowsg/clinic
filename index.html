@@ -73,6 +73,37 @@ description: Cardiology and Chronic Disease Management in Singapore. Specialisin
     .acute-btn-container { width: 100%; }
     .acute-btn-container .btn { width: 100%; padding: 10px; }
   }
+
+      /* Scoped CSS for the Expertise Section */
+#service-navigation .service-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Horizontal centering for icon & text */
+    justify-content: center;/* Vertical centering */
+    text-align: center;     /* Ensures multi-line text wraps to the middle */
+    height: 100%;           
+    padding: 20px 10px;
+    text-decoration: none;
+    background: #ffffff;    /* Assuming a white tile background */
+    border-radius: 12px;    /* Matches modern clean UI */
+    transition: all 0.3s ease;
+}
+
+#service-navigation .service-tile p {
+    margin: 12px 0 0 0;     /* Space between icon and text */
+    line-height: 1.3;       /* Balanced line spacing for readability */
+    width: 100%;
+    color: #2c4964;         /* Matches your heading color */
+    font-weight: 500;       /* Makes text slightly clearer on mobile */
+}
+
+/* Optional: Keep the icons perfectly centered */
+#service-navigation .icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;         /* Fallback for horizontal centering */
+}
 </style>
 
 <section id="hero" class="hero d-flex align-items-center">
@@ -182,7 +213,7 @@ description: Cardiology and Chronic Disease Management in Singapore. Specialisin
       <div class="col-6 col-md-3">
         <a href="/cardiology" class="service-tile">
           <div class="icon-circle"><i class="fa-solid fa-heart-pulse"></i></div>
-          <p>Cardiology & Heart Screening</p>
+          <p>Cardiac & Heart Health</p>
         </a>
       </div>
       <div class="col-6 col-md-3">
