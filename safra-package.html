@@ -1,203 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAFRA Members | A Healing Heart Medical Clinic</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #004a99; /* Professional Medical Blue */
-            --accent-gold: #b2945e;  /* Clinical Gold */
-            --safra-red: #e31e24;    /* SAFRA Brand Red */
-            --light-bg: #f4f7f9;
-        }
-        
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; }
-        
-        /* Navbar */
-        .navbar { background: white; border-bottom: 3px solid var(--primary-blue); }
-        .navbar-brand { font-weight: 700; color: var(--primary-blue); }
+---
+layout: default
+permalink: /safra-package
+title: SAFRA Member | A Healing Heart Medical
+description: Exclusive health and heart screening packages for SAFRA members at A Healing Heart Medical Clinic.
+---
 
-        /* Hero Section */
-        .hero { 
-            background: linear-gradient(rgba(0, 74, 153, 0.9), rgba(0, 74, 153, 0.7)), url('https://images.unsplash.com/photo-1505751172107-573225a9627c?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
+<style>
+    .safra-container { font-family: 'Helvetica Neue', Arial, sans-serif; color: #444; }
+    .safra-banner { background: #e31e24; color: white; padding: 10px 20px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 20px; }
+    .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+    .package-card { border: 1px solid #e0e0e0; padding: 25px; border-radius: 8px; transition: 0.3s; background: #fff; position: relative; }
+    .package-card:hover { border-color: #c5a059; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    .package-card h3 { color: #1a2a47; font-weight: 700; margin-top: 0; }
+    .price-tag { color: #c5a059; font-size: 24px; font-weight: 700; margin: 15px 0; }
+    .btn-plato { background: #1a2a47; color: white !important; display: block; text-align: center; padding: 12px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+    .btn-plato:hover { background: #c5a059; }
+    .feature-list { padding-left: 20px; font-size: 15px; }
+    .feature-list li { margin-bottom: 8px; }
+    .info-bar { background: #f9f9f9; padding: 20px; border-left: 5px solid #c5a059; margin: 30px 0; }
+</style>
 
-        .safra-badge {
-            background-color: var(--safra-red);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+<div class="safra-container">
+    <div class="safra-banner">EXCLUSIVE FOR SAFRA MEMBERS</div>
+    
+    <h1>Health & Heart Screening Packages</h1>
+    <p class="lead">A Healing Heart Medical Clinic is an intermediate care clinic providing rapid diagnostic insights. Led by Cardiology-trained Medical Director <strong>Dr. Gerald Thang</strong>, we bridge the gap between primary care and specialist recovery.</p>
 
-        /* Package Cards */
-        .card-package {
-            border: none;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            height: 100%;
-            background: white;
-        }
-        .card-package:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-        
-        .price { font-size: 2rem; font-weight: 800; color: var(--primary-blue); margin: 15px 0; }
-        
-        .btn-book {
-            background-color: var(--primary-blue);
-            color: white;
-            border-radius: 50px;
-            padding: 12px 30px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-        }
-        .btn-book:hover { background-color: #003366; color: white; transform: scale(1.05); }
+    <div class="info-bar">
+        <strong>Rapid Results:</strong> Our on-site blood tests provide results in <b>15 minutes</b>. We accept <b>CHAS, MediSave, Merdeka, and Pioneer Generation</b> cards. You can also enrol in <b>Healthier SG</b> with us.
+    </div>
 
-        /* Features */
-        .feature-icon { color: var(--accent-gold); font-size: 1.5rem; margin-right: 10px; }
-        
-        .doctor-section { border-left: 5px solid var(--accent-gold); padding-left: 30px; }
+    <div class="package-grid">
+        <div class="package-card">
+            <h3>Heart Health Check</h3>
+            <p>Designed for immediate cardiac peace of mind.</p>
+            <ul class="feature-list">
+                <li>Resting 12-lead ECG</li>
+                <li>Heart Failure & Inflammation tests</li>
+                <li>Cholesterol & Diabetes panels</li>
+                <li>Rapid 15-min diagnostic results</li>
+            </ul>
+            <div class="price-tag">$230</div>
+            <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
+        </div>
 
-        footer { background: #1a1a1a; color: white; padding: 50px 0; }
-    </style>
-</head>
-<body>
+        <div class="package-card" style="border-top: 4px solid #c5a059;">
+            <h3>Essential Gold</h3>
+            <p>Comprehensive head-to-toe wellness screening.</p>
+            <ul class="feature-list">
+                <li>Full Blood Count & Cholesterol panel</li>
+                <li>Liver, Renal & Thyroid panels</li>
+                <li>5 Cancer Markers (Liver, Colon, Pancreas, Ovarian/Prostate)</li>
+                <li>Chest X-ray & 12-lead ECG</li>
+            </ul>
+            <div class="price-tag">$348</div>
+            <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
+        </div>
 
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">A HEALING HEART MEDICAL</a>
-        <div class="ms-auto">
-            <a href="YOUR_PLATO_LINK_HERE" class="btn btn-primary btn-sm rounded-pill px-4">BOOK NOW</a>
+        <div class="package-card">
+            <h3>Hormonal Screening</h3>
+            <p>Optimizing vitality for Men and Women.</p>
+            <ul class="feature-list">
+                <li>Growth Hormone & Testosterone/Estrogen</li>
+                <li>Cortisol & Thyroid balance</li>
+                <li>Balancing and deficiency correction</li>
+                <li>Early detection of hormonal imbalances</li>
+            </ul>
+            <div class="price-tag">From $300</div>
+            <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
         </div>
     </div>
-</nav>
 
-<header class="hero">
-    <div class="container">
-        <div class="safra-badge">Exclusive for SAFRA Members</div>
-        <h1 class="display-4 fw-bold">Precision Cardiac & Intermediate Care</h1>
-        <p class="lead mb-4">Bridging the gap between GP and Specialist. <br>Directed by Cardiology-trained Medical Director, Dr. Gerald Thang.</p>
-        <a href="#packages" class="btn btn-outline-light btn-lg rounded-pill px-5">View Packages</a>
+    <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
+        <h2>Advanced Cardiac Diagnostics</h2>
+        <p>Under the supervision of Dr. Gerald Thang, members can also access specialized diagnostic tests if required:</p>
+        <ul>
+            <li>Treadmill Stress Test & 2D Echocardiogram</li>
+            <li>CT Coronary Angiography & Cardiac MRI</li>
+            <li>In-house Wearable Holter ECG</li>
+        </ul>
+        <p><i>*Please present your SAFRA card or e-Card at the counter during your appointment for verification.</i></p>
     </div>
-</header>
-
-<section class="py-5 bg-white text-center">
-    <div class="container">
-        <h2 class="fw-bold mb-4">Rapid 15-Minute Blood Tests</h2>
-        <p class="lead text-muted mx-auto" style="max-width: 800px;">
-            Our on-site lab provides immediate results for those concerned about <strong>heart failure, heart attack, blood clots, and electrolyte levels</strong>. 
-            We are Healthier SG enrolled and accept CHAS, MediSave, and Pioneer/Merdeka cards.
-        </p>
-    </div>
-</section>
-
-<section id="packages" class="py-5 bg-light">
-    <div class="container">
-        <div class="row g-4">
-            
-            <div class="col-lg-4">
-                <div class="card card-package p-4">
-                    <div class="card-body">
-                        <h3 class="fw-bold">Essential Gold</h3>
-                        <p class="text-muted small">Comprehensive Wellness</p>
-                        <hr>
-                        <ul class="list-unstyled mb-4">
-                            <li><span class="feature-icon">✓</span>Full Lab Profile & 5 Cancer Markers</li>
-                            <li><span class="feature-icon">✓</span>Chest X-ray & 12-lead ECG</li>
-                            <li><span class="feature-icon">✓</span>Kidney, Liver & Thyroid panels</li>
-                            <li><span class="feature-icon">✓</span>Stool & Urine Protein tests</li>
-                        </ul>
-                        <div class="price">$348</div>
-                        <a href="YOUR_PLATO_LINK_HERE" class="btn-book w-100 text-center">Book Appointment</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card card-package p-4 border-primary" style="border: 2px solid var(--primary-blue) !important;">
-                    <div class="card-body">
-                        <h3 class="fw-bold">Heart Health Check</h3>
-                        <p class="text-muted small">Specialized Cardiology Screening</p>
-                        <hr>
-                        <ul class="list-unstyled mb-4">
-                            <li><span class="feature-icon">✓</span>Heart Failure & Inflammation tests</li>
-                            <li><span class="feature-icon">✓</span>Cholesterol & Diabetes panels</li>
-                            <li><span class="feature-icon">✓</span>Resting 12-lead ECG</li>
-                            <li><span class="feature-icon">✓</span>Cardiac Clinical Assessment</li>
-                        </ul>
-                        <div class="price">$230</div>
-                        <a href="YOUR_PLATO_LINK_HERE" class="btn-book w-100 text-center">Book Appointment</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="card card-package p-4">
-                    <div class="card-body">
-                        <h3 class="fw-bold">Hormonal Screening</h3>
-                        <p class="text-muted small">For Men & Women</p>
-                        <hr>
-                        <ul class="list-unstyled mb-4">
-                            <li><span class="feature-icon">✓</span>Growth Hormone & Testosterone</li>
-                            <li><span class="feature-icon">✓</span>Estrogen & Cortisol balance</li>
-                            <li><span class="feature-icon">✓</span>Identify & treat deficiencies early</li>
-                            <li><span class="feature-icon">✓</span>Comprehensive Vitality Profile</li>
-                        </ul>
-                        <div class="price">From $300</div>
-                        <a href="YOUR_PLATO_LINK_HERE" class="btn-book w-100 text-center">Book Appointment</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section class="py-5 bg-white">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0 doctor-section">
-                <h2 class="fw-bold">Expert Cardiology Guidance</h2>
-                <p class="fs-5">Under the direction of <strong>Dr. Gerald Thang</strong>, we offer a bridge to high-level cardiac diagnostics without the hospital wait times.</p>
-                <p>Available diagnostic tests include: Treadmill Stress Test, 2D Echocardiogram, Exercise Stress Echo, CT Coronary Angiography, and Cardiac MRI.</p>
-            </div>
-            <div class="col-md-5 offset-md-1 bg-light p-4 rounded shadow-sm">
-                <h5 class="fw-bold text-danger">SAFRA Member Instructions</h5>
-                <p>To enjoy these rates, please ensure you book via the <strong>Plato link</strong> and present your SAFRA membership card (Physical or e-Card) upon arrival at the clinic.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h4 class="fw-bold text-white mb-3">A Healing Heart Medical Clinic</h4>
-                <p>134 Geylang East Ave 1, #01-227, Singapore 380134</p>
-                <p>Tel: 6962 1362</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <p class="mb-1">Healthier SG Enrolled</p>
-                <p class="small text-muted">© 2024 A Healing Heart Medical Clinic. All Rights Reserved.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
