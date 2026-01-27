@@ -6,81 +6,133 @@ description: Exclusive health and heart screening packages for SAFRA members at 
 ---
 
 <style>
+    /* Scoped container to ensure layout stays centered */
+    .safra-wrapper { max-width: 1140px; margin: 0 auto; padding: 0 15px; }
+    
     .safra-container { font-family: 'Helvetica Neue', Arial, sans-serif; color: #444; }
-    .safra-banner { background: #e31e24; color: white; padding: 10px 20px; font-weight: bold; border-radius: 4px; display: inline-block; margin-bottom: 20px; }
-    .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-    .package-card { border: 1px solid #e0e0e0; padding: 25px; border-radius: 8px; transition: 0.3s; background: #fff; position: relative; }
+    
+    /* Adjusted Banner: Removed internal container and fixed spacing */
+    .safra-banner { 
+        background: #e31e24; 
+        color: white; 
+        padding: 12px 25px; 
+        font-weight: bold; 
+        border-radius: 4px; 
+        display: inline-block; 
+        margin-bottom: 30px; 
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .package-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 25px; 
+        margin-top: 30px; 
+    }
+
+    .package-card { 
+        border: 1px solid #e0e0e0; 
+        padding: 25px; 
+        border-radius: 8px; 
+        transition: 0.3s; 
+        background: #fff; 
+        display: flex;
+        flex-direction: column;
+    }
+
     .package-card:hover { border-color: #c5a059; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    .package-card h3 { color: #1a2a47; font-weight: 700; margin-top: 0; }
+    .package-card h3 { color: #1a2a47; font-weight: 700; margin-top: 0; font-size: 1.5rem; }
     .price-tag { color: #c5a059; font-size: 24px; font-weight: 700; margin: 15px 0; }
-    .btn-plato { background: #1a2a47; color: white !important; display: block; text-align: center; padding: 12px; border-radius: 4px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+
+    .btn-plato { 
+        background: #1a2a47; 
+        color: white !important; 
+        display: block; 
+        text-align: center; 
+        padding: 12px; 
+        border-radius: 4px; 
+        text-decoration: none; 
+        font-weight: bold; 
+        margin-top: auto; /* Pushes button to bottom */
+    }
+
     .btn-plato:hover { background: #c5a059; }
-    .feature-list { padding-left: 20px; font-size: 15px; }
+    .feature-list { padding-left: 20px; font-size: 15px; flex-grow: 1; }
     .feature-list li { margin-bottom: 8px; }
-    .info-bar { background: #f9f9f9; padding: 20px; border-left: 5px solid #c5a059; margin: 30px 0; }
+    
+    .info-bar { 
+        background: #f9f9f9; 
+        padding: 20px; 
+        border-left: 5px solid #c5a059; 
+        margin: 30px 0; 
+        font-size: 16px;
+    }
 </style>
 
 <main id="main">
-<div class="safra-container pt-5">
-    <div class="safra-banner container py-5 mt-4">EXCLUSIVE FOR SAFRA MEMBERS</div>
-    
-    <h1>Health & Heart Screening Packages</h1>
-    <p class="lead">A Healing Heart Medical Clinic is an intermediate care clinic providing rapid diagnostic insights. Led by Cardiology-trained Medical Director <strong>Dr. Gerald Thang</strong>, we bridge the gap between primary care and specialist recovery.</p>
+    <div class="container py-5 mt-5">
+        <div class="safra-container">
+            <div class="safra-banner">EXCLUSIVE FOR SAFRA MEMBERS</div>
+            
+            <h1 class="fw-bold" style="color: #1a2a47;">Health & Heart Screening Packages</h1>
+            <p class="lead">A Healing Heart Medical Clinic is an intermediate care clinic providing rapid diagnostic insights. Led by Cardiology-trained Medical Director <strong>Dr. Gerald Thang</strong>, we bridge the gap between primary care and specialist recovery.</p>
 
-    <div class="info-bar">
-        <strong>Rapid Results:</strong> Our on-site blood tests provide results in <b>15 minutes</b>. We accept <b>CHAS, MediSave, Merdeka, and Pioneer Generation</b> cards. You can also enrol in <b>Healthier SG</b> with us.
-    </div>
+            <div class="info-bar">
+                <strong>Rapid Results:</strong> Our on-site blood tests provide results in <b>15 minutes</b>. We accept <b>CHAS, MediSave, Merdeka, and Pioneer Generation</b> cards. You can also enrol in <b>Healthier SG</b> with us.
+            </div>
 
-    <div class="package-grid">
-        <div class="package-card">
-            <h3>Heart Health Check</h3>
-            <p>Designed for immediate cardiac peace of mind.</p>
-            <ul class="feature-list">
-                <li>Resting 12-lead ECG</li>
-                <li>Heart Failure & Inflammation tests</li>
-                <li>Cholesterol & Diabetes panels</li>
-                <li>Rapid 15-min diagnostic results</li>
-            </ul>
-            <div class="price-tag">$230</div>
-            <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
+            <div class="package-grid">
+                <div class="package-card">
+                    <h3>Heart Health Check</h3>
+                    <p>Designed for immediate cardiac peace of mind.</p>
+                    <ul class="feature-list">
+                        <li>Resting 12-lead ECG</li>
+                        <li>Heart Failure & Inflammation tests</li>
+                        <li>Cholesterol & Diabetes panels</li>
+                        <li>Rapid 15-min diagnostic results</li>
+                    </ul>
+                    <div class="price-tag">$230</div>
+                    <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
+                </div>
+
+                <div class="package-card" style="border-top: 4px solid #c5a059;">
+                    <h3>Essential Gold</h3>
+                    <p>Comprehensive head-to-toe wellness screening.</p>
+                    <ul class="feature-list">
+                        <li>Full Blood Count & Cholesterol panel</li>
+                        <li>Liver, Renal & Thyroid panels</li>
+                        <li>5 Cancer Markers (Liver, Colon, Pancreas, Ovarian/Prostate)</li>
+                        <li>Chest X-ray & 12-lead ECG</li>
+                    </ul>
+                    <div class="price-tag">$348</div>
+                    <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
+                </div>
+
+                <div class="package-card">
+                    <h3>Hormonal Screening</h3>
+                    <p>Optimizing vitality for Men and Women.</p>
+                    <ul class="feature-list">
+                        <li>Growth Hormone & Testosterone/Estrogen</li>
+                        <li>Cortisol & Thyroid balance</li>
+                        <li>Balancing and deficiency correction</li>
+                        <li>Early detection of hormonal imbalances</li>
+                    </ul>
+                    <div class="price-tag">From $300</div>
+                    <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
+                <h2 class="fw-bold" style="color: #1a2a47;">Advanced Cardiac Diagnostics</h2>
+                <p>Under the supervision of Dr. Gerald Thang, members can also access specialized diagnostic tests if required:</p>
+                <ul>
+                    <li>Treadmill Stress Test & 2D Echocardiogram</li>
+                    <li>CT Coronary Angiography & Cardiac MRI</li>
+                    <li>In-house Wearable Holter ECG</li>
+                </ul>
+                <p class="text-muted mt-4"><i>*Please present your SAFRA card or e-Card at the counter during your appointment for verification.</i></p>
+            </div>
         </div>
-
-        <div class="package-card" style="border-top: 4px solid #c5a059;">
-            <h3>Essential Gold</h3>
-            <p>Comprehensive head-to-toe wellness screening.</p>
-            <ul class="feature-list">
-                <li>Full Blood Count & Cholesterol panel</li>
-                <li>Liver, Renal & Thyroid panels</li>
-                <li>5 Cancer Markers (Liver, Colon, Pancreas, Ovarian/Prostate)</li>
-                <li>Chest X-ray & 12-lead ECG</li>
-            </ul>
-            <div class="price-tag">$348</div>
-            <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
-        </div>
-
-        <div class="package-card">
-            <h3>Hormonal Screening</h3>
-            <p>Optimizing vitality for Men and Women.</p>
-            <ul class="feature-list">
-                <li>Growth Hormone & Testosterone/Estrogen</li>
-                <li>Cortisol & Thyroid balance</li>
-                <li>Balancing and deficiency correction</li>
-                <li>Early detection of hormonal imbalances</li>
-            </ul>
-            <div class="price-tag">From $300</div>
-            <a href="https://your-plato-booking-link" class="btn-plato">Book via Plato</a>
-        </div>
     </div>
-
-    <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px;">
-        <h2>Advanced Cardiac Diagnostics</h2>
-        <p>Under the supervision of Dr. Gerald Thang, members can also access specialized diagnostic tests if required:</p>
-        <ul>
-            <li>Treadmill Stress Test & 2D Echocardiogram</li>
-            <li>CT Coronary Angiography & Cardiac MRI</li>
-            <li>In-house Wearable Holter ECG</li>
-        </ul>
-        <p><i>*Please present your SAFRA card or e-Card at the counter during your appointment for verification.</i></p>
-    </div>
-</div>
 </main>
