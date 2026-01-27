@@ -6,6 +6,21 @@ description: Professional medical insights on cardiology, heart screening, and c
 ---
 
 <style>
+  /* Add this specific fix for the Fixed Nav */
+  .library-hero {
+    background: linear-gradient(45deg, #2c4964 0%, #3498db 100%);
+    /* Increase the top padding to account for the fixed navbar */
+    padding: 140px 0 80px 0; 
+    color: white;
+  }
+  
+  /* Additional fix for mobile */
+  @media (max-width: 991px) {
+    .library-hero {
+      padding: 120px 0 60px 0;
+    }
+  }
+  
   /* Ensuring Bing sees clean, non-overlapping text */
   #main h1, #main h2, #main h3, #main h4, #main p, #main a {
     text-transform: none !important;
