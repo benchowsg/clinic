@@ -21,13 +21,28 @@ custom_schema: |
 ---
 
 <style>
-  .profile-header { padding-top: 150px; background: #f8f9fa; padding-bottom: 60px; }
-  .profile-img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+  .profile-header { padding-top: 150px; background: #ffffff; padding-bottom: 60px; }
+  .profile-img { width: 100%; max-width: 400px; border-radius: 20px; border: 1px solid #eee; }
   .credentials-list { list-style: none; padding: 0; }
-  .credentials-list li { margin-bottom: 10px; color: #444; position: relative; padding-left: 25px; }
-  .credentials-list li::before { content: "\f00c"; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: 0; color: #2c4964; }
-  .bio-text p { line-height: 1.8; color: #444; margin-bottom: 1.5rem; }
-  .vision-box { background: #2c4964; color: white; padding: 40px; border-radius: 20px; margin-top: 40px; }
+  .credentials-list li { margin-bottom: 12px; color: #333; position: relative; padding-left: 28px; font-size: 1.05rem; }
+  .credentials-list li::before { content: "•"; color: #2c4964; font-weight: bold; position: absolute; left: 10px; }
+  
+  .bio-text p { line-height: 1.9; color: #222; margin-bottom: 1.8rem; font-size: 1.1rem; }
+  
+  /* Redesigned Philosophy Box for High Contrast */
+  .vision-box { 
+    background: #fdfcf0; 
+    border: 2px solid #e9ecef;
+    border-left: 8px solid #2c4964;
+    color: #2c4964; 
+    padding: 45px; 
+    border-radius: 15px; 
+    margin: 50px 0;
+  }
+  .vision-box h3 { color: #2c4964; font-weight: 800; }
+  .vision-box blockquote { font-size: 1.25rem; font-style: italic; border: none; padding: 0; margin: 0; }
+
+  .interest-card { background: #f8f9fa; padding: 30px; border-radius: 15px; height: 100%; }
 </style>
 
 <main id="main">
@@ -65,8 +80,10 @@ custom_schema: |
           <p>Dr. Thang’s clinical philosophy is rooted in the belief that "chasing numbers" is only one part of the journey. He focuses on Metabolic Synergy, looking at how genetic markers like Lp(a) interact with a patient's overall lifestyle and physiology. By integrating advanced cardiac diagnostics with a compassionate, patient centered approach, he helps individuals navigate their health with clarity and confidence.</p>
 
           <div class="vision-box">
-            <h3 class="fw-bold mb-3">The "A Healing Heart" Philosophy</h3>
-            <p class="mb-0 colour: white">"Healing is not just the absence of disease: it is the restoration of vitality and peace of mind. My goal is to ensure that every patient who walks through our doors feels heard, understood, and medically secured for the road ahead."</p>
+            <h3 class="mb-3">The A Healing Heart Philosophy</h3>
+            <blockquote>
+              "Healing is not just the absence of disease: it is the restoration of vitality and peace of mind. My goal is to ensure that every patient who walks through our doors feels heard, understood, and medically secured for the road ahead."
+            </blockquote>
           </div>
 
           <div class="mt-5">
