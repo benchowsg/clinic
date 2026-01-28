@@ -29,7 +29,6 @@ custom_schema: |
   
   .bio-text p { line-height: 1.9; color: #222; margin-bottom: 1.8rem; font-size: 1.1rem; }
   
-  /* Redesigned Philosophy Box for High Contrast */
   .vision-box { 
     background: #fdfcf0; 
     border: 2px solid #e9ecef;
@@ -42,7 +41,8 @@ custom_schema: |
   .vision-box h3 { color: #2c4964; font-weight: 800; }
   .vision-box blockquote { font-size: 1.25rem; font-style: italic; border: none; padding: 0; margin: 0; }
 
-  .interest-card { background: #f8f9fa; padding: 30px; border-radius: 15px; height: 100%; }
+  .hover-lift { transition: transform 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-5px); background: #fdfcf0; }
 </style>
 
 <main id="main">
@@ -55,7 +55,6 @@ custom_schema: |
         <div class="col-lg-7">
           <h1 class="display-4 fw-bold mb-2" style="color: #2c4964;">Dr. Gerald Thang</h1>
           <p class="h4 text-primary mb-4 fw-bold text-uppercase" style="letter-spacing: 2px;">Principal Physician & Founder</p>
-          
           <ul class="credentials-list">
             <li>MBBS, NUS Yong Loo Lin School of Medicine (2006)</li>
             <li>Diploma of Cardiology, Academy of Medicine, Singapore (2016)</li>
@@ -77,7 +76,7 @@ custom_schema: |
 
           <p>As the <strong>Principal Physician</strong>, Dr. Thang strongly believes that the intermediate care approach ensures that patients are not simply "discharged," but are guided through a clinical transition that involves meticulous risk stratification, medication optimization, and rehabilitative oversight. His expertise in Cardiology allows him to interpret complex diagnostics, such as CT Coronary Angiograms and Echocardiograms, through the lens of personalized prevention.</p>
 
-          <p>Dr. Thang’s clinical philosophy is rooted in the belief that "chasing numbers" is only one part of the journey. He focuses on Metabolic Synergy, looking at how genetic markers like Lp(a) interact with a patient's overall lifestyle and physiology. By integrating advanced cardiac diagnostics with a compassionate, patient centered approach, he helps individuals navigate their health with clarity and confidence.</p>
+          <p>Dr. Thang’s clinical philosophy is rooted in the belief that "chasing numbers" is only one part of the journey. He focuses on <strong>Metabolic Synergy</strong>, looking at how genetic markers like Lp(a) interact with a patient's overall lifestyle and physiology. By integrating advanced cardiac diagnostics with a compassionate, patient centered approach, he helps individuals navigate their health with clarity and confidence.</p>
 
           <div class="vision-box">
             <h3 class="mb-3">The A Healing Heart Philosophy</h3>
@@ -88,7 +87,7 @@ custom_schema: |
 
           <div class="mt-5">
             <h3 class="h4 fw-bold mb-4" style="color: #2c4964;">Clinical Interests</h3>
-            <div class="row">
+            <div class="row g-4">
               <div class="col-md-6">
                 <ul class="credentials-list">
                   <li>Preventive Cardiology & Screening</li>
@@ -107,53 +106,51 @@ custom_schema: |
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-<section class="py-5 bg-light">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-9">
-        <h3 class="fw-bold mb-4" style="color: #2c4964;">Clinical Insights by Dr. Gerald Thang</h3>
-        <p class="mb-5 text-muted">Explore Dr. Thang's perspectives on cardiology, preventive health, and intermediate care.</p>
-        
-        <div class="row g-4">
-          <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
-              <h5 class="fw-bold" style="color: #2c4964;">The Rise of Lp(a)</h5>
-              <p class="small text-muted">Understanding the "hidden" genetic risk factor that standard cholesterol tests often miss.</p>
-              <a href="/articles/lpa-genetic-heart-risk" class="stretched-link text-primary fw-bold small text-decoration-none">Read Clinical Perspective <i class="fas fa-arrow-right ms-1"></i></a>
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-8">
+          <h3 class="fw-bold" style="color: #2c4964;">Clinical Insights by Dr. Gerald Thang</h3>
+          <p class="text-muted">Explore Dr. Thang's perspectives on cardiology, preventive health, and intermediate care.</p>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center g-4">
+        <div class="col-lg-9">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
+                <h5 class="fw-bold" style="color: #2c4964;">The Rise of Lp(a)</h5>
+                <p class="small text-muted">Understanding the "hidden" genetic risk factor that standard cholesterol tests often miss.</p>
+                <a href="/articles/lpa-genetic-heart-risk" class="stretched-link text-primary fw-bold small text-decoration-none">Read Clinical Perspective <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
-              <h5 class="fw-bold" style="color: #2c4964;">The Bridge to Recovery</h5>
-              <p class="small text-muted">Why intermediate care is the critical missing link in the Singapore healthcare journey.</p>
-              <a href="#" class="stretched-link text-primary fw-bold small text-decoration-none">Read Clinical Perspective <i class="fas fa-arrow-right ms-1"></i></a>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
+                <h5 class="fw-bold" style="color: #2c4964;">The Bridge to Recovery</h5>
+                <p class="small text-muted">Why intermediate care is the critical missing link in the Singapore healthcare journey.</p>
+                <a href="/articles/intermediate-care-bridge-to-recovery" class="stretched-link text-primary fw-bold small text-decoration-none">Read Clinical Perspective <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-6">
-            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
-              <h5 class="fw-bold" style="color: #2c4964;">Beyond the Numbers</h5>
-              <p class="small text-muted">A shift from chasing biomarkers toward achieving true metabolic synergy and vascular health.</p>
-              <a href="/articles/beyond-biomarker-numbers" class="stretched-link text-primary fw-bold small text-decoration-none">Read Clinical Perspective <i class="fas fa-arrow-right ms-1"></i></a>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
+                <h5 class="fw-bold" style="color: #2c4964;">Beyond the Numbers</h5>
+                <p class="small text-muted">A shift from chasing biomarkers toward achieving true metabolic synergy and vascular health.</p>
+                <a href="/articles/beyond-biomarker-numbers" class="stretched-link text-primary fw-bold small text-decoration-none">Read Clinical Perspective <i class="fas fa-arrow-right ms-1"></i></a>
+              </div>
             </div>
-          </div>
-          
-          <div class="col-md-6 d-flex align-items-center justify-content-center">
-            <a href="/articles/" class="btn btn-outline-primary rounded-pill px-4">Visit the Full Health Library</a>
+            
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+              <a href="/articles/" class="btn btn-outline-primary rounded-pill px-4">Visit the Full Health Library</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  .hover-lift { transition: transform 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-5px); background: #fdfcf0; }
-</style>
-      
     </div>
   </section>
 </main>
