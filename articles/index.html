@@ -2,98 +2,126 @@
 layout: default
 permalink: /articles/
 title: Health Library | Dr. Gerald Thang
-description: Professional medical insights on cardiology, heart screening, and chronic disease management in Singapore by Dr. Gerald Thang.
+description: Professional medical insights on cardiology, genetic heart risk, and the intermediate care model in Singapore by Dr. Gerald Thang.
 ---
 
 <style>
-  /* Add this specific fix for the Fixed Nav */
+  /* Fix for Fixed Navigation */
   .library-hero {
     background: linear-gradient(45deg, #2c4964 0%, #3498db 100%);
-    /* Increase the top padding to account for the fixed navbar */
-    padding: 140px 0 80px 0; 
+    padding: 160px 0 100px 0; 
     color: white;
   }
   
-  /* Additional fix for mobile */
   @media (max-width: 991px) {
     .library-hero {
-      padding: 120px 0 60px 0;
+      padding: 130px 0 70px 0;
     }
   }
   
-  /* Ensuring Bing sees clean, non-overlapping text */
   #main h1, #main h2, #main h3, #main h4, #main p, #main a {
     text-transform: none !important;
     letter-spacing: normal !important;
   }
 
   .article-card {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #eee;
-    border-radius: 12px;
+    border-radius: 16px;
     background: #fff;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
   }
 
   .article-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  }
+
+  .card-content {
+    padding: 30px;
+    flex-grow: 1;
   }
 
   .category-label {
     color: #3498db;
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.75rem;
+    font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
   }
 
-  .library-hero {
-    background-color: #3498db;
-    padding: 80px 0;
-    color: white;
+  .card-footer {
+    padding: 20px 30px;
+    background: #fdfcf0; /* Matches the Principal Physician theme color */
+    border-top: 1px solid #f1f1f1;
   }
 </style>
 
 <main id="main">
-  <section class="library-hero pt-5">
-    <div class="container py-5 mt-4">
+  <section class="library-hero">
+    <div class="container text-center">
       <h1 class="display-4 fw-bold">Health Library</h1>
-      <p class="lead">Evidence-based medical guidance from Dr. Gerald Thang.</p>
+      <p class="lead opacity-90 mx-auto" style="max-width: 750px;">
+        Clinical perspectives and evidence-based guidance on modern cardiology and the Intermediate Care Model, curated by our Principal Physician.
+      </p>
     </div>
   </section>
 
   <section class="py-5 bg-light">
     <div class="container">
-      <div class="row g-4">
+      <div class="row g-4 justify-content-center">
 
-        <div class="col-md-4">
-          <div class="article-card p-4 d-flex flex-column">
-            <span class="category-label mb-2">Cardiology</span>
-            <h2 class="h4 fw-bold"><a href="/articles/heart-screening-guide" class="text-dark text-decoration-none">Heart Screening in Singapore: A Complete Guide</a></h2>
-            <p class="text-muted small">Learn about ECGs, Stress Tests, and Calcium Scoring to find the right screening for your heart health.</p>
-            <div class="mt-auto pt-3 border-top">
+        <div class="col-md-6 col-lg-4">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Cardiology & Genetics</span>
+              <h2 class="h4 fw-bold"><a href="/articles/lpa-genetic-heart-risk" class="text-dark text-decoration-none">The Rise of Lp(a): The Hidden Genetic Risk Factor</a></h2>
+              <p class="text-muted small">Why standard cholesterol tests aren't enough and how our Principal Physician identifies genetic "silent" markers.</p>
+            </div>
+            <div class="card-footer">
               <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="article-card p-4 d-flex flex-column">
-            <span class="category-label mb-2">Intermediate Care</span>
-            <h2 class="h4 fw-bold"><a href="/articles/intermediate-care-explained" class="text-dark text-decoration-none">What is Intermediate Care? Bridging the Gap</a></h2>
-            <p class="text-muted small">Why some patients need specialized medical support between hospital discharge and going home.</p>
-            <div class="mt-auto pt-3 border-top">
+        <div class="col-md-6 col-lg-4">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Intermediate Care</span>
+              <h2 class="h4 fw-bold"><a href="/articles/intermediate-care-bridge-to-recovery" class="text-dark text-decoration-none">The Bridge to Recovery: Redefining Transitions</a></h2>
+              <p class="text-muted small">Meticulous risk stratification and rehabilitative oversight: a new model for post-hospital clinical stewardship.</p>
+            </div>
+            <div class="card-footer">
               <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="article-card p-4 d-flex flex-column">
-            <span class="category-label mb-2">Preventive Health</span>
-            <h2 class="h4 fw-bold"><a href="/articles/managing-hypertension" class="text-dark text-decoration-none">Managing Hypertension: New Guidelines for 2026</a></h2>
-            <p class="text-muted small">Effective strategies for blood pressure control beyond just daily medication.</p>
-            <div class="mt-auto pt-3 border-top">
+        <div class="col-md-6 col-lg-4">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Preventive Health</span>
+              <h2 class="h4 fw-bold"><a href="/articles/beyond-biomarker-numbers" class="text-dark text-decoration-none">Beyond the Numbers: Achieving Metabolic Synergy</a></h2>
+              <p class="text-muted small">Moving away from chasing biomarkers toward high-resolution vascular health and preventive optimization.</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Diagnostic Guidelines</span>
+              <h2 class="h4 fw-bold"><a href="/articles/heart-screening-guide" class="text-dark text-decoration-none">Heart Screening in Singapore: A Complete Guide</a></h2>
+              <p class="text-muted small">Comparing ECGs, Stress Tests, and CT Calcium Scoring to find the appropriate level of diagnostic depth.</p>
+            </div>
+            <div class="card-footer">
               <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
             </div>
           </div>
