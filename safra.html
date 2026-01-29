@@ -11,6 +11,7 @@ description: "Transitioning from FFI? We provide advanced cardiac screening and 
   "@type": "MedicalWebPage",
   "name": "SAFRA Health Continuity & Cardiac Screening",
   "description": "Exclusive cardiac and wellness screening for SAFRA members and Post-ORD NSmen. Featuring 15-minute rapid diagnostics for heart health.",
+  "lastReviewed": "2026-01-29",
   "publisher": {
     "@type": "LocalBusiness",
     "name": "A Healing Heart Medical Clinic",
@@ -22,7 +23,29 @@ description: "Transitioning from FFI? We provide advanced cardiac screening and 
       "postalCode": "380134",
       "addressCountry": "SG"
     },
-    "telephone": "+6569621362"
+    "telephone": "+6569621362",
+    "priceRange": "$$"
+  },
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who is eligible for the SAFRA health screening packages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All valid SAFRA and HomeTeamNS members, including their spouses, children, and parents, are eligible for these exclusive healthcare packages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to get heart screening results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our on-site laboratory provides rapid diagnostic results for heart attack (Troponin) and heart failure (NT-proBNP) markers within 15 minutes."
+        }
+      }
+    ]
   }
 }
 </script>
@@ -117,6 +140,16 @@ description: "Transitioning from FFI? We provide advanced cardiac screening and 
         .hero-box { border-left-width: 4px; padding-left: 15px; }
         .container { padding-left: 20px; padding-right: 20px; }
     }
+
+  /* FAQ Styling for SEO/AI */
+    .faq-section { margin-top: 50px; border-top: 1px solid #eee; padding-top: 40px; }
+    .faq-item { margin-bottom: 25px; }
+    .faq-question { font-weight: 700; color: #1a2a47; margin-bottom: 8px; font-size: 1.1rem; }
+
+    @media (max-width: 768px) {
+        .hero-box { border-left-width: 4px; padding-left: 15px; }
+        .container { padding-left: 20px; padding-right: 20px; }
+    }
 </style>
 
 <main id="main">
@@ -133,7 +166,7 @@ description: "Transitioning from FFI? We provide advanced cardiac screening and 
     <div class="col-lg-7">
         <h3 class="fw-bold" style="color:#1a2a47;">Your Health Commands More Than Just Heart Care</h3>
         
-        <p>Transitioning away from regular military FFIs means taking full ownership of your health. While we provide cardiac diagnostics, we understand that "Ready for Life" means addressing the total spectrum of health challenges that emerge as we age.</p>
+        <p>Transitioning away from regular military FFIs means taking full ownership of your health. Led by <a href="/about" style="color: #1a2a47; text-decoration: underline;">Cardiology-trained Dr. Gerald Thang</a>, our clinic provides a dedicated intermediate care bridge for the SAFRA community, handling complex screenings that typical general practices may not be equipped for on-site.</p>
         
         <p>Our clinic provides a dedicated intermediate care bridge for the SAFRA community, handling complex screenings that typical general practices may not be equipped for on-site.</p>
 
@@ -212,6 +245,28 @@ description: "Transitioning from FFI? We provide advanced cardiac screening and 
                     <p class="small text-muted">Our most thorough evaluation. Includes specialized cardiac markers, ECG, and Computed Tomography (CT) Calcium Score.</p>
                     <div class="price-big">$888</div>
                     <a href="/booking" target="_blank" rel="noopener noreferrer" class="btn-plato">Book My Screening</a>
+                </div>
+            </div>
+
+      <div class="faq-section">
+                <h3 class="fw-bold mb-4" style="color:#1a2a47;">Frequently Asked Questions</h3>
+                <div class="row">
+                    <div class="col-md-6 faq-item">
+                        <div class="faq-question">Who is eligible for these SAFRA packages?</div>
+                        <p class="small text-muted">All 11B holders, SAFRA, and HomeTeamNS members—including their spouses, children, and parents—are eligible. Please present your membership card or mSAFRA e-card at registration.</p>
+                    </div>
+                    <div class="col-md-6 faq-item">
+                        <div class="faq-question">Do I need to fast before my screening?</div>
+                        <p class="small text-muted">Fasting for at least 8 hours is recommended for accurate blood glucose and lipid (cholesterol) results. You may consume plain water during this time.</p>
+                    </div>
+                    <div class="col-md-6 faq-item">
+                        <div class="faq-question">How fast can I get my heart screening results?</div>
+                        <p class="small text-muted">Our on-site laboratory in Geylang East provides rapid results for heart failure and heart attack markers within 15 minutes of testing.</p>
+                    </div>
+                    <div class="col-md-6 faq-item">
+                        <div class="faq-question">Can I use CHAS or MediSave at A Healing Heart Medical?</div>
+                        <p class="small text-muted">Yes, we are a Healthier SG and CHAS-accredited clinic. Members can utilize CHAS subsidies and MediSave for the management of chronic conditions.</p>
+                    </div>
                 </div>
             </div>
 
