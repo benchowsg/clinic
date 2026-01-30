@@ -128,19 +128,32 @@ function showStep(step) {
     document.getElementById('progress-bar').style.width = progress + '%';
 }
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzr-W0VrJ-lEGW5mdJo0qxxcNsvpT_X2bOA0X_t69-oWt5PolmPYIHL5EsifXEW0_mr/exec';
+const scriptURL = 'YOUR_LATEST_DEPLOY_URL_HERE';
 const form = document.getElementById('metabolic-quiz');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
     const submitBtn = document.getElementById('submit-btn');
+    
+    // 1. Add Spinner and Disable Button
     submitBtn.disabled = true;
-    submitBtn.innerHTML = "Calculating...";
+    submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Calculating your score...`;
 
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
     .then(response => {
-        submitBtn.innerHTML = "Success!";
-        alert("Your audit has been submitted. We will contact you shortly.");
+        // 2. Hide the form and show a beautiful Success Message
+        document.getElementById('metabolic-quiz').innerHTML = `
+            <div class="text-center py-4">
+                <i class="fas fa-check-circle text-success mb-3" style="font-size: 3rem;"></i>
+                <h2 class="fw-bold">Audit Submitted!</h2>
+                <p class="text-muted">Our clinical team is currently analyzing your metabolic markers. You will receive your score via email shortly.</p>
+                <hr>
+                <p class="fw-bold">Want to fast-track your results?</p>
+                <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart%20Medical%2C%20I%27d%20like%20to%20enquire%20about%20my%20metabolic%20audit." class="btn btn-success btn-lg rounded-pill w-100">
+                    <i class="fab fa-whatsapp me-2"></i> Chat with Clinic Staff
+                </a>
+            </div>
+        `;
     })
     .catch(error => {
         submitBtn.disabled = false;
