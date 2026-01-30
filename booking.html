@@ -73,6 +73,31 @@ description: Schedule your clinical assessment, chronic disease management, or h
   .tile-statutory:hover i { color: #6c757d; transform: scale(1.1); }
   
   .statutory-header { border-left-color: #6c757d; }
+
+  /* Promotion Tile - Singapore Red & White */
+  .tile-special {
+    background: #e74c3c !important; /* Singapore Red */
+    border: 2px solid #c0392b !important;
+    color: #ffffff !important;
+  }
+
+  .tile-special i, .tile-special small {
+    color: #ffffff !important;
+  }
+
+  .tile-special:hover {
+    background: #ffffff !important;
+    color: #e74c3c !important;
+    border-color: #e74c3c !important;
+    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
+  }
+
+  .tile-special:hover i, .tile-special:hover small {
+    color: #e74c3c !important;
+    transform: scale(1.1);
+  }
+
+  .special-header { border-left-color: #e74c3c; }
   
 </style>
 
@@ -83,6 +108,16 @@ description: Schedule your clinical assessment, chronic disease management, or h
       <p></p>
        <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Schedule an Appointment</h1>
       <p class="lead text-muted">Select a clinical category to view available time slots.</p>
+    </div>
+
+    <h5 class="category-header special-header">Special</h5>
+    <div class="row g-3 mb-5">
+      <div class="col-12 col-md-4">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="booking-tile tile-special">
+          <i class="fa-solid fa-star"></i>
+          <span>SAFRA Member<br><small class="fw-normal">Exclusive Screening Rates</small></span>
+        </a>
+      </div>
     </div>
 
     <h5 class="category-header urgent-header">Symptom Evaluation & Diagnostics</h5>
