@@ -53,18 +53,32 @@ description: Discover your metabolic score and see if you qualify for our medica
 
             <form id="metabolic-quiz">
                 <div class="quiz-step" id="step-1">
-                    <h3 class="mb-4">The Basics</h3>
-                    <div class="mb-3">
-                        <input type="text" name="Name" class="form-control form-control-lg" placeholder="Full Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="email" name="Email" class="form-control form-control-lg" placeholder="Email Address" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" name="WhatsApp" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
-                    </div>
-                    <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill" onclick="showStep(2)">Next Question</button>
-                </div>
+    <h3 class="mb-4">The Basics</h3>
+    <div class="mb-3">
+        <input type="text" name="Name" class="form-control form-control-lg" placeholder="Full Name" required>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <input type="email" name="Email" class="form-control form-control-lg" placeholder="Email Address" required>
+        </div>
+        <div class="col-md-4">
+            <select name="Gender" class="form-select form-select-lg" required>
+                <option value="">Biological Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="number" name="Age" class="form-control form-control-lg" placeholder="Age" required>
+        </div>
+        <div class="col">
+            <input type="tel" name="WhatsApp" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
+        </div>
+    </div>
+    <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill" onclick="showStep(2)">Next Question</button>
+</div>
 
                 <div class="quiz-step d-none" id="step-2">
                     <h3 class="mb-2">Do you experience "Food Noise"?</h3>
@@ -82,6 +96,9 @@ description: Discover your metabolic score and see if you qualify for our medica
                     <div class="mb-3">
                         <input type="number" name="Weight" class="form-control form-control-lg" placeholder="Current Weight (kg)">
                     </div>
+                  <div class="col">
+                      <input type="number" name="Height" class="form-control form-control-lg" placeholder="Height (cm)" required>
+                  </div>
                     <div class="mb-4">
                         <select name="Energy_Slump" class="form-select form-select-lg">
                             <option value="">Afternoon Energy Slump?</option>
@@ -128,7 +145,7 @@ function showStep(step) {
     document.getElementById('progress-bar').style.width = progress + '%';
 }
 
-const scriptURL = 'YOUR_LATEST_DEPLOY_URL_HERE';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzazRqBXFpyv-9_xBxtwG-ou6B_CXpxl3-kYWmoiCTADJ_XFPwJwqi10iB1O45CaE34/exec';
 const form = document.getElementById('metabolic-quiz');
 
 form.addEventListener('submit', e => {
