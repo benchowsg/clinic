@@ -90,6 +90,14 @@
 }
 </script>
 
+{% if page.custom_schema %}
+<script type="application/ld+json">
+  {{ page.custom_schema }}
+</script>
+{% endif %}
+
+{% if page.url == "/" or page.url == "/index.html" %}
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
