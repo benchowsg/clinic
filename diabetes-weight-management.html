@@ -1,8 +1,52 @@
 ---
 layout: default
 permalink: /diabetes-weight-management
-title: Diabetes & Weight Management | A Healing Heart Medical
-description: Systemic management for Diabetes and Weight in Singapore. Move beyond blood sugar monitoring to long-term heart protection and weight control.
+title: Diabetes Management | A Healing Heart Medical
+description: Comprehensive diabetes care in Singapore. Focused on blood sugar stability, vascular health, and preventing long-term heart and organ damage.
+custom_schema: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "Clinical Diabetes Management & Vascular Protection",
+      "description": "Evidence-based management of Type 2 Diabetes and Pre-Diabetes in Singapore, focusing on HbA1c stabilization and prevention of cardiovascular complications.",
+      "mainEntity": {
+        "@type": "MedicalCondition",
+        "name": "Type 2 Diabetes Mellitus",
+        "associatedAnatomy": {
+          "@type": "AnatomicalSystem",
+          "name": "Circulatory System"
+        },
+        "possibleComplication": ["Heart Attack", "Stroke", "Diabetic Retinopathy", "Kidney Failure"],
+        "primaryPrevention": {
+          "@type": "MedicalTherapy",
+          "name": "HbA1c Stabilization and Lifestyle Optimization"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does diabetes affect the heart?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chronic high blood sugar causes systemic inflammation and arterial stiffening (atherosclerosis), which restricts blood flow and significantly increases the risk of heart disease."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a healthy HbA1c range for Asians?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "According to MOH Singapore guidelines, an optimal range is below 6.0%. Pre-diabetes is 6.0% to 6.4%, and the management goal for diagnosed diabetics is typically to maintain a level below 7.0% to protect organs."
+          }
+        }
+      ]
+    }
+  ]
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,7 +58,6 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     letter-spacing: normal !important;
   }
 
-  /* Exactly matching the Hypertension/Cholesterol Hero structure */
   .preventive-hero {
     background-color: #f8f9fa !important; 
     min-height: 40vh;
@@ -24,7 +67,6 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     border-bottom: 1px solid #e9ecef;
   }
 
-  /* Pill-shaped buttons to match reference page */
   .btn-get-started-custom {
     background: #3498db;
     color: white !important;
@@ -52,7 +94,6 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     color: #fff !important;
   }
 
-  /* INFOGRAPHIC STYLING */
   .cycle-container {
     padding: 20px;
     border-left: 2px dashed #3498db;
@@ -64,7 +105,7 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     padding-left: 30px;
   }
   .cycle-step::before {
-    content: "\f107"; /* FontAwesome Down Arrow */
+    content: "\f107"; 
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     position: absolute;
@@ -74,7 +115,7 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     color: #3498db;
     padding: 5px 0;
   }
-  .cycle-step:last-child::before { content: "\f01e"; } /* Reset Icon */
+  .cycle-step:last-child::before { content: "\f01e"; } 
 
   .systemic-card {
     background: #fff;
@@ -108,14 +149,14 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     <div class="container py-5 mt-4">
       <div class="row align-items-center">
         <div class="col-lg-8 text-center text-lg-start">
-          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Diabetes & Weight Management</h1>
-          <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Metabolic Precision for Heart Protection</h2>
+          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Diabetes Management</h1>
+          <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Proactive Care for Vascular & Heart Protection</h2>
           <p class="lead mb-4" style="color: #4a5568;">
-            Diabetes is a systemic vascular threat. At A Healing Heart, we don't just manage blood sugar; we target the metabolic root causes to prevent long-term cardiovascular damage and stabilize weight through clinical intervention.
+            Diabetes is more than just blood sugar levels. At A Healing Heart, we provide systemic clinical management to stabilize glucose, protect your micro-vessels, and significantly reduce the risk of cardiovascular complications.
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-            <a href="/booking" class="btn-get-started-custom">Book Metabolic Assessment</a>
-            <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20inquire%20about%20Diabetes%20and%20Weight%20Management%20services." 
+            <a href="/booking" class="btn-get-started-custom">Book Diabetes Consult</a>
+            <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20inquire%20about%20Diabetes%20Management%20services." 
                class="btn-outline-primary-custom rounded-pill px-5 py-2 fw-bold">
                <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
             </a>
@@ -125,52 +166,49 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     </div>
   </section>
 
-<section class="py-5 bg-white">
+  <section class="py-5 bg-white">
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-6">
           <h2 class="fw-bold mb-4" style="color: #2c4964;">The Systemic Vascular Impact</h2>
-          <p class="text-muted">High blood sugar acts as a corrosive agent within your circulatory system, leading to arterial hardening (atherosclerosis).</p>
+          <p class="text-muted">High blood sugar acts as a corrosive agent within your circulatory system. Consistent management is essential to prevent arterial hardening (atherosclerosis).</p>
           
           <div class="p-4 rounded-4 mb-3" style="background: #fff5f5; border-left: 5px solid #e74c3c;">
-             <h6 class="fw-bold text-danger"><i class="fa-solid fa-band-aid me-2"></i> Cardiovascular & Stroke Risk</h6>
-             <p class="small mb-0">Arterial hardening restricts blood flow to the brain and heart, significantly increasing the long-term risk of <strong>Stroke</strong> and <strong>Heart Attack</strong>.</p>
+             <h6 class="fw-bold text-danger"><i class="fa-solid fa-heart-pulse me-2"></i> Cardiovascular Protection</h6>
+             <p class="small mb-0">Unmanaged diabetes restricts blood flow to the heart and brain. We focus on stabilizing these levels to lower your long-term risk of <strong>Heart Attack</strong> and <strong>Stroke</strong>.</p>
           </div>
 
-          <div class="p-3 rounded-4 mb-3" style="background: #fff0f6; border-left: 5px solid #d63384; transition: 0.3s;">
-           <h6 class="fw-bold" style="color: #d63384;"><i class="fa-solid fa-eye me-2"></i> Vision & Retinal Health</h6>
-           <p class="small mb-0 text-muted">Diabetes weakens the tiny vessels in your eyes. If left unmanaged, these can leak or burst (Retinopathy), leading to <strong>blurred vision</strong> or permanent sight loss.</p>
-        </div>
+          <div class="p-3 rounded-4 mb-3" style="background: #fff0f6; border-left: 5px solid #d63384;">
+           <h6 class="fw-bold" style="color: #d63384;"><i class="fa-solid fa-eye me-2"></i> Retinal & Kidney Health</h6>
+           <p class="small mb-0 text-muted">The smallest vessels in the eyes and kidneys are the first to be damaged. Our protocols include screening for early signs of <strong>Retinopathy</strong> and <strong>Kidney Dysfunction</strong>.</p>
+          </div>
           
           <div class="p-4 rounded-4" style="background: #f0f9ff; border-left: 5px solid #3498db;">
-             <h6 class="fw-bold" style="color: #2c4964;"><i class="fa-solid fa-band-aid me-2"></i> Regenerative Wound Care</h6>
-             <p class="small mb-0">Diabetes damages the micro-vessels (capillaries) needed for skin repair. This leads to slow-healing wounds and bacteria infection. Our systemic approach ensures your circulation supports natural recovery.</p>
+             <h6 class="fw-bold" style="color: #2c4964;"><i class="fa-solid fa-bacteria me-2"></i> Infection & Wound Care</h6>
+             <p class="small mb-0">Diabetes can slow down skin repair. Our systemic approach ensures your circulation remains healthy enough to support the body’s natural regenerative healing processes.</p>
           </div>
         </div>
         
-<div class="col-lg-6">
-        <div class="ps-lg-5">
-          <h4 class="fw-bold mb-4" style="color: #2c4964;">The 4 Stages of Damage</h4>
-          <div class="cycle-container">
-            
-            <div class="cycle-step pb-4">
-              <h6 class="fw-bold mb-1" style="color: #2c4964;">1. The "Sandpaper" Effect</h6>
-              <p class="small text-muted mb-0">High sugar makes your blood "gritty." As it flows, it scratches the smooth inner walls of your blood vessels like sandpaper.</p>
-            </div>
-
-            <div class="cycle-step pb-4">
-              <h6 class="fw-bold mb-1" style="color: #2c4964;">2. Leaky "Tiny Pipes"</h6>
-              <p class="small text-muted mb-0">The smallest vessels (in your eyes and kidneys) are thin like hair. The scratches make them "weep" and leak fluid into the surrounding tissue.</p>
-            </div>
-
-            <div class="cycle-step pb-4">
-              <h6 class="fw-bold mb-1" style="color: #2c4964;">3. Rusty & Clogged Arteries</h6>
-              <p class="small text-muted mb-0">To fix the scratches, your body builds up "rust" (plaque). This makes your vessels hard and narrow, making it difficult for blood to squeeze through.</p>
-            </div>
-            
-            <div class="cycle-step">
-              <h6 class="fw-bold mb-1" style="color: #2c4964;">4. The "Starvation" Stage</h6>
-              <p class="small text-muted mb-0">Because the "pipes" are clogged, your organs and skin don't get the oxygen they need. They begin to "starve," which is why wounds stop healing and organs start to fail.</p>
+        <div class="col-lg-6">
+          <div class="ps-lg-5">
+            <h4 class="fw-bold mb-4" style="color: #2c4964;">The 4 Stages of Sugar Damage</h4>
+            <div class="cycle-container">
+              <div class="cycle-step pb-4">
+                <h6 class="fw-bold mb-1" style="color: #2c4964;">1. Endothelial Inflammation</h6>
+                <p class="small text-muted mb-0">Excess glucose causes inflammation in the inner lining of your blood vessels, making them prone to plaque buildup.</p>
+              </div>
+              <div class="cycle-step pb-4">
+                <h6 class="fw-bold mb-1" style="color: #2c4964;">2. Micro-Vascular Leakage</h6>
+                <p class="small text-muted mb-0">Small, hair-thin capillaries begin to weaken and leak fluid into surrounding tissues, affecting vision and kidney filtration.</p>
+              </div>
+              <div class="cycle-step pb-4">
+                <h6 class="fw-bold mb-1" style="color: #2c4964;">3. Arterial Stiffening</h6>
+                <p class="small text-muted mb-0">The body attempts to repair vascular damage with plaque, causing arteries to become narrow and "hardened."</p>
+              </div>
+              <div class="cycle-step">
+                <h6 class="fw-bold mb-1" style="color: #2c4964;">4. Target Organ Damage</h6>
+                <p class="small text-muted mb-0">Reduced blood flow starves organs of oxygen, leading to clinical complications in the heart, brain, and limbs.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -182,32 +220,30 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="fw-bold" style="color: #2c4964;">Long-Term Organ Preservation</h2>
-        <p class="text-muted">We move away from reactive care to proactive prevention.</p>
+        <p class="text-muted">Proactive clinical monitoring for patients with Pre-Diabetes and Type 2 Diabetes.</p>
       </div>
-
       <div class="row g-4">
         <div class="col-md-4">
           <div class="systemic-card">
-            <div class="text-primary mb-3"><i class="fa-solid fa-clock-rotate-left fa-2xl"></i></div>
-            <h5 class="fw-bold">Periodic Oversight</h5>
-            <p class="small text-muted">Regular metabolic reviews to ensure your heart and vessels are not under silent stress from fluctuating levels.</p>
+            <div class="text-primary mb-3"><i class="fa-solid fa-chart-line fa-2xl"></i></div>
+            <h5 class="fw-bold">HbA1c Stabilization</h5>
+            <p class="small text-muted">Continuous oversight to keep your average blood sugar within the "Heart-Safe" zone to prevent nerve damage.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="systemic-card">
-            <div class="text-primary mb-3"><i class="fa-solid fa-microscope fa-2xl"></i></div>
-            <h5 class="fw-bold">Hormonal Analysis</h5>
-            <p class="small text-muted">Investigating hormonal interactions that often cause weight loss plateaus in diabetic patients.</p>
+            <div class="text-primary mb-3"><i class="fa-solid fa-stethoscope fa-2xl"></i></div>
+            <h5 class="fw-bold">Vascular Assessment</h5>
+            <p class="small text-muted">Regular screening for arterial stiffness and carotid health specifically for diabetic patients.</p>
           </div>
         </div>
-      
         <div class="col-md-4">
-  <div class="systemic-card">
-    <div class="text-primary mb-3"><i class="fa-solid fa-brain fa-2xl"></i></div>
-    <h5 class="fw-bold">Stroke & Organ Prevention</h5>
-    <p class="small text-muted">We screen for arterial stiffness and carotid health to ensure your metabolic condition isn't quietly hardening the vessels leading to your brain.</p>
-  </div>
-</div>
+          <div class="systemic-card">
+            <div class="text-primary mb-3"><i class="fa-solid fa-shield-heart fa-2xl"></i></div>
+            <h5 class="fw-bold">Cardiac Protection</h5>
+            <p class="small text-muted">Utilizing modern evidence-based therapies that provide secondary protection for the heart and kidneys.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -217,76 +253,62 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
       <div class="lead-in-box shadow-lg">
         <div class="row align-items-center">
           <div class="col-md-8">
-            <h3 class="fw-bold">Why Weight Control is the Best Prevention</h3>
-            <p class="mb-0">Losing just <strong>5-10% of body weight</strong> can improve insulin sensitivity so significantly that many patients can reduce or even eliminate their need for chronic diabetes medication. It remains the most powerful "drug-free" intervention to lower your lifetime cardiac risk.</p>
+            <h3 class="fw-bold">The Importance of Glycemic Control</h3>
+            <p class="mb-0">Maintaining an HbA1c below 7.0% can reduce the risk of eye and kidney disease by up to <strong>76%</strong>. Early intervention during the "Pre-Diabetes" stage remains the most effective way to reverse metabolic damage.</p>
           </div>
           <div class="col-md-4 text-md-end mt-3 mt-md-0">
-            <i class="fa-solid fa-heart-circle-check fa-4xl opacity-50"></i>
+            <i class="fa-solid fa-chart-bar fa-4xl opacity-50"></i>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-<section class="py-5 bg-white">
+  <section class="py-5 bg-white">
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-lg-6">
-          <h2 class="fw-bold mb-4" style="color: #2c4964;">Clinical Weight Management</h2>
-          <p class="text-muted">General weight loss advice often fails diabetic patients because their hormones are structurally working against them. Our approach focuses on metabolic correction to protect your cardiovascular system:</p>
-          
+          <h2 class="fw-bold mb-4" style="color: #2c4964;">Clinical Diabetes Care</h2>
+          <p class="text-muted">Our approach to diabetes focuses on long-term sustainability and the prevention of vascular "burnout":</p>
           <ul class="list-unstyled mt-4">
             <li class="mb-4 d-flex align-items-start">
-              <div class="me-3 text-primary"><i class="fa-solid fa-vial-circle-check fa-xl"></i></div>
-              <div><strong>Medication Pathways:</strong> Modern therapeutic options that regulate appetite while providing significant cardiovascular protection and glucose stability.</div>
+              <div class="me-3 text-primary"><i class="fa-solid fa-vial fa-xl"></i></div>
+              <div><strong>Personalized Medication Plans:</strong> Tailored therapies to manage glucose spikes without causing unnecessary side effects.</div>
             </li>
             <li class="mb-4 d-flex align-items-start">
-              <div class="me-3 text-primary"><i class="fa-solid fa-weight-hanging fa-xl"></i></div>
-              <div><strong>Visceral Fat Targeting:</strong> Focusing on the inflammatory fat around your organs that drives arterial stiffening and hypertension.</div>
+              <div class="me-3 text-primary"><i class="fa-solid fa-user-doctor fa-xl"></i></div>
+              <div><strong>Complication Screening:</strong> Integrated clinical reviews of your heart, eyes, and renal function.</div>
             </li>
             <li class="mb-0 d-flex align-items-start">
-              <div class="me-3 text-primary"><i class="fa-solid fa-apple-whole fa-xl"></i></div>
-              <div><strong>Sustainable Glucose Guarding:</strong> Nutrition that prevents the sharp insulin spikes that trigger fat storage and damage delicate blood vessels.</div>
+              <div class="me-3 text-primary"><i class="fa-solid fa-kitchen-set fa-xl"></i></div>
+              <div><strong>Nutrition & Lifestyle Guidance:</strong> Practical, Asian-context dietary advice to maintain stable insulin levels.</div>
             </li>
           </ul>
         </div>
 
         <div class="col-lg-6">
           <div class="p-5 bg-light rounded-5 border">
-             <h4 class="fw-bold mb-4 text-center">Metabolic Targets (Asian Context)</h4>
-             
+             <h4 class="fw-bold mb-4 text-center">Diabetes Targets (Asian Context)</h4>
              <div class="mb-3 p-3 bg-white rounded-3 border-start border-success border-4 shadow-sm">
                 <div class="d-flex justify-content-between align-items-center">
-                   <div>
-                      <strong>Healthy / Optimal</strong>
-                      <div class="x-small text-muted" style="font-size: 0.7rem;">Lower risk of vascular damage</div>
-                   </div>
+                   <div><strong>Optimal Range</strong></div>
                    <span class="badge bg-success">HbA1c < 6.0%</span>
                 </div>
              </div>
-
              <div class="mb-3 p-3 bg-white rounded-3 border-start border-warning border-4 shadow-sm">
                 <div class="d-flex justify-content-between align-items-center">
-                   <div>
-                      <strong>High Risk (Pre-Diabetes)</strong>
-                      <div class="x-small text-muted" style="font-size: 0.7rem;">MOH Singapore monitoring range</div>
-                   </div>
+                   <div><strong>Pre-Diabetes (High Risk)</strong></div>
                    <span class="badge bg-warning text-dark">6.0% - 6.4%</span>
                 </div>
              </div>
-
              <div class="mb-3 p-3 bg-white rounded-3 border-start border-danger border-4 shadow-sm">
                 <div class="d-flex justify-content-between align-items-center">
-                   <div>
-                      <strong>Diabetes Management</strong>
-                      <div class="x-small text-muted" style="font-size: 0.7rem;">Goal for organ protection</div>
-                   </div>
+                   <div><strong>Management Goal</strong></div>
                    <span class="badge bg-danger">Goal: < 7.0%</span>
                 </div>
              </div>
-
-             <p class="x-small text-muted mt-3 text-center" style="font-size: 0.75rem; line-height: 1.4;">
-               <em>*Reference: MOH Clinical Practice Guidelines. Note: For Asians, metabolic complications can occur even at the "High Risk" stage.</em>
+             <p class="x-small text-muted mt-3 text-center" style="font-size: 0.75rem;">
+               <em>*Reference: MOH Clinical Practice Guidelines. Note: Managing levels early is key to preventing heart complications.</em>
              </p>
           </div>
         </div>
@@ -296,15 +318,42 @@ description: Systemic management for Diabetes and Weight in Singapore. Move beyo
 
   <section class="py-5 text-center bg-light">
     <div class="container">
-      <h2 class="fw-bold mb-4" style="color: #2c4964;">Start Your Metabolic Recovery</h2>
-      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Better long-term heart health starts with metabolic control. Book your consultation today to build your systemic health plan.</p>
+      <h2 class="fw-bold mb-4" style="color: #2c4964;">Protect Your Vascular Health</h2>
+      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Effective diabetes management is the cornerstone of heart disease prevention. Schedule your clinical review today.</p>
       <div class="d-flex justify-content-center gap-3">
         <a href="/booking" class="btn-get-started-custom">Book Consultation</a>
-        <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20discuss%20diabetes%20and%20weight%20management." class="btn-get-started-custom" style="background: #25d366;">
+        <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20discuss%20diabetes%20management." class="btn-get-started-custom" style="background: #25d366;">
           <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
         </a>
       </div>
     </div>
   </section>
 
+<section class="py-5" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+  <div class="container">
+    <div class="mb-5">
+      <h2 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Diabetes Management: Clinical FAQ</h2>
+      <p class="text-muted">Expert insights on metabolic health and preventing long-term complications.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h3 class="h5 fw-bold" style="color: #2c4964;">Why is diabetes linked to heart disease?</h3>
+        <p class="small text-muted">High glucose levels cause <strong>Endothelial Inflammation</strong>, damaging the lining of your arteries. This makes it significantly easier for plaque to build up, leading to a much higher risk of heart attack and stroke compared to non-diabetics.</p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h5 fw-bold" style="color: #2c4964;">Can "Pre-Diabetes" really be reversed?</h3>
+        <p class="small text-muted">Yes. In the pre-diabetes stage (HbA1c 6.0% - 6.4%), the body is still highly responsive to <strong>metabolic optimization</strong>. With personalized nutrition and targeted clinical guidance, it is possible to restore insulin sensitivity and prevent the progression to Type 2 Diabetes.</p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h5 fw-bold" style="color: #2c4964;">How often should I have my HbA1c checked?</h3>
+        <p class="small text-muted">For those under management, we recommend a review every 3 to 6 months. This allows Dr. Thang to adjust your <strong>Risk Stratification Roadmap</strong> and ensure your medication dosage is at the lowest effective level for organ protection.</p>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h5 fw-bold" style="color: #2c4964;">What is the goal for an Asian diabetic patient?</h3>
+        <p class="small text-muted">While the general goal is an HbA1c below 7.0%, we focus on <strong>Clinical Synergy</strong>—ensuring that your blood pressure and cholesterol are also managed, as these three factors together determine your total vascular safety.</p>
+      </div>
+    </div>
+  </div>
+</section>
+                     
 </main>
