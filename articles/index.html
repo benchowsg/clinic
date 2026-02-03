@@ -24,6 +24,33 @@ description: Professional medical insights on cardiology, genetic heart risk, an
     letter-spacing: normal !important;
   }
 
+  /* Filter Bar Styles */
+  .filter-container {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    position: sticky;
+    top: 70px; /* Adjust based on your header height */
+    z-index: 100;
+  }
+
+  .filter-btn {
+    border: 1px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    margin: 5px;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: #3498db;
+    color: #fff;
+  }
+
   .article-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #eee;
@@ -56,12 +83,13 @@ description: Professional medical insights on cardiology, genetic heart risk, an
 
   .card-footer {
     padding: 20px 30px;
-    background: #fdfcf0; /* Matches the Principal Physician theme color */
+    background: #fdfcf0; 
     border-top: 1px solid #f1f1f1;
   }
 </style>
 
 <main id="main">
+  
   <section class="library-hero">
     <div class="container text-center">
       <h1 class="display-4 fw-bold">Health Library</h1>
@@ -71,17 +99,26 @@ description: Professional medical insights on cardiology, genetic heart risk, an
     </div>
   </section>
 
-  <section class="py-5 bg-light">
-    <div class="container">
-<div class="row g-4 justify-content-center">
+  <div class="filter-container shadow-sm">
+    <div class="container text-center">
+      <button class="filter-btn active" data-filter="all">All Perspectives</button>
+      <button class="filter-btn" data-filter="Cardiology">Cardiology</button>
+      <button class="filter-btn" data-filter="Psychology">Psychology</button>
+      <button class="filter-btn" data-filter="Metabolic">Metabolic</button>
+      <button class="filter-btn" data-filter="Safety">Safety & Care</button>
+    </div>
+  </div>
 
-        <div class="col-md-6 col-lg-4">
+<section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4 justify-content-center" id="article-grid">
+
+        <div class="col-md-6 col-lg-4 article-item" data-category="Cardiology">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Cardiology & Genetics</span>
               <h2 class="h4 fw-bold mb-3">The Rise of Lp(a): The Hidden Genetic Risk Factor</h2>
               <p class="text-muted small mb-4">Why standard cholesterol tests aren't enough and how our Principal Physician identifies genetic "silent" markers.</p>
-              
               <a href="/articles/lpa-genetic-heart-risk" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -90,13 +127,12 @@ description: Professional medical insights on cardiology, genetic heart risk, an
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Safety">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Intermediate Care</span>
               <h2 class="h4 fw-bold mb-3">The Bridge to Recovery: Redefining Transitions</h2>
               <p class="text-muted small mb-4">Meticulous risk stratification and rehabilitative oversight: a new model for post-hospital clinical stewardship.</p>
-              
               <a href="/articles/intermediate-care-bridge-to-recovery" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -105,13 +141,12 @@ description: Professional medical insights on cardiology, genetic heart risk, an
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Metabolic">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Preventive Health</span>
               <h2 class="h4 fw-bold mb-3">Beyond the Numbers: Achieving Metabolic Synergy</h2>
               <p class="text-muted small mb-4">Moving away from chasing biomarkers toward high-resolution vascular health and preventive optimization.</p>
-              
               <a href="/articles/beyond-biomarker-numbers" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -120,13 +155,12 @@ description: Professional medical insights on cardiology, genetic heart risk, an
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Cardiology">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Diagnostic Choices</span>
               <h2 class="h4 fw-bold mb-3">Beyond the Report: Why Interpretation is the Most Critical Part of Heart Screening</h2>
               <p class="text-muted small mb-4">The true value of a screening is found in the clinical interpretation and roadmap for your health.</p>
-              
               <a href="/articles/heart-screening-guide" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -135,14 +169,12 @@ description: Professional medical insights on cardiology, genetic heart risk, an
           </div>
         </div>
 
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Psychology">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Patient Psychology</span>
               <h2 class="h4 fw-bold mb-3">The Screening Paradox: Why We Seek Data but Hesitate on Treatment</h2>
               <p class="text-muted small mb-4">Understanding the valid psychological hurdles and practical concerns that patients face.</p>
-              
               <a href="/articles/medication-psychology-and-prevention" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -150,15 +182,13 @@ description: Professional medical insights on cardiology, genetic heart risk, an
             </div>
           </div>
         </div>
-  
 
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Psychology">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Patient Psychology</span>
               <h2 class="h4 fw-bold mb-3">The Clean Slate Urge: Navigating Long Term Medication Fatigue</h2>
               <p class="text-muted small mb-4">The journey for patients managing chronic conditions is measured in decades, not days.</p>
-              
               <a href="/articles/medication-fatigue-and-clean-slate" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -166,15 +196,13 @@ description: Professional medical insights on cardiology, genetic heart risk, an
             </div>
           </div>
         </div>
-  
 
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Safety">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Medication Safety</span>
               <h2 class="h4 fw-bold mb-3">The Hidden Cost: Why Cheap, Unverified Medication is a High Risk Gamble</h2>
               <p class="text-muted small mb-4">Seeking medication from unknown sources may undermine your long-term health.</p>
-              
               <a href="/articles/unverified-medication-risks" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -183,14 +211,12 @@ description: Professional medical insights on cardiology, genetic heart risk, an
           </div>
         </div>
 
-
-          <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Psychology">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Patient Psychology</span>
               <h2 class="h4 fw-bold mb-3">The Identity Shift: Why Feeling Healthy is Your Biggest Hurdle</h2>
               <p class="text-muted small mb-4">The vulnerability gap is a psychological space where your physical sensations do not match your clinical reality.</p>
-              
               <a href="/articles/heart-patient-identity-and-vulnerability" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -199,14 +225,12 @@ description: Professional medical insights on cardiology, genetic heart risk, an
           </div>
         </div>
 
-
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 article-item" data-category="Safety">
           <div class="article-card">
             <div class="card-content">
               <span class="category-label mb-2">Lifestyle & Safety</span>
               <h2 class="h4 fw-bold mb-3">Medication Safety: It is About your Life, Not Just Your Pills</h2>
               <p class="text-muted small mb-4">Your body is not a static machine. Regular check-ins are vital.</p>
-              
               <a href="/articles/what-is-medication-safety" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
             </div>
             <div class="card-footer">
@@ -214,8 +238,37 @@ description: Professional medical insights on cardiology, genetic heart risk, an
             </div>
           </div>
         </div>
-  
+
       </div>
     </div>
   </section>
+
+  
 </main>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.article-item');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Toggle button active state
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
+
+      items.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (filter === 'all' || category.includes(filter)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
