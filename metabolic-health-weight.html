@@ -45,6 +45,100 @@ custom_schema: |
   ]
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  /* Global reset for this page to match theme branding */
+  #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  .preventive-hero {
+    background-color: #f8f9fa !important; 
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    color: #3498DB !important; 
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .btn-get-started-custom {
+    background: #3498db;
+    color: white !important;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+  }
+  .btn-get-started-custom:hover { background: #2980b9; }
+
+  .btn-outline-primary-custom {
+    border: 2px solid #3498db;
+    color: #3498db !important;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .btn-outline-primary-custom:hover {
+    background: #3498db;
+    color: #fff !important;
+  }
+
+  .cycle-container {
+    padding: 20px;
+    border-left: 2px dashed #3498db;
+    margin-left: 20px;
+  }
+  .cycle-step {
+    position: relative;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+  .cycle-step::before {
+    content: "\f107"; 
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: -11px;
+    top: 0;
+    background: #f8f9fa;
+    color: #3498db;
+    padding: 5px 0;
+  }
+  .cycle-step:last-child::before { content: "\f01e"; } 
+
+  .systemic-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid #eef2f6;
+    height: 100%;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+  }
+  .systemic-card:hover { 
+    border-color: #3498db; 
+    transform: translateY(-5px); 
+  }
+  
+  .lead-in-box {
+    background: linear-gradient(135deg, #2c4964 0%, #1a3044 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+  }
+</style>
+
 <main id="main">
 
   <section class="preventive-hero pt-5">
@@ -58,7 +152,8 @@ custom_schema: |
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
             <a href="/booking" class="btn-get-started-custom">Book Metabolic Review</a>
-            <a href="https://wa.me/6569621362" class="btn-outline-primary-custom rounded-pill px-5 py-2 fw-bold">
+            <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20inquire%20about%20Metabolic%20Health%20and%20Weight%20Management%20services." 
+              class="btn-outline-primary-custom rounded-pill px-5 py-2 fw-bold">
                <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
             </a>
           </div>
