@@ -14,3 +14,7 @@ exclude:
   - .jekyll-cache
   - .bundle
   - vendor
+
+# Add this section to enable redirects
+plugins:
+  - jekyll-redirect-from
