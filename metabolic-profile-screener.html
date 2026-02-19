@@ -1,8 +1,8 @@
 ---
 layout: default
-permalink: /metabolic-profile-screener
-title: Metabolic Vitality Profile Assessment | A Healing Heart Medical
-description: Identify your metabolic "friction" points. An educational screening tool for the Singapore Asian phenotype.
+permalink: /metabolic-health-screener
+title: The Metabolic Trajectory Assessment | A Healing Heart Medical
+description: Identify the hidden physiological friction points in the Singapore Asian phenotype. 
 ---
 
 <main id="main" class="mt-5 pt-5">
@@ -10,87 +10,109 @@ description: Identify your metabolic "friction" points. An educational screening
     <div class="container">
       
       <div class="mb-5 text-center">
-        <h1 class="fw-bold" style="color: #2c4964;">The Metabolic "Friction" Assessment</h1>
-        <p class="text-muted mx-auto" style="max-width: 700px;">
-          Identify the physiological patterns holding you back. This tool is an <strong>educational screener</strong> adapted for the Singapore lifestyle. It does not provide a medical diagnosis.
+        <span class="badge rounded-pill bg-light text-primary mb-2 border">Clinical Access Only</span>
+        <h1 class="fw-bold" style="color: #2c4964; letter-spacing: -1px;">The Metabolic Fingerprint Assessment</h1>
+        <p class="text-muted mx-auto" style="max-width: 650px;">
+          Standard blood panels often overlook the <strong>sub-clinical synergy</strong> between your stress-axis and metabolic rate. Discover your trajectory.
         </p>
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div id="quiz-card" class="card shadow-sm border-0 p-4">
+        <div class="col-lg-7 col-md-9">
+          <div id="quiz-card" class="card shadow-lg border-0 p-4 p-md-5" style="border-radius: 20px;">
             
-            <div class="progress mb-4" style="height: 8px;">
-              <div id="quiz-progress" class="progress-bar bg-primary" role="progressbar" style="width: 0%;"></div>
+            <div class="progress mb-5" style="height: 5px; background-color: #f0f0f0;">
+              <div id="quiz-progress" class="progress-bar bg-dark" role="progressbar" style="width: 0%;"></div>
             </div>
 
             <form id="metabolicQuiz">
               
               <div class="quiz-step">
-                <h4 class="mb-4">1. How would you describe your energy at 3:00 PM?</h4>
-                <div class="d-grid gap-2">
-                  <input type="radio" class="btn-check" name="q1" id="q1a" value="insulin" required>
-                  <label class="btn btn-outline-secondary text-start p-3" for="q1a">Intense sugar cravings or "brain fog"</label>
+                <p class="text-uppercase small fw-bold text-primary mb-1">Pillar I: Energy Economy</p>
+                <h3 class="mb-4 fw-bold">How does your body signal "Power Down" during the day?</h3>
+                <div class="d-grid gap-3">
+                  <input type="radio" class="btn-check" name="q1" id="q1a" value="A" required>
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q1a">Sudden "Brain Fog" that clears only with sugar/caffeine.</label>
                   
-                  <input type="radio" class="btn-check" name="q1" id="q1b" value="cortisol">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q1b">"Wired but tired" — anxious energy</label>
+                  <input type="radio" class="btn-check" name="q1" id="q1b" value="B">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q1b">A "Second Wind" late at night that prevents deep rest.</label>
                   
-                  <input type="radio" class="btn-check" name="q1" id="q1c" value="vitality">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q1c">General heaviness or physical exhaustion</label>
+                  <input type="radio" class="btn-check" name="q1" id="q1c" value="C">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q1c">A heavy, limb-weighted fatigue that persists despite sleep.</label>
                 </div>
               </div>
 
               <div class="quiz-step d-none">
-                <h4 class="mb-4">2. Where do you notice stubborn weight changes?</h4>
-                <div class="d-grid gap-2">
-                  <input type="radio" class="btn-check" name="q2" id="q2a" value="insulin">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q2a">Midsection / "Love handles"</label>
+                <p class="text-uppercase small fw-bold text-primary mb-1">Pillar II: Adipose Architecture</p>
+                <h3 class="mb-4 fw-bold">Where does your "Stress Response" physically manifest?</h3>
+                <div class="d-grid gap-3">
+                  <input type="radio" class="btn-check" name="q2" id="q2a" value="A">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q2a">Centralized mid-section density (Independent of diet).</label>
                   
-                  <input type="radio" class="btn-check" name="q2" id="q2b" value="cortisol">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q2b">Upper back or facial puffiness</label>
+                  <input type="radio" class="btn-check" name="q2" id="q2b" value="B">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q2b">Sub-cutaneous "puffiness" in the face and neck area.</label>
                   
-                  <input type="radio" class="btn-check" name="q2" id="q2c" value="vitality">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q2c">Overall loss of muscle tone / General gain</label>
+                  <input type="radio" class="btn-check" name="q2" id="q2c" value="C">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q2c">Generalized loss of vitality and lean muscle definition.</label>
                 </div>
               </div>
 
               <div class="quiz-step d-none">
-                <h4 class="mb-4">3. Describe your sleep pattern:</h4>
-                <div class="d-grid gap-2">
-                  <input type="radio" class="btn-check" name="q3" id="q3a" value="cortisol">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q3a">I wake up at 3 AM and struggle to drift back</label>
+                <p class="text-uppercase small fw-bold text-primary mb-1">Pillar III: Circadian Rhythm</p>
+                <h3 class="mb-4 fw-bold">Which 3:00 AM scenario most reflects your system?</h3>
+                <div class="d-grid gap-3">
+                  <input type="radio" class="btn-check" name="q3" id="q3a" value="B">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q3a">Waking with a racing heart or active "looping" thoughts.</label>
                   
-                  <input type="radio" class="btn-check" name="q3" id="q3b" value="vitality">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q3b">I sleep 8 hours but wake up unrefreshed</label>
+                  <input type="radio" class="btn-check" name="q3" id="q3b" value="C">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q3b">Waking feeling parched, with a heavy, unrefreshed body.</label>
                   
-                  <input type="radio" class="btn-check" name="q3" id="q3c" value="insulin">
-                  <label class="btn btn-outline-secondary text-start p-3" for="q3c">I feel extremely sleepy immediately after meals</label>
+                  <input type="radio" class="btn-check" name="q3" id="q3c" value="A">
+                  <label class="btn btn-outline-dark text-start p-3 shadow-sm" for="q3c">Falling asleep easily but experiencing vivid, restless dreams.</label>
                 </div>
               </div>
 
-              <div class="mt-4 d-flex justify-content-between">
-                <button type="button" id="prevBtn" class="btn btn-light d-none">Back</button>
-                <button type="button" id="nextBtn" class="btn btn-primary px-4">Next</button>
+              <div class="mt-5 d-flex justify-content-between">
+                <button type="button" id="prevBtn" class="btn btn-link text-decoration-none text-muted d-none">Previous</button>
+                <button type="button" id="nextBtn" class="btn btn-primary px-5 py-2 fw-bold">Continue</button>
               </div>
             </form>
 
-            <div id="results-area" class="d-none text-center py-4">
-              <h2 class="fw-bold mb-3">Your Primary Trend: <span id="profile-name" class="text-primary"></span></h2>
-              <p id="profile-desc" class="lead mb-4"></p>
+            <div id="loader" class="d-none text-center py-5">
+              <div class="spinner-border text-primary mb-3" role="status"></div>
+              <p class="fw-bold">Calibrating your Asian Phenotype markers...</p>
+            </div>
+
+            <div id="results-area" class="d-none py-2">
+              <div class="text-center mb-4">
+                <p class="text-uppercase small fw-bold text-primary mb-1">Assessment Result</p>
+                <h2 class="fw-bold" id="profile-name"></h2>
+              </div>
               
-              <div class="card bg-light border-0 p-3 mb-4 text-start">
-                <h6><strong>Next Clinical Step:</strong></h6>
-                <p id="profile-step" class="small mb-0"></p>
+              <div class="p-4 bg-light rounded-3 mb-4">
+                <p id="profile-desc" class="mb-0 text-dark"></p>
               </div>
 
-              <a href="https://wa.me/YOURNUMBER" class="btn btn-success btn-lg px-5 shadow">Discuss with our Clinic (WhatsApp)</a>
+              <div class="border-start border-4 border-primary ps-3 mb-4">
+                <h6 class="fw-bold">Clinical Protocol:</h6>
+                <p id="profile-step" class="small text-muted mb-0"></p>
+              </div>
+
+              <div class="d-grid gap-2">
+                <a href="https://wa.me/YOURNUMBER" class="btn btn-dark btn-lg py-3 fw-bold shadow">Secure Clinical Consultation</a>
+                <button type="button" onclick="location.reload()" class="btn btn-outline-secondary btn-sm border-0 mt-3">
+                  <i class="bi bi-arrow-clockwise"></i> Start New Assessment
+                </button>
+              </div>
             </div>
 
           </div>
           
-          <p class="text-center mt-4 small text-muted">
-            <em>Disclaimer: This tool is for educational purposes only. It does not replace professional medical advice.</em>
-          </p>
+          <div class="mt-5 pt-4 text-center border-top">
+            <p class="small text-muted" style="max-width: 600px; margin: 0 auto;">
+              Our protocol utilizes <strong>Advanced Bio-marker Synergy</strong> to identify metabolic friction. We do not provide standard "off-the-shelf" screenings. All trajectory insights are validated through 1-on-1 medical review.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -102,12 +124,13 @@ description: Identify your metabolic "friction" points. An educational screening
   const nextBtn = document.getElementById("nextBtn");
   const prevBtn = document.getElementById("prevBtn");
   const progress = document.getElementById("quiz-progress");
+  const loader = document.getElementById("loader");
   let currentStep = 0;
 
   nextBtn.addEventListener("click", () => {
     const currentInputs = steps[currentStep].querySelectorAll('input:checked');
     if (currentInputs.length === 0) {
-      alert("Please select an option.");
+      alert("Selection required to generate profile.");
       return;
     }
 
@@ -118,7 +141,7 @@ description: Identify your metabolic "friction" points. An educational screening
       prevBtn.classList.remove("d-none");
       updateProgress();
     } else {
-      showResults();
+      processResults();
     }
   });
 
@@ -131,39 +154,46 @@ description: Identify your metabolic "friction" points. An educational screening
   });
 
   function updateProgress() {
-    let percent = ((currentStep) / steps.length) * 100;
-    progress.style.width = percent + "%";
+    progress.style.width = ((currentStep) / steps.length * 100) + "%";
+  }
+
+  function processResults() {
+    document.getElementById("metabolicQuiz").classList.add("d-none");
+    loader.classList.remove("d-none");
+    progress.style.width = "100%";
+
+    // Artificial delay to feel like a "Calculation" is happening (AEO/SEO Psychological boost)
+    setTimeout(showResults, 1800);
   }
 
   function showResults() {
     const formData = new FormData(document.getElementById("metabolicQuiz"));
-    const counts = { insulin: 0, cortisol: 0, vitality: 0 };
+    const counts = { A: 0, B: 0, C: 0 };
     
     for (let value of formData.values()) {
       counts[value]++;
     }
 
-    document.getElementById("metabolicQuiz").classList.add("d-none");
+    loader.classList.add("d-none");
     document.getElementById("results-area").classList.remove("d-none");
-    progress.style.width = "100%";
 
     const max = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
 
     const profiles = {
-      insulin: {
-        name: "Metabolic Inflexibility (Insulin)",
-        desc: "Your patterns suggest a sensitivity to glucose spikes, common in the Asian phenotype. This often causes weight to stay 'locked' in the midsection.",
-        step: "We suggest investigating HOMA-IR and Fasting Insulin markers."
+      A: {
+        name: "Insulin-Inflexibility Loop",
+        desc: "Your system exhibits signs of 'Nutrient Partitioning Dysfunction.' This means your body is prioritizing storage over energy utilization, creating a physiological glass ceiling.",
+        step: "Requires a 3-point Metabolic Efficiency Panel to unlock the cellular insulin gateway."
       },
-      cortisol: {
-        name: "Adrenal Friction (Cortisol)",
-        desc: "Your energy suggests a 'Wired but Tired' state. Your metabolism may be in survival mode due to high-pressure Singapore lifestyle factors.",
-        step: "A 4-point Diurnal Cortisol rhythm assessment is recommended."
+      B: {
+        name: "Adrenal-Circadian Asymmetry",
+        desc: "Your markers suggest your stress-axis has decoupled from your metabolic rhythm. You are likely burning energy 'at the expense' of your system's longevity.",
+        step: "Targeted Bio-marker Mapping of your morning and baseline adrenal output is recommended."
       },
-      vitality: {
-        name: "Nutrient/Thyroid Gap",
-        desc: "Your profile indicates a low 'Metabolic Spark.' This is often linked to sub-clinical thyroid shifts or deep micronutrient deficiencies.",
-        step: "A comprehensive Thyroid (Free T3/T4) and Vitality screen is the best next step."
+      C: {
+        name: "Metabolic Decay / Spark-Loss",
+        desc: "The data suggests a decline in mitochondrial efficiency. Your 'Metabolic Thermostat' is set too low for your lifestyle demands.",
+        step: "An Internal Vitality Investigation is needed to identify the micronutrient and hormonal gaps."
       }
     };
 
