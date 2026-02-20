@@ -2,19 +2,18 @@
 layout: default
 permalink: /articles/metabolic-syndrome-checklist
 title: The Syndrome X Checklist | Assessing Your Metabolic Health
-description: A clinical, interactive guide to the five markers of Metabolic Syndrome and how they impact your long-term heart health.
+description: A clinical, interactive guide to the five markers of Metabolic Syndrome.
 last_reviewed: 2026-02-20
 author_name: "Dr. Gerald Thang"
 custom_schema: |
   {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "headline": "The Syndrome X Checklist: Interactive Assessment for Metabolic Health",
+    "headline": "The Syndrome X Checklist: Interactive Assessment",
     "lastReviewed": "2026-02-20",
     "author": {
       "@type": "Person",
-      "name": "Dr. Gerald Thang",
-      "jobTitle": "Principal Physician"
+      "name": "Dr. Gerald Thang"
     }
   }
 ---
@@ -25,35 +24,31 @@ custom_schema: |
   /* Interactive Card Styling */
   .checklist-card { 
     border-radius: 15px; 
-    border: 1px solid #e9ecef; 
-    transition: all 0.3s ease; 
+    border: 2px solid #e9ecef; 
+    transition: all 0.2s ease-in-out; 
     background: #fff; 
     cursor: pointer;
     user-select: none;
     position: relative;
-    overflow: hidden;
   }
-  .checklist-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
   
-  /* State when card is selected */
+  /* State when card is selected - MUCH stronger visual change */
   .checklist-card.selected {
-    border-color: #ff4f81;
-    background-color: #fff0f3;
+    border-color: #ff4f81 !important;
+    background-color: #fff0f3 !important;
+    transform: scale(1.02);
     box-shadow: 0 5px 15px rgba(255, 79, 129, 0.2);
   }
-  .checklist-card.selected .marker-number {
-    background: #ff4f81;
-  }
-  
-  /* Visual Checkmark for Selected Cards */
-  .checklist-card.selected::after {
-    content: "\F272"; /* Bootstrap Icon Check */
-    font-family: "bootstrap-icons";
+
+  /* CSS-only Checkmark (No Icons Required) */
+  .checklist-card.selected::before {
+    content: '✓';
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 15px;
     color: #ff4f81;
-    font-size: 1.2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
   }
 
   .marker-number { 
@@ -67,116 +62,137 @@ custom_schema: |
     justify-content: center; 
     font-weight: bold; 
     margin-bottom: 15px; 
-    transition: background 0.3s; 
+  }
+  
+  .checklist-card.selected .marker-number {
+    background: #ff4f81;
   }
 
   .criteria-box { 
     background: #f8f9fa; 
     border-radius: 10px; 
-    padding: 15px; 
+    padding: 12px; 
     border-left: 5px solid #ff4f81; 
+    margin-top: 10px;
   }
   
-  /* Summary Alert Styling */
   .summary-alert { 
     background: #fdfcf0; 
     border: 1px solid #eee; 
-    color: #2c4964; 
     border-radius: 12px; 
-    transition: all 0.5s ease; 
+    padding: 20px;
+    text-align: center;
   }
-  .summary-alert.danger-zone { 
-    background: #fff0f3; 
-    border-color: #ff4f81; 
-    animation: pulse 2s infinite; 
-  }
-  
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 79, 129, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 79, 129, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 79, 129, 0); }
+
+  .danger-zone { 
+    background: #fff0f3 !important; 
+    border: 2px solid #ff4f81 !important; 
   }
 </style>
 
-<main id="main" class="article-content">
+<main class="article-content mb-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-9">
 
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/articles/">Library</a></li>
-            <li class="breadcrumb-item active">Syndrome X Checklist</li>
-          </ol>
-        </nav>
-
         <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">The Syndrome X Checklist</h1>
-        <p class="lead mb-4">Metabolic Syndrome is often "silent." Use this interactive tool to see if you meet the clinical criteria. <strong>Tap the cards that match your latest health report.</strong></p>
+        <p class="lead mb-4 text-muted">Identify your risk factors. <strong>Click each card to select it.</strong></p>
 
-        <div id="counter-dashboard" class="summary-alert p-4 mb-5 text-center shadow-sm">
-          <h4 class="fw-bold mb-1">Markers Identified: <span id="marker-count" class="text-primary">0</span> / 5</h4>
-          <p id="counter-message" class="mb-0">Select your markers to calculate your risk profile.</p>
+        <div id="counter-dashboard" class="summary-alert mb-5 shadow-sm">
+          <h4 class="fw-bold mb-1">Markers Selected: <span id="marker-count">0</span> / 5</h4>
+          <p id="counter-message" class="mb-0 small">Select markers from your latest blood test results.</p>
         </div>
 
         <div class="row g-4">
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
+            <div class="checklist-card p-4 h-100" onclick="handleCardClick(this)">
               <div class="marker-number">1</div>
-              <h4 class="fw-bold">Abdominal Obesity</h4>
-              <p class="small text-muted">Excess visceral fat is a primary driver of systemic inflammation.</p>
-              <div class="criteria-box">
-                <strong>Threshold (Asian):</strong><br>
-                Men: > 90cm | Women: > 80cm
+              <h5 class="fw-bold">Abdominal Obesity</h5>
+              <p class="small">Excess fat around the midsection.</p>
+              <div class="criteria-box small">
+                <strong>Asian Threshold:</strong><br>Men: >90cm | Women: >80cm
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
+            <div class="checklist-card p-4 h-100" onclick="handleCardClick(this)">
               <div class="marker-number">2</div>
-              <h4 class="fw-bold">Elevated Blood Pressure</h4>
-              <p class="small text-muted">Consistent pressure against arterial walls, even at borderline levels.</p>
-              <div class="criteria-box">
-                <strong>Threshold:</strong><br>
-                130/85 mmHg or higher
+              <h5 class="fw-bold">High Blood Pressure</h5>
+              <p class="small">Arterial pressure readings.</p>
+              <div class="criteria-box small">
+                <strong>Threshold:</strong> 130/85 mmHg or higher
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
+            <div class="checklist-card p-4 h-100" onclick="handleCardClick(this)">
               <div class="marker-number">3</div>
-              <h4 class="fw-bold">High Triglycerides</h4>
-              <p class="small text-muted">The level of circulating fats in your blood from sugar and carbs.</p>
-              <div class="criteria-box">
-                <strong>Threshold:</strong><br>
-                1.7 mmol/L or higher
+              <h5 class="fw-bold">Triglycerides</h5>
+              <p class="small">Circulating blood fats.</p>
+              <div class="criteria-box small">
+                <strong>Threshold:</strong> 1.7 mmol/L or higher
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
+            <div class="checklist-card p-4 h-100" onclick="handleCardClick(this)">
               <div class="marker-number">4</div>
-              <h4 class="fw-bold">Low HDL Cholesterol</h4>
-              <p class="small text-muted">HDL is the "clean-up" cholesterol. Having too little increases risk.</p>
-              <div class="criteria-box">
-                <strong>Threshold:</strong><br>
-                Men: < 1.03 | Women: < 1.29 mmol/L
+              <h5 class="fw-bold">Low HDL (Good)</h5>
+              <p class="small">Your "clean-up" cholesterol.</p>
+              <div class="criteria-box small">
+                <strong>Threshold:</strong> Men: <1.03 | Women: <1.29
               </div>
             </div>
           </div>
 
-          <div class="col-md-6">
-            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
-              <div class="marker-number">5</div>
-              <h4 class="fw-bold">High Fasting Glucose</h4>
-              <p class="small text-muted">An early indicator of insulin resistance and pre-diabetes.</p>
-              <div class="criteria-box">
-                <strong>Threshold:</strong><br>
-                5.6 mmol/L or higher
+          <div class="col-md-6 text-center">
+            <div class="checklist-card p-4 h-100" onclick="handleCardClick(this)">
+              <div class="marker-number mx-auto">5</div>
+              <h5 class="fw-bold">Fasting Glucose</h5>
+              <p class="small">Early indicator of insulin issues.</p>
+              <div class="criteria-box small text-start">
+                <strong>Threshold:</strong> 5.6 mmol/L or higher
               </div>
             </div>
           </div>
         </div>
+
+        <div class="text-center mt-5">
+           <a href="/booking" class="btn btn-primary btn-lg rounded-pill px-5">Book a Review with Dr. Thang</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  function handleCardClick(element) {
+    // Toggle the 'selected' class
+    element.classList.toggle('selected');
+    
+    // Count selected cards
+    const totalSelected = document.querySelectorAll('.checklist-card.selected').length;
+    
+    // Update the UI
+    const countDisplay = document.getElementById('marker-count');
+    const messageDisplay = document.getElementById('counter-message');
+    const dashboard = document.getElementById('counter-dashboard');
+    
+    countDisplay.innerText = totalSelected;
+    
+    if (totalSelected >= 3) {
+      dashboard.classList.add('danger-zone');
+      messageDisplay.innerHTML = "<strong>Result:</strong> Clinical criteria for Metabolic Syndrome met. Professional screening is recommended.";
+    } else if (totalSelected > 0) {
+      dashboard.classList.remove('danger-zone');
+      messageDisplay.innerHTML = "You have selected " + totalSelected + " marker(s). Keep monitoring your metabolic health.";
+    } else {
+      dashboard.classList.remove('danger-zone');
+      messageDisplay.innerHTML = "Select markers from your latest blood test results.";
+    }
+  }
+</script>
