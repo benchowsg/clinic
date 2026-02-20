@@ -2,14 +2,14 @@
 layout: default
 permalink: /articles/metabolic-syndrome-checklist
 title: The Syndrome X Checklist | Assessing Your Metabolic Health
-description: A clinical guide to the five markers of Metabolic Syndrome and how they impact your long-term heart health.
+description: A clinical, interactive guide to the five markers of Metabolic Syndrome and how they impact your long-term heart health.
 last_reviewed: 2026-02-20
 author_name: "Dr. Gerald Thang"
 custom_schema: |
   {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "headline": "The Syndrome X Checklist: 5 Markers of Metabolic Health",
+    "headline": "The Syndrome X Checklist: Interactive Assessment for Metabolic Health",
     "lastReviewed": "2026-02-20",
     "author": {
       "@type": "Person",
@@ -21,11 +21,81 @@ custom_schema: |
 
 <style>
   .article-content { padding-top: 140px; }
-  .checklist-card { border-radius: 15px; border: 1px solid #e9ecef; transition: transform 0.2s; background: #fff; }
+  
+  /* Interactive Card Styling */
+  .checklist-card { 
+    border-radius: 15px; 
+    border: 1px solid #e9ecef; 
+    transition: all 0.3s ease; 
+    background: #fff; 
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
   .checklist-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-  .marker-number { background: #2c4964; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 15px; }
-  .criteria-box { background: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 5px solid #ff4f81; }
-  .summary-alert { background: #fff0f3; border: 1px solid #ff4f81; color: #2c4964; border-radius: 12px; }
+  
+  /* State when card is selected */
+  .checklist-card.selected {
+    border-color: #ff4f81;
+    background-color: #fff0f3;
+    box-shadow: 0 5px 15px rgba(255, 79, 129, 0.2);
+  }
+  .checklist-card.selected .marker-number {
+    background: #ff4f81;
+  }
+  
+  /* Visual Checkmark for Selected Cards */
+  .checklist-card.selected::after {
+    content: "\F272"; /* Bootstrap Icon Check */
+    font-family: "bootstrap-icons";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #ff4f81;
+    font-size: 1.2rem;
+  }
+
+  .marker-number { 
+    background: #2c4964; 
+    color: #fff; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: bold; 
+    margin-bottom: 15px; 
+    transition: background 0.3s; 
+  }
+
+  .criteria-box { 
+    background: #f8f9fa; 
+    border-radius: 10px; 
+    padding: 15px; 
+    border-left: 5px solid #ff4f81; 
+  }
+  
+  /* Summary Alert Styling */
+  .summary-alert { 
+    background: #fdfcf0; 
+    border: 1px solid #eee; 
+    color: #2c4964; 
+    border-radius: 12px; 
+    transition: all 0.5s ease; 
+  }
+  .summary-alert.danger-zone { 
+    background: #fff0f3; 
+    border-color: #ff4f81; 
+    animation: pulse 2s infinite; 
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 79, 129, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 79, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 79, 129, 0); }
+  }
 </style>
 
 <main id="main" class="article-content">
@@ -33,27 +103,40 @@ custom_schema: |
     <div class="row justify-content-center">
       <div class="col-lg-9">
 
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/articles/">Library</a></li>
+            <li class="breadcrumb-item active">Syndrome X Checklist</li>
+          </ol>
+        </nav>
+
         <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">The Syndrome X Checklist</h1>
-        <p class="lead mb-5">Metabolic Syndrome (Syndrome X) is not a single disease, but a cluster of five specific markers. Having <strong>three or more</strong> of these increases your risk of heart disease and stroke significantly.</p>
+        <p class="lead mb-4">Metabolic Syndrome is often "silent." Use this interactive tool to see if you meet the clinical criteria. <strong>Tap the cards that match your latest health report.</strong></p>
+
+        <div id="counter-dashboard" class="summary-alert p-4 mb-5 text-center shadow-sm">
+          <h4 class="fw-bold mb-1">Markers Identified: <span id="marker-count" class="text-primary">0</span> / 5</h4>
+          <p id="counter-message" class="mb-0">Select your markers to calculate your risk profile.</p>
+        </div>
 
         <div class="row g-4">
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100">
+            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
               <div class="marker-number">1</div>
               <h4 class="fw-bold">Abdominal Obesity</h4>
-              <p class="small text-muted">Excess visceral fat around the midsection is a primary driver of systemic inflammation.</p>
+              <p class="small text-muted">Excess visceral fat is a primary driver of systemic inflammation.</p>
               <div class="criteria-box">
-                <strong>Threshold (Asian Context):</strong><br>
+                <strong>Threshold (Asian):</strong><br>
                 Men: > 90cm | Women: > 80cm
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100">
+            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
               <div class="marker-number">2</div>
               <h4 class="fw-bold">Elevated Blood Pressure</h4>
-              <p class="small text-muted">Consistent pressure against arterial walls, even at "borderline" levels.</p>
+              <p class="small text-muted">Consistent pressure against arterial walls, even at borderline levels.</p>
               <div class="criteria-box">
                 <strong>Threshold:</strong><br>
                 130/85 mmHg or higher
@@ -62,10 +145,10 @@ custom_schema: |
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100">
+            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
               <div class="marker-number">3</div>
               <h4 class="fw-bold">High Triglycerides</h4>
-              <p class="small text-muted">The amount of fat circulating in your blood, often linked to sugar intake.</p>
+              <p class="small text-muted">The level of circulating fats in your blood from sugar and carbs.</p>
               <div class="criteria-box">
                 <strong>Threshold:</strong><br>
                 1.7 mmol/L or higher
@@ -74,19 +157,19 @@ custom_schema: |
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100">
+            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
               <div class="marker-number">4</div>
               <h4 class="fw-bold">Low HDL Cholesterol</h4>
-              <p class="small text-muted">HDL is the "clean-up crew" for your arteries. Too little is a risk factor.</p>
+              <p class="small text-muted">HDL is the "clean-up" cholesterol. Having too little increases risk.</p>
               <div class="criteria-box">
                 <strong>Threshold:</strong><br>
-                Men: < 1.03 mmol/L | Women: < 1.29 mmol/L
+                Men: < 1.03 | Women: < 1.29 mmol/L
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <div class="checklist-card p-4 h-100">
+            <div class="checklist-card p-4 h-100" onclick="toggleMarker(this)">
               <div class="marker-number">5</div>
               <h4 class="fw-bold">High Fasting Glucose</h4>
               <p class="small text-muted">An early indicator of insulin resistance and pre-diabetes.</p>
@@ -97,21 +180,3 @@ custom_schema: |
             </div>
           </div>
         </div>
-
-        
-
-        <div class="summary-alert p-4 mt-5">
-          <h4 class="fw-bold"><i class="bi bi-exclamation-triangle-fill me-2"></i>The "Rule of Three"</h4>
-          <p class="mb-0">If you meet <strong>3 or more</strong> of these criteria, you are clinically diagnosed with Metabolic Syndrome. This is a critical signal that your cardiovascular system is under metabolic stress.</p>
-        </div>
-
-        <div class="mt-5 p-5 border rounded bg-light text-center">
-          <h3 class="fw-bold" style="color: #2c4964;">Don't Guess Your Metabolic Health</h3>
-          <p class="mb-4">Our specialized screenings identify these markers with clinical precision, helping you reverse the trajectory before it impacts your heart.</p>
-          <a href="/booking" class="btn btn-primary btn-lg rounded-pill px-5">Book Your Diagnostic Check</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</main>
