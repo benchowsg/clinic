@@ -206,8 +206,8 @@ function showResults() {
         step: "Further action is needed to bypass this barrier."
       },
       B: {
-        name: "The 'Mismatched Battery' Pattern",
-        desc: "Your energy is 'out of sync.' You feel flat all day, only to get a surge of alertness at night when you should be resting. You are essentially 'burning the candle' when you need to rest.",
+        name: "The 'Reverse Polarity' Pattern",
+        desc: "Your internal clock is upside-down. You feel physically tired during the day, only to get a surge of alertness at night when you should be resting. You are essentially 'burning the candle' when you need to rest.",
         step: "We need a metabolic baseline check to find out where your internal clock has drifted away."
       },
       C: {
@@ -226,7 +226,7 @@ function showResults() {
     const profileName = profiles[finalResult].name;
     
     // Custom message for Dr. Thang's team
-    const message = `Hi A Healing Heart Medical, my name is [Name]. I just completed your Metabolic Assessment and my result is: *${profileName}*. I'd like to book a consultation with Dr. Thang to discuss my metabolic health.`;
+    const message = `Hi A Healing Heart Medical, I just completed your Metabolic Assessment and my result is: *${profileName}*. I'd like to book a consultation with Dr. Thang to discuss my metabolic health.`;
     
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     
