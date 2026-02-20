@@ -102,7 +102,7 @@ description: Identify the hidden physiological friction points in the Singapore 
               </div>
 
               <div class="d-grid gap-2">
-                <a href="https://wa.me/YOURNUMBER" class="btn btn-dark btn-lg py-3 fw-bold shadow">Book Consultation</a>
+                <a id="whatsapp-btn" href="https://wa.me/6569621362" class="btn btn-dark btn-lg py-3 fw-bold shadow">Book Consultation via WhatsApp</a>
                 <button type="button" onclick="location.reload()" class="btn btn-outline-secondary btn-sm border-0 mt-3">
                   <i class="bi bi-arrow-clockwise"></i> Start New Assessment
                 </button>
@@ -169,22 +169,39 @@ description: Identify the hidden physiological friction points in the Singapore 
     setTimeout(showResults, 1800);
   }
 
-  function showResults() {
-    const formData = new FormData(document.getElementById("metabolicQuiz"));
+function showResults() {
+    const quizForm = document.getElementById("metabolicQuiz");
+    const formData = new FormData(quizForm);
+    
+    // Convert answers to an array so we can access them by index
+    const answers = [];
     const counts = { A: 0, B: 0, C: 0 };
     
     for (let value of formData.values()) {
+      answers.push(value);
       counts[value]++;
     }
 
     loader.classList.add("d-none");
     document.getElementById("results-area").classList.remove("d-none");
 
-    const max = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+    // LOGIC: Find the winner
+    let finalResult;
+
+    // Case 1: If there is a clear majority (2 or more of the same letter)
+    if (counts.A >= 2) finalResult = 'A';
+    else if (counts.B >= 2) finalResult = 'B';
+    else if (counts.C >= 2) finalResult = 'C';
+    else {
+      // Case 2: It's a 1-1-1 tie. 
+      // We use the answer to Question 3 (Storage) as the tie-breaker
+      // because it's the most significant physical metabolic sign.
+      finalResult = answers[2]; 
+    }
 
     const profiles = {
       A: {
-        name: "The 'Insulin Shield' Pattern",
+        name: "The 'Insulin Barrier' Pattern",
         desc: "Your energy and storage patterns suggest a high degree of metabolic resistance. It feels like an 'invisible shield' is preventing your cells from accessing stored fuel, leading to stubborn mid-section storage.",
         step: "Further action is needed to bypass this barrier."
       },
@@ -194,14 +211,26 @@ description: Identify the hidden physiological friction points in the Singapore 
         step: "We need a metabolic baseline check to find out where your internal clock has drifted away."
       },
       C: {
-        name: "The 'Weak Furnace' Pattern",
-        desc: "You may have a cellular slowdown. Your body isn't converting fuel into 'spark,' leading to persistent heaviness and brain fog.",
+        name: "The 'Inefficient Engine' Pattern",
+        desc: "You may have a cellular slowdown. Your body isn't converting fuel into 'spark,' leading to persistent heaviness, water retention, and brain fog.",
         step: "We must deep-dive into uncovering what you are lacking to restart your energy again."
       }
     };
 
-    document.getElementById("profile-name").innerText = profiles[max].name;
-    document.getElementById("profile-desc").innerText = profiles[max].desc;
-    document.getElementById("profile-step").innerText = profiles[max].step;
+    document.getElementById("profile-name").innerText = profiles[finalResult].name;
+    document.getElementById("profile-desc").innerText = profiles[finalResult].desc;
+    document.getElementById("profile-step").innerText = profiles[finalResult].step;
+
+  // --- NEW: Dynamic WhatsApp Link ---
+    const phoneNumber = "6569621362"; // Replace with your actual Singapore WhatsApp number
+    const profileName = profiles[finalResult].name;
+    
+    // Custom message for Dr. Thang's team
+    const message = `Hi A Healing Heart Medical, my name is [Name]. I just completed your Metabolic Assessment and my result is: *${profileName}*. I'd like to book a consultation with Dr. Thang to discuss my metabolic health.`;
+    
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    
+    const waBtn = document.getElementById("whatsapp-btn");
+    waBtn.href = whatsappUrl;
   }
 </script>
