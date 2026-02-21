@@ -9,14 +9,37 @@ custom_schema: |
   {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "headline": "Medication Safety: Protecting Your Daily Vitality",
+    "headline": "Medication Safety: It is About Your Life, Not Just Your Pills",
     "description": "Dr. Gerald Thang explains medication safety through a lifestyle lens, focusing on supplement interactions and long-term wellness.",
     "lastReviewed": "2026-01-28",
     "author": {
       "@type": "Person",
       "name": "Dr. Gerald Thang",
+      "jobTitle": "Principal Physician",
       "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
-    }
+    },
+    "isPartOf": {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.ahealingheartmedical.com"
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can natural supplements interact with heart medication?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Even natural supplements like Omega-3, Magnesium, or herbal tonics can change how heart medication is absorbed or metabolized, potentially making it too strong or ineffective."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do my medication doses need to be reviewed regularly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As your body changes through weight loss, exercise, or aging, your metabolic needs shift. Regular reviews ensure you are always on the lowest effective dose to protect your liver and kidneys."
+        }
+      }
+    ]
   }
 ---
 
@@ -88,6 +111,21 @@ custom_schema: |
           <h3 class="section-heading h4">The Role of Your Clinical Partner</h3>
           <p>As your Principal Physician, my goal is to be the guardian of this process. By keeping all your health data in one place, we prevent the "fragmented care" that often leads to mistakes. Medication safety is ultimately about ensuring that your treatment remains a silent, supportive partner in your life, allowing you to focus on what matters most.</p>
 
+          <div class="faq-section mt-5 pt-4 border-top">
+  <h4 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h4>
+  
+  <div class="mb-4">
+    <p class="fw-bold mb-2">Can natural supplements interact with my heart medication?</p>
+    <p class="text-muted">Absolutely. Natural doesn't always mean "neutral." Common supplements like Omega-3s, Vitamin D, or herbal traditional medicines can alter the concentration of cardiac drugs in your bloodstream. Achieving metabolic synergy requires a professional review of everything you ingest. Routine checks can uncover what is excessive or lacking.</p>
+  </div>
+
+  <div class="mb-4">
+    <p class="fw-bold mb-2">Why do my medication doses change over time?</p>
+    <p class="text-muted">Your body is dynamic. Changes in weight, kidney function, or activity levels change how your body processes medicine. We review dosages regularly to ensure you aren't taking more than necessary, which helps protect your organ health in the long run.</p>
+  </div>
+</div>
+
+          
           <div class="mt-5 p-4 border rounded shadow-sm bg-light text-center">
             <h3 class="h5 fw-bold">Is Your Routine in Harmony?</h3>
             <p>Bring your current supplements and medications for a lifestyle-focused safety audit.</p>
