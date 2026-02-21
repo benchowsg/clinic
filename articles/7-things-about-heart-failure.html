@@ -78,14 +78,14 @@ custom_schema: |
 <style>
   .article-content { padding-top: 140px; }
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
-  .nyha-box { background: #f0f7ff; border-radius: 15px; padding: 25px; margin: 30px 0; border-left: 5px solid #3498db; }
+  .stage-box { background: #f8f9fa; border-radius: 15px; padding: 25px; margin: 30px 0; border: 1px solid #e1e8ed; }
+  .nyha-box { background: #f0f7ff; border-radius: 15px; padding: 25px; margin: 20px 0; border-left: 5px solid #3498db; }
   .author-box { background: #f8f9fa; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 40px; }
   .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; display: block; }
   .check-list { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
   .check-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: #444; }
   .check-list li::before { content: "✓"; color: #3498db; font-weight: bold; position: absolute; left: 0; }
   .medication-card { background: #fff; border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; margin-bottom: 15px; transition: transform 0.2s; }
-  .medication-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 </style>
 
 <main id="main" class="article-content">
@@ -107,91 +107,82 @@ custom_schema: |
           <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
           <div>
             <p class="mb-0 fw-bold">By Dr. Gerald Thang</p>
-            <p class="mb-0 text-primary fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
+            <p class="mb-0 text-primary fw-bold small text-uppercase">Principal Physician</p>
             <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
           </div>
         </div>
 
         <div class="article-body">
-          <p>Heart failure can happen to anyone, at any time. In the real world, heart failure isn't about the heart "stopping"—it's about the heart losing its ability to pump with the efficiency required to sustain your lifestyle. Understanding the nuances of this condition is the first step toward reclaiming your vitality.</p>
+          <p>Heart failure can happen to anyone. In the real world, heart failure isn't about the heart "stopping"—it's about the heart losing its ability to pump with the efficiency required to sustain your lifestyle.</p>
 
           <h2 class="section-heading h4">1. Recognizing the Symptoms of Pump Failure</h2>
-          <p>The heart acts as the body's engine. When that engine weakens, fluid begins to accumulate in the body (edema). This manifests in ways that are often mistaken for general fatigue:</p>
+          <p>When the heart engine weakens, fluid begins to accumulate in the body (edema):</p>
           <ul class="check-list">
-            <li><strong>Shortness of Breath:</strong> Especially when performing routine tasks or lying flat at night.</li>
-            <li><strong>Peripheral Edema:</strong> Noticeable swelling in the legs, ankles, or abdomen.</li>
-            <li><strong>Reduced Stamina:</strong> A feeling that your "internal battery" is draining faster than usual.</li>
+            <li><strong>Shortness of Breath:</strong> Especially when lying flat at night.</li>
+            <li><strong>Peripheral Edema:</strong> Noticeable swelling in the legs or ankles.</li>
+            <li><strong>Reduced Stamina:</strong> A feeling that your "internal battery" is draining faster.</li>
           </ul>
 
-          <h2 class="section-heading h4">2. It’s Not Always Due to a Heart Attack</h2>
-          <p>While a heart attack is a common cause, many patients develop heart failure through "silent" stressors. Long-term injury from uncontrolled hypertension, obstructive sleep apnea, or irregular heart rates (arrhythmias) can gradually degrade the heart's pumping power.</p>
-
-          <h2 class="section-heading h4">3. The Four Stages of Heart Failure (NYHA)</h2>
-          <p>We use the New York Heart Association (NYHA) classification to determine the level of clinical intervention needed:</p>
+          <h2 class="section-heading h4">2. The Singapore Context: NYHA vs. ACC/AHA Stages</h2>
+          <p>In Singapore, cardiologists use two different scales to track your health. While NYHA tracks your <strong>symptoms</strong>, the ACC/AHA Stages track the <strong>structural damage</strong> to your heart.</p>
           
+          
+
+          <div class="stage-box">
+            <h5 class="fw-bold mb-3">Structural Stages (A-D)</h5>
+            <p class="small mb-2"><strong>Stage A:</strong> At risk (High blood pressure/Diabetes) but no damage yet.</p>
+            <p class="small mb-2"><strong>Stage B:</strong> Structural damage exists, but no symptoms felt yet.</p>
+            <p class="small mb-2"><strong>Stage C:</strong> Current or previous symptoms of heart failure.</p>
+            <p class="small mb-0"><strong>Stage D:</strong> Advanced heart failure requiring specialized intervention.</p>
+          </div>
+
+          <h2 class="section-heading h4">3. The Functional Classes (NYHA)</h2>
+          <p>This scale determines how much your condition limits your daily Singaporean lifestyle:</p>
           <div class="nyha-box">
-            <p class="mb-2"><strong>Class I:</strong> No limitation of physical activity. Ordinary activity does not cause undue fatigue.</p>
-            <p class="mb-2"><strong>Class II:</strong> Slight limitation. Comfortable at rest, but ordinary physical activity results in fatigue.</p>
-            <p class="mb-2"><strong>Class III:</strong> Marked limitation. Comfortable at rest, but less than ordinary activity causes symptoms.</p>
-            <p class="mb-0"><strong>Class IV:</strong> Unable to carry out any physical activity without discomfort. Symptoms present even at rest.</p>
+            <p class="mb-2"><strong>Class I:</strong> No limitation. Ordinary activity causes no fatigue.</p>
+            <p class="mb-2"><strong>Class II:</strong> Slight limitation. Comfortable at rest, but ordinary activity results in fatigue.</p>
+            <p class="mb-2"><strong>Class III:</strong> Marked limitation. Comfortable only at rest.</p>
+            <p class="mb-0"><strong>Class IV:</strong> Symptoms present even at rest.</p>
           </div>
-          
 
-          <h2 class="section-heading h4">4. Acute vs. Chronic Heart Failure</h2>
-          <p>Heart failure is classified by its onset. <strong>Acute Heart Failure</strong> is a sudden complication—often from a heart attack or severe infection. <strong>Chronic Heart Failure</strong> is the long-term result of existing conditions like kidney failure or chronic lung disease. Both require a specialized "Intermediate Care" strategy to manage effectively.</p>
+          <h2 class="section-heading h4">4. It’s Not Always Due to a Heart Attack</h2>
+          <p>Many patients develop heart failure through "silent" stressors like uncontrolled hypertension, obstructive sleep apnea, or irregular heart rates.</p>
 
-          <h2 class="section-heading h4">5. The Triggers of Worsening (Exacerbation)</h2>
-          <p>Stability in heart failure is fragile. Common triggers that can cause a "crash" include:</p>
-          <ul class="check-list">
-            <li><strong>Fluid Indiscretion:</strong> Consuming more fluid than the heart can process.</li>
-            <li><strong>Medication Non-compliance:</strong> Missing doses or incorrect timing.</li>
-            <li><strong>New Infections:</strong> Such as pneumonia, which places extreme stress on the cardiovascular system.</li>
-          </ul>
+          <h2 class="section-heading h4">5. Acute vs. Chronic Heart Failure</h2>
+          <p><strong>Acute</strong> is a sudden complication (often an emergency). <strong>Chronic</strong> is the long-term result of conditions like kidney failure or chronic lung disease.</p>
 
-          <h2 class="section-heading h4">6. Modern Reversal & Prevention Strategies</h2>
-          <p>Treatment is no longer just about managing water with diuretics. We utilize <strong>Metabolic Synergy</strong> to strengthen the heart:</p>
-          
+          <h2 class="section-heading h4">6. Modern Reversal Strategies</h2>
+          <p>Treatment in 2026 focuses on <strong>Metabolic Synergy</strong> to strengthen the muscle:</p>
           <div class="medication-card">
-            <p class="mb-0"><strong>ARNIs (e.g., Entresto):</strong> A modern class of drugs that increases survival and reduces hospitalizations.</p>
+            <strong>ARNIs (e.g., Entresto):</strong> A breakthrough class that increases survival.
           </div>
           <div class="medication-card">
-            <p class="mb-0"><strong>Beta-Blockers:</strong> Controls heart rate to allow the heart to pump more efficiently.</p>
+            <strong>SGLT2 Inhibitors:</strong> Cornerstones of modern therapy providing vascular protection.
           </div>
-          <div class="medication-card">
-            <p class="mb-0"><strong>SGLT2 Inhibitors:</strong> A cornerstone of 2026 heart failure therapy that provides significant vascular protection.</p>
-          </div>
-          
 
           <h2 class="section-heading h4">7. Detection Even Without Symptoms</h2>
-          <p>You do not have to wait for symptoms to emerge. Asymptomatic heart failure can be detected through specialized imaging:</p>
-          <ul class="check-list">
-            <li><strong>Echocardiogram:</strong> Real-time ultrasound of heart muscle contractions.</li>
-            <li><strong>Treadmill Stress Test:</strong> Assessing the functional capacity of your body under load.</li>
-            <li><strong>MRI Heart:</strong> Providing insight into the structure of the muscle to catch structural disease early.</li>
-          </ul>
+          <p>Asymptomatic heart failure (Stage B) can be detected via <strong>Echocardiogram</strong> or <strong>MRI Heart</strong>. Early detection in Stage B is the best way to prevent progressing to Stage C.</p>
 
           <div class="faq-section mt-5 pt-4 border-top">
             <h3 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h3>
-            
             <div class="mb-4">
-              <p class="fw-bold mb-2" style="color: #444;">Is heart failure a death sentence?</p>
-              <p class="text-muted">Absolutely not. In 2026, heart failure is a manageable chronic condition. With early detection and modern pharmacological agents, we can significantly improve heart function and quality of life.</p>
+              <p class="fw-bold mb-2">Is heart failure a death sentence?</p>
+              <p class="text-muted">Absolutely not. In 2026, it is a manageable chronic condition. Modern agents can significantly improve heart function and quality of life.</p>
             </div>
-
             <div class="mb-4">
-              <p class="fw-bold mb-2" style="color: #444;">Can I exercise if I have heart failure?</p>
-              <p class="text-muted">Yes, and it is highly recommended. However, it must be done through "Cardiac Reconditioning"—a supervised approach to exercise that gradually builds heart strength.</p>
+              <p class="fw-bold mb-2">Can I exercise?</p>
+              <p class="text-muted">Yes, through supervised Cardiac Reconditioning to safely build heart strength.</p>
             </div>
           </div>
 
           <div class="mt-5 p-4 border rounded shadow-sm bg-light text-center">
             <h3 class="h5 fw-bold" style="color: #2c4964;">Is Your Heart Operating at Peak Capacity?</h3>
-            <p>Don't wait for symptoms to emerge. Establish your baseline with our specialized cardiology diagnostics.</p>
+            <p>Establish your baseline with our specialized cardiology diagnostics.</p>
             <a href="/booking" class="btn btn-primary rounded-pill px-4 py-2">Request a Cardiac Review</a>
           </div>
 
           <div class="mt-5 p-3 bg-white border-left border-secondary" style="font-size: 0.85rem; color: #666; border-left: 3px solid #ccc;">
-            <strong>Intellectual Property Notice:</strong> This clinical framework for Heart Failure Management is the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
+            <strong>Intellectual Property Notice:</strong> This clinical framework is the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
           </div>
         </div>
       </div>
