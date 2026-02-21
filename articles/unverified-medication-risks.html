@@ -17,15 +17,28 @@ custom_schema: |
       "name": "Dr. Gerald Thang",
       "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
     },
-    "publisher": {
-      "@type": "MedicalOrganization",
-      "name": "A Healing Heart Medical Clinic",
-      "logo": "https://www.ahealingheartmedical.com/assets/img/logo.png"
+    "isPartOf": {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.ahealingheartmedical.com"
     },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://www.ahealingheartmedical.com/articles/unverified-medication-risks"
-    }
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is it safe to buy heart medication online or abroad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Medications from unverified sources carry risks of inconsistent bioavailability, incorrect dosages, and harmful fillers. Without HSA oversight in Singapore, there is no guarantee of potency or safety."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I reduce the cost of my cardiac medication safely?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Work with us to identify HSA-approved generic alternatives or optimize your prescription plan. This ensures cost savings without compromising clinical integrity."
+        }
+      }
+    ]
   }
 ---
 
@@ -91,13 +104,27 @@ custom_schema: |
           <h3 class="section-heading h4">Loss of Clinical Correlation</h3>
           <p>Medication is only one part of the treatment. The other part is the physician's ability to monitor your body's response to it. When a patient takes unprescribed medication from a foreign source, the clinical data becomes skewed. If your blood markers do not improve, I cannot be certain if it is because the disease is progressing or if the medication itself is ineffective. This prevents us from making accurate, life saving adjustments to your care plan.</p>
 
-          
+          <div class="faq-section mt-5 pt-4 border-top">
+  <h4 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h4>
+  
+  <div class="mb-4">
+    <p class="fw-bold mb-2">Is it safe to buy heart medication online or from foreign sources?</p>
+    <p class="text-muted">Purchasing medication outside of the regulated Singapore supply chain introduces risks like inconsistent bioavailability and incorrect dosages. Without batch testing by the Health Sciences Authority (HSA), the clinical safety of the drug cannot be guaranteed.</p>
+  </div>
+
+  <div class="mb-4">
+    <p class="fw-bold mb-2">How can I manage high medication costs safely?</p>
+    <p class="text-muted">Instead of seeking unverified sources, discuss cost concerns with our doctor. We can often transition to HSA-approved generic formulations or refine your treatment plan to ensure it is both affordable and clinically safe.</p>
+  </div>
+</div>
 
           <h3 class="section-heading h4">A Sustainable Path to Affordable Care</h3>
           <p>If the cost of medication is a barrier, the solution is not to bypass the medical system, but to work within it. At A Healing Heart, we prioritize transparent discussions about treatment costs. There are often clinically sound ways to optimize expenses, such as choosing HSA approved generics or consolidating prescriptions, without compromising on the safety or the source of your medicine.</p>
 
           <p>Your heart health is your most valuable asset. The savings gained from unverified medication are small compared to the potential cost of a clinical setback caused by an ineffective or unsafe supply.</p>
 
+
+          
           <div class="mt-5 p-4 border rounded shadow-sm bg-light text-center">
             <h3 class="h5 fw-bold">Discuss Your Medication Strategy</h3>
             <p>If you have concerns about the cost of your treatment, let us have a transparent discussion to find a safe and sustainable solution.</p>
