@@ -1,7 +1,7 @@
 title: A Healing Heart Medical Clinic
 email: contact@ahealingheartmedical.com
 description: >-
-  Advanced physicians providing cardiology and intermediate care in Singapore.
+  A Healing Heart Medical Clinic in Singapore provides cardiology, metabolic health and intermediate care. Our advanced physicians offer personalised heart health and medical services.
 baseurl: "" # Leave this empty
 url: "https://www.ahealingheartmedical.com"
 
@@ -18,3 +18,14 @@ exclude:
 # Add this section to enable redirects
 plugins:
   - jekyll-redirect-from
+
+# Local Business Data for SEO
+clinic_address: "134 Geylang East Avenue 1, #01-227, Singapore 380134"
+clinic_phone: "+65 6962 1362"
+
+# Schema-formatted hours for search engines
+opening_hours:
+  - "Mo-Fr 09:30-12:30"
+  - "Mo-Fr 14:30-18:00"
+  - "Sa 09:30-13:00"
+  - "Su Closed"
