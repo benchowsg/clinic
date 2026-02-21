@@ -11,7 +11,7 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
   "@type": "MedicalWebPage",
   "name": "Cardiology Care & Heart Management",
   "description": "Intermediate heart care in Singapore led by Dr. Gerald Thang, focusing on heart failure, hypertension, and post-hospitalization recovery.",
-  "lastReviewed": "2026-02-05",
+  "lastReviewed": "2026-02-21",
   "mainEntity": {
     "@type": "Physician",
     "name": "Dr. Gerald Thang",
@@ -36,10 +36,18 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
       },
       {
         "@type": "Question",
-        "name": "Why do I need a cardiac baseline assessment?",
+        "name": "What are the first signs of a weak heart?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A cardiac baseline establishes your heart function and lipid profile, including markers like ApoB, allowing for a proactive treatment plan rather than reactive care."
+          "text": "Early signs include shortness of breath when climbing stairs, walking quickly, or lying flat. Unusual fatigue, ankle swelling, and waking up breathless at night are also key indicators."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a weak heart get stronger again?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. With modern medications (ARNIs, SGLT2 inhibitors) and treating root causes like hypertension or sleep apnea, many hearts can significantly recover their pumping function."
         }
       }
     ]
@@ -53,7 +61,6 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
     letter-spacing: normal !important;
   }
   
-  /* LIGHT HERO THEME */
   .hero-light {
     background-color: #f8f9fa !important; 
     min-height: 40vh;
@@ -63,7 +70,6 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
     border-bottom: 1px solid #e9ecef;
   }
 
-  /* BUTTON STYLES WITH YELLOW HOVER */
   .btn-sync-primary {
     background-color: #3498DB;
     color: white;
@@ -91,7 +97,6 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
     color: #2c4964 !important;
   }
 
-  /* SYNC CARD */
   .sync-card {
     border-radius: 20px;
     background: #ffffff !important;
@@ -99,10 +104,7 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
     box-shadow: 0 10px 40px rgba(52, 152, 219, 0.08);
     padding: 2.5rem;
     border: 1px solid #eef2f6;
-    transition: border-color 0.3s ease;
   }
-
-  .sync-card:hover { border-color: #ffc107; }
 
   .advantage-icon {
     color: #3498DB;
@@ -190,35 +192,9 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
     </div>
   </section>
 
-  <section class="py-5" style="background-color: #f8f9fa;">
-    <div class="container text-center">
-      <h3 class="fw-bold mb-4" style="color: #3498DB;">Intermediate Heart Care Benefits</h3>
-      <div class="row g-4 text-start mt-2">
-        <div class="col-md-4">
-          <div class="p-4 bg-white rounded-4 h-100 shadow-sm border-top border-5" style="border-top-color: #3498DB !important;">
-            <h6 class="fw-bold">Continuous Monitoring</h6>
-            <p class="small text-muted mb-0">Catch physiological shifts early using rapid diagnostics before they become clinical complications.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 bg-white rounded-4 h-100 shadow-sm border-top border-5" style="border-top-color: #3498DB !important;">
-            <h6 class="fw-bold">Led by Dr. Gerald Thang</h6>
-            <p class="small text-muted mb-0">Under the direction of Dr. Gerald Thang, we provide cardiology-focused clinical depth in a personal environment.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="p-4 bg-white rounded-4 h-100 shadow-sm border-top border-5" style="border-top-color: #3498DB !important;">
-            <h6 class="fw-bold">Preventive Cardiology</h6>
-            <p class="small text-muted mb-0">Focusing on early detection and risk reduction through evidence-based screening protocols.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="py-5 bg-light">
     <div class="container">
-      <h3 class="fw-bold mb-4 text-center" style="color: #3498DB;">Cardiology Care FAQ</h3>
+      <h3 class="fw-bold mb-4 text-center" style="color: #3498DB;">Cardiology FAQ</h3>
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <div class="accordion" id="cardioFAQ">
@@ -249,29 +225,51 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
             <div class="accordion-item mb-3 border-0 shadow-sm">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                  Do I need a referral to see a heart-focused consultation?
+                  Do I need a referral?
                 </button>
               </h2>
               <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
                 <div class="accordion-body">
-                  No, you can book directly with A Healing Heart Medical Clinic for heart-related concerns, second opinions, or post-discharge reviews. As your Principal Physician, we will work alongside other specialists to provide day-to-day stability.
+                  No, you can book directly for heart-related concerns or post-discharge reviews. We work alongside other specialists to provide daily stability.
                 </div>
               </div>
             </div>
             <div class="accordion-item mb-3 border-0 shadow-sm">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                  How long does a cardiac review take?
+                  What are the first signs of a weak heart?
                 </button>
               </h2>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
                 <div class="accordion-body">
-                  Depending on the complexity your medical condition, please set aside minimally 30-60 minutes. If rapid diagnostics are required, our on-site laboratory can often provide results within the same visit to avoid multiple trips.
-                </div>
+                  Early signs are often subtle: shortness of breath when climbing stairs, unusual fatigue, and swelling in the ankles or feet. Needing more pillows to sleep or waking up breathless at night are particularly concerning red flags.
                 </div>
               </div>
             </div>
-            
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  How much does a full heart check cost?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
+                <div class="accordion-body">
+                  In Singapore, costs vary. Basic screenings are accessible, while comprehensive packages including Echocardiograms and Treadmill Stress Tests can range from a few hundred to over a thousand dollars depending on the clinical depth required.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                  What are the red flags that your heart is weak?
+                </button>
+              </h2>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
+                <div class="accordion-body">
+                  Major red flags include shortness of breath with mild activity, sudden weight gain from fluid, chest pain during exertion, and fainting. Severe chest pain or sudden breathlessness are emergencies—call 995 immediately.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -285,7 +283,7 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
         Join the patients who have chosen a more proactive path to heart health in Singapore. Book your assessment today.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-3 fw-bold shadow">Book Heart Consultation Online</a>
+        <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-3 fw-bold shadow">Book Heart Consultation</a>
         <a href="tel:+6569621362" class="btn btn-sync-outline rounded-pill px-5 py-3 fw-bold">Call Clinic: 6962 1362</a>
       </div>
     </div>
