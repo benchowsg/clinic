@@ -104,6 +104,27 @@ description: Cardiology and Chronic Disease Management in Singapore. Specialisin
     justify-content: center;
     margin: 0 auto;         /* Fallback for horizontal centering */
 }
+
+  /* Enhancing card professionalism */
+  .article-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(44, 73, 100, 0.08) !important;
+  }
+  .read-more-link {
+    color: #43a7d5;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+  }
+  .article-card:hover .read-more-link {
+    color: #2c4964;
+    padding-left: 5px;
+  }
 </style>
 
 <section id="hero" class="hero d-flex align-items-center">
@@ -338,50 +359,89 @@ description: Cardiology and Chronic Disease Management in Singapore. Specialisin
   <div class="container" data-aos="fade-up">
     <div class="section-title text-center mb-5">
       <h2 class="fw-bold" style="color: #2c4964;">Health Library & Clinical Insights</h2>
-      <p class="text-muted">Articles on cardiology, metabolic health, and recovery care.</p>
+      <p class="text-muted">Expert guidance on cardiology, metabolic health, and recovery care.</p>
     </div>
 
     <div class="row">
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body p-4">
-            <span class="badge bg-primary mb-2">Cardiology</span>
-            <h5 class="card-title fw-bold"><a href="/articles/7-things-about-heart-failure" class="text-dark text-decoration-none">7 Things You Should Know About Heart Failure</a></h5>
-            <p class="card-text small text-muted">Learn why early detection through intermediate care is vital for managing heart function...</p>
-            <hr>
-            <div class="d-flex align-items-center">
-              <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;" alt="Dr Gerald Thang">
-              <small class="fw-bold">Dr. Gerald Thang</small>
+        <div class="card h-100 shadow-sm border-0 article-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div>
+              <span class="badge mb-3" style="background: #f0f7fa; color: #43a7d5; font-weight: 700;">Cardiology</span>
+              <h5 class="card-title fw-bold mb-3">
+                <a href="/articles/7-things-about-heart-failure" class="text-dark text-decoration-none stretched-link">7 Things You Should Know About Heart Failure</a>
+              </h5>
+              <p class="card-text small text-muted mb-4">Learn why early detection through intermediate care is vital for managing heart function and long-term vitality.</p>
+            </div>
+            
+            <div class="mt-auto">
+              <div class="read-more-link fw-bold mb-3">
+                Read Article <i class="fa-solid fa-chevron-right ms-1 small"></i>
+              </div>
+              <hr class="opacity-10">
+              <div class="d-flex align-items-center mt-3">
+                <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 32px; height: 32px; object-fit: cover;" alt="Dr Gerald Thang">
+                <div class="lh-1">
+                  <p class="mb-0 fw-bold small" style="color: #2c4964;">Dr. Gerald Thang</p>
+                  <small class="text-muted" style="font-size: 10px;">Principal Physician</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body p-4">
-            <span class="badge bg-success mb-2">Regenerative</span>
-            <h5 class="card-title fw-bold"><a href="/articles/human-growth-hormone" class="text-dark text-decoration-none">HGH (Somatotropin) & Regenerative Recovery</a></h5>
-            <p class="card-text small text-muted">How Human Growth Hormone impacts metabolic health and post-trauma recovery protocols...</p>
-            <hr>
-            <div class="d-flex align-items-center">
-              <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;" alt="Dr Gerald Thang">
-              <small class="fw-bold">Dr. Gerald Thang</small>
+        <div class="card h-100 shadow-sm border-0 article-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div>
+              <span class="badge mb-3" style="background: #e9fbf0; color: #25d366; font-weight: 700;">Regenerative</span>
+              <h5 class="card-title fw-bold mb-3">
+                <a href="/articles/human-growth-hormone" class="text-dark text-decoration-none stretched-link">HGH (Somatotropin) & Regenerative Recovery</a>
+              </h5>
+              <p class="card-text small text-muted mb-4">Exploring how Human Growth Hormone impacts metabolic health and clinical recovery protocols for complex patients.</p>
+            </div>
+
+            <div class="mt-auto">
+              <div class="read-more-link fw-bold mb-3">
+                Read Article <i class="fa-solid fa-chevron-right ms-1 small"></i>
+              </div>
+              <hr class="opacity-10">
+              <div class="d-flex align-items-center mt-3">
+                <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 32px; height: 32px; object-fit: cover;" alt="Dr Gerald Thang">
+                <div class="lh-1">
+                  <p class="mb-0 fw-bold small" style="color: #2c4964;">Dr. Gerald Thang</p>
+                  <small class="text-muted" style="font-size: 10px;">Principal Physician</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm border-0">
-          <div class="card-body p-4">
-            <span class="badge bg-info mb-2">Recovery</span>
-            <h5 class="card-title fw-bold"><a href="/articles/intermediate-care-bridge-to-recovery" class="text-dark text-decoration-none">The Bridge to Recovery: Redefining Post-Hospital Care</a></h5>
-            <p class="card-text small text-muted">Bridging the gap between hospital discharge and full recovery through clinical stewardship...</p>
-            <hr>
-            <div class="d-flex align-items-center">
-              <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;" alt="Dr Gerald Thang">
-              <small class="fw-bold">Dr. Gerald Thang</small>
+        <div class="card h-100 shadow-sm border-0 article-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div>
+              <span class="badge mb-3" style="background: #fff0f3; color: #ff4f81; font-weight: 700;">Recovery</span>
+              <h5 class="card-title fw-bold mb-3">
+                <a href="/articles/intermediate-care-bridge-to-recovery" class="text-dark text-decoration-none stretched-link">The Bridge to Recovery: Redefining Post-Hospital Care</a>
+              </h5>
+              <p class="card-text small text-muted mb-4">Bridging the gap between hospital discharge and full recovery through clinical stewardship and monitoring.</p>
+            </div>
+
+            <div class="mt-auto">
+              <div class="read-more-link fw-bold mb-3">
+                Read Article <i class="fa-solid fa-chevron-right ms-1 small"></i>
+              </div>
+              <hr class="opacity-10">
+              <div class="d-flex align-items-center mt-3">
+                <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 32px; height: 32px; object-fit: cover;" alt="Dr Gerald Thang">
+                <div class="lh-1">
+                  <p class="mb-0 fw-bold small" style="color: #2c4964;">Dr. Gerald Thang</p>
+                  <small class="text-muted" style="font-size: 10px;">Principal Physician</small>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -389,7 +449,7 @@ description: Cardiology and Chronic Disease Management in Singapore. Specialisin
     </div>
 
     <div class="text-center mt-4">
-      <a href="/articles/" class="btn btn-outline-primary rounded-pill px-4">View All Articles</a>
+      <a href="/articles/" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold">Explore Health Library</a>
     </div>
   </div>
 </section>
