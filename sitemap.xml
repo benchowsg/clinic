@@ -5,6 +5,11 @@
     <lastmod>2026-01-27</lastmod>
     <priority>1.0</priority>
   </url>
+    <url>
+    <loc>https://www.ahealingheartmedical.com/team/dr-thang-gerald</loc>
+    <lastmod>2026-01-27</lastmod>
+    <priority>0.7</priority>
+  </url>
 <url>
     <loc>https://www.ahealingheartmedical.com/who-we-are</loc>
     <lastmod>2026-01-27</lastmod>
@@ -12,14 +17,17 @@
   <url>
     <loc>https://www.ahealingheartmedical.com/heart-health-screening</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/cardiology</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/booking</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/asthma-lung-management</loc>
@@ -28,14 +36,17 @@
   <url>
     <loc>https://www.ahealingheartmedical.com/diabetes-management</loc>
     <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
   </url>
     <url>
     <loc>https://www.ahealingheartmedical.com/metabolic-health-weight</loc>
     <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/health-calculator</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/health-screening</loc>
@@ -52,10 +63,12 @@
   <url>
     <loc>https://www.ahealingheartmedical.com/intermediate-care-services</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/location</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/osteoporosis-bone-care</loc>
@@ -72,6 +85,7 @@
   <url>
     <loc>https://www.ahealingheartmedical.com/rapid-diagnostics</loc>
     <lastmod>2026-01-27</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.ahealingheartmedical.com/regenerative-medicine</loc>
@@ -90,8 +104,18 @@
     <lastmod>2026-01-27</lastmod>
   </url>
   <url>
+    <loc>https://www.ahealingheartmedical.com/terms-and-conditions</loc>
+    <lastmod>2026-01-27</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.ahealingheartmedical.com/articles/</loc>
     <lastmod>2026-02-05</lastmod>
+  </url>
+    <url>
+    <loc>https://www.ahealingheartmedical.com/articles/7-things-about-heart-failure</loc>
+    <lastmod>2026-02-21</lastmod>
+    <priority>0.5</priority>
   </url>
 <url>
     <loc>https://www.ahealingheartmedical.com/articles/lpa-genetic-heart-risk</loc>
@@ -100,6 +124,7 @@
     <url>
     <loc>https://www.ahealingheartmedical.com/articles/intermediate-care-bridge-to-recovery</loc>
     <lastmod>2026-02-05</lastmod>
+    <priority>0.5</priority>
   </url>
 <url>
     <loc>https://www.ahealingheartmedical.com/articles/beyond-biomarker-numbers</loc>
@@ -128,6 +153,7 @@
     <url>
     <loc>https://www.ahealingheartmedical.com/articles/psychology-of-health-screening</loc>
     <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
   </url>
     <url>
     <loc>https://www.ahealingheartmedical.com/articles/medication-fatigue-success-paradox</loc>
