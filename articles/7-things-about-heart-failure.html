@@ -80,9 +80,9 @@ custom_schema: |
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
   .nyha-box { background: #f0f7ff; border-radius: 15px; padding: 25px; margin: 30px 0; border-left: 5px solid #3498db; }
   .author-box { background: #f8f9fa; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 40px; }
-  .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; }
-  .check-list { list-style: none; padding-left: 0; }
-  .check-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+  .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; display: block; }
+  .check-list { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
+  .check-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: #444; }
   .check-list li::before { content: "✓"; color: #3498db; font-weight: bold; position: absolute; left: 0; }
   .medication-card { background: #fff; border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; margin-bottom: 15px; transition: transform 0.2s; }
   .medication-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
@@ -115,7 +115,7 @@ custom_schema: |
         <div class="article-body">
           <p>Heart failure can happen to anyone, at any time. In the real world, heart failure isn't about the heart "stopping"—it's about the heart losing its ability to pump with the efficiency required to sustain your lifestyle. Understanding the nuances of this condition is the first step toward reclaiming your vitality.</p>
 
-          <h3 class="section-heading h4">1. Recognizing the Symptoms of Pump Failure</h3>
+          <h2 class="section-heading h4">1. Recognizing the Symptoms of Pump Failure</h2>
           <p>The heart acts as the body's engine. When that engine weakens, fluid begins to accumulate in the body (edema). This manifests in ways that are often mistaken for general fatigue:</p>
           <ul class="check-list">
             <li><strong>Shortness of Breath:</strong> Especially when performing routine tasks or lying flat at night.</li>
@@ -123,27 +123,24 @@ custom_schema: |
             <li><strong>Reduced Stamina:</strong> A feeling that your "internal battery" is draining faster than usual.</li>
           </ul>
 
-          <h3 class="section-heading h4">2. It’s Not Always Due to a Heart Attack</h3>
+          <h2 class="section-heading h4">2. It’s Not Always Due to a Heart Attack</h2>
           <p>While a heart attack is a common cause, many patients develop heart failure through "silent" stressors. Long-term injury from uncontrolled hypertension, obstructive sleep apnea, or irregular heart rates (arrhythmias) can gradually degrade the heart's pumping power.</p>
 
-          
-
-          <h3 class="section-heading h4">3. The Four Stages of Heart Failure (NYHA)</h3>
+          <h2 class="section-heading h4">3. The Four Stages of Heart Failure (NYHA)</h2>
           <p>We use the New York Heart Association (NYHA) classification to determine the level of clinical intervention needed:</p>
           
           <div class="nyha-box">
-            <p><strong>Class I:</strong> No limitation of physical activity. Ordinary activity does not cause undue fatigue.</p>
-            <p><strong>Class II:</strong> Slight limitation. Comfortable at rest, but ordinary physical activity results in fatigue or palpitations.</p>
-            <p><strong>Class III:</strong> Marked limitation. Comfortable at rest, but less than ordinary activity causes symptoms.</p>
-            <p><strong>Class IV:</strong> Unable to carry out any physical activity without discomfort. Symptoms present even at rest.</p>
+            <p class="mb-2"><strong>Class I:</strong> No limitation of physical activity. Ordinary activity does not cause undue fatigue.</p>
+            <p class="mb-2"><strong>Class II:</strong> Slight limitation. Comfortable at rest, but ordinary physical activity results in fatigue.</p>
+            <p class="mb-2"><strong>Class III:</strong> Marked limitation. Comfortable at rest, but less than ordinary activity causes symptoms.</p>
+            <p class="mb-0"><strong>Class IV:</strong> Unable to carry out any physical activity without discomfort. Symptoms present even at rest.</p>
           </div>
-
           
 
-          <h3 class="section-heading h4">4. Acute vs. Chronic Heart Failure</h3>
+          <h2 class="section-heading h4">4. Acute vs. Chronic Heart Failure</h2>
           <p>Heart failure is classified by its onset. <strong>Acute Heart Failure</strong> is a sudden complication—often from a heart attack or severe infection. <strong>Chronic Heart Failure</strong> is the long-term result of existing conditions like kidney failure or chronic lung disease. Both require a specialized "Intermediate Care" strategy to manage effectively.</p>
 
-          <h3 class="section-heading h4">5. The Triggers of Worsening (Exacerbation)</h3>
+          <h2 class="section-heading h4">5. The Triggers of Worsening (Exacerbation)</h2>
           <p>Stability in heart failure is fragile. Common triggers that can cause a "crash" include:</p>
           <ul class="check-list">
             <li><strong>Fluid Indiscretion:</strong> Consuming more fluid than the heart can process.</li>
@@ -151,60 +148,49 @@ custom_schema: |
             <li><strong>New Infections:</strong> Such as pneumonia, which places extreme stress on the cardiovascular system.</li>
           </ul>
 
-          <h3 class="section-heading h4">6. Modern Reversal & Prevention Strategies</h3>
+          <h2 class="section-heading h4">6. Modern Reversal & Prevention Strategies</h2>
           <p>Treatment is no longer just about managing water with diuretics. We utilize <strong>Metabolic Synergy</strong> to strengthen the heart:</p>
           
           <div class="medication-card">
-            <strong>ARNIs (e.g., Entresto):</strong> A modern class of drugs that increases survival and reduces hospitalizations.
+            <p class="mb-0"><strong>ARNIs (e.g., Entresto):</strong> A modern class of drugs that increases survival and reduces hospitalizations.</p>
           </div>
           <div class="medication-card">
-            <strong>Beta-Blockers:</strong> Controls heart rate to allow the heart to pump more efficiently.
+            <p class="mb-0"><strong>Beta-Blockers:</strong> Controls heart rate to allow the heart to pump more efficiently.</p>
           </div>
           <div class="medication-card">
-            <strong>SGLT2 Inhibitors:</strong> A cornerstone of 2026 heart failure therapy that provides significant vascular protection.
+            <p class="mb-0"><strong>SGLT2 Inhibitors:</strong> A cornerstone of 2026 heart failure therapy that provides significant vascular protection.</p>
           </div>
-
           
 
-          <h3 class="section-heading h4">7. Detection Even Without Symptoms</h3>
-          <p>You do not have to wait for shortness of breath to take action. Asymptomatic heart failure can be detected through specialized imaging:</p>
+          <h2 class="section-heading h4">7. Detection Even Without Symptoms</h2>
+          <p>You do not have to wait for symptoms to emerge. Asymptomatic heart failure can be detected through specialized imaging:</p>
           <ul class="check-list">
             <li><strong>Echocardiogram:</strong> Real-time ultrasound of heart muscle contractions.</li>
             <li><strong>Treadmill Stress Test:</strong> Assessing the functional capacity of your body under load.</li>
-            <li><strong>MRI Heart:</strong> Providing clear insight into the structure of the muscle to catch structural disease early.</li>
+            <li><strong>MRI Heart:</strong> Providing insight into the structure of the muscle to catch structural disease early.</li>
           </ul>
 
           <div class="faq-section mt-5 pt-4 border-top">
-  <h4 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h4>
-  
-  <div class="mb-4">
-    <p class="fw-bold mb-2">Is heart failure a death sentence?</p>
-    <p class="text-muted">Absolutely not. In 2026, heart failure is a manageable chronic condition. With early detection and modern pharmacological agents like ARNIs and SGLT2 inhibitors, we can significantly improve heart function, enhance quality of life, and in many cases, reverse the progression of the disease.</p>
-  </div>
+            <h3 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h3>
+            
+            <div class="mb-4">
+              <p class="fw-bold mb-2" style="color: #444;">Is heart failure a death sentence?</p>
+              <p class="text-muted">Absolutely not. In 2026, heart failure is a manageable chronic condition. With early detection and modern pharmacological agents, we can significantly improve heart function and quality of life.</p>
+            </div>
 
-  <div class="mb-4">
-    <p class="fw-bold mb-2">Can I exercise if I have heart failure?</p>
-    <p class="text-muted">Yes, and it is highly recommended. However, it must be done through "Cardiac Reconditioning"—a supervised approach to exercise that gradually builds heart strength without causing acute stress. We recommend a clinical review before starting any new fitness routine.</p>
-  </div>
-
-  <div class="mb-4">
-    <p class="fw-bold mb-2">What is the difference between heart failure and a heart attack?</p>
-    <p class="text-muted">A heart attack is a "plumbing" issue where an artery is blocked, causing muscle death. Heart failure is a "mechanical" issue where the heart muscle is too weak or too stiff to pump blood effectively. While a heart attack can <i>cause</i> heart failure, they are distinct clinical conditions.</p>
-  </div>
-
-  <div class="mb-4">
-    <p class="fw-bold mb-2">Why do my legs swell with heart failure?</p>
-    <p class="text-muted">When the heart pump weakens, blood "backs up" in the veins. This pressure causes fluid to leak into the surrounding tissues, typically settling in the lowest points of the body like the ankles and legs due to gravity. This is known as peripheral edema.</p>
-  </div>
-</div>
-
-          <div class="mt-5 p-4 border rounded shadow-sm bg-light text-center">
-            <h3 class="h5 fw-bold">Is Your Heart Operating at Peak Capacity?</h3>
-            <p>Don't wait for symptoms to emerge. Establish your baseline with our specialized cardiology diagnostics.</p>
-            <a href="/booking" class="btn btn-primary rounded-pill px-4">Request a Cardiac Review</a>
+            <div class="mb-4">
+              <p class="fw-bold mb-2" style="color: #444;">Can I exercise if I have heart failure?</p>
+              <p class="text-muted">Yes, and it is highly recommended. However, it must be done through "Cardiac Reconditioning"—a supervised approach to exercise that gradually builds heart strength.</p>
+            </div>
           </div>
 
-          <div class="ip-notice-box mt-5 p-3 bg-white border-left border-secondary" style="font-size: 0.85rem; color: #666;">
+          <div class="mt-5 p-4 border rounded shadow-sm bg-light text-center">
+            <h3 class="h5 fw-bold" style="color: #2c4964;">Is Your Heart Operating at Peak Capacity?</h3>
+            <p>Don't wait for symptoms to emerge. Establish your baseline with our specialized cardiology diagnostics.</p>
+            <a href="/booking" class="btn btn-primary rounded-pill px-4 py-2">Request a Cardiac Review</a>
+          </div>
+
+          <div class="mt-5 p-3 bg-white border-left border-secondary" style="font-size: 0.85rem; color: #666; border-left: 3px solid #ccc;">
             <strong>Intellectual Property Notice:</strong> This clinical framework for Heart Failure Management is the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
           </div>
         </div>
