@@ -6,14 +6,53 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
 ---
 
 
+<style>
+/* Animation for High Risk / Alarm */
+.status-alarm {
+  background-color: #dc3545;
+  color: white;
+  animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/* Animation for Moderate / Alert */
+.status-warning {
+  background-color: #fd7e14;
+  color: white;
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30%, 50% { transform: rotate(-5deg); }
+  20%, 40%, 60% { transform: rotate(5deg); }
+}
+
+/* Animation for Low Risk / Shield */
+.status-safe {
+  background-color: #198754;
+  color: white;
+}
+
+.risk-badge {
+  font-size: 0.9rem;
+  padding: 0.5em 1em;
+}
+</style>
+
 <main id="main" class="mt-5 pt-5">
   <section class="py-5">
     <div class="container">
       <div class="mb-5">
         <h1 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Singapore Heart Risk & Trajectory Estimator</h1>
         <p class="text-muted mt-3" style="max-width: 800px; text-transform: none !important;">
-            Our heart risk estimator is adapted from the <strong>ACC/AHA Pooled Cohort Equations</strong> and refined for the <strong>Asian phenotype</strong>. In Singapore, factors like ethnicity and lower BMI thresholds significantly impact metabolic risk. Use this tool to visualize your trajectory and build a personalized prevention roadmap.
-          </p>
+          Our heart risk estimator is adapted from the <strong>ACC/AHA Pooled Cohort Equations</strong> and refined for the <strong>Asian phenotype</strong>. In Singapore, factors like ethnicity and lower BMI thresholds significantly impact metabolic risk. Use this tool to visualize your trajectory and build a personalized prevention roadmap.
+        </p>
       </div>
 
       <div class="row g-4">
@@ -57,31 +96,16 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               </div>
             </div>
 
-<div id="bpInfoBox" class="d-none mb-3">
-  <div class="bp-info-box small shadow-sm">
-    <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Singapore MOH Clinical Benchmarks</h6>
-    <p class="mb-2 text-muted" style="font-size: 0.8rem;">Systolic pressure measures the force against artery walls during a heartbeat. Local guidelines emphasize tighter control to prevent stroke and heart failure.</p>
-    
-    <ul class="list-unstyled mb-0" style="font-size: 0.8rem;">
-      <li class="d-flex justify-content-between mb-1">
-        <span><i class="fa-solid fa-circle text-success me-1" style="font-size: 0.5rem;"></i> Optimal</span>
-        <span class="fw-bold">&lt; 120 mmHg</span>
-      </li>
-      <li class="d-flex justify-content-between mb-1">
-        <span><i class="fa-solid fa-circle text-warning me-1" style="font-size: 0.5rem;"></i> Normal/High-Normal</span>
-        <span class="fw-bold">120 – 129 mmHg</span>
-      </li>
-      <li class="d-flex justify-content-between text-danger fw-bold">
-        <span><i class="fa-solid fa-circle me-1" style="font-size: 0.5rem;"></i> Hypertension</span>
-        <span>130+ mmHg</span>
-      </li>
-    </ul>
-    <hr class="my-2">
-    <p class="extra-small text-muted mb-0" style="font-size: 0.7rem; font-style: italic;">
-      Note: For patients with Diabetes or Kidney Disease, MOH recommends a target of less than 130/80 mmHg.
-    </p>
-  </div>
-</div>
+            <div id="bpInfoBox" class="d-none mb-3">
+              <div class="bp-info-box small shadow-sm p-3 bg-light rounded border">
+                <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Singapore MOH Clinical Benchmarks</h6>
+                <ul class="list-unstyled mb-0" style="font-size: 0.8rem;">
+                  <li class="d-flex justify-content-between mb-1"><span>Optimal</span><span class="fw-bold">&lt; 120</span></li>
+                  <li class="d-flex justify-content-between mb-1"><span>Normal</span><span class="fw-bold">120-129</span></li>
+                  <li class="d-flex justify-content-between text-danger fw-bold"><span>Hypertension</span><span>130+</span></li>
+                </ul>
+              </div>
+            </div>
 
             <div class="row">
               <div class="col-6 mb-3">
@@ -118,26 +142,44 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               <p class="text-muted small">Calculation is optimized for Singapore clinical guidelines.</p>
             </div>
 
-            <div id="actualResult" class="d-none w-100">
-               <h2 class="fw-bold mb-0" id="scorePercent" style="font-size: 4.5rem; color: #2c4964; line-height: 1;">0%</h2>
-               <p class="fw-bold mb-2" id="riskLevel" style="font-size: 1.25rem;">Low Risk</p>
-               <div id="ethnicTag" class="mb-4"></div>
-               
-               <div class="alert alert-info text-start border-0 shadow-sm p-4" style="background-color: #f0f7ff;">
-                  <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-compass me-2"></i>The Asian Perspective</h6>
-                  <p id="trajectoryNote" class="small mb-0 text-dark" style="line-height: 1.5;"></p>
+            <div id="actualResult" class="d-none w-100 text-center">
+               <div id="riskStatusWrapper" class="d-flex align-items-center justify-content-center mb-4">
+                  <div id="riskIconContainer" class="me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; flex-shrink: 0; margin-right: 20px;"></div>
+                  <div>
+                     <h2 class="fw-bold mb-1" id="riskLevelHeadline" style="color: #2c4964;">Calculating...</h2>
+                     <p class="mb-0 text-muted fw-bold small text-uppercase">
+                       10-Year Score: <span id="scorePercent">0%</span>
+                     </p>
+                  </div>
                </div>
 
-               <a href="/booking" class="btn btn-dark btn-lg w-100 rounded-pill mt-3 shadow-sm">Book Professional Review</a>
-               <button onclick="location.reload()" class="btn btn-link btn-sm mt-3 text-muted text-decoration-none">Reset Calculator</button>
+               <div id="ethnicTag" class="mb-4"></div>
+               
+               <div class="alert alert-info border-0 shadow-sm p-4" style="background-color: #f0f7ff;">
+                  <h6 class="fw-bold text-primary mb-2 text-uppercase" style="letter-spacing: 1px;">
+                    <i class="fa-solid fa-microscope me-2"></i>Clinical Interpretation
+                  </h6>
+                  <p id="trajectoryNote" class="small mb-0 text-dark" style="line-height: 1.6; font-size: 0.95rem;"></p>
+               </div>
+
+               <div class="mt-4 p-3 rounded-3" style="background-color: #fff5f5; border-left: 4px solid #e53e3e;">
+                  <p class="extra-small text-muted text-left mb-0" style="font-size: 0.8rem; line-height: 1.4;">
+                    <strong>Clinical Limitation Notice:</strong> This tool provides a statistical estimate based on population data and cannot detect <strong>non-calcified (soft) plaque</strong> or specific structural anomalies. <br><br>
+                           A 10-year risk score is not a diagnosis. To confirm your actual <strong>arterial age</strong> and biological risk, a formal clinical audit and professional medical consultation are strictly required.
+                  </p>
+               </div>
+
+               <div class="mt-4 d-grid">
+                 <a href="/booking" id="ctaButton" class="btn btn-dark btn-lg rounded-pill shadow-sm py-3 fw-bold">Schedule My Consultation</a>
+                 <button onclick="location.reload()" class="btn btn-link btn-sm mt-2 text-muted text-decoration-none">Reset Calculator</button>
+               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> </div>
     </div>
   </section>
 
-  <section class="py-5 bg-white border-top">
+    <section class="py-5 bg-white border-top">
     <div class="container">
       <div class="row g-5 align-items-center">
         <div class="col-lg-6">
@@ -263,8 +305,8 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
     </div>
   </div>
 </section>
-  
-</main>
+
+  </main>
 
 <script type="text/javascript">
 function toggleBPInfo() {
@@ -281,62 +323,81 @@ function calculateRisk() {
     const smoker = document.getElementById('smoker').checked;
     const diabetes = document.getElementById('diabetes').checked;
     const ethnicity = document.getElementById('ethnicity').value;
+    
+    // UI Elements
+    const iconBox = document.getElementById('riskIconContainer');
+    const headline = document.getElementById('riskLevelHeadline');
+    const cta = document.getElementById('ctaButton');
+    const placeholder = document.getElementById('placeholderText');
+    const resultDiv = document.getElementById('actualResult');
+    const resultCard = document.getElementById('resultCard');
+    const scoreDisplay = document.getElementById('scorePercent');
+    const noteDisplay = document.getElementById('trajectoryNote');
+    const ethnicTag = document.getElementById('ethnicTag');
 
     if (isNaN(age) || isNaN(tcRaw) || isNaN(hdlRaw) || isNaN(sbp)) {
         alert("Please enter your clinical values to calculate your risk.");
         return;
     }
 
-    const placeholder = document.getElementById('placeholderText');
-    const resultDiv = document.getElementById('actualResult');
-    const resultCard = document.getElementById('resultCard');
-    const scoreDisplay = document.getElementById('scorePercent');
-    const levelDisplay = document.getElementById('riskLevel');
-    const noteDisplay = document.getElementById('trajectoryNote');
-    const ethnicTag = document.getElementById('ethnicTag');
-
+    // Reset UI State
     placeholder.classList.add('d-none');
     resultDiv.classList.remove('d-none');
     resultCard.classList.remove('bg-light');
     resultCard.style.backgroundColor = "#ffffff";
     resultCard.style.border = "2px solid #3498db";
+    iconBox.classList.remove('status-safe', 'status-warning', 'status-alarm');
+    
+    // FIXED: Ensure CTA color resets correctly
+    cta.classList.remove('btn-danger');
+    cta.classList.add('btn-dark');
 
+    // Logic
     const tc = isMmol ? (tcRaw * 38.67) : tcRaw;
     const hdl = isMmol ? (hdlRaw * 38.67) : hdlRaw;
 
     let score = 0;
-    if (age >= 40) score += 4;
-    if (age >= 55) score += 6;
-    if (sbp >= 135) score += 3;
-    if (tc / hdl > 4.5) score += 4;
-    if (smoker) score += 6;
-    if (diabetes) score += 7;
+    if (age >= 35) score += 2;
+    if (age >= 50) score += 5;
+    if (sbp >= 130) score += 4;
+    if (tc / hdl > 4.0) score += 4;
+    if (smoker) score += 8;
+    if (diabetes) score += 10;
 
-    // Apply Ethnicity Weighting
     if (ethnicity === 'indian') {
-        score += 5;
-        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">South Asian Risk Enhancer Applied</span>';
+        score += 6;
+        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">Risk Multiplier Applied</span>';
     } else if (ethnicity === 'malay') {
-        score += 3;
-        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Malay Risk Enhancer Applied</span>';
+        score += 4;
+        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Risk Enhancer Applied</span>';
     } else {
-        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Standard Risk Calibration</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Standard Calibration Applied</span>';
     }
 
     scoreDisplay.innerText = score + "%";
 
-    if (score < 7) {
-        levelDisplay.innerText = "Low Risk Profile";
-        levelDisplay.style.color = "#198754";
-        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Stable. In the Asian context, focus on maintaining a BMI below 23.0 and regular screening for silent arterial inflammation.";
-    } else if (score < 18) {
-        levelDisplay.innerText = "Moderate Risk Profile";
-        levelDisplay.style.color = "#fd7e14";
-        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Rising. This score suggests a need for deeper structural investigation. A <strong>CT Calcium Score</strong> is recommended to check for physical plaque buildup.";
-    } else {
-        levelDisplay.innerText = "High Risk Profile";
-        levelDisplay.style.color = "#dc3545";
-        noteDisplay.innerHTML = "<strong>Trajectory:</strong> Critical. Immediate clinical consultation is required. We prioritize assessing arterial blockages and stabilizing lipid quality to prevent a cardiac event.";
+    // Results Branching
+    if (score < 8) {
+        iconBox.classList.add('status-safe');
+        iconBox.innerHTML = '<i class="fa-solid fa-shield-heart fa-2x"></i>';
+        headline.innerText = "Low Risk Profile";
+        headline.style.color = "#198754";
+        noteDisplay.innerHTML = "<strong>Status: Stable.</strong> Although your metrics are within optimal range, we recommend a proactive annual check for silent arterial inflammation.";
+    } 
+    else if (score < 15) {
+        iconBox.classList.add('status-warning');
+        iconBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation fa-2x"></i>';
+        headline.innerText = "Moderate Risk Alert";
+        headline.style.color = "#fd7e14";
+        noteDisplay.innerHTML = "<strong>Status: Rising.</strong> Your trajectory suggests early metabolic strain. This is the critical window for intervention before structural damage occurs.";
+    } 
+    else {
+        iconBox.classList.add('status-alarm');
+        iconBox.innerHTML = '<i class="fa-solid fa-bell-exclamation fa-2x"></i>';
+        headline.innerText = "High Risk Alarm";
+        headline.style.color = "#dc3545";
+        cta.classList.replace('btn-dark', 'btn-danger'); // Changes color to red
+        noteDisplay.innerHTML = "<strong>Status: Critical.</strong> Immediate clinical consultation is required. Your profile suggests potential arterial blockages requiring stabilization.";
     }
 }
 </script>
