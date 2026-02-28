@@ -1,3 +1,17 @@
+<style>
+  /* This prevents the nav from wrapping on smaller desktops/tablets */
+  @media (min-width: 992px) {
+    .navbar-nav .nav-link {
+      padding-left: 0.7rem !important;
+      padding-right: 0.7rem !important;
+      font-size: 0.95rem; /* Slightly smaller font to save space */
+    }
+    .ms-auto {
+      margin-left: auto !important;
+    }
+  }
+</style>
+
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
   <div class="container d-flex">
     <div class="contact-info mr-auto">
@@ -30,72 +44,54 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center"> 
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+  <ul class="navbar-nav ms-auto align-items-center"> 
     
-    <li class="nav-item">
-      <a class="nav-link" href="/who-we-are">Who We Are</a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Our Clinic</a>
+      <ul class="dropdown-menu">
+         <li><a class="dropdown-item" href="/who-we-are">Who We Are</a></li>
+         <li><a class="dropdown-item" href="/location">Location & Hours</a></li>
+      </ul>
     </li>
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="diagnosticsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-        Diagnostics
-      </a>
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Diagnostics</a>
       <ul class="dropdown-menu">
          <li><a class="dropdown-item fw-bold" href="/cardiology">Chest Pain & Breathlessness</a></li>
          <li><a class="dropdown-item" href="/rapid-diagnostics">Rapid 15-Min Blood Tests</a></li>
          <li><a class="dropdown-item" href="/intermediate-care-services">Heart Failure Monitoring</a></li>
-         <li><hr class="dropdown-divider"></li>
-         <li><a class="dropdown-item" href="/asthma-lung-management">Asthma & Lung Evaluation</a></li>
-         <li><a class="dropdown-item" href="/osteoporosis-bone-care">Bone Density & Care</a></li>
       </ul>
     </li>
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="chronicDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-        Cardiac & Chronic
-      </a>
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Heart & Chronic</a>
       <ul class="dropdown-menu">
-         <li><a class="dropdown-item" href="/hypertension-cholesterol-management">BP & Cholesterol Care</a></li>
-         <li><a class="dropdown-item" href="/diabetes-management">Diabetes Management</a></li>
+         <li><a class="dropdown-item" href="/hypertension-cholesterol-management">BP & Cholesterol</a></li>
+         <li><a class="dropdown-item" href="/diabetes-management">Diabetes Care</a></li>
          <li><a class="dropdown-item" href="/post-hospitalisation-recovery">Post-Hospital Recovery</a></li>
-         <li><a class="dropdown-item" href="/metabolic-health-weight">Metabolic & Weight Health</a></li>
          <li><hr class="dropdown-divider"></li>
          <li><a class="dropdown-item" href="/hormone-optimization">Hormonal & Wellness</a></li>
-         <li><a class="dropdown-item" href="/regenerative-medicine">Regenerative Medicine</a></li>
-         <li><a class="dropdown-item" href="/skin-hair-care">Skin & Hair Care</a></li>
       </ul>
     </li>
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="screeningDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-        Screenings
-      </a>
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Screenings</a>
       <ul class="dropdown-menu">
-         <li><a class="dropdown-item" href="/heart-health-screening">Cardiac Heart Screening</a></li>
-         <li><a class="dropdown-item" href="/health-screening">General Health Screening</a></li>
+         <li><a class="dropdown-item" href="/heart-health-screening">Cardiac Screening</a></li>
          <li><a class="dropdown-item" href="/vaccination">Vaccinations</a></li>
-         <li><a class="dropdown-item" href="/preventive-medicine">Preventive Philosophy</a></li>
       </ul>
     </li>
 
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="guideDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-        Patient Guide
+    <li class="nav-item">
+      <a class="nav-link position-relative" href="/health-hub-guide/">
+        HealthHub 
+        <span class="badge rounded-pill bg-danger" style="font-size: 0.5rem; vertical-align: top;">NEW</span>
       </a>
-      <ul class="dropdown-menu">
-         <li>
-           <a class="dropdown-item d-flex justify-content-between align-items-center" href="/health-hub-guide/">
-             HealthHub & NEHR Guide
-             <span class="badge rounded-pill bg-danger ms-2" style="font-size: 0.6rem;">NEW</span>
-           </a>
-         </li>
-         <li><a class="dropdown-item" href="/location">Location & Hours</a></li>
-         </ul>
     </li>
 
-    <li class="nav-item ms-lg-3">
-      <a class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm" href="/booking" style="background-color: #3498DB; border: none;">Book Online</a>
+    <li class="nav-item ms-lg-2">
+      <a class="btn btn-primary rounded-pill px-3 fw-bold shadow-sm" href="/booking" style="background-color: #3498DB; border: none; font-size: 0.9rem;">Book Online</a>
     </li>
 
   </ul>
