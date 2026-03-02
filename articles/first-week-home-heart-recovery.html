@@ -16,12 +16,49 @@ custom_schema: |
     "author": {
       "@type": "Person",
       "name": "Dr. Gerald Thang"
+      "jobTitle": "Principal Physician",
+      "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
     },
     "publisher": {
       "@type": "MedicalBusiness",
       "name": "A Healing Heart Medical Clinic",
       "url": "https://www.ahealingheartmedical.com"
-    }
+    },
+    "reviewedBy": {
+      "@type": "Person",
+      "name": "Dr. Gerald Thang",
+      "jobTitle": "Principal Physician"
+    },
+    "isPartOf": {
+      "@type": "MedicalBusiness",
+      "@id": "https://www.ahealingheartmedical.com"
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Intermediate Care for heart patients?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intermediate Care bridges the gap between high-level hospital cardiology and general practice. It focuses on the critical first weeks after discharge, providing specialized monitoring and rapid diagnostics to prevent readmission."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can I get cardiac blood test results?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At A Healing Heart Medical, our on-site rapid diagnostics provide results for heart stress markers (like NT-proBNP) in approximately 15 minutes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is medication reconciliation important after a heart attack?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hospital discharge often involves new prescriptions. Reconciliation ensures these new meds work safely with your existing health plan, preventing dangerous drug interactions or dosage errors."
+        }
+      }
+    ]
   }
 ---
 
@@ -37,6 +74,9 @@ custom_schema: |
   .screening-cta { background: #2c4964; color: #ffffff; border-radius: 15px; padding: 35px; margin: 40px 0; }
   .screening-cta h3 { color: #ffffff; }
   .screening-cta p { color: #d1d1d1; }
+  .faq-card { border-bottom: 1px solid #eee; padding: 20px 0; }
+  .faq-q { color: #2c4964; font-weight: 700; margin-bottom: 10px; }
+  .faq-a { color: #666; font-size: 1rem; }
 </style>
 
 <main id="main" class="article-content">
@@ -83,6 +123,24 @@ custom_schema: |
           <h2 class="section-heading h4">From Recovery to Prevention</h2>
           <p>While recovery is the immediate priority, the long-term goal is preventing future events. This is why we integrate recovery pathways with proactive monitoring. If you are a family member supporting a loved one through recovery, it is also the ideal time to assess your own cardiac baseline.</p>
 
+          <div class="faq-container mt-5">
+            <h3 class="section-heading h4">Frequently Asked Questions</h3>
+            
+            <div class="faq-card">
+              <p class="faq-q">What is Intermediate Care for heart patients?</p>
+              <p class="faq-a">Intermediate Care bridges the gap between high-level hospital cardiology and general practice. It focuses on the critical first weeks after discharge, providing specialized monitoring and rapid diagnostics to prevent complications.</p>
+            </div>
+
+            <div class="faq-card">
+              <p class="faq-q">How quickly can I get cardiac blood test results?</p>
+              <p class="faq-a">Our clinic utilizes point-of-care technology to provide results for essential cardiac biomarkers in approximately 15 minutes, allowing for immediate clinical decisions.</p>
+            </div>
+
+            <div class="faq-card">
+              <p class="faq-q">Does this replace my hospital specialist?</p>
+              <p class="faq-a">No. We work in tandem with your specialist in the hospital. We handle the day-to-day stability and medication adjustments during the transition, ensuring you are in peak condition for your specialist follow-up.</p>
+            </div>
+          </div>
           <div class="screening-cta text-center shadow">
             <h3 class="h4 fw-bold mb-3">Early Detection Saves Lives</h3>
             <p class="mb-4">Beyond recovery, we offer <strong>Cardiac Heart Screening Packages</strong> designed to identify structural risks before symptoms develop. Gain peace of mind with the same rapid diagnostic technology we use for our acute patients.</p>
@@ -95,7 +153,7 @@ custom_schema: |
           <p>Intermediate care isn't just about the patient; it's about providing the family with a clear roadmap for long-term heart health.</p>
 
           <div class="mt-5 p-3 bg-light border-left" style="font-size: 0.85rem; color: #666; border-left: 3px solid #3498db;">
-            <strong>Clinical Note:</strong> Our Intermediate Care pathways are designed to supplement, not replace, your primary cardiologist's long-term plan.
+            <strong>Clinical Note:</strong> Our Intermediate Care pathways are designed to supplement, not replace, your primary cardiologist's long-term plan. This article is for educational purposes only. If you are experiencing chest pain or an emergency, please dial 995 or visit the nearest A&E immediately.
           </div>
         </div>
       </div>
