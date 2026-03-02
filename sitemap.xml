@@ -103,7 +103,15 @@
     <loc>https://www.ahealingheartmedical.com/vaccination</loc>
     <lastmod>2026-01-27</lastmod>
   </url>
-<url>
+  <url>
+    <loc>https://www.ahealingheartmedical.com/health-hub-guide/</loc>
+    <lastmod>2026-02-27</lastmod>
+  </url>
+  <url>
+    <loc>https://www.ahealingheartmedical.com/chas-medisave-healthiersg/</loc>
+    <lastmod>2026-02-27</lastmod>
+  </url>
+    <url>
     <loc>https://www.ahealingheartmedical.com/safra</loc>
     <lastmod>2026-02-20</lastmod>
     <priority>0.3</priority>
