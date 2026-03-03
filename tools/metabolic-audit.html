@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /metabolic-audit
-title: Instant Metabolic Health Audit | A Healing Heart Medical
-description: Calculate your Waist-to-Height ratio and discover your metabolic risk category instantly.
+title: Metabolic Health Audit | Instant Clinical Results
+description: Use our clinical-grade tool to calculate your Waist-to-Height ratio and assess your metabolic risk category immediately.
 ---
 
 <style>
@@ -16,17 +16,20 @@ description: Calculate your Waist-to-Height ratio and discover your metabolic ri
   .btn-sync-primary:hover {
     background-color: #ffc107 !important; color: #2c4964 !important; transform: translateY(-2px);
   }
-  .quiz-card { border: none; border-top: 6px solid #e63946; }
-  .result-box { display: none; padding: 30px; border-radius: 15px; text-align: center; }
-  .risk-high { background: #fff5f5; border: 2px solid #e63946; }
-  .risk-optimal { background: #f0fff4; border: 2px solid #38a169; }
+  .quiz-card { border: none; border-top: 6px solid #e63946; min-height: 450px; }
+  .result-display-area { display: none; }
+  .status-badge { display: inline-block; padding: 5px 15px; border-radius: 50px; font-weight: bold; margin-bottom: 15px; }
+  .status-red { background: #fff5f5; color: #e63946; border: 1px solid #e63946; }
+  .status-green { background: #f0fff4; color: #38a169; border: 1px solid #38a169; }
 </style>
 
 <main id="main">
-  <section class="py-5 mt-5 text-center">
-    <div class="container">
-      <h1 class="display-5 fw-bold" style="color: #2c4964;">Metabolic Health Self-Audit</h1>
-      <p class="lead text-muted">Instant analysis of your "Hidden" visceral fat risk. No contact details required for results.</p>
+
+  <section class="py-5 mt-5">
+    <div class="container mt-4 text-center">
+      <span class="badge px-3 py-2 rounded-pill mb-3" style="background-color: #fff5f5; color: #e63946; font-weight: 600;">Self-Diagnostic Tool</span>
+      <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Metabolic Precision Audit</h1>
+      <p class="lead text-muted mb-5">Identify the "Hidden Fire" of visceral fat. No registration required for results.</p>
     </div>
   </section>
 
@@ -34,102 +37,130 @@ description: Calculate your Waist-to-Height ratio and discover your metabolic ri
     <div class="row justify-content-center">
       <div class="col-md-7 card shadow-lg p-4 p-md-5 border-0 rounded-4 quiz-card">
         
-        <div id="audit-container">
-          <form id="instant-audit">
-            <div class="row mb-4">
+        <div id="progress-container">
+            <div class="progress mb-4" style="height: 8px;">
+              <div id="progress-bar" class="progress-bar bg-danger" role="progressbar" style="width: 33%;"></div>
+            </div>
+        </div>
+
+        <form id="metabolic-quiz">
+          
+          <div class="quiz-step" id="step-1">
+            <h3 class="mb-2 fw-bold">1. Body Metrics</h3>
+            <p class="text-muted mb-4">Crucial for checking the 0.5 Waist-to-Height Ratio.</p>
+            <div class="row mb-3">
               <div class="col-md-6 mb-3">
-                <label class="fw-bold small mb-2">Height (cm)</label>
+                <label class="small fw-bold mb-1">Height (cm)</label>
                 <input type="number" id="height" class="form-control form-control-lg" placeholder="e.g. 170" required>
               </div>
               <div class="col-md-6 mb-3">
-                <label class="fw-bold small mb-2">Waist Circumference (cm)</label>
-                <input type="number" id="waist" class="form-control form-control-lg" placeholder="Measure at navel" required>
+                <label class="small fw-bold mb-1">Waist (cm)</label>
+                <input type="number" id="waist" class="form-control form-control-lg" placeholder="At belly button" required>
               </div>
             </div>
-
-            <div class="mb-4">
-              <label class="fw-bold small mb-2">Do you experience "Food Noise" or afternoon slumps?</label>
-              <select id="metabolic_signs" class="form-select form-select-lg">
-                <option value="low">Rarely / Never</option>
-                <option value="high">Frequently / Daily</option>
-              </select>
-            </div>
-
-            <button type="button" class="btn btn-danger w-100 py-3 rounded-pill fw-bold" onclick="calculateRisk()">Calculate My Metabolic Score</button>
-          </form>
-        </div>
-
-        <div id="result-display" class="result-box">
-          <h2 id="result-title" class="fw-bold mb-3"></h2>
-          <div id="result-stats" class="mb-4 fs-5"></div>
-          <p id="result-text" class="text-muted mb-4"></p>
-          
-          <div class="p-3 bg-white rounded-3 mb-4 shadow-sm">
-            <h5 class="fw-bold mb-2">Recommended Next Step:</h5>
-            <p class="small mb-0" id="next-step-text"></p>
+            <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill fw-bold" onclick="showStep(2)">Next: Metabolic Signs</button>
           </div>
 
-          <a id="cta-button" href="https://wa.me/6569621362" class="btn btn-success btn-lg rounded-pill w-100 fw-bold">
-            <i class="fab fa-whatsapp me-2"></i> Discuss Results with Clinic
-          </a>
-          <button class="btn btn-link mt-3 text-muted" onclick="location.reload()">Reset Audit</button>
-        </div>
+          <div class="quiz-step d-none" id="step-2">
+            <h3 class="mb-4 fw-bold">2. Metabolic Indicators</h3>
+            <div class="mb-3">
+              <label class="small fw-bold mb-1">Do you experience "Food Noise" (Constant Cravings)?</label>
+              <select id="food_noise" class="form-select form-select-lg">
+                <option value="low">Rarely</option>
+                <option value="high">Frequently</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="small fw-bold mb-1">Family History of Heart Events?</label>
+              <select id="history" class="form-select form-select-lg">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-danger w-100 py-3 rounded-pill fw-bold" onclick="calculateFinalResults()">Calculate Results</button>
+          </div>
 
+          <div class="quiz-step d-none" id="step-3">
+            <div id="result-content" class="text-center py-2">
+                <div id="status-pill" class="status-badge"></div>
+                <h2 id="score-title" class="fw-bold mb-3"></h2>
+                <p id="ratio-text" class="fs-5 mb-4"></p>
+                
+                <div class="p-4 bg-light rounded-4 border text-start mb-4">
+                    <h5 class="fw-bold">Clinical Analysis:</h5>
+                    <p id="analysis-text" class="small text-muted mb-0"></p>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <a href="https://wa.me/6569621362" class="btn btn-success btn-lg rounded-pill fw-bold">
+                        <i class="fab fa-whatsapp me-2"></i> Discuss Results with Dr. Gerald
+                    </a>
+                    <button type="button" class="btn btn-link text-muted" onclick="location.reload()">Reset Audit</button>
+                </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 
-  <section class="container py-5">
-    <div class="row g-4">
-        <div class="col-md-6">
-            <h3 class="fw-bold">Why the 0.5 Ratio?</h3>
-            <p>Weight alone is a poor predictor of heart health. Visceral fat—the toxic fat wrapped around your organs—is the primary driver of arterial inflammation. The <strong>Waist-to-Height Ratio</strong> is a clinical gold standard for identifying "Skinny-Fat" (TOFI) risks that standard BMI misses.</p>
+  <section class="container py-5 border-top">
+    <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+            <h3 class="fw-bold" style="color: #2c4964;">The 0.5 Threshold</h3>
+            <p>Weight alone is a deceptive metric. In Asia, the "Skinny-Fat" (TOFI) phenotype is common—individuals with a normal BMI but high <strong>Visceral Fat</strong>. When your waist is more than half your height, you have crossed a clinical safety line where fat begins to leak into your liver and heart.</p>
+             
         </div>
-        
-        <div class="col-md-6">
-            <h3 class="fw-bold">The ApoB Connection</h3>
-            <p>If your audit shows a high ratio, it often correlates with a high <strong>ApoB particle count</strong>. These are the lethal particles that burrow into artery walls. Identifying this early allows for <strong>Vascular Decompression</strong>—protecting your heart before damage occurs.</p>
+        <div class="col-lg-6">
+            <h3 class="fw-bold" style="color: #2c4964;">Medical Weight Mastery</h3>
+            <p>Lowering your ratio isn't about willpower; it's about <strong>Vascular Decompression</strong>. We utilize GLP-1 and GIP clinical protocols to address "Food Noise" and protect your arteries from the inflammatory fire of visceral adiposity.</p>
         </div>
     </div>
   </section>
 
   <script>
-    function calculateRisk() {
-      const h = document.getElementById('height').value;
-      const w = document.getElementById('waist').value;
-      const signs = document.getElementById('metabolic_signs').value;
+    function showStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('d-none'));
+      document.getElementById('step-' + step).classList.remove('d-none');
+      const progress = (step / 3) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+
+    function calculateFinalResults() {
+      const h = parseFloat(document.getElementById('height').value);
+      const w = parseFloat(document.getElementById('waist').value);
+      const noise = document.getElementById('food_noise').value;
+      const history = document.getElementById('history').value;
 
       if (!h || !w) {
-        alert("Please enter both height and waist measurements.");
+        alert("Please ensure Height and Waist are entered.");
+        showStep(1);
         return;
       }
 
       const ratio = (w / h).toFixed(2);
-      const container = document.getElementById('audit-container');
-      const display = document.getElementById('result-display');
       
-      container.style.display = 'none';
-      display.style.display = 'block';
+      // Update UI to Step 3
+      showStep(3);
+      document.getElementById('progress-container').style.display = 'none';
 
-      const stats = document.getElementById('result-stats');
-      const title = document.getElementById('result-title');
-      const text = document.getElementById('result-text');
-      const nextStep = document.getElementById('next-step-text');
+      const pill = document.getElementById('status-pill');
+      const title = document.getElementById('score-title');
+      const ratioBox = document.getElementById('ratio-text');
+      const analysis = document.getElementById('analysis-text');
 
-      stats.innerHTML = `Your Ratio: <strong>${ratio}</strong> <small class="text-muted">(Target: < 0.50)</small>`;
+      ratioBox.innerHTML = `Your Ratio: <strong>${ratio}</strong> <span class="text-muted">(Goal: < 0.5)</span>`;
 
-      if (ratio >= 0.50 || signs === 'high') {
-        display.classList.add('risk-high');
-        title.innerHTML = "Metabolic Alert: Elevated Risk";
-        title.style.color = "#e63946";
-        text.innerHTML = "Your measurements suggest an accumulation of <strong>visceral fat</strong>. This 'internal fire' is a known driver of insulin resistance and premature arterial aging.";
-        nextStep.innerHTML = "A <strong>Metabolic Precision Audit</strong> is advised to check your ApoB particle count and vascular age.";
+      if (ratio >= 0.5 || noise === 'high' || history === 'yes') {
+        pill.className = "status-badge status-red";
+        pill.innerText = "Alert: Metabolic Load Detected";
+        title.innerText = "Risk Factor: Elevated";
+        analysis.innerText = "Your ratio suggests visceral fat accumulation. This 'Hidden Fire' increases the likelihood of insulin resistance and ApoB particle buildup in your arteries. A clinical review of your vascular age and particle count is recommended.";
       } else {
-        display.classList.add('risk-optimal');
-        title.innerHTML = "Metabolic Status: Optimal";
-        title.style.color = "#38a169";
-        text.innerHTML = "Your waist-to-height ratio is within the healthy range. You are currently maintaining good metabolic leverage.";
-        nextStep.innerHTML = "Focus on maintenance. Consider an annual <strong>ApoB screening</strong> to ensure your internal particle count remains low.";
+        pill.className = "status-badge status-green";
+        pill.innerText = "Status: Optimal";
+        title.innerText = "Risk Factor: Low";
+        analysis.innerText = "Your measurements are currently within the safe metabolic zone. To maintain this protection, we recommend monitoring your ApoB particle count annually to ensure your arteries remain free of plaque-forming debris.";
       }
     }
   </script>
