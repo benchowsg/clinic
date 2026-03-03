@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /metabolic-audit
-title: Metabolic Health Audit | A Healing Heart Medical
-description: Discover your metabolic score and see if you qualify for our medical weight loss program.
+title: Metabolic Health Audit | Precision Heart & Weight Mastery
+description: Analyze your internal metabolic markers. Discover your risk for 'Skinny-Fat' (TOFI) and check eligibility for our medical weight loss and heart protection programs.
 ---
 
 <style>
@@ -23,161 +23,206 @@ description: Discover your metabolic score and see if you qualify for our medica
     box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
   .advantage-icon {
-    color: #3498DB;
-    font-size: 2rem;
+    color: #e63946;
+    font-size: 2.5rem;
     margin-bottom: 15px;
+  }
+  .quiz-card {
+    border: none;
+    border-top: 6px solid #e63946;
+  }
+  .medical-benefit-list i {
+    color: #e63946;
+    margin-right: 10px;
   }
 </style>
 
 <main id="main">
-<section class="py-5 mt-5">
-<div class="container mt-4">
-    <div class="row justify-content-center text-center">
+
+  <section class="py-5 mt-5">
+    <div class="container mt-4">
+      <div class="row justify-content-center text-center">
         <div class="col-lg-8">
-            <span class="badge px-3 py-2 rounded-pill mb-3" style="background-color: #e1f0ff; color: #3498DB;">Clinical Assessment</span>
-            <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Your Metabolic Health Audit</h1>
-            <p class="lead text-muted mb-5">
-                Stop fighting your biology and start understanding it. Our 60-second audit analyzes your "Food Noise," energy patterns, and lifestyle markers.
-            </p>
+          <span class="badge px-3 py-2 rounded-pill mb-3" style="background-color: #fff5f5; color: #e63946; font-weight: 600;">Specialist Cardiac & Metabolic Assessment</span>
+          <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Metabolic Precision Audit</h1>
+          <p class="lead text-muted mb-5">
+            Identify the "Hidden Fire" of visceral fat and arterial aging. This assessment screens for <strong>Vascular Decompression</strong> needs and <strong>Medical Weight Mastery</strong> eligibility.
+          </p>
         </div>
+      </div>
     </div>
-</div>
-</section>
-  
-<div class="container mb-5">
+  </section>
+
+  <div class="container mb-5">
     <div class="row justify-content-center">
-        <div class="col-md-6 card shadow-lg p-4 border-0 rounded-4">
-            <div class="progress mb-4" style="height: 8px;">
-                <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 33%;"></div>
+      <div class="col-md-7 card shadow-lg p-4 p-md-5 border-0 rounded-4 quiz-card">
+        <div class="progress mb-4" style="height: 8px;">
+          <div id="progress-bar" class="progress-bar bg-danger" role="progressbar" style="width: 33%;"></div>
+        </div>
+
+        <form id="metabolic-quiz">
+          <div class="quiz-step" id="step-1">
+            <h3 class="mb-4 fw-bold">1. Patient Profile</h3>
+            <div class="mb-3">
+              <input type="text" name="Name" class="form-control form-control-lg" placeholder="Full Name" required>
             </div>
-
-            <form id="metabolic-quiz">
-                <div class="quiz-step" id="step-1">
-    <h3 class="mb-4">The Basics</h3>
-    <div class="mb-3">
-        <input type="text" name="Name" class="form-control form-control-lg" placeholder="Full Name" required>
-    </div>
-    <div class="row mb-3">
-        <div class="col">
-            <input type="email" name="Email" class="form-control form-control-lg" placeholder="Email Address" required>
-        </div>
-        <div class="col-md-4">
-            <select name="Gender" class="form-select form-select-lg" required>
-                <option value="">Biological Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <input type="number" name="Age" class="form-control form-control-lg" placeholder="Age" required>
-        </div>
-        <div class="col">
-            <input type="tel" name="WhatsApp" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
-        </div>
-    </div>
-    <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill" onclick="showStep(2)">Next Question</button>
-</div>
-
-                <div class="quiz-step d-none" id="step-2">
-                    <h3 class="mb-2">Do you experience "Food Noise"?</h3>
-                    <p class="text-muted mb-4">Constant thoughts about your next meal or cravings.</p>
-                    <select name="Food_Noise" class="form-select form-select-lg mb-4">
-                        <option value="1">Rarely</option>
-                        <option value="3">Sometimes</option>
-                        <option value="5">Constantly</option>
-                    </select>
-                    <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill" onclick="showStep(3)">Last Step</button>
-                </div>
-
-                <div class="quiz-step d-none" id="step-3">
-                    <h3 class="mb-4">Final Details</h3>
-                    <div class="mb-3">
-                        <input type="number" name="Weight" class="form-control form-control-lg" placeholder="Current Weight (kg)">
-                    </div>
-                  <div class="col">
-                      <input type="number" name="Height" class="form-control form-control-lg" placeholder="Height (cm)" required>
-                  </div>
-                    <div class="mb-4">
-                        <select name="Energy_Slump" class="form-select form-select-lg">
-                            <option value="">Afternoon Energy Slump?</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                    </div>
-                    <button type="submit" id="submit-btn" class="btn btn-success w-100 py-3 rounded-pill">Get My Audit Results</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="container pb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="row g-4 text-center">
-                <div class="col-md-4">
-                    <i class="fas fa-microscope advantage-icon"></i>
-                    <h5 class="fw-bold">Clinical Insight</h5>
-                    <p class="small text-muted">Identify hormonal roadblocks like insulin resistance.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="fas fa-file-medical-alt advantage-icon"></i>
-                    <h5 class="fw-bold">Personalized Score</h5>
-                    <p class="small text-muted">Receive a categorized metabolic health score.</p>
-                </div>
-                <div class="col-md-4">
-                    <i class="fas fa-user-md advantage-icon"></i>
-                    <h5 class="fw-bold">Expert Review</h5>
-                    <p class="small text-muted">Our medical team reviews your GLP-1 eligibility.</p>
-                </div>
+            <div class="row mb-3">
+              <div class="col-md-7 mb-3 mb-md-0">
+                <input type="email" name="Email" class="form-control form-control-lg" placeholder="Email Address" required>
+              </div>
+              <div class="col-md-5">
+                <select name="Gender" class="form-select form-select-lg" required>
+                  <option value="">Biological Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
             </div>
-        </div>
+            <div class="row mb-3">
+              <div class="col-md-4 mb-3 mb-md-0">
+                <input type="number" name="Age" class="form-control form-control-lg" placeholder="Age" required>
+              </div>
+              <div class="col-md-8">
+                <input type="tel" name="WhatsApp" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
+              </div>
+            </div>
+            <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill fw-bold" onclick="showStep(2)">Next: Metabolic Markers</button>
+          </div>
+
+          <div class="quiz-step d-none" id="step-2">
+            <h3 class="mb-2 fw-bold">2. Vital Measurements</h3>
+            <p class="text-muted mb-4">Crucial for calculating your <strong>Waist-to-Height Ratio (WtHR)</strong>.</p>
+            <div class="row mb-3">
+              <div class="col-md-6 mb-3">
+                <label class="small fw-bold mb-1">Height (cm)</label>
+                <input type="number" name="Height" class="form-control form-control-lg" placeholder="e.g. 170" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="small fw-bold mb-1">Waist Circumference (cm)</label>
+                <input type="number" name="Waist" class="form-control form-control-lg" placeholder="Measure at navel" required>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="small fw-bold mb-1">Frequency of "Food Noise" (Constant cravings/thoughts of food)</label>
+              <select name="Food_Noise" class="form-select form-select-lg">
+                <option value="1">Rarely (Steady-State)</option>
+                <option value="3">Sometimes</option>
+                <option value="5">Constantly (Hormonal Driver)</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill fw-bold" onclick="showStep(3)">Last Step: Clinical Focus</button>
+          </div>
+
+          <div class="quiz-step d-none" id="step-3">
+            <h3 class="mb-4 fw-bold">3. Clinical Focus</h3>
+            <div class="row mb-3">
+              <div class="col">
+                <label class="small fw-bold mb-1">Current Weight (kg)</label>
+                <input type="number" name="Weight" class="form-control form-control-lg" placeholder="Weight in kg">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="small fw-bold mb-1">Your Primary Health Goal</label>
+              <select name="Primary_Goal" class="form-select form-select-lg">
+                <option value="Heart Protection">Vascular & Heart Protection</option>
+                <option value="Medical Weight Loss">Medical Weight Loss (GLP-1/GIP)</option>
+                <option value="Both">Comprehensive Heart & Weight Mastery</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <select name="Family_History" class="form-select form-select-lg">
+                <option value="">Family History of Heart Attack?</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <button type="submit" id="submit-btn" class="btn btn-danger w-100 py-3 rounded-pill fw-bold">Get My Clinical Audit Results</button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
 
-<script>
-function showStep(step) {
-    document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('d-none'));
-    document.getElementById('step-' + step).classList.remove('d-none');
-    const progress = (step / 3) * 100;
-    document.getElementById('progress-bar').style.width = progress + '%';
-}
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="fw-bold mb-4" style="color: #2c4964;">Medical Weight Mastery</h2>
+          <p class="lead">At A Healing Heart Medical, weight loss is a clinical necessity for <strong>Vascular Decompression</strong>.</p>
+          <p>Excess visceral fat is more than just "stored energy"; it is an active inflammatory organ that damages arterial linings. By utilizing the <strong>GLP-1 pathway</strong>, we help patients silence "Food Noise" and achieve a healthy transformation while protecting their lean muscle mass.</p>
+          
+          <div class="medical-benefit-list mt-4">
+            <p><i class="fas fa-check-circle"></i> <strong>Hormonal Reset:</strong> Correcting the signals that drive overeating.</p>
+            <p><i class="fas fa-check-circle"></i> <strong>Visceral Target:</strong> Prioritizing the loss of "Internal Fat" around organs.</p>
+            <p><i class="fas fa-check-circle"></i> <strong>Cardiac Guard:</strong> Reducing the load on your heart and arteries.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          
+        </div>
+      </div>
+    </div>
+  </section>
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzd9yMCSBuR9h53OSZvOgboLtdX2mzkSrP71oYMz2ntSj2Q7beTSibRE-nXOT-v4Y3i/exec';
-const form = document.getElementById('metabolic-quiz');
+  <div class="container py-5">
+    <div class="row g-4 text-center justify-content-center">
+      <div class="col-md-4">
+        <i class="fas fa-dna advantage-icon"></i>
+        <h5 class="fw-bold">ApoB Particle Count</h5>
+        <p class="small text-muted">We count the actual number of "atherogenic" particles in your blood, moving beyond basic cholesterol weight.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-ruler-vertical advantage-icon"></i>
+        <h5 class="fw-bold">The 0.5 Rule</h5>
+        <p class="small text-muted">A superior metric for heart safety. We aim to keep your waist circumference below 50% of your height.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-file-medical advantage-icon"></i>
+        <h5 class="fw-bold">Specialist Review</h5>
+        <p class="small text-muted">Your audit markers are reviewed by our clinical team to determine your metabolic score and program eligibility.</p>
+      </div>
+    </div>
+  </div>
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    const submitBtn = document.getElementById('submit-btn');
-    
-    // 1. Add Spinner and Disable Button
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Calculating your score...`;
+  <script>
+    function showStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('d-none'));
+      document.getElementById('step-' + step).classList.remove('d-none');
+      const progress = (step / 3) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => {
-        // 2. Hide the form and show a beautiful Success Message
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzd9yMCSBuR9h53OSZvOgboLtdX2mzkSrP71oYMz2ntSj2Q7beTSibRE-nXOT-v4Y3i/exec';
+    const form = document.getElementById('metabolic-quiz');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submit-btn');
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Calibrating Metabolic Markers...`;
+
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
         document.getElementById('metabolic-quiz').innerHTML = `
-            <div class="text-center py-4">
-                <i class="fas fa-check-circle text-success mb-3" style="font-size: 3rem;"></i>
-                <h2 class="fw-bold">Audit Submitted!</h2>
-                <p class="text-muted">Our clinical team is currently analyzing your metabolic markers. You will receive your score via email shortly.</p>
-                <hr>
-                <p class="fw-bold">Want to fast-track your results?</p>
-                <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart%20Medical%2C%20I%27d%20like%20to%20enquire%20about%20my%20metabolic%20audit." class="btn btn-success btn-lg rounded-pill w-100">
-                    <i class="fab fa-whatsapp me-2"></i> Chat with Clinic Staff
-                </a>
-            </div>
+          <div class="text-center py-4">
+            <i class="fas fa-check-shield text-danger mb-3" style="font-size: 4rem;"></i>
+            <h2 class="fw-bold">Audit Successfully Submitted</h2>
+            <p class="text-muted">Our clinical team is currently analyzing your WtHR and metabolic risk markers. You will receive a summary of your eligibility for Heart Protection and Weight Mastery shortly.</p>
+            <hr>
+            <p class="fw-bold">Immediate Inquiry?</p>
+            <a href="https://wa.me/6569621362?text=Hi%20Dr%20Gerald%2C%20I%20have%20submitted%20my%20Metabolic%20Audit.%20I%20am%20interested%20in%20discussing%20my%20results%20and%20the%20Precision%20Weight%20program." class="btn btn-success btn-lg rounded-pill w-100">
+              <i class="fab fa-whatsapp me-2"></i> Fast-track via WhatsApp
+            </a>
+          </div>
         `;
-    })
-    .catch(error => {
+      })
+      .catch(error => {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = "Try Again";
-        alert("Submission failed. Please check your connection.");
+        submitBtn.innerHTML = "Retry Submission";
+        alert("Submission failed. Please check your internet connection.");
+      });
     });
-});
-</script>
+  </script>
 
 </main>
