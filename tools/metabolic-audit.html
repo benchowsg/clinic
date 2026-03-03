@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /metabolic-audit
-title: Metabolic Health Audit | Precision Heart & Weight Mastery
-description: Analyze your internal metabolic markers. Discover your risk for 'Skinny-Fat' (TOFI) and check eligibility for our medical weight loss and heart protection programs.
+title: Instant Metabolic Health Audit | A Healing Heart Medical
+description: Calculate your Waist-to-Height ratio and discover your metabolic risk category instantly.
 ---
 
 <style>
@@ -11,206 +11,126 @@ description: Analyze your internal metabolic markers. Discover your risk for 'Sk
     letter-spacing: normal !important;
   }
   .btn-sync-primary {
-    background-color: #3498DB;
-    color: white;
-    border: none;
-    transition: all 0.3s ease;
+    background-color: #3498DB; color: white; border: none; transition: all 0.3s ease;
   }
   .btn-sync-primary:hover {
-    background-color: #ffc107 !important;
-    color: #2c4964 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+    background-color: #ffc107 !important; color: #2c4964 !important; transform: translateY(-2px);
   }
-  .advantage-icon {
-    color: #e63946;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-  }
-  .quiz-card {
-    border: none;
-    border-top: 6px solid #e63946;
-  }
+  .quiz-card { border: none; border-top: 6px solid #e63946; }
+  .result-box { display: none; padding: 30px; border-radius: 15px; text-align: center; }
+  .risk-high { background: #fff5f5; border: 2px solid #e63946; }
+  .risk-optimal { background: #f0fff4; border: 2px solid #38a169; }
 </style>
 
 <main id="main">
-
-  <section class="py-5 mt-5">
-    <div class="container mt-4">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-8">
-          <span class="badge px-3 py-2 rounded-pill mb-3" style="background-color: #fff5f5; color: #e63946; font-weight: 600;">Clinical Assessment</span>
-          <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Metabolic Precision Audit</h1>
-          <p class="lead text-muted mb-5">
-            Identify the "Hidden Fire" of visceral fat. Complete this 60-second screening to calculate your <strong>Waist-to-Height Ratio</strong> and check eligibility for our Heart & Weight Mastery programs.
-          </p>
-        </div>
-      </div>
+  <section class="py-5 mt-5 text-center">
+    <div class="container">
+      <h1 class="display-5 fw-bold" style="color: #2c4964;">Metabolic Health Self-Audit</h1>
+      <p class="lead text-muted">Instant analysis of your "Hidden" visceral fat risk. No contact details required for results.</p>
     </div>
   </section>
 
   <div class="container mb-5">
     <div class="row justify-content-center">
       <div class="col-md-7 card shadow-lg p-4 p-md-5 border-0 rounded-4 quiz-card">
-        <div class="progress mb-4" style="height: 8px;">
-          <div id="progress-bar" class="progress-bar bg-danger" role="progressbar" style="width: 25%;"></div>
+        
+        <div id="audit-container">
+          <form id="instant-audit">
+            <div class="row mb-4">
+              <div class="col-md-6 mb-3">
+                <label class="fw-bold small mb-2">Height (cm)</label>
+                <input type="number" id="height" class="form-control form-control-lg" placeholder="e.g. 170" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="fw-bold small mb-2">Waist Circumference (cm)</label>
+                <input type="number" id="waist" class="form-control form-control-lg" placeholder="Measure at navel" required>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="fw-bold small mb-2">Do you experience "Food Noise" or afternoon slumps?</label>
+              <select id="metabolic_signs" class="form-select form-select-lg">
+                <option value="low">Rarely / Never</option>
+                <option value="high">Frequently / Daily</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn btn-danger w-100 py-3 rounded-pill fw-bold" onclick="calculateRisk()">Calculate My Metabolic Score</button>
+          </form>
         </div>
 
-        <form id="metabolic-quiz">
+        <div id="result-display" class="result-box">
+          <h2 id="result-title" class="fw-bold mb-3"></h2>
+          <div id="result-stats" class="mb-4 fs-5"></div>
+          <p id="result-text" class="text-muted mb-4"></p>
           
-          <div class="quiz-step" id="step-1">
-            <h3 class="mb-2 fw-bold">1. Body Composition</h3>
-            <p class="text-muted mb-4">We use these to check for "Silent" visceral fat (The 0.5 Rule).</p>
-            <div class="row mb-3">
-              <div class="col-md-6 mb-3">
-                <label class="small fw-bold mb-1">Height (cm)</label>
-                <input type="number" name="Height" class="form-control form-control-lg" placeholder="e.g. 170" required>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label class="small fw-bold mb-1">Waist Circumference (cm)</label>
-                <input type="number" name="Waist" class="form-control form-control-lg" placeholder="Measure at navel" required>
-              </div>
-            </div>
-            <div class="mb-4">
-               <label class="small fw-bold mb-1">Current Weight (kg)</label>
-               <input type="number" name="Weight" class="form-control form-control-lg" placeholder="Weight in kg">
-            </div>
-            <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill fw-bold" onclick="showStep(2)">Next: Metabolic Health</button>
+          <div class="p-3 bg-white rounded-3 mb-4 shadow-sm">
+            <h5 class="fw-bold mb-2">Recommended Next Step:</h5>
+            <p class="small mb-0" id="next-step-text"></p>
           </div>
 
-          <div class="quiz-step d-none" id="step-2">
-            <h3 class="mb-4 fw-bold">2. Metabolic Drivers</h3>
-            <div class="mb-3">
-              <label class="small fw-bold mb-1">Frequency of "Food Noise" (Cravings)</label>
-              <select name="Food_Noise" class="form-select form-select-lg">
-                <option value="1">Rarely (Steady-State)</option>
-                <option value="3">Sometimes</option>
-                <option value="5">Constantly (Hormonal Driver)</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="small fw-bold mb-1">Afternoon Energy Slump?</label>
-              <select name="Energy_Slump" class="form-select form-select-lg">
-                <option value="No">No</option>
-                <option value="Yes">Yes (Insulin Resistance Marker)</option>
-              </select>
-            </div>
-            <div class="mb-4">
-              <label class="small fw-bold mb-1">Family History of Heart Attack?</label>
-              <select name="Family_History" class="form-select form-select-lg">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
-              </select>
-            </div>
-            <button type="button" class="btn btn-sync-primary w-100 py-3 rounded-pill fw-bold" onclick="showStep(3)">Next: Final Result</button>
-          </div>
+          <a id="cta-button" href="https://wa.me/6569621362" class="btn btn-success btn-lg rounded-pill w-100 fw-bold">
+            <i class="fab fa-whatsapp me-2"></i> Discuss Results with Clinic
+          </a>
+          <button class="btn btn-link mt-3 text-muted" onclick="location.reload()">Reset Audit</button>
+        </div>
 
-          <div class="quiz-step d-none" id="step-3">
-            <h3 class="mb-2 fw-bold">3. Review & Results</h3>
-            <p class="text-muted mb-4">Enter your details to receive your <strong>Precision Metabolic Score</strong> and eligibility summary.</p>
-            <div class="mb-3">
-              <input type="text" name="Name" class="form-control form-control-lg" placeholder="Full Name" required>
-            </div>
-            <div class="mb-3">
-              <input type="email" name="Email" class="form-control form-control-lg" placeholder="Email Address" required>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-7 mb-3 mb-md-0">
-                    <input type="tel" name="WhatsApp" class="form-control form-control-lg" placeholder="WhatsApp Number" required>
-                </div>
-                <div class="col-md-5">
-                    <select name="Gender" class="form-select form-select-lg" required>
-                      <option value="">Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                    </select>
-                </div>
-            </div>
-            <div class="mb-4">
-                <label class="small fw-bold mb-1">Primary Interest</label>
-                <select name="Primary_Goal" class="form-select form-select-lg">
-                    <option value="Heart Protection">Heart Protection Audit</option>
-                    <option value="Weight Loss">Medical Weight Loss (GLP-1)</option>
-                    <option value="Both">Comprehensive Heart & Weight Mastery</option>
-                </select>
-            </div>
-            <button type="submit" id="submit-btn" class="btn btn-danger w-100 py-3 rounded-pill fw-bold">Get My Audit Results</button>
-          </div>
-        </form>
       </div>
     </div>
   </div>
 
-  <div class="container py-5">
-    <div class="row g-4 text-center justify-content-center">
-      <div class="col-md-4">
-        <i class="fas fa-dna advantage-icon"></i>
-        <h5 class="fw-bold">ApoB Particle Count</h5>
-        <p class="small text-muted">We look beyond cholesterol "weight" to count the actual particles driving arterial aging.</p>
-      </div>
-      <div class="col-md-4">
-        <i class="fas fa-ruler-vertical advantage-icon"></i>
-        <h5 class="fw-bold">The 0.5 Rule</h5>
-        <p class="small text-muted">A precision check for visceral fat. We aim for a waist-to-height ratio below 0.5.</p>
-      </div>
-      <div class="col-md-4">
-        <i class="fas fa-prescription-bottle-alt advantage-icon"></i>
-        <h5 class="fw-bold">Weight Mastery</h5>
-        <p class="small text-muted">Clinical protocols to silence "Food Noise" and protect vascular health.</p>
-      </div>
+  <section class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h3 class="fw-bold">Why the 0.5 Ratio?</h3>
+            <p>Weight alone is a poor predictor of heart health. Visceral fat—the toxic fat wrapped around your organs—is the primary driver of arterial inflammation. The <strong>Waist-to-Height Ratio</strong> is a clinical gold standard for identifying "Skinny-Fat" (TOFI) risks that standard BMI misses.</p>
+        </div>
+        
+        <div class="col-md-6">
+            <h3 class="fw-bold">The ApoB Connection</h3>
+            <p>If your audit shows a high ratio, it often correlates with a high <strong>ApoB particle count</strong>. These are the lethal particles that burrow into artery walls. Identifying this early allows for <strong>Vascular Decompression</strong>—protecting your heart before damage occurs.</p>
+        </div>
     </div>
-  </div>
+  </section>
 
   <script>
-    function showStep(step) {
-      // Hide all steps
-      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('d-none'));
+    function calculateRisk() {
+      const h = document.getElementById('height').value;
+      const w = document.getElementById('waist').value;
+      const signs = document.getElementById('metabolic_signs').value;
+
+      if (!h || !w) {
+        alert("Please enter both height and waist measurements.");
+        return;
+      }
+
+      const ratio = (w / h).toFixed(2);
+      const container = document.getElementById('audit-container');
+      const display = document.getElementById('result-display');
       
-      // Show requested step
-      const target = document.getElementById('step-' + step);
-      if (target) {
-        target.classList.remove('d-none');
-        
-        // Update progress bar
-        const progress = (step / 3) * 100;
-        document.getElementById('progress-bar').style.width = progress + '%';
-        
-        // Scroll to top of card for mobile users
-        window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+      container.style.display = 'none';
+      display.style.display = 'block';
+
+      const stats = document.getElementById('result-stats');
+      const title = document.getElementById('result-title');
+      const text = document.getElementById('result-text');
+      const nextStep = document.getElementById('next-step-text');
+
+      stats.innerHTML = `Your Ratio: <strong>${ratio}</strong> <small class="text-muted">(Target: < 0.50)</small>`;
+
+      if (ratio >= 0.50 || signs === 'high') {
+        display.classList.add('risk-high');
+        title.innerHTML = "Metabolic Alert: Elevated Risk";
+        title.style.color = "#e63946";
+        text.innerHTML = "Your measurements suggest an accumulation of <strong>visceral fat</strong>. This 'internal fire' is a known driver of insulin resistance and premature arterial aging.";
+        nextStep.innerHTML = "A <strong>Metabolic Precision Audit</strong> is advised to check your ApoB particle count and vascular age.";
+      } else {
+        display.classList.add('risk-optimal');
+        title.innerHTML = "Metabolic Status: Optimal";
+        title.style.color = "#38a169";
+        text.innerHTML = "Your waist-to-height ratio is within the healthy range. You are currently maintaining good metabolic leverage.";
+        nextStep.innerHTML = "Focus on maintenance. Consider an annual <strong>ApoB screening</strong> to ensure your internal particle count remains low.";
       }
     }
-
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzd9yMCSBuR9h53OSZvOgboLtdX2mzkSrP71oYMz2ntSj2Q7beTSibRE-nXOT-v4Y3i/exec';
-    const form = document.getElementById('metabolic-quiz');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const submitBtn = document.getElementById('submit-btn');
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing Clinical Markers...`;
-
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-        document.getElementById('metabolic-quiz').innerHTML = `
-          <div class="text-center py-4">
-            <i class="fas fa-check-shield text-danger mb-3" style="font-size: 4rem;"></i>
-            <h2 class="fw-bold">Audit Received</h2>
-            <p class="text-muted">Dr. Gerald Thang's team is analyzing your markers. You will receive your score and program eligibility via WhatsApp/Email shortly.</p>
-            <hr>
-            <p class="fw-bold">Priority Cardiac Review:</p>
-            <a href="https://wa.me/6569621362?text=Hi%20Dr%20Gerald%2C%20I%20just%20completed%20the%20Precision%20Audit.%20My%20waist-to-height%20ratio%20needs%20review." class="btn btn-success btn-lg rounded-pill w-100">
-              <i class="fab fa-whatsapp me-2"></i> Fast-track via WhatsApp
-            </a>
-          </div>
-        `;
-      })
-      .catch(error => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = "Retry Submission";
-        console.error('Error!', error.message);
-      });
-    });
   </script>
-
 </main>
