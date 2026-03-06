@@ -163,7 +163,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
                 <div id="riskStatusWrapper" class="d-flex flex-column flex-sm-row align-items-center justify-content-center mb-4">
                     <div id="riskIconContainer" class="mb-3 mb-sm-0 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; flex-shrink: 0; margin-right: 20px; margin-sm-right: 20px;"></div>
                     <div class="ms-sm-3">
-                        <h2 class="fw-bold mb-1" id="riskLevelHeadline" style="color: #2c4964;">Calculating...</h2>
+                        <h2 class="fw-bold mb-1" id="riskLevelHeadline" style="color: #2c4964;">Presenting Your Estimated</h2>
                         <p class="mb-0 text-muted fw-bold small text-uppercase">
                             10-Year Score: <span id="scorePercent">0%</span>
                         </p>
@@ -182,7 +182,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
                 <div class="mt-4 p-3 rounded-3" style="background-color: #fff5f5; border-left: 4px solid #e53e3e;">
                     <p class="extra-small text-muted text-start mb-0" style="font-size: 0.8rem; line-height: 1.4;">
                         <strong>Clinical Limitation Notice:</strong> This tool provides a statistical estimate based on population data and cannot detect <strong>non-calcified (soft) plaque</strong> or specific structural anomalies. <br><br>
-                        A 10-year risk score is not a diagnosis. To confirm your actual <strong>arterial age</strong> and biological risk, a formal clinical audit is required.
+                        A 10-year risk score is not a diagnosis. To confirm your actual <strong>arterial age</strong> and biological risk, a formal clinical evaluation is recommended.
                     </p>
                 </div>
 
@@ -197,100 +197,125 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
     </div>
   </section>
 
-  <section class="py-5 bg-white border-top">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-6">
-          <h3 class="fw-bold mb-4" style="color: #2c4964;">Why Ethnicity & BMI Matter</h3>
-          <p class="text-muted" style="line-height: 1.6;">
-            Medical research in Singapore proves that Asians face higher cardiovascular risks at a <strong>lower BMI</strong> than Westerners. This is due to the "Asian Phenotype"—higher visceral fat (internal fat) even if you appear slim.
-          </p>
+<section class="py-5 bg-white border-top">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <h3 class="fw-bold mb-4" style="color: #2c4964;">Why Ethnicity & BMI Matter</h3>
+        <p class="text-muted" style="line-height: 1.6;">
+          Medical research in Singapore indicates that Asian populations face higher metabolic risks at a <strong>lower BMI</strong> compared to Western populations. This is largely attributed to the "Asian Phenotype"—a tendency to carry higher visceral (internal) fat even with a seemingly slim exterior.
+        </p>
+        
+        <div class="mb-4">
+          <h6 class="fw-bold text-dark small text-uppercase mb-3" style="letter-spacing: 1px;">Prevalence Insights (Singapore Context)</h6>
           
-          <div class="d-flex align-items-start mb-4">
+          <div class="d-flex align-items-start mb-3">
             <div class="bg-primary-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-dna text-primary"></i></div>
             <div>
-              <h6 class="fw-bold mb-1">Genetic Risk Multipliers</h6>
-              <p class="small text-muted mb-0">South Asian (Indian) and Malay ethnicities are clinically recognized independent risk factors for earlier coronary artery disease.</p>
+              <p class="small text-dark mb-0"><strong>South Asian / Indian:</strong> This group shows a significantly higher prevalence of diabetes (approx. <strong>14.2%</strong>) and an elevated risk for premature Coronary Artery Disease (CAD).</p>
             </div>
           </div>
 
-          <div class="d-flex align-items-start">
-            <div class="bg-danger-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-weight-scale text-danger"></i></div>
+          <div class="d-flex align-items-start mb-3">
+            <div class="bg-warning-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-person-rays text-warning"></i></div>
             <div>
-              <h6 class="fw-bold mb-1">Asian BMI Thresholds</h6>
-              <p class="small text-muted mb-0">Health risks for Asians escalate at a BMI of <strong>23.0</strong>, whereas Western standards often don't flag risk until 25.0.</p>
+              <p class="small text-dark mb-0"><strong>Malay:</strong> Statistically higher rates of hypertension and obesity-related metabolic issues, with a diabetes prevalence of approx. <strong>14.4%</strong>.</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-4">
+            <div class="bg-info-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-chart-line text-info"></i></div>
+            <div>
+              <p class="small text-dark mb-0"><strong>Chinese:</strong> While the baseline diabetes prevalence is lower (approx. <strong>8.2%</strong>), the risk of cardiovascular events increases sharply once BMI crosses the Asian "Overweight" threshold.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="card border-0 shadow-sm overflow-hidden rounded-4">
-            <div class="card-header bg-dark text-white py-3">
-              <h6 class="mb-0 fw-bold">BMI Categories: Asian vs. International</h6>
-            </div>
-            <div class="table-responsive">
-              <table class="table mb-0 text-center align-middle">
-                <thead class="table-light small">
-                  <tr>
-                    <th>Category</th>
-                    <th>Asian BMI</th>
-                    <th>Western BMI</th>
-                  </tr>
-                </thead>
-                <tbody style="font-size: 0.95rem;">
-                  <tr>
-                    <td class="fw-bold text-start ps-4">Healthy</td>
-                    <td><span class="badge bg-success risk-badge">18.5 – 22.9</span></td>
-                    <td><span class="badge bg-secondary opacity-50 risk-badge">18.5 – 24.9</span></td>
-                  </tr>
-                  <tr class="table-warning" style="background-color: #fffdf5;">
-                    <td class="fw-bold text-start ps-4">Overweight</td>
-                    <td><span class="badge bg-warning text-dark risk-badge">23.0 – 27.4</span></td>
-                    <td><span class="badge bg-secondary opacity-50 risk-badge">25.0 – 29.9</span></td>
-                  </tr>
-                  <tr class="table-danger" style="background-color: #fff5f5;">
-                    <td class="fw-bold text-start ps-4">Obese</td>
-                    <td><span class="badge bg-danger risk-badge">27.5+</span></td>
-                    <td><span class="badge bg-secondary opacity-50 risk-badge">30.0+</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <div class="d-flex align-items-start">
+          <div class="bg-danger-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-weight-scale text-danger"></i></div>
+          <div>
+            <h6 class="fw-bold mb-1">Asian BMI Thresholds</h6>
+            <p class="small text-muted mb-0">Health risks for Asians escalate at a BMI of <strong>23.0</strong>, whereas Western standards often don't flag risk until 25.0.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm overflow-hidden rounded-4">
+          <div class="card-header bg-dark text-white py-3">
+            <h6 class="mb-0 fw-bold">BMI Categories: Asian vs. International</h6>
+          </div>
+          <div class="table-responsive">
+            <table class="table mb-0 text-center align-middle">
+              <thead class="table-light small">
+                <tr>
+                  <th>Category</th>
+                  <th>Asian BMI</th>
+                  <th>Western BMI</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.95rem;">
+                <tr>
+                  <td class="fw-bold text-start ps-4">Healthy</td>
+                  <td><span class="badge bg-success risk-badge">18.5 – 22.9</span></td>
+                  <td><span class="badge bg-secondary opacity-50 risk-badge">18.5 – 24.9</span></td>
+                </tr>
+                <tr class="table-warning" style="background-color: #fffdf5;">
+                  <td class="fw-bold text-start ps-4">Overweight</td>
+                  <td><span class="badge bg-warning text-dark risk-badge">23.0 – 27.4</span></td>
+                  <td><span class="badge bg-secondary opacity-50 risk-badge">25.0 – 29.9</span></td>
+                </tr>
+                <tr class="table-danger" style="background-color: #fff5f5;">
+                  <td class="fw-bold text-start ps-4">Obese</td>
+                  <td><span class="badge bg-danger risk-badge">27.5+</span></td>
+                  <td><span class="badge bg-secondary opacity-50 risk-badge">30.0+</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer bg-light py-2">
+            <p class="extra-small text-muted mb-0" style="font-size: 0.7rem;">Source: Singapore National Population Health Survey & WHO Expert Consultation.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="py-5 border-top bg-light">
+ <section class="py-5 border-top bg-light">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Scientific Foundation</h5>
+          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Scientific Foundation & Local Context</h5>
           <p class="small text-muted mb-4">
-            International calculators often underestimate risk for Asian populations. This tool incorporates weighting based on Singapore's MOH Clinical Practice Guidelines to provide a more accurate local outlook.
+            Standard international risk models often lack calibration for Asian populations. This estimator provides an <strong>educational outlook</strong> by referencing the Singapore National Population Health Survey and MOH clinical frameworks to better reflect local health trends.
           </p>
           
           <div class="row g-4">
             <div class="col-md-6">
-              <h6 class="fw-bold small text-muted text-uppercase mb-2">Ethnicity & BMI</h6>
-              <p class="text-muted" style="font-size: 0.85rem;">
-                Singapore guidelines recognize specific ethnicities as "risk enhancers." Furthermore, the "Thin-on-the-Outside, Fat-on-the-Inside" (TOFI) phenotype is common in local populations, necessitating lower intervention thresholds.
+              <h6 class="fw-bold small text-muted text-uppercase mb-2">Prevalence & Phenotype</h6>
+              <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+                Singapore's health landscape shows varying metabolic profiles across ethnicities. For example, while <strong>8.2%</strong> of Chinese adults have diabetes, the prevalence rises to <strong>14.2%</strong> for South Asians and <strong>14.4%</strong> for Malays. Furthermore, the "Thin-on-the-Outside, Fat-on-the-Inside" (TOFI) phenotype common in Singapore means internal health risks can exist even when BMI appears normal.
               </p>
             </div>
             <div class="col-md-6">
-              <h6 class="fw-bold small text-muted text-uppercase mb-2">Clinical References</h6>
+              <h6 class="fw-bold small text-muted text-uppercase mb-2">Clinical Reference Framework</h6>
               <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
-                <li class="mb-2">1. MOH Singapore: Clinical Practice Guidelines on Hypertension and Lipid Management.</li>
-                <li class="mb-2">2. WHO Expert Consultation: BMI thresholds for Asian populations.</li>
-                <li class="mb-2">3. Singapore Heart Foundation Hypertension Management Standards.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>1. National Population Health Survey (Singapore) - Chronic Disease Prevalence.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>2. MOH Singapore: Clinical Practice Guidelines (Hypertension & Lipids).</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>3. WHO Expert Consultation: BMI thresholds for Asian populations.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>4. Singapore Heart Foundation: Preventive Standards.</li>
               </ul>
             </div>
           </div>
-          <div class="mt-4 pt-4 border-top text-center">
-            <p class="extra-small text-muted" style="font-size: 0.75rem;">
-              <strong>Disclaimer:</strong> This tool is for educational purposes and is not a substitute for professional medical advice.
-            </p>
+
+          <div class="mt-4 pt-4 border-top">
+            <div class="p-3 rounded-3 bg-white border border-warning-subtle text-center">
+              <p class="extra-small text-muted mb-0" style="font-size: 0.78rem; line-height: 1.5;">
+                <span class="fw-bold text-dark"><i class="fa-solid fa-triangle-exclamation text-warning me-1"></i> Wellness Tool Notice:</span> 
+                This calculator is an informational resource intended for health awareness and educational purposes only. It is not a medical device, does not perform clinical diagnosis, and is not a substitute for professional medical assessment. All "risk scores" are statistical estimates; a formal clinical evaluation at <strong>A Healing Heart Medical</strong> is required for a definitive diagnosis or treatment plan.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -374,12 +399,12 @@ function calculateRisk() {
 
     if (ethnicity === 'indian') {
         score += 6; 
-        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">Asian Risk Multiplier Applied</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">Asian Prevalence Context Applied</span>';
     } else if (ethnicity === 'malay') {
         score += 4;
-        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Asian Risk Enhancer Applied</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Asian Prevalence Context Applied</span>';
     } else {
-        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Standard Calibration Applied</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Asian Prevalence Context Applied</span>';
     }
 
     if (sbp < 90) {
@@ -403,16 +428,16 @@ function calculateRisk() {
         iconBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation fa-2x"></i>';
         headline.innerText = "Moderate Risk Alert";
         headline.style.color = "#fd7e14";
-        noteDisplay.innerHTML = "<strong>Status: Rising.</strong> Your trajectory suggests early metabolic strain. This is the 'Golden Window' for intervention before irreversible structural damage occurs.";
+        noteDisplay.innerHTML = "<strong>Status: Rising.</strong> our results are higher than average. We recommend scheduling a formal clinical screening to accurately assess your cardiovascular health.";
         scoreDisplay.innerText = score.toFixed(1) + "%";
     } 
     else {
         iconBox.classList.add('status-alarm');
         iconBox.innerHTML = '<i class="fa-solid fa-bell-exclamation fa-2x"></i>';
-        headline.innerText = "High Risk Alarm";
+        headline.innerText = "Elevated Risk Profile";
         headline.style.color = "#dc3545";
         cta.classList.replace('btn-dark', 'btn-danger'); 
-        noteDisplay.innerHTML = "<strong>Status: Critical.</strong> Immediate clinical consultation is required. Your scores show significant health concerns that put you at a high risk for heart disease or a developing metabolic condition.";
+        noteDisplay.innerHTML = "<strong>Observation:</strong> Your calculated score is significantly elevated. We strongly recommend a professional clinical assessment to discuss these metrics and develop a formal management plan.";
         scoreDisplay.innerText = score.toFixed(1) + "%";
     }
 
