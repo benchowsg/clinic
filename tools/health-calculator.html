@@ -420,7 +420,7 @@ function calculateRisk() {
         iconBox.innerHTML = '<i class="fa-solid fa-shield-heart fa-2x"></i>';
         headline.innerText = "Low Risk Profile";
         headline.style.color = "#198754";
-        noteDisplay.innerHTML = "<strong>Status: Stable.</strong> Your metrics are within optimal range. However, 10-year scores don't track soft plaque; we recommend a baseline clinical audit to confirm your arterial age.";
+        noteDisplay.innerHTML = "<strong>Observation:</strong> Your calculated score is within optimal range. However, 10-year scores don't track soft plaque; we recommend a baseline clinical audit to confirm your arterial age.";
         scoreDisplay.innerText = score.toFixed(1) + "%";
     } 
     else if (score < 15) {
@@ -428,7 +428,7 @@ function calculateRisk() {
         iconBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation fa-2x"></i>';
         headline.innerText = "Moderate Risk Alert";
         headline.style.color = "#fd7e14";
-        noteDisplay.innerHTML = "<strong>Status: Rising.</strong> our results are higher than average. We recommend scheduling a formal clinical screening to accurately assess your cardiovascular health.";
+        noteDisplay.innerHTML = "<strong>Observation:</strong> Your calculated score is higher than average. We recommend scheduling a formal clinical screening to accurately assess your cardiovascular health.";
         scoreDisplay.innerText = score.toFixed(1) + "%";
     } 
     else {
