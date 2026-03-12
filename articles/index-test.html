@@ -1,0 +1,288 @@
+---
+layout: default
+permalink: /articles/index-test
+title: Health Library & Clinical Insights | Dr. Gerald Thang
+description: Professional medical insights from Singapore on cardiology, genetic heart risk, metabolic synergy, vascular longevity, and intermediate care, curated by Principal Physician Dr. Gerald Thang.
+---
+
+<style>
+  /* Fix for Fixed Navigation */
+  .library-hero {
+    background: linear-gradient(45deg, #2c4964 0%, #3498db 100%);
+    padding: 160px 0 100px 0; 
+    color: white;
+  }
+  
+  @media (max-width: 991px) {
+    .library-hero {
+      padding: 130px 0 70px 0;
+    }
+  }
+  
+  #main h1, #main h2, #main h3, #main h4, #main p, #main a {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  /* Filter Bar Styles */
+  .filter-container {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    position: sticky;
+    top: 70px; /* Adjust based on your header height */
+    z-index: 100;
+  }
+
+  .filter-btn {
+    border: 1px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    margin: 5px;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    background: #3498db;
+    color: #fff;
+  }
+
+  .article-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  }
+
+  .card-content {
+    padding: 30px;
+    flex-grow: 1;
+  }
+
+  .category-label {
+    color: #3498db;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+  }
+
+  .card-footer {
+    padding: 20px 30px;
+    background: #fdfcf0; 
+    border-top: 1px solid #f1f1f1;
+  }
+</style>
+
+<main id="main">
+  
+  <section class="library-hero">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Health Library</h1>
+      <p class="lead opacity-90 mx-auto" style="max-width: 750px;">
+        Clinical perspectives and evidence-based guidance on cardiology, metabolic synergy, and vascular longevity, curated by Principal Physician Dr. Gerald Thang.
+      </p>
+    </div>
+  </section>
+
+<div class="filter-container shadow-sm">
+    <div class="container text-center">
+      <button class="filter-btn active" data-filter="all">All Perspectives</button>
+      <button class="filter-btn" data-filter="Cardiology">Cardiology</button>
+      <button class="filter-btn" data-filter="Metabolic">Metabolic Synergy</button>
+      <button class="filter-btn" data-filter="Care">Care & Recovery</button>
+      <button class="filter-btn" data-filter="Wellness">Wellness & Longevity</button>
+    </div>
+  </div>
+
+<section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4 justify-content-center" id="article-grid">
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Cardiology">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Cardiology & Clinical Care</span>
+              <h2 class="h4 fw-bold mb-3">7 Things About Heart Failure You Need to Know</h2>
+              <p class="text-muted small mb-4">A straightforward clinical guide: understanding symptoms, advanced diagnostics, and proactive management for long-term cardiac stability.</p>
+              <a href="/articles/7-things-about-heart-failure" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Cardiology">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Cardiology & Genetics</span>
+              <h2 class="h4 fw-bold mb-3">The Rise of Lp(a): The Hidden Genetic Risk Factor</h2>
+              <p class="text-muted small mb-4">Why standard cholesterol tests aren't enough and how our Principal Physician identifies these genetic "silent" markers.</p>
+              <a href="/articles/lpa-genetic-heart-risk" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Care">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Intermediate Care Model</span>
+              <h2 class="h4 fw-bold mb-3">Intermediate Care: The Bridge to Post-Hospital Recovery</h2>
+              <p class="text-muted small mb-4">Redefining transitions with meticulous risk stratification and rehabilitative oversight: a new model for clinical stewardship in Singapore.</p>
+              <a href="/articles/intermediate-care-bridge-to-recovery" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Metabolic">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Metabolic Synergy</span>
+              <h2 class="h4 fw-bold mb-3">Tropical Fruits & Vascular Health: The Durian Perspective</h2>
+              <p class="text-muted small mb-4">Understanding glycemic velocity: How the "King of Fruit" impacts insulin response and arterial stiffness in high-performers.</p>
+              <a href="/articles/metabolic-impact-durian" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Care">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Festive Care & Safety</span>
+              <h2 class="h4 fw-bold mb-3">CNY Survival Guide: Managing Chronic Conditions Globally</h2>
+              <p class="text-muted small mb-4">Clinical stewardship doesn't take a holiday. Proactive tips for managing heart failure and diabetes during festive seasons.</p>
+              <a href="/articles/cny-survival-guide-chronic-care" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Wellness">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Supplement Safety</span>
+              <h2 class="h4 fw-bold mb-3">Beyond the Bottle: The Smart Supplementing Guide</h2>
+              <p class="text-muted small mb-4">A clinical look at choosing supplements that support—rather than complicate—your vascular and metabolic health goals.</p>
+              <a href="/articles/smart-supplementing-guide" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Metabolic">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Metabolic Lock</span>
+              <h2 class="h4 fw-bold mb-3">The Health Kick Paradox: When Extreme Lifestyle Changes Cause Cholesterol Spikes</h2>
+              <p class="text-muted small mb-4">Understanding how sudden dietary and training shifts can paradoxically increase vascular risk, and how to achieve balanced metabolic synergy.</p>
+              <a href="/articles/health-kick-paradox-cholesterol-metabolic-lock" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Cardiology">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Cardiac Diagnostics</span>
+              <h2 class="h4 fw-bold mb-3">Beyond the Chest: Mapping the Red Zones of referred Heart Pain</h2>
+              <p class="text-muted small mb-4">It is not always the left arm. Learn to identify atypical radiation patterns in the jaw, back, and stomach that require urgent cardiac interpretation.</p>
+              <a href="/articles/heart-pain-radiation-red-zones" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Metabolic">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Preventive Health</span>
+              <h2 class="h4 fw-bold mb-3">The "Skinny Diabetic" Phenotype: Understanding the TOFI Metabolic Risk</h2>
+              <p class="text-muted small mb-4">Why a "normal" BMI provides a false sense of security for many Asians. Discover why hidden visceral fat ('The Hidden Fire') is the true determinant of metabolic health.</p>
+              <a href="/articles/skinny-diabetic-tofi-metabolic-risk" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-md-6 col-lg-4 article-item" data-category="Wellness">
+          <div class="article-card">
+            <div class="card-content">
+              <span class="category-label mb-2">Vascular Longevity</span>
+              <h2 class="h4 fw-bold mb-3">Somatotropin (HGH): The Role of Growth Hormone in Longevity Medicine</h2>
+              <p class="text-muted small mb-4">Understanding the delicate balance between HGH levels, insulin sensitivity, and maintaining a youthful vascular system as we age.</p>
+              <a href="/articles/human-growth-hormone" class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold">Read Clinical Perspective</a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Reviewed by <strong>Dr. Gerald Thang</strong></small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.article-item');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Toggle button active state
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
+
+      items.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (filter === 'all' || category.includes(filter)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
