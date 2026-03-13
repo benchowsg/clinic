@@ -1,10 +1,10 @@
 ---
 layout: default
 permalink: /chas-medisave-healthiersg
-title: CHAS, MediSave & HealthierSG Patient Guide | A Healing Heart Medical
-description: Understand how to use your CHAS subsidies and MediSave for cardiac and chronic care at A Healing Heart Medical. 
-last_modified: 2026-02-28
-tags: ["CHAS Singapore", "MediSave", "Healthier SG Subsidies", "CDMP", "Chronic Conditions"]
+title: CHAS, MediSave & HealthierSG Guide (2025-2027 Updates) | A Healing Heart Medical
+description: Latest updates on Singapore healthcare subsidies. Learn about 100% MediSave for Healthier SG, new 2027 MediSave limits, and thyroid coverage at A Healing Heart Medical.
+last_modified: 2026-03-13
+tags: ["CHAS Singapore", "MediSave Limits 2027", "Healthier SG Subsidies", "CDMP", "Thyroid MediSave Singapore"]
 ---
 
 <script type="application/ld+json">
@@ -14,18 +14,26 @@ tags: ["CHAS Singapore", "MediSave", "Healthier SG Subsidies", "CDMP", "Chronic 
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Can I use MediSave for my outpatient heart check-ups?",
+      "name": "Can I use MediSave for outpatient heart check-ups and chronic care?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Under the Chronic Disease Management Programme (CDMP), patients can use MediSave to offset the cost of outpatient treatments for conditions like Hypertension, Diabetes, and Hyperlipidemia (High Cholesterol)."
+        "text": "Yes. Under the Chronic Disease Management Programme (CDMP), you can use MediSave for conditions like Hypertension, Diabetes, and High Cholesterol. If you are enrolled in Healthier SG with us, you can pay 100% of your bill using MediSave (0% cash co-payment) up to your annual limit."
       }
     },
     {
       "@type": "Question",
-      "name": "How much CHAS subsidy can I get for my visit?",
+      "name": "What are the new MediSave withdrawal limits for 2027?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Subsidies depend on your CHAS card color (Blue, Orange, or Green) and whether you are treating a simple or complex chronic condition. Patients enrolled in Healthier SG may also enjoy additional subsidies."
+        "text": "Starting 1 January 2027, the annual MediSave withdrawal limit for chronic conditions will increase from $500 to $700 for simple conditions, and from $700 to $1,000 for complex conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Thyroid treatment covered under CHAS or MediSave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Effective 1 January 2027, Hyperthyroidism and Hypothyroidism will be added to the CDMP list. This allows patients to utilize CHAS subsidies and MediSave for their thyroid treatments at accredited clinics like A Healing Heart Medical."
       }
     }
   ]
@@ -66,12 +74,19 @@ tags: ["CHAS Singapore", "MediSave", "Healthier SG Subsidies", "CDMP", "Chronic 
     box-shadow: 0 10px 40px rgba(52, 152, 219, 0.08);
     border-left: 5px solid #3498DB;
     height: 100%;
+    position: relative;
   }
 
-  .icon-box {
-    color: #3498DB;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  .badge-update {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
   }
 </style>
 
@@ -80,13 +95,14 @@ tags: ["CHAS Singapore", "MediSave", "Healthier SG Subsidies", "CDMP", "Chronic 
     <div class="container py-5 mt-4">
       <div class="row align-items-center">
         <div class="col-lg-8 text-center text-lg-start">
+          <span class="badge bg-info mb-2">Updated for 2026/2027 MOH Policy</span>
           <h1 class="display-4 fw-bold mb-3 text-left" style="color: #3498DB;">CHAS, MediSave & HealthierSG Guide</h1>
-          <h2 class="h3 fw-bold mb-4 text-left" style="color: #2c4964;">Making Intermediate Care Accessible.</h2>
+          <h2 class="h3 fw-bold mb-4 text-left" style="color: #2c4964;">Affordable Care. Navigating the Latest Subsidies.</h2>
           <p class="lead mb-4 text-left" style="color: #4a5568;">
-            A Healing Heart Medical is a MediSave and CHAS-accredited clinic. We help you navigate national subsidies and MediSave claims to ensure healthcare remains affordable.
+            A Healing Heart Medical is a fully accredited MediSave and CHAS clinic. We have updated our guides to include the <strong>Healthier SG Chronic Tier</strong> and upcoming <strong>2027 MediSave limit increases</strong>.
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-             <a href="#subsidy-details" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">View Subsidies</a>
+             <a href="#subsidy-details" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">View 2026-2027 Subsidies</a>
           </div>
         </div>
       </div>
@@ -98,63 +114,64 @@ tags: ["CHAS Singapore", "MediSave", "Healthier SG Subsidies", "CDMP", "Chronic 
     <div class="row g-4">
       
       <div class="col-md-6 col-lg-4">
-        <div class="subsidy-card h-100 shadow-sm" style="padding: 2rem; border-left: 5px solid #3498DB; border-radius: 15px; background: #fff;">
+        <div class="subsidy-card h-100 shadow-sm" style="border-left-color: #3498DB;">
           <h4 class="fw-bold" style="color: #2c4964;">CHAS Subsidies</h4>
-          <p>Subsidies for common illnesses and chronic conditions. Applicable for Blue, Orange, Green, and PG/MG cards.</p>
+          <p class="small">Means-tested subsidies for Singaporeans. Includes Blue, Orange, PG, and MG cards.</p>
           <ul class="list-unstyled">
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start">
               <span style="color: #3498DB; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Acute Conditions</span>
+              <span>Acute Conditions (Flu, Cough, etc.)</span>
             </li>
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start">
               <span style="color: #3498DB; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Chronic Diseases (CDMP)</span>
+              <span>23 Chronic Conditions (CDMP)</span>
             </li>
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start">
               <span style="color: #3498DB; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Screen For Life</span>
+              <span>Dental (Scaling/Polishing for Orange Cards) <br><small class="text-muted">Effective Q4 2025</small></span>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="col-md-6 col-lg-4">
-        <div class="subsidy-card h-100 shadow-sm" style="padding: 2rem; border-left: 5px solid #27ae60; border-radius: 15px; background: #fff;">
-          <h4 class="fw-bold" style="color: #2c4964;">MediSave500/700</h4>
-          <p>Use your MediSave for outpatient chronic disease management (CDMP). Includes tests and medications.</p>
+        <div class="subsidy-card h-100 shadow-sm" style="border-left-color: #27ae60;">
+          <span class="badge-update">Jan 2027 Increase</span>
+          <h4 class="fw-bold" style="color: #2c4964;">MediSave 500/700/1000</h4>
+          <p class="small">Use MediSave for outpatient chronic care and scans. 15% co-payment waived for HSG enrollees.</p>
           <ul class="list-unstyled">
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start text-muted">
               <span style="color: #27ae60; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Up to $500 or $700 yearly</span>
+              <span>Current: Up to $500/$700 yearly</span>
             </li>
-            <li class="mb-3 d-flex align-items-start">
-              <span style="color: #27ae60; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>15% Co-payment applies</span>
+            <li class="mb-2 d-flex align-items-start fw-bold">
+              <span style="color: #27ae60; margin-right: 12px;">★</span>
+              <span>Jan 2027: Limits increase to $700 (Simple) / $1,000 (Complex)</span>
             </li>
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start">
               <span style="color: #27ae60; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Use for family dependents</span>
+              <span>Flexi-MediSave: $400/year (Effective Oct 2025)</span>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="col-md-6 col-lg-4">
-        <div class="subsidy-card h-100 shadow-sm" style="padding: 2rem; border-left: 5px solid #f1c40f; border-radius: 15px; background: #fff;">
-          <h4 class="fw-bold" style="color: #2c4964;">Healthier SG</h4>
-          <p>Enroll with us for enhanced medication subsidies and fully-subsidised preventative screenings.</p>
+        <div class="subsidy-card h-100 shadow-sm" style="border-left-color: #f1c40f;">
+          <h4 class="fw-bold" style="color: #2c4964;">Healthier SG (HSG)</h4>
+          <p class="small">Enroll with A Healing Heart Medical for maximum benefits and 0% cash co-payment.</p>
           <ul class="list-unstyled">
-            <li class="mb-3 d-flex align-items-start">
-              <span style="color: #f1c40f; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Enhanced Drug Subsidies</span>
+            <li class="mb-2 d-flex align-items-start fw-bold" style="color: #27ae60;">
+              <span style="margin-right: 12px;">✔</span>
+              <span>0% Cash Co-payment (Use 100% MediSave)</span>
             </li>
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start">
               <span style="color: #f1c40f; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>Fully-subsidised Vaccinations</span>
+              <span>Polyclinic-level Drug Prices (HSG Tier)</span>
             </li>
-            <li class="mb-3 d-flex align-items-start">
+            <li class="mb-2 d-flex align-items-start">
               <span style="color: #f1c40f; margin-right: 12px; font-weight: bold;">✔</span>
-              <span>No Cash Co-payment</span>
+              <span>Fully-subsidized Screenings & First Health Plan Visit</span>
             </li>
           </ul>
         </div>
@@ -164,176 +181,60 @@ tags: ["CHAS Singapore", "MediSave", "Healthier SG Subsidies", "CDMP", "Chronic 
   </div>
 </section>
 
-  <section class="py-5 bg-light">
-    <div class="container my-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <h2 class="fw-bold text-center mb-5" style="color: #3498DB;">Frequently Asked Questions</h2>
-          
-          <div class="mb-4">
-            <h4 class="fw-bold" style="color: #2c4964;">Which chronic conditions are covered under CDMP?</h4>
-            <p>Chronic conditions are managed at our clinic include Hypertension (High Blood Pressure), Diabetes, Hyperlipidemia (High Cholesterol), Asthma, COPD, and Osteoporosis. The full list can be found <a href="https://www.moh.gov.sg/others/resources-and-statistics/chronic-disease-management-programme-cdmp/" target="_blank" rel="noopener noreferrer">here</a>. Please note that our clinic cannot claim for Schizophrenia, Major Depression, Bipolar Disorder, and Anxiety.</p>
-          </div>
-
-          <div class="mb-4">
-            <h4 class="fw-bold" style="color: #2c4964;">Is there a limit to how much I can claim?</h4>
-            <p>CHAS subsidies have annual claim limits based on the card type and condition complexity. MediSave (CDMP) has an annual limit of $500 (non-complex) or $700 (complex). You can track these balances in real-time on your <strong>HealthHub App</strong>.</p>
-          </div>
-
-          <div class="mb-4">
-            <h4 class="fw-bold" style="color: #2c4964;">Can I use my MediSave for my parents or children?</h4>
-            <p>Yes. MediSave can be used for your immediate family members (spouse, children, parents, and grandparents). They must be Singapore Citizens or Permanent Residents.</p>
-          </div>
-
-<div class="faq-container mb-5 p-4 rounded-4" style="background-color: #fcfdfe; border: 1px solid #eef2f6;">
-  
-  <div class="row mb-4">
-    <div class="col-12">
-      <h4 class="fw-bold d-flex align-items-center" style="color: #2c4964;">
-        I am Singaporean / PR. What about my foreign spouse, parents, or children?
-      </h4>
-      <p class="ms-5 text-muted mb-0">
-        Singapore's healthcare system allows flexibility for non-resident immediate family. 
-        Here is how we help you navigate:
-      </p>
-    </div>
-  </div>
-
-  <div class="row g-3 ms-lg-4">
-    
-    <div class="col-md-6">
-      <div class="h-100 p-4" style="background-color: #f1f8ff; border-radius: 15px; border-left: 5px solid #3498DB;">
-        <h5 class="fw-bold mb-3" style="color: #2c4964;">MediSave Usage: <span style="color: #27ae60;">YES</span></h5>
-        <p class="small fw-bold mb-2">You can use your MediSave for outpatient chronic conditions (CDMP):</p>
-        <ul class="list-unstyled mb-3">
-          <li class="mb-1 d-flex align-items-start">
-            <span style="color: #3498DB; margin-right: 10px; font-weight: bold;">✔</span>
-            <span class="small">Foreign Spouse & Children</span>
-          </li>
-          <li class="mb-1 d-flex align-items-start">
-            <span style="color: #3498DB; margin-right: 10px; font-weight: bold;">✔</span>
-            <span class="small">Foreign Parents</span>
-          </li>
-        </ul>
-        <div class="mt-2 pt-2 border-top border-info border-opacity-25">
-           <p class="small mb-0 text-muted" style="font-size: 0.75rem;">
-             <em>Standard annual limits ($500/$700) apply for MediSave usage.</em>
-           </p>
+<section class="py-5 bg-light">
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="fw-bold text-center mb-5" style="color: #3498DB;">2026-2027 Policy FAQ</h2>
+        
+        <div class="mb-4 p-4 bg-white rounded shadow-sm">
+          <h4 class="fw-bold" style="color: #2c4964;">Which new conditions are being added to CDMP?</h4>
+          <p>Effective <strong>1 January 2027</strong>, MOH will include <strong>Hyperthyroidism and Hypothyroidism</strong> in the CDMP list. This means patients can soon use CHAS and MediSave for thyroid-related consultations and medications at our clinic.</p>
         </div>
-      </div>
-    </div>
 
-    <div class="col-md-6">
-      <div class="h-100 p-4" style="background-color: #fffaf0; border-radius: 15px; border-left: 5px solid #f1c40f;">
-        <h5 class="fw-bold mb-3" style="color: #2c4964;">Government Subsidies: <span style="color: #e74c3c;">NO</span></h5>
-        <p class="small fw-bold mb-2">Foreigners are not eligible for:</p>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-1 d-flex align-items-start">
-            <span style="color: #e74c3c; margin-right: 10px; font-weight: bold;">✘</span>
-            <span class="small">CHAS and Healthier SG Subsidies</span>
-          </li>
-          <li class="mb-1 d-flex align-items-start">
-            <span style="color: #e74c3c; margin-right: 10px; font-weight: bold;">✘</span>
-            <span class="small">Subsidised "Screen for Life" rates</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+        <div class="mb-4 p-4 bg-white rounded shadow-sm">
+          <h4 class="fw-bold" style="color: #2c4964;">How does the 'No Cash Co-payment' work?</h4>
+          <p>Under Healthier SG, if you are treating a chronic condition at your <strong>enrolled clinic</strong> (like ours), the usual 15% cash co-payment for MediSave usage is waived. You can utilize your MediSave balance to pay 100% of your bill, subject to your annual withdrawal limits.</p>
+        </div>
 
-  </div>
-</div>
+        <div class="mb-4 p-4 bg-white rounded shadow-sm">
+          <h4 class="fw-bold" style="color: #2c4964;">Can I use MediSave for my Parents or Children?</h4>
+          <p>Yes. MediSave can be used for immediate family members (spouse, children, parents, and grandparents) who are Singapore Citizens or PRs. Standard limits ($500/$700, increasing in 2027) apply per patient.</p>
+        </div>
 
-          <div class="mb-4">
-            <h4 class="fw-bold" style="color: #2c4964;">What do I need to bring for my first visit?</h4>
-            <p>Please bring your <strong>NRIC</strong> and your physical or digital <strong>CHAS/Pioneer/Merdeka Generation card</strong>. Our staff will verify your subsidy eligibility via the national system instantly.</p>
+        <div class="faq-container mb-5 p-4 rounded-4" style="background-color: #fcfdfe; border: 1px solid #eef2f6;">
+          <h4 class="fw-bold mb-3" style="color: #2c4964;">Foreign Spouse / Parents Eligibility</h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="p-3 bg-white border-start border-primary border-4 rounded">
+                <h5 class="fw-bold text-success small">MediSave Usage: YES</h5>
+                <p class="small mb-0">You may use your own MediSave for a foreign spouse or parent's chronic treatment (CDMP).</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-white border-start border-danger border-4 rounded">
+                <h5 class="fw-bold text-danger small">Govt Subsidies: NO</h5>
+                <p class="small mb-0">Foreigners do not qualify for CHAS or Healthier SG subsidies directly.</p>
+              </div>
+            </div>
           </div>
-
-        <div class="mb-4">
-          <h4 class="fw-bold" style="color: #2c4964;">What happens if I hit my $500/$700 MediSave limit for the year?</h4>
-          <p>The system will notify us if your limit has been reached when a claim is submitted. Any remaining balance for that visit must be settled via <strong>Cash, NETS, or Credit Card</strong>. You can check your remaining balance anytime on the <strong>CPF website</strong> or <strong>HealthHub app</strong>.</p>
         </div>
 
         <div class="mb-4">
-          <h4 class="fw-bold" style="color: #2c4964;">Can I use MediSave to pay for a Medical Report or Insurance Form?</h4>
-          <p>No. Per MOH guidelines, MediSave and CHAS subsidies are for <strong>clinical treatment and diagnostics only</strong>. Administrative requests, such as formal medical reports for insurance or legal purposes, must be paid in cash/card at the clinic.</p>
+          <h4 class="fw-bold" style="color: #2c4964;">Transparent Billing Policy</h4>
+          <p>We practice <strong>Transparent Billing</strong>. Your itemised receipt will display the full private rate, the specific CHAS/HSG subsidy applied, and the MediSave deduction, leaving you with clear information on your final out-of-pocket cost.</p>
         </div>
 
-        <div class="mb-4">
-          <h4 class="fw-bold" style="color: #2c4964;">When will I see the 'Subsidised' price on my bill?</h4>
-          <p>We practice <strong>Transparent Billing</strong>. Your itemised receipt will show the full private rate, followed by a deduction line showing the exact <strong>CHAS/MediSave subsidy</strong> applied, leaving you with only the final "Out-of-Pocket" amount to pay.</p>
-        </div>
-
-
-<div class="faq-container mb-5 p-4 rounded-4" style="background-color: #fcfdfe; border: 1px solid #eef2f6;">
-  
-  <div class="mb-3">
-    <h4 class="fw-bold d-flex align-items-center mb-2" style="color: #2c4964;">
-      <span style="color: #3498DB; margin-right: 15px;">?</span>
-      Can I use my CHAS subsidy at any clinic or hospital?
-    </h4>
-    <p class="text-muted mb-4" style="margin-left: 30px;">
-      No. CHAS subsidies are specifically for private primary care. They do not apply to all healthcare institutions.
-    </p>
-  </div>
-
-  <div class="row g-3" style="margin-left: 15px;">
-    
-    <div class="col-md-6">
-      <div class="h-100 p-4" style="background-color: #f1f8ff; border-radius: 12px; border-left: 5px solid #3498DB;">
-        <h5 class="fw-bold mb-3" style="color: #2c4964; font-size: 1.1rem;">Where CHAS Works</h5>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-3 d-flex align-items-start">
-            <span style="color: #3498DB; margin-right: 10px; font-weight: bold;">✔</span>
-            <span class="small"><strong>CHAS Private Clinics:</strong> Like A Healing Heart Medical.</span>
-          </li>
-          <li class="mb-0 d-flex align-items-start">
-            <span style="color: #3498DB; margin-right: 10px; font-weight: bold;">✔</span>
-            <span class="small"><strong>CHAS Dental Clinics:</strong> Participating private dentists.</span>
-          </li>
-        </ul>
       </div>
     </div>
-
-    <div class="col-md-6">
-      <div class="h-100 p-4" style="background-color: #fffaf0; border-radius: 12px; border-left: 5px solid #f1c40f;">
-        <h5 class="fw-bold mb-3" style="color: #2c4964; font-size: 1.1rem;">Where It Does Not Apply</h5>
-        <ul class="list-unstyled mb-0">
-          <li class="mb-3 d-flex align-items-start">
-            <span style="color: #e74c3c; margin-right: 10px; font-weight: bold;">✘</span>
-            <span class="small"><strong>Polyclinics & Public Hospitals:</strong> They have their own direct subsidies.</span>
-          </li>
-          <li class="mb-0 d-flex align-items-start">
-            <span style="color: #e74c3c; margin-right: 10px; font-weight: bold;">✘</span>
-            <span class="small"><strong>Private Hospitals:</strong> Full private rates apply.</span>
-          </li>
-          <li class="mb-0 d-flex align-items-start">
-            <span style="color: #e74c3c; margin-right: 10px; font-weight: bold;">✘</span>
-            <span class="small"><strong>Non-Accredited Private Clinics:</strong> Full private rates apply.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
   </div>
+</section>
 
-  <div class="mt-4 p-3 rounded-3" style="background-color: #f8f9fa; margin-left: 30px; border: 1px solid #dee2e6;">
-    <p class="small mb-0 text-muted">
-      <strong>The Benefit:</strong> By visiting us, you get dedicated intermediate care while still using your CHAS/MediSave subsidies to keep costs manageable.
-    </p>
+<section class="py-5 text-center" style="background-color: #3498DB; color: white;">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Maximizing Your Subsidies</h2>
+    <p class="lead mb-4">Our staff are trained to help you navigate the 2026 and 2027 healthcare changes effectively.</p>
+    <a href="/booking" class="btn btn-light rounded-pill px-5 py-3 fw-bold" style="color: #3498DB;">Book My Appointment</a>
   </div>
-</div>
-          
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-5 text-center" style="background-color: #3498DB; color: white;">
-    <div class="container">
-      <h2 class="fw-bold mb-3">Affordable Intermediate Care</h2>
-      <p class="lead mb-4">Let our team help you maximize your available subsidies for better heart health.</p>
-      <a href="/booking" class="btn btn-light rounded-pill px-5 py-3 fw-bold" style="color: #3498DB;">Book My Consultation</a>
-    </div>
-  </section>
+</section>
 </main>
