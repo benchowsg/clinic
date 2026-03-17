@@ -37,16 +37,36 @@ description: Schedule your clinical assessment, chronic disease management, or h
     line-height: 1.3;
   }
 
-  /* Hover Effects with Corporate Colors */
-  .tile-urgent:hover { border-color: #ff4f81; box-shadow: 0 10px 20px rgba(255, 79, 129, 0.1); }
-  .tile-urgent:hover i { color: #ff4f81; transform: scale(1.1); }
+  /* --- HARMONIZED COLOR SYSTEM --- */
 
-  .tile-mgmt:hover { border-color: #43a7d5; box-shadow: 0 10px 20px rgba(67, 167, 213, 0.1); }
-  .tile-mgmt:hover i { color: #43a7d5; transform: scale(1.1); }
+  /* 1. Diagnostics (Pink) */
+  .tile-urgent:hover { border-color: #d82a5f; box-shadow: 0 10px 20px rgba(216, 42, 95, 0.1); }
+  .tile-urgent:hover i { color: #d82a5f; transform: scale(1.1); }
+  .urgent-header { border-left: 4px solid #d82a5f; }
 
-  .tile-routine:hover { border-color: #25d366; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.1); }
-  .tile-routine:hover i { color: #25d366; transform: scale(1.1); }
+  /* 2. Medical Management (Blue) */
+  .tile-mgmt:hover { border-color: #2a88b1; box-shadow: 0 10px 20px rgba(42, 136, 177, 0.1); }
+  .tile-mgmt:hover i { color: #2a88b1; transform: scale(1.1); }
+  .mgmt-header { border-left: 4px solid #2a88b1; }
 
+  /* 3. Wellness & Statutory (Green) */
+  .tile-routine:hover, .tile-statutory:hover { border-color: #16803c; box-shadow: 0 10px 20px rgba(22, 128, 60, 0.1); }
+  .tile-routine:hover i, .tile-statutory:hover i { color: #16803c; transform: scale(1.1); }
+  .routine-header, .statutory-header { border-left: 4px solid #16803c; }
+
+  /* 4. Acute Care (Navy) */
+  .tile-acute:hover { border-color: #2c4964; box-shadow: 0 10px 20px rgba(44, 73, 100, 0.1); }
+  .tile-acute:hover i { color: #2c4964; transform: scale(1.1); }
+  .acute-header { border-left: 4px solid #2c4964; }
+
+  /* Special Promo (Singapore Red) */
+  .tile-special { background: #e74c3c !important; border: 2px solid #c0392b !important; color: #ffffff !important; }
+  .tile-special i, .tile-special small { color: #ffffff !important; }
+  .tile-special:hover { background: #ffffff !important; color: #e74c3c !important; border-color: #e74c3c !important; }
+  .tile-special:hover i, .tile-special:hover small { color: #e74c3c !important; transform: scale(1.1); }
+  .special-header { border-left: 4px solid #e74c3c; }
+
+  /* --- REUSABLE UTILITIES --- */
   .category-header {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -55,7 +75,6 @@ description: Schedule your clinical assessment, chronic disease management, or h
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
-    border-left: 4px solid #43a7d5;
     padding-left: 15px;
   }
 
@@ -63,45 +82,12 @@ description: Schedule your clinical assessment, chronic disease management, or h
     scroll-margin-top: 120px;
   }
 
-  .urgent-header { border-left-color: #ff4f81; }
-  .routine-header { border-left-color: #25d366; }
 
   @media (max-width: 768px) {
     .booking-tile { min-height: 150px; padding: 20px 10px; }
     .booking-tile i { font-size: 2rem; }
     .booking-tile span { font-size: 0.9rem; }
   }
-
-  /* A specific color for Statutory */
-  .tile-statutory:hover { border-color: #6c757d; box-shadow: 0 10px 20px rgba(108, 117, 125, 0.1); }
-  .tile-statutory:hover i { color: #6c757d; transform: scale(1.1); }
-  
-  .statutory-header { border-left-color: #6c757d; }
-
-  /* Promotion Tile - Singapore Red & White */
-  .tile-special {
-    background: #e74c3c !important; /* Singapore Red */
-    border: 2px solid #c0392b !important;
-    color: #ffffff !important;
-  }
-
-  .tile-special i, .tile-special small {
-    color: #ffffff !important;
-  }
-
-  .tile-special:hover {
-    background: #ffffff !important;
-    color: #e74c3c !important;
-    border-color: #e74c3c !important;
-    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
-  }
-
-  .tile-special:hover i, .tile-special:hover small {
-    color: #e74c3c !important;
-    transform: scale(1.1);
-  }
-
-  .special-header { border-left-color: #e74c3c; }
   
 </style>
 
@@ -111,7 +97,7 @@ description: Schedule your clinical assessment, chronic disease management, or h
     <div class="section-title text-center mb-5">
       <p></p>
        <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Schedule an Appointment</h1>
-      <p class="lead text-muted">Select a clinical category to view available time slots.</p>
+      <p class="lead text-muted">You will be redirected to our secure a time slot.</p>
     </div>
 
     <h5 class="category-header special-header">Special</h5>
@@ -124,17 +110,17 @@ description: Schedule your clinical assessment, chronic disease management, or h
       </div>
     </div>
 
-    <h5 class="category-header urgent-header">Symptom Evaluation & Diagnostics</h5>
+    <h5 class="category-header urgent-header">Heart Evaluation & Diagnostics</h5>
     <div class="row g-3 mb-5">
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/pV3lgn2" target="_blank" rel="noopener noreferrer" class="booking-tile tile-urgent">
-          <i class="fa-solid fa-heart-circle-exclamation" style="color:#ff4f81;"></i>
+          <i class="fa-solid fa-heart-circle-exclamation" style="color:#d82a5f;"></i>
           <span>Heart Related Concerns<br><small class="fw-normal text-muted">(Chest Pain / Palpitations)</small></span>
         </a>
       </div>
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SbkE6z3" target="_blank" rel="noopener noreferrer" class="booking-tile tile-urgent">
-          <i class="fa-solid fa-stethoscope" style="color:#ff4f81;"></i>
+          <i class="fa-solid fa-stethoscope" style="color:#d82a5f;"></i>
           <span>Diagnostic Consultation<br><small class="fw-normal text-muted">(New / Existing Symptoms)</small></span>
         </a>
       </div>
@@ -144,16 +130,16 @@ description: Schedule your clinical assessment, chronic disease management, or h
 <div class="row g-3 mb-5">
   <div class="col-6 col-md-4">
     <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/U5ROxt9" target="_blank" rel="noopener noreferrer" class="booking-tile tile-mgmt">
-      <i class="fa-solid fa-house-chimney-medical" style="color:#43a7d5;"></i>
+      <i class="fa-solid fa-house-chimney-medical" style="color:#2a88b1;"></i>
       <span>Chronic Care<br>
       <small class="fw-normal text-muted">BP, Cholesterol, Diabetes, etc.</small></span>
     </a>
   </div>
   <div class="col-6 col-md-4">
     <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/zdnSUPZ" target="_blank" rel="noopener noreferrer" class="booking-tile tile-mgmt">
-      <i class="fa-solid fa-dna" style="color:#43a7d5;"></i>
+      <i class="fa-solid fa-dna" style="color:#2a88b1;"></i>
       <span>Hormonal & Metabolic<br>
-      <small class="fw-normal text-muted">Menopause, Low Testosterone, Chronic Fatigue, Thyroid, etc.</small></span>
+      <small class="fw-normal text-muted">Menopause, Testosterone, Fatigue, Thyroid, etc.</small></span>
     </a>
   </div>
 </div>
@@ -162,51 +148,51 @@ description: Schedule your clinical assessment, chronic disease management, or h
     <div class="row g-3 mb-5">
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/GU5RnW5" target="_blank" rel="noopener noreferrer" class="booking-tile tile-routine">
-          <i class="fa-solid fa-shield-heart" style="color:#25d366;"></i>
+          <i class="fa-solid fa-shield-heart" style="color:#16803c;"></i>
           <span>General Health Screening</span>
         </a>
       </div>
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VTixxPs" target="_blank" rel="noopener noreferrer" class="booking-tile tile-routine">
-          <i class="fa-solid fa-heart-pulse" style="color:#25d366;"></i>
+          <i class="fa-solid fa-heart-pulse" style="color:#16803c;"></i>
           <span>Cardiac Heart Screening</span>
         </a>
       </div>
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/8Zg0WwA" target="_blank" rel="noopener noreferrer" class="booking-tile tile-routine">
-          <i class="fa-solid fa-weight-scale" style="color:#25d366;"></i>
+          <i class="fa-solid fa-weight-scale" style="color:#16803c;"></i>
           <span>Weight Management Consult</span>
         </a>
       </div>
     </div>
 
-    <h5 class="category-header statutory-header">Statutory Medicals & Immunisation</h5>
+    <h5 class="category-header routine-header">Statutory Medicals & Immunisation</h5>
     <div class="row g-3 mb-5">
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SyZNo5Y" target="_blank" rel="noopener noreferrer" class="booking-tile tile-statutory">
-          <i class="fa-solid fa-file-medical" style="color:#6c757d;"></i>
+          <i class="fa-solid fa-file-medical" style="color:#16803c;"></i>
           <span>Statutory Medicals<br><small class="fw-normal text-muted">(MOM / ICA / LTA / Student)</small></span>
         </a>
       </div>
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/5nbX7A2" target="_blank" rel="noopener noreferrer" class="booking-tile tile-statutory">
-          <i class="fa-solid fa-syringe" style="color:#6c757d;"></i>
+          <i class="fa-solid fa-syringe" style="color:#16803c;"></i>
           <span>Vaccinations<br><small class="fw-normal text-muted">(Flu / Pneumococcal / Hepatitis B / Shingrix)</small></span>
         </a>
       </div>
       <div class="col-6 col-md-4">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/2y4p9cg" target="_blank" rel="noopener noreferrer" class="booking-tile tile-statutory">
-          <i class="fa-solid fa-syringe" style="color:#6c757d;"></i>
+          <i class="fa-solid fa-syringe" style="color:#16803c;"></i>
           <span>Vaccinations<br><small class="fw-normal text-muted">(Twinrix / Gardasil 9 / FluMist)</small></span>
         </a>
       </div>
     </div>
 
-    <h5 class="category-header" style="border-left-color: #43a7d5;">Acute Medical Care</h5>
+    <h5 class="category-header acute-header">Acute Medical Care</h5>
     <div class="row g-3 mb-5">
       <div class="col-12 col-md-6">
         <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VSYAIdE" target="_blank" rel="noopener noreferrer" class="booking-tile tile-mgmt">
-          <i class="fa-solid fa-head-side-mask" style="color:#43a7d5;"></i>
+          <i class="fa-solid fa-head-side-mask" style="color:#2c4964;"></i>
           <span>Acute Consultation<br><small class="fw-normal text-muted">(Cough, Cold, Fever, or Flu symptoms, etc.)</small></span>
         </a>
       </div>
