@@ -33,7 +33,38 @@ faq_schema:
         text: "No referral is required. As an Intermediate Care clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs."
 ---
 
+
+
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-left text-lg-start">
+        <h1 class="visually-hidden">A Healing Heart Medical: Cardiology & Chronic Care Clinic Singapore</h1>
+          <p style="color: #2c4964; font-size: 48px; font-weight: 700; line-height: 1.2;">Comprehensive Care for Complex Medical Needs</p>
+        <h2 style="color: #43a7d5; font-size: 24px; font-weight: 400; margin-bottom: 30px;">Providing clinical assessment for cardiac risks, chronic conditions, and symptoms requiring detailed investigation.</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start gap-3 mt-4 flex-wrap">
+            <a href="/booking" class="btn-outline-clinic">Book Now</a>
+            <a href="/health-calculator" class="btn-outline-clinic">Heart Risk Estimator</a>
+          </div>
+      </div>
+<div class="col-lg-6 order-1 order-lg-2 hero-img d-none d-lg-block">
+  <img src="/assets/img/about-AHH-banner-web.png" 
+       width="1024" 
+       height="768" 
+       class="img-fluid animated" 
+       alt="A Healing Heart Medical Clinic - Cardiology and Chronic Care in Singapore"
+       fetchpriority="high"
+       style="content-visibility: auto;">
+</div>
+    </div>
+  </div>
+</section>
+
 <style>
+  @font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-display: swap;
+  }
   /* Triage Section Styling with Corporate Colors */
   .triage-section { background-color: #fbfcfd; padding: 60px 0; }
   
@@ -134,6 +165,10 @@ faq_schema:
     align-items: center;
     justify-content: center;
     margin: 0 auto;         /* Fallback for horizontal centering */
+    width: 60px;
+    height: 60px;
+    background: #f0f7fa;
+    border-radius: 50%;
 }
 
   /* Enhancing card professionalism */
@@ -160,30 +195,6 @@ faq_schema:
   .article-card .rounded-circle { margin-right: 15px !important; }
   .article-card hr { margin: 1rem 0; }
 </style>
-
-<section id="hero" class="hero d-flex align-items-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-left text-lg-start">
-        <h1 class="visually-hidden">A Healing Heart Medical: Cardiology & Chronic Care Clinic Singapore</h1>
-          <p style="color: #2c4964; font-size: 48px; font-weight: 700; line-height: 1.2;">Comprehensive Care for Complex Medical Needs</p>
-        <h2 style="color: #43a7d5; font-size: 24px; font-weight: 400; margin-bottom: 30px;">Providing clinical assessment for cardiac risks, chronic conditions, and symptoms requiring detailed investigation.</h2>
-          <div class="d-flex justify-content-center justify-content-lg-start gap-3 mt-4 flex-wrap">
-            <a href="/booking" class="btn-outline-clinic">Book Now</a>
-            <a href="/health-calculator" class="btn-outline-clinic">Heart Risk Estimator</a>
-          </div>
-      </div>
-<div class="col-lg-6 order-1 order-lg-2 hero-img d-none d-lg-block">
-  <img src="/assets/img/about-AHH-banner-web.png" 
-       width="1024" 
-       height="768" 
-       class="img-fluid animated" 
-       alt="A Healing Heart Medical Clinic - Cardiology and Chronic Care in Singapore"
-       fetchpriority="high">
-</div>
-    </div>
-  </div>
-</section>
 
 <section class="triage-section">
   <div class="container">
@@ -360,7 +371,8 @@ faq_schema:
               height="600"
               class="img-fluid rounded shadow" 
               alt="Dr. Gerald Thang, Lead Physician at A Healing Heart Medical Clinic"
-              fetchpriority="low" loading="lazy">
+              fetchpriority="low" 
+              loading="lazy">
         </div>
       </div>
     </div>
