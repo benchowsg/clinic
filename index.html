@@ -479,60 +479,94 @@ faq_schema:
         <div class="accordion accordion-flush" id="faqAccordion">
           
           <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                How soon can I get results for blood tests?
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                For heart muscle injury and cardiac markers, we provide <b>rapid in-clinic testing</b> with results available within <b>15 minutes</b>. This allows for immediate clinical clarity during your evaluation. General health screening lab results typically take 3–5 working days.
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq1">
+                  How soon can I get results for blood tests?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  For heart muscle injury and cardiac markers, we provide <b>rapid in-clinic testing</b> with results available within <b>15 minutes</b>. This allows for immediate clinical clarity during your evaluation. General health screening lab results typically take 3–5 working days.
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                Can I use CHAS or MediSave at your clinic?
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Yes. As a <b>CHAS-accredited clinic</b>, patients can utilize subsidies for both Acute (common cough/flu/fever, etc.) and Chronic conditions. MediSave can also be used for approved chronic disease management and vaccinations under the National Adult Immunisation Schedule (NAIS).
+          
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq2">
+                  Can I use CHAS or MediSave at your clinic?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Yes. As a <b>CHAS-accredited clinic</b>, patients can utilize subsidies for both Acute (common cough/flu/fever, etc.) and Chronic conditions. MediSave can also be used for approved chronic disease management and vaccinations under the National Adult Immunisation Schedule (NAIS).
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                Do you provide official medical checkups for MOM, LTA or ICA?
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                Yes, we conduct all <b>statutory medical examinations</b>, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals (Taxi/Private Hire).
+          
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq3">
+                  Do you provide official medical checkups for MOM, LTA or ICA?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Yes, we conduct all <b>statutory medical examinations</b>, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals (Taxi/Private Hire).
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-            <h2 class="accordion-header" id="headingFour">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                Do I need a referral to see Dr. Gerald Thang?
-              </button>
-            </h2>
-            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-              <div class="accordion-body">
-                No referral is required. As an <b>Intermediate Care</b> clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs.
+          
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq4">
+                  Do I need a referral to see Dr. Gerald Thang?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  No referral is required. As an <b>Intermediate Care</b> clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs.
+                </div>
               </div>
             </div>
-          </div>
-
-        </div>
+          
       </div>
     </div>
     
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Find all accordion buttons
+    var accButtons = document.querySelectorAll('.accordion-button');
+    
+    accButtons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 2. Find the target panel (the answer)
+            var targetId = this.getAttribute('data-bs-target');
+            var targetPanel = document.querySelector(targetId);
+            
+            if (targetPanel) {
+                // 3. Toggle logic
+                var isExpanded = targetPanel.classList.contains('show');
+                
+                // Close all other panels first (Accordion behavior)
+                document.querySelectorAll('.accordion-collapse').forEach(function(panel) {
+                    panel.classList.remove('show');
+                });
+                document.querySelectorAll('.accordion-button').forEach(function(b) {
+                    b.classList.add('collapsed');
+                });
+
+                if (!isExpanded) {
+                    targetPanel.classList.add('show');
+                    this.classList.remove('collapsed');
+                }
+            }
+        });
+    });
+});
+</script>
