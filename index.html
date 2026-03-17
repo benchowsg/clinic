@@ -4,6 +4,33 @@ permalink: /
 title: Cardiology & Chronic Care Clinic Singapore | A Healing Heart Medical
 description: Cardiology and Chronic Disease Management in Singapore. Specialising in heart risk, diabetes, and complex medical symptoms under Principal Physician Dr. Gerald Thang.
 preload_image: "/assets/img/about-AHH-banner-web.png"
+faq_schema:
+  "@context": "https://schema.org"
+  "@type": "FAQPage"
+  mainEntity:
+    - "@type": "Question"
+      name: "How soon can I get results for blood tests?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "For heart muscle injury and cardiac markers, we provide rapid in-clinic testing with results available within 15 minutes. General health screening lab results typically take 3–5 working days."
+    
+    - "@type": "Question"
+      name: "Can I use CHAS or MediSave at your clinic?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes, A Healing Heart Medical is a CHAS-accredited clinic. Patients can utilize subsidies for both Acute (cough/flu/fever) and Chronic conditions. MediSave can also be used for approved chronic disease management and vaccinations under the NAIS."
+    
+    - "@type": "Question"
+      name: "Do you provide official medical checkups for MOM, LTA or ICA?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes, we conduct all statutory medical examinations, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals."
+
+    - "@type": "Question"
+      name: "Do I need a referral to see Dr. Gerald Thang?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No referral is required. As an Intermediate Care clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs."
 ---
 
 <style>
@@ -37,20 +64,20 @@ preload_image: "/assets/img/about-AHH-banner-web.png"
   }
 
   /* Color Variations */
-  .urgent-border { border-top: 5px solid #ff4f81; }
-  .urgent-badge { background: #fff0f3; color: #ff4f81; }
-  .btn-urgent { background: #ff4f81; color: #fff; border: none; }
+  .urgent-border { border-top: 5px solid #d82a5f; }
+  .urgent-badge { background: #fff0f3; color: #d82a5f; }
+  .btn-urgent { background: #d82a5f; color: #fff; border: none; }
   .btn-urgent:hover { background: #e64472; color: #fff; }
 
-  .mgmt-border { border-top: 5px solid #43a7d5; }
-  .mgmt-badge { background: #f0f7fa; color: #43a7d5; }
-  .btn-mgmt { background: #43a7d5; color: #fff; border: none; }
+  .mgmt-border { border-top: 5px solid #2a88b1; }
+  .mgmt-badge { background: #f0f7fa; color: #2a88b1; }
+  .btn-mgmt { background: #2a88b1; color: #fff; border: none; }
   .btn-mgmt:hover { background: #3894bd; color: #fff; }
 
-  .routine-border { border-top: 5px solid #1b9d4b; }
-  .routine-badge { background: #e9fbf0; color: #1b9d4b; }
-  .btn-routine { background: #1b9d4b; color: #fff; border: none; }
-  .btn-routine:hover { background: #16803c; color: #fff; }
+  .routine-border { border-top: 5px solid #16803c; }
+  .routine-badge { background: #e9fbf0; color: #16803c; }
+  .btn-routine { background: #16803c; color: #fff; border: none; }
+  .btn-routine:hover { background: #11622e; color: #fff; }
 
   .urgent-acute-border { border-top: 5px solid #b0b0b0; }
   .urgent-acute-badge { background: #f5f5f5; color: #2c4964; }
@@ -452,40 +479,53 @@ preload_image: "/assets/img/about-AHH-banner-web.png"
         <div class="accordion accordion-flush" id="faqAccordion">
           
           <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-            <h2 class="accordion-header" id="flush-headingOne">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-toggle="collapse" data-target="#flush-collapseOne">
-                Can I use CHAS or MediSave at your clinic?
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo">
+                How soon can I get results for blood tests?
               </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-parent="#faqAccordion">
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
               <div class="accordion-body">
-                Yes, A Healing Heart Medical is a CHAS-accredited clinic. Patients can utilize CHAS subsidies and MediSave for approved chronic disease management, vaccinations, and selected health screenings.
+                For heart muscle injury and cardiac markers, we provide <b>rapid in-clinic testing</b> with results available within <b>15 minutes</b>. This allows for immediate clinical clarity during your evaluation. General health screening lab results typically take 3–5 working days.
               </div>
             </div>
           </div>
 
           <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-            <h2 class="accordion-header" id="flush-headingTwo">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-toggle="collapse" data-target="#flush-collapseTwo">
-                How soon can I get results for my blood tests?
+            <h2 class="accordion-header" id="flush-headingFour">
+              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour">
+                Can I use CHAS or MediSave at your clinic?
               </button>
             </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-parent="#faqAccordion">
+            <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
               <div class="accordion-body">
-                We provide rapid diagnostic services for heart muscle injury, heart attack, heart failure, metabolic stability, and dehydration. Many of our in-house blood tests are available within the same day, ensuring you get medical clarity without unnecessary delay.
+                Yes. As a <b>CHAS-accredited clinic</b>, patients can utilize subsidies for both Acute (common cough/flu/fever, etc.) and Chronic conditions. MediSave can also be used for approved chronic disease management and vaccinations under the National Adult Immunisation Schedule (NAIS).
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+            <h2 class="accordion-header" id="flush-headingFive">
+              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive">
+                Do you provide official medical checkups for MOM, LTA or ICA?
+              </button>
+            </h2>
+            <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes, we conduct all <b>statutory medical examinations</b>, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals (Taxi/Private Hire).
               </div>
             </div>
           </div>
 
           <div class="accordion-item shadow-sm mb-3 border-0 rounded">
             <h2 class="accordion-header" id="flush-headingThree">
-              <button class="accordion-button collapsed fw-bold rounded" type="button" data-toggle="collapse" data-target="#flush-collapseThree">
-                Do I need a referral to see a heart doctor?
+              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree">
+                Do I need a referral to see Dr. Gerald Thang?
               </button>
             </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse" data-parent="#faqAccordion">
+            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
               <div class="accordion-body">
-                No referral is necessary. You can book an appointment directly with us for cardiology concerns, chronic fatigue management, or comprehensive health screenings.
+                No referral is required. As an <b>Intermediate Care</b> clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs.
               </div>
             </div>
           </div>
@@ -493,5 +533,6 @@ preload_image: "/assets/img/about-AHH-banner-web.png"
         </div>
       </div>
     </div>
+    
   </div>
 </section>
