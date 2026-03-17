@@ -116,6 +116,12 @@ faq_schema:
   .btn-urgent-acute:hover { background: #1f3750; color: #fff; }
 
   @media (max-width: 767px) {
+    .hero .text-lg-start { text-align: center !important; }
+    .hero .justify-content-lg-start { justify-content: center !important; }
+    .hero p[style*="font-size: 48px"] {
+      font-size: 30px !important;
+      line-height: 1.2 !important;
+    }
     .acute-banner {
       border-radius: 20px;
       padding: 20px;
@@ -129,8 +135,10 @@ faq_schema:
     .acute-btn-container .btn { width: 100%; padding: 10px; }
   }
 
+  #service-navigation .service-tile { min-height: 130px; }
+
       /* Scoped CSS for the Expertise Section */
-#service-navigation .service-tile {
+    #service-navigation .service-tile {
     display: flex;
     flex-direction: column;
     align-items: center;    /* Horizontal centering for icon & text */
