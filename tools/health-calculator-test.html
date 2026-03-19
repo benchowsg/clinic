@@ -58,10 +58,10 @@ description: An educational resource calibrated for the Singapore Asian phenotyp
             <div class="mb-3">
               <label class="small fw-bold text-muted text-uppercase d-flex align-items-center mb-2">
                 Measurement Units
-                <a href="javascript:void(0)" class="ms-2 text-primary opacity-75" data-bs-toggle="modal" data-bs-target="#unitModal">
-                  <i class="fa-solid fa-circle-question small"></i>
-                </a>
               </label>
+                <div class="form-text mt-1" style="font-size: 0.7rem; line-height: 1.2;">
+                  Select either
+                </div>
               <div class="btn-group w-100" role="group">
                 <input type="radio" class="btn-check" name="unit" id="unitMmol" checked>
                 <label class="btn btn-outline-primary btn-sm" for="unitMmol">mmol/L</label>
@@ -74,6 +74,9 @@ description: An educational resource calibrated for the Singapore Asian phenotyp
               <div class="col-6 mb-3">
                 <label class="form-label fw-semibold">Age (30-79)</label>
                 <input type="number" id="age" class="form-control" placeholder="e.g. 45">
+                <div class="form-text mt-1" style="font-size: 0.7rem; line-height: 1.2;">
+                  Refer to the section on Advanced Diagnostics for those over 79 years old.
+                </div>
               </div>
               <div class="col-6 mb-3">
                 <label class="form-label fw-semibold d-flex align-items-center">
@@ -110,7 +113,7 @@ description: An educational resource calibrated for the Singapore Asian phenotyp
             </div>
 
             <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">View Educational Trajectory</button>
-            <p class="text-center mt-3 mb-0 small text-muted">Ages 80+ require individualized clinical assessment.</p>
+            <p class="text-center mt-3 mb-0 small text-muted">Ages 80+ require individualised clinical assessment. Please consult doctor.</p>
           </div>
         </div>
 
@@ -153,14 +156,14 @@ description: An educational resource calibrated for the Singapore Asian phenotyp
       <div class="row g-4">
         <div class="col-md-6">
           <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
-            <h5 class="fw-bold text-primary"><i class="fa-solid fa-microscope me-2"></i>Calcium (CAC) Scoring</h5>
-            <p class="small text-muted">A 10-minute CT scan that identifies calcified plaque. Especially vital for those <strong>over 79</strong> or those with "Borderline" results, as a <strong>Score of 0</strong> significantly lowers the need for aggressive medication.</p>
+            <h5 class="fw-bold text-primary"><i class="fa-solid fa-microscope me-2"></i> Calcium (CAC) Scoring</h5>
+            <p class="small text-muted">A 10-minute CT Calcium Score scan that identifies calcified plaque. Especially recommended for those <strong>over 79</strong> or those with "Borderline" results, as a <strong>Score of 0</strong> significantly lowers the need for aggressive medication.</p>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
             <h5 class="fw-bold text-danger"><i class="fa-solid fa-dna me-2"></i>Lp(a) Genetic Screening</h5>
-            <p class="small text-muted">A "sticky" genetic protein not found in standard cholesterol panels. 2026 guidelines recommend checking this **once in a lifetime** to identify inherited risk that lifestyle alone cannot solve.</p>
+            <p class="small text-muted">A "sticky" genetic protein not found in standard cholesterol panels. 2026 guidelines recommend checking this once in a lifetime to identify inherited risk that lifestyle alone cannot solve.</p>
           </div>
         </div>
       </div>
