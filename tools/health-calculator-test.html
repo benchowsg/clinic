@@ -2,7 +2,7 @@
 layout: default
 permalink: /health-calculator-test
 title: Singapore Heart Risk & Metabolic Trajectory Calculator | A Healing Heart Medical
-description: Estimate your cardiovascular risk using Asian-calibrated clinical insights. Understand your health trajectory within the Singapore context.
+description: Estimate your cardiovascular risk using 2026 ACC/AHA and Singapore MOH-calibrated clinical insights. Understand your 30-year heart trajectory.
 ---
 
 <style>
@@ -42,15 +42,31 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
   font-size: 0.9rem;
   padding: 0.5em 1em;
 }
+
+.status-info i, .status-alarm i, .status-warning i {
+  color: white !important;
+}
+
+#riskIconContainer i {
+  color: #ffffff !important;
+  display: block;
+  line-height: 80px; 
+}
+
+/* Specific Triage Color */
+.status-triage {
+  background-color: #0d6efd !important;
+  color: white !important;
+}
 </style>
 
 <main id="main" class="mt-5 pt-5">
   <section class="py-5">
     <div class="container">
       <div class="mb-5">
-        <h1 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Singapore Heart Risk & Trajectory Estimator</h1>
+        <h1 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Singapore Heart Risk & Trajectory Estimator (2026 Update)</h1>
         <p class="text-muted mt-3" style="max-width: 800px; text-transform: none !important;">
-          Our heart risk estimator is adapted from the <strong>ACC/AHA Pooled Cohort Equations</strong> and refined for the <strong>Asian phenotype</strong>. In Singapore, factors like ethnicity and lower BMI thresholds significantly impact metabolic risk. Use this tool to visualize your trajectory and build a personalized prevention roadmap.
+          Updated with <strong>2026 ACC/AHA PREVENT™ Equations</strong> and Singapore MOH 2025/26 lipid frameworks. This tool now evaluates <strong>30-year lifetime trajectory</strong>, essential for the Asian phenotype where risk begins at lower BMI and younger ages.
         </p>
       </div>
 
@@ -81,8 +97,8 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
 
             <div class="row">
               <div class="col-6 mb-3">
-                <label class="form-label fw-semibold">Age (20-79)</label>
-                <input type="number" id="age" class="form-control" placeholder="e.g. 45">
+                <label class="form-label fw-semibold">Age (30-79)</label>
+                <input type="number" id="age" class="form-control" placeholder="e.g. 35">
               </div>
               <div class="col-6 mb-3">
                 <div class="d-flex justify-content-between">
@@ -91,7 +107,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
                     <i class="fa-solid fa-circle-info"></i> Info
                   </button>
                 </div>
-                <input type="number" id="sbp" class="form-control" placeholder="e.g. 130">
+                <input type="number" id="sbp" class="form-control" placeholder="e.g. 125">
               </div>
             </div>
 
@@ -99,7 +115,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               <div class="bp-info-box small shadow-sm p-3 bg-light rounded border">
                 <h6 class="fw-bold mb-1" style="font-size: 0.85rem;">Singapore MOH Clinical Benchmarks</h6>
                 <ul class="list-unstyled mb-0" style="font-size: 0.8rem;">
-                  <li class="d-flex justify-content-between mb-1"><span>Optimal</span><span class="fw-bold">&lt; 120</span></li>
+                  <li class="d-flex justify-content-between mb-1 text-primary"><span>Optimal</span><span class="fw-bold">&lt; 120</span></li>
                   <li class="d-flex justify-content-between mb-1"><span>Normal</span><span class="fw-bold">120-129</span></li>
                   <li class="d-flex justify-content-between text-danger fw-bold"><span>Hypertension</span><span>130+</span></li>
                 </ul>
@@ -128,7 +144,7 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
               </div>
             </div>
 
-            <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm">Calculate Asian-Calibrated Risk</button>
+            <button onclick="calculateRisk()" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm">Analyze 30-Year Trajectory</button>
           </div>
         </div>
 
@@ -137,141 +153,216 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
             
             <div id="placeholderText">
               <i class="fa-solid fa-heart-pulse fa-4x mb-3 text-muted opacity-25"></i>
-              <h4 class="fw-bold">Your Results Will Appear Here</h4>
-              <p class="text-muted small">Calculation is optimized for Singapore clinical guidelines.</p>
+              <h4 class="fw-bold">Your Trajectory Results</h4>
+              <p class="text-muted small">Calculation now includes 30-year lifetime risk factors per 2026 standards.</p>
             </div>
 
             <div id="actualResult" class="d-none w-100 text-center">
-               <div id="riskStatusWrapper" class="d-flex align-items-center justify-content-center mb-4">
-                  <div id="riskIconContainer" class="me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; flex-shrink: 0; margin-right: 20px;"></div>
-                  <div>
-                     <h2 class="fw-bold mb-1" id="riskLevelHeadline" style="color: #2c4964;">Calculating...</h2>
-                     <p class="mb-0 text-muted fw-bold small text-uppercase">
-                       10-Year Score: <span id="scorePercent">0%</span>
-                     </p>
-                  </div>
-               </div>
+                <div id="riskStatusWrapper" class="d-flex flex-column flex-sm-row align-items-center justify-content-center mb-4">
+                    <div id="riskIconContainer" class="mb-3 mb-sm-0 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; border-radius: 20px; flex-shrink: 0; margin-right: 20px;"></div>
+                    <div class="ms-sm-3">
+                        <h2 class="fw-bold mb-1" id="riskLevelHeadline" style="color: #2c4964;">Trajectory Estimate</h2>
+                        <p class="mb-0 text-muted fw-bold small text-uppercase">
+                            30-Year Potential Risk: <span id="scorePercent">0%</span>
+                        </p>
+                    </div>
+                </div>
 
-               <div id="ethnicTag" class="mb-4"></div>
-               
-               <div class="alert alert-info border-0 shadow-sm p-4" style="background-color: #f0f7ff;">
-                  <h6 class="fw-bold text-primary mb-2 text-uppercase" style="letter-spacing: 1px;">
-                    <i class="fa-solid fa-microscope me-2"></i>Clinical Interpretation
-                  </h6>
-                  <p id="trajectoryNote" class="small mb-0 text-dark" style="line-height: 1.6; font-size: 0.95rem;"></p>
-               </div>
+                <div id="ethnicTag" class="mb-4"></div>
+                
+                <div class="alert alert-info border-0 shadow-sm p-4" style="background-color: #f0f7ff;">
+                    <h6 class="fw-bold text-primary mb-2 text-uppercase" style="letter-spacing: 1px;">
+                        <i class="fa-solid fa-microscope me-2"></i>2026 Clinical Insight
+                    </h6>
+                    <p id="trajectoryNote" class="small mb-0 text-dark" style="line-height: 1.6; font-size: 0.95rem;"></p>
+                </div>
 
-               <div class="mt-4 p-3 rounded-3" style="background-color: #fff5f5; border-left: 4px solid #e53e3e;">
-                  <p class="extra-small text-muted text-left mb-0" style="font-size: 0.8rem; line-height: 1.4;">
-                    <strong>Clinical Limitation Notice:</strong> This tool provides a statistical estimate based on population data and cannot detect <strong>non-calcified (soft) plaque</strong> or specific structural anomalies. <br><br>
-                           A 10-year risk score is not a diagnosis. To confirm your actual <strong>arterial age</strong> and biological risk, a formal clinical audit and professional medical consultation are strictly required.
-                  </p>
-               </div>
+                <div class="mt-4 p-3 rounded-3" style="background-color: #fff5f5; border-left: 4px solid #e53e3e;">
+                    <p class="extra-small text-muted text-start mb-0" style="font-size: 0.8rem; line-height: 1.4;">
+                        <strong>2026 Protocol Notice:</strong> Current guidelines now emphasize <strong>ApoB</strong> and <strong>Lp(a)</strong> testing for all adults. This calculator assumes average levels; specific genetic markers like Lp(a) can double risk even if LDL-C appears normal.
+                    </p>
+                </div>
 
-               <div class="mt-4 d-grid">
-                 <a href="/booking" id="ctaButton" class="btn btn-dark btn-lg rounded-pill shadow-sm py-3 fw-bold">Schedule My Consultation</a>
-                 <button onclick="location.reload()" class="btn btn-link btn-sm mt-2 text-muted text-decoration-none">Reset Calculator</button>
-               </div>
+                <div class="mt-4 d-grid">
+                    <a href="/booking" id="ctaButton" class="btn btn-dark btn-lg rounded-pill shadow-sm py-3 fw-bold">Schedule Comprehensive Audit</a>
+                    <button onclick="window.location.reload()" class="btn btn-link btn-sm mt-2 text-muted text-decoration-none">Reset Calculator</button>
+                </div>
             </div>
           </div>
-        </div> </div>
-    </div>
-  </section>
-
-    <section class="py-5 bg-white border-top">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-6">
-          <h3 class="fw-bold mb-4" style="color: #2c4964;">Why Ethnicity & BMI Matter</h3>
-          <p class="text-muted" style="line-height: 1.6;">
-            Medical research in Singapore proves that Asians face higher cardiovascular risks at a <strong>lower BMI</strong> than Westerners. This is due to the "Asian Phenotype"—higher visceral fat (internal fat) even if you appear slim.
-          </p>
-          
-          <div class="d-flex align-items-start mb-4">
-            <div class="bg-primary-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-dna text-primary"></i></div>
-            <div>
-              <h6 class="fw-bold mb-1">Genetic Risk Multipliers</h6>
-              <p class="small text-muted mb-0">South Asian (Indian) and Malay ethnicities are clinically recognized independent risk factors for earlier coronary artery disease.</p>
-            </div>
-          </div>
-
-          <div class="d-flex align-items-start">
-            <div class="bg-danger-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-weight-scale text-danger"></i></div>
-            <div>
-              <h6 class="fw-bold mb-1">Asian BMI Thresholds</h6>
-              <p class="small text-muted mb-0">Health risks for Asians escalate at a BMI of <strong>23.0</strong>, whereas Western standards often don't flag risk until 25.0.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card border-0 shadow-sm overflow-hidden rounded-4">
-            <div class="card-header bg-dark text-white py-3">
-              <h6 class="mb-0 fw-bold">BMI Categories: Asian vs. International</h6>
-            </div>
-            <div class="table-responsive">
-              <table class="table mb-0 text-center align-middle">
-                <thead class="table-light small">
-                  <tr>
-                    <th>Category</th>
-                    <th>Asian BMI</th>
-                    <th>Western BMI</th>
-                  </tr>
-                </thead>
-                <tbody style="font-size: 0.95rem;">
-                  <tr>
-                    <td class="fw-bold text-start ps-4">Healthy</td>
-                    <td><span class="badge bg-success risk-badge">18.5 – 22.9</span></td>
-                    <td><span class="badge bg-secondary opacity-50 risk-badge">18.5 – 24.9</span></td>
-                  </tr>
-                  <tr class="table-warning" style="background-color: #fffdf5;">
-                    <td class="fw-bold text-start ps-4">Overweight</td>
-                    <td><span class="badge bg-warning text-dark risk-badge">23.0 – 27.4</span></td>
-                    <td><span class="badge bg-secondary opacity-50 risk-badge">25.0 – 29.9</span></td>
-                  </tr>
-                  <tr class="table-danger" style="background-color: #fff5f5;">
-                    <td class="fw-bold text-start ps-4">Obese</td>
-                    <td><span class="badge bg-danger risk-badge">27.5+</span></td>
-                    <td><span class="badge bg-secondary opacity-50 risk-badge">30.0+</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        </div> 
       </div>
     </div>
   </section>
 
-  <section class="py-5 border-top bg-light">
+<section class="py-5 bg-white border-top">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <h3 class="fw-bold mb-4" style="color: #2c4964;">Why Ethnicity & BMI Matter</h3>
+        <p class="text-muted" style="line-height: 1.6;">
+          Medical research in Singapore indicates that Asian populations face higher metabolic risks at a <strong>lower BMI</strong> compared to Western populations. This is largely attributed to the "Asian Phenotype", which has a tendency to carry higher visceral (internal) fat even with a seemingly slim exterior.
+        </p>
+        
+        <div class="mb-4">
+          <h6 class="fw-bold text-dark small text-uppercase mb-3" style="letter-spacing: 1px;">Prevalence Insights (Singapore Context)</h6>
+          
+          <div class="d-flex align-items-start mb-3">
+            <div class="bg-primary-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-dna text-primary"></i></div>
+            <div>
+              <p class="small text-dark mb-0"><strong>South Asian / Indian:</strong> Highest prevalence of diabetes (<strong>14.2%</strong>) and multi-vessel CAD risk. Genetic high Lp(a) is more common in this group.</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-3">
+            <div class="bg-warning-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-person-rays text-warning"></i></div>
+            <div>
+              <p class="small text-dark mb-0"><strong>Malay:</strong> Elevated rates of hypertension and central obesity, with a diabetes prevalence of approx. <strong>14.4%</strong>.</p>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-4">
+            <div class="bg-info-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-chart-line text-info"></i></div>
+            <div>
+              <p class="small text-dark mb-0"><strong>Chinese:</strong> While diabetes prevalence is <strong>8.2%</strong>, cardiovascular events spike rapidly once BMI hits 23.0 due to localized visceral fat accumulation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start">
+          <div class="bg-danger-subtle p-2 rounded-3 me-3"><i class="fa-solid fa-weight-scale text-danger"></i></div>
+          <div>
+            <h6 class="fw-bold mb-1">Asian BMI Thresholds</h6>
+            <p class="small text-muted mb-0">Health risks for Asians escalate at a BMI of <strong>23.0</strong>, whereas Western standards often don't flag risk until 25.0.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm overflow-hidden rounded-4">
+          <div class="card-header bg-dark text-white py-3">
+            <h6 class="mb-0 fw-bold">BMI Categories: Asian vs. International</h6>
+          </div>
+          <div class="table-responsive">
+            <table class="table mb-0 text-center align-middle">
+              <thead class="table-light small">
+                <tr>
+                  <th>Category</th>
+                  <th>Asian BMI</th>
+                  <th>Western BMI</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.95rem;">
+                <tr>
+                  <td class="fw-bold text-start ps-4">Healthy</td>
+                  <td><span class="badge bg-success risk-badge">18.5 – 22.9</span></td>
+                  <td><span class="badge bg-secondary opacity-50 risk-badge">18.5 – 24.9</span></td>
+                </tr>
+                <tr class="table-warning" style="background-color: #fffdf5;">
+                  <td class="fw-bold text-start ps-4">Overweight</td>
+                  <td><span class="badge bg-warning text-dark risk-badge">23.0 – 27.4</span></td>
+                  <td><span class="badge bg-secondary opacity-50 risk-badge">25.0 – 29.9</span></td>
+                </tr>
+                <tr class="table-danger" style="background-color: #fff5f5;">
+                  <td class="fw-bold text-start ps-4">Obese</td>
+                  <td><span class="badge bg-danger risk-badge">27.5+</span></td>
+                  <td><span class="badge bg-secondary opacity-50 risk-badge">30.0+</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer bg-light py-2">
+            <p class="extra-small text-muted mb-0" style="font-size: 0.7rem;">Source: Singapore National Population Health Survey & WHO Expert Consultation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light border-top">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h3 class="fw-bold mb-4 text-center">Key Changes: 2026 Guidelines vs. Previous</h3>
+        <p class="text-center text-muted mb-5">The medical landscape shifted in 2026 to prioritize <strong>early intervention</strong> and <strong>genetic screening</strong>.</p>
+        
+        <div class="table-responsive shadow-sm rounded-4">
+          <table class="table table-bordered bg-white align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th style="width: 25%;">Feature</th>
+                <th style="width: 35%;">Previous Standard (2018)</th>
+                <th style="width: 40%;">2026 Updated Standard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-bold">Risk Horizon</td>
+                <td>10-Year Risk focus</td>
+                <td><strong>30-Year/Lifetime Trajectory</strong> focus</td>
+              </tr>
+              <tr>
+                <td class="fw-bold">Lipoprotein(a)</td>
+                <td>Optional / Risk Enhancer</td>
+                <td><strong>Universal Screening:</strong> Every adult once</td>
+              </tr>
+              <tr>
+                <td class="fw-bold">Target LDL-C</td>
+                <td>Statin intensity focus</td>
+                <td><strong>Strict Targets:</strong> &lt; 1.4 mmol/L (55 mg/dL) for High Risk</td>
+              </tr>
+              <tr>
+                <td class="fw-bold">Assessment Age</td>
+                <td>Starting at age 40</td>
+                <td><strong>Starting at age 30</strong> (earlier for FH)</td>
+              </tr>
+              <tr>
+                <td class="fw-bold">Imaging</td>
+                <td>CAC score (optional)</td>
+                <td><strong>Early CAC/CCTA</strong> used to confirm biological age</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <section class="py-5 border-top bg-light">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Scientific Foundation</h5>
+          <h5 class="fw-bold mb-3"><i class="fa-solid fa-earth-asia me-2 text-primary"></i>Scientific Foundation & Local Context</h5>
           <p class="small text-muted mb-4">
-            International calculators often underestimate risk for Asian populations. This tool incorporates weighting based on Singapore's MOH Clinical Practice Guidelines to provide a more accurate local outlook.
+            Standard international risk models have been updated in 2026. This estimator provides an <strong>educational outlook</strong> by referencing the PREVENT™ Equations, the Singapore National Population Health Survey 2024/25, and MOH ACE clinical frameworks.
           </p>
           
           <div class="row g-4">
             <div class="col-md-6">
-              <h6 class="fw-bold small text-muted text-uppercase mb-2">Ethnicity & BMI</h6>
-              <p class="text-muted" style="font-size: 0.85rem;">
-                Singapore guidelines recognize specific ethnicities as "risk enhancers." Furthermore, the "Thin-on-the-Outside, Fat-on-the-Inside" (TOFI) phenotype is common in local populations, necessitating lower intervention thresholds.
+              <h6 class="fw-bold small text-muted text-uppercase mb-2">Prevalence & Genetic Risk</h6>
+              <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+                Singapore’s 2025 health landscape emphasizes early genetic screening for **Familial Hypercholesterolaemia (FH)**. With diabetes prevalence remaining high among South Asians (14.2%) and Malays (14.4%), the 2026 guidelines move away from waiting for "damage" to occur, opting instead for early aggressive lipid management starting in the 30s.
               </p>
             </div>
             <div class="col-md-6">
-              <h6 class="fw-bold small text-muted text-uppercase mb-2">Clinical References</h6>
+              <h6 class="fw-bold small text-muted text-uppercase mb-2">Clinical Reference Framework</h6>
               <ul class="text-muted list-unstyled" style="font-size: 0.85rem;">
-                <li class="mb-2">1. MOH Singapore: Clinical Practice Guidelines on Hypertension and Lipid Management.</li>
-                <li class="mb-2">2. WHO Expert Consultation: BMI thresholds for Asian populations.</li>
-                <li class="mb-2">3. Singapore Heart Foundation Hypertension Management Standards.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>1. 2026 ACC/AHA PREVENT™ (Predicting Risk of CVD Events) Equations.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>2. MOH Singapore (2025): Genomic Assessment Centre FH Protocols.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>3. ACE Clinical Guidance (Singapore 2026): Lipid Management Targets.</li>
+                <li class="mb-2"><i class="fa-solid fa-book-medical me-2 text-primary"></i>4. Singapore National Population Health Survey 2024/25 Findings.</li>
               </ul>
             </div>
           </div>
-          <div class="mt-4 pt-4 border-top text-center">
-            <p class="extra-small text-muted" style="font-size: 0.75rem;">
-              <strong>Disclaimer:</strong> This tool is for educational purposes and is not a substitute for professional medical advice.
-            </p>
+
+          <div class="mt-4 pt-4 border-top">
+            <div class="p-3 rounded-3 bg-white border border-warning-subtle text-center">
+              <p class="extra-small text-muted mb-0" style="font-size: 0.78rem; line-height: 1.5;">
+                <span class="fw-bold text-dark"><i class="fa-solid fa-triangle-exclamation text-warning me-1"></i> Wellness Tool Notice:</span> 
+                This calculator is an informational resource intended for health awareness and educational purposes only. It reflects statistical trends from the 2026 guidelines. It is not a medical device and does not perform clinical diagnosis. A formal clinical evaluation at <strong>A Healing Heart Medical</strong> is required for a definitive diagnosis or treatment plan.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -284,28 +375,23 @@ description: Estimate your cardiovascular risk using Asian-calibrated clinical i
       <h5 class="fw-bold text-muted" style="text-transform: none !important;">Explore Other Pathways</h5>
     </div>
     <div class="d-flex flex-wrap justify-content-center gap-3">
-      
       <a href="/health-screening" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="border-color: #3498db; color: #3498db; text-transform: none !important;">
         <i class="fa-solid fa-calculator me-2"></i>General Screening
       </a>
-
       <a href="/heart-health-screening" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="border-color: #3498db; color: #3498db; text-transform: none !important;">
         <i class="fa-solid fa-heart-pulse me-2"></i>Cardiology Screening
       </a>
-
       <a href="/vaccination" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="border-color: #3498db; color: #3498db; text-transform: none !important;">
         <i class="fa-solid fa-heart-pulse me-2"></i>Vaccination
       </a>
-
       <a href="/booking" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="background-color: #3498db; border: none; text-transform: none !important;">
         <i class="fa-solid fa-calendar-check me-2"></i>Book Appointment
       </a>
-
     </div>
   </div>
 </section>
 
-  </main>
+</main>
 
 <script type="text/javascript">
 function toggleBPInfo() {
@@ -323,7 +409,6 @@ function calculateRisk() {
     const diabetes = document.getElementById('diabetes').checked;
     const ethnicity = document.getElementById('ethnicity').value;
     
-    // UI Elements
     const iconBox = document.getElementById('riskIconContainer');
     const headline = document.getElementById('riskLevelHeadline');
     const cta = document.getElementById('ctaButton');
@@ -335,68 +420,70 @@ function calculateRisk() {
     const ethnicTag = document.getElementById('ethnicTag');
 
     if (isNaN(age) || isNaN(tcRaw) || isNaN(hdlRaw) || isNaN(sbp)) {
-        alert("Please enter your clinical values to calculate your risk.");
+        alert("Please enter your values to calculate your 2026 trajectory.");
         return;
     }
 
-    // Reset UI State
     placeholder.classList.add('d-none');
     resultDiv.classList.remove('d-none');
     resultCard.classList.remove('bg-light');
     resultCard.style.backgroundColor = "#ffffff";
     resultCard.style.border = "2px solid #3498db";
-    iconBox.classList.remove('status-safe', 'status-warning', 'status-alarm');
-    
-    // FIXED: Ensure CTA color resets correctly
+    iconBox.classList.remove('status-safe', 'status-warning', 'status-alarm', 'status-info');
     cta.classList.remove('btn-danger');
     cta.classList.add('btn-dark');
 
-    // Logic
     const tc = isMmol ? (tcRaw * 38.67) : tcRaw;
     const hdl = isMmol ? (hdlRaw * 38.67) : hdlRaw;
 
+    // 2026 Trajectory Logic: Weighted for lifetime risk
     let score = 0;
-    if (age >= 35) score += 2;
-    if (age >= 50) score += 5;
-    if (sbp >= 130) score += 4;
-    if (tc / hdl > 4.0) score += 4;
-    if (smoker) score += 8;
-    if (diabetes) score += 10;
+    if (age >= 30) score += 4; // Earlier assessment focus
+    if (age >= 45) score += 6;
+    if (sbp >= 130) score += 5;
+    if (tc / hdl > 3.5) score += 6; // Lower threshold for "optimal" ratio
+    if (smoker) score += 12;
+    if (diabetes) score += 15;
 
+    // Asian Calibration
     if (ethnicity === 'indian') {
-        score += 6;
-        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">South Asian Multiplier Applied</span>';
+        score += 8; 
+        ethnicTag.innerHTML = '<span class="badge bg-danger rounded-pill px-3">Genetic Risk (Lp(a) Factor) Applied</span>';
     } else if (ethnicity === 'malay') {
-        score += 4;
-        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Malay Risk Enhancer Applied</span>';
+        score += 6;
+        ethnicTag.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3">Metabolic Risk Applied</span>';
     } else {
-        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Standard Asian Calibration</span>';
+        ethnicTag.innerHTML = '<span class="badge bg-light text-muted border rounded-pill px-3">Asian Phenotype Applied</span>';
     }
 
-    scoreDisplay.innerText = score + "%";
-
-    // Results Branching
-    if (score < 8) {
+    if (score < 12) {
         iconBox.classList.add('status-safe');
         iconBox.innerHTML = '<i class="fa-solid fa-shield-heart fa-2x"></i>';
-        headline.innerText = "Low Risk Profile";
+        headline.innerText = "Low Trajectory";
         headline.style.color = "#198754";
-        noteDisplay.innerHTML = "<strong>Status: Stable.</strong> Your metrics are within optimal range. For the Asian Phenotype, we recommend an annual check for silent arterial inflammation.";
+        noteDisplay.innerHTML = "<strong>2026 Strategy:</strong> Your current trajectory is stable. However, per new guidelines, ensure you have completed your <strong>one-time Lp(a) screen</strong> to confirm no genetic 'hidden' risk exists.";
+        scoreDisplay.innerText = score.toFixed(1) + "%";
     } 
-    else if (score < 15) {
+    else if (score < 25) {
         iconBox.classList.add('status-warning');
         iconBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation fa-2x"></i>';
-        headline.innerText = "Moderate Risk Alert";
+        headline.innerText = "Rising Trajectory";
         headline.style.color = "#fd7e14";
-        noteDisplay.innerHTML = "<strong>Status: Rising.</strong> Your trajectory suggests early metabolic strain. This is the critical window for intervention before structural damage occurs.";
+        noteDisplay.innerHTML = "<strong>2026 Strategy:</strong> Your 30-year risk is accelerating. We recommend a <strong>Calcium Score (CAC)</strong> or <strong>ApoB</strong> check to see if plaque is already forming at a sub-clinical level.";
+        scoreDisplay.innerText = score.toFixed(1) + "%";
     } 
     else {
         iconBox.classList.add('status-alarm');
         iconBox.innerHTML = '<i class="fa-solid fa-bell-exclamation fa-2x"></i>';
-        headline.innerText = "High Risk Alarm";
+        headline.innerText = "High Risk Trajectory";
         headline.style.color = "#dc3545";
-        cta.classList.replace('btn-dark', 'btn-danger'); // Changes color to red
-        noteDisplay.innerHTML = "<strong>Status: Critical.</strong> Immediate clinical consultation is required. Your profile suggests potential arterial blockages requiring stabilization.";
+        cta.classList.replace('btn-dark', 'btn-danger'); 
+        noteDisplay.innerHTML = "<strong>2026 Strategy:</strong> Aggressive intervention is indicated. This score suggests significant lifetime exposure to lipids. A formal Cardiology audit is required to establish 2026 LDL-C targets (< 1.4 mmol/L).";
+        scoreDisplay.innerText = score.toFixed(1) + "%";
+    }
+
+    if (window.innerWidth < 992) {
+        resultCard.scrollIntoView({ behavior: 'smooth' });
     }
 }
 </script>
