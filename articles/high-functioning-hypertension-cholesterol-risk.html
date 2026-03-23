@@ -54,12 +54,37 @@ author_name: "Dr. Gerald Thang"
   .timeline-box { border-left: 3px dashed #ddd; margin-left: 20px; padding-left: 30px; position: relative; margin-top: 40px; }
   .timeline-item { margin-bottom: 35px; position: relative; }
   .timeline-item::before { content: ''; width: 16px; height: 16px; background: #3498db; border-radius: 50%; position: absolute; left: -39px; top: 4px; border: 3px solid white; box-shadow: 0 0 0 2px #3498db; }
+  
+  /* FAQ Styling */
   .faq-container { margin-top: 60px; border-top: 1px solid #e2e8f0; padding-top: 40px; }
   .faq-item { margin-bottom: 30px; }
   .faq-question { font-weight: 800; color: #1e293b; font-size: 1.2rem; margin-bottom: 10px; display: block; }
   .faq-answer { color: #475569; line-height: 1.7; }
+
+  /* Table & Clinical Data Styling */
+  .table-responsive { margin-top: 20px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #fff; }
+  .table { width: 100%; margin-bottom: 1rem; vertical-align: middle; border-collapse: collapse; border: 1px solid #edf2f7; }
+  .table thead th { background-color: #1a2e40 !important; color: #ffffff !important; padding: 15px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
+  .table td { padding: 15px; border: 1px solid #edf2f7; line-height: 1.4; }
+  
+  /* Text & Utility Helpers */
+  .fw-bold { font-weight: 700; }
+  .text-success { color: #2f855a !important; }
+  .text-warning { color: #c05621 !important; }
+  .text-danger { color: #c53030 !important; }
+  .small { font-size: 0.875rem; }
+  .text-muted { color: #718096 !important; }
+
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .triage-card { padding: 25px 15px; }
+    .btn-choice { min-width: 100%; margin: 8px 0; }
+    .table { font-size: 0.85rem; }
+    .table td, .table th { padding: 10px 5px; }
+  }
 </style>
 
 <main id="main" class="article-content">
@@ -166,6 +191,65 @@ author_name: "Dr. Gerald Thang"
                 <p class="faq-answer">In Singapore, hypertension prevalence triples between ages 40 and 59. This is the period where metabolic buffering fails and silent vascular erosion accelerates.</p>
               </div>
             </section>
+
+        <section class="clinical-data-table mt-5">
+  <h2 style="color: #2c4964; font-weight: 800; margin-bottom: 20px;">Blood Pressure Categories: The Clinical Audit Scale</h2>
+  <p class="mb-4">In Singapore, hypertension prevalence triples between ages 40 and 59. Use the MOH-aligned scale below to identify if your current readings require a lifestyle adjustment or a cardiac infrastructure audit.</p>
+  
+  <div class="table-responsive">
+    <table class="table table-bordered shadow-sm" style="border-radius: 10px; overflow: hidden; border-collapse: separate;">
+      <thead style="background-color: #1a2e40; color: white; text-align: center;">
+        <tr>
+          <th style="padding: 15px;">BP Category</th>
+          <th style="padding: 15px;">Systolic (Top) <br><small>mmHg</small></th>
+          <th style="padding: 15px;">Diastolic (Bottom) <br><small>mmHg</small></th>
+          <th style="padding: 15px;">Clinical Action (MOH Guidelines)</th>
+        </tr>
+      </thead>
+      <tbody style="text-align: center; vertical-align: middle;">
+        <tr style="background-color: #f0fff4;">
+          <td class="fw-bold">Healthy / Optimal</td>
+          <td>Less than 120</td>
+          <td>&amp; Less than 80</td>
+          <td class="text-success fw-bold">Maintain Baseline / Annual Check</td>
+        </tr>
+        <tr style="background-color: #fffaf0;">
+          <td class="fw-bold">Normal / Pre-Hypertension</td>
+          <td>120 – 129</td>
+          <td>&amp; Less than 80</td>
+          <td class="text-warning fw-bold">Lifestyle Audit (Diet &amp; Stress)</td>
+        </tr>
+        <tr style="background-color: #fff5f5;">
+          <td class="fw-bold">High-Normal (Stage 1)</td>
+          <td>130 – 139</td>
+          <td>or 80 – 89</td>
+          <td class="text-danger fw-bold">Infrastructure Audit Recommended</td>
+        </tr>
+        <tr style="background-color: #fee2e2;">
+          <td class="fw-bold">Hypertension (Stage 2)</td>
+          <td>140 – 159</td>
+          <td>or 90 – 99</td>
+          <td class="text-danger fw-bold" style="color: #9b1c1c !important;">Clinical Intervention Required</td>
+        </tr>
+        <tr style="background-color: #7f1d1d; color: white;">
+          <td class="fw-bold">Hypertensive Crisis</td>
+          <td>Higher than 180</td>
+          <td>or Higher than 120</td>
+          <td class="fw-bold text-white">Emergency Consultation Required</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small text-muted mt-2">
+    <em>*Source: Aligned with Singapore Ministry of Health (MOH) Clinical Practice Guidelines and WHO. If your readings fall into two categories, the higher category determines your risk level.</em>
+  </p>
+</section>
+
+<footer class="mt-5 p-4 bg-light border-top" style="border-radius: 8px;">
+  <p style="font-size: 0.85rem; color: #64748b; line-height: 1.6; margin-bottom: 0;">
+    <strong>Medical Disclaimer:</strong> The information provided on this page, including the interactive triage and blood pressure tables, is for educational purposes and "clinical screening" awareness only. It does not constitute medical advice, diagnosis, or treatment. Always seek the advice of a qualified physician (like Dr. Gerald Thang) or other health providers with any questions regarding a medical condition. Never disregard professional medical advice or delay seeking it because of something you have read on this website.
+  </p>
+</footer>
 
         <div class="mt-5 p-5 text-white rounded shadow text-center" style="background: linear-gradient(135deg, #1a2e40 0%, #2c4964 100%);">
               <h3 class="fw-bold mb-3" style="color:#ffffff;">Secure Your Vascular Longevity</h3>
