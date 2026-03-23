@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /articles/high-functioning-hypertension-cholesterol-risk
-title: The High-Functioning Hypertensive | Dr. Gerald Thang
-description: 53% of Singaporeans are undiagnosed. Learn how silent hypertension and cholesterol erode your heart and kidneys, and find the right health screening for your risk.
+title: Interactive Triage: High-Functioning Hypertension | Dr. Gerald Thang
+description: 53% of Singaporeans are undiagnosed. Use our interactive triage to identify if your risk is genetic or lifestyle-based and find the right screening package.
 last_reviewed: 2026-03-20
 author_name: "Dr. Gerald Thang"
 custom_schema: |
@@ -10,8 +10,8 @@ custom_schema: |
     {
       "@context": "https://schema.org",
       "@type": "MedicalWebPage",
-      "headline": "The High-Functioning Hypertensive: Why Feeling Fine is a Statistical Risk",
-      "description": "A clinical analysis of the 40-59 'Red Zone' for hypertension and cholesterol in Singapore.",
+      "headline": "Interactive Heart Health Triage for Singaporean Professionals",
+      "description": "A diagnostic-style article by Dr. Gerald Thang to help Singaporeans identify if they need cardiac-specific or general health screenings.",
       "lastReviewed": "2026-03-20",
       "medicalSpecialty": "Cardiology",
       "author": {
@@ -27,18 +27,18 @@ custom_schema: |
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I have high cholesterol if I am thin and active?",
+          "name": "What is high-functioning hypertension?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. This is often 'Genetic High Cholesterol.' Your liver may be programmed to overproduce LDL regardless of your weight or diet, increasing your risk of early-onset heart disease."
+            "text": "It refers to individuals who maintain high productivity despite having high blood pressure. Because they feel 'fine,' they are often unaware that the pressure is silently damaging their heart and kidneys."
           }
         },
         {
           "@type": "Question",
-          "name": "What are the symptoms of end-organ damage from high blood pressure?",
+          "name": "Can family history cause high cholesterol even if I eat well?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Early signs are often silent but can include protein in the urine (kidney strain), a thickened heart muscle on scans (LVH), or vision changes (retinopathy)."
+            "text": "Yes. Genetic factors can cause the liver to overproduce LDL cholesterol. This 'Genetic High Cholesterol' often requires clinical intervention rather than just dietary changes."
           }
         }
       ]
@@ -49,138 +49,132 @@ custom_schema: |
 <style>
   .article-content { padding-top: 140px; }
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
-  .triage-box { background: #fdfcf0; border: 2px solid #3498db; border-radius: 20px; padding: 35px; margin-bottom: 40px; transition: all 0.3s ease; }
-  .path-result { display: none; margin-top: 25px; animation: slideDown 0.4s ease-out; }
-  @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-  .stat-box { background: #fff5f5; border-radius: 15px; padding: 25px; margin: 30px 0; border: 1px solid #fed7d7; }
-  .organ-card { background: #f8f9fa; border-radius: 15px; padding: 25px; margin: 20px 0; border-left: 5px solid #c53030; }
-  .author-box { background: #f8f9fa; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 40px; }
-  .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; display: block; }
-  .check-list { list-style: none; padding-left: 0; }
-  .check-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: #444; }
-  .check-list li::before { content: "→"; color: #c53030; font-weight: bold; position: absolute; left: 0; }
+  
+  /* Triage Styling */
+  .triage-wizard { background: #fdfcf0; border: 2px solid #3498db; border-radius: 20px; padding: 40px; margin-bottom: 40px; }
+  .triage-step { display: none; animation: fadeIn 0.4s; }
+  .triage-step.active { display: block; }
+  .btn-choice { margin: 10px; min-width: 220px; font-weight: 700; border-radius: 50px; padding: 12px 25px; }
+  
+  /* Result Styling */
+  .final-result { display: none; animation: slideUp 0.6s ease-out; }
+  .organ-highlight { background: #fff5f5; border-left: 5px solid #c53030; padding: 25px; border-radius: 12px; margin: 30px 0; }
+  .stat-badge { background: #c53030; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+  
+  /* General Styles */
+  .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; }
+  .check-list li::before { content: "→"; color: #c53030; font-weight: bold; margin-right: 10px; }
   .faq-item { border-bottom: 1px solid #eee; padding: 20px 0; }
-  .faq-q { color: #2c4964; font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; }
 </style>
 
-<main id="main" class="article-content">
+<main class="article-content">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
+      <div class="col-lg-9">
         
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
-            <li class="breadcrumb-item active">The High-Functioning Risk</li>
-          </ol>
-        </nav>
-
-        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">The "High-Functioning" Hypertensive: Why Feeling Fine is a Statistical Blind Spot</h1>
-
-        <div class="author-box d-flex align-items-center">
-          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover; margin-right: 15px;" alt="Dr Gerald Thang">
-          <div>
-            <p class="mb-0 fw-bold">By Dr. Gerald Thang</p>
-            <p class="mb-0 text-primary fw-bold small text-uppercase">Principal Physician</p>
-            <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology</p>
-          </div>
+        <div class="text-center mb-5">
+          <span class="stat-badge mb-3">53% UNDIAGNOSED IN SG</span>
+          <h1 class="display-5 fw-bold" style="color: #2c4964;">The High-Functioning "Red Zone" Audit</h1>
+          <p class="lead">Is your body masking a silent vascular crisis? Complete the 3-step triage below.</p>
         </div>
 
-        <div class="triage-box text-center shadow-sm" id="choice-section">
-          <h3 class="h4 fw-bold mb-3" style="color: #2c4964;">Start Your Clinical Audit</h3>
-          <p class="mb-4">Does your immediate family have a history of <strong>High Cholesterol, Hypertension, or Heart Disease?</strong></p>
+        <div class="triage-wizard shadow-lg" id="triage-wizard">
           
-          <div class="d-grid gap-3 d-md-flex justify-content-center">
-            <button onclick="showTriage('genetic')" class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm">Yes, Family History</button>
-            <button onclick="showTriage('lifestyle')" class="btn btn-outline-primary rounded-pill px-4 fw-bold">No / I'm Not Sure</button>
+          <div id="step1" class="triage-step active text-center">
+            <h4 class="mb-4 fw-bold">1. Does your family history include Heart Attack, Stroke, or High Cholesterol?</h4>
+            <button onclick="nextStep(1, 'yes')" class="btn btn-primary btn-choice shadow-sm">Yes, Family History</button>
+            <button onclick="nextStep(1, 'no')" class="btn btn-outline-primary btn-choice">No / Not Sure</button>
           </div>
 
-          <div id="path-genetic" class="path-result">
-            <div class="organ-card border-danger text-start">
-              <h5 class="fw-bold text-danger"><i class="fa-solid fa-dna me-2"></i>The Genetic Factor</h5>
-              <p class="small">When history is present, cholesterol risk is often 'internal'—your liver may overproduce LDL regardless of your diet. Standard screenings may miss the early structural changes in your heart.</p>
-              <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger btn-sm fw-bold">View Heart Health Packages →</a>
-            </div>
+          <div id="step2" class="triage-step text-center">
+            <h4 class="mb-4 fw-bold">2. Do you experience "Success Tax" signs? (Headaches, Tinnitus, or Brain Fog)</h4>
+            <button onclick="nextStep(2, 'yes')" class="btn btn-primary btn-choice shadow-sm">Yes, Occasionally</button>
+            <button onclick="nextStep(2, 'no')" class="btn btn-outline-primary btn-choice">Rarely / Never</button>
           </div>
 
-          <div id="path-lifestyle" class="path-result">
-            <div class="organ-card border-primary text-start" style="border-left-color: #3498db;">
-              <h5 class="fw-bold text-primary"><i class="fa-solid fa-person-walking me-2"></i>Metabolic Baseline</h5>
-              <p class="small">In high-stress corporate environments, cholesterol and pressure build slowly like 'silt' in a pipe. Establishing your baseline now prevents the 'silent erosion' of your organs in your 50s.</p>
-              <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-primary btn-sm fw-bold">View Health Screening Packages →</a>
-            </div>
+          <div id="step3" class="triage-step text-center">
+            <h4 class="mb-4 fw-bold">3. Are you currently between the ages of 40 and 59?</h4>
+            <button onclick="finishTriage('yes')" class="btn btn-primary btn-choice shadow-sm">Yes, 40-59 Range</button>
+            <button onclick="finishTriage('no')" class="btn btn-outline-primary btn-choice">Other Age Range</button>
           </div>
         </div>
 
-        <div class="article-body">
-          <p>In Singapore, we pride ourselves on being high-functioning. But the ability to "power through" a long day often masks a silent mechanical failure. We call this the <strong>Silent Pressure Cooker</strong> effect.</p>
-
-          <h2 id="red-zone" class="section-heading h4">1. The 40–59 Age "Red Zone"</h2>
-          <div class="stat-box">
-            <h5 class="fw-bold text-danger mb-2">Did You Know?</h5>
-            <p class="mb-0">According to the <strong>National Population Health Survey (NPHS)</strong>, hypertension prevalence triples between your 30s and 40s. By age 50, <strong>over 50%</strong> of adults are hypertensive, and <strong>53% are completely unaware</strong> they have the condition.</p>
+        <div id="result-genetic" class="final-result article-body">
+          <h2 class="section-heading h3">Perspective: The Genetic Infrastructure Risk</h2>
+          <div class="organ-highlight">
+            <h5 class="fw-bold text-danger"><i class="fa-solid fa-dna me-2"></i>Why Your DNA Overrides Your Diet</h5>
+            <p>Your history suggests that your risk is <strong>internal</strong>. For many Singaporeans, the liver is genetically programmed to overproduce LDL (sticky cholesterol) regardless of weight or exercise. This causes "Silent Sandblasting" of your heart and kidneys.</p>
           </div>
+          
+          <p>Because you are high-functioning, your body is incredibly good at compensating for high pressure. However, this compensation leads to <strong>Left Ventricular Hypertrophy (LVH)</strong>—a thickening of the heart wall that increases the risk of sudden events.</p>
 
-          <h2 id="whispers" class="section-heading h4">2. Recognizing the "Success Tax"</h2>
-          <p>These aren't just signs of stress; they are whispers of vascular fatigue:</p>
-          <ul class="check-list">
-            <li><strong>Morning Headaches:</strong> A heavy feeling that lingers until your first coffee.</li>
-            <li><strong>Tinnitus Pulse:</strong> A rhythmic whooshing or ringing in the ears during quiet hours.</li>
-            <li><strong>Brain Fog:</strong> Losing your cognitive "edge" due to micro-vascular strain.</li>
-          </ul>
-
-          <h2 id="damage" class="section-heading h4">3. The End-Organ Concern</h2>
-          <p>The danger of being high-functioning is that your organs compensate for high pressure until they reach a tipping point. This leads to <strong>End-Organ Damage</strong>:</p>
-          <div class="organ-card">
-            <h5 class="fw-bold">Kidney Strain</h5>
-            <p class="small mb-0">High pressure "sandblasts" the delicate filters of your kidneys, leading to silent, irreversible scarring.</p>
+          <div class="p-4 rounded shadow-sm text-center border" style="background: #fffafa;">
+            <p class="fw-bold mb-3">Clinical Recommendation:</p>
+            <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger btn-lg px-5 fw-bold">View Specialized Cardiac Screenings →</a>
+            <p class="small text-muted mt-2">Targeted at identifying structural organ changes before they become loud.</p>
           </div>
-          <div class="organ-card">
-            <h5 class="fw-bold">Heart Hypertrophy</h5>
-            <p class="small mb-0">The heart muscle thickens to pump against resistance, eventually becoming stiff and inefficient.</p>
-          </div>
-
-          <div id="faq" class="mt-5 pt-5 border-top">
-            <h2 class="section-heading h4 mb-4">Common Questions on Chronic Control</h2>
-            
-            <div class="faq-item">
-              <p class="faq-q">Can I have high cholesterol if I feel healthy?</p>
-              <p class="text-muted small">Absolutely. High cholesterol has no symptoms until a blockage occurs. In Singapore, many 'fit' individuals discover high LDL only through clinical screening.</p>
-            </div>
-
-            <div class="faq-item">
-              <p class="faq-q">Why is family history so important for cholesterol?</p>
-              <p class="text-muted small">Genetics determine how your liver processes fats. If your parents had high cholesterol, you may need medical intervention despite a perfect diet.</p>
-            </div>
-
-            <div class="faq-item">
-              <p class="faq-q">How often should a working adult in Singapore screen?</p>
-              <p class="text-muted small">We recommend a full metabolic audit annually once you enter the 'Red Zone' (age 40+), especially if you lead a high-stress lifestyle.</p>
-            </div>
-          </div>
-
-          <div class="mt-5 p-5 text-white rounded shadow text-center" style="background: linear-gradient(135deg, #1a2e40 0%, #2c4964 100%);">
-            <h4 class="fw-bold mb-3" style="color: #ffffff;">Don't let a silent setback stop you.</h4>
-            <p class="mb-4">Secure your future by choosing the right audit for your risk profile today.</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-center">
-               <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger fw-bold px-4 py-2">Heart Health Packages</a>
-               <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-light fw-bold px-4 py-2">General Screening</a>
-            </div>
-          </div>
-
         </div>
+
+        <div id="result-lifestyle" class="final-result article-body">
+          <h2 class="section-heading h3">Perspective: The Metabolic Baseline Audit</h2>
+          <div class="organ-highlight" style="background: #f0f7ff; border-left-color: #3498db;">
+            <h5 class="fw-bold text-primary"><i class="fa-solid fa-briefcase me-2"></i>Modern Living vs. Metabolism</h5>
+            <p>You may not have a family history, but entering the 40-59 "Red Zone" marks a shift in how your body processes fats and manages pressure. Cholesterol in this stage builds like <strong>silent silt</strong> in a pipe.</p>
+          </div>
+
+          <p>The danger here is the <strong>53% Undiagnosed Gap</strong>. Most Singaporeans in your bracket feel perfectly fine while their vascular age exceeds their birth certificate age. Establishing your metabolic baseline now is the most effective way to ensure a healthy decade ahead.</p>
+
+          <div class="p-4 rounded shadow-sm text-center border" style="background: #f4fbff;">
+            <p class="fw-bold mb-3">Clinical Recommendation:</p>
+            <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-primary btn-lg px-5 fw-bold">Explore General Health Screenings →</a>
+            <p class="small text-muted mt-2">Ideal for baseline metabolic audits and preventive care.</p>
+          </div>
+        </div>
+
+        <div id="shared-faq" class="mt-5 pt-5 border-top" style="display:none;">
+          <h3 class="fw-bold mb-4" style="color: #2c4964;">Clinical FAQ: Understanding Your Risk</h3>
+          
+          <div class="faq-item">
+            <p class="faq-q fw-bold text-primary">Can I have high blood pressure without any symptoms?</p>
+            <p class="text-muted">Yes. Hypertension is the 'Silent Killer.' 53% of Singaporeans with high blood pressure only discover it during a clinical exam, often after years of silent organ strain.</p>
+          </div>
+
+          <div class="faq-item">
+            <p class="faq-q fw-bold text-primary">What is 'High-Functioning' Hypertension?</p>
+            <p class="text-muted">It describes individuals who remain highly productive and feel 'fine' despite having dangerously high blood pressure. Their bodies compensate, masking the erosion of the heart, brain, and kidneys.</p>
+          </div>
+
+          <div class="faq-item">
+            <p class="faq-q fw-bold text-primary">Why is the 40-59 age group called the 'Red Zone'?</p>
+            <p class="text-muted">NPHS data shows a sharp spike in chronic conditions in this decade. It is the period where lifestyle choices and genetic predispositions typically manifest as clinical disease.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </main>
 
 <script>
-function showTriage(path) {
-  document.getElementById('path-genetic').style.display = 'none';
-  document.getElementById('path-lifestyle').style.display = 'none';
-  document.getElementById('path-' + path).style.display = 'block';
-  // Optional: scroll slightly to show result
-  document.getElementById('path-' + path).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+let triageData = {};
+
+function nextStep(step, val) {
+  triageData['step' + step] = val;
+  document.getElementById('step' + step).classList.remove('active');
+  document.getElementById('step' + (step + 1)).classList.add('active');
+}
+
+function finishTriage(val) {
+  triageData['step3'] = val;
+  document.getElementById('triage-wizard').style.display = 'none';
+  document.getElementById('shared-faq').style.display = 'block';
+
+  // LOGIC: If they have family history OR symptoms, send to Genetic/Specialized Path.
+  // Otherwise, send to Lifestyle/General Path.
+  if (triageData.step1 === 'yes' || triageData.step2 === 'yes') {
+    document.getElementById('result-genetic').style.display = 'block';
+  } else {
+    document.getElementById('result-lifestyle').style.display = 'block';
+  }
 }
 </script>
