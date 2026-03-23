@@ -2,7 +2,7 @@
 layout: default
 permalink: /articles/high-functioning-hypertension-cholesterol-risk
 title: Clinical Triage: High-Functioning Hypertension & Cholesterol | Dr. Gerald Thang
-description: 53% of Singaporeans are undiagnosed. Identify if your risk is genetic or lifestyle-based.
+description: 53% of Singaporeans are undiagnosed. Use our interactive triage to identify if your risk is genetic or lifestyle-based.
 last_reviewed: 2026-03-23
 author_name: "Dr. Gerald Thang"
 custom_schema: |
@@ -11,167 +11,113 @@ custom_schema: |
       "@context": "https://schema.org",
       "@type": "MedicalWebPage",
       "headline": "Interactive Heart Health Triage for Singaporean Professionals",
-      "author": { "@type": "Person", "name": "Dr. Gerald Thang" }
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Gerald Thang"
+      }
     }
   ]
 ---
 
 <style>
-  /* Local Scoped Styles for Jekyll Compatibility */
-  .triage-wrapper { 
-    max-width: 850px; 
-    margin: 40px auto; 
-    font-family: inherit; 
-    color: #334155;
-    line-height: 1.7;
-  }
-
-  .triage-card { 
-    background: #ffffff; 
-    border: 1px solid #e2e8f0; 
-    border-radius: 16px; 
-    padding: 3rem; 
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    margin-bottom: 2rem;
-  }
-  
+  .triage-section { max-width: 800px; margin: 0 auto; padding: 20px; font-family: sans-serif; }
+  .triage-card { background: #fdfcf0; border: 2px solid #3498db; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; }
   .triage-step { display: none; }
-  .triage-step.active { display: block; animation: fadeIn 0.4s ease; }
-
-  .btn-choice { 
-    margin: 10px; 
-    padding: 14px 28px; 
-    border-radius: 50px; 
-    font-weight: 700; 
-    transition: 0.3s;
-    border: 2px solid #3498db;
-    background: transparent;
-    color: #3498db;
-    cursor: pointer;
-    min-width: 200px;
-  }
-
-  .btn-choice:hover { background: #3498db; color: white; transform: translateY(-2px); }
-
-  .final-result { display: none; margin-top: 30px; border-radius: 12px; }
-  
-  .alert-clinical { 
-    border-left: 6px solid #e11d48; 
-    background: #fff1f2; 
-    padding: 2rem; 
-    margin: 2rem 0; 
-    text-align: left;
-  }
-
-  /* Timeline UI */
-  .timeline-ui { border-left: 2px dashed #cbd5e1; margin-left: 20px; padding-left: 30px; text-align: left; }
-  .timeline-point { margin-bottom: 30px; position: relative; }
-  .timeline-point::before { 
-    content: ''; position: absolute; left: -37px; top: 6px; 
-    width: 14px; height: 14px; border-radius: 50%; background: #3498db; 
-  }
-
+  .triage-step.active { display: block; animation: fadeIn 0.4s; }
+  .btn-choice { margin: 10px; min-width: 200px; font-weight: 700; border-radius: 50px; padding: 12px 25px; cursor: pointer; border: 2px solid #3498db; background: white; color: #3498db; transition: 0.3s; }
+  .btn-choice:hover { background: #3498db; color: white; }
+  .final-result { display: none; animation: slideUp 0.6s ease-out; }
+  .organ-card { background: #f8f9fa; border-radius: 15px; padding: 25px; margin: 20px 0; border-left: 5px solid #c53030; text-align: left; }
+  .timeline-box { border-left: 3px dashed #ddd; margin-left: 20px; padding-left: 30px; position: relative; margin-top: 30px; }
+  .timeline-item { margin-bottom: 30px; position: relative; }
+  .timeline-item::before { content: ''; width: 15px; height: 15px; background: #3498db; border-radius: 50%; position: absolute; left: -39px; top: 5px; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
-<div class="triage-wrapper">
+<div class="triage-section">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="color: #2c4964; font-weight: 700;">The High-Functioning "Red Zone" Audit</h1>
+    <p style="font-size: 1.2rem; color: #e67e22; font-weight: 600;">Could your body be masking a silent vascular crisis without you knowing?</p>
+  </div>
 
-  <header style="text-align: center; margin-bottom: 3rem;">
-    <h1 style="color: #1e293b; font-weight: 800; font-size: 2.5rem;">The High-Functioning "Red Zone" Audit</h1>
-    <p style="font-size: 1.25rem; color: #64748b;"><strong>Could your body be masking a silent vascular crisis without you knowing?</strong></p>
-  </header>
-
-  <div class="triage-card" id="triage-wizard">
-    
+  <div class="triage-card shadow-lg" id="triage-wizard">
     <div id="step1" class="triage-step active">
-      <h3 style="margin-bottom: 25px;">1. Select your current age group:</h3>
+      <h4 style="margin-bottom: 25px; font-weight: 700;">1. Select your current age group:</h4>
       <button onclick="nextStep(1, '20-39')" class="btn-choice">20 — 39</button>
       <button onclick="nextStep(1, '40-59')" class="btn-choice">40 — 59 (Red Zone)</button>
       <button onclick="nextStep(1, '60+')" class="btn-choice">60 or Above</button>
     </div>
 
     <div id="step2" class="triage-step">
-      <h3 style="margin-bottom: 25px;">2. Is there a family history of Heart Attack, Stroke, or High Cholesterol?</h3>
+      <h4 style="margin-bottom: 25px; font-weight: 700;">2. Does your family history include Heart Attack, Stroke, or High Cholesterol?</h4>
       <button onclick="nextStep(2, 'yes')" class="btn-choice">Yes, Family History</button>
       <button onclick="nextStep(2, 'no')" class="btn-choice">No / Not Sure</button>
     </div>
 
     <div id="step3" class="triage-step">
-      <h3 style="margin-bottom: 25px;">3. Do you experience "Success Tax" signs? (Morning headaches, Tinnitus, or Brain Fog)</h3>
+      <h4 style="margin-bottom: 25px; font-weight: 700;">3. Do you experience "Success Tax" signs? (Morning headaches, Tinnitus, or Brain Fog)</h4>
       <button onclick="finishTriage('yes')" class="btn-choice">Yes, Occasionally</button>
       <button onclick="finishTriage('no')" class="btn-choice">Rarely / Never</button>
     </div>
   </div>
 
   <div id="result-genetic" class="final-result">
-    <div class="alert-clinical">
-      <h2 style="color: #9f1239; margin-top: 0;">Priority: Genetic Infrastructure Audit</h2>
-      <p>Based on your family history and symptoms, your risk profile appears to be <strong>internally driven</strong>. In many Singaporeans, LDL (cholesterol) is overproduced by the liver regardless of diet. We recommend a cardiac-specific screening to check for heart wall thickening.</p>
-    </div>
-    <div style="text-align: center;">
-      <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn-choice" style="background:#e11d48; color:white; border:none; text-decoration:none; display:inline-block;">View Heart Screenings</a>
+    <div class="organ-card">
+      <h3 style="color: #c53030; font-weight: 700;">Priority: Genetic Infrastructure Audit</h3>
+      <p>Your profile suggests that your risk may be <strong>internally driven</strong>. In many Singaporeans, the liver is genetically programmed to overproduce LDL (cholesterol) regardless of diet. We recommend a cardiac-specific screening to evaluate your heart wall thickness (LVH).</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" style="background: #c53030; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block;">View Heart Screenings</a>
+      </div>
     </div>
   </div>
 
   <div id="result-lifestyle" class="final-result">
-    <div class="alert-clinical" style="border-left-color: #0ea5e9; background: #f0f9ff;">
-      <h2 style="color: #0369a1; margin-top: 0;">Priority: Metabolic Baseline Audit</h2>
-      <p>Your profile suggests a focus on <strong>Metabolic Preservation</strong>. As you enter or navigate the "Red Zone," hypertension prevalence triples. Establishing your clinical baseline now is the best way to prevent silent organ erosion.</p>
-    </div>
-    <div style="text-align: center;">
-      <a href="https://www.ahealingheartmedical.com/health-screening" class="btn-choice" style="background:#0ea5e9; color:white; border:none; text-decoration:none; display:inline-block;">Explore Health Screenings</a>
+    <div class="organ-card" style="border-left-color: #3498db;">
+      <h3 style="color: #2c4964; font-weight: 700;">Priority: Metabolic Baseline Audit</h3>
+      <p>As you enter or navigate the 40-59 "Red Zone," your risk of hypertension triples. Establishing a metabolic baseline now is the most effective way to prevent silent organ erosion later in life.</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="https://www.ahealingheartmedical.com/health-screening" style="background: #3498db; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block;">Explore Health Screenings</a>
+      </div>
     </div>
   </div>
 
-  <div id="global-content" style="display:none; margin-top: 4rem;">
-    <h2 style="color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">The 20-Year Disease Cascade</h2>
-    <p>Chronic conditions don't happen overnight; they are the result of a long, silent trajectory.</p>
+  <div id="global-content" style="display:none; margin-top: 50px;">
+    <h2 style="color: #2c4964; font-weight: 700;">The 20-Year Cascade: A Timeline of Erosion</h2>
+    <p>Chronic conditions like Hypertension and Cholesterol don't appear overnight; they are the result of a long-term trajectory.</p>
 
-    <div class="timeline-ui">
-      <div class="timeline-point">
-        <strong>Ages 20–39: The Foundation</strong>
-        <p style="font-size: 0.95rem; color: #64748b;">Cholesterol (LDL) begins to accumulate silently in the arterial lining.</p>
-      </div>
-      <div class="timeline-point">
-        <strong>Ages 40–59: The Red Zone</strong>
-        <p style="font-size: 0.95rem; color: #64748b;">The body’s buffering systems fade. Hypertension prevalence triples in Singapore during this window.</p>
-      </div>
-      <div class="timeline-point">
-        <strong>Ages 60+: The Event Horizon</strong>
-        <p style="font-size: 0.95rem; color: #64748b;">Cumulative damage manifests as clinical events like Stroke or Heart Failure.</p>
-      </div>
-    </div>
+    
 
-    <h2 style="color: #1e293b; margin-top: 3rem;">Clinical FAQ</h2>
-    <div style="margin-bottom: 20px;">
-      <p><strong>Can I be fit but have high cholesterol?</strong><br>
-      <span style="color: #64748b;">Yes. Genetic high cholesterol (Familial Hypercholesterolemia) is common. Your liver may produce excess LDL despite a perfect diet.</span></p>
-    </div>
-    <div style="margin-bottom: 20px;">
-      <p><strong>Why is undiagnosed hypertension so common?</strong><br>
-      <span style="color: #64748b;">High-functioning individuals often ignore subtle signs like brain fog or mild headaches, attributing them to work stress while the heart is under severe strain.</span></p>
+    <div class="timeline-box">
+      <div class="timeline-item">
+        <h5 style="font-weight: 700; color: #3498db;">Ages 20–39: The Foundation</h5>
+        <p style="font-size: 0.95rem; color: #666;">Metabolic flexibility is high, but "Silent Silt" (early cholesterol) begins to coat arterial walls.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 style="font-weight: 700; color: #e67e22;">Ages 40–59: The Red Zone</h5>
+        <p style="font-size: 0.95rem; color: #666;">Hypertension prevalence triples in Singapore. Organ damage (kidney and heart strain) begins silently.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 style="font-weight: 700; color: #c53030;">Ages 60+: The Event Horizon</h5>
+        <p style="font-size: 0.95rem; color: #666;">Cumulative damage leads to clinical events: Strokes, Heart Attacks, or Chronic Kidney Disease.</p>
+      </div>
     </div>
   </div>
-
 </div>
 
 <script>
-let triageResponse = {};
-
+let triage = {};
 function nextStep(step, val) {
-  triageResponse['step' + step] = val;
+  triage['step' + step] = val;
   document.getElementById('step' + step).classList.remove('active');
   document.getElementById('step' + (step + 1)).classList.add('active');
 }
-
 function finishTriage(val) {
-  triageResponse['step3'] = val;
+  triage['step3'] = val;
   document.getElementById('triage-wizard').style.display = 'none';
   document.getElementById('global-content').style.display = 'block';
-
-  // LOGIC: If they are in the Red Zone/60+ OR have family history OR have symptoms, prioritize Genetic/Heart Path.
-  if (triageResponse.step1 !== '20-39' || triageResponse.step2 === 'yes' || triageResponse.step3 === 'yes') {
+  // Logic: Genetic path if high age range OR family history OR symptoms
+  if (triage.step1 !== '20-39' || triage.step2 === 'yes' || triage.step3 === 'yes') {
     document.getElementById('result-genetic').style.display = 'block';
   } else {
     document.getElementById('result-lifestyle').style.display = 'block';
