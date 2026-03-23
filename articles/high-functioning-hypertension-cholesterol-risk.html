@@ -47,7 +47,6 @@ custom_schema: |
 ---
 
 <style>
-  .article-content { padding-top: 140px; }
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
   
   /* Triage Styling */
@@ -75,131 +74,121 @@ custom_schema: |
   .faq-q { color: #2c4964; font-weight: 700; font-size: 1.1rem; }
 </style>
 
-<main class="article-content">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-9">
-        
-        <div class="text-center mb-5">
-          <span class="stat-badge mb-3">Clinical Insight: 53% Undiagnosed in SG</span>
-          <h1 class="display-5 fw-bold" style="color: #2c4964;">The High-Functioning "Red Zone" Audit</h1>
-          <p class="lead">Is your body masking a silent vascular crisis? Complete the 3-step triage below.</p>
-        </div>
+<div class="article-body">
+  
+  <div class="text-center mb-5">
+    <span class="stat-badge mb-3">Clinical Insight: 53% Undiagnosed in SG</span>
+    <h1 class="display-5 fw-bold" style="color: #2c4964;">The High-Functioning "Red Zone" Audit</h1>
+    <p class="lead">Is your body masking a silent vascular crisis? Complete the 3-step triage below.</p>
+  </div>
 
-        <div class="triage-wizard shadow-lg" id="triage-wizard">
-          <div id="step1" class="triage-step active text-center">
-            <h4 class="mb-4 fw-bold">1. Does your family history include Heart Attack, Stroke, or High Cholesterol?</h4>
-            <button onclick="nextStep(1, 'yes')" class="btn btn-primary btn-choice shadow-sm">Yes, Family History</button>
-            <button onclick="nextStep(1, 'no')" class="btn btn-outline-primary btn-choice">No / Not Sure</button>
-          </div>
+  <div class="triage-wizard shadow-lg" id="triage-wizard">
+    <div id="step1" class="triage-step active text-center">
+      <h4 class="mb-4 fw-bold">1. Does your family history include Heart Attack, Stroke, or High Cholesterol?</h4>
+      <button onclick="nextStep(1, 'yes')" class="btn btn-primary btn-choice shadow-sm">Yes, Family History</button>
+      <button onclick="nextStep(1, 'no')" class="btn btn-outline-primary btn-choice">No / Not Sure</button>
+    </div>
 
-          <div id="step2" class="triage-step text-center">
-            <h4 class="mb-4 fw-bold">2. Do you experience "Success Tax" signs? (Morning headaches, Tinnitus, or Brain Fog)</h4>
-            <button onclick="nextStep(2, 'yes')" class="btn btn-primary btn-choice shadow-sm">Yes, Occasionally</button>
-            <button onclick="nextStep(2, 'no')" class="btn btn-outline-primary btn-choice">Rarely / Never</button>
-          </div>
+    <div id="step2" class="triage-step text-center">
+      <h4 class="mb-4 fw-bold">2. Do you experience "Success Tax" signs? (Morning headaches, Tinnitus, or Brain Fog)</h4>
+      <button onclick="nextStep(2, 'yes')" class="btn btn-primary btn-choice shadow-sm">Yes, Occasionally</button>
+      <button onclick="nextStep(2, 'no')" class="btn btn-outline-primary btn-choice">Rarely / Never</button>
+    </div>
 
-          <div id="step3" class="triage-step text-center">
-            <h4 class="mb-4 fw-bold">3. Are you currently between the ages of 40 and 59?</h4>
-            <button onclick="finishTriage('yes')" class="btn btn-primary btn-choice shadow-sm">Yes, in the "Red Zone"</button>
-            <button onclick="finishTriage('no')" class="btn btn-outline-primary btn-choice">Other Age Range</button>
-          </div>
-        </div>
+    <div id="step3" class="triage-step text-center">
+      <h4 class="mb-4 fw-bold">3. Are you currently between the ages of 40 and 59?</h4>
+      <button onclick="finishTriage('yes')" class="btn btn-primary btn-choice shadow-sm">Yes, in the "Red Zone"</button>
+      <button onclick="finishTriage('no')" class="btn btn-outline-primary btn-choice">Other Age Range</button>
+    </div>
+  </div>
 
-        <div id="result-genetic" class="final-result article-body">
-          <h2 class="section-heading h3">Perspective: The Genetic Infrastructure Risk</h2>
-          <div class="organ-card" style="border-left-color: #c53030;">
-            <h5 class="fw-bold text-danger"><i class="fa-solid fa-dna me-2"></i>Why DNA Overrides Diet</h5>
-            <p>Your history suggests your risk is <strong>internal</strong>. In many Singaporeans, the liver is genetically programmed to overproduce LDL (sticky cholesterol) regardless of weight. This acts as "Silent Sandblasting" for your heart and kidneys.</p>
-          </div>
-          
-          <h3 class="h4 fw-bold mt-4">The Impact of Being "High-Functioning"</h3>
-          <p>Because you are capable of maintaining a high-stress lifestyle, your body is incredibly good at compensating. However, this lead to <strong>Left Ventricular Hypertrophy (LVH)</strong>—a thickening of the heart wall that increases the risk of sudden events.</p>
+  <div id="result-genetic" class="final-result">
+    <h2 class="section-heading h3">Perspective: The Genetic Infrastructure Risk</h2>
+    <div class="organ-card">
+      <h5 class="fw-bold text-danger"><i class="fa-solid fa-dna me-2"></i>Why DNA Overrides Diet</h5>
+      <p>Your history suggests your risk is <strong>internal</strong>. In many Singaporeans, the liver is genetically programmed to overproduce LDL (sticky cholesterol) regardless of weight. This acts as "Silent Sandblasting" for your heart and kidneys.</p>
+    </div>
+    
+    <h3 class="h4 fw-bold mt-4">The Impact of Being "High-Functioning"</h3>
+    <p>Because you are capable of maintaining a high-stress lifestyle, your body is incredibly good at compensating. However, this lead to <strong>Left Ventricular Hypertrophy (LVH)</strong>—a thickening of the heart wall that increases the risk of sudden events.</p>
 
-          <div class="p-4 rounded shadow-sm text-center border bg-light">
-            <p class="fw-bold mb-3">Recommended Clinical Action:</p>
-            <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger btn-lg px-5 fw-bold shadow-sm">View Heart Health Screenings →</a>
-          </div>
-        </div>
+    <div class="p-4 rounded shadow-sm text-center border bg-light">
+      <p class="fw-bold mb-3">Recommended Clinical Action:</p>
+      <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger btn-lg px-5 fw-bold shadow-sm">View Heart Health Screenings →</a>
+    </div>
+  </div>
 
-        <div id="result-lifestyle" class="final-result article-body">
-          <h2 class="section-heading h3">Perspective: The Metabolic Baseline Audit</h2>
-          <div class="organ-card" style="border-left-color: #3498db;">
-            <h5 class="fw-bold text-primary"><i class="fa-solid fa-briefcase me-2"></i>Modern Living vs. Metabolism</h5>
-            <p>Entering the 40-59 age group marks a critical shift in metabolism. Even without a family history, cholesterol in this stage builds like <strong>silent silt</strong> in a pipe, often unnoticed until a blockage begins.</p>
-          </div>
+  <div id="result-lifestyle" class="final-result">
+    <h2 class="section-heading h3">Perspective: The Metabolic Baseline Audit</h2>
+    <div class="organ-card" style="border-left-color: #3498db;">
+      <h5 class="fw-bold text-primary"><i class="fa-solid fa-briefcase me-2"></i>Modern Living vs. Metabolism</h5>
+      <p>Entering the 40-59 age group marks a critical shift in metabolism. Even without a family history, cholesterol in this stage builds like <strong>silent silt</strong> in a pipe, often unnoticed until a blockage begins.</p>
+    </div>
 
-          <p>The 53% Undiagnosed Gap means most Singaporeans in your bracket feel healthy while their vascular age exceeds their actual age. Establishing a baseline now prevents Phase 3 (The Event Horizon) later in life.</p>
+    <p>The 53% Undiagnosed Gap means most Singaporeans in your bracket feel healthy while their vascular age exceeds their actual age. Establishing a baseline now prevents Phase 3 (The Event Horizon) later in life.</p>
 
-          <div class="p-4 rounded shadow-sm text-center border bg-light">
-            <p class="fw-bold mb-3">Recommended Clinical Action:</p>
-            <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-primary btn-lg px-5 fw-bold shadow-sm">Explore General Screening →</a>
-          </div>
-        </div>
+    <div class="p-4 rounded shadow-sm text-center border bg-light">
+      <p class="fw-bold mb-3">Recommended Clinical Action:</p>
+      <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-primary btn-lg px-5 fw-bold shadow-sm">Explore General Screening →</a>
+    </div>
+  </div>
 
-        <div id="global-content" class="article-body mt-5" style="display:none;">
-          <h2 class="section-heading">The 20-Year Cascade: A Timeline of Erosion</h2>
-          <p>Chronic conditions like Hypertension, Cholesterol, and Diabetes don't happen overnight. They follow a predictable trajectory:</p>
+  <div id="global-content" style="display:none;">
+    <h2 class="section-heading">The 20-Year Cascade: A Timeline of Erosion</h2>
+    <p>Chronic conditions like Hypertension, Cholesterol, and Diabetes don't happen overnight. They follow a predictable trajectory:</p>
 
-          <div class="timeline-box mt-4">
-            <div class="timeline-item">
-              <h5 class="fw-bold text-primary">Ages 25–39: The Foundation</h5>
-              <p class="small text-muted">Metabolic flexibility is high, but "Silent Silt" (early LDL) begins to coat arterial walls if a sedentary baseline is set.</p>
-            </div>
-            <div class="timeline-item">
-              <h5 class="fw-bold text-warning">Ages 40–59: The "Red Zone"</h5>
-              <p class="small text-muted">Hypertension prevalence triples. The body loses its ability to buffer sodium and stress, leading to early <strong>End-Organ Damage</strong> (kidney strain and heart thickening).</p>
-            </div>
-            <div class="timeline-item">
-              <h5 class="fw-bold text-danger">Ages 60+: The Event Horizon</h5>
-              <p class="small text-muted">Cumulative damage manifests as clinical events: Strokes, Heart Attacks, or Chronic Kidney Disease.</p>
-            </div>
-          </div>
+    <div class="timeline-box mt-4">
+      <div class="timeline-item">
+        <h5 class="fw-bold text-primary">Ages 25–39: The Foundation</h5>
+        <p class="small text-muted">Metabolic flexibility is high, but "Silent Silt" (early LDL) begins to coat arterial walls if a sedentary baseline is set.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="fw-bold text-warning">Ages 40–59: The "Red Zone"</h5>
+        <p class="small text-muted">Hypertension prevalence triples. The body loses its ability to buffer sodium and stress, leading to early <strong>End-Organ Damage</strong> (kidney strain and heart thickening).</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="fw-bold text-danger">Ages 60+: The Event Horizon</h5>
+        <p class="small text-muted">Cumulative damage manifests as clinical events: Strokes, Heart Attacks, or Chronic Kidney Disease.</p>
+      </div>
+    </div>
 
-          <h2 class="section-heading">Frequently Asked Questions</h2>
-          <div class="faq-item">
-            <p class="faq-q">Can I have high cholesterol if I am thin and active?</p>
-            <p class="text-muted small">Yes. Genetic high cholesterol (Familial Hypercholesterolemia) is common in Singapore. Your liver may overproduce LDL regardless of your lifestyle.</p>
-          </div>
-          <div class="faq-item">
-            <p class="faq-q">Why is age 40 considered the 'Red Zone'?</p>
-            <p class="text-muted small">Clinical data shows that the cumulative effect of genetics and work-life stress typically crosses the threshold into hypertension and metabolic syndrome starting at age 40.</p>
-          </div>
-          <div class="faq-item">
-            <p class="faq-q">What is an Infrastructure Audit?</p>
-            <p class="text-muted small">It goes beyond a blood test. It measures the structural health of your heart and the stiffness of your arteries to see how your body is actually coping with stress.</p>
-          </div>
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <p class="faq-q">Can I have high cholesterol if I am thin and active?</p>
+      <p class="text-muted small">Yes. Genetic high cholesterol (Familial Hypercholesterolemia) is common in Singapore. Your liver may overproduce LDL regardless of your lifestyle.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Why is age 40 considered the 'Red Zone'?</p>
+      <p class="text-muted small">Clinical data shows that the cumulative effect of genetics and work-life stress typically crosses the threshold into hypertension and metabolic syndrome starting at age 40.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What is an Infrastructure Audit?</p>
+      <p class="text-muted small">It goes beyond a blood test. It measures the structural health of your heart and the stiffness of your arteries to see how your body is actually coping with stress.</p>
+    </div>
 
-          <div class="mt-5 p-5 text-white rounded shadow text-center" style="background: linear-gradient(135deg, #1a2e40 0%, #2c4964 100%);">
-            <h4 class="fw-bold mb-3" style="color: #ffffff;">Secure Your Vascular Longevity</h4>
-            <p class="mb-4" style="color: #ffffff;">Don't let a silent mechanical failure take you out of the game. Book your audit today.</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-center">
-               <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger fw-bold px-4 py-2 shadow">Heart Health Package</a>
-               <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-light fw-bold px-4 py-2 shadow">General Screening</a>
-            </div>
-          </div>
-        </div>
-
+    <div class="mt-5 p-5 text-white rounded shadow text-center" style="background: linear-gradient(135deg, #1a2e40 0%, #2c4964 100%);">
+      <h4 class="fw-bold mb-3" style="color: #ffffff;">Secure Your Vascular Longevity</h4>
+      <p class="mb-4" style="color: #ffffff;">Don't let a silent mechanical failure take you out of the game. Book your audit today.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-2">
+         <a href="https://www.ahealingheartmedical.com/heart-health-screening.html" class="btn btn-danger fw-bold px-4 py-2 shadow">Heart Health Package</a>
+         <a href="https://www.ahealingheartmedical.com/health-screening" class="btn btn-light fw-bold px-4 py-2 shadow">General Screening</a>
       </div>
     </div>
   </div>
-</main>
+
+</div>
 
 <script>
 let triage = {};
-
 function nextStep(step, val) {
   triage['step' + step] = val;
   document.getElementById('step' + step).classList.remove('active');
   document.getElementById('step' + (step + 1)).classList.add('active');
 }
-
 function finishTriage(val) {
   triage['step3'] = val;
   document.getElementById('triage-wizard').style.display = 'none';
   document.getElementById('global-content').style.display = 'block';
-
-  // If family history exists OR symptoms exist, show Genetic result.
   if (triage.step1 === 'yes' || triage.step2 === 'yes') {
     document.getElementById('result-genetic').style.display = 'block';
   } else {
