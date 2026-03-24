@@ -38,8 +38,8 @@ author_name: "Dr. Gerald Thang"
   .meds-mandatory { background: #fff5f5; border-left: 5px solid #e53e3e; }
   .table-responsive { margin-top: 20px; border-radius: 12px; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
   .table { width: 100%; min-width: 600px; border-collapse: collapse; }
-  .table thead th { background-color: #1a2e40; color: white; padding: 15px; text-align: center; }
-  .table td { padding: 15px; border: 1px solid #edf2f7; text-align: center; }
+  .table thead th { background-color: #1a2e40; color: white; padding: 15px; text-align: left; font-size: 0.9rem; text-transform: uppercase; }
+  .table td { padding: 15px; border: 1px solid #edf2f7; text-align: left; vertical-align: top; font-size: 0.95rem; }
   .source-tag { font-size: 0.8rem; color: #718096; font-style: italic; display: block; margin-top: 15px; border-top: 1px solid #feb2b2; padding-top: 10px; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 </style>
@@ -68,19 +68,19 @@ author_name: "Dr. Gerald Thang"
 
           <div class="triage-card" id="triage-wizard">
             <div id="step1" class="triage-step active">
-              <h3 style="margin-bottom: 30px; color: #2c4964;">1. Identify your "Risk Era":</h3>
-              <button onclick="nextStep(1, 'foundation')" class="btn-choice">Foundation (20-39)</button>
-              <button onclick="nextStep(1, 'redzone')" class="btn-choice">The Red Zone (40-59)</button>
-              <button onclick="nextStep(1, 'horizon')" class="btn-choice">Event Horizon (60+)</button>
+              <h3 style="margin-bottom: 30px; color: #2c4964;">1. Your age group:</h3>
+              <button onclick="nextStep(1, 'foundation')" class="btn-choice">20-39</button>
+              <button onclick="nextStep(1, 'redzone')" class="btn-choice">40-59</button>
+              <button onclick="nextStep(1, 'horizon')" class="btn-choice">60+</button>
             </div>
             <div id="step2" class="triage-step">
-              <h3 style="margin-bottom: 30px; color: #2c4964;">2. Are you experiencing "Whisper Signs"?</h3>
+              <h3 style="margin-bottom: 30px; color: #2c4964;">2. Are you experiencing signs?</h3>
               <button onclick="nextStep(2, 'yes')" class="btn-choice">Yes (Stairs/Headaches)</button>
               <button onclick="nextStep(2, 'no')" class="btn-choice">No, I feel 100% fine</button>
             </div>
             <div id="step3" class="triage-step">
-              <h3 style="margin-bottom: 30px; color: #2c4964;">3. Your "Stair Recovery" Status:</h3>
-              <button onclick="finishTriage('yes')" class="btn-choice">Winded / Slow Recovery</button>
+              <h3 style="margin-bottom: 30px; color: #2c4964;">3. Climbing up 2 flights of stairs:</h3>
+              <button onclick="finishTriage('yes')" class="btn-choice">Slow Recovery (Panting)</button>
               <button onclick="finishTriage('no')" class="btn-choice">Fast Recovery</button>
             </div>
           </div>
@@ -124,33 +124,33 @@ author_name: "Dr. Gerald Thang"
                 <p class="mb-0 small">Consistently <strong>140/90+</strong> OR ultrasound shows <strong>Remodeling has begun</strong>. At this stage, lifestyle changes cannot "un-stiffen" the heart fast enough to bypass stroke risk.</p>
             </div>
 
-            <h2 class="mt-5" style="color: #2c4964; font-weight: 800;">Side Effects: A Modern Perspective</h2>
-            <p>We select medication classes based on your Audit results to ensure protection with minimal lifestyle impact:</p>
+            <h2 class="mt-5" style="color: #2c4964; font-weight: 800;">Navigating the Treatment Plan</h2>
+            <p>Address your hesitations with clinical data. We select medication classes based on your Audit results to ensure protection with minimal lifestyle impact:</p>
             
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead style="background: #1a2e40; color: white;">
                         <tr>
-                            <th>Medication Class</th>
-                            <th>Primary Consideration</th>
-                            <th>Clinical Benefit</th>
+                            <th style="width: 25%;">Your Concern</th>
+                            <th style="width: 35%;">Clinical Reality</th>
+                            <th style="width: 40%;">What this means for you</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>ACE / ARB</strong></td>
-                            <td>Monitoring kidney function.</td>
-                            <td>Superior for reversing heart thickening and protecting kidneys.</td>
+                            <td><strong>"I'll be on it forever"</strong></td>
+                            <td>Medication acts as "scaffolding." If the heart returns to normal thickness (un-remodeling), dosages can often be tapered.</td>
+                            <td>Medication is a tool for repair, not necessarily a life sentence.</td>
                         </tr>
                         <tr>
-                            <td><strong>Calcium Blockers</strong></td>
-                            <td>Potential ankle swelling.</td>
-                            <td>Most effective for older patients with stiffened "lead pipe" arteries.</td>
+                            <td><strong>"Side effects will ruin my day"</strong></td>
+                            <td>Modern ARBs/ACEs are designed to be "metabolically neutral"—meaning you shouldn't feel them at all.</td>
+                            <td>We choose the class that matches your body's chemistry to ensure 100% lifestyle continuity.</td>
                         </tr>
                         <tr>
-                            <td><strong>Diuretics</strong></td>
-                            <td>Increased urination initially.</td>
-                            <td>Essential for salt-sensitive individuals common in local Asian diets.</td>
+                            <td><strong>"It's unnatural"</strong></td>
+                            <td>Leaving high pressure untreated is "unnatural" for your heart wall, which was never built to withstand 140+ mmHg indefinitely.</td>
+                            <td>Treatment restores your natural vascular environment so your organs can survive.</td>
                         </tr>
                     </tbody>
                 </table>
