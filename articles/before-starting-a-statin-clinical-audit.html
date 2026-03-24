@@ -1,0 +1,163 @@
+---
+layout: default
+permalink: /articles/before-starting-a-statin-clinical-audit
+title: "Before Starting a Statin: The Vascular Infrastructure Audit | Dr. Gerald Thang"
+description: "Considering cholesterol medication? Use our interactive audit to prepare for your consultation and understand the clinical 'Why' behind statins."
+last_reviewed: 2026-03-24
+author_name: "Dr. Gerald Thang"
+---
+
+<style>
+  .article-content { padding-top: 140px; }
+  .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
+  .triage-section { max-width: 800px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .triage-card { background: #f0f7ff; border: 2px solid #2c4964; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+  .triage-step { display: none; }
+  .triage-step.active { display: block; animation: fadeIn 0.4s; }
+  .btn-choice { margin: 10px; min-width: 220px; font-weight: 700; border-radius: 50px; padding: 15px 30px; cursor: pointer; border: 2px solid #2c4964; background: white; color: #2c4964; transition: 0.3s; font-size: 1rem; }
+  .btn-choice:hover { background: #2c4964; color: white; transform: translateY(-2px); }
+  .final-result { display: none; animation: slideUp 0.6s ease-out; }
+  .info-card { background: #fff; border-radius: 15px; padding: 30px; margin: 20px 0; border-left: 5px solid #3498db; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  
+  /* Table Styling */
+  .table-responsive { margin-top: 20px; border-radius: 12px; overflow-x: auto; background: #fff; border: 1px solid #edf2f7; }
+  .table { width: 100%; min-width: 600px; border-collapse: collapse !important; }
+  .table thead th { background-color: #1a2e40 !important; color: #ffffff !important; padding: 15px; text-transform: uppercase; font-size: 0.8rem; }
+  .table td { padding: 15px; border: 1px solid #edf2f7; vertical-align: middle; }
+
+  .checklist-box { background-color: #f8fafc; border-left: 6px solid #1a2e40; padding: 25px; border-radius: 8px; margin: 40px 0; }
+  .fw-bold { font-weight: 700; }
+  
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    .triage-card { padding: 25px 15px; }
+    .btn-choice { min-width: 100%; }
+  }
+</style>
+
+<main id="main" class="article-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <div class="triage-section">
+          <div style="text-align: center; margin-bottom: 50px;">
+            <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Before Starting a Statin</h1>
+            <p style="font-size: 1.2rem; color: #555; line-height: 1.5;">Use this 3-step clinical audit to prepare for your cholesterol consultation.</p>
+          </div>
+
+          <div class="triage-card" id="statin-wizard">
+            <div id="step1" class="triage-step active">
+              <h3 style="margin-bottom: 25px; color: #2c4964;">1. Do you have unexplained muscle aches or frequent gym-related soreness?</h3>
+              <button onclick="nextStep(1)" class="btn-choice">Yes, Frequently</button>
+              <button onclick="nextStep(1)" class="btn-choice">Rarely / Never</button>
+            </div>
+
+            <div id="step2" class="triage-step">
+              <h3 style="margin-bottom: 25px; color: #2c4964;">2. Have you ever been told your blood sugar is "borderline" or pre-diabetic?</h3>
+              <button onclick="nextStep(2)" class="btn-choice">Yes</button>
+              <button onclick="nextStep(2)" class="btn-choice">No / Not Sure</button>
+            </div>
+
+            <div id="step3" class="triage-step">
+              <h3 style="margin-bottom: 25px; color: #2c4964;">3. Are you currently taking Red Yeast Rice or CoQ10 supplements?</h3>
+              <button onclick="finishTriage()" class="btn-choice">Yes, I take them</button>
+              <button onclick="finishTriage()" class="btn-choice">No</button>
+            </div>
+          </div>
+
+          <div id="statin-result" class="final-result">
+            <div class="info-card">
+              <h3 style="color: #2c4964; font-weight: 800; margin-top: 0;">Audit Complete: Your Readiness Profile</h3>
+              <p>You have identified key baseline markers. Below is the clinical logic we will use during your consultation to tailor your vascular protection plan.</p>
+            </div>
+
+            <article class="article-body mt-5">
+              <h2 style="color: #2c4964; font-weight: 800; border-bottom: 2px solid #eee; padding-bottom: 10px;">The Clinical "Why": Plaque vs. Pressure</h2>
+              <p>If you are in the <strong>"Red Zone" (Ages 40–59)</strong>, a statin is rarely about just lowering a number. It is about <strong>Plaque Stabilization</strong>.</p>
+              
+              <div class="my-4">
+                <img src="/assets/img/articles/atherosclerosis-plaque.webp" alt="Plaque buildup in arteries" class="img-fluid rounded shadow-sm">
+                <p class="small text-muted mt-2">Figure: Statins act as "glue" to prevent unstable plaque from rupturing.</p>
+              </div>
+
+              <p>Statins reduce vascular inflammation and "freeze" plaque in place. This prevents the primary cause of sudden heart attacks: plaque rupture. While lifestyle is the foundation, statins provide the structural reinforcement during the high-stress years of professional life.</p>
+
+              <h2 style="color: #2c4964; font-weight: 800; margin-top: 40px;">Side Effect Fact-Check (The Data)</h2>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Potential Concern</th>
+                      <th>Clinical Reality</th>
+                      <th>The Doctor's Insight</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-bold">Muscle Aches</td>
+                      <td>&lt; 5% of patients</td>
+                      <td>Often resolved by switching the molecule or checking <strong>CK levels</strong>.</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold">Liver Health</td>
+                      <td>&lt; 1% of patients</td>
+                      <td>Reversible and rare. We monitor your enzymes for total safety.</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold">Brain Fog</td>
+                      <td>Extremely Rare</td>
+                      <td>Uncontrolled BP is a more common cause of cognitive fog than statins.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="checklist-box">
+                <h3 style="color: #1a2e40; margin-top: 0; font-weight: 800;">Your 3-Point Pre-Consult Checklist</h3>
+                <p>Share these 3 details with Dr. Thang during your visit to optimize your plan:</p>
+                <ul style="list-style: none; padding-left: 0;">
+                  <li style="margin-bottom: 12px;">✅ <strong>Muscle Baseline:</strong> Differentiate between gym soreness and new aches.</li>
+                  <li style="margin-bottom: 12px;">✅ <strong>Metabolic History:</strong> Monitor blood sugar if you have pre-diabetic markers.</li>
+                  <li style="margin-bottom: 12px;">✅ <strong>Supplement Stack:</strong> Bring your bottles, especially Red Yeast Rice or CoQ10.</li>
+                </ul>
+              </div>
+
+              <h2 style="color: #2c4964; font-weight: 800;">Do I have to take it forever?</h2>
+              <p>Think of a statin like a <strong>metabolic seatbelt</strong>. If you achieve a <strong>Metabolic Pivot</strong>—losing 10-15% of body weight and maintaining a strict heart-healthy diet—we can trial a "Statin Holiday" under clinical supervision to see if your body can maintain the baseline on its own.</p>
+            </article>
+
+            <div class="mt-5 p-5 text-white rounded shadow text-center" style="background: linear-gradient(135deg, #1a2e40 0%, #2c4964 100%);">
+              <h3 class="fw-bold mb-3" style="color:#ffffff;">Get a Vascular Second Opinion</h3>
+              <p class="mb-4" style="color:#ffffff;">Unsure about starting medication? Let's perform a dedicated Cardiac Infrastructure Audit.</p>
+              <div class="d-grid gap-3 d-md-flex justify-content-center">
+                 <a href="/heart-health-screening" class="btn btn-danger btn-lg px-4 py-2 fw-bold">View Heart Screening</a>
+                 <a href="https://wa.me/6588741122" class="btn btn-outline-light btn-lg px-4 py-2 fw-bold">WhatsApp Dr. Thang</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="mt-5 p-4 bg-light border-top" style="border-radius: 8px;">
+          <p style="font-size: 0.85rem; color: #64748b; line-height: 1.6; margin-bottom: 0;">
+            <strong>Medical Disclaimer:</strong> This interactive audit is for educational purposes. Statin therapy should only be started or stopped under the direct supervision of a qualified physician.
+          </p>
+        </footer>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+function nextStep(step) {
+  document.getElementById('step' + step).classList.remove('active');
+  document.getElementById('step' + (step + 1)).classList.add('active');
+}
+function finishTriage() {
+  document.getElementById('statin-wizard').style.display = 'none';
+  document.getElementById('statin-result').style.display = 'block';
+}
+</script>
