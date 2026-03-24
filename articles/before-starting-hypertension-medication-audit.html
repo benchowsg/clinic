@@ -74,27 +74,33 @@ author_name: "Dr. Gerald Thang"
               National population studies in Singapore reveal a startling reality: <br>
               <span style="color: #c53030; font-weight: 700;">53% of Singaporeans with hypertension are undiagnosed.</span>
             </p>
-            <p style="font-size: 1.1rem; color: #666;">Most believe they are "fine" because they have no symptoms. In reality, their heart is silently changing its shape to survive the pressure.</p>
+            <p style="font-size: 1.1rem; color: #666;">They believe they are "fine" because they have no symptoms. In reality, their heart is silently changing its shape just to survive the internal pressure.</p>
+               <span class="source-tag">Source: National Population Health Survey (NPHS), Ministry of Health Singapore.</span>
+            </div>
+
+            <p style="font-size: 1.25rem; color: #444; line-height: 1.6;">
+              Before you commit to lifelong medication, you must determine if you are part of this 'Hidden 53%' and if your heart infrastructure has already begun to shift.
+            </p>
           </div>
 
           <div class="triage-card" id="triage-wizard">
             <div id="step1" class="triage-step active">
-              <h3 style="margin-bottom: 30px; color: #2c4964;">1. Where is your "Risk Era"?</h3>
-              <button onclick="nextStep(1, '20-39')" class="btn-choice">Foundation (20-39)</button>
-              <button onclick="nextStep(1, '40-59')" class="btn-choice">The Red Zone (40-59)</button>
-              <button onclick="nextStep(1, '60+')" class="btn-choice">Event Horizon (60+)</button>
+              <h3 style="margin-bottom: 30px; color: #2c4964;">1. What is your age group?</h3>
+              <button onclick="nextStep(1, '20-39')" class="btn-choice">20-39</button>
+              <button onclick="nextStep(1, '40-59')" class="btn-choice">40-59</button>
+              <button onclick="nextStep(1, '60+')" class="btn-choice">60+</button>
             </div>
 
             <div id="step2" class="triage-step">
-              <h3 style="margin-bottom: 30px; color: #2c4964;">2. Are you part of the "Hidden 53%"?</h3>
-              <button onclick="nextStep(2, 'yes')" class="btn-choice">Yes (Stairs/Headaches)</button>
-              <button onclick="nextStep(2, 'no')" class="btn-choice">No, I feel 100% fine</button>
+              <h3 style="margin-bottom: 30px; color: #2c4964;">2. Are you part of the 53% with hypertension but are undiagnosed?</h3>
+              <button onclick="nextStep(2, 'yes')" class="btn-choice">Yes. I have headache after climbing stairs.</button>
+              <button onclick="nextStep(2, 'no')" class="btn-choice">No. I feel 100% fine.</button>
             </div>
 
             <div id="step3" class="triage-step">
               <h3 style="margin-bottom: 30px; color: #2c4964;">3. Check your "Stair Recovery":</h3>
-              <button onclick="finishTriage('yes')" class="btn-choice">Winded after 2 flights</button>
-              <button onclick="finishTriage('no')" class="btn-choice">Recover easily</button>
+              <button onclick="finishTriage('yes')" class="btn-choice">I'm tired after climbing up stairs.</button>
+              <button onclick="finishTriage('no')" class="btn-choice">I recover easily.</button>
             </div>
           </div>
 
