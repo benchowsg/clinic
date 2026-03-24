@@ -37,15 +37,60 @@ author_name: "Dr. Gerald Thang"
   }
 </style>
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "MedicalWebPage",
+          "headline": "Before Starting a Statin: A Vascular Infrastructure Audit",
+          "description": "Understand the clinical necessity of statins, genetics vs lifestyle, and the 3 risk eras of cholesterol management in Singapore.",
+          "medicalSpecialty": "Cardiology",
+          "author": {
+            "@type": "Person",
+            "name": "Dr. Gerald Thang",
+            "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
+          },
+          "audience": {
+            "@type": "MedicalAudience",
+            "geographicArea": "Singapore"
+          },
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Can I stop taking statins once my cholesterol is normal?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Statins are often a long-term tool for plaque stabilization. However, with a 'Metabolic Pivot'—significant weight loss and dietary change—some patients may trial a supervised 'statin holiday' to see if their body can maintain levels naturally."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are statin side effects common in Singaporean patients?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Clinical data shows muscle aches occur in less than 5% of patients. Most side effects are manageable by adjusting the dosage or switching to a different molecule, such as moving from a fat-soluble to a water-soluble statin."
+              }
+            }
+          ]
+        }
+        </script>
+
 <main id="main" class="article-content">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
 
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
+            <li class="breadcrumb-item active">Before Starting Statin</li>
+          </ol>
+        </nav>
+
         <div class="triage-section">
           <div style="text-align: center; margin-bottom: 50px;">
             <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Before Starting a Statin</h1>
-            <p style="font-size: 1.2rem; color: #e67e22; font-weight: 700; line-height: 1.4;">Is it your lifestyle, or is your body internally overproducing risk?</p>
+            <p style="font-size: 1.2rem; color: #e67e22; font-weight: 700; line-height: 1.4;">Ask: Is it your lifestyle, is it genetics, or is your body internally overproducing risk?</p>
           </div>
 
           <div class="triage-card" id="statin-wizard">
@@ -57,7 +102,7 @@ author_name: "Dr. Gerald Thang"
             </div>
 
             <div id="step2" class="triage-step">
-              <h3 style="margin-bottom: 25px; color: #2c4964;">2. Do you currently smoke or lead a primarily sedentary (office-based) lifestyle?</h3>
+              <h3 style="margin-bottom: 25px; color: #2c4964;">2. Do you currently smoke or lead a primarily sedentary (little/no exercise) lifestyle?</h3>
               <button onclick="nextStep(2, 'yes')" class="btn-choice">Yes</button>
               <button onclick="nextStep(2, 'no')" class="btn-choice">No / Active</button>
             </div>
@@ -96,9 +141,9 @@ author_name: "Dr. Gerald Thang"
                 <table class="table">
                   <thead><tr><th>Concern</th><th>Clinical Reality</th><th>Mitigation</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>Muscle Pain</strong></td><td>&lt; 5%</td><td>Verified via <strong>CK Level tests</strong>; often solved by molecule switching.</td></tr>
-                    <tr><td><strong>Liver Health</strong></td><td>&lt; 1%</td><td>Monitored via <strong>LFT tests</strong>; rare and reversible.</td></tr>
-                    <tr><td><strong>Diabetes Risk</strong></td><td>~0.1%</td><td>Managed concurrently with <strong>HbA1c</strong> monitoring.</td></tr>
+                    <tr><td><strong>Muscle Pain</strong></td><td>&lt; 5%</td><td>Verified via <strong>enzyme Level test</strong>; often solved by molecule switching.</td></tr>
+                    <tr><td><strong>Liver Health</strong></td><td>&lt; 1%</td><td>Monitored via <strong>liver function test</strong>; rare and reversible.</td></tr>
+                    <tr><td><strong>Diabetes Risk</strong></td><td>~0.1%</td><td>Managed concurrently with <strong>blood sugar level test</strong> monitoring.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -106,9 +151,9 @@ author_name: "Dr. Gerald Thang"
               <div class="checklist-box">
                 <h3 style="color: #1a2e40; margin-top: 0; font-weight: 800;">Your Pre-Consult Checklist</h3>
                 <ul style="list-style: none; padding-left: 0;">
-                  <li>✅ <strong>Genetic Baseline:</strong> Family heart events before age 55?</li>
-                  <li>✅ <strong>Supplement Audit:</strong> Bring bottles of Red Yeast Rice, CoQ10, or Fish Oil.</li>
-                  <li>✅ <strong>Muscle Baseline:</strong> Are your aches new or training-related?</li>
+                  <li>✅ <strong>Genetic Baseline:</strong> Any family member with heart events before age 55?</li>
+                  <li>✅ <strong>Supplement Audit:</strong> Are you currently taking supplements like Red Yeast Rice, CoQ10, or Fish Oil?</li>
+                  <li>✅ <strong>Muscle Baseline:</strong> Are your aches new or exercise training-related?</li>
                 </ul>
               </div>
 
@@ -116,11 +161,37 @@ author_name: "Dr. Gerald Thang"
               <p>Statins are a tool, not a life sentence. A <strong>Metabolic Pivot</strong> can allow us to safely reduce or pause medication under clinical supervision.</p>
             </article>
 
+            <section class="faq-container mt-5">
+              <h2 style="color: #2c4964; font-weight: 800; border-bottom: 2px solid #eee; padding-bottom: 10px;">Vascular Audit: Frequently Asked Questions</h2>
+              
+              <div style="margin-top: 30px;">
+                <div class="faq-item mb-4">
+                  <p class="fw-bold" style="color: #1a2e40; font-size: 1.1rem; margin-bottom: 8px;">Why does Dr. Gerald Thang call ages 40–59 the "Red Zone"?</p>
+                  <p style="color: #475569;">In Singapore, metabolic resilience typically begins to decline after 40. This is when silent vascular erosion accelerates. A statin during this era isn't just for 'high numbers'; it's to stabilize 'soft plaque' that is prone to rupture during high-stress professional years.</p>
+                </div>
+            
+                <div class="faq-item mb-4">
+                  <p class="fw-bold" style="color: #1a2e40; font-size: 1.1rem; margin-bottom: 8px;">Is it possible to have high cholesterol if I am thin and active?</p>
+                  <p style="color: #475569;">Yes. This is the 'TOFI' (Thin-Outside-Fat-Inside) profile. It is often driven by genetics—where your liver overproduces LDL regardless of exercise. For these patients, lifestyle changes have a ceiling, and clinical intervention is required to protect the arterial lining.</p>
+                </div>
+            
+                <div class="faq-item mb-4">
+                  <p class="fw-bold" style="color: #1a2e40; font-size: 1.1rem; margin-bottom: 8px;">Will statins cause permanent liver or muscle damage?</p>
+                  <p style="color: #475569;">No. Clinical reality shows that liver enzyme elevations (<1%) and muscle aches (<5%) are almost always reversible upon stopping or switching the medication. Regular blood audits (LFT and CK levels) ensure total safety during treatment.</p>
+                </div>
+            
+                <div class="faq-item mb-4">
+                  <p class="fw-bold" style="color: #1a2e40; font-size: 1.1rem; margin-bottom: 8px;">Can I take Red Yeast Rice instead of a statin?</p>
+                  <p style="color: #475569;">Red Yeast Rice contains monacolin K, which is chemically similar to certain statins but without the standardized dosage or clinical safety monitoring. During your audit, we discuss if a pharmaceutical-grade, monitored approach is safer for your specific risk profile.</p>
+                </div>
+              </div>
+            </section>
+
             <div class="mt-5 p-5 text-white rounded shadow text-center" style="background: linear-gradient(135deg, #1a2e40 0%, #2c4964 100%);">
               <h3 class="fw-bold mb-3" style="color:#ffffff;">Secure Your Vascular Longevity</h3>
               <div class="d-grid gap-3 d-md-flex justify-content-center">
                  <a href="/heart-health-screening" class="btn btn-danger btn-lg px-4 py-2 fw-bold shadow">View Screening Options</a>
-                 <a href="https://wa.me/6588741122" class="btn btn-outline-light btn-lg px-4 py-2 fw-bold">WhatsApp Dr. Thang</a>
+                 <a href="https://wa.me/6588741122" class="btn btn-outline-light btn-lg px-4 py-2 fw-bold">WhatsApp</a>
               </div>
             </div>
           </div>
