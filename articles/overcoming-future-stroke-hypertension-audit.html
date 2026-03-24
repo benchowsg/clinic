@@ -26,20 +26,40 @@ author_name: "Dr. Gerald Thang"
   .article-content { padding-top: 140px; }
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
   .triage-section { max-width: 800px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  
+  /* Alert Box */
   .alert-box { background: #fff5f5; border: 1px solid #feb2b2; padding: 30px; border-radius: 20px; margin-bottom: 40px; }
+  
+  /* Wizard */
   .triage-card { background: #fdfcf0; border: 2px solid #3498db; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
   .triage-step { display: none; }
   .triage-step.active { display: block; animation: fadeIn 0.4s; }
   .btn-choice { margin: 10px; min-width: 200px; font-weight: 700; border-radius: 50px; padding: 15px 30px; cursor: pointer; border: 2px solid #3498db; background: white; color: #3498db; transition: 0.3s; font-size: 1rem; }
   .btn-choice:hover { background: #3498db; color: white; transform: translateY(-2px); }
+  
+  /* Cards & Tables */
   .insight-card { background: #eef6fc; border-radius: 15px; padding: 25px; border-left: 5px solid #3498db; margin: 25px 0; }
   .threshold-card { padding: 20px; border-radius: 12px; margin-bottom: 15px; }
   .lifestyle-ok { background: #f0fff4; border-left: 5px solid #38a169; }
   .meds-mandatory { background: #fff5f5; border-left: 5px solid #e53e3e; }
-  .table-responsive { margin-top: 20px; border-radius: 12px; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-  .table { width: 100%; min-width: 600px; border-collapse: collapse; }
-  .table thead th { background-color: #1a2e40; color: white; padding: 15px; text-align: left; font-size: 0.9rem; text-transform: uppercase; }
-  .table td { padding: 15px; border: 1px solid #edf2f7; text-align: left; vertical-align: top; font-size: 0.95rem; }
+  
+  .table-responsive { margin-top: 20px; border-radius: 12px; overflow-x: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
+  .table { width: 100%; min-width: 600px; border-collapse: collapse; background: white; }
+  .table thead th { background-color: #1a2e40; color: white; padding: 15px; text-align: left; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+  .table td { padding: 15px; border: 1px solid #edf2f7; text-align: left; vertical-align: top; font-size: 0.95rem; line-height: 1.5; }
+
+  /* Comparison Table Specific */
+  .goal-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; background: #f0fff4; color: #2f855a; border: 1px solid #c6f6d5; }
+
+  /* FAQ Styling Fix */
+  .faq-container { margin-top: 60px; }
+  .faq-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 15px; }
+  .faq-question { display: block; font-weight: 800; color: #2c4964; margin-bottom: 10px; font-size: 1.05rem; }
+  .faq-answer { margin: 0; color: #4a5568; line-height: 1.6; font-size: 1rem; }
+
+  /* CTA Container Box */
+  .cta-box { background: #f1f5f9; border: 2px solid #cbd5e1; border-radius: 24px; padding: 40px; text-align: center; margin: 60px 0; }
+
   .source-tag { font-size: 0.8rem; color: #718096; font-style: italic; display: block; margin-top: 15px; border-top: 1px solid #feb2b2; padding-top: 10px; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 </style>
@@ -124,12 +144,42 @@ author_name: "Dr. Gerald Thang"
                 <p class="mb-0 small">Consistently <strong>140/90+</strong> OR ultrasound shows <strong>Remodeling has begun</strong>. At this stage, lifestyle changes cannot "un-stiffen" the heart fast enough to bypass stroke risk.</p>
             </div>
 
+            <h3 class="mt-5" style="color: #2c4964; font-weight: 800;">Interpreting Your Readings</h3>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Reading Location</th>
+                    <th>Clinical Goal</th>
+                    <th>Why the Difference?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Home (Relaxed)</strong></td>
+                    <td><span class="goal-badge">Below 130/80</span></td>
+                    <td>This is your <strong>True Baseline</strong>. It removes the variables of travel stress and "White Coat" anxiety.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Clinic (The Audit)</strong></td>
+                    <td><span class="goal-badge">Below 140/90</span></td>
+                    <td>Includes a clinical "buffer" for clinic-induced stress. We look for structural trends here.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ambulatory (24hr)</strong></td>
+                    <td><span class="goal-badge">Average < 130/80</span></td>
+                    <td>The <strong>Gold Standard</strong>. It captures your pressure during sleep and daily stress.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             <h2 class="mt-5" style="color: #2c4964; font-weight: 800;">Navigating the Treatment Plan</h2>
             <p>Address your hesitations with clinical data. We select medication classes based on your Audit results to ensure protection with minimal lifestyle impact:</p>
             
             <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead style="background: #1a2e40; color: white;">
+                <table class="table">
+                    <thead>
                         <tr>
                             <th style="width: 25%;">Your Concern</th>
                             <th style="width: 35%;">Clinical Reality</th>
@@ -161,44 +211,52 @@ author_name: "Dr. Gerald Thang"
               <p class="small mb-0">While morning dosing helps protect against the "Morning Stroke Surge," the most important factor is taking your "scaffolding" at the same time every day to maintain steady vascular protection.</p>
             </div>
 
-            <div style="text-align: center; margin-top: 50px;">
-              <h3 class="fw-bold" style="color: #2c4964;">Your future is a structural decision.</h3>
+            <div class="cta-box">
+              <h3 class="fw-bold mb-3" style="color: #2c4964;">Your future is a structural decision.</h3>
+              <p class="mb-4 text-muted">A standard cuff reading is only half the story. Perform a full structural audit to see if your heart is remodeling.</p>
               <div class="d-grid gap-3 d-md-flex justify-content-center">
                 <a href="/heart-health-screening" class="btn btn-danger btn-lg px-5 py-3 fw-bold shadow">Schedule Your Structural Audit</a>
-                <a href="https://wa.me/6588741122" class="btn btn-outline-primary btn-lg px-4 fw-bold">WhatsApp Dr. Thang's Team</a>
+                <a href="https://wa.me/6588741122" class="btn btn-outline-primary btn-lg px-4 fw-bold">WhatsApp Team</a>
               </div>
             </div>
 
             <section class="faq-container">
-                <h2 style="color: #2c4964; font-weight: 800;">Starting Hypertension Medication FAQ</h2>
+                <h2 style="color: #2c4964; font-weight: 800; margin-bottom: 30px;">Hypertension Audit FAQ</h2>
+                
                 <div class="faq-item">
                     <span class="faq-question">"Is high blood pressure always permanent?"</span>
                     <p class="faq-answer">Not necessarily. If your audit shows the damage is early and reversible, we use medication as 'temporary scaffolding.' Once your lifestyle stabilizes and the heart wall thins back down, we can often taper the dosage.</p>
                 </div>
+                
                 <div class="faq-item">
                     <span class="faq-question">"I have no family history. Why do I have high BP?"</span>
                     <p class="faq-answer">In Singapore, high-stress environments and high-sodium diets can trigger hypertension even in the 'genetically lucky.' The audit reveals how your specific body is coping with these modern stressors.</p>
                 </div>
+
                 <div class="faq-item">
                     <span class="faq-question">"Can I feel my blood pressure rising?"</span>
                     <p class="faq-answer">Hypertension is called the "Silent Killer" for a reason. Most people feel absolutely nothing, even when their pressure is at stroke-level.</p>
                 </div>
+
                 <div class="faq-item">
                     <span class="faq-question">"How much does salt actually matter?"</span>
-                    <p class="faq-answer">In Singapore, our salt intake is roughly double the WHO recommendation (due to our use of soy sauce, gravies, and processed noodles).</p>
+                    <p class="faq-answer">In Singapore, our salt intake is roughly double the WHO recommendation due to soy sauce, gravies, and processed noodles. Reducing salt can sometimes drop systolic pressure by 5–8 mmHg.</p>
                 </div>
+
                 <div class="faq-item">
                     <span class="faq-question">"Is coffee (caffeine) off the table?"</span>
-                    <p class="faq-answer">Caffeine causes a temporary spike in blood pressure, but for most regular drinkers, the body develops a tolerance.</p>
+                    <p class="faq-answer">Caffeine causes a temporary spike. We advise not drinking coffee within 30 minutes of a reading, but moderate consumption (1-2 cups) is usually safe for most patients.</p>
                 </div>
+
                 <div class="faq-item">
                     <span class="faq-question">"Can I still exercise if my BP is high?"</span>
-                    <p class="faq-answer">Yes, and you should. Aerobic exercise (walking, swimming, cycling) makes your heart stronger, allowing it to pump more blood with less effort, which lowers your resting BP. However, if your resting BP is extremely high (e.g., 180/110+), you should consult your doctor before starting heavy weightlifting or high-intensity intervals, as these activities cause sharp, temporary pressure surges.</p>
-                </div>   
+                    <p class="faq-answer">Yes. Aerobic exercise makes your heart stronger. However, if your resting BP is above 180/110, consult us before heavy lifting, as it causes sharp, temporary pressure surges.</p>
+                </div>
+
                 <div class="faq-item">
                     <span class="faq-question">"What is the 'Morning Surge'?"</span>
-                    <p class="faq-answer">Blood pressure isn't a flat line; it follows a circadian rhythm. It is lowest while you sleep and rises sharply just before you wake up. Most strokes and heart attacks occur between 6:00 AM and 10:00 AM because of this "Morning Surge." This is why doctors often emphasize taking medication consistently to ensure coverage during this high-risk window.</p>
-                </div>              
+                    <p class="faq-answer">BP rises sharply just before you wake up. Most strokes occur between 6:00 AM and 10:00 AM. Consistent medication ensures your "scaffolding" is active during this high-risk window.</p>
+                </div>
             </section>
 
           </div>
