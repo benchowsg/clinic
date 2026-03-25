@@ -18,163 +18,153 @@ faq:
 ---
 
 <style>
-  .article-content { padding-top: 140px; }
+  .article-content { padding-top: 140px; padding-bottom: 60px; }
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
-  .triage-section { max-width: 800px; margin: 40px auto; padding: 0 20px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  .triage-card { background: #f0f7ff; border: 2px solid #2c4964; border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; }
-  .triage-step { display: none; }
-  .triage-step.active { display: block; animation: fadeIn 0.4s; }
-  .btn-choice { margin: 10px; min-width: 220px; font-weight: 700; border-radius: 50px; padding: 15px 30px; cursor: pointer; border: 2px solid #2c4964; background: white; color: #2c4964; transition: 0.3s; font-size: 1rem; }
-  .btn-choice:hover { background: #2c4964; color: white; transform: translateY(-2px); }
-  .final-result { display: none; animation: slideUp 0.6s ease-out; }
-  .info-card { background: #fff; border-radius: 15px; padding: 30px; margin: 20px 0; border-left: 5px solid #3498db; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   
-  .table-responsive { margin-top: 20px; border-radius: 12px; overflow-x: auto; background: #fff; border: 1px solid #edf2f7; }
-  .table { width: 100%; min-width: 650px; border-collapse: collapse !important; }
-  .table thead th { background-color: #1a2e40 !important; color: #ffffff !important; padding: 15px; text-transform: uppercase; font-size: 0.8rem; }
+  /* Table Fixes */
+  .table-responsive { margin-top: 20px; border-radius: 12px; overflow-x: auto; background: #fff; border: 1px solid #edf2f7; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .table { width: 100%; min-width: 650px; margin-bottom: 0 !important; }
+  .table thead th { background-color: #1a2e40 !important; color: #ffffff !important; padding: 15px; text-transform: uppercase; font-size: 0.85rem; border: none; }
   .table td { padding: 15px; border: 1px solid #edf2f7; vertical-align: middle; }
 
-  .checklist-box { background-color: #f8fafc; border-left: 6px solid #1a2e40; padding: 25px; border-radius: 8px; margin: 40px 0; }
-  .era-box { background: #fdfcf0; padding: 20px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 20px; height: 100%; }
-  .fw-bold { font-weight: 700; }
+  /* Section Styling */
+  .intro-section { background-color: #fcfcfc; border-left: 5px solid #2c4964; border-radius: 5px; }
+  .checklist-card { background-color: #f8fafc; border: 1px solid #dee2e6; border-left: 6px solid #c0392b; }
+  .timeline-container h4 { font-size: 1.2rem; margin-bottom: 8px; }
   
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+  /* Responsive Adjustments */
   @media (max-width: 768px) {
-    .triage-card { padding: 25px 15px; }
-    .btn-choice { min-width: 100%; }
+    .article-content { padding-top: 100px; }
+    h1 { font-size: 2rem !important; }
   }
 </style>
 
 <main id="main" class="article-content">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
-
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb">
+      <div class="col-lg-10 col-xl-8"> <nav aria-label="breadcrumb" class="mb-5">
+          <ol class="breadcrumb" style="background: transparent; padding: 0;">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
             <li class="breadcrumb-item active">The Golden Timeline</li>
           </ol>
         </nav>
 
-<article class="container my-5" style="max-width: 850px; font-family: 'Segoe UI', sans-serif; color: #333; line-height: 1.8;">
+        <article class="article-body">
+          <header class="text-center mb-5">
+            <h1 style="color: #2c4964; font-weight: 800; font-size: 2.8rem; line-height: 1.2;">The Structural Audit: Is Your "Golden Timeline" Ticking?</h1>
+            <p class="lead mt-3" style="color: #555; font-size: 1.25rem;">High blood pressure isn't just a number; it's a physical "remodeling" of your heart and vessels.</p>
+          </header>
 
-  <header class="text-center mb-5">
-    <h1 style="color: #2c4964; font-weight: 800; font-size: 2.5rem;">The Structural Audit: Is Your "Golden Timeline" Ticking?</h1>
-    <p class="lead mt-3" style="color: #555;">High blood pressure isn't just a number; it's a physical "remodeling" of your heart and vessels.</p>
-  </header>
+          <section class="intro-section p-4 mb-5 shadow-sm">
+            <p class="mb-0">
+              <strong>"You can have high blood pressure and feel great."</strong><br>
+              In Singapore, over 50% of people with hypertension are unaware of it. Why? Because the heart adapts. But that adaptation—<strong>Structural Remodeling</strong>—comes with a hidden "Performance Drain" that ages your body from the inside out.
+            </p>
+          </section>
 
-  <section class="intro-section p-4 mb-5 shadow-sm" style="background-color: #fcfcfc; border-left: 5px solid #2c4964; border-radius: 5px;">
-    <p class="mb-0">
-      <strong>"You can have high blood pressure and feel great."</strong><br>
-      In Singapore, over 50% of people with hypertension are unaware of it. Why? Because the heart adapts. But that adaptation—<strong>Structural Remodeling</strong>—comes with a hidden "Performance Drain" that ages your body from the inside out.
-    </p>
-  </section>
+          <h2 class="mt-5 mb-4" style="color: #2c4964; font-weight: 700;">1. The "Silent Shift": How High Pressure Impacts You NOW</h2>
+          <p>Most patients wait for a crisis, but the "Big Three" (Pressure, Sugar, and Sludge) are already draining your performance and appearance.</p>
 
-  <h2 class="mt-5 mb-4" style="color: #2c4964; font-weight: 700;">1. The "Silent Shift": How High Pressure Impacts You NOW</h2>
-  <p>Most patients wait for a crisis, but the "Big Three" (Pressure, Sugar, and Sludge) are already draining your performance and appearance.</p>
+          <div class="table-responsive my-4">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Structural Stressor</th>
+                  <th>The Performance Drain (Now)</th>
+                  <th>The Visible "Aged" Look</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Hypertension</strong></td>
+                  <td><strong>Vascular Exhaustion:</strong> Heart works 20% harder, leading to morning fatigue.</td>
+                  <td><strong>Pressure Flush:</strong> Chronic facial redness and puffiness.</td>
+                </tr>
+                <tr>
+                  <td><strong>Pre-Diabetes</strong></td>
+                  <td><strong>Sugar-Sanding:</strong> Glucose scars vessel linings, causing mid-day brain fog.</td>
+                  <td><strong>Glycation:</strong> Skin loses elasticity, leading to premature sagging.</td>
+                </tr>
+                <tr>
+                  <td><strong>High Cholesterol</strong></td>
+                  <td><strong>Endothelial Friction:</strong> "Thick" blood slows oxygen delivery and recovery.</td>
+                  <td><strong>Oxygen Drain:</strong> Dull complexion and dark circles.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-  <div class="table-responsive my-4">
-    <table class="table table-hover border">
-      <thead style="background-color: #2c4964; color: white;">
-        <tr>
-          <th>Structural Stressor</th>
-          <th>The Performance Drain (Now)</th>
-          <th>The Visible "Aged" Look</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Hypertension</strong></td>
-          <td><strong>Vascular Exhaustion:</strong> Heart works 20% harder, leading to morning fatigue.</td>
-          <td><strong>Pressure Flush:</strong> Chronic facial redness and puffiness.</td>
-        </tr>
-        <tr>
-          <td><strong>Pre-Diabetes</strong></td>
-          <td><strong>Sugar-Sanding:</strong> Glucose scars vessel linings, causing mid-day brain fog.</td>
-          <td><strong>Glycation:</strong> Skin loses elasticity, leading to premature sagging.</td>
-        </tr>
-        <tr>
-          <td><strong>High Cholesterol</strong></td>
-          <td><strong>Endothelial Friction:</strong> "Thick" blood slows oxygen delivery and recovery.</td>
-          <td><strong>Oxygen Drain:</strong> Dull complexion and dark circles.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+          <section class="checklist-card p-4 my-5 rounded shadow-sm">
+            <h3 class="mb-3" style="font-weight: 800; color: #c0392b;">🔍 Self-Audit: Check Your "Whisper Signs"</h3>
+            <p class="text-muted small">Your body rarely shouts until it’s too late. Check for these subtle structural red flags:</p>
+            
+            <ul style="list-style: none; padding-left: 0; line-height: 2.2; font-size: 1.05rem;">
+              <li><input type="checkbox" style="margin-right: 10px;"> <strong>The Night Thump:</strong> Feeling your heart beat in your ear when lying on your left side.</li>
+              <li><input type="checkbox" style="margin-right: 10px;"> <strong>The 3 PM Brain Fog:</strong> A sudden mental "wall" caused by vascular inflammation.</li>
+              <li><input type="checkbox" style="margin-right: 10px;"> <strong>The Puffy Morning Face:</strong> Fluid retention that takes hours to clear after waking.</li>
+              <li><input type="checkbox" style="margin-right: 10px;"> <strong>The Heavy-Leg Test:</strong> Feeling leg-fatigued on a single flight of stairs.</li>
+              <li><input type="checkbox" style="margin-right: 10px;"> <strong>The Morning Headache:</strong> A dull ache that fades an hour after being upright.</li>
+            </ul>
+            
+            <p class="mt-3 mb-0" style="font-style: italic; color: #2c4964;"><strong>Result:</strong> Checking 2 or more indicates your Golden Timeline is active. Action is required before damage becomes permanent.</p>
+          </section>
 
-  <section class="checklist-card p-4 my-5 rounded shadow-sm" style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
-    <h3 class="mb-3" style="font-weight: 800; color: #c0392b;">🔍 Self-Audit: Check Your "Whisper Signs"</h3>
-    <p class="text-muted small">Your body rarely shouts until it’s too late. Check for these subtle structural red flags:</p>
-    
-    <ul style="list-style: none; padding-left: 0; line-height: 2;">
-      <li><input type="checkbox"> <strong>The Night Thump:</strong> Feeling your heart beat in your ear when lying on your left side.</li>
-      <li><input type="checkbox"> <strong>The 3 PM Brain Fog:</strong> A sudden mental "wall" caused by vascular inflammation.</li>
-      <li><input type="checkbox"> <strong>The Puffy Morning Face:</strong> Fluid retention that takes hours to clear after waking.</li>
-      <li><input type="checkbox"> <strong>The Heavy-Leg Test:</strong> Feeling leg-fatigued on a single flight of stairs.</li>
-      <li><input type="checkbox"> <strong>The Morning Headache:</strong> A dull ache that fades an hour after being upright.</li>
-    </ul>
-    
-    <p class="mt-3 mb-0" style="font-style: italic;"><strong>Result:</strong> Checking 2 or more indicates your Golden Timeline is active. Action is required before damage becomes permanent.</p>
-  </section>
+          <h2 class="mt-5 mb-4" style="color: #2c4964; font-weight: 700;">2. Reversibility vs. Permanent Scarring</h2>
+          <p>The greatest cost of waiting is missing the window where damage can be <strong>undone.</strong> Once muscle turns to <strong>Fibrosis (Scar Tissue)</strong>, the door to recovery closes.</p>
 
-  <h2 class="mt-5 mb-4" style="color: #2c4964; font-weight: 700;">2. Reversibility vs. Permanent Scarring</h2>
-  <p>The greatest cost of waiting is missing the window where damage can be <strong>undone.</strong> Once muscle turns to <strong>Fibrosis (Scar Tissue)</strong>, the door to recovery closes.</p>
+          <div class="timeline-container my-4">
+            <div class="p-4 mb-3 border-start border-success border-4" style="background-color: #f0fff4; border-radius: 0 10px 10px 0;">
+              <h4 class="text-success" style="font-weight: bold;">Phase 1: The Window of Reversibility (The "Now")</h4>
+              <p class="mb-0">Your heart wall is thickened (LVH), but it is still <strong>Muscle.</strong> Targeted treatment can "thin" that wall back down, making your heart young again.</p>
+            </div>
+            
+            <div class="p-4 mb-3 border-start border-warning border-4" style="background-color: #fffaf0; border-radius: 0 10px 10px 0;">
+              <h4 class="text-warning" style="font-weight: bold;">Phase 2: The Window of Stiffness (The Warning)</h4>
+              <p class="mb-0">Arteries become brittle. The "Sandpaper" effect of sugar creates permanent damage. Reversibility drops significantly.</p>
+            </div>
 
-  <div class="timeline-container my-4">
-    <div class="p-3 mb-3 border-start border-success border-4" style="background-color: #f0fff4;">
-      <h4 class="text-success" style="font-weight: bold;">Phase 1: The Window of Reversibility (The "Now")</h4>
-      <p class="small mb-0">Your heart wall is thickened (LVH), but it is still <strong>Muscle.</strong> Targeted treatment can "thin" that wall back down, making your heart young again.</p>
-    </div>
-    
-    <div class="p-3 mb-3 border-start border-warning border-4" style="background-color: #fffaf0;">
-      <h4 class="text-warning" style="font-weight: bold;">Phase 2: The Window of Stiffness (The Warning)</h4>
-      <p class="small mb-0">Arteries become brittle. The "Sandpaper" effect of sugar creates permanent damage. Reversibility drops significantly.</p>
-    </div>
+            <div class="p-4 border-start border-danger border-4" style="background-color: #fff5f5; border-radius: 0 10px 10px 0;">
+              <h4 class="text-danger" style="font-weight: bold;">Phase 3: The Point of No Return (Permanent Scarring)</h4>
+              <p class="mb-0">Muscle is replaced by <strong>Fibrosis.</strong> Scar tissue does not pump or stretch. Structural failure is now permanent.</p>
+            </div>
+          </div>
 
-    <div class="p-3 border-start border-danger border-4" style="background-color: #fff5f5;">
-      <h4 class="text-danger" style="font-weight: bold;">Phase 3: The Point of No Return (Permanent Scarring)</h4>
-      <p class="small mb-0">Muscle is replaced by <strong>Fibrosis.</strong> Scar tissue does not pump or stretch. Structural failure is now permanent.</p>
-    </div>
-  </div>
+          <figure class="my-5 text-center">
+            <img src="/assets/img/articles/left-ventricular-hypertrophy-lvh.webp" 
+                 alt="Normal Heart vs LVH Heart Comparison" 
+                 class="img-fluid rounded shadow" 
+                 style="max-width: 100%; height: auto; border: 1px solid #eee;">
+            <figcaption class="text-muted small mt-3">
+              <strong>Structural Remodeling:</strong> Notice how the heart wall on the right has thickened inward, shrinking blood capacity.
+            </figcaption>
+          </figure>
 
-  <figure class="my-5 text-center">
-    <img src="/assets/img/articles/left-ventricular-hypertrophy-lvh.webp" 
-         alt="Clinical comparison of Normal Heart vs Left Ventricular Hypertrophy (LVH) showing thickened muscle and reduced chamber size." 
-         class="img-fluid rounded shadow" 
-         style="max-width: 100%; height: auto;">
-    <figcaption class="text-muted small mt-3">
-      <strong>Structural Remodeling:</strong> Notice how the heart wall on the right has thickened inward, shrinking blood capacity. This is the physical evidence of untreated pressure.
-    </figcaption>
-  </figure>
+          <section class="faq-section mt-5 p-4 rounded" style="background-color: #eef2f5; border: 1px solid #d1d9e0;">
+            <h3 class="mb-4" style="color: #2c4964; font-weight: 800;">Frequently Asked Questions</h3>
+            
+            <div class="faq-item mb-4">
+              <h5 class="fw-bold">Can heart thickening (LVH) be reversed?</h5>
+              <p>Yes. If caught during the "Golden Timeline," certain medications (like ARBs) and strict pressure control can help the heart muscle "thin out" and regain flexibility.</p>
+            </div>
 
-  <section class="faq-section mt-5 p-4 rounded" style="background-color: #eef2f5;">
-    <h3 class="mb-4" style="color: #2c4964; font-weight: 800;">Frequently Asked Questions</h3>
-    
-    <div class="faq-item mb-4">
-      <h5 style="font-weight: bold;">Can heart thickening (LVH) be reversed?</h5>
-      <p>Yes. If caught during the "Golden Timeline," certain medications (like ARBs) and strict pressure control can help the heart muscle "thin out" and regain flexibility.</p>
-    </div>
+            <div class="faq-item mb-4">
+              <h5 class="fw-bold">Why is the Morning Stroke Surge dangerous?</h5>
+              <p>Between 6 AM and 10 AM, adrenaline spikes blood pressure. In a "remodeled" heart or stiff arteries, this surge can cause vessels to rupture or plaques to break.</p>
+            </div>
 
-    <div class="faq-item mb-4">
-      <h5 style="font-weight: bold;">Why is the Morning Stroke Surge dangerous?</h5>
-      <p>Between 6 AM and 10 AM, adrenaline spikes blood pressure. In a "remodeled" heart or stiff arteries, this surge can cause vessels to rupture or plaques to break, leading to a stroke.</p>
-    </div>
+            <div class="faq-item">
+              <h5 class="fw-bold">What happens during a Structural Audit?</h5>
+              <p>We use high-definition Echocardiograms to measure wall thickness to the millimeter and Doppler scans to check for vascular "rust" and plaque stability.</p>
+            </div>
+          </section>
 
-    <div class="faq-item">
-      <h5 style="font-weight: bold;">What happens during a Structural Audit?</h5>
-      <p>We use high-definition ultrasound (Echocardiogram) to measure heart wall thickness to the millimeter and Doppler scans to check for vascular "rust" and plaque stability.</p>
-    </div>
-  </section>
+          <div class="cta-section text-center p-5 mt-5 rounded shadow-lg" style="background-color: #2c4964; color: white;">
+            <h2 class="mb-3" style="font-weight: 800; color: #fff;">Protect Your Infrastructure.</h2>
+            <p class="lead mb-4">Audit your heart while your Golden Timeline is still open.</p>
+            <a href="/contact" class="btn btn-light btn-lg" style="color: #2c4964; font-weight: 700; padding: 15px 40px; border-radius: 50px;">Request A Structural Audit</a>
+            <p class="mt-4 small">Or call our clinic directly at <strong>6962 1362</strong></p>
+          </div>
 
-  <div class="cta-section text-center p-5 mt-5 rounded" style="background-color: #2c4964; color: white;">
-    <h2 class="mb-3" style="font-weight: 800;">Protect Your Infrastructure.</h2>
-    <p class="lead mb-4">Audit your heart while your Golden Timeline is still open.</p>
-    <a href="/contact" class="btn btn-light btn-lg" style="color: #2c4964; font-weight: 700; padding: 15px 40px;">Request A Structural Audit</a>
-    <p class="mt-3 small">Or call us at <strong>6962 1362</strong></p>
-  </div>
-
-</article>
+        </article>
+      </div> </div> </div> </main>
