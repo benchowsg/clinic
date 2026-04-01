@@ -1,69 +1,65 @@
 ---
 layout: default
-permalink: /booking-test-2
+permalink: /booking
 title: Book an Appointment | A Healing Heart Medical Clinic Singapore
 description: Schedule your clinical assessment, chronic disease management, or health screening online.
 ---
 
 <style>
-  /* --- DA STYLE SYSTEM --- */
+  /* --- DA-STYLE APP SYSTEM --- */
   .booking-container { 
     padding-top: 60px; 
     padding-bottom: 80px; 
-    background-color: #f8fafd; /* DA-style soft blue-grey background */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc; /* Soft background common in modern health apps */
   }
   
-  /* Hero Text */
   .section-title h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    color: #1a2b3c;
+    color: #1e293b;
     margin-bottom: 8px;
-  }
-  .section-title p {
-    font-size: 0.95rem;
-    color: #64748b;
+    text-align: left;
   }
 
-  /* The DA Grid Card */
+  .section-title p {
+    font-size: 1rem;
+    color: #64748b;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+
+  /* The DA Card Grid */
   .booking-tile {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Left-aligned like a mobile app */
-    justify-content: flex-start;
-    text-align: left;
+    align-items: flex-start; /* App style is usually left-aligned */
     padding: 20px;
     background: #fff;
     border: none; 
-    border-radius: 20px; /* Extra rounded */
-    color: #1a2b3c;
+    border-radius: 20px;
+    color: #1e293b;
     text-decoration: none !important;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     height: 100%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03); /* Soft shadow */
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   }
 
   .booking-tile:active {
-    transform: scale(0.97); /* Haptic-like feel for mobile */
+    transform: scale(0.96); /* Haptic feedback feel */
   }
 
-  /* DA Icon Box Pattern */
+  /* Icon Box Pattern */
   .icon-box {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
-  .booking-tile i {
-    font-size: 1.4rem;
-  }
+  .booking-tile i { font-size: 1.3rem; }
 
   .booking-tile span {
     font-weight: 700;
@@ -81,90 +77,131 @@ description: Schedule your clinical assessment, chronic disease management, or h
     line-height: 1.3;
   }
 
-  /* Color Themes (Subtle Tints) */
-  .tile-urgent .icon-box { background: #fff1f2; color: #e11d48; }
-  .tile-mgmt .icon-box { background: #eff6ff; color: #2563eb; }
-  .tile-routine .icon-box { background: #f0fdf4; color: #16a34a; }
+  /* Specific DA Color Tints */
+  .tile-urgent .icon-box { background: #fff1f2; color: #e11d48; } /* Pink-ish Red */
+  .tile-mgmt .icon-box { background: #eff6ff; color: #2563eb; }   /* Blue */
+  .tile-routine .icon-box { background: #f0fdf4; color: #16a34a; } /* Green */
+  .tile-statutory .icon-box { background: #f8fafc; color: #475569; } /* Grey */
+  
   .tile-special { background: #e74c3c !important; color: #fff !important; }
   .tile-special .icon-box { background: rgba(255,255,255,0.2); color: #fff; }
-  .tile-special small { color: rgba(255,255,255,0.9) !important; }
+  .tile-special small { color: rgba(255,255,255,0.85) !important; }
 
-  /* Category Labels */
+  /* Section Headers */
   .category-header {
     margin: 30px 0 15px 0;
     font-weight: 700;
-    color: #475569;
+    color: #334155;
     font-size: 1rem;
-    padding-left: 5px;
+    padding-left: 4px;
   }
 
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
     .row.g-3 { --bs-gutter-x: 12px; --bs-gutter-y: 12px; }
+    .booking-tile { padding: 16px; }
   }
 </style>
 
 <main id="main" class="booking-container">
-  <div class="container">
+  <div class="container" data-aos="fade-up">
     
-    <div class="section-title mb-4">
-       <h1>Good morning</h1>
+    <div class="section-title">
+       <h1>Good afternoon</h1>
        <p>How can we help you today?</p>
     </div>
 
     <div class="row mb-4">
       <div class="col-12">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/TNXEay7" target="_blank" class="booking-tile tile-special">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/TNXEay7" target="_blank" rel="noopener noreferrer" class="booking-tile tile-special">
           <div class="icon-box"><i class="fa-solid fa-star"></i></div>
-          <span>SAFRA Member Exclusive<br><small>Corporate screening rates for SAFRA cardholders.</small></span>
+          <span>SAFRA Member Exclusive<br><small>Exclusive screening rates for SAFRA cardholders.</small></span>
         </a>
       </div>
     </div>
 
-    <h5 class="category-header">Heart & Specialist Care</h5>
-    <div class="row g-3 mb-4">
-      <div class="col-6">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/pV3lgn2" target="_blank" class="booking-tile tile-urgent">
-          <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
-          <span>Heart Concerns<br><small>Chest pain & palpitations</small></span>
-        </a>
-      </div>
-      <div class="col-6">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SbkE6z3" target="_blank" class="booking-tile tile-urgent">
-          <div class="icon-box"><i class="fa-solid fa-stethoscope"></i></div>
-          <span>New Symptoms<br><small>General diagnostics</small></span>
-        </a>
-      </div>
-    </div>
-
-    <h5 class="category-header">Management & Wellness</h5>
-    <div class="row g-3 mb-4">
-      <div class="col-6">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/U5ROxt9" target="_blank" class="booking-tile tile-mgmt">
-          <div class="icon-box"><i class="fa-solid fa-pills"></i></div>
-          <span>Chronic Care<br><small>BP & Diabetes</small></span>
-        </a>
-      </div>
-      <div class="col-6">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/GU5RnW5" target="_blank" class="booking-tile tile-routine">
-          <div class="icon-box"><i class="fa-solid fa-shield-virus"></i></div>
-          <span>Health Screen<br><small>Full check-up</small></span>
-        </a>
-      </div>
-    </div>
-
-    <h5 class="category-header">Others</h5>
+    <h5 class="category-header">Heart & Diagnostics</h5>
     <div class="row g-3 mb-4">
       <div class="col-6 col-md-4">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SyZNo5Y" target="_blank" class="booking-tile tile-routine">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/pV3lgn2" target="_blank" rel="noopener noreferrer" class="booking-tile tile-urgent">
+          <div class="icon-box"><i class="fa-solid fa-heart-circle-exclamation"></i></div>
+          <span>Heart Concerns<br><small>Chest pain or palpitations</small></span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SbkE6z3" target="_blank" rel="noopener noreferrer" class="booking-tile tile-urgent">
+          <div class="icon-box"><i class="fa-solid fa-stethoscope"></i></div>
+          <span>Clinical Consult<br><small>New or existing symptoms</small></span>
+        </a>
+      </div>
+    </div>
+
+    <h5 class="category-header">Medical Management</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/U5ROxt9" target="_blank" rel="noopener noreferrer" class="booking-tile tile-mgmt">
+          <div class="icon-box"><i class="fa-solid fa-house-chimney-medical"></i></div>
+          <span>Chronic Care<br><small>BP, Cholesterol, Diabetes</small></span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/zdnSUPZ" target="_blank" rel="noopener noreferrer" class="booking-tile tile-mgmt">
+          <div class="icon-box"><i class="fa-solid fa-dna"></i></div>
+          <span>Hormonal Health<br><small>Metabolic & Fatigue</small></span>
+        </a>
+      </div>
+    </div>
+
+    <h5 class="category-header">Screening & Wellness</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/GU5RnW5" target="_blank" rel="noopener noreferrer" class="booking-tile tile-routine">
+          <div class="icon-box"><i class="fa-solid fa-shield-heart"></i></div>
+          <span>General Health<br><small>Routine Screening</small></span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VTixxPs" target="_blank" rel="noopener noreferrer" class="booking-tile tile-routine">
+          <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+          <span>Cardiac Screen<br><small>Heart focus checkup</small></span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/8Zg0WwA" target="_blank" rel="noopener noreferrer" class="booking-tile tile-routine">
+          <div class="icon-box"><i class="fa-solid fa-weight-scale"></i></div>
+          <span>Weight Mgmt<br><small>Lifestyle Consult</small></span>
+        </a>
+      </div>
+    </div>
+
+    <h5 class="category-header">Statutory & Immunisation</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/SyZNo5Y" target="_blank" rel="noopener noreferrer" class="booking-tile tile-statutory">
           <div class="icon-box"><i class="fa-solid fa-file-medical"></i></div>
           <span>Medicals<br><small>MOM / ICA / LTA</small></span>
         </a>
       </div>
       <div class="col-6 col-md-4">
-        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/5nbX7A2" target="_blank" class="booking-tile tile-routine">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/5nbX7A2" target="_blank" rel="noopener noreferrer" class="booking-tile tile-statutory">
           <div class="icon-box"><i class="fa-solid fa-syringe"></i></div>
-          <span>Vaccines<br><small>Flu / Shingrix</small></span>
+          <span>Vaccinations A<br><small>Flu / Shingrix / Hep B</small></span>
+        </a>
+      </div>
+      <div class="col-6 col-md-4">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/2y4p9cg" target="_blank" rel="noopener noreferrer" class="booking-tile tile-statutory">
+          <div class="icon-box"><i class="fa-solid fa-syringe"></i></div>
+          <span>Vaccinations B<br><small>Twinrix / Gardasil 9</small></span>
+        </a>
+      </div>
+    </div>
+
+    <h5 class="category-header">Acute Care</h5>
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-6">
+        <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VSYAIdE" target="_blank" rel="noopener noreferrer" class="booking-tile tile-mgmt">
+          <div class="icon-box"><i class="fa-solid fa-head-side-mask"></i></div>
+          <span>Acute Consultation<br><small>Cough, Cold, Fever, or Flu symptoms</small></span>
         </a>
       </div>
     </div>
