@@ -85,6 +85,21 @@ custom_schema: |
   .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: bold; }
   .legend-color { width: 12px; height: 12px; border-radius: 3px; }
   .chart-explainer { background: #fff; border: 1px solid #e9ecef; border-radius: 10px; padding: 15px; margin-top: 15px; font-size: 0.9rem; }
+  .decision-tree { margin: 30px 0; padding: 20px; background: #ffffff; border: 1px solid #f1ece1; border-radius: 15px; position: relative; }
+  .decision-node { position: relative; padding-left: 30px; margin-bottom: 30px; border-left: 2px solid #e1e8ed; }
+  .decision-node:last-child { margin-bottom: 0; border-left: 2px solid transparent; } /* Hides line on last item */
+  .decision-node::before { content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; background: #fff; border: 3px solid #3498db; border-radius: 50%; z-index: 2; }
+  .node-optimal::before { border-color: #27ae60; }   /* Green */
+  .node-warning::before { border-color: #f39c12; }   /* Orange */
+  .node-critical::before { border-color: #e74c3c; }  /* Red */
+  .node-title { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block; }
+  .node-content { font-size: 0.95rem; line-height: 1.6; color: #505c66; }
+  
+  @media (max-width: 768px) {
+      .decision-tree { padding: 15px; }
+      .node-title { font-size: 0.85rem; }
+      .node-content { font-size: 0.9rem; }
+  }
 </style>
 
 <main id="main" class="article-content">
@@ -129,9 +144,12 @@ custom_schema: |
           </ul>
 
           
-
-[Image of visceral fat versus subcutaneous fat]
-
+          <figure class="my-4 text-center">
+            <img src="/assets/img/articles/skinny-diabetic-abdominal-fat-layers.webp" alt="Visceral vs Subcutaneous Fat Layers" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;">
+            <figcaption class="mt-3 small text-muted italic" style="border-left: 3px solid #f39c12; padding-left: 15px; text-align: left;">
+              <strong>Figure 1: The TOFI Mechanism.</strong> Unlike subcutaneous fat (stored under the skin), <strong>Visceral Fat</strong> (hidden deep around organs) is metabolically active. It releases inflammatory cytokines directly into the bloodstream, driving insulin resistance and vascular aging even in individuals with a "lean" outward appearance.
+            </figcaption>
+          </figure>
 
           <h3 class="section-heading h4">The Life Stage & Genetic Factor</h3>
           <p>Vulnerability to insulin resistance isn't just about diet; it’s about your <strong>Familial Timeline</strong>:</p>
@@ -191,13 +209,13 @@ custom_schema: |
 
           <div class="lifestyle-callout">
             <h5 class="fw-bold mb-3" style="color: #2c4964;">Can Lifestyle Changes Work?</h5>
-            <p>Yes, but they must be targeted. Generic caloric restriction often fails because it doesn't improve <strong>Energy Partitioning</strong>. We focus on Zone 2 cardio and protein-first nutrition to restore cellular "hearing." However, when the risk of a cardiovascular event is high, we use metabolic medication as a clinical bridge to protect the arteries during your recovery.</p>
+            <p>Yes, but they must be targeted. Generic caloric restriction (dietary regimen that consistently reduces daily calorie intake) often fails because it rarely leads to long-term, sustainable weight loss or health improvements for most people. We focus on Zone 2 Cardio (low-intensity, endurance pace without intervals) and protein-first nutrition to restore function. However, when the risk of a cardiovascular event is high, we use metabolic medication as a clinical bridge to protect the arteries during your recovery.</p>
           </div>
 
           
 
           <h3 class="section-heading h4">Prevention & Recovery: It is Not a Death Sentence</h3>
-          <p>I want my patients to understand that metabolic dysfunction is a <strong>reversible state</strong>. We focus on restoration—returning your vascular system to a state of elasticity and allowing your pancreas to go back to a "whisper."</p>
+          <p>I want my patients to understand that metabolic dysfunction is a <strong>reversible state</strong>. We focus on restoration—returning your vascular system to a state of elasticity and allowing your pancreas to return back to the functional stage.</p>
 
           <h3 class="section-heading h4">The Path Forward: A Decision Logic</h3>
           <p>Recovery is not about generic advice; it is about where you sit on the metabolic timeline. We use a decision-based thought process to determine the intensity of intervention required.</p>
