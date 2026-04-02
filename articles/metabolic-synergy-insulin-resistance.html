@@ -12,19 +12,23 @@ custom_schema: |
     "headline": "The Silent Driver: Why Insulin Resistance is a Cardiology Concern",
     "description": "An analysis of the link between hyperinsulinemia and vascular health, focusing on the limitations of standard glucose testing.",
     "lastReviewed": "2026-02-03",
-    "medicalSpecialty": "Endocrinology",
-    "relevantSpecialty": "Cardiology",
+    "medicalSpecialty": ["Endocrinology", "Metabolic Medicine"],
     "author": {
       "@type": "Person",
       "name": "Dr. Gerald Thang",
+      "jobTitle": "Principal Physician",
       "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
+      },
+      "audience": {
+        "@type": "MedicalAudience",
+        "geographicArea": "Singapore"
+      }
     },
-    "isPartOf": {
-      "@type": "MedicalBusiness",
-      "@id": "https://www.ahealingheartmedical.com"
-    },
-"mainEntity": [
       {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
         "@type": "Question",
         "name": "Can you have normal glucose but high insulin?",
         "acceptedAnswer": {
@@ -38,10 +42,11 @@ custom_schema: |
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "HbA1c is a lagging indicator that shows <b>average blood sugar over three months</b>. In our clinical view, relying solely on HbA1c can be misleading, as insulin resistance often damages the cardiovascular system for years before blood sugar levels actually rise. It is better to combine routine fasting glucose test for early prevention."
+          }
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 ---
 
 <style>
@@ -70,7 +75,7 @@ custom_schema: |
         </nav>
 
         <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">The Silent Driver: Why Insulin Resistance is a Cardiology Concern</h1>
-
+          
         <div class="author-box d-flex align-items-center">
           <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
           <div>
