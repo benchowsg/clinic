@@ -69,18 +69,20 @@ custom_schema: |
   .check-list li::before { content: "✓"; color: #3498db; font-weight: bold; position: absolute; left: 0; }
   .ip-notice-box { background: #ffffff; border: 1px solid #e9ecef; border-left: 4px solid #ced4da; padding: 20px; font-size: 0.85rem; color: #6c757d; border-radius: 8px; margin-top: 50px; }
   .consultation-note { background: #f0f7ff; border-radius: 12px; padding: 25px; border-left: 5px solid #2c4964; margin: 30px 0; }
-  .clinical-timeline { position: relative; padding: 20px; margin: 40px 0; border: 1px solid #f1ece1; border-radius: 12px; background: #fdfcf0; height: 250px; overflow: hidden; }
-  .age-axis { position: absolute; bottom: 40px; left: 5%; width: 90%; height: 2px; background-color: #e1e8ed; }
-  .axis-label { position: absolute; bottom: 15px; color: #7f8c8d; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-  .timeline-lines-container { position: relative; height: 100%; width: 100%; }
-  .bio-line { position: absolute; height: 3px; border-radius: 2px; transform-origin: left bottom; }
-  .insulin-line { background-color: #d63031; left: 5%; bottom: 60px; width: 85%; transform: rotate(-8deg); }
-  .vascular-line { background-color: #8e44ad; left: 5%; bottom: 60px; width: 90%; transform: rotate(-15deg); }
-  .bio-label { position: absolute; font-size: 0.85rem; font-weight: bold; padding: 2px 8px; border-radius: 4px; color: white; white-space: nowrap; top: -25px; }
-  .insulin-line .label { background-color: #d63031; left: 10%; }
-  .vascular-line .label { background-color: #8e44ad; right: 20%; }
-  .crossing-point { position: absolute; right: 10%; top: 45%; width: 12px; height: 12px; background-color: #000; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 8px rgba(0,0,0,0.3); z-index: 10; }
-  .event-label { position: absolute; right: 8%; top: 35%; font-size: 0.85rem; font-weight: 800; color: #c0392b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .clinical-timeline { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 40px 0; border: 1px solid #f1ece1; border-radius: 12px; background: #fdfcf0; overflow: hidden; min-height: 250px; }
+  .timeline-lines-container { position: relative; width: 100%; height: 100%; padding: 20px; box-sizing: border-box; }
+  .age-axis { position: absolute; bottom: 45px; left: 8%; width: 87%; height: 2px; background-color: #e1e8ed; }
+  .y-axis { position: absolute; bottom: 45px; left: 8%; width: 2px; height: 75%; background-color: #e1e8ed; }
+  .y-label { position: absolute; left: 10px; top: 20%; transform: rotate(-90deg); transform-origin: left; color: #7f8c8d; font-size: clamp(0.6rem, 1.5vw, 0.75rem); font-weight: bold; text-transform: uppercase; white-space: nowrap; }
+  .axis-label { position: absolute; bottom: 20px; color: #7f8c8d; font-size: clamp(0.65rem, 2vw, 0.8rem); font-weight: bold; text-transform: uppercase; }
+  .bio-line { position: absolute; height: 3px; border-radius: 2px; transform-origin: left bottom; bottom: 65px; left: 10%; }
+  .insulin-line { background-color: #d63031; width: 75%; transform: rotate(-8deg); }
+  .vascular-line { background-color: #8e44ad; width: 80%; transform: rotate(-16deg); }
+  .bio-label { position: absolute; font-size: clamp(0.7rem, 1.5vw, 0.85rem); font-weight: bold; padding: 2px 8px; border-radius: 4px; color: white; white-space: nowrap; top: -28px; }
+  .insulin-line .label { background-color: #d63031; left: 5%; }
+  .vascular-line .label { background-color: #8e44ad; right: 10%; }
+  .crossing-point { position: absolute; right: 15%; bottom: 50%; width: clamp(10px, 2vw, 14px); height: clamp(10px, 2vw, 14px); background-color: #000; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 8px rgba(0,0,0,0.3); z-index: 10; }
+  .event-label { position: absolute; right: 10%; bottom: 60%; font-size: clamp(0.75rem, 2vw, 0.9rem); font-weight: 800; color: #c0392b; text-transform: uppercase; white-space: nowrap; }
 </style>
 
 <main id="main" class="article-content">
@@ -138,19 +140,17 @@ custom_schema: |
 
           <div class="clinical-timeline shadow-sm">
             <div class="timeline-lines-container">
-              <div class="bio-line vascular-line">
-                <span class="bio-label label">Vascular Stiffening</span>
-              </div>
+              <div class="y-label">Vascular Aging & Stress</div>
+              <div class="y-axis"></div>
               
-              <div class="bio-line insulin-line">
-                <span class="bio-label label">Insulin Resistance</span>
-              </div>
+              <div class="bio-line vascular-line"><span class="bio-label label">Vascular Stiffening</span></div>
+              <div class="bio-line insulin-line"><span class="bio-label label">Insulin Resistance</span></div>
           
               <div class="event-label">Cardiovascular Event</div>
               <div class="crossing-point"></div>
               
               <div class="age-axis"></div>
-              <div class="axis-label" style="left: 5%;">Age 20</div>
+              <div class="axis-label" style="left: 10%;">Age 20</div>
               <div class="axis-label" style="left: 45%;">Age 40</div>
               <div class="axis-label" style="right: 5%;">Age 55+</div>
             </div>
