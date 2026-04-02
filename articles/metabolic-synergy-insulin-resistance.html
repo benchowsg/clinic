@@ -84,6 +84,7 @@ custom_schema: |
   .chart-legend { display: flex; justify-content: center; gap: 20px; padding: 15px 0; background: rgba(241, 236, 225, 0.3); border-top: 1px solid #f1ece1; }
   .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: bold; }
   .legend-color { width: 12px; height: 12px; border-radius: 3px; }
+  .chart-explainer { background: #fff; border: 1px solid #e9ecef; border-radius: 10px; padding: 15px; margin-top: 15px; font-size: 0.9rem; }
 </style>
 
 <main id="main" class="article-content">
@@ -179,6 +180,15 @@ custom_schema: |
             </div>
           </div>
 
+          <div class="chart-explainer">
+            <p class="mb-2"><strong><i class="bi bi-info-circle"></i> Understanding the Chart Timeline:</strong></p>
+            <ul class="list-unstyled mb-0 small text-muted" style="line-height: 1.6;">
+              <li class="mb-2"><strong>1. The "Silent Decade":</strong> Notice the gap between the red and purple lines. Insulin resistance often starts in your 20s or 30s, working silently under the surface while your blood sugar still looks "normal."</li>
+              <li class="mb-2"><strong>2. The Acceleration:</strong> As insulin remains high, the purple line (Vascular Stiffening) begins to climb faster. This represents your arteries losing their elasticity.</li>
+              <li class="mb-0"><strong>3. The Intersection:</strong> The "Cardiovascular Event" (dot) will likely happen when the purple line crosses the dashed threshold. <strong>Our goal is to flatten these lines early</strong>, pushing that dot further out into the future or preventing the intersection entirely.</li>
+            </ul>
+          </div>
+
           <div class="lifestyle-callout">
             <h5 class="fw-bold mb-3" style="color: #2c4964;">Can Lifestyle Changes Work?</h5>
             <p>Yes, but they must be targeted. Generic caloric restriction often fails because it doesn't improve <strong>Energy Partitioning</strong>. We focus on Zone 2 cardio and protein-first nutrition to restore cellular "hearing." However, when the risk of a cardiovascular event is high, we use metabolic medication as a clinical bridge to protect the arteries during your recovery.</p>
@@ -189,13 +199,25 @@ custom_schema: |
           <h3 class="section-heading h4">Prevention & Recovery: It is Not a Death Sentence</h3>
           <p>I want my patients to understand that metabolic dysfunction is a <strong>reversible state</strong>. We focus on restoration—returning your vascular system to a state of elasticity and allowing your pancreas to go back to a "whisper."</p>
 
-          <h3 class="section-heading h4">The Path Forward: How to Go About It</h3>
-          <p>If you are concerned about your family history or have noticed a weight plateau, we move upstream with a <strong>Structural Audit</strong>:</p>
-          <ul class="check-list">
-            <li><strong>Step 1: Metabolic Profiling.</strong> We look at Fasting Insulin and HOMA-IR, not just average blood sugar (HbA1c).</li>
-            <li><strong>Step 2: Vascular Mapping.</strong> We check for subclinical arterial stiffening.</li>
-            <li><strong>Step 3: Restoration Plan.</strong> A clinical roadmap combining precision lifestyle shifts and heart-protective medical therapy.</li>
-          </ul>
+          <h3 class="section-heading h4">The Path Forward: A Decision Logic</h3>
+          <p>Recovery is not about generic advice; it is about where you sit on the metabolic timeline. We use a decision-based thought process to determine the intensity of intervention required.</p>
+          
+          <div class="decision-tree shadow-sm">
+            <div class="decision-node">
+              <div class="node-title">IF: Metabolic Profiling is Optimal</div>
+              <p class="small text-muted mb-0">Focus on <strong>Vascular Preservation</strong>. High-intensity Zone 2 training and micronutrient density to keep the "purple line" flat.</p>
+            </div>
+          
+            <div class="decision-node" style="border-color: #f39c12;">
+              <div class="node-title">IF: Insulin is Rising (The Silent Decade)</div>
+              <p class="small text-muted mb-0">Shift to <strong>Metabolic Resensitization</strong>. Precision carbohydrate timing and resistance training to lower the "red line" before vascular damage begins.</p>
+            </div>
+          
+            <div class="decision-node" style="border-color: #e74c3c;">
+              <div class="node-title">IF: Structural Vascular Changes are Present</div>
+              <p class="small text-muted mb-0">Aggressive <strong>Clinical Stewardship</strong>. Utilizing metabolic medications as a bridge to reduce immediate MACE risk while aggressively reversing underlying insulin resistance.</p>
+            </div>
+          </div>
 
           <div class="faq-section mt-5 pt-4 border-top">
             <h4 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h4>
