@@ -27,70 +27,45 @@ description: Graph
     margin-bottom: 30px;
   }
 
-/* Container and Wrapper */
-.hormone-chart-container {
-    max-width: 900px;
-    margin: 40px auto;
-    line-height: 1.5;
-    color: #2c4964;
-}
-
-/* Make the SVG Responsive */
-.hormone-chart-container svg {
-    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.05));
+/* Base Transitions */
+.interactive-chart path, .interactive-chart line, .interactive-chart g {
     transition: all 0.3s ease;
 }
 
-/* Hover effects for the Lines (Interactivity) */
-/* This highlights the lines when a patient hovers over them */
-.hormone-chart-container path, 
-.hormone-chart-container line {
-    transition: stroke-width 0.2s ease, opacity 0.2s ease;
-    cursor: pointer;
+/* Default state: dim everything slightly when chart is hovered */
+.interactive-chart:hover path, 
+.interactive-chart:hover line:not([stroke="#ddd"]):not([stroke="#2c4964"]) {
+    opacity: 0.15;
+    stroke-width: 2px;
 }
 
-.hormone-chart-container path:hover, 
-.hormone-chart-container line:hover {
-    stroke-width: 6px; /* Thickens the line on hover */
-    opacity: 1;
-}
+/* Legend Text Default */
+.legend g { opacity: 0.6; }
 
-/* Tooltip-like behavior: fade others when hovering one */
-.hormone-chart-container svg:hover path,
-.hormone-chart-container svg:hover line:not([stroke="#ddd"]) {
-    opacity: 0.4;
+/* HOVER SYNC LOGIC */
+/* If you hover the Testosterone line OR the Testosterone legend, highlight both */
+.line-testo:hover, .leg-testo:hover ~ .line-testo, .interactive-chart:has(.leg-testo:hover) .line-testo {
+    opacity: 1 !important; stroke-width: 6px !important;
 }
+.leg-testo:hover { opacity: 1 !important; }
 
-.hormone-chart-container svg path:hover,
-.hormone-chart-container svg line:hover {
-    opacity: 1;
+/* Repeat for Risk */
+.line-risk:hover, .interactive-chart:has(.leg-risk:hover) .line-risk {
+    opacity: 1 !important; stroke-width: 8px !important;
 }
+.leg-risk:hover { opacity: 1 !important; }
 
-/* FAQ / Solution Box Styling */
-.hormone-chart-container ol li {
-    margin-bottom: 12px;
-    padding-left: 5px;
+/* Repeat for Insulin */
+.line-insulin:hover, .interactive-chart:has(.leg-insulin:hover) .line-insulin {
+    opacity: 1 !important; stroke-width: 6px !important;
 }
+.leg-insulin:hover { opacity: 1 !important; }
 
-.hormone-chart-container ol li strong {
-    color: #2c4964;
-    display: block; /* Puts the answer on a new line for readability */
-    font-size: 0.95rem;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 600px) {
-    .hormone-chart-container {
-        padding: 15px;
-    }
-    
-    .hormone-chart-container h2 {
-        font-size: 1.2rem;
-    }
-    
-    .hormone-chart-container text {
-        font-size: 14px; /* Makes labels bigger on small screens */
-    }
+/* Specific Styling for the Legend */
+.legend text {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 </style>
   
@@ -102,70 +77,54 @@ description: Graph
        <p>See the 40-year decline of the male safety net. View the graph and book your audit.</p>
     </div>
   
-  <div class="hormone-chart-container" style="max-width: 800px; margin: 20px auto; font-family: 'Helvetica Neue', Arial, sans-serif; background: #fdfcf0; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
+<div class="hormone-chart-container" style="max-width: 900px; margin: 40px auto; font-family: 'Helvetica Neue', Arial, sans-serif; background: #fdfcf0; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eee;">
     
-    <div style="text-align: center; margin-bottom: 30px;">
-        <h2 style="color: #2c4964; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">A Man's Life in Hormones:</h2>
-        <h3 style="color: #2c4964; margin-top: 0; font-weight: 400;">The Slow-Deflating Safety Net and Metabolic Trap</h3>
-        <p style="font-style: italic; color: #555; font-size: 0.9rem; margin-top: 10px;">
-            "Never a straight line... a gradual, relentless decline, unmasking visceral risk."<br>
-            <span style="font-weight: bold;">(Male Context)</span>
-        </p>
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="color: #2c4964; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">A Man's Life in Hormones</h2>
+        <p style="font-style: italic; color: #555;">"The Slow-Deflating Safety Net and Metabolic Trap"</p>
     </div>
 
-    <div style="position: relative; width: 100%; padding-bottom: 60%; /* Aspect Ratio */">
-        <svg viewBox="0 0 800 450" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-            <line x1="100" y1="50" x2="100" y2="380" stroke="#ddd" stroke-dasharray="4" />
-            <line x1="250" y1="50" x2="250" y2="380" stroke="#ddd" stroke-dasharray="4" />
-            <line x1="400" y1="50" x2="400" y2="380" stroke="#ddd" stroke-dasharray="4" />
-            <line x1="550" y1="50" x2="550" y2="380" stroke="#ddd" stroke-dasharray="4" />
-            <line x1="700" y1="50" x2="700" y2="380" stroke="#ddd" stroke-dasharray="4" />
-
-            <line x1="80" y1="380" x2="720" y2="380" stroke="#2c4964" stroke-width="2" /> <line x1="80" y1="50" x2="80" y2="380" stroke="#2c4964" stroke-width="2" /> <line x1="720" y1="50" x2="720" y2="380" stroke="#2c4964" stroke-width="2" /> <path d="M 80 80 Q 250 80, 400 180 T 720 320" fill="none" stroke="#2c4964" stroke-width="4" />
+    <div style="position: relative; width: 100%; padding-bottom: 65%;">
+        <svg viewBox="0 0 800 480" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="interactive-chart">
             
-            <line x1="80" y1="200" x2="720" y2="340" stroke="#d6a1a1" stroke-width="3" />
-            
-            <path d="M 80 320 L 150 280 L 180 330 L 220 290 L 260 340 L 300 300 L 400 350 L 720 370" fill="none" stroke="#60c1b0" stroke-width="2" />
+            <text x="10" y="30" font-size="12" font-weight="bold" fill="#2c4964">HORMONE LEVELS</text>
+            <text x="10" y="45" font-size="10" fill="#777">(% of Peak)</text>
 
-            <path d="M 80 50 C 150 60, 250 150, 450 350 L 720 375" fill="none" stroke="#4db6ac" stroke-width="3" stroke-dasharray="6" />
+            <text x="610" y="30" font-size="12" font-weight="bold" fill="#b22222" text-anchor="start">METABOLIC & VASCULAR STRESS</text>
+            <text x="610" y="45" font-size="10" fill="#777" text-anchor="start">(Cardio Risk Score)</text>
 
-            <path d="M 80 375 C 300 370, 450 300, 720 80" fill="none" stroke="#b22222" stroke-width="5" />
+            <g stroke="#ddd" stroke-dasharray="4">
+                <line x1="100" y1="60" x2="100" y2="380" />
+                <line x1="250" y1="60" x2="250" y2="380" />
+                <line x1="400" y1="60" x2="400" y2="380" />
+                <line x1="550" y1="60" x2="550" y2="380" />
+                <line x1="700" y1="60" x2="700" y2="380" />
+            </g>
+            <line x1="80" y1="380" x2="720" y2="380" stroke="#2c4964" stroke-width="2" /> <line x1="80" y1="60" x2="80" y2="380" stroke="#2c4964" stroke-width="2" /> <line x1="720" y1="60" x2="720" y2="380" stroke="#2c4964" stroke-width="2" /> <path class="line-testo" d="M 80 100 Q 250 80, 400 180 T 720 320" fill="none" stroke="#2c4964" stroke-width="4" />
+            <line class="line-dhea" x1="80" y1="200" x2="720" y2="340" stroke="#d6a1a1" stroke-width="3" />
+            <path class="line-mela" d="M 80 340 L 150 320 L 180 350 L 220 310 L 260 360 L 300 320 L 400 360 L 720 375" fill="none" stroke="#60c1b0" stroke-width="2" />
+            <path class="line-insulin" d="M 80 70 C 150 80, 250 150, 450 350 L 720 375" fill="none" stroke="#4db6ac" stroke-width="3" stroke-dasharray="6" />
+            <path class="line-risk" d="M 80 375 C 300 370, 450 300, 720 90" fill="none" stroke="#b22222" stroke-width="5" />
+            <path class="line-aromat" d="M 400 380 Q 550 300, 720 250" fill="none" stroke="#e08e79" stroke-width="2" stroke-dasharray="3" />
 
-            <path d="M 400 380 Q 550 300, 720 250" fill="none" stroke="#e08e79" stroke-width="2" stroke-dasharray="3" />
+            <g font-size="14" fill="#555" text-anchor="middle">
+                <text x="80" y="405">25</text>
+                <text x="250" y="405">35</text>
+                <text x="400" y="405">45</text>
+                <text x="550" y="405">55</text>
+                <text x="700" y="405">85+</text>
+            </g>
+            <text x="400" y="435" font-size="16" font-weight="bold" fill="#2c4964" text-anchor="middle">AGE (Years)</text>
 
-            <text x="30" y="210" font-size="12" fill="#2c4964" font-weight="bold">Testosterone</text>
-            <text x="30" y="280" font-size="12" fill="#d6a1a1" font-weight="bold">DHEA-S</text>
-            <text x="15" y="355" font-size="12" fill="#60c1b0" font-weight="bold">Melatonin</text>
-            
-            <text x="730" y="220" font-size="12" fill="#b22222" font-weight="bold" transform="rotate(90, 740, 220)">METABOLIC & VASCULAR STRESS</text>
-            
-            <text x="80" y="410" font-size="14" fill="#555">25</text>
-            <text x="250" y="410" font-size="14" fill="#555">35</text>
-            <text x="400" y="410" font-size="14" fill="#555">45</text>
-            <text x="550" y="410" font-size="14" fill="#555">55</text>
-            <text x="700" y="410" font-size="14" fill="#555">85+</text>
-            <text x="380" y="440" font-size="16" font-weight="bold" fill="#2c4964">AGE (Years)</text>
+            <g class="legend" font-size="11" font-weight="bold" cursor="pointer">
+                <g class="leg-testo"><rect x="100" y="455" width="12" height="12" fill="#2c4964"/><text x="117" y="465">Testosterone</text></g>
+                <g class="leg-risk"><rect x="230" y="455" width="12" height="12" fill="#b22222"/><text x="247" y="465">Vascular Risk</text></g>
+                <g class="leg-insulin"><rect x="360" y="455" width="12" height="12" fill="#4db6ac"/><text x="377" y="465">Insulin Resistance</text></g>
+                <g class="leg-dhea"><rect x="510" y="455" width="12" height="12" fill="#d6a1a1"/><text x="527" y="465">DHEA-S</text></g>
+                <g class="leg-aromat"><rect x="610" y="455" width="12" height="12" fill="#e08e79"/><text x="627" y="465">Visceral Estrogen</text></g>
+            </g>
         </svg>
     </div>
-
-    <div style="margin-top: 40px; background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #2c4964;">
-        <h4 style="margin-top: 0; color: #2c4964;">AHEALINGHEART.COM METABOLIC AUDIT: MALE SOLUTIONS</h4>
-        <ol style="font-size: 0.85rem; line-height: 1.6; color: #444; padding-left: 20px;">
-            <li><strong>Why is my 'stubborn' belly fat a cardiology concern?</strong> Low T unmasks visceral inflammation.</li>
-            <li><strong>When does my heart risk parity-match a woman's?</strong> It doesn't. Your risk is often higher, insidious and early.</li>
-            <li><strong>Are my symptoms (fatigue, weight gain) just old age?</strong> No, they are signals of the 'Metabolic Trap' unmasking.</li>
-            <li><strong>What do we measure in a Male Stewardship Audit?</strong> Insulin, T Ratio, Inflammation (hsCRP), and Arterial Stiffening.</li>
-        </ol>
-        <p style="font-size: 0.75rem; color: #888; border-top: 1px solid #eee; padding-top: 10px; margin-top: 15px;">
-            Modified for Cardiovascular & Metabolic Context based on LOH Clinical Consensus (2026) and Dr. Gerald Thang's Stewardship Model.
-        </p>
-    </div>
-</div>
-
-  <div style="text-align: center; margin-top: 30px;">
-    <a href="/booking" style="background-color: #2c4964; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s;">
-        Start My Metabolic Audit Now
-    </a>
 </div>
 
   </div>
