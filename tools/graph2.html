@@ -1,47 +1,52 @@
 ---
 layout: default
 permalink: /graph2
-title: Graph | A Healing Heart Medical Clinic Singapore
-description: Graph
+title: Men's Hormonal Health & Cardiovascular Risk Graph | A Healing Heart Medical
+description: Interactive metabolic audit for men. Visualise the link between Insulin Resistance, Testosterone decline, and Cardiovascular risk across a 40-year lifespan.
 ---
 
 <main id="main" class="graph-container">
   <div class="container" data-aos="fade-up">
 
-    <div class="section-title text-center mb-5">
-      <h1>A Man's Life in Hormones</h1>
-      <p>See the 40-year decline of the male safety net. View the graph and book your audit.</p>
-    </div>
+    <header class="section-title text-center mb-5">
+      <h1 style="font-weight: 800; color: #2c4964;">A Man's Life in Hormones</h1>
+      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+        Understand the <strong>Sequential Metabolic Trap</strong>. This clinical graph illustrates the intersection of hormonal decline and the rise of <strong>Cardiovascular Risk</strong> in men.
+      </p>
+    </header>
 
-    <div style="max-width: 1100px; margin: 0 auto 20px auto; background: #2c4964; padding: 25px; border-radius: 12px; color: white; text-align: center;">
-      <h3 style="color: white; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Personalised Metabolic Audit</h3>
+    <section id="audit-tool" style="max-width: 1100px; margin: 0 auto 20px auto; background: #2c4964; padding: 30px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+      <h3 style="color: white; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Personalised Metabolic Audit</h3>
+      <p style="margin-bottom: 20px; opacity: 0.9;">Type your age to identify your current position in the Metabolic Crossover.</p>
+      
       <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
-        <label for="ageInput" style="font-weight: 600; font-size: 1.1rem;">Enter Your Age (Between 25 and 85):</label>
-        <input type="number" id="ageInput" min="25" max="85" placeholder="--" 
-               style="width: 80px; padding: 10px; font-size: 1.2rem; font-weight: 800; border-radius: 6px; border: none; text-align: center; color: #2c4964;">
-        <button onclick="updateScanner()" style="padding: 10px 25px; font-size: 1rem; font-weight: 800; background: #c084fc; color: white; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: 0.3s;">
+        <label for="ageInput" style="font-weight: 600; font-size: 1.1rem;">Your Current Age:</label>
+        <input type="number" id="ageInput" min="25" max="85" placeholder="--" inputmode="numeric"
+               style="width: 100px; padding: 12px; font-size: 1.2rem; font-weight: 800; border-radius: 6px; border: 2px solid #c084fc; text-align: center; color: #2c4964;">
+        <button onclick="updateScanner()" style="padding: 12px 30px; font-size: 1rem; font-weight: 800; background: #c084fc; color: white; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 0 #9d59e0;">
           Run Audit
         </button>
       </div>
-    </div>
+
+      <div id="insightPanel" style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px; display: none;">
+        <p id="insightText" style="margin: 0; font-style: italic; font-size: 1.1rem;"></p>
+      </div>
+    </section>
 
     <div class="hormone-chart-container" style="max-width: 1100px; margin: 0 auto; font-family: -apple-system, system-ui, sans-serif; background: #fdfcf0; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
 
       <div style="text-align: center; margin-bottom: 25px;">
-        <h2 style="color: #2c4964; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px; font-weight: 800;">A Man's Life in Hormones</h2>
-        <p style="font-style: italic; color: #666; font-size: 1.1rem;">The Sequential Metabolic Trap</p>
+        <h2 style="color: #2c4964; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px; font-weight: 800;">Clinical Metabolic Mapping</h2>
       </div>
 
       <div class="svg-wrapper" style="position: relative; width: 100%; padding-bottom: 50%;">
         <svg viewBox="0 0 1000 450" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible;" class="interactive-chart">
 
-          <text x="20" y="5" font-weight="bold" fill="#2c4964" font-size="18">
-            <tspan x="20" dy="1.2em">Hormone Levels</tspan>
-            <tspan x="20" dy="1.2em">(% of Peak)</tspan>
+          <text x="20" y="5" font-weight="bold" fill="#2c4964" font-size="16">
+            <tspan x="20" dy="1.2em">Hormone Levels (% of Peak)</tspan>
           </text>
-          <text x="730" y="5" font-weight="bold" fill="#b22222" font-size="18">
-            <tspan x="730" dy="1.2em">Metabolic & Cardiovascular</tspan>
-            <tspan x="730" dy="1.2em">Stress Index</tspan>
+          <text x="730" y="5" font-weight="bold" fill="#b22222" font-size="16">
+            <tspan x="730" dy="1.2em">Cardiovascular Stress Index</tspan>
           </text>
 
           <g stroke="#e2e8f0" stroke-dasharray="4">
@@ -55,12 +60,12 @@ description: Graph
             <line x1="100" y1="380" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line>
           </g>
 
-          <path class="chart-line line-insulin" d="M 100 70 Q 300 80, 395 232 L 446 282 Q 500 315, 550 325 T 870 375" fill="none" stroke="#c084fc" stroke-width="3" stroke-dasharray="6"></path>
-          <path class="chart-line line-testo" d="M 100 110 L 125 75 L 228 75 C 400 75, 600 230, 870 330" fill="none" stroke="#2c4964" stroke-width="3"></path>
+          <path class="chart-line line-insulin" d="M 100 70 Q 300 80, 395 232 L 446 282 Q 500 315, 550 325 T 870 375" fill="none" stroke="#c084fc" stroke-width="4" stroke-dasharray="8,4"></path>
+          <path class="chart-line line-testo" d="M 100 110 L 125 75 L 228 75 C 400 75, 600 230, 870 330" fill="none" stroke="#2c4964" stroke-width="4"></path>
           <path class="chart-line line-mela" d="M 100 300 L 105 325 L 115 285 L 125 325 L 135 285 L 145 325 L 155 285 L 165 325 L 175 285 L 185 325 L 195 285 L 205 325 L 215 285 L 225 325 L 245 315 L 265 320 L 285 315 L 305 320 L 325 315 Q 450 320, 870 360" fill="none" stroke="#60c1b0" stroke-width="3"></path>
-          <path class="chart-line line-risk" d="M 100 375 C 250 375, 340 350, 370 320 S 670 60, 870 60" fill="none" stroke="#b22222" stroke-width="3"></path>
-          <path class="chart-line line-estro" d="M 370 320 Q 550 300, 640 280 T 870 190" fill="none" stroke="#e08e79" stroke-width="3" stroke-dasharray="6"></path>
-          <path class="chart-line line-dhea" d="M 100 180 Q 380 230, 485 270 T 640 320 T 870 340" fill="none" stroke="#d6a1a1" stroke-width="3"></path>
+          <path class="chart-line line-risk" d="M 100 375 C 250 375, 340 350, 370 320 S 670 60, 870 60" fill="none" stroke="#b22222" stroke-width="5"></path>
+          <path class="chart-line line-estro" d="M 370 320 Q 550 300, 640 280 T 870 190" fill="none" stroke="#e08e79" stroke-width="4" stroke-dasharray="6"></path>
+          <path class="chart-line line-dhea" d="M 100 180 Q 380 230, 485 270 T 640 320 T 870 340" fill="none" stroke="#d6a1a1" stroke-width="4"></path>
 
           <g id="scannerGroup" style="visibility: hidden;">
             <line id="scannerLine" x1="0" y1="50" x2="0" y2="390" stroke="#000000" stroke-width="4"></line>
@@ -76,7 +81,7 @@ description: Graph
             <text x="614" y="405">65</text>
             <text x="742" y="405">75</text>
             <text x="870" y="405">85+</text>
-            <text x="485" y="435" font-size="18" fill="#1e293b" font-weight="bold">Age (Years)</text>
+            <text x="485" y="440" font-size="18" fill="#1e293b" font-weight="bold">Patient Age (Years)</text>
           </g>
         </svg>
       </div>
@@ -91,6 +96,50 @@ description: Graph
       </div>
     </div>
 
+    <section class="mt-5" style="max-width: 900px; margin: 0 auto;">
+      <h2 style="color: #2c4964;">Understanding the 3 Metabolic Crossover Points</h2>
+      <p>In men's health, the risk of cardiovascular events isn't a linear progression—it is often triggered by specific hormonal "handoffs."</p>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; height: 100%;">
+            <h4 style="color: #c084fc;">Age 48</h4>
+            <p style="font-size: 0.9rem;"><strong>The DHEA-S Drop:</strong> Insulin resistance begins to override DHEA-S, signaling a decline in cellular repair capacity.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; height: 100%;">
+            <h4 style="color: #e08e79;">Age 52</h4>
+            <p style="font-size: 0.9rem;"><strong>The Estrogen Shift:</strong> Visceral estrogen increases, often accelerating abdominal fat gain and arterial inflammation.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div style="background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; height: 100%;">
+            <h4 style="color: #60c1b0;">Age 60</h4>
+            <p style="font-size: 0.9rem;"><strong>The Recovery Floor:</strong> Melatonin reaches its nadir, leading to poor sleep quality and higher night-time cardiovascular stress.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-section mt-5">
+        <h3 style="color: #2c4964; text-align: center; margin-bottom: 30px;">Hormone & Metabolic Audit FAQ</h3>
+        <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid #eee;">
+          <p><strong>What is the connection between Insulin and Heart Health?</strong><br>
+          High insulin levels (Insulin Resistance) lead to arterial stiffness and inflammation, which are primary precursors to cardiovascular disease in men.</p>
+          <hr>
+          <p><strong>Can hormonal decline be reversed?</strong><br>
+          While aging is natural, the "rate" of decline can be optimized through targeted clinical audits, lifestyle shifts, and medical intervention to protect the heart.</p>
+          <hr>
+          <p><strong>Is this audit covered by MediSave?</strong><br>
+          Currently, hormone audits are not claimable under CDMP. However, thyroid markers will be included in the national framework starting in 2027.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-5 mb-5">
+        <a href="/booking" class="btn" style="background:#2c4964; color:white; padding:15px 40px; font-weight:800; border-radius:50px; text-transform:uppercase;">Book a Clinical Audit</a>
+      </div>
+    </section>
+
   </div>
 </main>
 
@@ -101,30 +150,40 @@ description: Graph
     const line = document.getElementById('scannerLine');
     const box = document.getElementById('scannerBox');
     const txt = document.getElementById('scannerText');
+    const panel = document.getElementById('insightPanel');
+    const insightText = document.getElementById('insightText');
     
     const age = parseFloat(input.value);
     
     if (age >= 25 && age <= 85) {
-      // Math: Map age 25-85 to SVG X-coords 100-870
-      // Unit per year = (870 - 100) / (85 - 25) = 12.833
       const xPos = 100 + ((age - 25) * 12.833);
-      
       line.setAttribute('x1', xPos);
       line.setAttribute('x2', xPos);
       box.setAttribute('x', xPos - 23);
       txt.setAttribute('x', xPos);
       txt.textContent = age;
-      
       group.style.visibility = "visible";
+
+      // Dynamic Insight Logic (AEO/GEO focus)
+      panel.style.display = "block";
+      if (age < 45) {
+          insightText.innerHTML = "At age " + age + ", focus on preserving your <strong>Testosterone & Melatonin</strong> peaks to delay the Metabolic Trap.";
+      } else if (age >= 45 && age <= 60) {
+          insightText.innerHTML = "You are in the <strong>Critical Crossover Zone</strong>. Monitor Insulin Resistance and Cardiovascular markers closely.";
+      } else {
+          insightText.innerHTML = "At age " + age + ", the priority is <strong>Cardiovascular Protection</strong> and metabolic stability.";
+      }
+
     } else {
       alert("Please enter an age between 25 and 85.");
       group.style.visibility = "hidden";
+      panel.style.display = "none";
     }
   }
 </script>
 
 <style>
-  .graph-container { padding-top: 140px; }
+  .graph-container { padding-top: 140px; background: #fff; }
   .legend-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -132,6 +191,7 @@ description: Graph
     margin-top: 30px;
     border-top: 2px solid #f1f5f9;
     padding-top: 25px;
+    user-select: none;
   }
   .leg-card {
     display: flex;
@@ -149,11 +209,11 @@ description: Graph
   .leg-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: #cbd5e1; }
   .swatch { width: 14px; height: 14px; margin-right: 10px; border-radius: 3px; display: inline-block; }
 
-  /* HOVER SYNC */
   .chart-line { transition: 0.3s ease; opacity: 0.8; cursor: pointer; }
   .interactive-chart:hover .chart-line { opacity: 0.1; stroke-width: 2px; }
   .legend-grid:hover .leg-card { opacity: 0.3; }
 
+  /* Highlighting logic remains consistent */
   .leg-testo:hover, .hormone-chart-container:has(.leg-testo:hover) .line-testo { opacity: 1 !important; stroke-width: 8px !important; }
   .leg-risk:hover, .hormone-chart-container:has(.leg-risk:hover) .line-risk { opacity: 1 !important; stroke-width: 10px !important; }
   .leg-insulin:hover, .hormone-chart-container:has(.leg-insulin:hover) .line-insulin { opacity: 1 !important; stroke-width: 6px !important; }
