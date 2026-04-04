@@ -27,69 +27,62 @@ description: Graph
     margin-bottom: 30px;
   }
 
-/* 1. Default State */
-.chart-line {
-    transition: all 0.3s ease;
-    cursor: pointer;
-    opacity: 0.8;
+
+  /* Container & Wrapper */
+.hormone-chart-container { padding: 30px; line-height: 1.4; }
+.svg-wrapper { position: relative; width: 100%; padding-bottom: 58%; margin-bottom: 20px; }
+
+/* Font Scaling Logic */
+.chart-main-title { font-size: 1.5rem; color: #2c4964; margin-bottom: 5px; }
+.chart-sub-title { font-size: 1rem; color: #666; font-style: italic; }
+
+/* SVG Typography - Using EM or larger PX for mobile */
+.axis-header { font-size: 15px; font-weight: 800; }
+.age-labels text { font-size: 14px; }
+
+/* Interactive Legend */
+.html-legend {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
 }
+
 .leg-item {
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
 }
 
-/* 2. Global Hover: Dim everything when interacting with the chart */
-.interactive-chart:hover .chart-line {
-    opacity: 0.1;
-    stroke-width: 2px;
-}
-.interactive-chart:hover .leg-item {
-    opacity: 0.3;
+.dot { width: 14px; height: 14px; display: inline-block; margin-right: 10px; border-radius: 3px; }
+
+/* HOVER SYNC ENGINE */
+.interactive-chart:hover .chart-line { opacity: 0.08; stroke-width: 2px; }
+.html-legend:hover .leg-item { opacity: 0.3; }
+
+/* Legend to Line Sync */
+.leg-testo:hover ~ * .line-testo, .line-testo:hover, .hormone-chart-container:has(.leg-testo:hover) .line-testo { opacity: 1 !important; stroke-width: 7px !important; }
+.leg-risk:hover ~ * .line-risk, .line-risk:hover, .hormone-chart-container:has(.leg-risk:hover) .line-risk { opacity: 1 !important; stroke-width: 8px !important; }
+.leg-aromat:hover ~ * .line-aromat, .line-aromat:hover, .hormone-chart-container:has(.leg-aromat:hover) .line-aromat { opacity: 1 !important; stroke-width: 5px !important; }
+/* Repeat pattern for other items... */
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .html-legend { grid-template-columns: 1fr 1fr; } /* 2 columns on tablets */
+    .axis-header { font-size: 18px; } /* Enforce large text for small screens */
 }
 
-/* 3. Specific Hover Logic (Line <-> Legend Sync) */
-/* Testosterone */
-.line-testo:hover, 
-.leg-testo:hover ~ * .line-testo, /* Legend to Line */
-.interactive-chart:has(.leg-testo:hover) .line-testo {
-    opacity: 1 !important; stroke-width: 6px !important;
+@media (max-width: 480px) {
+    .html-legend { grid-template-columns: 1fr; } /* 1 column on small phones */
+    .leg-item { font-size: 16px; padding: 8px 0; }
+    .chart-main-title { font-size: 1.2rem; }
 }
-.leg-testo:hover { opacity: 1 !important; }
-
-/* Vascular Risk */
-.line-risk:hover, 
-.interactive-chart:has(.leg-risk:hover) .line-risk {
-    opacity: 1 !important; stroke-width: 8px !important;
-}
-.leg-risk:hover { opacity: 1 !important; }
-
-/* DHEA-S */
-.line-dhea:hover, 
-.interactive-chart:has(.leg-dhea:hover) .line-dhea {
-    opacity: 1 !important; stroke-width: 5px !important;
-}
-.leg-dhea:hover { opacity: 1 !important; }
-
-/* Melatonin */
-.line-mela:hover, 
-.interactive-chart:has(.leg-mela:hover) .line-mela {
-    opacity: 1 !important; stroke-width: 4px !important;
-}
-.leg-mela:hover { opacity: 1 !important; }
-
-/* Visceral Estrogen */
-.line-estro:hover, 
-.interactive-chart:has(.leg-estro:hover) .line-estro {
-    opacity: 1 !important; stroke-width: 5px !important;
-}
-.leg-estro:hover { opacity: 1 !important; }
-
-/* Aromatization */
-.line-aromat:hover, 
-.interactive-chart:has(.leg-aromat:hover) .line-aromat {
-    opacity: 1 !important; stroke-width: 4px !important;
-}
-.leg-aromat:hover { opacity: 1 !important; }
 </style>
   
   <main id="main" class="booking-container">
@@ -100,60 +93,52 @@ description: Graph
        <p>See the 40-year decline of the male safety net. View the graph and book your audit.</p>
     </div>
   
-<div class="hormone-chart-container" style="max-width: 900px; margin: 40px auto; font-family: 'Helvetica Neue', Arial, sans-serif; background: #fdfcf0; padding: 40px; border-radius: 12px; border: 1px solid #eee;">
+<div class="hormone-chart-container" style="max-width: 900px; margin: 40px auto; font-family: 'Helvetica Neue', Arial, sans-serif; background: #fdfcf0; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
     
-    <div style="text-align: center; margin-bottom: 40px;">
-        <h2 style="color: #2c4964; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">A Man's Life in Hormones</h2>
-        <p style="font-style: italic; color: #555;">The Slow-Deflating Safety Net and Metabolic Trap</p>
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h2 class="chart-main-title">A Man's Life in Hormones</h2>
+        <p class="chart-sub-title">Refined Clinical Pathways: The Metabolic Handoff</p>
     </div>
 
-    <div style="position: relative; width: 100%; padding-bottom: 65%;">
-        <svg viewBox="0 0 800 500" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="interactive-chart">
-            
-            <text x="10" y="30" font-size="12" font-weight="bold" fill="#2c4964">HORMONE LEVELS</text>
-            <text x="610" y="30" font-size="12" font-weight="bold" fill="#b22222">METABOLIC & VASCULAR STRESS</text>
+    <div class="svg-wrapper">
+        <svg viewBox="0 0 800 450" class="interactive-chart">
+            <text x="10" y="25" class="axis-header" fill="#2c4964">HORMONE LEVELS</text>
+            <text x="580" y="25" class="axis-header" fill="#b22222">VASCULAR STRESS INDEX</text>
 
             <g stroke="#ddd" stroke-dasharray="4">
-                <line x1="80" y1="60" x2="80" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" />
-                <line x1="250" y1="60" x2="250" y2="380" />
-                <line x1="400" y1="60" x2="400" y2="380" />
-                <line x1="550" y1="60" x2="550" y2="380" />
-                <line x1="720" y1="60" x2="720" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" />
-                <line x1="80" y1="380" x2="720" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" />
-            </g>
+                <line x1="80" y1="50" x2="720" y2="50" /> <line x1="80" y1="350" x2="720" y2="350" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" /> <line x1="80" y1="50" x2="80" y2="350" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" /> <line x1="720" y1="50" x2="720" y2="350" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" /> <line x1="250" y1="50" x2="250" y2="350" /> <line x1="475" y1="50" x2="475" y2="350" stroke-width="1.5" stroke="#bbb" /> </g>
 
-            <path class="chart-line line-testo" d="M 80 80 Q 250 80, 400 180 T 720 320" fill="none" stroke="#2c4964" stroke-width="4" />
-            
-            <line class="chart-line line-dhea" x1="80" y1="200" x2="720" y2="340" stroke="#d6a1a1" stroke-width="3" />
-            
-            <path class="chart-line line-mela" d="M 80 300 L 90 315 L 100 300 L 110 315 L 120 300 L 130 315 L 140 300 L 150 315 L 160 300 L 170 315 L 180 300 L 190 315 L 200 305 L 250 320 L 400 330 L 460 338 L 720 350" fill="none" stroke="#60c1b0" stroke-width="2" />
+            <path class="chart-line line-aromat" d="M 80 60 C 200 65, 400 150, 475 240 S 650 330, 720 340" fill="none" stroke="#c084fc" stroke-width="3" stroke-dasharray="2" />
 
-            <path class="chart-line line-risk" d="M 80 375 C 250 375, 450 330, 500 250 S 650 60, 720 60" fill="none" stroke="#b22222" stroke-width="5" />
+            <path class="chart-line line-testo" d="M 80 120 L 110 80 L 250 80 C 350 80, 450 150, 720 320" fill="none" stroke="#2c4964" stroke-width="5" />
 
-            <path class="chart-line line-estro" d="M 430 333 Q 550 300, 720 230" fill="none" stroke="#e08e79" stroke-width="3" stroke-dasharray="4" />
+            <path class="chart-line line-mela" d="M 80 280 L 85 300 L 95 275 L 105 300 L 115 275 L 125 300 L 135 275 L 145 300 L 155 275 L 165 300 L 175 275 L 185 300 L 250 285 L 270 295 L 300 285 L 340 295 L 400 285 L 475 240 L 720 345" fill="none" stroke="#60c1b0" stroke-width="2" />
 
-            <path class="chart-line line-aromat" d="M 400 360 Q 550 355, 720 345" fill="none" stroke="#c084fc" stroke-width="2" stroke-dasharray="2" />
+            <path class="chart-line line-risk" d="M 80 345 C 200 345, 400 330, 475 240 S 650 60, 720 60" fill="none" stroke="#b22222" stroke-width="6" />
 
-            <g font-size="14" fill="#555" text-anchor="middle">
-                <text x="80" y="405">25</text>
-                <text x="250" y="405">35</text>
-                <text x="400" y="405">45</text>
-                <text x="550" y="405">55</text>
-                <text x="700" y="405">85+</text>
-                <text x="400" y="435" font-size="16" font-weight="bold" fill="#2c4964">AGE (Years)</text>
-            </g>
+            <path class="chart-line line-estro" d="M 475 240 Q 600 220, 720 180" fill="none" stroke="#e08e79" stroke-width="3" stroke-dasharray="6" />
 
-            <g class="chart-legend" font-size="11" font-weight="bold">
-                <g class="leg-item leg-testo" transform="translate(50, 460)"><rect width="12" height="12" fill="#2c4964"/><text x="18" y="10">Testosterone</text></g>
-                <g class="leg-item leg-risk" transform="translate(160, 460)"><rect width="12" height="12" fill="#b22222"/><text x="18" y="10">Vascular Risk</text></g>
-                <g class="leg-item leg-dhea" transform="translate(280, 460)"><rect width="12" height="12" fill="#d6a1a1"/><text x="18" y="10">DHEA-S</text></g>
-                <g class="leg-item leg-mela" transform="translate(380, 460)"><rect width="12" height="12" fill="#60c1b0"/><text x="18" y="10">Melatonin</text></g>
-                <g class="leg-item leg-estro" transform="translate(480, 460)"><rect width="12" height="12" fill="#e08e79" stroke-dasharray="2"/><text x="18" y="10">Visceral Estrogen</text></g>
-                <g class="leg-item leg-aromat" transform="translate(620, 460)"><rect width="12" height="12" fill="#c084fc" stroke-dasharray="1"/><text x="18" y="10">Aromatization</text></g>
+            <line class="chart-line line-dhea" x1="80" y1="200" x2="720" y2="320" stroke="#d6a1a1" stroke-width="2" />
+
+            <g class="age-labels" text-anchor="middle" fill="#555">
+                <text x="80" y="380">25</text>
+                <text x="250" y="380">35</text>
+                <text x="475" y="380" font-weight="bold" fill="#2c4964">50 (Intersection)</text>
+                <text x="720" y="380">85+</text>
+                <text x="400" y="420" font-size="16" font-weight="bold" fill="#2c4964">AGE (Years)</text>
             </g>
         </svg>
     </div>
-</div>
 
+    <div class="html-legend">
+        <div class="leg-item leg-testo"><span class="dot" style="background:#2c4964"></span> Testosterone</div>
+        <div class="leg-item leg-risk"><span class="dot" style="background:#b22222"></span> Vascular Risk</div>
+        <div class="leg-item leg-aromat"><span class="dot" style="background:#c084fc; border:1px dotted #555"></span> Aromatization</div>
+        <div class="leg-item leg-mela"><span class="dot" style="background:#60c1b0"></span> Melatonin</div>
+        <div class="leg-item leg-estro"><span class="dot" style="background:#e08e79; border:1px dashed #555"></span> Visceral Estrogen</div>
+        <div class="leg-item leg-dhea"><span class="dot" style="background:#d6a1a1"></span> DHEA-S</div>
+    </div>
+</div>
+    
   </div>
 </main>
