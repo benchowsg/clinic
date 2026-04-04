@@ -21,14 +21,12 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
 
     <section id="audit-tool" style="max-width: 1100px; margin: 0 auto 20px auto; background: #2c4964; padding: 35px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
       <h3 style="color: white; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Start Your Metabolic Audit</h3>
-      <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1.1rem; text-transform: none !important;">Map your current age against the three critical Awareness Zones.</p>
-      
       <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
         <label for="ageInput" style="font-weight: 600; font-size: 1.1rem; text-transform: none !important;">Your Age (25 - 85):</label>
         <input type="number" id="ageInput" min="25" max="85" placeholder="--" inputmode="numeric"
                style="width: 100px; padding: 12px; font-size: 1.4rem; font-weight: 800; border-radius: 6px; border: 2px solid #c084fc; text-align: center; color: #2c4964;">
         <button onclick="updateScanner()" style="padding: 14px 35px; font-size: 1.1rem; font-weight: 800; background: #c084fc; color: white; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 0 #9d59e0;">
-          Enter to Run Audit
+          Run Audit
         </button>
       </div>
 
@@ -41,22 +39,11 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
     </section>
 
     <div class="hormone-chart-container" style="max-width: 1100px; margin: 0 auto; font-family: -apple-system, system-ui, sans-serif; background: #fdfcf0; padding: 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-
       <div class="svg-wrapper" style="position: relative; width: 100%; padding-bottom: 50%;">
         <svg viewBox="0 0 1000 450" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible;" class="interactive-chart">
-
-          <rect x="357" y="60" width="64" height="320" fill="#c084fc" opacity="0.12"></rect> <rect x="421" y="60" width="102" height="320" fill="#e08e79" opacity="0.12"></rect> <rect x="523" y="60" width="347" height="320" fill="#60c1b0" opacity="0.12"></rect> <text x="20" y="5" font-weight="bold" fill="#2c4964" font-size="16">
-            <tspan x="20" dy="1.2em">Metabolic Function (% of Peak)</tspan>
-          </text>
-          <text x="730" y="5" font-weight="bold" fill="#b22222" font-size="16">
-            <tspan x="730" dy="1.2em">Cardiovascular Stress Index</tspan>
-          </text>
-
-          <g stroke="#e2e8f0" stroke-dasharray="4">
-            <line x1="100" y1="60" x2="100" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line>
-            <line x1="870" y1="60" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line>
-            <line x1="100" y1="380" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line>
-          </g>
+          <rect x="357" y="60" width="64" height="320" fill="#c084fc" opacity="0.12"></rect>
+          <rect x="421" y="60" width="102" height="320" fill="#e08e79" opacity="0.12"></rect>
+          <rect x="523" y="60" width="347" height="320" fill="#60c1b0" opacity="0.12"></rect>
 
           <path class="chart-line line-insulin" d="M 100 70 Q 300 80, 395 232 L 446 282 Q 500 315, 550 325 T 870 375" fill="none" stroke="#c084fc" stroke-width="4" stroke-dasharray="8,4"></path>
           <path class="chart-line line-testo" d="M 100 110 L 125 75 L 228 75 C 400 75, 600 230, 870 330" fill="none" stroke="#2c4964" stroke-width="4"></path>
@@ -74,11 +61,9 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
           <g font-size="16" fill="#2c4964" text-anchor="middle" font-weight="700">
             <text x="100" y="405">25</text><text x="228" y="405">35</text><text x="357" y="405">45</text>
             <text x="485" y="405">55</text><text x="614" y="405">65</text><text x="742" y="405">75</text><text x="870" y="405">85+</text>
-            <text x="485" y="440" font-size="18" fill="#2c4964">Patient Age (Years)</text>
           </g>
         </svg>
       </div>
-
       <div class="legend-grid">
         <div class="leg-card leg-testo"><span class="swatch" style="background:#2c4964"></span> Testosterone</div>
         <div class="leg-card leg-risk"><span class="swatch" style="background:#b22222"></span> Cardiovascular Risk</div>
@@ -91,35 +76,25 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
 
     <section class="mt-5" style="max-width: 900px; margin: 0 auto; color: #334155;">
       <h2 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Clinical Awareness Zones</h2>
-      
       <div class="row mt-4">
         <div class="col-md-4">
-          <div style="background: rgba(192, 132, 252, 0.04); padding: 25px; border-radius: 8px; border-top: 5px solid #c084fc; height: 100%;">
-            <h4 style="color: #2c4964; text-transform: none !important;">Zone 1: Repair</h4>
-            <p style="font-size: 0.95rem; text-transform: none !important;"><strong>Ages 45–50:</strong> The stage where Insulin Resistance begins to challenge the body's regenerative DHEA-S levels.</p>
+          <div class="zone-box" style="border-top: 5px solid #c084fc;">
+            <h4 style="color: #2c4964;">Zone 1: Repair</h4>
+            <p><strong>Ages 45–50:</strong> Insulin Resistance begins to challenge regenerative DHEA-S levels.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div style="background: rgba(224, 142, 121, 0.04); padding: 25px; border-radius: 8px; border-top: 5px solid #e08e79; height: 100%;">
-            <h4 style="color: #2c4964; text-transform: none !important;">Zone 2: Inflammation</h4>
-            <p style="font-size: 0.95rem; text-transform: none !important;"><strong>Ages 50–58:</strong> A critical range where visceral fat shifts metabolic markers, driving silent arterial inflammation.</p>
+          <div class="zone-box" style="border-top: 5px solid #e08e79;">
+            <h4 style="color: #2c4964;">Zone 2: Inflammation</h4>
+            <p><strong>Ages 50–58:</strong> Visceral fat shifts markers, driving silent arterial inflammation.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div style="background: rgba(96, 193, 176, 0.04); padding: 25px; border-radius: 8px; border-top: 5px solid #60c1b0; height: 100%;">
-            <h4 style="color: #2c4964; text-transform: none !important;">Zone 3: Vulnerability</h4>
-            <p style="font-size: 0.95rem; text-transform: none !important;"><strong>Ages 58–85:</strong> A phase where lower Melatonin reduces nocturnal recovery, requiring active cardiovascular protection.</p>
+          <div class="zone-box" style="border-top: 5px solid #60c1b0;">
+            <h4 style="color: #2c4964;">Zone 3: Vulnerability</h4>
+            <p><strong>Ages 58–85:</strong> Lower Melatonin reduces recovery, requiring active heart protection.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-section mt-5" style="background: #f8fafc; padding: 40px; border-radius: 15px;">
-        <h3 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Strategic Health FAQ</h3>
-        <p style="text-transform: none !important;"><strong style="color:#2c4964;">Why a 'Cardiovascular and Metabolic' Clinic?</strong><br>
-        Heart health is driven by metabolic fuels (Insulin) and hormonal protection. Treating one without the other is incomplete medicine. We provide the integrated audit necessary for true longevity.</p>
-        <hr>
-        <p style="text-transform: none !important;"><strong style="color:#2c4964;">Is this the right time for an audit?</strong><br>
-        If you are within any of the three Awareness Zones highlighted above, a clinical audit is the most significant preventive step you can take for your long-term heart health.</p>
       </div>
     </section>
 
@@ -140,129 +115,74 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
     const txt = document.getElementById('scannerText');
     const panel = document.getElementById('insightPanel');
     const insightText = document.getElementById('insightText');
-    
     const age = parseFloat(input.value);
     
     if (age >= 25 && age <= 85) {
       const xPos = 100 + ((age - 25) * 12.833);
-      line.setAttribute('x1', xPos);
-      line.setAttribute('x2', xPos);
+      line.setAttribute('x1', xPos); line.setAttribute('x2', xPos);
       box.setAttribute('x', xPos - 23);
-      txt.setAttribute('x', xPos);
-      txt.textContent = age;
+      txt.setAttribute('x', xPos); txt.textContent = age;
       group.style.visibility = "visible";
-
       panel.style.display = "block";
-      if (age < 45) {
-          insightText.innerHTML = "At age " + age + ", you are in the <strong>Peak Preservation Phase</strong>. Secure your cardiovascular future now.";
-      } else if (age >= 45 && age <= 85) {
-          insightText.innerHTML = "At age " + age + ", you are currently within a <strong>Clinical Awareness Zone</strong>. A Cardio-Metabolic Audit is recommended.";
-      } 
-      
+      insightText.innerHTML = (age < 45) 
+        ? "At age " + age + ", you are in the <strong>Peak Preservation Phase</strong>. Secure your cardiovascular future."
+        : "At age " + age + ", you are within a <strong>Clinical Awareness Zone</strong>. A Cardio-Metabolic Audit is recommended.";
       panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      alert("Please enter an age between 25 and 85.");
-    }
+    } else { alert("Please enter an age between 25 and 85."); }
   }
 </script>
 
 <style>
   @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-  
   .graph-container { padding-top: 140px; background: #fff; position: relative; }
-  
-  .legend-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 30px;
-    border-top: 2px solid #f1f5f9;
-    padding-top: 25px;
-  }
-
-  .leg-card {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 700;
-    color: #2c4964;
-    padding: 12px;
-    border-radius: 8px;
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    transition: 0.2s ease;
-    text-transform: none !important;
-  }
-
+  .zone-box { background: rgba(0,0,0,0.02); padding: 25px; border-radius: 8px; height: 100%; text-transform: none !important; }
+  .legend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; border-top: 2px solid #f1f5f9; padding-top: 25px; }
+  .leg-card { display: flex; align-items: center; font-size: 14px; font-weight: 700; color: #2c4964; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; text-transform: none !important; }
   .swatch { width: 14px; height: 14px; margin-right: 10px; border-radius: 3px; display: inline-block; }
   .chart-line { transition: 0.3s ease; opacity: 0.8; }
-  .interactive-chart:hover .chart-line { opacity: 0.1; stroke-width: 2px; }
+  .interactive-chart:hover .chart-line { opacity: 0.1; }
 
-  /* Highlight Logic */
-  .leg-testo:hover, .hormone-chart-container:has(.leg-testo:hover) .line-testo { opacity: 1 !important; stroke-width: 8px !important; }
-  .leg-risk:hover, .hormone-chart-container:has(.leg-risk:hover) .line-risk { opacity: 1 !important; stroke-width: 10px !important; }
-  .leg-insulin:hover, .hormone-chart-container:has(.leg-insulin:hover) .line-insulin { opacity: 1 !important; stroke-width: 6px !important; }
-  .leg-mela:hover, .hormone-chart-container:has(.leg-mela:hover) .line-mela { opacity: 1 !important; stroke-width: 5px !important; }
-  .leg-estro:hover, .hormone-chart-container:has(.leg-estro:hover) .line-estro { opacity: 1 !important; stroke-width: 6px !important; }
-  .leg-dhea:hover, .hormone-chart-container:has(.leg-dhea:hover) .line-dhea { opacity: 1 !important; stroke-width: 8px !important; }
-
-  /* ADAPTIVE FLOATING BUTTON STYLING */
+  /* UPDATED SIDE TAB CSS */
   .female-toggle-btn {
     position: fixed;
     right: 0;
-    bottom: 140px; /* Adjust to sit vertically above Desktop WhatsApp button */
-    background: rgba(255, 182, 193, 0.95);
-    backdrop-filter: blur(8px);
+    bottom: 160px; /* Sits safely above WhatsApp */
+    background: #ffb6c1;
     color: #a04050;
-    padding: 20px 10px;
-    border-radius: 12px 0 0 12px; 
+    width: 45px;
+    padding: 20px 0;
+    border-radius: 12px 0 0 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 12px;
     text-decoration: none;
     font-weight: 800;
-    font-size: 0.85rem;
     box-shadow: -4px 4px 15px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-right: none;
-    transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 2000;
     text-transform: none !important;
+    transition: 0.3s ease;
+  }
+  .toggle-text {
     writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    text-orientation: mixed;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
   }
+  .toggle-icon { font-size: 1.5rem; line-height: 1; }
+  .female-toggle-btn:hover { width: 55px; background: #ffc0cb; }
 
-  .female-toggle-btn:hover {
-    padding-right: 20px;
-    background: #ffb6c1;
-    color: #802030;
-  }
-
-  .toggle-icon {
-    font-size: 1.4rem;
-    transform: rotate(180deg);
-  }
-
-  /* Responsive Behavior */
   @media (max-width: 768px) {
     .legend-grid { grid-template-columns: 1fr 1fr; }
     .mobile-landscape-hint { display: block !important; }
-    
-    /* Revert Button to Pill for Mobile */
     .female-toggle-btn {
-      right: 20px;
-      bottom: 90px; /* Adjust to sit above Mobile WhatsApp button */
-      writing-mode: horizontal-tb;
-      transform: none;
-      flex-direction: row;
-      padding: 12px 20px;
-      border-radius: 50px;
-      border-right: 1px solid rgba(255, 255, 255, 0.3);
+      right: 20px; bottom: 95px; width: auto; 
+      flex-direction: row; padding: 12px 20px; border-radius: 50px;
     }
-    .toggle-icon { transform: none; }
+    .toggle-text { writing-mode: horizontal-tb; }
   }
-
   @media (max-width: 480px) {
     .legend-grid { grid-template-columns: 1fr; }
     .toggle-text { display: none; }
