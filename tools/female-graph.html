@@ -40,51 +40,53 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
       </div>
     </section>
 
-    <div class="hormone-chart-container" style="max-width: 1100px; margin: 0 auto; font-family: -apple-system, system-ui, sans-serif; background: #fdfcf0; padding: 40px 30px; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-      
+<div class="hormone-chart-container" style="max-width: 1100px; margin: 0 auto; background: #fdfcf0; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
       <div class="svg-wrapper" style="position: relative; width: 100%; padding-bottom: 55%;">
-        <svg viewBox="0 0 1000 480" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible;" class="interactive-chart">
+        <svg viewBox="0 0 1000 500" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible;" class="interactive-chart">
           
-          <text x="0" y="25" font-weight="bold" fill="#2c4964" font-size="16" text-anchor="start">
-            <tspan x="0" dy="0">HORMONE LEVELS</tspan>
-            <tspan x="0" dy="1.2em">(% of Peak)</tspan>
-          </text>
-          <text x="1000" y="25" font-weight="bold" fill="#b22222" font-size="16" text-anchor="end">
-            <tspan x="1000" dy="0">METABOLIC & VASCULAR STRESS</tspan>
-            <tspan x="1000" dy="1.2em">(Cardio Risk Score)</tspan>
-          </text>
+          <text x="0" y="-10" font-weight="bold" fill="#2c4964" font-size="14">HORMONE LEVELS (% of Peak)</text>
+          <text x="1000" y="-10" font-weight="bold" fill="#b22222" font-size="14" text-anchor="end">METABOLIC & VASCULAR STRESS</text>
 
-          <rect x="357" y="60" width="102" height="320" fill="#c084fc" opacity="0.12"></rect> <rect x="491" y="60" width="70" height="320" fill="#e08e79" opacity="0.12"></rect> <rect x="614" y="60" width="256" height="320" fill="#60c1b0" opacity="0.12"></rect> <g stroke="#e2e8f0" stroke-dasharray="4">
-            <line x1="100" y1="60" x2="100" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line> <line x1="228" y1="60" x2="228" y2="380"></line> <line x1="357" y1="60" x2="357" y2="380"></line> <line x1="485" y1="60" x2="485" y2="380"></line> <line x1="614" y1="60" x2="614" y2="380"></line> <line x1="742" y1="60" x2="742" y2="380"></line> <line x1="870" y1="60" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line> <line x1="100" y1="380" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2"></line> </g>
-
-          <g font-size="12" fill="#333">
-            <text x="180" y="270">THE SILENT DECADE (NEW)</text>
-            <text x="180" y="285">(Insulin Resistance)</text>
-            <text x="540" y="325">Insulin sensitivity volatility start (Age ~52)</text>
+          <g stroke="#e2e8f0" stroke-dasharray="4">
+            <line x1="100" y1="50" x2="100" y2="400" stroke="#2c4964" stroke-dasharray="0"></line>
+            <line x1="228" y1="50" x2="228" y2="400"></line>
+            <line x1="357" y1="50" x2="357" y2="400"></line>
+            <line x1="485" y1="50" x2="485" y2="400"></line>
+            <line x1="614" y1="50" x2="614" y2="400"></line>
+            <line x1="742" y1="50" x2="742" y2="400"></line>
+            <line x1="870" y1="50" x2="870" y2="400" stroke="#2c4964" stroke-dasharray="0"></line>
           </g>
 
-          <path id="line-insulin" class="chart-line" d="M 100 130 C 250 130, 350 180, 485 300 L 870 380" fill="none" stroke="#28a745" stroke-width="4" stroke-dasharray="2,6"></path>
-          
-          <path id="line-testo" class="chart-line" d="M 100 240 L 870 360" fill="none" stroke="#d6a1a1" stroke-width="4"></path>
+          <path id="line-progest" class="chart-line" fill="none" stroke="#2c4964" stroke-width="4"
+            d="M 100 130 L 110 150 L 120 130 L 130 150 L 140 130 L 150 150 L 160 130 L 170 150 L 180 130 L 190 150 L 200 130 L 210 150 L 220 130 L 230 150 L 240 130 L 250 150 L 260 130 L 270 150 L 280 130 L 290 150 L 300 130 L 310 150 L 320 130 L 330 150 L 340 130 L 357 130 
+               C 420 130, 450 320, 500 350 L 870 350" />
 
-          <path id="line-progest" class="chart-line" d="M 100 150 L 110 170 L 120 150 L 130 170 L 140 150 L 150 170 L 160 150 L 170 170 L 180 150 L 190 170 L 200 150 L 210 170 L 220 150 L 230 170 L 240 150 L 250 170 L 260 150 L 270 170 L 280 150 L 290 170 L 300 150 L 310 170 L 320 150 L 330 170 L 340 150 L 357 150 C 420 150, 440 300, 485 320 L 870 320" fill="none" stroke="#2c4964" stroke-width="5"></path>
+          <path id="line-oestro" class="chart-line" fill="none" stroke="#e08e79" stroke-width="4"
+            d="M 100 60 L 105 70 L 110 60 L 115 70 L 120 60 L 125 70 L 130 60 L 135 70 L 140 60 L 145 70 L 150 60 L 155 70 L 160 60 L 165 70 L 170 60 L 175 70 L 180 60 L 185 70 L 190 60 L 195 70 L 200 60 L 205 70 L 210 60 L 215 70 L 220 60 L 225 70 L 230 60 L 235 70 L 240 60 L 245 70 L 250 60 L 255 70 L 260 60 L 265 70 L 270 60 L 275 70 L 280 60 L 285 70 L 290 60 L 295 70 L 300 60 L 305 70 L 310 60 L 315 70 L 320 60 L 325 70 L 330 60 L 335 70 L 340 60 L 357 60 
+               C 400 60, 440 180, 470 230
+               L 475 330 L 480 180 L 485 350 L 490 200 L 495 360 L 500 220 L 505 380 L 510 240 L 515 390 L 520 260 L 525 395 L 530 300 L 540 370 L 550 380 L 870 380" />
 
-          <path id="line-mela" class="chart-line" d="M 100 340 L 105 320 L 110 345 L 115 325 L 120 350 L 125 330 L 130 355 L 135 335 L 140 360 L 145 340 L 150 365 L 155 345 L 160 370 L 165 350 L 170 375 L 175 355 L 180 380 L 185 360 L 190 385 L 195 365 L 200 390 L 205 370 L 210 395 L 215 375 L 220 400 L 225 380 L 230 405 L 235 385 L 240 410 L 245 390 L 250 415 L 255 395 L 260 420 L 265 400 L 270 425 L 275 405 L 280 430 L 285 410 L 290 435 L 295 415 L 300 440 L 305 420 L 310 445 L 315 425 L 320 450 L 325 430 L 330 455 L 335 435 L 340 460 L 345 440 L 350 465 L 357 445 C 420 445, 460 360, 485 380 L 530 430 L 870 430" fill="none" stroke="#00ced1" stroke-width="3"></path>
+          <path id="line-insulin" class="chart-line" fill="none" stroke="#28a745" stroke-width="4" stroke-dasharray="2,6"
+            d="M 100 150 C 250 150, 450 250, 500 350 L 870 410" />
 
-          <path id="line-risk" class="chart-line" d="M 100 380 C 250 380, 450 350, 520 280 Q 650 150, 870 100" fill="none" stroke="#b22222" stroke-width="6"></path>
+          <path id="line-testo" class="chart-line" fill="none" stroke="#d6a1a1" stroke-width="3"
+            d="M 100 250 L 870 390" />
 
-          <path id="line-oestro" class="chart-line" d="M 100 70 L 105 85 L 110 70 L 115 85 L 120 70 L 125 85 L 130 70 L 135 85 L 140 70 L 145 85 L 150 70 L 155 85 L 160 70 L 165 85 L 170 70 L 175 85 L 180 70 L 185 85 L 190 70 L 195 85 L 200 70 L 205 85 L 210 70 L 215 85 L 220 70 L 225 85 L 230 70 L 235 85 L 240 70 L 245 85 L 250 70 L 255 85 L 260 70 L 265 85 L 270 70 L 275 85 L 280 70 L 285 85 L 290 70 L 295 85 L 300 70 L 305 85 L 310 70 L 315 85 L 320 70 L 325 85 L 330 70 L 335 85 L 340 70 L 345 85 L 350 70 L 357 85 C 400 95, 430 180, 485 220 Q 500 240, 520 180 L 525 320 L 530 200 L 535 300 L 540 220 L 545 280 L 550 230 L 555 260 L 560 340 L 565 310 L 570 350 L 575 330 L 580 370 L 585 360 L 590 380 L 870 380" fill="none" stroke="#e08e79" stroke-width="5"></path>
+          <path id="line-mela" class="chart-line" fill="none" stroke="#00ced1" stroke-width="3"
+            d="M 100 350 L 350 450 L 485 380 L 550 430 L 870 430" />
 
-          <g id="scannerGroup" style="visibility: hidden;">
-            <line id="scannerLine" x1="0" y1="50" x2="0" y2="390" stroke="#000000" stroke-width="4"></line>
-            <rect id="scannerBox" x="0" y="15" width="46" height="30" rx="5" fill="#000000"></rect>
-            <text id="scannerText" x="0" y="36" text-anchor="middle" fill="#ffffff" font-weight="900" font-size="18">0</text>
-          </g>
+          <path id="line-risk" class="chart-line" fill="none" stroke="#b22222" stroke-width="6"
+            d="M 100 400 C 300 400, 450 350, 550 220 C 700 100, 870 80" />
 
           <g font-size="16" fill="#2c4964" text-anchor="middle" font-weight="700">
-            <text x="100" y="415">25</text><text x="228" y="415">35</text><text x="357" y="415">45</text>
-            <text x="485" y="415">55</text><text x="614" y="415">65</text><text x="742" y="415">75</text><text x="870" y="415">85+</text>
-            <text x="485" y="460" font-size="18" font-weight="800">Your Age (Years)</text>
+            <text x="100" y="430">25</text><text x="228" y="430">35</text><text x="357" y="430">45</text>
+            <text x="485" y="430">55</text><text x="614" y="430">65</text><text x="742" y="430">75</text><text x="870" y="430">85+</text>
+            <text x="485" y="470" font-size="18">Your Age (Years)</text>
+          </g>
+
+          <g id="scannerGroup" style="visibility: hidden;">
+            <line id="scannerLine" x1="0" y1="40" x2="0" y2="410" stroke="black" stroke-width="3"></line>
+            <circle id="scannerCircle" cx="0" cy="40" r="10" fill="black"></circle>
           </g>
         </svg>
       </div>
@@ -110,6 +112,8 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
         </div>
       </div>
     </div>
+
+
 
     <section class="mt-5" style="max-width: 900px; margin: 0 auto; color: #334155;">
       <h2 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Midlife Stewardship Awareness Zones</h2>
