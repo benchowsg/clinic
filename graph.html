@@ -13,54 +13,54 @@ description: Graph
        <p>See the 40-year decline of the male safety net. View the graph and book your audit.</p>
     </div>
   
-<div class="hormone-chart-container" style="max-width: 1000px; margin: 40px auto; font-family: sans-serif; background: #fdfcf0; padding: 25px; border-radius: 12px; border: 1px solid #eee;">
+<div class="hormone-chart-container" style="max-width: 1100px; margin: 40px auto; font-family: sans-serif; background: #fdfcf0; padding: 30px; border-radius: 12px; border: 1px solid #eee;">
     
     <div style="text-align: center; margin-bottom: 25px;">
-        <h2 class="chart-title">A Man's Life in Hormones</h2>
-        <p class="chart-subtitle">The Metabolic Handoff & Vascular Trap</p>
+        <h2 style="color: #2c4964; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">A Man's Life in Hormones</h2>
+        <p style="font-style: italic; color: #666;">The Metabolic Handoff & Vascular Trap (Male Context)</p>
     </div>
 
     <div class="svg-wrapper" style="position: relative; width: 100%; padding-bottom: 50%;">
-        <svg viewBox="0 0 800 400" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="interactive-chart">
+        <svg viewBox="0 0 1000 450" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" class="interactive-chart">
             
-            <text x="10" y="25" class="axis-header" font-weight="bold" fill="#2c4964">HORMONE LEVELS</text>
-            <text x="600" y="25" class="axis-header" font-weight="bold" fill="#b22222">VASCULAR STRESS</text>
+            <text x="20" y="30" font-weight="bold" fill="#2c4964" font-size="14">HORMONE LEVELS (% of Peak)</text>
+            <text x="780" y="30" font-weight="bold" fill="#b22222" font-size="14">VASCULAR STRESS INDEX</text>
 
             <g stroke="#ddd" stroke-dasharray="4">
-                <line x1="80" y1="50" x2="80" y2="350" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" />
-                <line x1="720" y1="50" x2="720" y2="350" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" />
-                <line x1="80" y1="350" x2="720" y2="350" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" />
-                <line x1="475" y1="50" x2="475" y2="350" stroke="#bbb" /> </g>
+                <line x1="100" y1="60" x2="100" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" /> <line x1="228" y1="60" x2="228" y2="380" /> <line x1="357" y1="60" x2="357" y2="380" /> <line x1="485" y1="60" x2="485" y2="380" /> <line x1="614" y1="60" x2="614" y2="380" /> <line x1="742" y1="60" x2="742" y2="380" /> <line x1="870" y1="60" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" /> <line x1="100" y1="380" x2="870" y2="380" stroke="#2c4964" stroke-dasharray="0" stroke-width="2" /> </g>
 
-            <path class="chart-line line-aromat" d="M 80 60 C 200 70, 400 180, 475 250 S 650 330, 720 340" fill="none" stroke="#c084fc" stroke-width="3" stroke-dasharray="3" />
+            <path class="chart-line line-insulin" d="M 100 70 C 300 75, 500 350, 870 375" fill="none" stroke="#c084fc" stroke-width="4" stroke-dasharray="4" />
 
-            <path class="chart-line line-testo" d="M 80 100 L 115 60 L 250 60 C 350 60, 500 150, 720 310" fill="none" stroke="#2c4964" stroke-width="5" />
+            <path class="chart-line line-testo" d="M 100 110 L 125 75 L 228 75 C 400 75, 600 250, 870 360" fill="none" stroke="#2c4964" stroke-width="5" />
 
-            <path class="chart-line line-mela" d="M 80 280 L 85 300 L 95 270 L 105 300 L 115 270 L 125 300 L 135 270 L 145 300 L 155 270 L 165 300 L 175 270 L 185 300 L 250 285 L 280 295 L 320 285 L 360 295 L 400 285 L 475 250 L 720 345" fill="none" stroke="#60c1b0" stroke-width="2" />
+            <path class="chart-line line-mela" d="M 100 280 L 105 305 L 115 270 L 125 305 L 135 270 L 145 305 L 155 270 L 165 305 L 175 270 L 185 305 L 195 270 L 205 305 L 215 270 L 225 305 L 260 285 L 300 295 L 340 285 L 370 290 L 550 310 L 870 350" fill="none" stroke="#60c1b0" stroke-width="2" />
 
-            <path class="chart-line line-risk" d="M 80 345 C 250 345, 420 320, 475 250 S 650 40, 720 40" fill="none" stroke="#b22222" stroke-width="6" />
+            <path class="chart-line line-risk" d="M 100 375 C 250 375, 350 350, 370 290 S 700 60, 870 60" fill="none" stroke="#b22222" stroke-width="6" />
 
-            <path class="chart-line line-estro" d="M 475 250 Q 600 230, 720 190" fill="none" stroke="#e08e79" stroke-width="3" stroke-dasharray="6" />
+            <path class="chart-line line-estro" d="M 370 290 Q 550 270, 640 250 T 870 180" fill="none" stroke="#e08e79" stroke-width="3" stroke-dasharray="6" />
 
-            <line class="chart-line line-dhea" x1="80" y1="200" x2="720" y2="310" stroke="#d6a1a1" stroke-width="2" />
+            <path class="chart-line line-dhea" d="M 100 200 Q 400 230, 870 360" fill="none" stroke="#d6a1a1" stroke-width="3" />
 
-            <g font-size="14" fill="#555" text-anchor="middle">
-                <text x="80" y="375">25</text>
-                <text x="250" y="375">35</text>
-                <text x="475" y="375" font-weight="bold" fill="#2c4964">50</text>
-                <text x="720" y="375">85+</text>
-                <text x="400" y="395" font-weight="bold">AGE (Years)</text>
+            <g font-size="14" fill="#555" text-anchor="middle" font-weight="bold">
+                <text x="100" y="405">25</text>
+                <text x="228" y="405">35</text>
+                <text x="357" y="405">45</text>
+                <text x="485" y="405">55</text>
+                <text x="614" y="405">65</text>
+                <text x="742" y="405">75</text>
+                <text x="870" y="405">85+</text>
+                <text x="485" y="435" font-size="16" fill="#2c4964">AGE (Years)</text>
             </g>
         </svg>
     </div>
 
-    <div class="html-legend">
-        <div class="leg-item leg-testo"><span class="dot" style="background:#2c4964"></span> Testosterone</div>
-        <div class="leg-item leg-risk"><span class="dot" style="background:#b22222"></span> Vascular Risk</div>
-        <div class="leg-item leg-aromat"><span class="dot" style="background:#c084fc; border:1px dotted #555"></span> Aromatization</div>
-        <div class="leg-item leg-mela"><span class="dot" style="background:#60c1b0"></span> Melatonin</div>
-        <div class="leg-item leg-estro"><span class="dot" style="background:#e08e79; border:1px dashed #555"></span> Visceral Estrogen</div>
-        <div class="leg-item leg-dhea"><span class="dot" style="background:#d6a1a1"></span> DHEA-S</div>
+    <div class="chart-legend-grid">
+        <div class="leg-card leg-testo"><span class="swatch" style="background:#2c4964"></span> Testosterone</div>
+        <div class="leg-card leg-risk"><span class="swatch" style="background:#b22222"></span> Vascular Risk</div>
+        <div class="leg-card leg-insulin"><span class="swatch" style="background:#c084fc; border: 1px dashed #555"></span> Insulin Resistance</div>
+        <div class="leg-card leg-mela"><span class="swatch" style="background:#60c1b0"></span> Melatonin</div>
+        <div class="leg-card leg-estro"><span class="swatch" style="background:#e08e79; border: 1px dashed #555"></span> Visceral Estrogen</div>
+        <div class="leg-card leg-dhea"><span class="swatch" style="background:#d6a1a1"></span> DHEA-S</div>
     </div>
 </div>
 
@@ -68,42 +68,48 @@ description: Graph
 </main>
 
 <style>
-.html-legend {
+.chart-legend-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    margin-top: 30px;
+    margin-top: 35px;
     border-top: 1px solid #eee;
-    padding-top: 20px;
+    padding-top: 25px;
 }
-.leg-item {
+.leg-card {
     font-size: 14px;
     font-weight: bold;
-    color: #444;
+    color: #333;
     cursor: pointer;
     display: flex;
     align-items: center;
+    padding: 8px;
+    border-radius: 6px;
     transition: 0.2s;
+    background: white;
+    border: 1px solid transparent;
 }
-.dot { width: 12px; height: 12px; margin-right: 8px; border-radius: 2px; }
+.leg-card:hover { border-color: #ddd; background: #fff; }
+.swatch { width: 16px; height: 16px; margin-right: 10px; border-radius: 3px; display: inline-block; }
 
-/* HOVER SYNC */
-.chart-line { transition: 0.3s; opacity: 0.8; }
+/* INTERACTIVITY */
+.chart-line { transition: 0.3s; opacity: 0.8; cursor: pointer; }
 .interactive-chart:hover .chart-line { opacity: 0.1; stroke-width: 2px; }
-.html-legend:hover .leg-item { opacity: 0.3; }
+.chart-legend-grid:hover .leg-card { opacity: 0.3; }
 
-/* Highlight Logic */
-.leg-testo:hover, .hormone-chart-container:has(.leg-testo:hover) .line-testo, .line-testo:hover { opacity: 1 !important; stroke-width: 7px !important; color: #2c4964; }
-.leg-risk:hover, .hormone-chart-container:has(.leg-risk:hover) .line-risk, .line-risk:hover { opacity: 1 !important; stroke-width: 8px !important; color: #b22222; }
-.leg-aromat:hover, .hormone-chart-container:has(.leg-aromat:hover) .line-aromat, .line-aromat:hover { opacity: 1 !important; stroke-width: 5px !important; color: #c084fc; }
+/* HOVER SYNC (Legend to Line) */
+.leg-testo:hover, .hormone-chart-container:has(.leg-testo:hover) .line-testo, .line-testo:hover { opacity: 1 !important; stroke-width: 8px !important; color: #2c4964; }
+.leg-risk:hover, .hormone-chart-container:has(.leg-risk:hover) .line-risk, .line-risk:hover { opacity: 1 !important; stroke-width: 10px !important; color: #b22222; }
+.leg-insulin:hover, .hormone-chart-container:has(.leg-insulin:hover) .line-insulin, .line-insulin:hover { opacity: 1 !important; stroke-width: 6px !important; color: #c084fc; }
 .leg-mela:hover, .hormone-chart-container:has(.leg-mela:hover) .line-mela, .line-mela:hover { opacity: 1 !important; stroke-width: 4px !important; color: #60c1b0; }
-.leg-estro:hover, .hormone-chart-container:has(.leg-estro:hover) .line-estro, .line-estro:hover { opacity: 1 !important; stroke-width: 5px !important; color: #e08e79; }
-.leg-dhea:hover, .hormone-chart-container:has(.leg-dhea:hover) .line-dhea, .line-dhea:hover { opacity: 1 !important; stroke-width: 4px !important; color: #d6a1a1; }
+.leg-estro:hover, .hormone-chart-container:has(.leg-estro:hover) .line-estro, .line-estro:hover { opacity: 1 !important; stroke-width: 6px !important; color: #e08e79; }
+.leg-dhea:hover, .hormone-chart-container:has(.leg-dhea:hover) .line-dhea, .line-dhea:hover { opacity: 1 !important; stroke-width: 5px !important; color: #d6a1a1; }
 
-@media (max-width: 600px) {
-    .html-legend { grid-template-columns: 1fr 1fr; }
-    .axis-header { font-size: 11px; }
+@media (max-width: 768px) {
+    .chart-legend-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+    .chart-legend-grid { grid-template-columns: 1fr; }
+    .leg-card { font-size: 16px; }
 }
 </style>
-    
-
