@@ -90,8 +90,9 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
                  S 650,50 870,50" style="opacity: 0.8; stroke-width: 6px;"></path>
 
           <g id="scannerGroup" style="visibility: hidden;">
-            <line id="scannerLine" x1="0" y1="40" x2="0" y2="410" stroke="black" stroke-width="3"></line>
-            <circle id="scannerCircle" cx="0" cy="40" r="10" fill="black"></circle>
+            <line id="scannerLine" x1="0" y1="40" x2="0" y2="410" stroke="#c084fc" stroke-width="3" stroke-dasharray="4"></line>
+            <rect id="scannerBox" x="0" y="10" width="46" height="30" rx="5" fill="#c084fc"></rect>
+            <text id="scannerText" x="0" y="31" fill="white" font-size="16" font-weight="800" text-anchor="middle">--</text>
           </g>
 
           <g font-size="16" fill="#2c4964" text-anchor="middle" font-weight="700">
@@ -202,7 +203,7 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
   }
 
   // Audit Scanner Logic (Faithful to female chart ranges)
-  function updateScanner() {
+function updateScanner() {
     const input = document.getElementById('ageInput');
     const group = document.getElementById('scannerGroup');
     const line = document.getElementById('scannerLine');
@@ -210,36 +211,48 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
     const txt = document.getElementById('scannerText');
     const panel = document.getElementById('insightPanel');
     const insightText = document.getElementById('insightText');
+    
     const age = parseFloat(input.value);
     
     if (age >= 25 && age <= 85) {
-      // Math: Map age 25-85 to SVG X-coords 100-870
+      // Calculate X Position: Map 25-85 to SVG coordinates 100-870
+      // Formula: 100 + ((age - 25) / (85 - 25) * (870 - 100))
       const xPos = 100 + ((age - 25) * 12.833);
       
-      line.setAttribute('x1', xPos); line.setAttribute('x2', xPos);
+      // Update Scanner Position
+      line.setAttribute('x1', xPos); 
+      line.setAttribute('x2', xPos);
+      
+      // Update Box Position (Centered on line)
       box.setAttribute('x', xPos - 23);
-      txt.setAttribute('x', xPos); txt.textContent = age;
+      
+      // Update Text Position and Content
+      txt.setAttribute('x', xPos); 
+      txt.textContent = age;
+      
+      // Make it visible
       group.style.visibility = "visible";
       
-      // SHOW CTA PANEL & ADVICE (Specific to female graph ranges)
+      // SHOW CTA PANEL & ADVICE
       panel.style.display = "block";
+      
       if (age < 45) {
-          insightText.innerHTML = "At " + age + ", your 'Vascular Shield' is working, but the foundation of <strong>Insulin Resistance</strong> is often set in this decade. We focus on Peak Preservation.";
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, your 'Vascular Shield' is working, but the foundation of <strong>Insulin Resistance</strong> is often set in this decade. We focus on Peak Preservation.";
       } else if (age >= 45 && age <= 53) {
-          insightText.innerHTML = "You are in Zone 1: <strong>The Silent Decade</strong> (Ages 45-53). A critical 'handoff' where insulin resistance overrides the thinning vascular shield. Audit is vital here.";
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in Zone 1: <strong>The Silent Decade</strong>. A critical 'handoff' where insulin resistance overrides the thinning vascular shield. Audit is vital here.";
       } else if (age >= 54 && age <= 63) {
-          insightText.innerHTML = "You are in Zone 2: <strong>The Metabolic Trap</strong> (Ages 53-60). Cardiovascular risk is rising as protective hormones crash. We prioritize active stewardship.";
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in Zone 2: <strong>The Metabolic Trap</strong>. Cardiovascular risk is rising as protective hormones crash. We prioritize active stewardship.";
       } else {
-          insightText.innerHTML = "At age " + age + ", the priority is <strong>Cardio-Vascular Regeneration</strong> and managing the floor of regenerative markers.";
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, the priority is <strong>Cardio-Vascular Regeneration</strong> and managing the floor of metabolic health markers.";
       }
       
       // Smooth scroll to results
-      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     } else {
       alert("Please enter an age between 25 and 85.");
     }
-  }
+}
 </script>
 
 <style>
