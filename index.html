@@ -49,15 +49,15 @@ faq_schema:
         </p>
         
         <div class="d-flex justify-content-center justify-content-lg-start gap-3 mt-4 flex-wrap">
-          <a href="/men-cardio-metabolic-audit" class="btn-men-axis">
+          <a href="/men-cardio-metabolic-audit" class="btn-axis btn-men-axis">
             Men's Axis
           </a>
-          <a href="/women-cardio-metabolic-audit" class="btn-outline-clinic" style="border: 2px solid #2c4964; color: #2c4964; padding: 14px 35px; border-radius: 5px; text-decoration: none; font-weight: 700; transition: 0.3s;">
+          <a href="/women-cardio-metabolic-audit" class="btn-axis btn-women-axis">
             Women's Axis
           </a>
         </div>
         
-        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 20px; font-weight: 500;">
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 20px; font-weight: 600;">
           <i class="fa-solid fa-circle-info me-1"></i> Identify your Clinical Awareness Zone in under 60 seconds.
         </p>
       </div>
@@ -217,24 +217,47 @@ faq_schema:
   .article-card .rounded-circle { margin-right: 15px !important; }
   .article-card hr { margin: 1rem 0; 
   }
-  /* Men's Button: Corporate Blue with Black Text */
-  .btn-men-axis {
-    background-color: #43a7d5 !important; /* Your Corporate Blue */
-    color: #000000 !important;           /* Black Text */
-    border: 2px solid #43a7d5 !important;
+/* Base button styling for consistency */
+  .btn-axis {
     padding: 14px 35px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 700;
     transition: all 0.3s ease;
     display: inline-block;
+    text-align: center;
+    min-width: 180px;
   }
 
-  /* Inverse Hover: Black Background with Blue Text */
+  /* Men's Button: Corporate Blue */
+  .btn-men-axis {
+    background-color: #43a7d5 !important; /* Corporate Blue */
+    color: #000000 !important;           /* Black Text */
+    border: 2px solid #43a7d5 !important;
+  }
+
   .btn-men-axis:hover {
-    background-color: #000000 !important;
-    color: #43a7d5 !important;
+    background-color: #000000 !important; /* Inverse: Black BG */
+    color: #43a7d5 !important;           /* Blue Text */
     border-color: #000000 !important;
+  }
+
+  /* Women's Button: Corporate Pink */
+  .btn-women-axis {
+    background-color: #ffb6c1 !important; /* Corporate Pink */
+    color: #000000 !important;           /* Black Text */
+    border: 2px solid #ffb6c1 !important;
+  }
+
+  .btn-women-axis:hover {
+    background-color: #000000 !important; /* Inverse: Black BG */
+    color: #ffb6c1 !important;           /* Pink Text */
+    border-color: #000000 !important;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .btn-axis { width: 100%; }
   }
 </style>
 
