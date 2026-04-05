@@ -113,7 +113,7 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
             <span class="swatch" style="background:#b22222"></span> Cardiovascular Risk
         </div>
         <div class="leg-card" onmouseover="highlight('line-insulin')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#28a745; border:1px dashed #777"></span> Insulin Resistance
+            <span class="swatch" style="background:#28a745; border:1px dashed #777"></span> Insulin Sensitivity
         </div>
         <div class="leg-card" onmouseover="highlight('line-mela')" onmouseout="resetHighlight()">
             <span class="swatch" style="background:#00ced1"></span> Melatonin
@@ -134,21 +134,26 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
       
       <div class="row mt-4">
         <div class="col-md-4 mb-4">
+          <div class="zone-box" style="border-top: 5px solid #28a745;">
+            <h4 style="color: #2c4964;">Zone 1: The Silent Decade</h4>
+            <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">PRE-MENOPAUSE (Ages 35–45)</p>
+            <p>The metabolic groundwork is laid here. While you feel well, <strong>Insulin Sensitivity</strong> begins its silent decline. This is the most critical window for intervention before the vascular shield starts to thin.</p>
+          </div>
+        </div>
+      
+        <div class="col-md-4 mb-4">
           <div class="zone-box" style="border-top: 5px solid #c084fc;">
-            <h4 style="color: #2c4964;">Zone 1: The Silent Handoff</h4>
-            <p><strong>Ages 45–53:</strong> The "Silent Decade." Insulin Resistance is quietly climbing while Oestrogen and Progesterone begin their volatile rollercoaster ride. The vascular shield is thinning.</p>
+            <h4 style="color: #2c4964;">Zone 2: The Hormonal Storm</h4>
+            <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">PERIMENOPAUSE (Ages 45–53)</p>
+            <p>The "Critical Handoff." Oestrogen becomes volatile and Progesterone drops steeply. Cardiovascular risk hits its steepest inflection point as your internal protection is dismantled.</p>
           </div>
         </div>
+      
         <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #e08e79;">
-            <h4 style="color: #2c4964;">Zone 2: The Metabolic Trap</h4>
-            <p><strong>Ages 53–60:</strong> The critical "crossover." Cardiovascular risk rises rapidly as Oestrogen protection crashes. This is often marked by sudden weight gain and "Insulin Sensitivity volatility."</p>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #60c1b0;">
-            <h4 style="color: #2c4964;">Zone 3: Regeneration</h4>
-            <p><strong>Ages 65–85+:</strong> The regeneration floor. With the primary 'safety net' gone, strategic metabolic stewardship is required to mitigate arterial stress and cognitive decline.</p>
+          <div class="zone-box" style="border-top: 5px solid #b22222;">
+            <h4 style="color: #2c4964;">Zone 3: The Metabolic Trap</h4>
+            <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">POST-MENOPAUSE (Ages 55+)</p>
+            <p>Hormones stabilize at a low baseline. <strong>Cardiovascular Risk</strong> now dominates the axis. Stewardship shifts to active management of lipids, blood pressure, and regenerative metabolic health.</p>
           </div>
         </div>
       </div>
@@ -235,14 +240,15 @@ function updateScanner() {
       // SHOW CTA PANEL & ADVICE
       panel.style.display = "block";
       
-      if (age < 45) {
-          insightText.innerHTML = "At <strong>age " + age + "</strong>, your 'Vascular Shield' is working, but the foundation of <strong>Insulin Resistance</strong> is often set in this decade. We focus on Peak Preservation.";
-      } else if (age >= 45 && age <= 53) {
-          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in Zone 1: <strong>The Silent Decade</strong>. A critical 'handoff' where insulin resistance overrides the thinning vascular shield. Audit is vital here.";
-      } else if (age >= 54 && age <= 63) {
-          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in Zone 2: <strong>The Metabolic Trap</strong>. Cardiovascular risk is rising as protective hormones crash. We prioritize active stewardship.";
+      // Inside updateScanner() function...
+      if (age < 35) {
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in the <strong>Protected Years</strong>. We focus on optimizing your baseline before the 'Silent Decade' begins.";
+      } else if (age >= 35 && age < 45) {
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in <strong>The Silent Decade (Pre-Menopause)</strong>. Insulin sensitivity is declining; catching metabolic shifts now prevents the 'Trap' later.";
+      } else if (age >= 45 && age <= 54) {
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in <strong>The Storm (Perimenopause)</strong>. As oestrogen fluctuates wildly, your vascular risk is rising at its fastest rate.";
       } else {
-          insightText.innerHTML = "At <strong>age " + age + "</strong>, the priority is <strong>Cardio-Vascular Regeneration</strong> and managing the floor of metabolic health markers.";
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in <strong>Post-Menopause</strong>. Risk has crossed your hormonal shield. We prioritize cardio-metabolic regeneration.";
       }
       
       // Smooth scroll to results
