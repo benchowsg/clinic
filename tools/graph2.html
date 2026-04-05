@@ -85,7 +85,7 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
             <span class="swatch" style="background:#b22222"></span> Cardiovascular Risk
         </div>
         <div class="leg-card" onmouseover="highlight('line-insulin')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#c084fc; border:1px dashed #777"></span> Insulin Resistance
+            <span class="swatch" style="background:#c084fc; border:1px dashed #777"></span> Insulin Sensitivity
         </div>
         <div class="leg-card" onmouseover="highlight('line-mela')" onmouseout="resetHighlight()">
             <span class="swatch" style="background:#60c1b0"></span> Melatonin
@@ -101,26 +101,31 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
 
     <section class="mt-5" style="max-width: 900px; margin: 0 auto; color: #334155;">
       <h2 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Clinical Awareness Zones</h2>
-      <div class="row mt-4">
-        <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #c084fc;">
-            <h4 style="color: #2c4964;">Zone 1: Repair</h4>
-            <p><strong>Ages 45–50:</strong> Stage where Insulin Resistance challenges regenerative DHEA-S levels.</p>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4">
+            <div class="zone-box" style="border-top: 5px solid #2c4964;">
+              <h4 style="color: #2c4964;">Zone 1: The Slow Burn</h4>
+              <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">ANDROPAUSE ONSET (Ages 35–45)</p>
+              <p>Testosterone begins its steady decline. While subtle, this reduces muscle-to-fat efficiency, allowing <strong>Insulin Sensitivity</strong> to start its downward slide. The "engine" is losing its peak tune.</p>
+            </div>
+          </div>
+        
+          <div class="col-md-4 mb-4">
+            <div class="zone-box" style="border-top: 5px solid #e08e79;">
+              <h4 style="color: #2c4964;">Zone 2: The Inflammation Crossover</h4>
+              <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">CRITICAL WINDOW (Ages 45–58)</p>
+              <p>The "Middle-Age Spread." Visceral fat begins to drive <strong>Silent Arterial Inflammation</strong>. This is the decade where cardiovascular risk officially crosses the threshold of hormonal protection.</p>
+            </div>
+          </div>
+        
+          <div class="col-md-4 mb-4">
+            <div class="zone-box" style="border-top: 5px solid #60c1b0;">
+              <h4 style="color: #2c4964;">Zone 3: The Vulnerability Gap</h4>
+              <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">VASCULAR AGING (Ages 60+)</p>
+              <p>Melatonin and DHEA-S hit their "floor." Without these regenerative markers, the heart cannot fully recover from daily stress, leaving the arteries vulnerable to plaque progression.</p>
+            </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #e08e79;">
-            <h4 style="color: #2c4964;">Zone 2: Inflammation</h4>
-            <p><strong>Ages 50–58:</strong> Critical window where visceral fat shifts drive silent arterial inflammation.</p>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #60c1b0;">
-            <h4 style="color: #2c4964;">Zone 3: Vulnerability</h4>
-            <p><strong>Ages 58–85:</strong> Extended phase where lower Melatonin impacts nocturnal cardiovascular recovery.</p>
-          </div>
-        </div>
-      </div>
 
       <div class="faq-section mt-5" style="background: #f8fafc; padding: 40px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 80px;">
         <h3 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Strategic Health FAQ</h3>
@@ -168,7 +173,7 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
     });
   }
 
-  function updateScanner() {
+function updateScanner() {
     const input = document.getElementById('ageInput');
     const group = document.getElementById('scannerGroup');
     const line = document.getElementById('scannerLine');
@@ -185,12 +190,20 @@ description: Experience Singapore's first integrated cardiovascular and metaboli
       txt.setAttribute('x', xPos); txt.textContent = age;
       group.style.visibility = "visible";
       panel.style.display = "block";
-      insightText.innerHTML = (age < 45) 
-        ? "At age " + age + ", you are in the <strong>Peak Preservation Phase</strong>. Secure your cardiovascular future."
-        : "At age " + age + ", you are within a <strong>Clinical Awareness Zone</strong>. A Cardio-Metabolic Audit is highly recommended.";
+
+      if (age < 40) {
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in the <strong>Peak Performance Phase</strong>. Now is the time to audit your baseline before the gradual testosterone decline begins.";
+      } else if (age >= 40 && age <= 58) {
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in the <strong>Andropause Crossover</strong>. Your insulin sensitivity is dropping; auditing visceral inflammation is critical to preventing heart risk.";
+      } else {
+          insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in the <strong>Vulnerability Zone</strong>. We focus on cardiovascular regeneration and protecting your arterial health as hormonal 'shields' settle at their floor.";
+      }
+
       panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else { alert("Please enter an age between 25 and 85."); }
-  }
+    } else { 
+      alert("Please enter an age between 25 and 85."); 
+    }
+}
 </script>
 
 <style>
