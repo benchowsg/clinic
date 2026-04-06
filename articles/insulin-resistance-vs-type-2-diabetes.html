@@ -96,9 +96,32 @@ custom_schema: |
           </div>
         </div>
 
-        <div class="article-body">
+<div class="article-body">
           <p>Most people believe that Type 2 Diabetes happens overnight. In reality, your body often spends 10 to 15 years fighting a "silent war" to keep your blood sugar stable. By the time a standard blood test shows high glucose, the most critical window for prevention may have already passed.</p>
 
+          <div class="phase-container">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="phase-card" style="border-top: 5px solid #43a7d5;">
+                  <span class="phase-badge badge-ir">Phase 1: The Silent Decade</span>
+                  <h4 class="h5 fw-bold" style="color: #43a7d5;">Insulin Resistance</h4>
+                  <p class="small mb-0">Your body is <strong>over-compensating</strong>. The pancreas pumps out massive amounts of insulin to keep sugar normal. Standard tests often say you are "fine," but high insulin is already weathering your arteries.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="phase-card" style="border-top: 5px solid #2c4964;">
+                  <span class="phase-badge badge-t2">Phase 2: Systemic Failure</span>
+                  <h4 class="h5 fw-bold" style="color: #2c4964;">Type 2 Diabetes</h4>
+                  <p class="small mb-0">The compensatory mechanism has failed. The pancreas can no longer keep up, and blood sugar begins to rise. Diagnosis usually happens here—often years after the damage began.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="type1-notice">
+            <p class="mb-0"><strong>Note on Type 1 Diabetes:</strong> Unlike the metabolic "wear and tear" of Type 2, Type 1 is an autoimmune condition where the body produces <em>zero</em> insulin. It is a different clinical path requiring lifelong replacement, rather than the metabolic interception we provide here.</p>
+          </div>
+          
         <figure class="clinical-chart">
             <svg viewBox="0 0 1000 680" class="line-svg" preserveAspectRatio="xMidYMid meet">
               
@@ -295,4 +318,38 @@ custom_schema: |
     pointer-events: none;
     user-select: none;
   }
+  /* Phase Comparison Cards */
+.phase-container { margin: 30px 0; }
+.phase-card { 
+  background: #fff; 
+  border-radius: 12px; 
+  padding: 25px; 
+  border: 1px solid #e1e8ed; 
+  height: 100%; 
+  position: relative;
+  transition: transform 0.2s;
+}
+.phase-card:hover { transform: translateY(-5px); }
+.phase-badge { 
+  display: inline-block; 
+  padding: 4px 12px; 
+  border-radius: 20px; 
+  font-size: 0.7rem; 
+  font-weight: 800; 
+  letter-spacing: 1px;
+  text-transform: uppercase; 
+  margin-bottom: 15px; 
+}
+.badge-ir { background: #e3f2fd; color: #43a7d5; }
+.badge-t2 { background: #e1e8ed; color: #2c4964; }
+
+/* Type 1 Notice */
+.type1-notice { 
+  background: #f8f9fa; 
+  border-radius: 10px; 
+  padding: 20px; 
+  font-size: 0.95rem; 
+  border-left: 4px solid #ced4da; 
+  margin-bottom: 40px;
+}
 </style>
