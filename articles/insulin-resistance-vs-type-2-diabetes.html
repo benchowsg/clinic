@@ -99,6 +99,96 @@ custom_schema: |
         <div class="article-body">
           <p>Most people believe that Type 2 Diabetes happens overnight. In reality, your body often spends 10 to 15 years fighting a "silent war" to keep your blood sugar stable. By the time a standard blood test shows high glucose, the most critical window for prevention may have already passed.</p>
 
+          <figure class="clinical-chart shadow-sm">
+              <svg viewBox="0 0 1000 700" class="line-svg" preserveAspectRatio="xMidYMid meet" aria-labelledby="chartTitle chartDesc">
+                
+                <title id="chartTitle">Insulin Resistance to Type 2 Diabetes Transition Timeline</title>
+                <desc id="chartDesc">A graph illustrating the interaction between insulin levels and glucose levels as metabolic health progresses from insulin resistance to a diagnosis of Type 2 Diabetes.</desc>
+            
+                <defs>
+                  <linearGradient id="grid-fade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#e1e8ed" stop-opacity="0.2"></stop>
+                    <stop offset="100%" stop-color="#e1e8ed" stop-opacity="1"></stop>
+                  </linearGradient>
+                </defs>
+            
+                <g class="grid-lines" stroke="#e1e8ed" stroke-width="1">
+                  <line x1="100" y1="100" x2="950" y2="100"></line>
+                  <line x1="100" y1="150" x2="950" y2="150"></line>
+                  <line x1="100" y1="200" x2="950" y2="200"></line>
+                  <line x1="100" y1="250" x2="950" y2="250"></line>
+                  <line x1="100" y1="300" x2="950" y2="300"></line>
+                  <line x1="100" y1="350" x2="950" y2="350"></line>
+                  <line x1="100" y1="400" x2="950" y2="400"></line>
+                </g>
+            
+                <g class="grid-lines" stroke="#e1e8ed" stroke-width="1">
+                  <line x1="150" y1="100" x2="150" y2="400"></line>
+                  <line x1="200" y1="100" x2="200" y2="400"></line>
+                  <line x1="250" y1="100" x2="250" y2="400"></line>
+                  <line x1="300" y1="100" x2="300" y2="400"></line>
+                  <line x1="350" y1="100" x2="350" y2="400"></line>
+                  <line x1="400" y1="100" x2="400" y2="400"></line>
+                  <line x1="450" y1="100" x2="450" y2="400"></line>
+                  <line x1="500" y1="100" x2="500" y2="400"></line>
+                  <line x1="550" y1="100" x2="550" y2="400"></line>
+                  <line x1="600" y1="100" x2="600" y2="400"></line>
+                  <line x1="650" y1="100" x2="650" y2="400"></line>
+                  <line x1="700" y1="100" x2="700" y2="400"></line>
+                  <line x1="750" y1="100" x2="750" y2="400"></line>
+                  <line x1="800" y1="100" x2="800" y2="400"></line>
+                  <line x1="850" y1="100" x2="850" y2="400"></line>
+                  <line x1="900" y1="100" x2="900" y2="400"></line>
+                </g>
+            
+                <g class="main-axes" stroke="#000000" stroke-width="2" marker-end="url(#arrow)">
+                  <line x1="100" y1="400" x2="100" y2="50"></line> <line x1="100" y1="400" x2="980" y2="400"></line> </g>
+            
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                  </marker>
+                </defs>
+            
+                <text x="30" y="225" transform="rotate(-90 30 225)" text-anchor="middle" font-size="28" font-weight="700" fill="#2c4964">Levels</text>
+            
+                <text x="960" y="440" text-anchor="middle" font-size="28" font-weight="700" fill="#2c4964">Time</text>
+            
+            
+                <path class="glucose-line" d="M100 375 C 300 375, 400 365, 525 340 C 650 315, 750 180, 950 135" stroke="#d63031" stroke-width="4" fill="none"></path>
+            
+                <path class="insulin-line" d="M100 375 C 200 350, 250 150, 525 120 C 650 105, 750 180, 950 300" stroke="#43a7d5" stroke-width="4" fill="none"></path>
+            
+                <text x="360" y="165" font-size="24" font-weight="700" fill="#43a7d5" font-style="italic">Insulin</text>
+                <text x="360" y="360" font-size="24" font-weight="700" fill="#d63031" font-style="italic">Glucose</text>
+            
+            
+                <line x1="525" y1="120" x2="525" y2="400" stroke="#666" stroke-width="2" stroke-dasharray="5 5"></line>
+            
+                <rect x="100" y="10" width="425" height="50" fill="#43a7d5"></rect>
+                <text x="312.5" y="43" text-anchor="middle" font-size="28" font-weight="900" fill="#ffffff" text-transform="uppercase">Insulin Resistance</text>
+                
+                <rect x="525" y="10" width="425" height="50" fill="#2c4964"></rect>
+                <text x="737.5" y="43" text-anchor="middle" font-size="28" font-weight="900" fill="#ffffff" text-transform="uppercase">Type 2 Diabetes</text>
+            
+                <g class="description-text" font-size="22" font-weight="600" fill="#505c66">
+                  <circle cx="215" cy="200" r="4" fill="#43a7d5"></circle>
+                  <text x="230" y="206">Insulin levels rise</text>
+                  
+                  <circle cx="215" cy="240" r="4" fill="#d63031"></circle>
+                  <text x="230" y="246">Glucose levels are still maintained</text>
+                </g>
+            
+                <g class="description-text" font-size="22" font-weight="600" fill="#505c66">
+                  <circle cx="640" cy="200" r="4" fill="#43a7d5"></circle>
+                  <text x="655" y="206">Insulin levels drop</text>
+                  
+                  <circle cx="640" cy="240" r="4" fill="#d63031"></circle>
+                  <text x="655" y="246">Glucose levels rise</text>
+                </g>
+            
+              </svg>
+            </figure>
           <figure class="my-4 text-center">
             <img src="/assets/img/articles/insulin-resistance-diabetes-chart.webp" alt="Insulin Resistance vs Type 2 Diabetes Chart" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto;">
             <figcaption class="mt-3 small text-muted italic" style="border-left: 3px solid #3498db; padding-left: 15px; text-align: left;">
@@ -181,3 +271,32 @@ custom_schema: |
     </div>
   </div>
 </main>
+
+
+<style>
+  .clinical-chart {
+    background: #fdfcf0; /* Light parchment, builds trust */
+    border: 1px solid #f1ece1;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+  }
+  .line-svg {
+    width: 100%;
+    height: auto;
+    font-family: 'Inter', sans-serif; /* Modern, clinical font */
+  }
+  
+  /* The "Silent Decade" draw-in animation */
+  .glucose-line, .insulin-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease-out forwards;
+  }
+  
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
