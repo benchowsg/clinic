@@ -99,56 +99,73 @@ custom_schema: |
         <div class="article-body">
           <p>Most people believe that Type 2 Diabetes happens overnight. In reality, your body often spends 10 to 15 years fighting a "silent war" to keep your blood sugar stable. By the time a standard blood test shows high glucose, the most critical window for prevention may have already passed.</p>
 
-<figure class="clinical-chart shadow-sm">
-  <svg viewBox="0 0 1000 580" class="line-svg" preserveAspectRatio="xMidYMid meet">
-    <g class="grid-lines" stroke="#e1e8ed" stroke-width="1">
-      <line x1="100" y1="100" x2="900" y2="100"></line>
-      <line x1="100" y1="150" x2="900" y2="150"></line>
-      <line x1="100" y1="200" x2="900" y2="200"></line>
-      <line x1="100" y1="250" x2="900" y2="250"></line>
-      <line x1="100" y1="300" x2="900" y2="300"></line>
-      <line x1="100" y1="350" x2="900" y2="350"></line>
-      <line x1="200" y1="100" x2="200" y2="400"></line>
-      <line x1="300" y1="100" x2="300" y2="400"></line>
-      <line x1="400" y1="100" x2="400" y2="400"></line>
-      <line x1="500" y1="100" x2="500" y2="400"></line>
-      <line x1="600" y1="100" x2="600" y2="400"></line>
-      <line x1="700" y1="100" x2="700" y2="400"></line>
-      <line x1="800" y1="100" x2="800" y2="400"></line>
-    </g>
+        <figure class="clinical-chart">
+            <svg viewBox="0 0 1000 680" class="line-svg" preserveAspectRatio="xMidYMid meet">
+              
+              <g class="grid-lines" stroke="#e1e8ed" stroke-width="1">
+                <line x1="100" y1="100" x2="900" y2="100"></line>
+                <line x1="100" y1="150" x2="900" y2="150"></line>
+                <line x1="100" y1="200" x2="900" y2="200"></line>
+                <line x1="100" y1="250" x2="900" y2="250"></line>
+                <line x1="100" y1="300" x2="900" y2="300"></line>
+                <line x1="100" y1="350" x2="900" y2="350"></line>
+                <line x1="200" y1="100" x2="200" y2="400"></line>
+                <line x1="300" y1="100" x2="300" y2="400"></line>
+                <line x1="400" y1="100" x2="400" y2="400"></line>
+                <line x1="500" y1="100" x2="500" y2="400"></line>
+                <line x1="600" y1="100" x2="600" y2="400"></line>
+                <line x1="700" y1="100" x2="700" y2="400"></line>
+                <line x1="800" y1="100" x2="800" y2="400"></line>
+              </g>
 
-    <rect x="100" y="20" width="400" height="45" fill="#43a7d5"></rect>
-    <text x="300" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff">INSULIN RESISTANCE</text>
-    
-    <rect x="500" y="20" width="400" height="45" fill="#2c4964"></rect>
-    <text x="700" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff">TYPE 2 DIABETES</text>
+              <g stroke="#000" stroke-width="2" marker-end="url(#arrow)">
+                <line x1="100" y1="400" x2="100" y2="80"></line> <line x1="100" y1="400" x2="950" y2="400"></line> </g>
 
-    <g stroke="#000" stroke-width="2">
-      <line x1="100" y1="400" x2="100" y2="80"></line> <line x1="100" y1="400" x2="950" y2="400"></line> </g>
-    <text x="50" y="240" transform="rotate(-90 50 240)" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Levels</text>
-    <text x="920" y="435" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Time</text>
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                </marker>
+              </defs>
 
-    <path class="glucose-line" d="M100 380 C 300 380, 500 370, 550 350 C 700 300, 800 150, 900 120" stroke="#d63031" stroke-width="4" fill="none"></path>
-    <path class="insulin-line" d="M100 380 C 200 300, 300 120, 500 120 C 650 120, 800 250, 900 320" stroke="#43a7d5" stroke-width="4" fill="none"></path>
+              <text x="50" y="240" transform="rotate(-90 50 240)" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Levels</text>
+              <text x="920" y="435" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Time</text>
 
-    <text x="320" y="150" font-size="22" font-weight="800" fill="#43a7d5" font-style="italic">Insulin</text>
-    <text x="380" y="365" font-size="22" font-weight="800" fill="#d63031" font-style="italic">Glucose</text>
+              <rect x="100" y="20" width="400" height="45" fill="#43a7d5"></rect>
+              <text x="300" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff">INSULIN RESISTANCE</text>
+              
+              <rect x="500" y="20" width="400" height="45" fill="#2c4964"></rect>
+              <text x="700" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff">TYPE 2 DIABETES</text>
 
-    <g font-size="16" font-weight="600" fill="#444">
-      <circle cx="180" cy="115" r="4" fill="#43a7d5"></circle>
-      <text x="195" y="120">Insulin levels rise</text>
-      <circle cx="180" cy="145" r="4" fill="#d63031"></circle>
-      <text x="195" y="150">Glucose levels maintained</text>
+              <line x1="500" y1="65" x2="500" y2="400" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4"></line>
 
-      <circle cx="620" cy="115" r="4" fill="#43a7d5"></circle>
-      <text x="635" y="120">Insulin levels drop</text>
-      <circle cx="620" cy="145" r="4" fill="#d63031"></circle>
-      <text x="635" y="150">Glucose levels rise</text>
-    </g>
+              <path class="glucose-line" d="M100 380 C 300 380, 500 370, 550 350 C 700 300, 800 150, 900 120" stroke="#d63031" stroke-width="4" fill="none"></path>
+              <path class="insulin-line" d="M100 380 C 200 300, 300 120, 500 120 C 650 120, 800 250, 900 320" stroke="#43a7d5" stroke-width="4" fill="none"></path>
 
-    <line x1="500" y1="65" x2="500" y2="400" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4"></line>
-  </svg>
-</figure>
+              <text x="320" y="150" font-size="22" font-weight="800" fill="#43a7d5" font-style="italic">Insulin</text>
+              <text x="380" y="365" font-size="22" font-weight="800" fill="#d63031" font-style="italic">Glucose</text>
+
+              <rect x="100" y="460" width="800" height="200" fill="rgba(44, 73, 100, 0.03)" stroke="#f1ece1" stroke-width="1" rx="10"></rect>
+
+              <text x="125" y="495" font-size="18" font-weight="800" fill="#2c4964" text-transform="uppercase">Clinical Stewardship Key</text>
+
+              <g class="legend-col" font-size="16" font-weight="600" fill="#444">
+                <circle cx="125" cy="535" r="5" fill="#43a7d5"></circle>
+                <text x="145" y="541">Insulin levels rise (Phase 1: Compensation)</text>
+                <circle cx="125" cy="570" r="5" fill="#d63031"></circle>
+                <text x="145" y="576">Glucose levels maintained ("Silent Decade")</text>
+                <text x="145" y="605" font-style="italic" font-weight="400" fill="#7f8c8d">*Standard screens often miss this phase.</text>
+              </g>
+
+              <g class="legend-col" font-size="16" font-weight="600" fill="#444">
+                <circle cx="525" cy="535" r="5" fill="#43a7d5"></circle>
+                <text x="545" y="541">Insulin levels drop (Pancreatic Burnout)</text>
+                <circle cx="525" cy="570" r="5" fill="#d63031"></circle>
+                <text x="545" y="576">Glucose levels rise (Clinical Diagnosis)</text>
+                <text x="545" y="605" font-style="italic" font-weight="400" fill="#7f8c8d">*Vascular damage accelerates exponentially.</text>
+              </g>
+
+            </svg>
+          </figure>
 
           
           <figure class="my-4 text-center">
@@ -235,25 +252,28 @@ custom_schema: |
 
 
 <style>
-.clinical-chart {
-    background: #fdfcf0; /* Matches your parchment-style background */
+/* Container style to match the screenshot background */
+  .clinical-chart {
+    background: #fdfcf0; /* Parchment/cream background */
     border: 1px solid #f1ece1;
     border-radius: 12px;
-    padding: 20px;
+    padding: 20px 20px 0 10px; /* Reduced vertical padding */
     max-width: 1000px;
     margin: 30px auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   }
   
+  /* SVG responsiveness */
   .line-svg {
     display: block;
     width: 100%;
     height: auto;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif; /* Clinical, modern font */
   }
 
-  /* The "Silent Decade" draw-in animation */
+  /* The "Silent Decade" draw-in animation for paths */
   .glucose-line, .insulin-line {
-    stroke-dasharray: 1200; /* Increased to ensure full line coverage */
+    stroke-dasharray: 1200; /* Long enough to cover whole path */
     stroke-dashoffset: 1200;
     animation: drawLine 2.5s ease-out forwards;
   }
@@ -269,7 +289,7 @@ custom_schema: |
     }
   }
 
-  /* Ensure text doesn't flicker during animation */
+  /* Ensure text doesn't flicker or break animation on hover */
   text {
     pointer-events: none;
     user-select: none;
