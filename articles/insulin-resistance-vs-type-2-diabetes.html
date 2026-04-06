@@ -121,6 +121,15 @@ custom_schema: |
           <div class="type1-notice">
             <p class="mb-0"><strong>Note on Type 1 Diabetes:</strong> Unlike the metabolic "wear and tear" of Type 2, Type 1 is an autoimmune condition where the body produces <em>zero</em> insulin. It is a different clinical path requiring lifelong replacement, rather than the metabolic interception we provide here.</p>
           </div>
+
+          <div class="d-md-none alert alert-info text-center mb-3 py-2 rotate-hint" style="background: #eef7fd; border: 1px dashed #3498db; border-radius: 10px;">
+            <div class="d-flex align-items-center justify-content-center">
+              <i class="bi bi-phone-landscape rotate-icon me-2" style="font-size: 1.2rem; color: #3498db;"></i>
+              <small class="fw-bold" style="color: #2c4964;">
+                Rotate screen to view clinical chart
+              </small>
+            </div>
+          </div>
           
         <figure class="clinical-chart">
             <svg viewBox="0 0 1000 680" class="line-svg" preserveAspectRatio="xMidYMid meet">
@@ -171,21 +180,21 @@ custom_schema: |
 
               <text x="125" y="495" font-size="20" font-weight="800" fill="#2c4964" text-transform="uppercase">Clinical Stewardship Key</text>
 
-              <g class="legend-col" font-size="28" font-weight="600" fill="#444">
+              <g class="legend-col" font-size="20" font-weight="600" fill="#444">
                 <circle cx="125" cy="535" r="5" fill="#43a7d5"></circle>
                 <text x="145" y="541">Insulin levels rise (Phase 1: Compensation)</text>
                 <circle cx="125" cy="570" r="5" fill="#d63031"></circle>
                 <text x="145" y="576">Glucose levels maintained ("Silent Decade")</text>
-                <text x="145" y="605" font-style="italic" font-weight="400" fill="#7f8c8d">*Standard screens often miss this phase.</text>
+                <text x="145" y="605" font-style="italic" font-weight="400" fill="#7f8c8d" font-size="18">*Standard screens often miss this phase.</text>
               </g>
-
-              <g class="legend-col" font-size="18" font-weight="600" fill="#444">
-                <circle cx="525" cy="535" r="5" fill="#43a7d5"></circle>
-                <text x="545" y="541">Insulin levels drop (Pancreatic Burnout)</text>
-                <circle cx="525" cy="570" r="5" fill="#d63031"></circle>
-                <text x="545" y="576">Glucose levels rise (Clinical Diagnosis)</text>
-                <text x="545" y="605" font-style="italic" font-weight="400" fill="#7f8c8d">*Vascular damage accelerates exponentially.</text>
-              </g>
+              
+            <g class="legend-col" font-size="20" font-weight="600" fill="#444">
+              <circle cx="550" cy="535" r="5" fill="#43a7d5"></circle>
+              <text x="570" y="541">Insulin levels drop (Pancreatic Burnout)</text>
+              <circle cx="550" cy="570" r="5" fill="#d63031"></circle>
+              <text x="570" y="576">Glucose levels rise (Clinical Diagnosis)</text>
+              <text x="570" y="605" font-style="italic" font-weight="400" fill="#7f8c8d" font-size="18">*Vascular damage accelerates exponentially.</text>
+            </g>
 
             </svg>
           </figure>
@@ -351,5 +360,36 @@ custom_schema: |
   font-size: 0.95rem; 
   border-left: 4px solid #ced4da; 
   margin-bottom: 40px;
+}
+
+  .rotate-icon {
+  display: inline-block;
+  animation: rotate-nudge 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate-nudge {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-90deg); }
+  60% { transform: rotate(-90deg); }
+  80% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+  @media (min-width: 768px) {
+  .rotate-hint { display: none !important; }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .rotate-hint { display: none !important; }
+}
+
+  .clinical-chart {
+  overflow-x: auto; /* Allows horizontal swipe on small screens */
+  -webkit-overflow-scrolling: touch;
+}
+
+.line-svg {
+  min-width: 700px; /* Ensures graph doesn't squash too small on portrait mobile */
 }
 </style>
