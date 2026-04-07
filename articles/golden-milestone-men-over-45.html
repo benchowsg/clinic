@@ -96,6 +96,64 @@ custom_schema: |
             <p class="mb-0 small">Beyond the heart, age 45 often triggers a hormonal and metabolic pivot. We audit these systemic shifts to ensure your "internal fuel" is protecting your arteries rather than corroding them.</p>
           </div>
 
+<div class="lifestyle-callout" style="background: #f4f7f9; border: 2px solid #2c4964; border-radius: 20px; padding: 35px;">
+    <h4 class="fw-bold mb-2 text-center" style="color: #2c4964;">The Men’s 45+ Clinical Certainty Meter</h4>
+    <p class="text-center text-muted small mb-4">Check the boxes for the markers you have already audited:</p>
+
+    <div class="row align-items-center">
+        <div class="col-md-7">
+            <div class="audit-checklist-interactive">
+                <div class="form-check mb-3">
+                    <input class="form-check-input audit-check" type="checkbox" id="q1" style="cursor:pointer; width:20px; height:20px;">
+                    <label class="form-check-label ms-2" for="q1">
+                        <strong>Structural View:</strong> Have you seen your heart muscle on an Echo?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input audit-check" type="checkbox" id="q2" style="cursor:pointer; width:20px; height:20px;">
+                    <label class="form-check-label ms-2" for="q2">
+                        <strong>Electrical Map:</strong> Has your rhythm been tracked for 24 hours?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input audit-check" type="checkbox" id="q3" style="cursor:pointer; width:20px; height:20px;">
+                    <label class="form-check-label ms-2" for="q3">
+                        <strong>Genetic Baseline:</strong> Do you know your Lp(a) "Genetic Floor"?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input audit-check" type="checkbox" id="q4" style="cursor:pointer; width:20px; height:20px;">
+                    <label class="form-check-label ms-2" for="q4">
+                        <strong>Metabolic Audit:</strong> Is your insulin over-compensating?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input audit-check" type="checkbox" id="q5" style="cursor:pointer; width:20px; height:20px;">
+                    <label class="form-check-label ms-2" for="q5">
+                        <strong>Hormonal Level:</strong> Is your Testosterone protecting your heart?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input audit-check" type="checkbox" id="q6" style="cursor:pointer; width:20px; height:20px;">
+                    <label class="form-check-label ms-2" for="q6">
+                        <strong>Vascular Age:</strong> Does your heart age match your birth date?
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 text-center px-4">
+            <div class="meter-wrapper mb-3" style="background: #e1e8ed; border-radius: 50px; height: 35px; width: 100%; overflow: hidden; border: 1px solid #ced4da; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">
+                <div id="certainty-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #3498db, #2c4964); transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+            </div>
+            <h5 id="status-label" class="fw-bold" style="color: #6c757d; font-size: 1.2rem;">Status: Standard Care</h5>
+            <p id="status-desc" class="small text-muted italic">A standard screening provides a snapshot, but lacks structural certainty.</p>
+        </div>
+    </div>
+</div>
+
+
+          
           <h3 class="section-heading h4">Conclusion: Stewardship Over Symptoms</h3>
           <p>Waiting for symptoms like chest pain or breathlessness is a reactive strategy. Clinical stewardship means identifying structural and electrical changes while they are still within the <strong>Golden Timeline</strong> of reversibility.</p>
 
@@ -123,3 +181,43 @@ custom_schema: |
     </div>
   </div>
 </main>
+
+
+
+<script>
+    document.querySelectorAll('.audit-check').forEach(box => {
+        box.addEventListener('change', () => {
+            const total = 6;
+            const checked = document.querySelectorAll('.audit-check:checked').length;
+            const percentage = (checked / total) * 100;
+            
+            const bar = document.getElementById('certainty-bar');
+            const label = document.getElementById('status-label');
+            const desc = document.getElementById('status-desc');
+
+            bar.style.width = percentage + '%';
+
+            if (checked === 0) {
+                label.innerText = "Status: Standard Care";
+                label.style.color = "#6c757d";
+                desc.innerText = "A standard screening provides a snapshot, but lacks structural certainty.";
+            } else if (checked <= 2) {
+                label.innerText = "Status: Baseline Aware";
+                label.style.color = "#3498db";
+                desc.innerText = "You have some data, but your heart's physical structure remains unmapped.";
+            } else if (checked <= 4) {
+                label.innerText = "Status: Advanced Audit";
+                label.style.color = "#2c4964";
+                desc.innerText = "Excellent progress. You are identifying risks standard screenings miss.";
+            } else if (checked === 5) {
+                label.innerText = "Status: Clinical Stewardship";
+                label.style.color = "#198754";
+                desc.innerText = "High certainty. Most clinical 'blind spots' have been cleared.";
+            } else {
+                label.innerText = "Status: Peak Performance";
+                label.style.color = "#198754";
+                desc.innerText = "Total Clarity. Your cardiovascular engine is fully audited.";
+            }
+        });
+    });
+</script>
