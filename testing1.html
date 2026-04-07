@@ -261,59 +261,61 @@ faq_schema:
   }
 </style>
 
-<section id="care-pathways" style="padding: 80px 20px; font-family: 'Inter', -apple-system, sans-serif; background-color: #ffffff; color: #1a1a1a;">
-    <div style="max-width: 900px; margin: 0 auto;">
+<section id="care-navigator" style="padding: 100px 20px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f9;">
+    <div style="max-width: 1200px; margin: 0 auto;">
         
-        <div style="margin-bottom: 60px; border-left: 5px solid #c0392b; padding-left: 20px;">
-            <h2 style="font-size: 2.2em; letter-spacing: -0.5px; margin: 0;">Clinical Assessment Pathways</h2>
-            <p style="color: #666; font-size: 1.1em; margin-top: 10px;">Select your primary concern for structured diagnostic guidance.</p>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; border-bottom: 2px solid #dfe6e9; padding-bottom: 20px;">
+            <div style="max-width: 600px;">
+                <h6 style="color: #c0392b; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; font-size: 0.9em; font-weight: 700;">Diagnostic Navigation</h6>
+                <h2 style="color: #2d3436; font-size: 2.5em; margin: 0; line-height: 1.1;">How can we assist your health today?</h2>
+            </div>
+            <div style="text-align: right; color: #636e72; font-size: 0.9em;">
+                <strong>Clinic Status:</strong> Non-GST Registered<br>
+                <strong>Accreditation:</strong> CHAS / MediSave / Healthier SG
+            </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 30px;">
             
-            <a href="/cardiac" style="text-decoration: none; display: flex; align-items: center; padding: 25px; border: 1px solid #eee; border-radius: 12px; transition: all 0.3s ease; background: #fff;" onmouseover="this.style.borderColor='#c0392b'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.05)';" onmouseout="this.style.borderColor='#eee'; this.style.boxShadow='none';">
-                <div style="flex: 0 0 60px; font-size: 1.8em; color: #c0392b;">01</div>
-                <div style="flex-grow: 1;">
-                    <h4 style="margin: 0; font-size: 1.25em; color: #1a1a1a;">Acute Cardiac Evaluation</h4>
-                    <p style="margin: 5px 0 0; color: #666; font-size: 0.95em;">Chest pain, palpitations, or shortness of breath. 15-min diagnostic markers.</p>
+            <div style="flex: 1; min-width: 300px; background: #ffffff; border-radius: 20px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="background: #fff5f5; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                    <span style="font-size: 1.5em;">🫀</span>
                 </div>
-                <div style="color: #ccc; font-size: 1.5em;">→</div>
-            </a>
+                <h3 style="font-size: 1.6em; color: #2d3436; margin-bottom: 15px;">Acute Evaluation</h3>
+                <p style="color: #636e72; line-height: 1.6; margin-bottom: 25px;">For immediate clinical assessment of <strong>chest discomfort, breathlessness, or palpitations</strong>. Rapid markers available in 15 mins.</p>
+                
+                <ul style="list-style: none; padding: 0; margin-bottom: 30px; color: #2d3436; font-size: 0.95em;">
+                    <li style="margin-bottom: 10px;">✓ Resting ECG & Rhythm Strip</li>
+                    <li style="margin-bottom: 10px;">✓ Cardiac Marker Blood Tests</li>
+                    <li style="margin-bottom: 10px;">✓ Direct Physician Consultation</li>
+                </ul>
+                <a href="/acute" style="display: block; text-align: center; padding: 15px; background: #c0392b; color: white; text-decoration: none; border-radius: 10px; font-weight: 600;">Initiate Heart Audit</a>
+            </div>
 
-            <a href="/metabolic" style="text-decoration: none; display: flex; align-items: center; padding: 25px; border: 1px solid #eee; border-radius: 12px; transition: all 0.3s ease; background: #fff;" onmouseover="this.style.borderColor='#2980b9'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.05)';" onmouseout="this.style.borderColor='#eee'; this.style.boxShadow='none';">
-                <div style="flex: 0 0 60px; font-size: 1.8em; color: #2980b9;">02</div>
-                <div style="flex-grow: 1;">
-                    <h4 style="margin: 0; font-size: 1.25em; color: #1a1a1a;">Metabolic & Chronic Audit</h4>
-                    <p style="margin: 5px 0 0; color: #666; font-size: 0.95em;">Hypertension, Diabetes, and Lipid management. Healthier SG & MediSave applicable.</p>
+            <div style="flex: 1; min-width: 300px; background: #ffffff; border-radius: 20px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div style="background: #f0f7ff; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                    <span style="font-size: 1.5em;">🛡️</span>
                 </div>
-                <div style="color: #ccc; font-size: 1.5em;">→</div>
-            </a>
-
-            <a href="/screenings" style="text-decoration: none; display: flex; align-items: center; padding: 25px; border: 1px solid #eee; border-radius: 12px; transition: all 0.3s ease; background: #fff;" onmouseover="this.style.borderColor='#27ae60'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.05)';" onmouseout="this.style.borderColor='#eee'; this.style.boxShadow='none';">
-                <div style="flex: 0 0 60px; font-size: 1.8em; color: #27ae60;">03</div>
-                <div style="flex-grow: 1;">
-                    <h4 style="margin: 0; font-size: 1.25em; color: #1a1a1a;">Preventive Health & Longevity</h4>
-                    <p style="margin: 5px 0 0; color: #666; font-size: 0.95em;">Comprehensive heart screenings and wellness audits. Non-GST registered fees.</p>
-                </div>
-                <div style="color: #ccc; font-size: 1.5em;">→</div>
-            </a>
-
-            <a href="/general" style="text-decoration: none; display: flex; align-items: center; padding: 25px; border: 1px solid #eee; border-radius: 12px; transition: all 0.3s ease; background: #fff;" onmouseover="this.style.borderColor='#7f8c8d'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.05)';" onmouseout="this.style.borderColor='#eee'; this.style.boxShadow='none';">
-                <div style="flex: 0 0 60px; font-size: 1.8em; color: #7f8c8d;">04</div>
-                <div style="flex-grow: 1;">
-                    <h4 style="margin: 0; font-size: 1.25em; color: #1a1a1a;">General Medical & Statutory</h4>
-                    <p style="margin: 5px 0 0; color: #666; font-size: 0.95em;">Acute ailments and official checkups (MOM, LTA, ICA).</p>
-                </div>
-                <div style="color: #ccc; font-size: 1.5em;">→</div>
-            </a>
+                <h3 style="font-size: 1.6em; color: #2d3436; margin-bottom: 15px;">Metabolic & Wellness</h3>
+                <p style="color: #636e72; line-height: 1.6; margin-bottom: 25px;">Long-term management for <strong>Diabetes, BP, and Cholesterol</strong>. Comprehensive vascular screenings (No GST).</p>
+                
+                <ul style="list-style: none; padding: 0; margin-bottom: 30px; color: #2d3436; font-size: 0.95em;">
+                    <li style="margin-bottom: 10px;">✓ Healthier SG Chronic Care</li>
+                    <li style="margin-bottom: 10px;">✓ MediSave for Scans & Tests</li>
+                    <li style="margin-bottom: 10px;">✓ Hormonal & Metabolic Audits</li>
+                </ul>
+                <a href="/metabolic" style="display: block; text-align: center; padding: 15px; border: 2px solid #2d3436; color: #2d3436; text-decoration: none; border-radius: 10px; font-weight: 600;">View Care Pathway</a>
+            </div>
 
         </div>
 
-        <div style="margin-top: 50px; text-align: center; border-top: 1px solid #eee; padding-top: 30px;">
-            <p style="font-size: 0.9em; color: #999; line-height: 1.6;">
-                Fees are aligned with standard clinical benchmarks. <br>
-                <strong>Accreditations:</strong> CHAS • MediSave • Healthier SG • Non-GST Registered Clinic
-            </p>
+        <div style="margin-top: 50px; background: #2d3436; border-radius: 15px; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; color: white; flex-wrap: wrap; gap: 20px;">
+            <div style="font-size: 0.95em;">
+                <strong style="color: #e67e22;">Booking Policy:</strong> Diagnostic scans remain valid for 3 months from invoice date. 
+            </div>
+            <div style="font-size: 0.85em; opacity: 0.8;">
+                Fees follow MOH standard benchmarks • Professional discretion applies.
+            </div>
         </div>
 
     </div>
