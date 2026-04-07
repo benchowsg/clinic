@@ -1,0 +1,601 @@
+---
+layout: default
+permalink: /testing1
+title: Cardiology & Metabolic Clinic Singapore | A Healing Heart Medical
+description: Cardiology and Metabolic Management in Singapore. Specialising in heart risk, diabetes, metabolic, hormonal and complex medical symptoms under Principal Physician Dr. Gerald Thang.
+preload_image: "/assets/img/about-AHH-banner-web.png"
+faq_schema:
+  "@context": "https://schema.org"
+  "@type": "FAQPage"
+  mainEntity:
+    - "@type": "Question"
+      name: "How soon can I get results for blood tests?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "For heart muscle injury and cardiac markers, we provide rapid in-clinic testing with results available within 15 minutes. General health screening lab results typically take 3–5 working days."
+    
+    - "@type": "Question"
+      name: "Can I use CHAS or MediSave at your clinic?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes, A Healing Heart Medical is a CHAS-accredited clinic. Patients can utilize subsidies for both Acute (cough/flu/fever) and Chronic conditions. MediSave can also be used for approved chronic disease management and vaccinations under the NAIS."
+    
+    - "@type": "Question"
+      name: "Do you provide official medical checkups for MOM, LTA or ICA?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes, we conduct all statutory medical examinations, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals."
+
+    - "@type": "Question"
+      name: "Do I need a referral to see Dr. Gerald Thang?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No referral is required. As an Intermediate Care clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs."
+---
+
+
+
+<section id="hero" class="hero d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center"> <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-left text-lg-start">
+        <h1 class="visually-hidden">A Healing Heart Medical: Integrated Cardio-Metabolic Clinic Singapore</h1>
+        
+        <p style="color: #2c4964; font-size: 48px; font-weight: 700; line-height: 1.2; margin-bottom: 20px;">
+          The Intersection of Cardiovascular & Metabolic Health
+        </p>
+        
+        <p style="font-size: 1.1rem; color: #475569; margin-bottom: 25px; line-height: 1.6;">
+          We don’t just manage symptoms; we audit the <strong>Hormonal and Metabolic shifts</strong> that drive arterial aging. Experience Singapore's dedicated clinical approach to <strong>integrated heart health</strong>.
+        </p>
+        
+        <div class="d-flex justify-content-center justify-content-lg-start gap-3 mt-4 flex-wrap">
+          <a href="/men-cardio-metabolic-audit" class="btn-axis btn-men-axis">
+            Men's Axis
+          </a>
+          <a href="/women-cardio-metabolic-audit" class="btn-axis btn-women-axis">
+            Women's Axis
+          </a>
+        </div>
+        
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 20px; font-weight: 600;">
+          <i class="fa-solid fa-circle-info me-1"></i> Identify your Clinical Awareness Zone in under 60 seconds.
+        </p>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 hero-img d-none d-lg-block">
+        <img src="/assets/img/about-AHH-banner-web.png" 
+             width="1024" 
+             height="768" 
+             class="img-fluid animated" 
+             alt="A Healing Heart Medical Integrated Cardio-Metabolic Clinic Singapore"
+             fetchpriority="high"
+             style="content-visibility: auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-display: swap;
+  }
+  /* Triage Section Styling with Corporate Colors */
+  .triage-section { background-color: #fbfcfd; padding: 60px 0; }
+  
+  .triage-card {
+    background: #fff;
+    border: 1px solid #eef2f6;
+    border-radius: 20px;
+    padding: 30px;
+    height: 100%;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .triage-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 30px rgba(0,0,0,0.05); 
+  }
+
+  .triage-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* Color Variations */
+  .urgent-border { border-top: 5px solid #d82a5f; }
+  .urgent-badge { background: #fff0f3; color: #d82a5f; }
+  .btn-urgent { background: #d82a5f; color: #fff; border: none; }
+  .btn-urgent:hover { background: #e64472; color: #fff; }
+
+  .mgmt-border { border-top: 5px solid #2a88b1; }
+  .mgmt-badge { background: #f0f7fa; color: #2a88b1; }
+  .btn-mgmt { background: #2a88b1; color: #fff; border: none; }
+  .btn-mgmt:hover { background: #3894bd; color: #fff; }
+
+  .routine-border { border-top: 5px solid #16803c; }
+  .routine-badge { background: #e9fbf0; color: #16803c; }
+  .btn-routine { background: #16803c; color: #fff; border: none; }
+  .btn-routine:hover { background: #11622e; color: #fff; }
+
+  .urgent-acute-border { border-top: 5px solid #2c4964; }
+  .urgent-acute-badge { background: #eef2f6; color: #2c4964; }
+  .btn-urgent-acute { background: #2c4964; color: #fff; border: none; }
+  .btn-urgent-acute:hover { background: #1f3750; color: #fff; }
+
+  @media (max-width: 767px) {
+    .hero .text-lg-start { text-align: center !important; }
+    .hero .justify-content-lg-start { justify-content: center !important; }
+    .hero p[style*="font-size: 48px"] {
+      font-size: 30px !important;
+      line-height: 1.2 !important;
+    }
+    .acute-banner {
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      flex-direction: column;
+    }
+    .acute-content { margin-bottom: 15px; }
+    .acute-banner strong { display: block; margin-top: 10px; }
+    .acute-banner .text-muted { display: block; margin-left: 0 !important; margin-top: 5px; }
+    .acute-btn-container { width: 100%; }
+    .acute-btn-container .btn { width: 100%; padding: 10px; }
+  }
+
+  #service-navigation .service-tile { min-height: 130px; }
+
+      /* Scoped CSS for the Expertise Section */
+    #service-navigation .service-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Horizontal centering for icon & text */
+    justify-content: center;/* Vertical centering */
+    text-align: center;     /* Ensures multi-line text wraps to the middle */
+    height: 100%;           
+    padding: 20px 10px;
+    text-decoration: none;
+    background: #ffffff;    /* Assuming a white tile background */
+    border-radius: 12px;    /* Matches modern clean UI */
+    transition: all 0.3s ease;
+}
+
+#service-navigation .service-tile p {
+    margin: 12px 0 0 0;     /* Space between icon and text */
+    line-height: 1.3;       /* Balanced line spacing for readability */
+    width: 100%;
+    color: #2c4964;         /* Matches your heading color */
+    font-weight: 500;       /* Makes text slightly clearer on mobile */
+}
+
+#service-navigation .service-tile:hover {
+    background: #f8fafd;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(67, 167, 213, 0.1);
+    border: 1px solid #43a7d5;
+}
+
+/* Optional: Keep the icons perfectly centered */
+#service-navigation .icon-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;         /* Fallback for horizontal centering */
+    width: 60px;
+    height: 60px;
+    background: #f0f7fa;
+    border-radius: 50%;
+}
+
+  /* Enhancing card professionalism */
+  .article-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(44, 73, 100, 0.08) !important;
+  }
+  .read-more-link {
+    color: #43a7d5;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+  }
+  .article-card:hover .read-more-link {
+    color: #2c4964;
+    padding-left: 5px;
+  }
+  .article-card .d-flex.align-items-center { margin-top: 1.25rem !important; }
+  .article-card .rounded-circle { margin-right: 15px !important; }
+  .article-card hr { margin: 1rem 0; 
+  }
+/* Base button styling for consistency */
+  .btn-axis {
+    padding: 14px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    min-width: 180px;
+  }
+
+  /* Men's Button: Corporate Blue */
+  .btn-men-axis {
+    background-color: #43a7d5 !important; /* Corporate Blue */
+    color: #000000 !important;           /* Black Text */
+    border: 2px solid #43a7d5 !important;
+  }
+
+  .btn-men-axis:hover {
+    background-color: #000000 !important; /* Inverse: Black BG */
+    color: #43a7d5 !important;           /* Blue Text */
+    border-color: #000000 !important;
+  }
+
+  /* Women's Button: Corporate Pink */
+  .btn-women-axis {
+    background-color: #ffb6c1 !important; /* Corporate Pink */
+    color: #000000 !important;           /* Black Text */
+    border: 2px solid #ffb6c1 !important;
+  }
+
+  .btn-women-axis:hover {
+    background-color: #000000 !important; /* Inverse: Black BG */
+    color: #ffb6c1 !important;           /* Pink Text */
+    border-color: #000000 !important;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .btn-axis { width: 100%; }
+  }
+</style>
+
+<section id="clinical-triage" style="padding: 60px 20px; font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f9f9f9;">
+    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+        
+        <h2 style="color: #2c3e50; margin-bottom: 10px;">How can we help you today?</h2>
+        <p style="color: #7f8c8d; margin-bottom: 40px; font-size: 1.1em;">Select a clinical pathway for diagnostic evaluation or long-term management.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            
+            <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #e74c3c;">
+                <div style="font-size: 2.5em; margin-bottom: 15px;">❤️</div>
+                <h3 style="color: #2c3e50; margin-top: 0;">Acute Heart Evaluation</h3>
+                <p style="color: #34495e; font-size: 0.95em; line-height: 1.6;">Assessment for <strong>chest pain, palpitations, or acute breathlessness</strong>. Includes ECG and 15-minute rapid cardiac markers.</p>
+                <a href="/cardiac-evaluation" style="display: inline-block; margin-top: 15px; color: #e74c3c; text-decoration: none; font-weight: bold;">View Evaluation Path →</a>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #3498db;">
+                <div style="font-size: 2.5em; margin-bottom: 15px;">⚖️</div>
+                <h3 style="color: #2c3e50; margin-top: 0;">Chronic & Metabolic</h3>
+                <p style="color: #34495e; font-size: 0.95em; line-height: 1.6;">Management of <strong>Hypertension, Diabetes, and High Cholesterol</strong>. Integrated audits for metabolic stability.</p>
+                <span style="display: block; margin-top: 10px; font-size: 0.85em; color: #27ae60; font-weight: bold;">CHAS & MediSave Applicable</span>
+                <a href="/chronic-care" style="display: inline-block; margin-top: 15px; color: #3498db; text-decoration: none; font-weight: bold;">Manage Condition →</a>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #2ecc71;">
+                <div style="font-size: 2.5em; margin-bottom: 15px;">🛡️</div>
+                <h3 style="color: #2c3e50; margin-top: 0;">Prevention & Longevity</h3>
+                <p style="color: #34495e; font-size: 0.95em; line-height: 1.6;">Proactive health audits, <strong>Heart Screenings</strong>, and vaccinations. Non-GST registered pricing for all screenings.</p>
+                <a href="/preventive-care" style="display: inline-block; margin-top: 15px; color: #2ecc71; text-decoration: none; font-weight: bold;">Audit Your Health →</a>
+            </div>
+
+            <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #95a5a6;">
+                <div style="font-size: 2.5em; margin-bottom: 15px;">📋</div>
+                <h3 style="color: #2c3e50; margin-top: 0;">General & Statutory</h3>
+                <p style="color: #34495e; font-size: 0.95em; line-height: 1.6;">Common ailments (flu/fever) and <strong>official medical checkups</strong> for MOM, LTA, and ICA vocational licenses.</p>
+                <a href="/general-consult" style="display: inline-block; margin-top: 15px; color: #7f8c8d; text-decoration: none; font-weight: bold;">Book Consultation →</a>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #fff; border: 1px dashed #bdc3c7; border-radius: 8px; display: inline-block;">
+            <p style="margin: 0; font-size: 0.9em; color: #2c3e50;">
+                <strong>Note:</strong> We prioritize diagnostic depth for complex symptoms. 
+                <span style="color: #e67e22;">●</span> 0% GST 
+                <span style="color: #e67e22;">●</span> MediSave/CHAS Accredited 
+                <span style="color: #e67e22;">●</span> Healthier SG Partner
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="service-navigation" class="service-navigation py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold" style="color: #2c4964;">Our Clinical Expertise</h2>
+    </div>
+
+    <div class="service-group-label" style="font-size: 13px; font-weight: 700; color: #43a7d5; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center;">Cardiovascular & Intermediate Care</div>
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-4 col-lg"><a href="/cardiology" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-heart-pulse"></i></div><p>Cardiology</p></a></div>
+      <div class="col-6 col-md-4 col-lg"><a href="/hypertension-cholesterol-management" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-gauge-high"></i></div><p>BP & Cholesterol</p></a></div>
+      <div class="col-6 col-md-4 col-lg"><a href="/rapid-diagnostics" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-droplet"></i></div><p>Rapid Diagnostics</p></a></div>
+      <div class="col-6 col-md-4 col-lg"><a href="/post-hospitalisation-recovery" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-bed-pulse"></i></div><p>Post-Hospital</p></a></div>
+      <div class="col-6 col-md-4 col-lg"><a href="/regenerative-medicine" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-user-doctor"></i></div><p>Regenerative</p></a></div>
+    </div>
+
+    <div class="service-group-label" style="font-size: 13px; font-weight: 700; color: #43a7d5; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center;">Metabolic & Internal Medicine</div>
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3"><a href="/diabetes-management" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-syringe"></i></div><p>Diabetes</p></a></div>
+      <div class="col-6 col-md-3"><a href="/metabolic-health-weight" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-weight-scale"></i></div><p>Weight Health</p></a></div>
+      <div class="col-6 col-md-3"><a href="/asthma-lung-management" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-lungs"></i></div><p>Lung Care</p></a></div>
+      <div class="col-6 col-md-3"><a href="/osteoporosis-bone-care" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-bone"></i></div><p>Bone Health</p></a></div>
+    </div>
+
+    <div class="service-group-label" style="font-size: 13px; font-weight: 700; color: #43a7d5; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center;">Wellness & Prevention</div>
+    <div class="row g-3">
+      <div class="col-6 col-md-3"><a href="/health-screening" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-user-check"></i></div><p>Health Screening</p></a></div>
+      <div class="col-6 col-md-3"><a href="/hormone-optimization" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-dna"></i></div><p>Hormone Wellness</p></a></div>
+      <div class="col-6 col-md-3"><a href="/vaccination" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-shield-virus"></i></div><p>Vaccinations</p></a></div>
+      <div class="col-6 col-md-3"><a href="/skin-hair-care" class="service-tile"><div class="icon-circle"><i class="fa-solid fa-hand-holding-medical"></i></div><p>Skin & Hair</p></a></div>
+    </div>
+  </div>
+</section>
+
+  <section id="about" class="about py-5">
+    <div class="container">
+
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="fw-bold" style="color: #2c4964;">Who We Are</h2>
+      <p class="text-muted">Advanced Physicians</p>
+    </div>
+
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="content pe-lg-4">
+            <p class="lead">
+              Led by <b>Dr. Gerald Thang</b>, a Principal Physician with a focus on Internal Medicine and Cardiology, 
+              <b>A Healing Heart Medical Clinic</b> is a dedicated clinic for complex diagnostic care in Singapore.
+            </p>
+            <p>
+              We focus on evaluating <b>evolving or medically complex symptoms</b>, such as undifferentiated chest pain, 
+              chronic fatigue, and metabolic instability, that require more time and depth than a standard GP consultation.
+            </p> 
+            <p>
+              As the intermediate care bridge between general practice and specialists, our clinic provides 
+              <b>personalised clinical assessments</b> and long-term management for chronic conditions like hypertension, hyperlipidemia,
+              heart failure, and diabetes.
+            </p>
+            <p>
+              Equipped with <b>in-clinic rapid diagnostics</b>, we provide immediate clarity for acute cardiac concerns, 
+              ensuring patients receive evidence-based answers and structured recovery pathways without unnecessary 
+              referral delays.
+            </p>
+            <div class="mt-4">
+              <a href="/who-we-are" class="btn btn-outline-primary rounded-pill px-4 mt-4">Full Clinical Profile</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img 
+              src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" 
+              srcset="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic-400.webp 400w, /assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp 800w"
+              sizes="(max-width: 600px) 400px, 800px"
+              width="800"
+              height="600"
+              class="img-fluid rounded shadow" 
+              alt="Dr. Gerald Thang, Lead Physician at A Healing Heart Medical Clinic"
+              fetchpriority="low" 
+              loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="featured-articles" class="py-5 bg-light">
+  <div class="container" data-aos="fade-up">
+    
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="fw-bold" style="color: #2c4964;">Health Library & Clinical Insights</h2>
+      <p class="text-muted">Cardiology, Metabolic, and Recovery</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 article-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div>
+              <span class="badge mb-3" style="background: #f0f7fa; color: #43a7d5; font-weight: 700;">Cardiology</span>
+              <h5 class="card-title fw-bold mb-3">
+                <a href="/articles/7-things-about-heart-failure" class="text-dark text-decoration-none stretched-link">7 Things You Should Know About Heart Failure</a>
+              </h5>
+              <p class="card-text small text-muted mb-4">Learn why early detection through intermediate care is vital for managing heart function and long-term vitality.</p>
+            </div>
+            
+            <div class="mt-auto">
+              <div class="read-more-link fw-bold mb-3">
+                Read Article <i class="fa-solid fa-chevron-right ms-1 small"></i>
+              </div>
+              <hr class="opacity-10">
+              <div class="d-flex align-items-center mt-3">
+                <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 32px; height: 32px; object-fit: cover;" alt="Dr Gerald Thang">
+                <div class="lh-1">
+                  <p class="mb-0 fw-bold small" style="color: #2c4964;">Dr. Gerald Thang</p>
+                  <small class="text-muted" style="font-size: 10px;">Principal Physician</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 article-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div>
+              <span class="badge mb-3" style="background: #e9fbf0; color: #25d366; font-weight: 700;">Regenerative</span>
+              <h5 class="card-title fw-bold mb-3">
+                <a href="/articles/human-growth-hormone" class="text-dark text-decoration-none stretched-link">HGH (Somatotropin) & Regenerative Recovery</a>
+              </h5>
+              <p class="card-text small text-muted mb-4">Exploring how Human Growth Hormone impacts metabolic health and clinical recovery protocols for complex patients.</p>
+            </div>
+
+            <div class="mt-auto">
+              <div class="read-more-link fw-bold mb-3">
+                Read Article <i class="fa-solid fa-chevron-right ms-1 small"></i>
+              </div>
+              <hr class="opacity-10">
+              <div class="d-flex align-items-center mt-3">
+                <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 32px; height: 32px; object-fit: cover;" alt="Dr Gerald Thang">
+                <div class="lh-1">
+                  <p class="mb-0 fw-bold small" style="color: #2c4964;">Dr. Gerald Thang</p>
+                  <small class="text-muted" style="font-size: 10px;">Principal Physician</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 article-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div>
+              <span class="badge mb-3" style="background: #fff0f3; color: #ff4f81; font-weight: 700;">Metabolic</span>
+              <h5 class="card-title fw-bold mb-3">
+                <a href="/articles/metabolic-impact-durian" class="text-dark text-decoration-none stretched-link">Tropical Fruits & Vascular Health: The Durian Perspective</a>
+              </h5>
+              <p class="card-text small text-muted mb-4">Understanding how eating durian impacts your vascular health, and how to maintain your metabolic synergy.</p>
+            </div>
+
+            <div class="mt-auto">
+              <div class="read-more-link fw-bold mb-3">
+                Read Article <i class="fa-solid fa-chevron-right ms-1 small"></i>
+              </div>
+              <hr class="opacity-10">
+              <div class="d-flex align-items-center mt-3">
+                <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-2" style="width: 32px; height: 32px; object-fit: cover;" alt="Dr Gerald Thang">
+                <div class="lh-1">
+                  <p class="mb-0 fw-bold small" style="color: #2c4964;">Dr. Gerald Thang</p>
+                  <small class="text-muted" style="font-size: 10px;">Principal Physician</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/articles/" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold">Explore Health Library</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq py-5 bg-light">
+  <div class="container">
+
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="fw-bold" style="color: #2c4964;">Common Questions</h2>
+      <p class="text-muted">Quick answers to help you plan your visit</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion accordion-flush" id="faqAccordion">
+          
+          <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq1">
+                  How soon can I get results for blood tests?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  For heart muscle injury and cardiac markers, we provide <b>rapid in-clinic testing</b> with results available within <b>15 minutes</b>. This allows for immediate clinical clarity during your evaluation. General health screening lab results typically take 3–5 working days.
+                </div>
+              </div>
+            </div>
+          
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq2">
+                  Can I use CHAS or MediSave at your clinic?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Yes. As a <b>CHAS-accredited clinic</b>, patients can utilize subsidies for both Acute (common cough/flu/fever, etc.) and Chronic conditions. MediSave can also be used for approved chronic disease management and vaccinations under the National Adult Immunisation Schedule (NAIS).
+                </div>
+              </div>
+            </div>
+          
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq3">
+                  Do you provide official medical checkups for MOM, LTA or ICA?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  Yes, we conduct all <b>statutory medical examinations</b>, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals (Taxi/Private Hire).
+                </div>
+              </div>
+            </div>
+          
+            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq4">
+                  Do I need a referral to see Dr. Gerald Thang?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  No referral is required. As an <b>Intermediate Care</b> clinic, you can book an appointment directly with us for heart evaluations, chronic disease management, or acute medical needs.
+                </div>
+              </div>
+            </div>
+          
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Find all accordion buttons
+    var accButtons = document.querySelectorAll('.accordion-button');
+    
+    accButtons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 2. Find the target panel (the answer)
+            var targetId = this.getAttribute('data-bs-target');
+            var targetPanel = document.querySelector(targetId);
+            
+            if (targetPanel) {
+                // 3. Toggle logic
+                var isExpanded = targetPanel.classList.contains('show');
+                
+                // Close all other panels first (Accordion behavior)
+                document.querySelectorAll('.accordion-collapse').forEach(function(panel) {
+                    panel.classList.remove('show');
+                });
+                document.querySelectorAll('.accordion-button').forEach(function(b) {
+                    b.classList.add('collapsed');
+                });
+
+                if (!isExpanded) {
+                    targetPanel.classList.add('show');
+                    this.classList.remove('collapsed');
+                }
+            }
+        });
+    });
+});
+</script>
