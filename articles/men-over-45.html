@@ -159,13 +159,13 @@ custom_schema: |
       
       const status = document.getElementById('audit-status');
       if(score === 0) {
-        status.innerText = "Certainty Level: Standard Screening";
+        status.innerText = "Certainty Level: Standard screening does not give the clinical clarity you need now.";
         status.style.color = "#6c757d";
       } else if(score < 3) {
-        status.innerText = "Certainty Level: Partial Visibility";
+        status.innerText = "Certainty Level: Partial visibility and it can be improved.";
         status.style.color = "#43a7d5";
       } else {
-        status.innerText = "Certainty Level: Clinical Stewardship";
+        status.innerText = "Certainty Level: High clarity on what you need now.";
         status.style.color = "#2c4964";
       }
     });
