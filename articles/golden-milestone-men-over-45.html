@@ -94,94 +94,85 @@ custom_schema: |
           <div class="audit-card">
             <h5 class="fw-bold mb-2">The Metabolic Vitality Shift</h5>
             <p class="mb-0 small">Beyond the heart, age 45 often triggers a hormonal and metabolic pivot. We audit these systemic shifts to ensure your "internal fuel" is protecting your arteries rather than corroding them.</p>
-          </div>
-
-<div class="audit-card-premium">
+          </div><div class="audit-card-premium">
   <h3 class="fw-bold mb-4 text-center" style="color: #2c4964;">The Men’s 45+ Clinical Certainty Audit</h3>
-  
-  <div class="mobile-progress-wrapper d-none mb-4">
-    <div style="height: 12px; background: #eef2f6; border-radius: 10px; overflow: hidden; border: 1px solid #d1d9e6;">
-      <div id="mobile-gauge-fill" style="width: 0%; height: 100%; background: #3498db; transition: width 0.5s;"></div>
-    </div>
-    <p class="text-center small mt-2 fw-bold text-uppercase" style="color: #3498db; letter-spacing: 1px;">Certainty Meter</p>
-  </div>
 
   <div class="row">
-    <div class="col-md-2 d-flex flex-column align-items-center desktop-gauge-col">
+    <div class="col-md-2 d-none d-md-flex flex-column align-items-center desktop-gauge-col">
       <div class="gauge-track-vertical">
-        <div id="gauge-fill-element" class="gauge-fill-vertical"></div>
+        <div id="gauge-fill-v" class="gauge-fill-vertical"></div>
       </div>
-      <div class="mt-3 fw-bold small text-uppercase" style="color: #2c4964; font-size: 11px; letter-spacing: 2px;">Certainty</div>
+      <div class="mt-3 fw-bold small text-uppercase" style="color: #2c4964; font-size: 10px; letter-spacing: 2px;">Certainty</div>
     </div>
 
     <div class="col-md-10">
       <div class="audit-list">
-        
         <div class="audit-row-item">
           <div class="audit-text-block pe-3">
-            <span class="d-block fw-bold" style="color: #2c4964; font-size: 1.1rem;">Structural View</span>
+            <strong style="color: #2c4964; display: block;">Structural View</strong>
             <small class="text-muted">Have you physically seen your heart muscle on an Echo?</small>
           </div>
           <div class="btn-group" role="group">
-            <input type="radio" class="btn-check audit-radio" name="q1" id="q1y" value="1"><label class="btn btn-outline-primary px-3" for="q1y">Yes</label>
-            <input type="radio" class="btn-check audit-radio" name="q1" id="q1n" value="0" checked><label class="btn btn-outline-secondary px-3" for="q1n">No</label>
+            <input type="radio" class="btn-check audit-radio" name="r1" id="r1y" value="1"><label class="btn btn-outline-primary" for="r1y">Yes</label>
+            <input type="radio" class="btn-check audit-radio" name="r1" id="r1n" value="0" checked><label class="btn btn-outline-secondary" for="r1n">No</label>
           </div>
         </div>
 
         <div class="audit-row-item">
           <div class="audit-text-block pe-3">
-            <span class="d-block fw-bold" style="color: #2c4964; font-size: 1.1rem;">Electrical Map</span>
+            <strong style="color: #2c4964; display: block;">Electrical Map</strong>
             <small class="text-muted">Has your heart rhythm been tracked for a full 24 hours?</small>
           </div>
           <div class="btn-group" role="group">
-            <input type="radio" class="btn-check audit-radio" name="q2" id="q2y" value="1"><label class="btn btn-outline-primary px-3" for="q2y">Yes</label>
-            <input type="radio" class="btn-check audit-radio" name="q2" id="q2n" value="0" checked><label class="btn btn-outline-secondary px-3" for="q2n">No</label>
+            <input type="radio" class="btn-check audit-radio" name="r2" id="r2y" value="1"><label class="btn btn-outline-primary" for="r2y">Yes</label>
+            <input type="radio" class="btn-check audit-radio" name="r2" id="r2n" value="0" checked><label class="btn btn-outline-secondary" for="r2n">No</label>
           </div>
         </div>
 
         <div class="audit-row-item">
           <div class="audit-text-block pe-3">
-            <span class="d-block fw-bold" style="color: #2c4964; font-size: 1.1rem;">Genetic Baseline</span>
+            <strong style="color: #2c4964; display: block;">Genetic Baseline</strong>
             <small class="text-muted">Do you know your Lp(a) "Genetic Floor"?</small>
           </div>
           <div class="btn-group" role="group">
-            <input type="radio" class="btn-check audit-radio" name="q3" id="q3y" value="1"><label class="btn btn-outline-primary px-3" for="q3y">Yes</label>
-            <input type="radio" class="btn-check audit-radio" name="q3" id="q3n" value="0" checked><label class="btn btn-outline-secondary px-3" for="q3n">No</label>
+            <input type="radio" class="btn-check audit-radio" name="r3" id="r3y" value="1"><label class="btn btn-outline-primary" for="r3y">Yes</label>
+            <input type="radio" class="btn-check audit-radio" name="r3" id="r3n" value="0" checked><label class="btn btn-outline-secondary" for="r3n">No</label>
           </div>
         </div>
 
         <div class="audit-row-item">
           <div class="audit-text-block pe-3">
-            <span class="d-block fw-bold" style="color: #2c4964; font-size: 1.1rem;">Metabolic Audit</span>
+            <strong style="color: #2c4964; display: block;">Metabolic Audit</strong>
             <small class="text-muted">Is your insulin level being audited for over-compensation?</small>
           </div>
           <div class="btn-group" role="group">
-            <input type="radio" class="btn-check audit-radio" name="q4" id="q4y" value="1"><label class="btn btn-outline-primary px-3" for="q4y">Yes</label>
-            <input type="radio" class="btn-check audit-radio" name="q4" id="q4n" value="0" checked><label class="btn btn-outline-secondary px-3" for="q4n">No</label>
+            <input type="radio" class="btn-check audit-radio" name="r4" id="r4y" value="1"><label class="btn btn-outline-primary" for="r4y">Yes</label>
+            <input type="radio" class="btn-check audit-radio" name="r4" id="r4n" value="0" checked><label class="btn btn-outline-secondary" for="r4n">No</label>
           </div>
         </div>
 
         <div class="audit-row-item">
           <div class="audit-text-block pe-3">
-            <span class="d-block fw-bold" style="color: #2c4964; font-size: 1.1rem;">Vascular Age</span>
+            <strong style="color: #2c4964; display: block;">Vascular Age</strong>
             <small class="text-muted">Does your verified heart age match your birth date?</small>
           </div>
           <div class="btn-group" role="group">
-            <input type="radio" class="btn-check audit-radio" name="q5" id="q5y" value="1"><label class="btn btn-outline-primary px-3" for="q5y">Yes</label>
-            <input type="radio" class="btn-check audit-radio" name="q5" id="q5n" value="0" checked><label class="btn btn-outline-secondary px-3" for="q5n">No</label>
+            <input type="radio" class="btn-check audit-radio" name="r5" id="r5y" value="1"><label class="btn btn-outline-primary" for="r5y">Yes</label>
+            <input type="radio" class="btn-check audit-radio" name="r5" id="r5n" value="0" checked><label class="btn btn-outline-secondary" for="r5n">No</label>
           </div>
         </div>
-
       </div>
-      
-      <div id="result-box" class="mt-4 p-4 text-center rounded-4" style="background: #f8fafc; border: 1px solid #e2e8f0; transition: all 0.5s ease;">
-        <h5 id="status-label" class="fw-bold mb-1" style="color: #64748b;">Status: Standard Care</h5>
-        <p id="status-desc" class="small text-muted mb-0">A standard snapshot misses structural and electrical strain.</p>
+
+      <div id="res-box" class="mt-4 p-4 text-center rounded-4 shadow-sm" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+        <div class="mobile-progress-container">
+          <div id="mobile-fill-h" style="width: 0%; height: 100%; background: #3498db; transition: width 0.5s;"></div>
+        </div>
+        <h5 id="stat-label" class="fw-bold mb-1" style="color: #64748b;">Status: Standard Care</h5>
+        <p id="stat-desc" class="small text-muted mb-0">Standard snapshots lack structural and electrical depth.</p>
       </div>
     </div>
   </div>
 </div>
-
 
           
           <h3 class="section-heading h4">Conclusion: Stewardship Over Symptoms</h3>
@@ -213,31 +204,26 @@ custom_schema: |
 </main>
 
 
-
-
 <style>
-  /* Main Card with Depth */
   .audit-card-premium {
     background: #ffffff;
     border-radius: 25px;
-    padding: 45px;
-    box-shadow: 0 20px 40px rgba(44, 73, 100, 0.08); /* Soft professional shadow */
-    border: 1px solid #f0f4f8;
-    max-width: 950px;
-    margin: 40px auto;
-    font-family: 'Inter', sans-serif;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(44, 73, 100, 0.1);
+    border: 1px solid #eef2f6;
+    max-width: 900px;
+    margin: 20px auto;
   }
 
-  /* Vertical Gauge Styling */
+  /* Desktop Vertical Gauge */
   .gauge-track-vertical {
     background: #eef2f6;
     border-radius: 50px;
-    width: 28px;
-    height: 420px;
+    width: 25px;
+    height: 400px;
     position: relative;
     border: 1px solid #d1d9e6;
     overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
   }
 
   .gauge-fill-vertical {
@@ -246,80 +232,72 @@ custom_schema: |
     position: absolute;
     bottom: 0;
     background: linear-gradient(180deg, #2c4964 0%, #3498db 100%);
-    transition: height 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: height 0.6s ease;
   }
 
-  /* Question Rows with Demarcation */
-  .audit-row-item {
-    background: #fcfdfe;
-    border-radius: 15px;
-    padding: 20px 25px;
+  /* Mobile Progress Bar (Inside Result Box) */
+  .mobile-progress-container {
+    display: none;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 10px;
     margin-bottom: 15px;
-    border: 1px solid #edf2f7;
-    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .audit-row-item {
+    background: #fdfdfd;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #f1f4f8;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
-  .audit-row-item:hover {
-    border-color: #3498db;
-    background: #ffffff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-  }
 
-  /* Responsive Logic */
   @media (max-width: 768px) {
-    .audit-card-premium { padding: 25px; }
     .desktop-gauge-col { display: none; }
-    .mobile-progress-wrapper { display: block !important; }
+    .mobile-progress-container { display: block; }
     .audit-row-item { flex-direction: column; text-align: center; }
-    .audit-text-block { margin-bottom: 15px; padding-right: 0 !important; }
+    .audit-text-block { margin-bottom: 15px; }
+    .btn-group { width: 100%; }
+    .btn-group .btn { flex: 1; }
   }
 </style>
 
 <script>
   document.querySelectorAll('.audit-radio').forEach(radio => {
     radio.addEventListener('change', () => {
-      const total = 5;
-      let yesCount = 0;
-      for(let i=1; i<=total; i++) {
-        if(document.getElementById('q'+i+'y').checked) yesCount++;
-      }
+      let count = 0;
+      for(let i=1; i<=5; i++) if(document.getElementById('r'+i+'y').checked) count++;
       
-      const pct = (yesCount / total) * 100;
-      const gauge = document.getElementById('gauge-fill-element');
-      const mobileGauge = document.getElementById('mobile-gauge-fill');
-      const label = document.getElementById('status-label');
-      const desc = document.getElementById('status-desc');
-      const resultBox = document.getElementById('result-box');
+      const pct = (count / 5) * 100;
+      document.getElementById('gauge-fill-v').style.height = pct + '%';
+      document.getElementById('mobile-fill-h').style.width = pct + '%';
 
-      gauge.style.height = pct + '%';
-      mobileGauge.style.width = pct + '%';
+      const label = document.getElementById('stat-label');
+      const desc = document.getElementById('stat-desc');
+      const box = document.getElementById('res-box');
 
-      if (yesCount === 0) {
+      if (count === 0) {
         label.innerText = "Status: Standard Care";
         label.style.color = "#64748b";
-        desc.innerText = "A standard snapshot misses structural and electrical strain.";
-        resultBox.style.background = "#f8fafc";
-      } else if (yesCount <= 2) {
+        box.style.background = "#f8fafc";
+      } else if (count <= 2) {
         label.innerText = "Status: Baseline Aware";
         label.style.color = "#3498db";
-        desc.innerText = "You have some data, but your heart's structure remains unmapped.";
-        resultBox.style.background = "#eff6ff";
-      } else if (yesCount <= 4) {
-        label.innerText = "Status: Advanced Insight";
+        box.style.background = "#eff6ff";
+      } else if (count <= 4) {
+        label.innerText = "Status: Advanced Audit";
         label.style.color = "#2c4964";
-        desc.innerText = "Great progress. You are moving beyond the average screening.";
-        resultBox.style.background = "#f0f9ff";
+        box.style.background = "#f0f9ff";
       } else {
         label.innerText = "Status: Clinical Stewardship";
         label.style.color = "#198754";
-        desc.innerText = "Total Clarity. Your cardiovascular engine is fully audited.";
-        resultBox.style.background = "#f0fdf4";
+        box.style.background = "#f0fdf4";
       }
     });
   });
 </script>
-
 
