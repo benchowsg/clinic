@@ -96,58 +96,89 @@ custom_schema: |
             <p class="mb-0 small">Beyond the heart, age 45 often triggers a hormonal and metabolic pivot. We audit these systemic shifts to ensure your "internal fuel" is protecting your arteries rather than corroding them.</p>
           </div>
 
-<div class="lifestyle-callout" style="background: #f4f7f9; border: 2px solid #2c4964; border-radius: 20px; padding: 35px;">
-    <h4 class="fw-bold mb-2 text-center" style="color: #2c4964;">The Men’s 45+ Clinical Certainty Meter</h4>
-    <p class="text-center text-muted small mb-4">Check the boxes for the markers you have already audited:</p>
-
-    <div class="row align-items-center">
-        <div class="col-md-7">
-            <div class="audit-checklist-interactive">
-                <div class="form-check mb-3">
-                    <input class="form-check-input audit-check" type="checkbox" id="q1" style="cursor:pointer; width:20px; height:20px;">
-                    <label class="form-check-label ms-2" for="q1">
-                        <strong>Structural View:</strong> Have you seen your heart muscle on an Echo?
-                    </label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input audit-check" type="checkbox" id="q2" style="cursor:pointer; width:20px; height:20px;">
-                    <label class="form-check-label ms-2" for="q2">
-                        <strong>Electrical Map:</strong> Has your rhythm been tracked for 24 hours?
-                    </label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input audit-check" type="checkbox" id="q3" style="cursor:pointer; width:20px; height:20px;">
-                    <label class="form-check-label ms-2" for="q3">
-                        <strong>Genetic Baseline:</strong> Do you know your Lp(a) "Genetic Floor"?
-                    </label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input audit-check" type="checkbox" id="q4" style="cursor:pointer; width:20px; height:20px;">
-                    <label class="form-check-label ms-2" for="q4">
-                        <strong>Metabolic Audit:</strong> Is your insulin over-compensating?
-                    </label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input audit-check" type="checkbox" id="q5" style="cursor:pointer; width:20px; height:20px;">
-                    <label class="form-check-label ms-2" for="q5">
-                        <strong>Hormonal Level:</strong> Is your Testosterone protecting your heart?
-                    </label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input audit-check" type="checkbox" id="q6" style="cursor:pointer; width:20px; height:20px;">
-                    <label class="form-check-label ms-2" for="q6">
-                        <strong>Vascular Age:</strong> Does your heart age match your birth date?
-                    </label>
-                </div>
+<div class="lifestyle-callout" style="background: #f4f7f9; border: 2px solid #2c4964; border-radius: 25px; padding: 40px;">
+    <h4 class="fw-bold mb-4 text-center" style="color: #2c4964;">The Men’s 45+ Clinical Certainty Audit</h4>
+    
+    <div class="row align-items-stretch">
+        <div class="col-3 col-md-2 text-center d-flex flex-column align-items-center justify-content-between">
+            <div class="gauge-container" style="background: #e1e8ed; border-radius: 50px; width: 40px; height: 350px; position: relative; border: 2px solid #ced4da; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
+                <div id="vertical-gauge" style="width: 100%; height: 0%; position: absolute; bottom: 0; background: linear-gradient(0deg, #3498db, #2c4964); transition: height 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
             </div>
+            <div class="mt-3 fw-bold small text-uppercase" style="color: #2c4964; letter-spacing: 1px;">Certainty</div>
         </div>
 
-        <div class="col-md-5 text-center px-4">
-            <div class="meter-wrapper mb-3" style="background: #e1e8ed; border-radius: 50px; height: 35px; width: 100%; overflow: hidden; border: 1px solid #ced4da; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">
-                <div id="certainty-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #3498db, #2c4964); transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+        <div class="col-9 col-md-10">
+            <div class="audit-questions">
+                <div class="audit-row d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <div class="audit-text pe-3">
+                        <strong style="color: #2c4964; display: block;">Structural View</strong>
+                        <span class="small text-muted">Have you seen your heart muscle on an Echo?</span>
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check audit-radio" name="q1" id="q1-yes" value="1">
+                        <label class="btn btn-outline-primary px-3" for="q1-yes">Yes</label>
+                        <input type="radio" class="btn-check audit-radio" name="q1" id="q1-no" value="0" checked>
+                        <label class="btn btn-outline-secondary px-3" for="q1-no">No</label>
+                    </div>
+                </div>
+
+                <div class="audit-row d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <div class="audit-text pe-3">
+                        <strong style="color: #2c4964; display: block;">Electrical Map</strong>
+                        <span class="small text-muted">Has your rhythm been tracked for 24 hours?</span>
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check audit-radio" name="q2" id="q2-yes" value="1">
+                        <label class="btn btn-outline-primary px-3" for="q2-yes">Yes</label>
+                        <input type="radio" class="btn-check audit-radio" name="q2" id="q2-no" value="0" checked>
+                        <label class="btn btn-outline-secondary px-3" for="q2-no">No</label>
+                    </div>
+                </div>
+
+                <div class="audit-row d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <div class="audit-text pe-3">
+                        <strong style="color: #2c4964; display: block;">Genetic Baseline</strong>
+                        <span class="small text-muted">Do you know your Lp(a) "Genetic Floor"?</span>
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check audit-radio" name="q3" id="q3-yes" value="1">
+                        <label class="btn btn-outline-primary px-3" for="q3-yes">Yes</label>
+                        <input type="radio" class="btn-check audit-radio" name="q3" id="q3-no" value="0" checked>
+                        <label class="btn btn-outline-secondary px-3" for="q3-no">No</label>
+                    </div>
+                </div>
+
+                <div class="audit-row d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                    <div class="audit-text pe-3">
+                        <strong style="color: #2c4964; display: block;">Metabolic Audit</strong>
+                        <span class="small text-muted">Is your insulin over-compensating?</span>
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check audit-radio" name="q4" id="q4-yes" value="1">
+                        <label class="btn btn-outline-primary px-3" for="q4-yes">Yes</label>
+                        <input type="radio" class="btn-check audit-radio" name="q4" id="q4-no" value="0" checked>
+                        <label class="btn btn-outline-secondary px-3" for="q4-no">No</label>
+                    </div>
+                </div>
+
+                <div class="audit-row d-flex justify-content-between align-items-center mb-0">
+                    <div class="audit-text pe-3">
+                        <strong style="color: #2c4964; display: block;">Vascular Age</strong>
+                        <span class="small text-muted">Does your heart age match your birth date?</span>
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <input type="radio" class="btn-check audit-radio" name="q5" id="q5-yes" value="1">
+                        <label class="btn btn-outline-primary px-3" for="q5-yes">Yes</label>
+                        <input type="radio" class="btn-check audit-radio" name="q5" id="q5-no" value="0" checked>
+                        <label class="btn btn-outline-secondary px-3" for="q5-no">No</label>
+                    </div>
+                </div>
             </div>
-            <h5 id="status-label" class="fw-bold" style="color: #6c757d; font-size: 1.2rem;">Status: Standard Care</h5>
-            <p id="status-desc" class="small text-muted italic">A standard screening provides a snapshot, but lacks structural certainty.</p>
+            
+            <div class="mt-4 pt-3 text-center border-top">
+                <h5 id="status-label" class="fw-bold mb-1" style="color: #6c757d;">Status: Standard Screening</h5>
+                <p id="status-desc" class="small text-muted mb-0">A standard snapshot misses structural and electrical strain.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -184,40 +215,48 @@ custom_schema: |
 
 
 
+
+
+
 <script>
-    document.querySelectorAll('.audit-check').forEach(box => {
-        box.addEventListener('change', () => {
-            const total = 6;
-            const checked = document.querySelectorAll('.audit-check:checked').length;
-            const percentage = (checked / total) * 100;
+    document.querySelectorAll('.audit-radio').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const total = 5;
+            let yesCount = 0;
             
-            const bar = document.getElementById('certainty-bar');
+            // Check each question group for a 'Yes' selection
+            for(let i=1; i<=total; i++) {
+                if(document.getElementById('q'+i+'-yes').checked) {
+                    yesCount++;
+                }
+            }
+            
+            const percentage = (yesCount / total) * 100;
+            const gauge = document.getElementById('vertical-gauge');
             const label = document.getElementById('status-label');
             const desc = document.getElementById('status-desc');
 
-            bar.style.width = percentage + '%';
+            gauge.style.height = percentage + '%';
 
-            if (checked === 0) {
+            if (yesCount === 0) {
                 label.innerText = "Status: Standard Care";
                 label.style.color = "#6c757d";
-                desc.innerText = "A standard screening provides a snapshot, but lacks structural certainty.";
-            } else if (checked <= 2) {
+                desc.innerText = "A standard snapshot misses structural and electrical strain.";
+            } else if (yesCount <= 2) {
                 label.innerText = "Status: Baseline Aware";
                 label.style.color = "#3498db";
-                desc.innerText = "You have some data, but your heart's physical structure remains unmapped.";
-            } else if (checked <= 4) {
-                label.innerText = "Status: Advanced Audit";
+                desc.innerText = "You have some data, but your heart's structure remains unmapped.";
+            } else if (yesCount <= 4) {
+                label.innerText = "Status: Advanced Insight";
                 label.style.color = "#2c4964";
-                desc.innerText = "Excellent progress. You are identifying risks standard screenings miss.";
-            } else if (checked === 5) {
-                label.innerText = "Status: Clinical Stewardship";
-                label.style.color = "#198754";
-                desc.innerText = "High certainty. Most clinical 'blind spots' have been cleared.";
+                desc.innerText = "Great progress. You are moving beyond the average screening.";
             } else {
-                label.innerText = "Status: Peak Performance";
+                label.innerText = "Status: Clinical Stewardship";
                 label.style.color = "#198754";
                 desc.innerText = "Total Clarity. Your cardiovascular engine is fully audited.";
             }
         });
     });
 </script>
+
+
