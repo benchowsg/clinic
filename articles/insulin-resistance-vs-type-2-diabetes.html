@@ -99,29 +99,6 @@ custom_schema: |
 <div class="article-body">
           <p>Most people believe that Type 2 Diabetes happens overnight. In reality, your body often spends 10 to 15 years fighting a "silent war" to keep your blood sugar stable. By the time a standard blood test shows high glucose, the most critical window for prevention may have already passed.</p>
 
-          <div class="phase-container">
-            <div class="row g-4">
-              <div class="col-md-6">
-                <div class="phase-card" style="border-top: 5px solid #43a7d5;">
-                  <span class="phase-badge badge-ir">Phase 1: The Silent Decade</span>
-                  <h4 class="h5 fw-bold" style="color: #43a7d5;">Insulin Resistance</h4>
-                  <p class="small mb-0">Your body is <strong>over-compensating</strong>. The pancreas pumps out massive amounts of insulin to keep sugar normal. Standard tests often say you are "fine," but high insulin is already weathering your arteries.</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="phase-card" style="border-top: 5px solid #2c4964;">
-                  <span class="phase-badge badge-t2">Phase 2: Systemic Failure</span>
-                  <h4 class="h5 fw-bold" style="color: #2c4964;">Type 2 Diabetes</h4>
-                  <p class="small mb-0">The compensatory mechanism has failed. The pancreas can no longer keep up, and blood sugar begins to rise. Diagnosis usually happens here—often years after the damage began.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="type1-notice">
-            <p class="mb-0"><strong>Note on Type 1 Diabetes:</strong> Unlike the metabolic "wear and tear" of Type 2, Type 1 is an autoimmune condition where the body produces <em>zero</em> insulin. It is a different clinical path requiring lifelong replacement, rather than the metabolic interception we provide here.</p>
-          </div>
-
           <div class="d-md-none alert alert-info text-center mb-3 py-2 rotate-hint" style="background: #eef7fd; border: 1px dashed #3498db; border-radius: 10px;">
             <div class="d-flex align-items-center justify-content-center">
               <i class="bi bi-phone-landscape rotate-icon me-2" style="font-size: 1.2rem; color: #3498db;"></i>
@@ -197,15 +174,84 @@ custom_schema: |
             </svg>
         </figure>
 
-          
-          <figure class="my-4 text-center">
-            <figcaption class="mt-3 small text-muted italic" style="border-left: 3px solid #3498db; padding-left: 15px; text-align: left;">
-              <strong>Figure 1:</strong> Notice the "Blue Peak" of insulin rising to compensate for resistance while glucose remains flat. Type 2 Diabetes occurs only after the pancreas fails to sustain this high insulin output.
-            </figcaption>
-          </figure>
+          <figure class="clinical-chart">
+            <svg viewBox="0 0 1000 480" class="line-svg" preserveAspectRatio="xMidYMid meet">
+                <g class="grid-lines" stroke="#e1e8ed" stroke-width="1">
+                    <line x1="100" y1="100" x2="900" y2="100"></line>
+                    <line x1="100" y1="150" x2="900" y2="150"></line>
+                    <line x1="100" y1="200" x2="900" y2="200"></line>
+                    <line x1="100" y1="250" x2="900" y2="250"></line>
+                    <line x1="100" y1="300" x2="900" y2="300"></line>
+                    <line x1="100" y1="350" x2="900" y2="350"></line>
+                </g>
+                <g stroke="#000" stroke-width="2">
+                    <line x1="100" y1="400" x2="100" y2="80"></line> 
+                    <line x1="100" y1="400" x2="950" y2="400"></line> 
+                </g>
+                <text x="50" y="240" transform="rotate(-90 50 240)" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Levels</text>
+                <text x="920" y="435" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Time</text>
+        
+                <rect x="100" y="20" width="400" height="45" fill="#43a7d5"></rect>
+                <text x="300" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff">INSULIN RESISTANCE</text>
+                <rect x="500" y="20" width="400" height="45" fill="#2c4964"></rect>
+                <text x="700" y="52" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff">TYPE 2 DIABETES</text>
+        
+                <line x1="500" y1="65" x2="500" y2="400" stroke="#666" stroke-width="1.5" stroke-dasharray="6,4"></line>
+        
+                <path class="glucose-line" d="M100 380 C 300 380, 500 370, 550 350 C 700 300, 800 150, 900 120" stroke="#d63031" stroke-width="4" fill="none"></path>
+                <path class="insulin-line" d="M100 380 C 200 300, 300 120, 500 120 C 650 120, 800 250, 900 320" stroke="#43a7d5" stroke-width="4" fill="none"></path>
+        
+                <text x="250" y="150" font-size="22" font-weight="800" fill="#43a7d5" font-style="italic">Insulin</text>
+                <text x="250" y="365" font-size="22" font-weight="800" fill="#d63031" font-style="italic">Glucose</text>
+            </svg>
+        </figure>
 
-          
 
+        
+        <div class="table-responsive my-4">
+            <table class="table table-bordered align-middle">
+                <thead style="background: #2c4964; color: white;">
+                    <tr>
+                        <th style="width: 20%;">Clinical Indicator</th>
+                        <th style="width: 40%;">Phase 1: Insulin Resistance</th>
+                        <th style="width: 40%;">Phase 2: Type 2 Diabetes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="fw-bold bg-light">Insulin Level</td>
+                        <td style="color: #43a7d5; font-weight: bold;">Rising (Over-compensation)</td>
+                        <td>Falling (Pancreatic Burnout)</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold bg-light">Glucose Level</td>
+                        <td>Maintained (The "Silent" Phase)</td>
+                        <td style="color: #d63031; font-weight: bold;">Rising (Clinical Diagnosis)</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold bg-light">Vascular Status</td>
+                        <td>Arterial stiffening begins</td>
+                        <td>Damage accelerates exponentially</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold bg-light">Clinical Window</td>
+                        <td><span class="badge bg-info text-dark" style="font-size: 0.9rem;">High Reversibility</span></td>
+                        <td><span class="badge bg-secondary" style="font-size: 0.9rem;">Chronic Management</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="small text-muted italic mt-2">
+              <strong>Note:</strong> Standard health screenings often miss Phase 1 as glucose remains within "normal" limits while your pancreas works overtime.
+            </p>
+        </div>
+          
+          <div class="p-4 mt-2 rounded" style="background-color: #f8f9fa; border-left: 5px solid #2c4964;">
+              <h5 class="fw-bold mb-2">A Note on Type 1 Diabetes</h5>
+              <p class="mb-0 small text-muted">
+                  Unlike the metabolic "wear and tear" of Type 2, Type 1 is an autoimmune condition where the body produces <strong>zero insulin</strong>. It follows a different clinical path requiring lifelong replacement, rather than the metabolic interception and stewardship we provide for insulin resistance.
+              </p>
+          </div>
+  
           <h3 class="section-heading h4">1. The Core Difference: Compensation vs. Failure</h3>
           <p>As shown in the clinical chart, the journey is divided into two distinct phases that many standard screenings miss:</p>
           <ul class="check-list">
