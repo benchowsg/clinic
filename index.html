@@ -309,7 +309,7 @@ faq_schema:
 
 
 
-<section class="triage-section">
+<section class="triage-section py-5">
   <div class="container">
     
     <div class="text-center mb-5">
@@ -317,14 +317,15 @@ faq_schema:
       <p class="text-muted">Select a care pathway for clinical diagnostics and medical management.</p>
     </div>
 
-    <div class="row g-4 mb-5">
-      <div class="col-lg-4">
-        <div class="triage-card urgent-border">
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-6 col-lg-5">
+        <div class="triage-card urgent-border h-100 d-flex flex-column">
           <span class="triage-badge urgent-badge">Diagnostics</span>
           <h4 class="fw-bold mb-3">Heart Evaluation</h4>
           <p class="small text-muted mb-4">Detailed assessment for chest pain, palpitations, or acute breathlessness; including ECG and Holter monitoring.</p>
-
-          <p class="small mt-auto mb-3 fw-bold" style="color: #ff4f81;">
+        <div class="mt-auto">
+          <p class="small mb-3 fw-bold" style="color: #ff4f81;">
             <i class="fa-solid fa-bolt-lightning me-1"></i> Rapid cardiac markers available. Results in 15 mins.
           </p>
           
@@ -335,19 +336,20 @@ faq_schema:
             <li class="mb-2"><i class="fa-solid fa-file-waveform me-2" style="color:#ff4f81;"></i><strong>Priority Imaging:</strong> Ultrasound, CT, and MRI scans.</li>
           </ul> -->
           
-          <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/pV3lgn2" target="_blank" rel="noreferrer noopener" class="btn btn-urgent w-100 mt-4 py-2 fw-bold">Book Evaluation</a>
+          <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/pV3lgn2" target="_blank" rel="noreferrer noopener" class="btn btn-urgent w-100 py-2 fw-bold">Book Evaluation</a>
         </div>
       </div>
+    </div>
 
-      <div class="col-lg-4">
-        <div class="triage-card mgmt-border">
-          <span class="triage-badge mgmt-badge">Chronic Disease Care</span>
+      <div class="col-md-6 col-lg-5">
+        <div class="triage-card mgmt-border h-100 d-flex flex-column">
+          <span class="triage-badge mgmt-badge">Chronic Care</span>
           <h4 class="fw-bold mb-3">Medical Management</h4>
-          <p class="small text-muted mb-4">Management of long-term chronic conditions, second opinions, and post-hospital recovery support.</p>
-
-          <p class="small mt-auto mb-3 fw-bold" style="color: #43a7d5;">
-            <i class="fa-solid fa-shield-heart me-1"></i> CHAS & MediSave applicable for selected conditions.
-          </p>
+          <p class="small text-muted mb-4">Long-term care for chronic conditions. Fully integrated with HealthierSG and CHAS chronic subsidies.</p>
+         <div class="mt-auto">
+             <p class="small mb-3 fw-bold" style="color: #43a7d5;">
+               <i class="fa-solid fa-shield-heart me-1"></i> CHAS & MediSave applicable for selected conditions.</p>
+            </p>
           
           <!-- <ul class="list-unstyled small mb-auto mt-2">
             <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Heart & Vascular:</strong> Hypertension, Cholesterol, Heart Failure, Diabetes, etc.</li>
@@ -356,18 +358,19 @@ faq_schema:
             <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#43a7d5;"></i><strong>Recovery Care:</strong> Post-Surgical Op, Post-Hospital Recovery, Wound Management, etc.</li>
           </ul> -->
           
-          <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/U5ROxt9" target="_blank" rel="noreferrer noopener" class="btn btn-mgmt w-100 mt-4 py-2 fw-bold">Book Management</a>
+          <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/U5ROxt9" target="_blank" rel="noreferrer noopener" class="btn btn-mgmt w-100 py-2 fw-bold">Book Management</a>
         </div>
       </div>
+    </div>
 
-      <div class="col-lg-4">
-        <div class="triage-card routine-border">
-          <span class="triage-badge routine-badge">Preventive & Wellness</span>
+      <div class="col-md-6 col-lg-5">
+        <div class="triage-card routine-border h-100 d-flex flex-column">
+          <span class="triage-badge routine-badge">Wellness</span>
           <h4 class="fw-bold mb-3">Longevity & Health Audit</h4>
-          <p class="small text-muted mb-4">Proactive screenings and vaccinations designed to optimize your long-term health and vitality.</p>
-
-          <p class="small mt-auto mb-3 fw-bold" style="color: #1b9d4b;">
-            <i class="fa-solid fa-file-circle-check me-1"></i> Includes official medical checkups for MOM, ICA, and LTA.
+          <p class="small text-muted mb-4">Proactive <strong>cardio-metabolic screenings</strong> and vaccinations. Includes statutory medical checkups for MOM, ICA, and LTA licensing.</p>
+          <div class="mt-auto">
+          <p class="small mb-3 fw-bold" style="color: #1b9d4b;">
+            <i class="fa-solid fa-file-circle-check me-1"></i> All statutory checkups available.</p>
           </p>
           
          <!-- <ul class="list-unstyled small mb-auto mt-2">
@@ -376,35 +379,24 @@ faq_schema:
             <li class="mb-2"><i class="fa-solid fa-check me-2" style="color:#25d366;"></i><strong>Vaccinations:</strong> Immunisation for Adult and Children (above 2 years old).</li>
           </ul> -->
           
-          <a href="/booking#preventive" class="btn btn-routine w-100 mt-4 py-2 fw-bold">View Options</a>
+          <a href="/booking#preventive" class="btn btn-routine w-100 py-2 fw-bold">View Options</a>
         </div>
       </div>
     </div>
 
-<div class="row justify-content-center mb-5">
-  <div class="col-lg-4">
-    <div class="triage-card urgent-acute-border">
-      <span class="triage-badge urgent-acute-badge">
-        Acute Consult
-      </span>
-      <h4 class="fw-bold mb-3" style="color:#2c4964;">
-        Common Ailments
-      </h4>
-      <p class="small text-muted mb-4" style="color:#4a4a4a;">
-        Treatment of cough, flu, fever, and other common acute symptoms.
-      </p>
-
-      <p class="small mt-auto mb-3 fw-bold" style="color: #2c4964;">
-        <i class="fa-solid fa-address-card me-1"></i> CHAS Acute subsidies where applicable.
-      </p>
+      <div class="col-md-6 col-lg-5">
+        <div class="triage-card urgent-acute-border h-100 d-flex flex-column">
+          <span class="triage-badge urgent-acute-badge">General Care</span>
+          <h4 class="fw-bold mb-3">Common Ailments</h4>
+          <p class="small text-muted mb-4">Clinical management for <strong>cough, flu, fever, and acute symptoms</strong>. Prompt medical attention for your everyday healthcare needs.</p>
+          <div class="mt-auto">
+             <p class="small mb-3 fw-bold" style="color: #2c4964;"><i class="fa-solid fa-address-card me-1"></i> CHAS Acute subsidies apply.</p>
       
-      <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VSYAIdE" target="_blank" rel="noreferrer noopener" class="btn btn-urgent-acute w-100 py-2 fw-bold">
-        Book General Consult
-      </a>
+            <a href="https://clinic.platomedical.com/book/YWhlYWxpbmdoZWFydG1lZGljYWw=/0ab2a431ed254ecbbc343acdaa767789/VSYAIdE" target="_blank" rel="noreferrer noopener" class="btn btn-urgent-acute w-100 py-2 fw-bold">Book General Consult</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   </div>
 </section>
 
