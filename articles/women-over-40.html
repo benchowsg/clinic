@@ -53,6 +53,12 @@ custom_schema: |
   .timeline-box { background: #fffafb; border: 1px solid #fce7f3; border-radius: 15px; padding: 30px; margin: 40px 0; }
   .ip-notice-box { background: #ffffff; border: 1px solid #e9ecef; border-left: 4px solid #ced4da; padding: 20px; font-size: 0.85rem; color: #6c757d; border-radius: 8px; margin-top: 50px; }
   .highlight-magenta { color: #db2777; font-weight: 700; }
+  
+  /* Responsive fix for the Audit Box */
+  @media (max-width: 768px) {
+    .metabolic-audit-box { flex-direction: column; text-align: center; }
+    .metabolic-audit-box div { padding-right: 0 !important; margin-bottom: 15px; }
+  }
 </style>
 
 <main id="main" class="article-content">
@@ -82,7 +88,7 @@ custom_schema: |
         <div class="article-body">
           <p>For women, health after 40 is not a gradual decline, it is a <span class="highlight-magenta">Biological Cliff</span>. While men experience a linear "wear and tear" of the heart, women face a sharp metabolic transition as estrogen levels fluctuate and eventually crash. This is the window where "hidden" risks become permanent conditions.</p>
 
-        <div class="metabolic-audit-box" style="background: #ffffff; border: 2px solid #fce7f3; border-radius: 15px; padding: 25px; margin: 30px 0; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(219, 39, 119, 0.05);">
+          <div class="metabolic-audit-box" style="background: #ffffff; border: 2px solid #fce7f3; border-radius: 15px; padding: 25px; margin: 30px 0; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(219, 39, 119, 0.05);">
             <div style="flex: 1; padding-right: 20px;">
               <h5 class="fw-bold mb-1" style="color: #2c4964;">The Women’s Cardio-Metabolic Audit</h5>
               <p class="small text-muted mb-0">Identify the interplay between your thyroid, insulin sensitivity, and heart health before the hormonal shift becomes permanent.</p>
@@ -90,7 +96,8 @@ custom_schema: |
             <div style="flex-shrink: 0;">
               <a href="https://www.ahealingheartmedical.com/women-cardio-metabolic-audit" class="btn btn-sm rounded-pill px-4" style="background-color: #db2777; color: white; border: none; font-weight: 600;">Explore the Audit</a>
             </div>
-          
+          </div>
+
           <div class="metabolic-callout">
             <h5 class="fw-bold mb-3" style="color: #2c4964;">The 5-Year Critical Zone</h5>
             <p class="mb-0">Clinical data confirms that a woman's cardiovascular risk accelerates exponentially in the <strong>five years surrounding the final menstrual period</strong>. This is your most critical window for metabolic intervention.</p>
