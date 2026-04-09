@@ -29,3 +29,10 @@ opening_hours:
   - "Mo-Fr 14:30-18:00"
   - "Sa 09:30-13:00"
   - "Su Closed"
+
+# Inside your _config.yml or _data/footer.yml
+ratings:
+  value: "4.8"
+  count: "106"
+  platform: "Google"
+  link: "https://g.page/ahealingheartmedical"
