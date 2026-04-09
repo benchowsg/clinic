@@ -190,6 +190,14 @@ faq_schema:
     border-radius: 50%;
 }
 
+#service-navigation .icon-circle i {
+    font-size: 24px;
+    color: #43a7d5; /* This ensures your icons match your corporate blue */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
   /* Enhancing card professionalism */
   .article-card {
     transition: all 0.3s ease;
@@ -599,7 +607,7 @@ faq_schema:
           
           <div class="accordion-item shadow-sm mb-3 border-0 rounded">
               <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq1">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
                   How soon can I get results for blood tests?
                 </button>
               </h2>
@@ -612,7 +620,7 @@ faq_schema:
           
             <div class="accordion-item shadow-sm mb-3 border-0 rounded">
               <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq2">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
                   Can I use CHAS or MediSave at your clinic?
                 </button>
               </h2>
@@ -623,22 +631,22 @@ faq_schema:
               </div>
             </div>
           
-            <div class="accordion-item shadow-sm mb-3 border-0 rounded">
-              <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq3">
-                  Do you provide official medical checkups for MOM, LTA or ICA?
-                </button>
-              </h2>
-              <div id="faq3" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                  Yes, we conduct all <b>statutory medical examinations</b>, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals (Taxi/Private Hire).
-                </div>
+          <div class="accordion-item shadow-sm mb-3 border-0 rounded">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Do you provide official medical checkups for MOM, LTA or ICA?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Yes, we conduct all statutory medical examinations, including Work Permit (MOM), S-Pass, E-Pass, Long-Term Visit Pass (ICA), Student Pass, Domestic Workers, and LTA vocational license renewals.
               </div>
             </div>
+          </div>
           
             <div class="accordion-item shadow-sm mb-3 border-0 rounded">
               <h2 class="accordion-header" id="headingFour">
-                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-target="#faq4">
+                <button class="accordion-button collapsed fw-bold rounded" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
                   Do I need a referral to see Dr. Gerald Thang?
                 </button>
               </h2>
@@ -649,9 +657,9 @@ faq_schema:
               </div>
             </div>
           
+      </div> 
       </div>
     </div>
-    
   </div>
 </section>
 
