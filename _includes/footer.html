@@ -21,6 +21,11 @@
         
         <div class="col-lg-5 col-md-6">
           <h4 class="fw-bold mb-3" style="font-size: 1.25rem;">A Healing Heart Medical</h4>
+                        <div class="footer-rating mb-3" style="font-size: 0.9rem;">
+                            <span style="color: #f1c40f;">★★★★★</span> 
+                            <strong>{{ site.ratings.value }}</strong>/5 
+                            based on <a href="{{ site.ratings.link }}" target="_blank" class="text-decoration-none" style="color: #2c4964;">{{ site.ratings.count }} Google Reviews</a>
+                          </div>
           <p class="small text-muted mb-3">Intermediate care dedicated to preventive cardiovascular and metabolic health. CHAS & MediSave accredited for Chronic Disease Management (CDMP) and Healthier SG.</p>
           <p class="small mb-1"><i class="fa-solid fa-location-dot me-2 text-primary"></i> 134 Geylang East Ave 1, #01-227, S380134</p>
           <p class="small mb-0"><i class="fa-solid fa-phone me-2 text-primary"></i> +65 6962 1362</p>
@@ -101,15 +106,17 @@
   "name": "A Healing Heart Medical Clinic",
   "alternateName": "A Healing Heart Medical",
   "image": "https://www.ahealingheartmedical.com/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp",
-  "logo": "https://www.ahealingheartmedical.com/assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.png",
+  "logo": "https://www.ahealingheartmedical.com/assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.webp",
   "@id": "https://www.ahealingheartmedical.com",
   "url": "https://www.ahealingheartmedical.com",
   "telephone": "+6569621362",
   "priceRange": "$$",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "106"
+    "ratingValue": "{{ site.ratings.value }}",
+    "reviewCount": "{{ site.ratings.count }}",
+    "bestRating": "5",
+    "worstRating": "1"
   },
   "address": {
     "@type": "PostalAddress",
