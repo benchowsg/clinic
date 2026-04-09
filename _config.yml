@@ -5,7 +5,27 @@ description: >-
 baseurl: "" # Leave this empty
 url: "https://www.ahealingheartmedical.com"
 
-# Exclude these from the build
+# PERFORMANCE FIX: This minifies your CSS during build
+sass:
+  style: compressed
+
+# SEO & SPEED PLUGINS
+plugins:
+  - jekyll-redirect-from
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-gist
+
+# CLINIC DATA (GEO & AEO)
+clinic_name: "A Healing Heart Medical"
+clinic_address: "134 Geylang East Avenue 1, #01-227, Singapore 380134"
+clinic_phone: "+65 6962 1362"
+google_ratings:
+  value: "4.8"
+  count: "106"
+  platform: "Google"
+  link: "https://g.page/ahealingheartmedical"
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -14,25 +34,3 @@ exclude:
   - .jekyll-cache
   - .bundle
   - vendor
-
-# Add this section to enable redirects
-plugins:
-  - jekyll-redirect-from
-
-# Local Business Data for SEO
-clinic_address: "134 Geylang East Avenue 1, #01-227, Singapore 380134"
-clinic_phone: "+65 6962 1362"
-
-# Schema-formatted hours for search engines
-opening_hours:
-  - "Mo-Fr 09:30-12:30"
-  - "Mo-Fr 14:30-18:00"
-  - "Sa 09:30-13:00"
-  - "Su Closed"
-
-# Inside your _config.yml or _data/footer.yml
-ratings:
-  value: "4.8"
-  count: "106"
-  platform: "Google"
-  link: "https://g.page/ahealingheartmedical"
