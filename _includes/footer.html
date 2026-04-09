@@ -18,7 +18,7 @@
           <h4 class="fw-bold mb-3" style="font-size: 1.25rem;">A Healing Heart Medical</h4>
                         <div class="footer-rating mb-3" style="font-size: 0.9rem;">
                             <span style="color: #f1c40f;">★★★★★</span> 
-                            <strong>{{ site.ratings.value }}</strong>/5 
+                            <strong>{{ site.ratings.value | default: "4.8" }}</strong>/5 
                             based on <a href="{{ site.ratings.link }}" target="_blank" class="text-decoration-none" style="color: #2c4964;">{{ site.ratings.count }} Google Reviews</a>
                           </div>
           <p class="small text-muted mb-3">Intermediate care dedicated to preventive cardiovascular and metabolic health. CHAS & MediSave accredited for Chronic Disease Management (CDMP) and Healthier SG.</p>
