@@ -94,12 +94,17 @@
     <a href="/booking" class="mobile-dock-item item-book"><i class="fa-solid fa-calendar-check"></i><span>Book</span></a>
   </div>
 
+---
+# This empty front matter is CRITICAL to make the rating numbers show up correctly
+---
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
   "name": "A Healing Heart Medical Clinic",
   "alternateName": "A Healing Heart Medical",
+  "description": "Specialised Cardiology and Metabolic clinic in Singapore led by Dr. Gerald Thang. Providing intermediate care for heart risk, diabetes, and complex medical symptoms.",
   "image": "https://www.ahealingheartmedical.com/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp",
   "logo": "https://www.ahealingheartmedical.com/assets/img/logo/A-Healing-Heart-Medical-Clinic-Logo.webp",
   "@id": "https://www.ahealingheartmedical.com",
@@ -116,15 +121,26 @@
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "134 Geylang East Avenue 1, #01-227",
-    "addressLocality": "Singapore",
+    "addressLocality": "Geylang",
+    "addressRegion": "Singapore",
     "postalCode": "380134",
     "addressCountry": "SG"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 1.318806,
-    "longitude": 103.884500
+    "latitude": 1.315974,
+    "longitude": 103.8855443
   },
+  "hasMap": "https://maps.google.com/?q=1.315974,103.8855443",
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Geylang" },
+    { "@type": "AdministrativeArea", "name": "Paya Lebar" },
+    { "@type": "AdministrativeArea", "name": "Kallang" },
+    { "@type": "AdministrativeArea", "name": "Bedok" },
+    { "@type": "AdministrativeArea", "name": "Serangoon" },
+    { "@type": "AdministrativeArea", "name": "East Coast" },
+    { "@type": "AdministrativeArea", "name": "Aljunied" }
+  ],
   "founder": {
     "@type": "Person",
     "name": "Dr. Gerald Thang",
@@ -136,6 +152,12 @@
     "Endocrinology",
     "PreventiveMedicine",
     "InternalMedicine"
+  ],
+  "knowsAbout": [
+    "Cardiovascular Disease",
+    "Metabolic Syndrome",
+    "Diabetes Management",
+    "Intermediate Care"
   ],
   "openingHoursSpecification": [
     {
