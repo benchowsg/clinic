@@ -1,79 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardiology & Metabolic Clinic Singapore | A Healing Heart Medical</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --brand-blue: #43a7d5;
-            --brand-dark: #2c4964;
-            --brand-pink: #ffb6c1;
-            --brand-bg: #f8fafc;
-            --brand-border: #e2e8f0;
-            --text-muted: #64748b;
-        }
-
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: #334155; }
-
-        /* Navigation */
-        .navbar { background: #fff; border-bottom: 1px solid var(--brand-border); }
-        .btn-book { background: var(--brand-blue); color: #fff !important; font-weight: 700; border-radius: 12px; padding: 10px 24px !important; }
-
-        /* Hero Section */
-        #hero { padding: 100px 0 60px; background: radial-gradient(circle at top right, #f0f9ff 0%, #fff 100%); }
-        .hero-h1 { font-size: 3.5rem; font-weight: 800; color: var(--brand-dark); line-height: 1.1; letter-spacing: -2px; }
-        
-        /* Trust Bar */
-        .trust-bar { background: #fff; border-top: 1px solid var(--brand-border); border-bottom: 1px solid var(--brand-border); padding: 25px 0; }
-        .trust-item { display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 0.9rem; color: var(--brand-dark); }
-        .trust-icon { color: var(--brand-blue); font-size: 1.2rem; }
-
-        /* Bento Grid */
-        .bento-card { background: #fff; border: 1px solid var(--brand-border); border-radius: 28px; padding: 40px; height: 100%; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .bento-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--brand-blue); }
-        .card-badge { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
-        
-        /* Doctor Section */
-        #doctor-profile { padding: 100px 0; background: #fff; }
-        .dr-img-wrap { position: relative; display: inline-block; }
-        .dr-img-wrap::after { content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; background: var(--brand-bg); border-radius: 30px; z-index: -1; }
-
-        /* Expertise Tray */
-        .expertise-tray { padding: 80px 0; background: var(--brand-bg); }
-        .expertise-column h6 { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-blue); margin-bottom: 20px; }
-        .expertise-list { list-style: none; padding: 0; font-size: 0.95rem; }
-        .expertise-list li { margin-bottom: 10px; }
-        .expertise-list a { text-decoration: none; color: var(--text-muted); transition: 0.2s; }
-        .expertise-list a:hover { color: var(--brand-blue); }
-
-        /* Mobile Adjustments */
-        @media (max-width: 991px) {
-            .hero-h1 { font-size: 2.5rem; text-align: center; }
-            .trust-bar .row > div { margin-bottom: 15px; }
-        }
-    </style>
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="/"><img src="/assets/img/logo.png" height="45" alt="A Healing Heart Logo"></a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a class="nav-link px-3 fw-bold" href="/cardiology">Cardiology</a></li>
-                <li class="nav-item"><a class="nav-link px-3 fw-bold" href="/metabolic">Metabolic</a></li>
-                <li class="nav-item"><a class="nav-link px-3 fw-bold" href="/who-we-are">Who We Are</a></li>
-                <li class="nav-item"><a class="nav-link btn-book ms-lg-3" href="https://clinic.platomedical.com/...">Book Consult</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+---
+layout: default-test
+title: Cardiology & Metabolic Management Singapore | A Healing Heart Medical
+description: Integrated heart risk assessment and metabolic management led by Dr. Gerald Thang. Specialized intermediate care with 15-minute on-site cardiac diagnostics.
+---
 
 <section id="hero">
     <div class="container">
@@ -87,36 +16,13 @@
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-block">
-                <img src="/assets/img/about-AHH-banner-web.webp" class="img-fluid rounded-5 shadow-lg" alt="Integrated Clinic">
+                <img src="/assets/img/about-AHH-banner-web.webp" class="img-fluid rounded-5 shadow-lg" alt="A Healing Heart Medical Clinic">
             </div>
         </div>
     </div>
 </section>
 
-<div class="trust-bar">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <div class="trust-item justify-content-center">
-                    <i class="fa-solid fa-percent trust-icon"></i>
-                    <span>Non-GST Clinic (9% Savings)</span>
-                </div>
-            </div>
-            <div class="col-md-4 border-start border-end d-none d-md-block">
-                <div class="trust-item justify-content-center">
-                    <i class="fa-solid fa-bolt-lightning trust-icon"></i>
-                    <span>15-Min Cardiac Markers</span>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="trust-item justify-content-center">
-                    <i class="fa-solid fa-id-card trust-icon"></i>
-                    <span>CHAS & Healthier SG Accredited</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{% include trust-bar.html %}
 
 <section id="pathways" class="py-5 bg-light">
     <div class="container py-5 text-center">
@@ -127,7 +33,7 @@
                     <span class="card-badge" style="background: #fef2f2; color: #991b1b;">High Priority</span>
                     <h3 class="fw-bold">Heart Diagnostics</h3>
                     <p class="text-muted small mb-4">Evaluating chest pain, palpitations, or acute breathlessness with on-site ECG and rapid markers.</p>
-                    <a href="#" class="btn btn-outline-danger w-100 rounded-pill fw-bold">Book Evaluation</a>
+                    <a href="https://clinic.platomedical.com/..." class="btn btn-outline-danger w-100 rounded-pill fw-bold">Book Evaluation</a>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -135,7 +41,7 @@
                     <span class="card-badge" style="background: #eff6ff; color: #1e40af;">Management</span>
                     <h3 class="fw-bold">Metabolic & Chronic</h3>
                     <p class="text-muted small mb-4">Integrated long-term care for Diabetes, BP, and Cholesterol using the "Intermediate Care" model.</p>
-                    <a href="#" class="btn btn-outline-primary w-100 rounded-pill fw-bold">Book Management</a>
+                    <a href="https://clinic.platomedical.com/..." class="btn btn-outline-primary w-100 rounded-pill fw-bold">Book Management</a>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -143,7 +49,7 @@
                     <span class="card-badge" style="background: #f0fdf4; color: #166534;">Wellness</span>
                     <h3 class="fw-bold">Proactive Screening</h3>
                     <p class="text-muted small mb-4">Personalized longevity audits, cancer screenings, and statutory medical exams (MOM/LTA).</p>
-                    <a href="#" class="btn btn-outline-success w-100 rounded-pill fw-bold">View Packages</a>
+                    <a href="/screenings" class="btn btn-outline-success w-100 rounded-pill fw-bold">View Packages</a>
                 </div>
             </div>
         </div>
@@ -163,72 +69,16 @@
                 <h2 class="fw-bold mb-4 display-6">Dr. Gerald Thang</h2>
                 <p class="lead text-dark fw-bold">The Bridge Between General Practice and Hospital Specialisation.</p>
                 <p class="text-muted">A Healing Heart Medical Clinic is dedicated to evaluating medically complex symptoms—chest pain, chronic fatigue, and metabolic instability—that require more depth than a standard 10-minute consultation.</p>
-                <div class="row mt-4">
-                    <div class="col-6"><i class="fa-solid fa-check text-success me-2"></i> Evidence-Based</div>
-                    <div class="col-6"><i class="fa-solid fa-check text-success me-2"></i> Diagnostic-First</div>
-                    <div class="col-6"><i class="fa-solid fa-check text-success me-2"></i> CHAS/MediSave</div>
-                    <div class="col-6"><i class="fa-solid fa-check text-success me-2"></i> Healthier SG</div>
+                
+                <div class="row mt-4 g-3">
+                    <div class="col-6"><i class="fa-solid fa-circle-check text-success me-2"></i> Evidence-Based</div>
+                    <div class="col-6"><i class="fa-solid fa-circle-check text-success me-2"></i> Diagnostic-First</div>
+                    <div class="col-6"><i class="fa-solid fa-circle-check text-success me-2"></i> CHAS/MediSave</div>
+                    <div class="col-6"><i class="fa-solid fa-circle-check text-success me-2"></i> Healthier SG</div>
                 </div>
-                <a href="/who-we-are" class="btn btn-dark rounded-pill px-5 mt-5">Full Clinical Profile</a>
+                
+                <a href="/who-we-are" class="btn btn-dark rounded-pill px-5 mt-5 fw-bold">Full Clinical Profile</a>
             </div>
         </div>
     </div>
 </section>
-
-<section class="expertise-tray">
-    <div class="container">
-        <div class="row g-4 text-center text-md-start">
-            <div class="col-md-3">
-                <h6>Cardiovascular</h6>
-                <ul class="expertise-list">
-                    <li><a href="/cardiology">Cardiology</a></li>
-                    <li><a href="/hypertension">BP & Cholesterol</a></li>
-                    <li><a href="/chest-pain">Chest Pain Evaluation</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h6>Metabolic</h6>
-                <ul class="expertise-list">
-                    <li><a href="/diabetes">Diabetes Care</a></li>
-                    <li><a href="/weight-health">Weight Management</a></li>
-                    <li><a href="/hormones">Hormonal Wellness</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h6>Internal Medicine</h6>
-                <ul class="expertise-list">
-                    <li><a href="/lung-care">Lung & Asthma</a></li>
-                    <li><a href="/bone-health">Bone Health</a></li>
-                    <li><a href="/regenerative">Regenerative Care</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h6>Statutory</h6>
-                <ul class="expertise-list">
-                    <li><a href="/mom-checkup">MOM Work Permit</a></li>
-                    <li><a href="/lta-checkup">LTA Vocational</a></li>
-                    <li><a href="/ica-checkup">ICA Student/Visa</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-dark text-white py-5 border-top border-secondary">
-    <div class="container text-center text-md-start">
-        <div class="row align-items-center">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <img src="/assets/img/logo-white.png" height="40" class="mb-3" alt="Logo">
-                <p class="text-secondary small">© 2026 A Healing Heart Medical Clinic. Licensed by MOH Singapore (HCSA). Non-GST Registered Clinic.</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <a href="https://wa.me/65..." class="btn btn-success rounded-pill px-4 me-2"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp Us</a>
-                <a href="#" class="btn btn-outline-light rounded-pill px-4">Contact Clinic</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
