@@ -1,0 +1,128 @@
+<style>
+    :root {
+        --brand-blue: #43a7d5;
+        --brand-dark: #2c4964;
+        --brand-pink: #ffb6c1;
+        --brand-bg: #f8fafc;
+        --brand-border: #e2e8f0;
+        --text-muted: #64748b;
+    }
+
+    body { 
+        font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+        color: #334155; 
+        overflow-x: hidden;
+    }
+
+    /* --- Navigation --- */
+    .navbar { 
+        background: #fff; 
+        border-bottom: 1px solid var(--brand-border); 
+        padding: 15px 0;
+    }
+    .btn-book { 
+        background: var(--brand-blue); 
+        color: #fff !important; 
+        font-weight: 700; 
+        border-radius: 12px; 
+        padding: 10px 24px !important; 
+        transition: opacity 0.2s;
+    }
+    .btn-book:hover { opacity: 0.9; }
+
+    /* --- Hero Section --- */
+    #hero { 
+        padding: 100px 0 60px; 
+        background: radial-gradient(circle at top right, #f0f9ff 0%, #fff 100%); 
+    }
+    .hero-h1 { 
+        font-size: 3.5rem; 
+        font-weight: 800; 
+        color: var(--brand-dark); 
+        line-height: 1.1; 
+        letter-spacing: -2px; 
+    }
+    
+    /* --- Trust Bar --- */
+    .trust-bar { 
+        background: #fff; 
+        border-top: 1px solid var(--brand-border); 
+        border-bottom: 1px solid var(--brand-border); 
+        padding: 25px 0; 
+    }
+    .trust-item { 
+        display: flex; 
+        align-items: center; 
+        gap: 15px; 
+        font-weight: 600; 
+        font-size: 0.9rem; 
+        color: var(--brand-dark); 
+    }
+    .trust-icon { color: var(--brand-blue); font-size: 1.2rem; }
+
+    /* --- Bento Grid / Pathways --- */
+    .bento-card { 
+        background: #fff; 
+        border: 1px solid var(--brand-border); 
+        border-radius: 28px; 
+        padding: 40px; 
+        height: 100%; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .bento-card:hover { 
+        transform: translateY(-8px); 
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+        border-color: var(--brand-blue); 
+    }
+    .card-badge { 
+        display: inline-block; 
+        padding: 4px 12px; 
+        border-radius: 100px; 
+        font-size: 11px; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        margin-bottom: 20px; 
+    }
+    
+    /* --- Doctor Section --- */
+    #doctor-profile { padding: 100px 0; background: #fff; }
+    .dr-img-wrap { position: relative; display: inline-block; z-index: 1; }
+    .dr-img-wrap::after { 
+        content: ''; 
+        position: absolute; 
+        top: 20px; 
+        left: 20px; 
+        right: -20px; 
+        bottom: -20px; 
+        background: var(--brand-bg); 
+        border-radius: 30px; 
+        z-index: -1; 
+    }
+
+    /* --- Expertise Tray --- */
+    .expertise-tray { padding: 80px 0; background: var(--brand-bg); }
+    .expertise-column h6 { 
+        font-size: 0.75rem; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        letter-spacing: 1px; 
+        color: var(--brand-blue); 
+        margin-bottom: 20px; 
+    }
+    .expertise-list { list-style: none; padding: 0; font-size: 0.95rem; }
+    .expertise-list li { margin-bottom: 10px; }
+    .expertise-list a { 
+        text-decoration: none; 
+        color: var(--text-muted); 
+        transition: 0.2s; 
+    }
+    .expertise-list a:hover { color: var(--brand-blue); }
+
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 991px) {
+        .hero-h1 { font-size: 2.5rem; text-align: center; }
+        .trust-bar .row > div { margin-bottom: 15px; border: none !important; }
+        .bento-card { padding: 30px; }
+        #hero { padding: 60px 0; }
+    }
+</style>
