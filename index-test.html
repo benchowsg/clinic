@@ -115,6 +115,69 @@ description: Cardiology and Metabolic Management in Singapore. Specialising in h
     .da-hero h1 { font-size: 2rem; }
     .da-card { padding: 24px; }
   }
+
+  /* --- Expertise Section (Fast & SEO Optimized) --- */
+  .expertise-tray {
+    padding: 60px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #edf2f7;
+  }
+  
+  .expertise-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .expertise-column h6 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--brand-blue);
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  /* We use a simple list style to keep loading speeds instant */
+  .expertise-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .expertise-item {
+    margin-bottom: 12px;
+  }
+
+  .expertise-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+
+  .expertise-link:hover {
+    color: var(--brand-dark);
+  }
+
+  .expertise-link::before {
+    content: "•";
+    color: var(--brand-blue);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+  }
+
+  @media (max-width: 768px) {
+    .expertise-column { margin-bottom: 40px; text-align: center; }
+    .expertise-link { justify-content: center; }
+    .expertise-link::before { display: none; }
+  }
 </style>
 
 <section class="da-hero">
@@ -215,6 +278,54 @@ description: Cardiology and Metabolic Management in Singapore. Specialising in h
           <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Evidence-based hormone optimization</li>
         </ul>
         <a href="/who-we-are" class="btn-da btn-outline">Read Clinical Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="expertise-tray">
+  <div class="container">
+    <h2 class="expertise-title">Specialized Clinical Expertise</h2>
+    
+    <div class="row">
+      <div class="col-6 col-md-3 expertise-column">
+        <h6>Cardiovascular</h6>
+        <ul class="expertise-list">
+          <li class="expertise-item"><a href="/cardiology" class="expertise-link">Cardiology</a></li>
+          <li class="expertise-item"><a href="/hypertension" class="expertise-link">BP & Cholesterol</a></li>
+          <li class="expertise-item"><a href="/chest-pain" class="expertise-link">Chest Pain Evaluation</a></li>
+          <li class="expertise-item"><a href="/post-hospital" class="expertise-link">Post-Hospital Recovery</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 expertise-column">
+        <h6>Metabolic Medicine</h6>
+        <ul class="expertise-list">
+          <li class="expertise-item"><a href="/diabetes" class="expertise-link">Diabetes Care</a></li>
+          <li class="expertise-item"><a href="/weight-management" class="expertise-link">Weight Health</a></li>
+          <li class="expertise-item"><a href="/metabolic-audit" class="expertise-link">Metabolic Auditing</a></li>
+          <li class="expertise-item"><a href="/hormonal-wellness" class="expertise-link">Hormonal Wellness</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 expertise-column">
+        <h6>Internal Medicine</h6>
+        <ul class="expertise-list">
+          <li class="expertise-item"><a href="/lung-care" class="expertise-link">Lung & Asthma Care</a></li>
+          <li class="expertise-item"><a href="/bone-health" class="expertise-link">Osteoporosis Care</a></li>
+          <li class="expertise-item"><a href="/regenerative" class="expertise-link">Regenerative Medicine</a></li>
+          <li class="expertise-item"><a href="/general-medicine" class="expertise-link">General Medicine</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-3 expertise-column">
+        <h6>Wellness</h6>
+        <ul class="expertise-list">
+          <li class="expertise-item"><a href="/screening" class="expertise-link">Health Screenings</a></li>
+          <li class="expertise-item"><a href="/vaccinations" class="expertise-link">Vaccinations</a></li>
+          <li class="expertise-item"><a href="/skin-hair" class="expertise-link">Skin & Hair Care</a></li>
+          <li class="expertise-item"><a href="/longevity" class="expertise-link">Longevity Audits</a></li>
+        </ul>
       </div>
     </div>
   </div>
