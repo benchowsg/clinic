@@ -6,262 +6,215 @@ description: Cardiology and Metabolic Management in Singapore. Specialising in h
 ---
 <style>
   :root {
-    --corp-blue: #43a7d5;
-    --corp-dark: #2c4964;
-    --corp-pink: #ffb6c1;
-    --corp-bg: #f8fafc;
-    --text-main: #475569;
+    --brand-blue: #43a7d5;
+    --brand-dark: #2c4964;
+    --brand-pink: #ffb6c1;
+    --brand-gray: #f4f7f9;
+    --text-muted: #64748b;
   }
 
-  /* Typography & Layout */
-  #hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f0f7fa 100%);
-    padding: 100px 0 60px 0;
+  /* --- Hero Section (DA Style) --- */
+  .da-hero {
+    padding: 80px 0;
+    background-color: #ffffff;
   }
-
-  .hero-headline {
-    color: var(--corp-dark);
-    font-size: 3.2rem;
+  .da-hero h1 {
+    font-size: 2.8rem;
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -1px;
+    color: var(--brand-dark);
+    letter-spacing: -0.02em;
   }
+  .highlight-blue { color: var(--brand-blue); }
 
-  /* Trust Bar - Highlighting your 9% advantage early */
-  .trust-bar {
+  /* --- Bento Grid Section --- */
+  .da-grid-container {
+    padding: 60px 0;
+    background-color: var(--brand-gray);
+  }
+  
+  .da-card {
     background: #fff;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 20px 0;
-    margin-top: -30px;
-    position: relative;
-    z-index: 10;
-  }
-
-  .trust-item {
+    border-radius: 20px;
+    padding: 32px;
+    height: 100%;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 600;
-    color: var(--corp-dark);
-    font-size: 0.95rem;
+    flex-direction: column;
   }
 
-  .trust-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--corp-bg);
-    border-radius: 50%;
+  .da-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .da-icon-box {
+    width: 56px;
+    height: 56px;
+    background: #eff6ff;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--corp-blue);
+    margin-bottom: 24px;
+    color: var(--brand-blue);
+    font-size: 24px;
   }
 
-  /* Triage Cards Redesign */
-  .triage-card {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 24px;
-    padding: 40px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  }
-
-  .triage-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    border-color: var(--corp-blue);
-  }
-
-  .triage-badge {
-    padding: 6px 16px;
+  .da-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
     border-radius: 100px;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    margin-bottom: 24px;
+    background: #ecfdf5;
+    color: #065f46;
+    margin-bottom: 12px;
+  }
+
+  /* --- CTA Buttons --- */
+  .btn-da {
+    background: var(--brand-blue);
+    color: white;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 12px;
+    text-decoration: none;
     display: inline-block;
-  }
-
-  /* Expertise Tiles Refinement */
-  .service-tile {
-    background: #fff !important;
-    border: 1px solid #f1f5f9 !important;
-    padding: 25px 15px !important;
-    border-radius: 20px !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-  }
-
-  .service-tile:hover {
-    background: var(--corp-dark) !important;
-    border-color: var(--corp-dark) !important;
-  }
-
-  .service-tile:hover p { color: #fff !important; }
-  .service-tile:hover i { color: var(--corp-blue) !important; }
-
-.icon-circle {
-  width: 60px;
-  height: 60px;
-  background: var(--corp-bg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 15px;
-  color: var(--corp-blue);
-  font-size: 24px;
-  transition: all 0.3s ease;
-}
-
-.service-tile:hover .icon-circle {
-  background: rgba(255,255,255,0.2);
-  color: #fff;
-}
-
-  .btn-axis {
-  padding: 12px 30px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.btn-men-axis { background: var(--corp-blue); color: #fff; }
-.btn-women-axis { background: var(--corp-pink); color: #2c4964; }
-
-@media (max-width: 767px) {
-  .ps-lg-5 {
-    padding-left: 0 !important;
     text-align: center;
-    padding-top: 30px;
+    transition: opacity 0.2s;
+  }
+  .btn-da:hover { opacity: 0.9; color: white; }
+  
+  .btn-outline {
+    border: 2px solid var(--brand-blue);
+    color: var(--brand-blue);
+    background: transparent;
+  }
+
+  /* --- Trust Section --- */
+  .stat-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+  .stat-item h4 { color: var(--brand-blue); font-weight: 800; margin-bottom: 5px; }
+
+  @media (max-width: 576px) {
+  .stat-bar .container {
+    flex-direction: column;
+    gap: 20px;
   }
 }
-  
-  /* Mobile Overrides */
-  @media (max-width: 991px) {
-    .hero-headline { font-size: 2.2rem; text-align: center; }
-    .hero-img { display: none; }
-    .trust-bar .row { gap: 15px; }
+
+  @media (max-width: 768px) {
+    .da-hero h1 { font-size: 2rem; }
+    .da-card { padding: 24px; }
   }
 </style>
 
-<section id="hero" class="d-flex align-items-center">
+<section class="da-hero">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-7">
-        <h1 class="hero-headline mb-4">
-          The Intersection of <span style="color: var(--corp-blue);">Cardiovascular</span> & Metabolic Health
-        </h1>
-        <p class="lead mb-5" style="color: var(--text-main); font-size: 1.25rem;">
-          We audit the <strong>Hormonal and Metabolic shifts</strong> driving arterial aging. Singapore's dedicated clinic for integrated, senior physician-led heart health.
-        </p>
-        <div class="d-flex gap-3 flex-wrap">
-          <a href="/men-cardio-metabolic-audit" class="btn-axis btn-men-axis">Men's Axis Audit</a>
-          <a href="/women-cardio-metabolic-audit" class="btn-axis btn-women-axis">Women's Axis Audit</a>
+      <div class="col-lg-6">
+        <h1 class="mb-4">Cardiology & <span class="highlight-blue">Metabolic Management</span> Without the Hospital Wait.</h1>
+        <p class="lead mb-4" style="color: var(--text-muted);">Experience Singapore's boutique approach to heart health. Intermediate care led by Principal Physician Dr. Gerald Thang.</p>
+        <div class="d-flex gap-3">
+          <a href="#booking" class="btn-da">Book Appointment</a>
+          <a href="/who-we-are" class="btn-da btn-outline">Our Clinical Team</a>
         </div>
       </div>
-      <div class="col-lg-5 text-center hero-img">
-        <img src="/assets/img/about-AHH-banner-web.webp" width="550" alt="Integrated Clinic" class="img-fluid">
+      <div class="col-lg-6 d-none d-lg-block text-end">
+        <img src="/assets/img/about-AHH-banner-web.webp" alt="Clinic" style="width: 90%; border-radius: 30px;">
       </div>
     </div>
   </div>
 </section>
 
-<div class="trust-bar">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-4 col-12">
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fa-solid fa-percent"></i></div>
-          <span>Non-GST Registered (9% Instant Savings)</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-12">
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fa-solid fa-id-card"></i></div>
-          <span>CHAS & Healthier SG Accredited</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-12">
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-          <span>15-Min Rapid Cardiac Diagnostics</span>
-        </div>
-      </div>
+<div class="stat-bar">
+  <div class="container d-flex flex-wrap justify-content-between">
+    <div class="stat-item">
+      <h4>9% SAVINGS</h4>
+      <p class="small text-muted">Non-GST Registered</p>
+    </div>
+    <div class="stat-item">
+      <h4>15 MINS</h4>
+      <p class="small text-muted">Rapid Heart Markers</p>
+    </div>
+    <div class="stat-item">
+      <h4>CHAS / HSG</h4>
+      <p class="small text-muted">Accredited Clinic</p>
     </div>
   </div>
 </div>
 
-<section class="py-5 mt-5">
-  <div class="container text-center">
-    <h2 class="fw-bold mb-2" style="color: var(--corp-dark);">Clinical Care Pathways</h2>
-    <p class="text-muted mb-5">Select a specialized track for your clinical needs</p>
+<section class="da-grid-container">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="fw-bold" style="color: var(--brand-dark);">Our Pathways</h2>
+      </div>
+    </div>
     
     <div class="row g-4">
-      <div class="col-lg-6">
-        <div class="triage-card">
-          <span class="triage-badge" style="background: #fff0f3; color: #d82a5f;">DIAGNOSTICS</span>
-          <h3 class="fw-bold mb-3">Heart Evaluation</h3>
-          <p class="mb-4">Chest pain, palpitations, or acute breathlessness assessments with on-site ECG and rapid markers.</p>
-          <div class="alert style" style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; font-size: 0.9rem;">
-             <i class="fa-solid fa-bolt-lightning text-danger me-2"></i> Results for cardiac markers in 15 minutes.
+      <div class="col-md-6 col-lg-4">
+        <div class="da-card">
+          <div class="da-icon-box" aria-label="Cardiology Icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <span class="da-badge" style="background: #fef2f2; color: #991b1b;">High Priority</span>
+          <h4 class="fw-bold">Heart Evaluation</h4>
+          <p class="text-muted small mb-4">Detailed assessment for chest pain or palpitations. Includes in-clinic diagnostics and rapid results.</p>
+          <div class="mt-auto">
+            <a href="https://clinic.platomedical.com/..." class="btn-da w-100">Book Evaluation</a>
           </div>
-          <a href="https://clinic.platomedical.com/..." class="btn btn-urgent w-100 py-3 rounded-pill fw-bold">Book Cardiac Evaluation</a>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="triage-card">
-          <span class="triage-badge" style="background: #f0f7fa; color: var(--corp-blue);">CHRONIC CARE</span>
-          <h3 class="fw-bold mb-3">Medical Management</h3>
-          <p class="mb-4">Integrated long-term care for Diabetes, Hypertension, and complex metabolic conditions.</p>
-          <div class="alert" style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; font-size: 0.9rem;">
-             <i class="fa-solid fa-shield-heart text-primary me-2"></i> CHAS Subsidies & MediSave applicable.
+      <div class="col-md-6 col-lg-4">
+        <div class="da-card">
+          <div class="da-icon-box" aria-label="Health Icon"><i class="fa-solid fa-droplet"></i></div>
+          <span class="da-badge">CHAS Applicable</span>
+          <h4 class="fw-bold">Chronic Management</h4>
+          <p class="text-muted small mb-4">Long-term care for Diabetes, BP, and Cholesterol using our intermediate care model.</p>
+          <div class="mt-auto">
+            <a href="https://clinic.platomedical.com/..." class="btn-da w-100">Manage Health</a>
           </div>
-          <a href="https://clinic.platomedical.com/..." class="btn btn-mgmt w-100 py-3 rounded-pill fw-bold">Book Chronic Management</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="da-card">
+          <div class="da-icon-box" aria-label="Screen Icon"><i class="fa-solid fa-user-check"></i></div>
+          <span class="da-badge" style="background: #eff6ff; color: #1e40af;">Wellness</span>
+          <h4 class="fw-bold">Health Audit</h4>
+          <p class="text-muted small mb-4">Proactive screenings and statutory checkups (MOM, ICA, LTA) for license renewals.</p>
+          <div class="mt-auto">
+            <a href="/booking-tree" class="btn-da w-100">View Packages</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="service-navigation" class="py-5" style="background: #f1f5f9;">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold" style="color: var(--corp-dark);">Clinical Specializations</h2>
-    </div>
-
-    <div class="row g-3 mb-4">
-      <div class="col-6 col-md-3">
-        <a href="/cardiology" class="service-tile text-center d-block">
-          <div class="icon-circle mb-3"><i class="fa-solid fa-heart-pulse"></i></div>
-          <p class="mb-0 fw-bold">Cardiology</p>
-        </a>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="/hypertension-cholesterol-management" class="service-tile text-center d-block">
-          <div class="icon-circle mb-3"><i class="fa-solid fa-gauge-high"></i></div>
-          <p class="mb-0 fw-bold">BP & Cholesterol</p>
-        </a>
-      </div>
-      </div>
-  </div>
-</section>
-
-<section class="py-5">
+<section class="py-5 bg-white">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-         <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="img-fluid rounded-4 shadow-lg" alt="Dr Gerald Thang">
+      <div class="col-lg-5">
+        <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="img-fluid rounded-4" alt="Dr Thang">
       </div>
-      <div class="col-lg-6 ps-lg-5">
-        <span class="text-uppercase fw-bold text-primary small">Principal Physician</span>
-        <h2 class="fw-bold mb-4" style="color: var(--corp-dark);">Dr. Gerald Thang</h2>
-        <p class="lead">Bridging the gap between general practice and high-level specialisation.</p>
-        <p>Our clinic focuses on <b>medically complex symptoms</b> that require more than a standard 10-minute consultation. We provide the "detective work" necessary for chest pain, chronic fatigue, and metabolic instability.</p>
-        <a href="/who-we-are" class="btn btn-outline-dark rounded-pill px-5 mt-3">Full Clinical Profile</a>
+      <div class="col-lg-7 ps-lg-5">
+        <h2 class="fw-bold mb-4">Advanced Diagnostics by <span class="highlight-blue">Dr. Gerald Thang</span></h2>
+        <p class="text-muted">As an intermediate care bridge, our clinic provides personalized clinical assessments and management for complex symptoms that standard GP consultations might overlook.</p>
+        <ul class="list-unstyled mb-4">
+          <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Specialized Metabolic Auditing</li>
+          <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Post-Hospitalization Recovery</li>
+          <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Evidence-based hormone optimization</li>
+        </ul>
+        <a href="/who-we-are" class="btn-da btn-outline">Read Clinical Profile</a>
       </div>
     </div>
   </div>
