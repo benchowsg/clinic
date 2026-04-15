@@ -91,9 +91,37 @@ custom_schema: |
   .chart-svg:has(#legend-ceiling:hover) #ceiling-points .data-point { opacity: 1; fill: #c53030; stroke: #fff; stroke-width: 2;}
 </style>
 
+<nav aria-label="breadcrumb" class="mb-4">
+  <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/articles/" itemprop="item"><span itemprop="name">Health Library</span></a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">Cholesterol & Biology</span>
+      <meta itemprop="position" content="3" />
+    </li>
+  </ol>
+</nav>
 
 <div style="display:none;">
   <p>Why is my cholesterol not going down? Most cholesterol (80%) is produced by the liver. Diet only accounts for 20%. Lifestyle changes usually hit a ceiling at 20% LDL reduction.</p>
+</div>
+
+<div class="author-box d-flex align-items-center mb-5 p-3 rounded" style="background: #f8fbfc; border-left: 4px solid #008080;">
+  <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" 
+       class="rounded-circle" 
+       style="width: 70px; height: 70px; object-fit: cover; margin-right: 15px;" 
+       alt="Dr Gerald Thang - Principal Physician at A Healing Heart Medical">
+  <div>
+    <p class="mb-0 fw-bold" style="color: #2c4964;">By Dr. Gerald Thang</p>
+    <p class="mb-0 text-primary fw-bold small text-uppercase">Principal Physician</p>
+    <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology</p>
+  </div>
 </div>
 
 <div class="bento-item span-12" data-aos="fade-up">
