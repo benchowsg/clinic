@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<style>
+  /* Specific styles for the Bento Grid */
+  .bento-wrapper { padding-top: 60px; background-color: #fcfcfc; }
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .bento-item {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 35px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .bento-item:hover {
+    border-color: #008080;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.08);
+  }
+  /* Spans */
+  .span-12 { grid-column: span 12; }
+  .span-8 { grid-column: span 8; }
+  .span-6 { grid-column: span 6; }
+  .span-4 { grid-column: span 4; }
+
+  @media (max-width: 992px) {
+    .span-8, .span-4, .span-6 { grid-column: span 12; }
+  }
+</style>
+
+<div class="bento-wrapper">
+  <div class="container">
+    <div class="bento-grid">
+      {{ content }}
+    </div>
+  </div>
+</div>
