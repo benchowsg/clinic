@@ -42,6 +42,49 @@ custom_schema: |
     }
   ]
 ---
+<style>
+  /* Interactive SVG Chart Styling */
+  .chart-svg {
+    width: 100%;
+    height: auto;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Axises & Grid */
+  .chart-axis { stroke: #e0e0e0; stroke-width: 1.5; }
+  .chart-grid { stroke: #f0f0f0; stroke-width: 1; stroke-dasharray: 2; }
+  .chart-label { fill: #888; font-size: 12px; }
+
+  /* Data Lines */
+  .data-line { fill: none; stroke-width: 3; stroke-linecap: round; transition: all 0.3s ease; }
+  .data-point { transition: all 0.3s ease; opacity: 0; }
+
+  /* Plaque Threshold Line */
+  .threshold-line { stroke: #feb2b2; stroke-width: 2; stroke-dasharray: 6; }
+  .threshold-text { fill: #c53030; font-size: 11px; font-weight: bold; }
+
+  /* Legend & Interactions */
+  .legend-item { cursor: pointer; transition: 0.3s; }
+  .legend-text { font-size: 13px; fill: #555; }
+  
+  /* Initial State of the chart lines (Default) */
+  #goal-line { stroke: #008080; opacity: 1; }
+  #ceiling-line { stroke: #c53030; opacity: 1; }
+
+  /* Hover State (The magic) */
+  /* When hovering over the legend, dim other lines */
+  .chart-svg:has(#legend-goal:hover) #ceiling-line { opacity: 0.15; stroke-width: 1.5; }
+  .chart-svg:has(#legend-ceiling:hover) #goal-line { opacity: 0.15; stroke-width: 1.5; }
+
+  /* Highlight the active line on legend hover */
+  .chart-svg:has(#legend-goal:hover) #goal-line { stroke-width: 5; }
+  .chart-svg:has(#legend-ceiling:hover) #ceiling-line { stroke-width: 5; }
+  
+  /* Show points on legend hover */
+  .chart-svg:has(#legend-goal:hover) #goal-points .data-point { opacity: 1; fill: #008080; stroke: #fff; stroke-width: 2;}
+  .chart-svg:has(#legend-ceiling:hover) #ceiling-points .data-point { opacity: 1; fill: #c53030; stroke: #fff; stroke-width: 2;}
+</style>
+
 
 <div style="display:none;">
   <p>Why is my cholesterol not going down? Most cholesterol (80%) is produced by the liver. Diet only accounts for 20%. Lifestyle changes usually hit a ceiling at 20% LDL reduction.</p>
@@ -67,6 +110,95 @@ custom_schema: |
     <hr style="width: 50%; margin: 10px auto;">
     <span class="display-5 fw-bold" style="color: #008080;">20%</span>
     <p class="small text-uppercase fw-bold">Dietary Intake</p>
+  </div>
+</div>
+
+<div class="bento-item span-12 highlight-box" data-aos="fade-up">
+  <div class="p-3 text-center">
+    <h3 class="fw-bold mb-3" style="color: #2c4964;">The "Cumulative Burden": Visualisation of LDL-Years</h3>
+    <p class="mb-4 text-muted">A basic blood test only shows a moment in time. This chart shows the dangerous "accumulation" of cholesterol burden (Level x Time) when the Biological Ceiling is not clinically managed.</p>
+
+    <svg class="chart-svg" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+      
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <g class="grid-group">
+        <line class="chart-grid" x1="50" y1="280" x2="550" y2="280" /> <line class="chart-grid" x1="50" y1="230" x2="550" y2="230" />
+        <line class="chart-grid" x1="50" y1="180" x2="550" y2="180" />
+        <line class="chart-grid" x1="50" y1="130" x2="550" y2="130" />
+        <line class="chart-grid" x1="50" y1="80" x2="550" y2="80" />
+        
+        <text class="chart-label" x="40" y="284" text-anchor="end">0</p>
+        <text class="chart-label" x="40" y="184" text-anchor="end">500</p>
+        <text class="chart-label" x="40" y="84" text-anchor="end">1000</p>
+        <text class="chart-label" x="20" y="160" transform="rotate(-90, 20, 160)" text-anchor="middle">Cumulative LDL Burden (Units)</p>
+
+        <line class="chart-axis" x1="50" y1="280" x2="550" y2="280" />
+        <line class="chart-axis" x1="50" y1="280" x2="50" y2="50" />
+        
+        <text class="chart-label" x="50" y="305" text-anchor="middle">10</p>
+        <text class="chart-label" x="150" y="305" text-anchor="middle">20</p>
+        <text class="chart-label" x="250" y="305" text-anchor="middle">30</p>
+        <text class="chart-label" x="350" y="305" text-anchor="middle">40 (Ceiling Hit)</p>
+        <text class="chart-label" x="450" y="305" text-anchor="middle">50 (Risk Zones)</p>
+        <text class="chart-label" x="550" y="305" text-anchor="middle">60+</p>
+        <text class="chart-label" x="300" y="330" text-anchor="middle" fw-bold>Age (Years of Exposure)</p>
+      </g>
+
+      <g class="threshold-group">
+        <line class="threshold-line" x1="50" y1="150" x2="550" y2="150" />
+        <text class="threshold-text" x="550" y="145" text-anchor="end">⚠️ Plaque Formation Threshold (Area Under Curve)</p>
+      </g>
+
+      <g class="data-group" filter="url(#glow)">
+        
+        <path id="ceiling-line" class="data-line" d="M 50,260 C 150,240 250,200 350,140 S 450,80 550,50" />
+        
+        <path id="goal-line" class="data-line" d="M 50,260 C 150,255 250,250 350,240 S 450,230 550,220" />
+        
+      </g>
+      
+      <g id="ceiling-points" class="points-group">
+        <circle class="data-point" cx="150" cy="240" r="5" />
+        <circle class="data-point" cx="350" cy="140" r="5" /> <circle class="data-point" cx="550" cy="50" r="5" /> </g>
+      
+      <g id="goal-points" class="points-group">
+        <circle class="data-point" cx="150" cy="255" r="5" />
+        <circle class="data-point" cx="350" cy="240" r="5" />
+        <circle class="data-point" cx="550" cy="220" r="5" />
+      </g>
+
+      <g class="marker-group" style="fill:#feb2b2; font-size: 10px;">
+        <text x="350" y="130" text-anchor="start">Plague begins silent build-up</p>
+        <text x="500" y="70" text-anchor="start">⚠️ High Risk Zone</p>
+      </g>
+
+      <g class="legend-group" transform="translate(100, 30)">
+        
+        <g id="legend-goal" class="legend-item">
+          <rect x="0" y="0" width="15" height="15" fill="#008080" rx="3" />
+          <text class="legend-text" x="25" y="12">Optimal Path (Managed Biology)</p>
+          <rect x="-5" y="-5" width="220" height="25" fill="transparent" />
+        </g>
+        
+        <g id="legend-ceiling" class="legend-item" transform="translate(250, 0)">
+          <rect x="0" y="0" width="15" height="15" fill="#c53030" rx="3" />
+          <text class="legend-text" x="25" y="12">Biological Ceiling (Unmanaged)</p>
+          <rect x="-5" y="-5" width="240" height="25" fill="transparent" />
+        </g>
+        
+      </g>
+
+    </svg>
+    <p class="mt-3 small text-muted"><strong>*Visualization Note:</strong> Burden is an abstract unit representing cumulative exposure (Average LDL x Years). Even managed biology has high initial production, but clearance prevents burden accumulation above the plaque threshold.</p>
   </div>
 </div>
 
