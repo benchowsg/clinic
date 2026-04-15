@@ -16,18 +16,14 @@
         
         <div class="col-lg-5 col-md-6">
           <h4 class="fw-bold mb-3" style="font-size: 1.25rem;">A Healing Heart Medical</h4>
-            <div class="footer-rating mb-3" style="font-size: 0.9rem;">
-              <span style="color: #f1c40f;">★★★★★</span> 
-              <strong>{{ site.ratings.value | default: "4.8" }}</strong>/5 
-              based on 
-              <a href="https://g.page/r/CTFClQQOusqKEBM/review" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="text-decoration-none" 
-                 style="color: #2c4964; border-bottom: 1px dotted #2c4964;">
-                 {{ site.ratings.count | default: "100+" }} Google Reviews
-              </a>
-            </div>
+              <div class="footer-rating mb-3" style="font-size: 0.9rem;">
+                <span style="color: #f1c40f;">★★★★★</span> 
+                <strong>{{ site.google_ratings.value | default: "4.8" }}</strong>/5 
+                based on 
+                <a href="{{ site.google_ratings.link }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none" style="color: #2c4964;">
+                  {{ site.google_ratings.count }} Google Reviews
+                </a>
+              </div>
           <p class="small text-muted mb-3">Intermediate care dedicated to preventive cardiovascular and metabolic health. CHAS & MediSave accredited for Chronic Disease Management (CDMP) and Healthier SG.</p>
           <p class="small mb-1"><i class="fa-solid fa-location-dot me-2 text-primary"></i> 134 Geylang East Ave 1, #01-227, S380134</p>
           <p class="small mb-0"><i class="fa-solid fa-phone me-2 text-primary"></i> +65 6962 1362</p>
@@ -117,8 +113,8 @@
   "priceRange": "$$",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "{{ site.ratings.value }}",
-    "reviewCount": "{{ site.ratings.count }}",
+    "ratingValue": "{{ site.google_ratings.value }}",
+    "reviewCount": "{{ site.google_ratings.count }}",
     "bestRating": "5",
     "worstRating": "1"
   },
