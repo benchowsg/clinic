@@ -113,6 +113,46 @@ custom_schema: |
   /* Show points on legend hover */
   .chart-svg:has(#legend-goal:hover) #goal-points .data-point { opacity: 1; fill: #008080; stroke: #fff; stroke-width: 2;}
   .chart-svg:has(#legend-ceiling:hover) #ceiling-points .data-point { opacity: 1; fill: #c53030; stroke: #fff; stroke-width: 2;}
+
+/* Container for the scroll effect */
+  .chart-window {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Clips the inner scroll area */
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .chart-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 10px;
+  }
+
+  /* Force readability on mobile */
+  @media (max-width: 768px) {
+    .chart-svg {
+      min-width: 600px; /* Ensures text doesn't shrink to unreadable sizes */
+      height: auto;
+    }
+    
+    /* Subtle hint for the user */
+    .scroll-hint {
+      display: block !important;
+      font-size: 11px;
+      color: #008080;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  /* Custom Scrollbar Styling */
+  .chart-container::-webkit-scrollbar { height: 6px; }
+  .chart-container::-webkit-scrollbar-track { background: #f1f1f1; }
+  .chart-container::-webkit-scrollbar-thumb { background: #008080; border-radius: 10px; }
 </style>
 
 <div style="display:none;">
@@ -175,8 +215,21 @@ custom_schema: |
 <div class="bento-item span-12 highlight-box" data-aos="fade-up">
   <div class="p-3 text-center">
     <h3 class="fw-bold mb-3" style="color: #2c4964;">The "Cumulative Burden": Visualisation of LDL-Years</h3>
-    <p class="mb-4 text-muted">A basic blood test only shows a moment in time. This chart shows the dangerous "accumulation" of cholesterol burden (Level x Time) when the Biological Ceiling is not clinically managed.</p>
+    
+    <div class="scroll-hint d-none"><i class="fas fa-arrows-left-right me-1"></i> Swipe to explore data</div>
 
+    <div class="chart-window">
+      <div class="chart-container">
+        <svg class="chart-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+          </svg>
+        </div>
+    </div>
+    
+    <p class="mt-4 small text-muted px-lg-5">
+      <strong>Clinical Explainer:</strong> Cumulative LDL-years measure your total lifetime exposure to cholesterol. A higher 'burden' score indicates a higher risk of plaque buildup, even if your current diet is healthy.
+    </p>
+    
+<div class="chart-container">
 <svg class="chart-svg" viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow">
@@ -262,6 +315,7 @@ custom_schema: |
     <p class="mt-3 small text-muted"><strong>Explainer:</strong> Cumulative LDL-years measure your total lifetime exposure to cholesterol. It is calculated by multiplying your average LDL level by your age. 
       A higher 'burden' score, regardless of your current diet, indicates a higher lifetime risk of plaque buildup.</p>
   </div>
+</div>
 </div>
 
 <div class="bento-item span-12" data-aos="fade-up">
