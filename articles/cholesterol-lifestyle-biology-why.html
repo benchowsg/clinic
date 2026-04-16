@@ -153,6 +153,21 @@ custom_schema: |
   .chart-container::-webkit-scrollbar { height: 6px; }
   .chart-container::-webkit-scrollbar-track { background: #f1f1f1; }
   .chart-container::-webkit-scrollbar-thumb { background: #008080; border-radius: 10px; }
+
+  /* Styling for Internal Article Links (Clusters) */
+.clinical-link {
+  color: #008080;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(0, 128, 128, 0.2);
+  transition: all 0.3s ease;
+}
+
+.clinical-link:hover {
+  background: rgba(0, 128, 128, 0.05);
+  border-bottom-color: #008080;
+  color: #006666;
+}
 </style>
 
 <div style="display:none;">
@@ -198,7 +213,7 @@ custom_schema: |
 <div class="bento-item span-8" data-aos="fade-up">
   <h3 class="faq-q">Q1: I’ve lost weight and changed my diet. Why is my LDL still high?</h3>
   <p>Most people believe cholesterol is a "food problem." In reality, for the majority of adults, it is a <strong>production problem</strong>. Roughly 80% of the cholesterol circulating in your blood is produced endogenously by your liver. Only about 20% to 25% comes from the food you eat.</p>
-  <p>If you have a genetic predisposition for high production, you could eat a "perfect" diet and still have elevated levels. Your liver is essentially a factory that doesn't have an 'off' switch.</p>
+  <p>If you have a genetic predisposition for high production, you could eat a "perfect" diet and still have elevated levels. This is frequently seen in patients with high <a href="/articles/lpa-hidden-genetic-heart-risk" class="clinical-link">Lp(a) (the hidden genetic risk factor)</a>. Your liver is essentially a factory that doesn't have an 'off' switch.</p>
 </div>
 
 <div class="bento-item span-4" data-aos="fade-up" style="background: #f0fafa; border-color: #cceeee; text-align: center;">
@@ -303,8 +318,7 @@ custom_schema: |
 <div class="bento-item span-12" data-aos="fade-up">
   <h3 class="faq-q">Q2: Is there a "limit" to how much lifestyle can actually lower my numbers?</h3>
   <p>Yes. Clinical data generally shows that even the most aggressive lifestyle interventions typically result in an LDL reduction of about <strong>15% to 20%</strong>. </p>
-  <p>If you start with an LDL of 5.5 mmol/L, a 20% reduction brings you to 4.4 mmol/L. While that is a great improvement, it may still leave you in a high-risk category. This 20% mark is what we call the <strong>"Lifestyle Ceiling."</strong> At A Healing Heart Medical, we use your lifestyle efforts to establish your "Floor." Once we see how low your lifestyle can take you, we know exactly how much "Biological Gap" we need to close.</p>
-</div>
+  <p>If you start with an LDL of 5.5 mmol/L, a 20% reduction brings you to 4.4 mmol/L. While that is a great improvement, it may still leave you in a high-risk category. This 20% mark is what we call the <strong>"Lifestyle Ceiling."</strong> It explains why many disciplined patients face the <a href="/articles/the-health-kick-paradox" class="clinical-link">Health Kick Paradox</a>, where lipid results don't match the effort put in.</p>
 
 <div class="bento-item span-6" data-aos="fade-up">
   <h3 class="faq-q">Q3: What does it mean when you say the problem is "Upstream"?</h3>
@@ -322,12 +336,12 @@ custom_schema: |
 <div class="bento-item span-8" data-aos="fade-up">
   <h3 class="faq-q">Q4: Are "Normal" cholesterol levels safe for everyone?</h3>
   <p>This is a dangerous misconception. "Normal" is a statistical average, but <strong>"Optimal"</strong> is specific to your unique risk profile. A standard lipid panel only tells us the <em>concentration</em>. It doesn't tell us the <strong>Particle Count (ApoB)</strong> or the Particle Size. </p>
-  <p>Small, dense particles are much more likely to wedge themselves into your artery walls than large ones. This is why we perform a <strong>Lipid Audit</strong>. It's to look at the quality of your lipids, not just the quantity. Standard blood tests only tell part of the story; our evaluation goes deeper, giving us a risk picture that explains why two patients with identical LDL numbers can have very different heart disease risk profiles.</p>
+  <p>Small, dense particles are much more likely to wedge themselves into your artery walls than large ones. This is why we perform a <strong>Lipid Audit</strong>. Our philosophy is about <a href="/articles/beyond-biomarker-numbers-treating-the-patient" class="clinical-link">treating the patient, not the number</a>, looking at the quality of your lipids rather than just the quantity. Standard blood tests only tell part of the story; our evaluation goes deeper, giving us a risk picture that explains why two patients with identical LDL numbers can have very different heart disease risk profiles.</p>
 </div>
 
 <div class="bento-item span-4" data-aos="fade-up">
   <h3 class="faq-q">Q5: Is medication a failure?</h3>
-  <p>Absolutely not. Many patients come to us having resisted this conversation for years. There is a cultural tendency to see medication, especially when taken over a long period, as giving up. 
+  <p>Absolutely not. Many patients come to us having resisted this conversation for years due to the <a href="/articles/medication-psychology-and-prevention" class="clinical-link">Screening Paradox</a>, where the fear of the treatment is greater than the fear of the underlying biology. There is a cultural tendency to see medication, especially when taken over a long period, as giving up. 
     <strong>But consider this: Think of lifestyle as the foundation and medical intervention as the reinforcement.</strong> 
     If your liver is genetically programmed to overproduce cholesterol, no amount of willpower changes that biology. 
     Medication isn't a substitute for healthy habits. Patients who maintain healthy habits often require lower doses and experience better long-term outcomes.</p>
@@ -369,18 +383,50 @@ custom_schema: |
   </div>
 </div>
 
-<div class="bento-item span-12" style="background: #f8f9fa; border: 1px dashed #d1d9e0; opacity: 0.8;">
-  <div class="p-3">
-    <h6 class="fw-bold mb-2" style="font-size: 0.85rem; color: #7f8c8d;">
-      <i class="fa-solid fa-scale-balanced me-2"></i> Clinical & Intellectual Disclaimer
-    </h6>
+<div class="row gy-4 mt-4">
+  <div class="col-lg-8">
+    <div class="bento-item h-100" style="background: #fdfcf0; border: 1px solid #f1eee0; padding: 1.5rem;">
+      <h6 class="fw-bold mb-3" style="color: #2c4964;">
+        <i class="fa-solid fa-sitemap me-2 text-primary"></i> Continue Your Reading
+      </h6>
+      <div class="row g-3">
+        <div class="col-6">
+          <a href="/articles/the-health-kick-paradox" class="small fw-bold text-dark text-decoration-none d-block">
+            <i class="fa-solid fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> The Health Kick Paradox
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="/articles/lpa-hidden-genetic-heart-risk" class="small fw-bold text-dark text-decoration-none d-block">
+            <i class="fa-solid fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Genetic Risk (Lp(a))
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="/articles/medication-psychology-and-prevention" class="small fw-bold text-dark text-decoration-none d-block">
+            <i class="fa-solid fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Psychology of Prevention
+          </a>
+        </div>
+        <div class="col-6">
+          <a href="/articles/beyond-biomarker-numbers-treating-the-patient" class="small fw-bold text-dark text-decoration-none d-block">
+            <i class="fa-solid fa-chevron-right me-1 text-primary" style="font-size: 0.7rem;"></i> Beyond the Numbers
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="bento-item h-100" style="background: #f8f9fa; border: 1px dashed #d1d9e0; opacity: 0.8; padding: 1.5rem;">
+      <h6 class="fw-bold mb-2" style="font-size: 0.85rem; color: #7f8c8d;">
+        <i class="fa-solid fa-scale-balanced me-2"></i> Clinical Disclaimer
+      </h6>
       <p class="small fw-bold text-primary mb-2" style="font-size: 0.7rem; text-transform: uppercase;">
         Last Clinical Review: {{ page.last_reviewed | date: "%B %d, %Y" }}
       </p>
-    <p class="small text-muted mb-0" style="font-size: 0.75rem; line-height: 1.5;">
-      <strong>© 2026 A Healing Heart Medical Clinic.</strong> All rights reserved. The "Lifestyle Ceiling" framework and interactive "LDL-Years Burden" visualisations are the intellectual property of this clinic. 
-      <br><br>
-      <strong>Medical Information:</strong> The content provided in this library is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Cardiology and metabolic health are highly individual; always seek the advice of a qualified physician regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this website.
-    </p>
+      <p class="small text-muted mb-0" style="font-size: 0.7rem; line-height: 1.5;">
+        <strong>© 2026 A Healing Heart Medical Clinic.</strong> All rights reserved. 
+        <br><br>
+        The "Lifestyle Ceiling" framework and interactive "LDL-Years Burden" visualisations are the intellectual property of this clinic. Information is for educational purposes only and does not constitute medical advice.
+      </p>
+    </div>
   </div>
 </div>
