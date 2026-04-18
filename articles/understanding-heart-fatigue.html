@@ -156,7 +156,20 @@ custom_schema: |
             <p class="small text-muted mt-2">Adapted from: Schiffer et al., <em>Archives of Cardiovascular Diseases</em> (2006); Kitko et al., <em>Circulation: Cardiovascular Quality and Outcomes</em> (2023); Zambroski et al., <em>Heart & Lung</em> (2005).</p>
           </div>
 
-          <p>Three findings from the research are worth highlighting. First, reduced exercise capacity in cardiac fatigue is not simply a matter of feeling tired — a 2005 study in <em>Heart & Lung</em> found that patients with high fatigue had measurably lower peak oxygen uptake (VO₂) and maximal workload compared to those with low fatigue, confirming that the limitation is physiological, not just perceived. Second, the pattern of unconsciously scaling back activity is well-documented: a review published in <em>Circulation: Cardiovascular Quality and Outcomes</em> (2023) noted that patients with heart failure often curtail daily activities to avoid triggering symptoms — meaning the fatigue may appear to "improve" simply because the person has stopped doing the things that expose it. Third, the link between elevated cardiac biomarkers and fatigue supports early detection: measurable myocardial stress can be present before a person feels unwell enough to seek help, which is precisely where a proactive assessment adds value.</p>
+          <div style="border: 1px solid #e0eeee; border-radius: 12px; margin: 10px 0 30px; overflow: hidden;">
+            <button
+              onclick="const body = this.nextElementSibling; const arrow = this.querySelector('.expand-arrow'); const isOpen = body.style.display === 'block'; body.style.display = isOpen ? 'none' : 'block'; arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';"
+              style="width: 100%; background: #f0fafa; border: none; padding: 16px 20px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+              <span style="font-size: 0.95rem; font-weight: 600; color: #2c4964;">What the research says: 3 key findings from published literature</span>
+              <span class="expand-arrow" style="color: #008080; font-size: 1.1rem; transition: transform 0.2s ease; flex-shrink: 0;">&#9660;</span>
+            </button>
+            <div style="display: none; padding: 24px 24px 20px; border-top: 1px solid #e0eeee;">
+              <p style="margin-bottom: 1.1rem;">Three findings from the research are worth highlighting.</p>
+              <p style="margin-bottom: 1.1rem;"><strong>1. Reduced exercise capacity is physiological, not perceived.</strong> A 2005 study in <em>Heart & Lung</em> found that patients with high fatigue had measurably lower peak oxygen uptake (VO₂) and maximal workload compared to those with low fatigue — confirming that the limitation shows up in objective measurement, not just in how a person feels.</p>
+              <p style="margin-bottom: 1.1rem;"><strong>2. Activity curtailment can mask the symptom.</strong> A review published in <em>Circulation: Cardiovascular Quality and Outcomes</em> (2023) noted that patients with heart failure often unconsciously scale back daily activities to avoid triggering symptoms. The fatigue may appear to "improve" simply because the person has stopped doing the things that expose it.</p>
+              <p style="margin-bottom: 0;"><strong>3. Biomarker stress precedes subjective symptoms.</strong> The link between elevated cardiac biomarkers and fatigue supports the case for early detection: measurable myocardial stress can be present before a person feels unwell enough to seek help — which is precisely where a proactive assessment adds value.</p>
+            </div>
+          </div>
 
           <h3 class="section-heading h4">When to Seek a Clinical Assessment</h3>
           <p>The following symptoms — particularly when they occur together or with exertion — warrant evaluation:</p>
