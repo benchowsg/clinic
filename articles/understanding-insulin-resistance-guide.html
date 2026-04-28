@@ -16,6 +16,45 @@ custom_schema: |
       "author": { "@type": "Person", "name": "Dr. Gerald Thang" }
     }
   ]
+
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is insulin resistance different from diabetes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Diabetes is the 'final destination' where blood sugar is high. Insulin resistance is the process that happens 10 years earlier, where your body overproduces insulin to keep sugar stable. It causes arterial inflammation long before a diabetes diagnosis is ever made."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my fasting glucose test show as 'normal' if I have insulin resistance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fasting glucose only measures sugar, not insulin. Your body can work overtime, producing massive amounts of insulin to force sugar levels to stay 'normal.' You might pass a standard sugar test while your arteries are actually under significant metabolic strain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the first visible signs of insulin resistance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common early signs include excessive tiredness after high-carb meals (the post-lunch crash), weight gain specifically around the belly, skin tags, and 'hangry' episodes where your mood drops if a meal is delayed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can insulin resistance be reversed without medication?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In many early cases, yes. Small but consistent lifestyle shifts—like a 10-minute walk after meals, building muscle, and eating fiber before starch—can 're-oil' your metabolic locks. However, clinical verification through an Annual Audit is essential to ensure these changes are protecting your heart."
+      }
+    }
+  ]
+}
 ---
 
 <style>
@@ -33,6 +72,16 @@ custom_schema: |
   .action-card h4 { color: #008080; font-weight: 700; margin-bottom: 1rem; }
 
   .highlight-box { background: #fff8f0; border-left: 4px solid #e07b39; padding: 20px; margin: 1.5rem 0; border-radius: 8px; }
+  
+  .faq-section { margin-top: 60px; padding: 40px; background: #f8f9fa; border-radius: 20px; border: 1px solid #eee; }
+  .faq-title { color: #2c4964; font-weight: 700; margin-bottom: 30px; text-align: center; }
+  .faq-item { margin-bottom: 20px; border-bottom: 1px solid #dee2e6; padding-bottom: 15px; }
+  .faq-question { color: #008080; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
+  .faq-answer { margin-top: 10px; color: #555; display: none; line-height: 1.6; }
+  .faq-item.active .faq-answer { display: block; }
+  .faq-icon::after { content: '+'; font-size: 1.5rem; }
+  .faq-item.active .faq-icon::after { content: '−'; }
+
 </style>
 
 <main id="main" class="article-content">
@@ -199,6 +248,50 @@ custom_schema: |
             <p>Whether you are feeling the "early signs" or simply want to establish a baseline, a professional evaluation provides the data you need to stay in control.</p>
             <a href="/booking" class="btn btn-primary rounded-pill px-4" style="background-color: #008080; border: none;">Book Your Annual Heart & Metabolic Audit</a>
           </div>
+
+          <section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+      <span>How is insulin resistance different from diabetes?</span>
+      <span class="faq-icon"></span>
+    </div>
+    <div class="faq-answer">
+      Diabetes is the "final destination" where blood sugar is high. Insulin resistance is the process that happens 10 years earlier, where your body overproduces insulin to keep sugar stable. It causes arterial inflammation long before a diabetes diagnosis is ever made.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+      <span>Why is my glucose test "normal" if I feel these symptoms?</span>
+      <span class="faq-icon"></span>
+    </div>
+    <div class="faq-answer">
+      Fasting glucose only measures sugar, not insulin. Your body can work overtime, producing massive amounts of insulin to force sugar levels to stay "normal." You might pass a standard sugar test while your arteries are actually under significant metabolic strain.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+      <span>What are the first visible signs?</span>
+      <span class="faq-icon"></span>
+    </div>
+    <div class="faq-answer">
+      Common early signs include excessive tiredness after high-carb meals (the post-lunch crash), weight gain specifically around the belly, skin tags, and "hangry" episodes where your mood drops if a meal is delayed.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
+      <span>Can this be reversed without medication?</span>
+      <span class="faq-icon"></span>
+    </div>
+    <div class="faq-answer">
+      In many early cases, yes. Small but consistent lifestyle shifts—like a 10-minute walk after meals, building muscle, and eating fiber before starch—can "re-oil" your metabolic locks. However, clinical verification through an Annual Audit is essential to ensure these changes are effectively protecting your heart.
+    </div>
+  </div>
+</section>
 
           <div class="ip-notice-box">
             Intellectual Property Notice: The Clinical Stewardship protocols and Diagnostic Frameworks are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
