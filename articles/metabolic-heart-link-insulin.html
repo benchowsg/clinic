@@ -27,12 +27,14 @@ custom_schema: |
   .check-list { list-style: none; padding-left: 0; }
   .check-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
   .check-list li::before { content: "✓"; color: #008080; font-weight: bold; position: absolute; left: 0; }
-  
+ 
   .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin: 2.5rem 0; }
   .stat-box { background: #f8f9fa; border-radius: 15px; padding: 1.5rem; border: 1px solid #eee; text-align: center; }
   .stat-box .num { font-size: 1.8rem; font-weight: 800; color: #008080; display: block; }
-  .stat-box .label { font-size: 0.85rem; color: #666; font-weight: 600; text-transform: uppercase; }
-  
+  .stat-box .label { font-size: 0.85rem; color: #666; font-weight: 600; text-transform: uppercase; display: block; margin-top: 6px; }
+  .stat-box .source { font-size: 0.75rem; color: #999; display: block; margin-top: 8px; }
+  .stat-box .source a { color: #008080; text-decoration: underline; }
+ 
   .ethnic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 2rem 0; }
   .eth-card { border-radius: 15px; padding: 1.25rem; border: 1px solid #eee; }
   .eth-card.indian { background: #FAECE7; border-color: #F0997B; }
@@ -41,9 +43,18 @@ custom_schema: |
   .eth-label { font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; display: block; }
   .eth-stat { font-size: 1.6rem; font-weight: 800; margin-bottom: 5px; display: block; }
   .eth-desc { font-size: 0.85rem; line-height: 1.4; color: #444; }
-  
+ 
+  .why-box { background: #f0f7f7; border-radius: 15px; padding: 28px 32px; margin: 2rem 0; border-left: 4px solid #008080; }
+  .why-box h5 { color: #2c4964; font-weight: 700; margin-bottom: 1rem; }
+  .why-box p { color: #444; font-size: 1rem; line-height: 1.75; margin-bottom: 0.75rem; }
+  .why-box p:last-child { margin-bottom: 0; }
+ 
+  .warning-box { background: #fff8f0; border-radius: 15px; padding: 28px 32px; margin: 2rem 0; border-left: 4px solid #e07b39; }
+  .warning-box h5 { color: #c05a1c; font-weight: 700; margin-bottom: 1rem; }
+  .warning-box p { color: #555; font-size: 1rem; line-height: 1.75; margin-bottom: 0; }
+ 
   .ip-notice-box { background: #ffffff; border: 1px solid #e9ecef; border-left: 4px solid #ced4da; padding: 20px; font-size: 0.85rem; color: #6c757d; border-radius: 8px; margin-top: 50px; }
-  
+ 
   @media (max-width: 768px) {
     .ethnic-grid { grid-template-columns: 1fr; }
   }
@@ -62,7 +73,7 @@ custom_schema: |
           </ol>
         </nav>
 
-        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Your heart is already in danger — and it's probably not what you think.</h1>
+        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Your heart is already in danger, and it's probably not what you think.</h1>
           
         <div class="author-box d-flex align-items-center">
           <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover; margin-right: 15px;" alt="Dr Gerald Thang">
@@ -74,9 +85,11 @@ custom_schema: |
         </div>
 
         <div class="article-body">
-          <p>Millions of Singaporeans are walking around with <strong>insulin resistance</strong> right now. They feel fine. Their cholesterol is "okay." Yet, behind the scenes, this condition is quietly setting the stage for a heart attack.</p>
+         <p>You go for your annual health screening. The numbers come back and your cholesterol borderline, fasting glucose normal, blood pressure "a bit high but manageable." Your doctor says to watch your diet. You leave feeling mostly reassured.</p>
 
-        <div class="stat-strip">
+           <p>But here is what that screening likely missed: the real reason Singaporeans are dying of heart disease decades too early. It is not just high cholesterol. It is <strong>insulin resistance</strong>, a condition that silently inflames your arteries for years before any standard test flags it. And by the time it does show up, the damage has already begun.</p>
+          
+          <div class="stat-strip">
           <div class="stat-box">
             <span class="num">1 in 11</span>
             <span class="label">Adults in Singapore have diabetes</span><br>
@@ -99,65 +112,121 @@ custom_schema: |
           </div>
         </div>
 
-          <h3 class="section-heading h4">1. The Problem: The "TOFI" Trap</h3>
-          <p>In Singapore, many of us are **TOFI**—Thin on the Outside, Fat on the Inside. You might look fit at the office, but your internal biology is struggling. This hidden visceral fat drives a full-body metabolic crisis that inflames your blood vessels, often years before a standard blood test shows an alarming number.</p>
+          <p>These are not abstract statistics. They are your colleagues, your parents, your neighbours, and quite possibly, you. The most dangerous part? Most people in this group feel completely fine right now.</p>
 
-          <h3 class="section-heading h4">2. The Why: Insulin Resistance & Heart Friction</h3>
-          <p>Think of insulin as a key that unlocks your cells so energy (glucose) can enter. When you become insulin resistant, those locks stop working. Your pancreas compensates by pumping out even more insulin to force the doors open.</p>
-          
-          <p>While your blood sugar might stay "normal" for years, these high insulin levels trigger <strong>chronic inflammation</strong> in your artery walls. This accelerates plaque build-up—the very plaques that rupture and cause heart attacks.</p>
-
+          <!-- WHY IT MATTERS -->
+          <h3 class="section-heading h4">Why this matters more than you think</h3>
+ 
+          <p>Think about what you want your life to look like at 65, or 75. Walking your grandchildren to school. Travelling with your spouse. Getting up from a chair without help. Playing golf on weekends. Not spending your retirement years managing dialysis appointments, recovering from a stroke, or learning to walk again after an amputation.</p>
+ 
+          <p>That future is not guaranteed — but it is within your control. The choices made in your 40s and 50s determine the quality of life in your 70s and beyond. <strong>The gap between a vibrant, independent old age and a dependent, medically-managed one is not luck. It is biology — and biology can be changed.</strong></p>
+ 
+          <div class="why-box">
+            <h5>The cost of waiting</h5>
+            <p>In Singapore, diabetes is a leading cause of kidney failure, heart disease, stroke, and vision loss. Once these complications set in, they are largely irreversible. Kidney dialysis runs three sessions a week, every week, for life. A stroke can take away your speech, your movement, your independence — often permanently.</p>
+            <p>But here is what the research consistently shows: <strong>the earlier you identify and address insulin resistance and metabolic strain, the more completely it can be reversed.</strong> This is not about treating disease. It is about reclaiming decades.</p>
+          </div>
+ 
+ 
+          <!-- THE TOFI TRAP -->
+          <h3 class="section-heading h4">1. The problem: the "TOFI" trap</h3>
+ 
+          <p>In Singapore, many of us are <strong>TOFI</strong> — Thin on the Outside, Fat on the Inside. You may look fine at the office, wear a healthy BMI, pass your IPPT. But internally, visceral fat is accumulating around your liver, heart, and abdominal organs — invisible on the outside, dangerous on the inside.</p>
+ 
+          <p>Asians develop metabolic problems at a lower body weight than Caucasians. Our bodies are genetically less tolerant of visceral fat — meaning the same amount of hidden fat causes far more metabolic harm in a Chinese, Malay, or Indian person than in a Caucasian at the same BMI. This is not a theory. It is why Singapore has one of the highest diabetes rates in the developed world despite not being an obese nation.</p>
+ 
+ 
+          <!-- THE MECHANISM -->
+          <h3 class="section-heading h4">2. The why: insulin resistance and your heart</h3>
+ 
+          <p>Insulin is the key that unlocks your cells so glucose can enter and be used as energy. When you become insulin resistant, those locks stop working properly. Your pancreas compensates by producing more and more insulin to force the doors open.</p>
+ 
+          <p>For years — sometimes a decade or more — your blood sugar stays "normal." Your fasting glucose looks fine. Your doctor sees nothing alarming. But the whole time, chronically elevated insulin is inflaming the inner walls of your arteries, raising your triglycerides, lowering your protective HDL cholesterol, and accelerating the build-up of arterial plaque. The plaques that rupture are the ones that cause heart attacks.</p>
+ 
+          <p>By the time fasting glucose finally flags, you have likely had insulin resistance for 10 years already. <strong>The window for easy, reversible intervention has long closed.</strong></p>
+ 
           <div class="ethnic-grid">
             <div class="eth-card indian">
               <span class="eth-label" style="color: #993C1D;">Indian</span>
               <span class="eth-stat" style="color: #D85A30;">17.7%</span>
-              <p class="eth-desc">Highest insulin resistance levels; highest projected heart disease burden by 2050.</p>
+              <p class="eth-desc">Diabetes prevalence. Highest insulin resistance levels and highest projected heart disease burden by 2050.</p>
             </div>
             <div class="eth-card malay">
               <span class="eth-label" style="color: #854F0B;">Malay</span>
               <span class="eth-stat" style="color: #BA7517;">16.7%</span>
-              <p class="eth-desc">Highest rate of undiagnosed diabetes; higher heart disease case-fatality rates.</p>
+              <p class="eth-desc">Diabetes prevalence. Highest rate of undiagnosed diabetes and higher heart disease case-fatality rates.</p>
             </div>
             <div class="eth-card chinese">
               <span class="eth-label" style="color: #185FA5;">Chinese</span>
               <span class="eth-stat" style="color: #185FA5;">9.7%</span>
-              <p class="eth-desc">Rising prevalence; growing vulnerability to obesity-related metabolic strain.</p>
+              <p class="eth-desc">Diabetes prevalence. Rising fast, with growing vulnerability to visceral fat and metabolic strain at lower BMI.</p>
             </div>
           </div>
-
-          <h3 class="section-heading h4">3. The Steps to Uncover: Beyond the Basics</h3>
-          <p>Standard corporate health screenings often measure <strong>Fasting Blood Glucose</strong>, which is one of the <em>last</em> markers to become abnormal. To find the root of your fatigue or risk, we move beyond the basics.</p>
-          
-          <p>We look for functional markers that standard kits miss:</p>
-          <ul class="check-list">
-            <li><strong>Insulin Sensitivity Audit:</strong> We check if your body is efficiently converting fuel or simply storing stress.</li>
-            <li><strong>Silent Heart Strain:</strong> We use high-resolution laboratory assays to detect if your heart muscle is releasing stress proteins due to metabolic inflammation.</li>
-            <li><strong>Root Cause Identification:</strong> We evaluate if your current "healthy" routine is actually driving your inflammation higher.</li>
-          </ul>
-
+ 
+          <p style="font-size: 0.85rem; color: #888;">Diabetes prevalence by ethnicity. Source: Frontiers in Cardiovascular Medicine, 2024.</p>
+ 
+ 
+          <!-- HAWKER FACTOR -->
           <div class="metabolic-callout">
-            <h5 class="fw-bold mb-3">The Hawker Centre Factor</h5>
-            <p class="mb-0">A typical local lunch—chicken rice with teh tarik—can deliver 80–100g of refined carbohydrates. This causes a massive insulin spike. Repeated daily, it quietly trains your cells into resistance, adding constant friction to your cardiovascular system.</p>
+            <h5 class="fw-bold mb-3">The hawker centre factor</h5>
+            <p>A typical local lunch — chicken rice, teh tarik, and a cut of fruit — can deliver 80 to 100 grams of refined carbohydrate in under 30 minutes. That triggers a sustained insulin spike. Repeated daily, over years, it gradually trains your cells into resistance.</p>
+            <p class="mb-0">This is not about blaming our food culture. It is about understanding that the food environment most Singaporeans live in creates a <strong>constant metabolic load</strong> — and that load accumulates silently, long before any symptom appears.</p>
           </div>
-
-          <h3 class="section-heading h4">4. The Solution: Precision Restoration</h3>
-          <p>Real healing is about restoring your insulin sensitivity so your biology can thrive. At <strong>A Healing Heart Medical</strong>, we bridge the gap between your metabolism and your heart.</p>
-
-          <p>We provide the clarity needed to interrupt the chain reaction from insulin resistance to heart disease. By identifying the friction early, we help you restore your heart's efficiency before permanent damage occurs.</p>
-
+ 
+ 
+          <!-- EARLY ACTION -->
+          <h3 class="section-heading h4">3. Why early action gives you more good years</h3>
+ 
+          <p>The goal is not just to avoid dying. It is to stay <strong>well</strong> — to remain mobile, sharp, and independent for as long as possible. Singapore's population is ageing rapidly. As of 2026, more than 1 in 5 Singaporeans is aged 65 or above. The question is not whether you will get older. It is whether you will age with your health intact.</p>
+ 
+          <p>Insulin resistance, caught early, is fully reversible through lifestyle change. Arterial inflammation, identified early, can be brought down. Early metabolic intervention has been shown to reduce the risk of heart attack, stroke, and diabetes — the three conditions most likely to rob you of your independence in later life.</p>
+ 
+          <div class="warning-box">
+            <h5>Prevention is not just for the sick</h5>
+            <p>Most people wait for a diagnosis before taking their health seriously. But prevention works precisely because you act <em>before</em> the damage is done. Waiting for symptoms is waiting for a problem that, by definition, has already progressed beyond the easy-to-reverse stage. The Singaporeans who stay healthy into their 70s and 80s are not lucky — they are the ones who started paying attention in their 40s and 50s.</p>
+          </div>
+ 
+ 
+          <!-- BEYOND BASICS -->
+          <h3 class="section-heading h4">4. Beyond the basics: what to actually check</h3>
+ 
+          <p>Standard corporate screenings measure fasting blood glucose — one of the last markers to turn abnormal. To understand your true metabolic and cardiovascular risk, you need markers that reveal what is happening years earlier.</p>
+ 
+          <ul class="check-list">
+            <li><strong>Fasting insulin and HOMA-IR:</strong> Measures your insulin sensitivity directly — not just your blood sugar. This is the earliest signal of insulin resistance.</li>
+            <li><strong>HbA1c:</strong> A 3-month average of blood sugar trends, far more informative than a single fasting glucose reading.</li>
+            <li><strong>Full lipid panel with triglyceride ratio:</strong> High triglycerides and low HDL are the metabolic fingerprint of insulin resistance, and often appear years before glucose rises.</li>
+            <li><strong>hsCRP (high-sensitivity C-reactive protein):</strong> Detects low-grade arterial inflammation — the hidden driver of plaque build-up.</li>
+            <li><strong>Waist circumference:</strong> Not BMI. Waist measurement reflects visceral fat far more accurately, especially for Asians.</li>
+            <li><strong>Blood pressure (both arms):</strong> A simple test that reveals far more about arterial health than most people realise.</li>
+          </ul>
+ 
+          <p>MOH recommends Singaporeans aged 40 and above screen for diabetes, hypertension, and high cholesterol regularly. Many doctors advise Asians with a family history to start at 35. Under <strong>Healthier SG</strong>, eligible Singapore Citizens can access cardiovascular risk screening at $0 at their enrolled clinic or polyclinic.</p>
+ 
+ 
+          <!-- SOLUTION -->
+          <h3 class="section-heading h4">5. What restoration looks like</h3>
+ 
+          <p>The good news: insulin resistance is one of the most reversible conditions in medicine. Studies show meaningful improvement in insulin sensitivity within weeks of sustained lifestyle change — not years. The prescription is not exotic.</p>
+ 
+          <p>Reduce the refined carbohydrate load — not eliminate carbs, but choose brown rice over white, cut sugary drinks including fruit juice and bubble tea, and eat protein and vegetables before starch to blunt the glucose spike. Walk after meals — even 10 minutes significantly lowers post-meal blood sugar. Prioritise sleep — chronic sleep deprivation drives insulin resistance as powerfully as diet. Build muscle — resistance training is one of the most effective tools available, because muscle is the body's primary glucose sink.</p>
+ 
+          <p>At <strong>A Healing Heart Medical</strong>, we go further — bridging the gap between your metabolism and your heart with precision diagnostics that identify the friction early, before the arteries have hardened and the options have narrowed.</p>
+ 
           <div style="background: #e6f2f2; border-radius: 10px; padding: 25px; text-align: center; margin: 30px 0; border: 1px solid #008080;">
-            <h4 style="color: #2c4964; margin-top: 0;">Establish Your Metabolic Baseline.</h4>
-            <p>Don't wait for your fasting glucose to flag. Get a high-resolution view of your heart's health.</p>
+            <h4 style="color: #2c4964; margin-top: 0;">The best time to check was five years ago. The second best time is now.</h4>
+            <p style="color: #444;">Don't wait for your fasting glucose to flag. Get a high-resolution view of your metabolic and heart health — while the window for full recovery is still open.</p>
             <a href="/booking" class="btn btn-primary rounded-pill px-4" style="background-color: #008080; border: none;">Book a Cardiac Evaluation</a>
           </div>
-
-          <p class="footnote" style="font-size: 0.85rem; color: #888; font-style: italic;">
-            Sources: Singapore National Population Health Survey; Frontiers in Cardiovascular Medicine (2024); Ministry of Health Singapore (MOH).
+ 
+          <p style="font-size: 0.85rem; color: #888; font-style: italic;">
+            Sources: MOH National Population Health Survey 2024 (moh.gov.sg); MOH World Diabetes Day speech, Nov 2025 (moh.gov.sg); MOH War on Diabetes (moh.gov.sg); Frontiers in Cardiovascular Medicine, 2024; MOH Healthier SG (healthiersg.gov.sg).
           </p>
-
+ 
           <div class="ip-notice-box">
             Intellectual Property Notice: The Clinical Stewardship protocols and Diagnostic Frameworks are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
           </div>
+ 
         </div>
       </div>
     </div>
