@@ -1,114 +1,180 @@
 ---
 layout: default
 permalink: /scans/heart-scans
-title: Advanced Heart Scans & Calcium Scoring Singapore | A Healing Heart Medical
-description: Visualize your arterial health with CT Angiograms, Calcium Scoring, and Echocardiograms. Expert interpretation of plaque levels by Dr. Gerald Thang.
+title: Advanced Heart Scans & Calcium Scoring Singapore | Dr. Gerald Thang
+description: Visualizing the 10-year window of heart health. Comprehensive CT Coronary Angiogram, Calcium Scoring, and Echocardiography interpretation at A Healing Heart Medical.
 faq_schema:
   "@context": "https://schema.org"
   "@type": "FAQPage"
   mainEntity:
     - "@type": "Question"
-      name: "What is the difference between a Calcium Score and a CT Angiogram?"
+      name: "How does a CT Coronary Angiogram find soft plaque?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "A Calcium Score measures hardened (calcified) plaque to determine long-term risk. A CT Angiogram is more detailed, using contrast dye to visualize 'soft' plaque and actual narrowings in the arteries."
+        text: "Using advanced contrast-enhanced X-ray technology, a CTCA creates a 3D map of the artery walls. It allows Dr. Gerald Thang to see non-calcified 'soft' plaque that traditional stress tests miss because they only look for significant blood flow obstruction."
     - "@type": "Question"
-      name: "Do I need to fast before a heart scan?"
+      name: "Is a Calcium Score enough to clear me of heart risk?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "For a CT Coronary Angiogram, you typically need to fast for 4 hours and avoid caffeine. For a Calcium Score or Echocardiogram, no special preparation is usually required."
-    - "@type": "Question"
-      name: "Is an Echocardiogram painful?"
-      acceptedAnswer:
-        "@type": "Answer"
-        text: "No, an Echocardiogram is a non-invasive ultrasound. It uses sound waves to create images of your heart and involves no needles or radiation."
+        text: "A Calcium Score of zero is an excellent sign of low risk, but it does not rule out soft plaque. For patients with metabolic risk factors like insulin resistance, a CTCA may be recommended for a more comprehensive arterial visualization."
 ---
+
+<style>
+
+  .scan-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eef2f6;
+    border-radius: 12px;
+}
+
+.scan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+    border-color: #007bff; /* Or your clinic's primary color */
+}
+
+.scan-icon {
+    font-size: 2.5rem;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #007bff; /* Or your primary brand color */
+    font-weight: 600;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+  .accordion-button:not(.collapsed) {
+    background-color: #f8faff; /* Light blue tint */
+    color: #007bff;
+    box-shadow: none;
+}
+
+.accordion-item {
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+</style>
+
 
 <main id="main" class="mt-5 pt-5 text-start">
   <section class="py-5">
     <div class="container">
 
       <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item"><a href="/scans">Scans</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Heart Scans</li>
+        <ol class="breadcrumb small text-uppercase">
+          <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item"><a href="/scans" class="text-decoration-none">Scans</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Advanced Heart Scans</li>
         </ol>
       </nav>
 
       <div class="row mb-5">
-        <div class="col-lg-9">
-          <h1 class="display-5 fw-bold">Advanced Heart Scans</h1>
-          <p class="lead text-muted">Seeing is knowing. We use state-of-the-art imaging to look past traditional risk factors and visualize your actual arterial health.</p>
+        <div class="col-lg-10">
+          <h1 class="display-5 fw-bold mb-3">Advanced Heart Scans: Visualizing the Unseen</h1>
+          <p class="lead">At A Healing Heart Medical, we move beyond simple blood tests. We utilize advanced diagnostic imaging to identify <strong>subclinical atherosclerosis</strong>—the arterial changes that happen years before a heart attack.</p>
         </div>
       </div>
 
-      <div class="row g-5 py-4 border-bottom">
-        <div class="col-md-6">
-          <h2 class="h3 fw-bold">CT Coronary Angiogram (CTA)</h2>
-          <p>The CT Angiogram is the "gold standard" for non-invasive heart imaging. Unlike a standard stress test which only looks for severe blockages, the CTA allows us to see <strong>soft plaque</strong>—the unstable buildup that often causes sudden cardiac events.</p>
-          <ul class="list-unstyled">
-            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 3D mapping of coronary arteries</li>
-            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Identification of narrowings (Stenosis)</li>
-            <li><i class="bi bi-check-circle-fill text-primary me-2"></i> Guided by Dr. Gerald’s precision protocols</li>
+      <div class="row g-5 py-5 border-top">
+        <div class="col-md-7">
+          <h2 class="h3 fw-bold mb-3">CT Coronary Angiogram (CTCA)</h2>
+          <p>The CTCA is a non-invasive specialized scan that uses 3D reconstruction to visualize the coronary arteries. While standard health screenings often rely on a "Stress Test" (ECG), the CTCA is significantly more sensitive in detecting <strong>vulnerable soft plaque</strong>.</p>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item bg-transparent px-0"><i class="bi bi-shield-check text-primary me-2"></i> Detects non-obstructive plaque (early-stage disease)</li>
+            <li class="list-group-item bg-transparent px-0"><i class="bi bi-shield-check text-primary me-2"></i> Maps the precise location and volume of arterial narrowings</li>
+            <li class="list-group-item bg-transparent px-0"><i class="bi bi-shield-check text-primary me-2"></i> Personally reviewed by Dr. Gerald Thang for clinical correlation</li>
           </ul>
         </div>
-        <div class="col-md-6">
-          <div class="p-4 bg-light rounded-4">
-            <h4 class="h5 fw-bold">The Clinical "Aha!"</h4>
-            <p class="small mb-0 italic">"Many patients with 'normal' cholesterol scores have significant soft plaque. CTA allows us to find it 10 years before it becomes a heart attack."</p>
+        <div class="col-md-5">
+          <div class="p-4 border-start border-4 border-primary bg-light shadow-sm">
+            <h4 class="h6 fw-bold text-uppercase text-primary">Clinical Insight</h4>
+            <p class="small mb-0">Many patients experience cardiac events despite having "normal" treadmill results. This is because standard tests only detect blockages exceeding 70%. The CTCA allows us to identify <strong>pre-obstructive plaque</strong>, giving us the opportunity to stabilize it before it ruptures.</p>
           </div>
         </div>
       </div>
 
-      <div class="row g-5 py-4 border-bottom">
+      <div class="row g-5 py-5 border-top align-items-center">
         <div class="col-md-6 order-md-2">
-          <h2 class="h3 fw-bold">Coronary Calcium Scoring</h2>
-          <p>This is a fast, low-dose scan that acts as a "Risk Thermometer." It measures the amount of calcified (hard) plaque in your vessel walls.</p>
-          <p>A <strong>Score of Zero</strong> is a powerful indicator of low cardiac risk, while higher scores allow us to aggressively manage your metabolic health before symptoms start.</p>
+          <h2 class="h3 fw-bold mb-3">Coronary Calcium Scoring</h2>
+          <p>A Calcium Score is a low-dose, rapid CT scan that quantifies the amount of <strong>calcified plaque</strong> in your heart's arteries. It acts as a "Biological Age" marker for your vascular system.</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+             <span class="badge rounded-pill bg-success px-3">Score 0: Zero Plaque</span>
+             <span class="badge rounded-pill bg-warning text-dark px-3">1-400: Moderate Risk</span>
+             <span class="badge rounded-pill bg-danger px-3">>400: High Risk</span>
+          </div>
+          <p class="text-muted small">This scan is essential for patients in their 40s or 50s who want a definitive risk assessment beyond their cholesterol numbers.</p>
         </div>
         <div class="col-md-6 order-md-1">
-          <div class="rounded-4 overflow-hidden shadow-sm">
-             <img src="/assets/img/calcium-score-sample.webp" alt="Calcium Score Scan Example" class="img-fluid">
-          </div>
+          <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" class="img-fluid rounded shadow-sm border bg-white">
+            <rect width="400" height="220" fill="#fcfcfc"/>
+            <path d="M40,110 Q200,90 360,110 L360,150 Q200,170 40,150 Z" fill="#fff" stroke="#ee9999" stroke-width="2"/>
+            <path d="M40,125 Q200,110 360,125 L360,145 Q200,160 40,145 Z" fill="#ffefef"/>
+            <ellipse cx="200" cy="115" rx="50" ry="18" fill="#ffd700" opacity="0.4"/>
+            <circle cx="190" cy="120" r="7" fill="#fff" stroke="#bbb" stroke-width="2"/>
+            <circle cx="215" cy="112" r="5" fill="#fff" stroke="#bbb" stroke-width="2"/>
+            <text x="130" y="80" font-family="sans-serif" font-size="13" fill="#b8860b" font-weight="bold">Vulnerable Soft Plaque</text>
+            <text x="140" y="195" font-family="sans-serif" font-size="12" fill="#777">Calcified "Hard" Plaque (Scanned)</text>
+            <path d="M200,180 L200,140" stroke="#999" stroke-width="1" marker-end="url(#arrowhead)"/>
+            <defs>
+              <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#999" />
+              </marker>
+            </defs>
+          </svg>
         </div>
       </div>
 
-      <div class="row g-5 py-4">
-        <div class="col-md-6">
-          <h2 class="h3 fw-bold">Echocardiogram (Heart Ultrasound)</h2>
-          <p>Using real-time sound waves, we watch your heart in motion. We assess how your heart muscle relaxes and contracts, and ensure your valves are functioning without leaks or stiffness.</p>
-          <p>This is essential for patients experiencing shortness of breath, palpitations, or those with long-term high blood pressure.</p>
+      <div class="row g-5 py-5 border-top mb-5">
+        <div class="col-md-7">
+          <h2 class="h3 fw-bold mb-3">Echocardiography (Heart Ultrasound)</h2>
+          <p>While CT scans look at the structure of the "pipes," the Echocardiogram looks at the <strong>function of the "pump."</strong> This non-invasive ultrasound allows us to see your heart valves and muscle in motion.</p>
+          <p>It is the primary tool used by Dr. Gerald Thang to diagnose <strong>Diastolic Dysfunction</strong>—a common condition in metabolic patients where the heart muscle becomes stiff and fails to relax properly.</p>
         </div>
-        <div class="col-md-6 text-center">
-             <div class="scan-icon display-1">🫀</div>
-        </div>
-      </div>
-
-      <div class="bg-primary text-white p-5 rounded-5 mt-5">
-        <div class="row align-items-center">
-          <div class="col-md-8">
-            <h2 class="fw-bold">Ready to secure your 10-year window?</h2>
-            <p class="mb-0">Don't rely on "normal" results that only tell half the story. Book a metabolic audit and scan review today.</p>
-          </div>
-          <div class="col-md-4 text-md-end mt-3 mt-md-0">
-            <a href="/contact" class="btn btn-light btn-lg px-4 fw-bold">Book an Audit</a>
-          </div>
+        <div class="col-md-5 text-center d-flex align-items-center justify-content-center">
+             <div class="p-5 bg-light rounded-circle shadow-sm">
+                <span style="font-size: 4rem;">📡</span>
+             </div>
         </div>
       </div>
 
-      <section class="mt-5 pt-5">
-        <h2 class="h3 mb-4 text-center">Heart Scan FAQs</h2>
-        <div class="accordion" id="heartFaq">
-          <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+      <section class="bg-light p-5 rounded-4 mt-5">
+        <h2 class="h4 fw-bold mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="heartScanFaq">
+          <div class="accordion-item mb-2 border-0 shadow-sm">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#h1">
-                How safe is the radiation in a CT Heart scan?
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+                How is the CT Angiogram different from a traditional Angiogram?
               </button>
             </h2>
-            <div id="h1" class="accordion-collapse collapse" data-bs-parent="#heartFaq">
+            <div id="f1" class="accordion-collapse collapse" data-bs-parent="#heartScanFaq">
               <div class="accordion-body">
-                Modern scanners use "Flash" and "Low-Dose" technology. The radiation dose is often comparable to what you would receive naturally from the environment over a few months, making it a very safe procedure when clinically indicated.
+                A traditional angiogram is an invasive hospital procedure requiring a catheter. The <strong>CT Coronary Angiogram (CTCA)</strong> is a non-invasive outpatient scan that provides similar diagnostic clarity without the need for surgery or recovery time.
               </div>
             </div>
           </div>
