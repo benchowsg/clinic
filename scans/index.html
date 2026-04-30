@@ -26,41 +26,174 @@ faq_schema:
         text: "While you can book directly, Dr. Gerald Thang will conduct a clinical assessment first to determine which specific scan protocol is safest and most effective for your symptoms."
 ---
 
+<style>
+
+  .scan-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eef2f6;
+    border-radius: 12px;
+}
+
+.scan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+    border-color: #007bff; /* Or your clinic's primary color */
+}
+
+.scan-icon {
+    font-size: 2.5rem;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #007bff; /* Or your primary brand color */
+    font-weight: 600;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+}
+
+  .accordion-button:not(.collapsed) {
+    background-color: #f8faff; /* Light blue tint */
+    color: #007bff;
+    box-shadow: none;
+}
+
+.accordion-item {
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+</style>
+
 <main id="main" class="mt-5 pt-5 text-start">
   <section class="py-5">
     <div class="container">
 
-<main class="scans-hub">
-  <section class="hero-section">
-    <h1>Cardiac & Metabolic Imaging: The Master Plan</h1>
-    <p>A scan is only as good as the physician interpreting it. We bridge the gap between complex data and actionable heart health.</p>
-  </section>
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Scans</li>
+        </ol>
+      </nav>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="scan-card">
-          <h3>Advanced Heart Scans</h3>
-          <p>CT Angiograms, Calcium Scoring, and Echocardiograms to visualize your heart's structure.</p>
-          <a href="/scans/heart-scans" class="btn-link">Learn More →</a>
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-8">
+          <h1 class="display-5 fw-bold">Cardiac & Metabolic Imaging</h1>
+          <p class="lead">We bridge the gap between complex diagnostic data and an actionable master plan for your heart and metabolic health.</p>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="scan-card">
-          <h3>Metabolic Support Imaging</h3>
-          <p>Focused Ultrasound sets for Liver, Kidney, and Visceral Fat assessment.</p>
-          <a href="/scans/metabolic-ultrasound" class="btn-link">Learn More →</a>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card scan-card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="scan-icon mb-3">🫀</div>
+              <h3 class="h4 card-title">Advanced Heart Scans</h3>
+              <p class="card-text text-muted">CT Angiograms, Calcium Scoring, and Echocardiograms to visualize your heart's structure and plaque levels.</p>
+              <a href="/scans/heart-scans" class="btn btn-outline-primary stretched-link">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card scan-card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="scan-icon mb-3">🔬</div>
+              <h3 class="h4 card-title">Metabolic Support</h3>
+              <p class="card-text text-muted">Focused ultrasound for Fatty Liver (MAFLD), Kidney health, and visceral fat assessments.</p>
+              <a href="/scans/metabolic-ultrasound" class="btn btn-outline-primary stretched-link">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card scan-card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="scan-icon mb-3">🧠</div>
+              <h3 class="h4 card-title">Precision MRI</h3>
+              <p class="card-text text-muted">Specialized protocols for myocarditis, chronic headaches, and stroke prevention.</p>
+              <a href="/scans/mri" class="btn btn-outline-primary stretched-link">View Details</a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="scan-card">
-          <h3>Precision MRI Referrals</h3>
-          <p>Deep-dive imaging for complex cardiac cases, chronic headaches, and stroke prevention.</p>
-          <a href="/scans/mri" class="btn-link">Learn More →</a>
-        </div>
-      </div>
+      <hr class="my-5">
+
+        <section class="faq-section pb-5">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <h2 class="h3 mb-4 text-center">Frequently Asked Questions</h2>
+              
+              <div class="accordion" id="faqAccordion">
+                
+                <div class="accordion-item shadow-sm mb-3 border-0">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                      Are cardiac and metabolic scans safe?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      Yes. Our CT scans use 'Low-Dose' protocols to minimize radiation, while Ultrasound and MRI use no radiation at all. Dr. Gerald Thang ensures every scan is clinically necessary and safe for your specific health profile.
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="accordion-item shadow-sm mb-3 border-0">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                      How long do the results take?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      Ultrasound results are often discussed immediately during your review. CT and MRI reports typically take 2–3 working days for a formal radiologist report, followed by a comprehensive master plan discussion with Dr. Gerald.
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="accordion-item shadow-sm mb-3 border-0">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                      Can I use MediSave for these scans?
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      MediSave usage depends on the specific diagnostic intent and the prevailing MOH guidelines. Our clinic team will assist you in verifying if your scan qualifies for MediSave under chronic disease management or outpatient diagnostic categories.
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        </section>
+
     </div>
-  </div>
+  </section>
 </main>
