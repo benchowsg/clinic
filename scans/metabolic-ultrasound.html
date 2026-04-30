@@ -8,20 +8,25 @@ faq_schema:
   "@type": "FAQPage"
   mainEntity:
     - "@type": "Question"
-      name: "How is a medical ultrasound different from a gym body composition scale?"
+      name: "Do I need to fast before a metabolic ultrasound?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "Gym scales use electrical impedance to estimate fat percentage. A medical ultrasound provides direct visualization of internal organs, allowing Dr. Gerald to see physical fat infiltration in the liver (MAFLD) and structural changes in the kidneys."
+        text: "For abdominal and liver (HBS) scans, you should fast for at least 6 to 8 hours. This prevents gallbladder contraction and reduces intestinal gas, allowing for much clearer visualization of the liver and kidneys. Small sips of water and essential medications are permitted."
     - "@type": "Question"
-      name: "What is a Carotid IMT scan?"
+      name: "How is a Carotid IMT different from a standard Carotid Doppler?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "The Carotid IMT (Intima-Media Thickness) measures the thickness of the inner layers of the neck arteries. It is a proven marker for 'vascular age' and helps predict the risk of stroke and heart attack in metabolic patients."
+        text: "A standard Carotid Doppler looks for significant blood flow blockages (usually only detectable when >50%). A Carotid IMT (CIMT) measures the microscopic thickness of the artery wall itself. This allows us to detect the earliest stages of vascular aging years before a blockage actually forms."
     - "@type": "Question"
-      name: "Why is the Hepatobiliary (HBS) scan important for heart patients?"
+      name: "Can the ultrasound tell the difference between 'good' and 'bad' liver fat?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "The liver is the body's metabolic engine. Fatty liver disease drives systemic inflammation and insulin resistance, both of which accelerate plaque buildup in the heart's arteries."
+        text: "While ultrasound identifies the presence of fat (Steatosis), we use Shearwave Elastography to measure liver stiffness. This is critical because it tells us if the fat has caused inflammation or scarring (Fibrosis), which is the 'bad' progression we need to stop."
+    - "@type": "Question"
+      name: "Is the scan painful, and how long does it take?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "The procedure is entirely non-invasive and painless. A cool gel is applied to the skin, and a probe is moved across the area. A comprehensive metabolic session (Liver + Kidney + CIMT) typically takes 30 to 45 minutes."
 ---
 
 <main id="main" class="mt-5 pt-5 text-start">
@@ -173,25 +178,51 @@ faq_schema:
         <div class="accordion" id="metabolicFaq">
           <div class="accordion-item mb-2 border-0 shadow-sm">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
-                Why do I need a liver scan if my blood tests (LFT) are normal?
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                Why is fasting required for my Liver and Abdominal scan?
               </button>
             </h2>
-            <div id="q1" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
               <div class="accordion-body">
-                Liver enzymes (ALT/AST) often only rise once liver cells are being actively damaged or destroyed. An ultrasound can detect <strong>fatty infiltration</strong> much earlier, allowing for metabolic reversal before permanent damage occurs.
+                When you eat, your gallbladder contracts to release bile and your intestines fill with gas. Fasting for <strong>6 to 8 hours</strong> ensures the gallbladder is distended and gas is minimized, providing <strong>Dr. Gerald</strong> with the clearest possible "window" to see your liver, pancreas, and kidneys.
               </div>
             </div>
           </div>
           <div class="accordion-item mb-2 border-0 shadow-sm">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
-                What is the "Biological Vascular Age"?
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q4">
+                I already had a Carotid Doppler. Do I still need a CIMT?
               </button>
             </h2>
-            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+            <div id="q4" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
               <div class="accordion-body">
-                This is a calculation based on your <strong>CIMT results</strong>. It compares the thickness of your artery walls to a global database of healthy individuals. If your vascular age is much higher than your chronological age, it is a definitive sign that your current metabolic state is accelerating aging.
+                Yes. A Doppler is like checking if a pipe is <em>fully clogged</em>. A <strong>CIMT (Carotid Intima-Media Thickness)</strong> is like checking if the pipe walls are <em>starting to rust</em>. For metabolic health, we want to catch the "rusting" (wall thickening) early so we can prevent the clog from ever happening.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item mb-2 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q5">
+                What does the "Shearwave Elastography" result tell me?
+              </button>
+            </h2>
+            <div id="q5" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+              <div class="accordion-body">
+                It provides a "Stiffness Score." A soft liver is healthy; a stiff liver indicates <strong>Fibrosis (scarring)</strong>. This advanced technology allows us to monitor the success of your metabolic plan by seeing if your liver tissue is becoming healthier and more elastic over time.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item mb-2 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q6">
+                Is there any radiation, and can I go back to work immediately?
+              </button>
+            </h2>
+            <div id="q6" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+              <div class="accordion-body">
+                Ultrasound uses <strong>sound waves</strong>, not radiation, making it incredibly safe for repeated monitoring. There is no downtime; you can eat, drive, and return to your normal schedule immediately after your appointment.
               </div>
             </div>
           </div>
