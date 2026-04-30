@@ -7,16 +7,26 @@ faq_schema:
   "@context": "https://schema.org"
   "@type": "FAQPage"
   mainEntity:
-    - "@type": "Question"
-      name: "How does a CT Coronary Angiogram find soft plaque?"
+- "@type": "Question"
+      name: "Why was I recommended a CT Heart Scan if my Treadmill ECG was normal?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "Using advanced contrast-enhanced X-ray technology, a CTCA creates a 3D map of the artery walls. It allows Dr. Gerald Thang to see non-calcified 'soft' plaque that traditional stress tests miss because they only look for significant blood flow obstruction."
+        text: "A treadmill stress test only detects blockages that significantly restrict blood flow (usually >70%). It cannot see 'soft plaque' or early-stage atherosclerosis. A CT heart scan allows Dr. Gerald to see the actual arterial wall, identifying risks that functional tests often miss."
     - "@type": "Question"
-      name: "Is a Calcium Score enough to clear me of heart risk?"
+      name: "Can I drive myself home after a CT Coronary Angiogram?"
       acceptedAnswer:
         "@type": "Answer"
-        text: "A Calcium Score of zero is an excellent sign of low risk, but it does not rule out soft plaque. For patients with metabolic risk factors like insulin resistance, a CTCA may be recommended for a more comprehensive arterial visualization."
+        text: "Yes. Unlike an invasive angiogram performed in a hospital, a CTCA is non-invasive and does not require sedation. You can drive yourself to and from the appointment and return to your normal activities immediately."
+    - "@type": "Question"
+      name: "How long does a Calcium Score result stay valid?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "For a 'Zero' score, the warranty period is typically 3 to 5 years. However, if you have high metabolic risk factors like insulin resistance, Dr. Gerald may recommend more frequent monitoring to ensure new plaque isn't forming."
+    - "@type": "Question"
+      name: "Does a heart scan show if I've had a silent heart attack?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "An Echocardiogram or a Cardiac MRI can identify areas of the heart muscle that are scarred or moving abnormally, which are hallmarks of a previous silent heart attack. A CT scan focuses more on the blockage causing the event."
 ---
 
 <style>
@@ -226,21 +236,62 @@ faq_schema:
       </div>
 
       <section class="bg-light p-5 rounded-4 mt-5">
-        <h2 class="h4 fw-bold mb-4">Frequently Asked Questions</h2>
+        <h2 class="h4 fw-bold mb-4 text-center">Heart Scan: Patient Frequently Asked Questions</h2>
         <div class="accordion" id="heartScanFaq">
+      
           <div class="accordion-item mb-2 border-0 shadow-sm">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
-                How is the CT Angiogram different from a traditional Angiogram?
+                Why do I need a scan if I passed my Treadmill Stress Test?
               </button>
             </h2>
             <div id="f1" class="accordion-collapse collapse" data-bs-parent="#heartScanFaq">
               <div class="accordion-body">
-                A traditional angiogram is an invasive hospital procedure requiring a catheter. The <strong>CT Coronary Angiogram (CTCA)</strong> is a non-invasive outpatient scan that provides similar diagnostic clarity without the need for surgery or recovery time.
+                Passing a stress test means your heart gets enough blood <em>during exercise</em>. However, it doesn't show <strong>subclinical plaque</strong>. Most heart attacks are caused by the rupture of "soft" plaque that doesn't necessarily block blood flow. A <strong>CT Coronary Angiogram</strong> is the only non-invasive way to see this specific risk.
               </div>
             </div>
           </div>
+      
+          <div class="accordion-item mb-2 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+                How much radiation is involved in a Calcium Score?
+              </button>
+            </h2>
+            <div id="f2" class="accordion-collapse collapse" data-bs-parent="#heartScanFaq">
+              <div class="accordion-body">
+                A Coronary Calcium Score is a <strong>low-dose CT protocol</strong>. The radiation exposure is roughly 1mSv, which is equivalent to about 6 months of "background radiation" you receive naturally from the environment. It is considered very safe for routine screening.
+              </div>
+            </div>
           </div>
+      
+          <div class="accordion-item mb-2 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+                Is there any downtime after the scan?
+              </button>
+            </h2>
+            <div id="f3" class="accordion-collapse collapse" data-bs-parent="#heartScanFaq">
+              <div class="accordion-body">
+                No. Because our scans are <strong>non-invasive</strong> (no catheters or sedation), there is zero downtime. You can drive yourself home, return to work, or even exercise immediately after an Echocardiogram or Calcium Score.
+              </div>
+            </div>
+          </div>
+      
+          <div class="accordion-item mb-2 border-0 shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f4">
+                How soon will Dr. Gerald explain my results?
+              </button>
+            </h2>
+            <div id="f4" class="accordion-collapse collapse" data-bs-parent="#heartScanFaq">
+              <div class="accordion-body">
+                While the images are processed quickly, <strong>Dr. Gerald Thang</strong> personally reviews the raw data to correlate findings with your metabolic profile. We usually schedule a comprehensive review within 3–5 working days to discuss your <strong>Master Plan</strong>.
+              </div>
+            </div>
+          </div>
+      
+        </div>
       </section>
 
     </div>
