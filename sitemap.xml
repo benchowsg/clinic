@@ -20,6 +20,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.ahealingheartmedical.com/scans</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ahealingheartmedical.com/scans/heart-scans</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ahealingheartmedical.com/scans/metabolic-ultrasound</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ahealingheartmedical.com/scans/mri</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.ahealingheartmedical.com/cardiology</loc>
     <lastmod>2026-01-27</lastmod>
     <priority>0.8</priority>
@@ -38,7 +58,7 @@
     <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
-    <url>
+  <url>
     <loc>https://www.ahealingheartmedical.com/metabolic-health-weight</loc>
     <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
