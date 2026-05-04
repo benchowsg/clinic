@@ -16,6 +16,30 @@ custom_schema: |
       "author": { "@type": "Person", "name": "Dr. Gerald Thang" }
     }
   ]
+faq_schema:
+  "@context": "https://schema.org"
+  "@type": "FAQPage"
+  mainEntity:
+    - "@type": "Question"
+      name: "Why do I feel tired after eating?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "This is often a sign of cellular resistance rejecting vital energy. When cells 'lock their doors' to insulin, glucose remains stuck in the bloodstream, leading to profound metabolic fatigue despite having just eaten."
+    - "@type": "Question"
+      name: "Can I have heart risk if my blood sugar is normal?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes. Fasting glucose is one of the last markers to fail. Insulin resistance can inflame your arteries for over a decade while your standard blood sugar tests still appear 'normal' because your body is overcompensating."
+    - "@type": "Question"
+      name: "What is the 'TOFI' trap in heart health?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "TOFI stands for 'Thin Outside, Fat Inside.' It refers to patients with a normal BMI who harbor dangerous visceral fat around their heart and liver, creating a high metabolic risk that standard weight checks miss."
+    - "@type": "Question"
+      name: "How does insulin resistance lead to heart attacks?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Excess insulin acts as a chronic irritant to the vascular system. It triggers inflammation in the artery walls, making them 'sticky' for plaque buildup and eventually leading to structural blockages."
 ---
 
 <style>
@@ -71,7 +95,7 @@ custom_schema: |
           </ol>
         </nav>
 
-        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Your heart is already in danger—and it's probably not what you think.</h1>
+        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Your heart is already in danger, and it's probably not what you think.</h1>
           
         <div class="author-box d-flex align-items-center">
           <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover; margin-right: 15px;" alt="Dr Gerald Thang">
@@ -85,7 +109,7 @@ custom_schema: |
         <div class="article-body">
           <p>We’ve all been there: You go for your annual health screening and see the results. Your cholesterol is borderline, your fasting glucose is "normal," and your blood pressure is just a bit high but "manageable." You’re told to watch your diet, and you leave feeling mostly reassured.</p>
 
-          <p>But there’s a missing piece to that puzzle—one that explains why so many Singaporeans face heart crises decades too early. It’s not just about cholesterol. It’s about <strong><a href="/articles/metabolic-synergy-insulin-resistance" target="_blank">insulin resistance</a></strong>, a quiet, internal process that inflames your arteries for years before a standard test ever flags it. By the time the numbers look "bad," the damage has often already taken root.</p>
+          <p>But there’s a missing piece; one that explains why so many Singaporeans face heart crises decades too early. It’s not just about cholesterol. It’s about <strong><a href="/articles/metabolic-synergy-insulin-resistance" target="_blank">insulin resistance</a></strong>, a quiet, internal process that inflames your arteries for years before a standard test ever flags it. By the time the numbers look "bad," the damage has often already taken root.</p>
           
           <div class="stat-strip">
             <div class="stat-box">
@@ -95,7 +119,7 @@ custom_schema: |
             </div>
             <div class="stat-box">
               <span class="num">1 in 3</span>
-              <span class="label">Diabetics aged 40–49 are unaware</span>
+              <span class="label">Diabetics aged 40–49 are unaware of risk</span>
               <span class="source">Source: <a href="https://www.moh.gov.sg/newsroom/speech-by-mr-tan-kiat-how--senior-minister-of-state--mddi---moh--at-the-world-diabetes-day-festival-/" target="_blank">MOH NPHS 2024</a></span>
             </div>
             <div class="stat-box">
@@ -106,6 +130,14 @@ custom_schema: |
           </div>
 
           <p>These aren't just clinical figures. They represent our colleagues, parents, and friends. The most difficult part? Most people in this group feel perfectly fine today, unaware of the metabolic strain brewing beneath the surface.</p>
+
+          <div class="myth-box shadow-sm">
+            <h4 class="fw-bold text-danger mb-3">The "Food Coma" Myth</h4>
+            <p>Do you feel an irresistible urge to nap after a carbohydrate-rich lunch? Many dismiss this as a "food coma" or a heavy meal, but in the clinic, we recognize it as a major metabolic signal.</p>
+            <p class="fw-bold mb-0" style="color: #2c4964;">The Reality: Energy rejected, causing metabolic fatigue.</p>
+            <p class="small text-muted mt-2">When your cells become resistant to insulin, they "lock their doors." The glucose from your meal stays stuck in your bloodstream, unable to power your organs. Your heart and brain are literally starving for fuel while surrounded by it.</p>
+          </div>
+
 
           <h3 class="section-heading h4">Protecting Your Future Self</h3>
           <p>Think about where you want to be in 20 or 30 years. Perhaps it’s traveling with your spouse, walking your grandchildren to school, or simply enjoying a weekend at the golf course. We all want to age with dignity and independence, not spend our retirement navigating dialysis appointments or recovering from a stroke.</p>
@@ -118,13 +150,12 @@ custom_schema: |
             <p class="mb-0">However, the science is clear: <strong>The earlier you identify <a href="/articles/metabolic-synergy-insulin-resistance" target="_blank">insulin resistance</a>, the more effectively it can be reversed.</strong> This isn't about managing a disease; it's about reclaiming decades of high-quality life.</p>
           </div>
 
-          <h3 class="section-heading h4">1. The "TOFI" Trap: More Than Meets the Eye</h3>
-          <p>In our local context, many people are <strong>TOFI</strong> (Thin on the Outside, Fat on the Inside). You might pass your IPPT and look fit in your work attire, but internally, "visceral fat" is wrapping around your heart and liver. This hidden fat is far more dangerous than the fat we can see.</p>
-          
-          <p>Genetically, Asians are more prone to metabolic harm from this hidden fat at lower body weights than Caucasians. This is why Singapore faces high diabetes rates despite having lower obesity levels than many Western nations. Your BMI might be "perfect," but your internal health may tell a different story.</p>
+          <h3 class="section-heading h4">1. The "TOFI" Trap: More Than Meets the Eye</h3>          
+           <p>In Singapore, many people are <strong>TOFI</strong> (Thin on the Outside, Fat on the Inside). Your BMI might be "perfect," but internally, visceral fat is wrapping around your heart and liver. This hidden fat is far more dangerous than the fat we can see.</p>
+           <p>Asians are genetically more prone to metabolic harm from this hidden fat at lower body weights. It is a common misconception that metabolic risk only begins with a diabetes diagnosis. In reality, the <a href="/articles/insulin-resistance-vs-type-2-diabetes" target="_blank" rel="noreferrer" class="text-decoration-none fw-bold text-primary">progression from insulin resistance to Type 2 Diabetes</a> can span a decade of silent vascular damage.</p>
 
           <h3 class="section-heading h4">2. Why Insulin Resistance Affects the Heart</h3>
-          <p>Insulin is the "key" that lets energy (glucose) into your cells. With insulin resistance, those locks become rusty. Your body has to pump out massive amounts of insulin just to keep your blood sugar stable.</p>
+          <p>Insulin is the "key" that lets energy (glucose) into your cells. With insulin resistance, those locks become rusty. </p>
            <p>It is a common misconception that metabolic risk only begins with a diabetes diagnosis. In reality, the 
               <a href="/articles/insulin-resistance-vs-type-2-diabetes" class="text-decoration-none fw-bold">progression from insulin resistance to Type 2 Diabetes</a> 
               can span a decade of silent vascular damage.</p>
@@ -149,7 +180,7 @@ custom_schema: |
             </div>
           </div>
 
-          <p style="font-size: 0.85rem; color: #888;">Diabetes prevalence by ethnicity (2020 data). Source: <a href="https://www.moh.gov.sg/newsroom/peech-by-ms-rahayu-mahzam-parliamentary-secretary-for-health-at-the-ministry-of-health-committee-of-supply-debate-2021-on-friday-5-march-2021/" target="_blank" rel="noopener" style="color: #888;">MOH Committee of Supply Debate, March 2021</a>.</p>
+          <p style="font-size: 0.85rem; color: #888;">Diabetes prevalence by ethnicity, MOH Committee of Supply Debate (March 2021). Source: <a href="https://www.moh.gov.sg/newsroom/peech-by-ms-rahayu-mahzam-parliamentary-secretary-for-health-at-the-ministry-of-health-committee-of-supply-debate-2021-on-friday-5-march-2021/" target="_blank" rel="noopener" style="color: #888;">MOH Committee of Supply Debate, March 2021</a>.</p>
  
           <div class="metabolic-callout">
             <h5 class="fw-bold mb-3">The Hawker Centre Factor</h5>
@@ -184,6 +215,67 @@ custom_schema: |
           <div class="ip-notice-box">
             Intellectual Property Notice: The Clinical Stewardship protocols and Diagnostic Frameworks are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
           </div>
+          <p></p>
+  
+<section class="mt-5 pt-5 border-top">
+  <h3 class="fw-bold mb-4">Common Questions on Metabolic Heart Health</h3>
+  <div class="accordion" id="metabolicFaq">
+    
+    <div class="accordion-item mb-3 border shadow-sm">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+          Why did my standard health screening say I was "Normal"?
+        </button>
+      </h2>
+      <div id="f1" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+        <div class="accordion-body text-muted">
+          Standard screenings often rely on <strong>Fasting Blood Glucose</strong>. However, your body is incredibly good at keeping blood sugar stable by pumping out massive amounts of insulin. You can have severe insulin resistance (and the arterial inflammation that comes with it) for 10 years before your glucose levels finally break into the "abnormal" range.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item mb-3 border shadow-sm">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+          Is "Food Coma" really a sign of insulin resistance?
+        </button>
+      </h2>
+      <div id="f2" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+        <div class="accordion-body text-muted">
+          While occasional tiredness is normal, a consistent, heavy "slump" after meals is a classic sign of <strong>cellular resistance</strong>. Because your cells are rejecting the energy (glucose) you've just eaten, your brain and heart experience a temporary fuel shortage, causing profound metabolic fatigue.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item mb-3 border shadow-sm">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
+          Can insulin resistance be reversed?
+        </button>
+      </h2>
+      <div id="f3" class="accordion-collapse collapse" data-bs-parent="#metabolicFaq">
+        <div class="accordion-body text-muted">
+          Absolutely. Unlike structural damage to the heart, <strong>metabolic dysfunction is highly reversible</strong>. Through precision diagnostics, we identify exactly where the friction is, allowing us to use targeted nutrition, movement, and medical stewardship to restore your cellular sensitivity and protect your arteries.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+          <section class="py-5 border-top mt-5">
+            <h4 class="fw-bold mb-4">Related Clinical Insights</h4>
+            <div class="list-group list-group-flush">
+              <a href="/articles/skinny-diabetic-tofi-metabolic-risk" class="list-group-item list-group-item-action border-0 ps-0 d-flex justify-content-between align-items-center">
+                <span>Understanding TOFI: The danger of internal fat</span>
+                <span class="text-primary">→</span>
+              </a>
+              <a href="/articles/understanding-heart-fatigue" class="list-group-item list-group-item-action border-0 ps-0 d-flex justify-content-between align-items-center">
+                <span>Is it just tiredness? The heart-fatigue connection</span>
+                <span class="text-primary">→</span>
+              </a>
+            </div>
+          </section>
+
         </div>
       </div>
     </div>
