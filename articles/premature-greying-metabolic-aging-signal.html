@@ -42,22 +42,14 @@ faq_schema:
   .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
   .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; }
   
-  /* Callout Boxes */
-  .callout-box { border-radius: 20px; padding: 35px; margin: 40px 0; border: 1px solid #eee; }
-  .callout-cosmetic { background: #fdfcf0; border-color: #f1ece1; border-left: 5px solid #d4af37; }
-  .callout-medical { background: #f0f7f7; border-color: #e0f0f0; border-left: 5px solid #008080; }
+  /* The Biological Mirror Box */
+  .mirror-box { background: linear-gradient(135px, #f0f7f7 0%, #ffffff 100%); border: 2px solid #008080; border-radius: 20px; padding: 35px; margin: 40px 0; position: relative; overflow: hidden; }
+  .mirror-box::before { content: "Systemic Connection"; position: absolute; top: 10px; right: 20px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: #008080; opacity: 0.5; }
   
-  /* Diagram Styling */
   .diagram-container { background: #fafafa; border-radius: 15px; padding: 2rem; border: 1px solid #eee; margin: 2.5rem 0; text-align: center; }
   .diagram-label { font-size: 0.85rem; color: #777; margin-top: 15px; font-style: italic; }
 
-  /* Interactive SVG Styles */
   #biolfriction-chart { max-width: 600px; margin: 0 auto; }
-  .focus-rect { transition: all 0.3s ease; }
-  #canary-group:hover .focus-rect { fill: #fcf1d4; opacity: 0.8; }
-
-  /* IP & FAQ */
-  .ip-notice-box { background: #ffffff; border: 1px solid #e9ecef; border-left: 4px solid #ced4da; padding: 20px; font-size: 0.85rem; color: #6c757d; border-radius: 8px; margin-top: 50px; }
 </style>
 
 <main id="main" class="article-content">
@@ -87,27 +79,26 @@ faq_schema:
           <p>For most of us, spotting the first few strands of grey hair is a cosmetic milestone. We dismiss it as "genetics" or a simple sign of getting older. We visit the salon, dye the roots, and move on.</p>
 
           <p>However, in the context of preventive cardiology, prematurely grey hair is often a biological SOS. It acts as the <strong>"canary in the coal mine"</strong> for internal <a href="/articles/metabolic-heart-link-insulin" class="text-decoration-none fw-bold">metabolic stress</a> and accelerated systemic aging.</p>
-          
-          <div class="row g-4 mb-5">
-            <div class="col-md-6">
-              <div class="callout-box callout-cosmetic h-100 mt-0 mb-0">
-                <h5 class="fw-bold" style="color: #996515;">The Cosmetic View</h5>
-                <p class="small text-muted mb-0">"My parents greyed early. This is just an inevitable sign of aging that I need to hide with hair dye."</p>
+
+          <div class="mirror-box">
+            <h4 class="fw-bold mb-3" style="color: #006060;">The Biological Mirror: Same Mechanism, Different Tissues</h4>
+            <p>It is a clinical misconception that oxidation happens in "spots." Oxidative stress is the <strong>chemical weather</strong> inside your body. If your systemic antioxidant defenses are low enough to allow hydrogen peroxide to accumulate in your hair, they are likely low enough to allow it in your vascular walls.</p>
+            <div class="row mt-4">
+              <div class="col-md-6 border-end">
+                <p class="fw-bold text-dark mb-1">In the Hair Follicle:</p>
+                <p class="small text-muted">Oxidation attacks pigment cells (melanocytes), "bleaching" the hair from the inside out.</p>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="callout-box callout-medical h-100 mt-0 mb-0">
-                <h5 class="fw-bold" style="color: #006060;">The Medical View</h5>
-                <p class="small text-muted mb-0">"Visible aging often mirrors invisible vascular aging. Early grey hair suggests my body is managing high oxidative friction."</p>
+              <div class="col-md-6 ps-md-4">
+                <p class="fw-bold text-dark mb-1">In the Artery:</p>
+                <p class="small text-muted">Oxidation attacks LDL cholesterol, "rusting" it into plaque that damages the vessel lining.</p>
               </div>
             </div>
           </div>
 
-          <h3 class="section-heading h4">The Clinical Definition in Singapore</h3>
-          <p>In Singapore's multi-ethnic population, the clinical threshold for "premature" greying (canities) is generally defined as significant onset <strong>before the age of 30</strong>. When it occurs this early, it signals that the body's antioxidant defenses are being outpaced by systemic stress.</p>
-
           <h3 class="section-heading h4">The Core Mechanism: Oxidative Burnout</h3>
-          <p>The hair-heart connection is driven by **Oxidative Stress.** Your follicles naturally produce hydrogen peroxide as a metabolic byproduct. In a healthy system, enzymes neutralize this. Premature greying happens when this peroxide accumulates, "bleaching" the pigment from the inside out.</p>
+          <p>Your follicles naturally produce hydrogen peroxide as a metabolic byproduct. In a healthy system, enzymes neutralize this. Premature greying happens when this systemic "friction" outpaces your body's ability to repair itself. This identical process initiates the <a href="/articles/golden-timeline-structural-heart-change" class="text-decoration-none fw-bold">timeline of structural heart changes</a>.</p>
+
+          
 
           <div class="diagram-container">
             <div id="biolfriction-chart">
@@ -126,70 +117,25 @@ faq_schema:
                 <path d="M60,260 Q100,250 140,220 T220,160 T300,100 T380,60 T460,40" fill="none" stroke="url(#frictionGradient)" stroke-width="4" />
                 <line x1="60" y1="180" x2="460" y2="180" stroke="#d4af37" stroke-width="2" stroke-dasharray="6,4" />
                 <text x="465" y="185" font-family="sans-serif" font-size="11" fill="#996515" font-weight="bold">Greying Threshold</text>
-                <g id="canary-group">
-                   <rect x="180" y="140" width="80" height="120" fill="#fdfcf0" opacity="0.4" class="focus-rect" stroke="#d4af37" rx="10"/>
-                   <text x="220" y="220" font-family="sans-serif" font-size="10" fill="#996515" text-anchor="middle">Canary Window</text>
-                </g>
               </svg>
             </div>
-            <p class="diagram-label">Figure 1: Visualization of Systemic Friction (Oxidative Stress) relative to visible greying. High friction in your 20s-30s correlates with earlier vascular aging.</p>
+            <p class="diagram-label">Figure 1: Visible greying occurs when systemic oxidative "friction" crosses a biological threshold. This window often precedes invisible vascular plaque buildup.</p>
           </div>
-          
-          <h3 class="section-heading h4">Why Your Heart Cares About Your Hair</h3>
-          <p>The same "friction" that bleaches your hair follicle is simultaneously bleaching—and damaging—your arterial system. Studies show that individuals with premature greying have a statistically higher risk of coronary artery disease. The mechanism is identical: oxidative stress causes LDL cholesterol to oxidize, making it "sticky" and initiating the <a href="/articles/golden-timeline-structural-heart-change" class="text-decoration-none fw-bold">timeline of structural heart changes</a>.</p>
 
-          <section class="mt-5 pt-5 border-top">
-            <h3 class="fw-bold mb-4">Patient FAQ: Hair & Metabolism</h3>
-            <div class="accordion" id="greyFaq">
-              <div class="accordion-item mb-3 border shadow-sm">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
-                    Is premature grey hair purely genetic?
-                  </button>
-                </h2>
-                <div id="q1" class="accordion-collapse collapse" data-bs-parent="#greyFaq">
-                  <div class="accordion-body text-muted">
-                    While genetics play a role in your baseline, <strong>premature</strong> greying is often a sign of environmental and metabolic factors—such as chronic oxidative stress or insulin resistance—that accelerate the genetic clock.
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item mb-3 border shadow-sm">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
-                    Does dyeing my hair impact this medical signal?
-                  </button>
-                </h2>
-                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#greyFaq">
-                  <div class="accordion-body text-muted">
-                    Dyeing your hair hides the <em>symptom</em> but does not address the <em>source</em>. It is a cosmetic fix. Medical stewardship involves looking beneath the dye to ensure your arteries aren't aging at the same accelerated rate as your hair pigment.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <h3 class="section-heading h4">Why your Heart cares about your Hair</h3>
+          <p>Because oxidation makes cholesterol significantly more dangerous, we must look beyond the cosmetic surface. If you are experiencing premature greying, it is a clinical prompt to ask <a href="/articles/beyond-biomarker-numbers" class="fw-bold">why your 'normal' lab results don't tell the full story</a>. Your blood sugar and cholesterol might look fine on paper, but your hair is telling a story of internal oxidative strain.</p>
 
-          <section class="py-5 border-top mt-5">
-            <h4 class="fw-bold mb-4">Deepen Your Understanding</h4>
-            <div class="list-group list-group-flush">
-              <a href="/articles/hair-loss-metabolic-signal" class="list-group-item list-group-item-action border-0 ps-0 d-flex justify-content-between align-items-center">
-                <span>The Heart-Hair Link: Understanding thinning and follicles</span>
-                <span class="text-primary">→</span>
-              </a>
-              <a href="/articles/vascular-burnout-high-performance-risk" class="list-group-item list-group-item-action border-0 ps-0 d-flex justify-content-between align-items-center">
-                <span>Vascular Burnout: The risk for high-performance individuals</span>
-                <span class="text-primary">→</span>
-              </a>
-            </div>
-          </section>
+          <h3 class="section-heading h4">Don't Mask the Signal</h3>
+          <p>Choosing to dye your hair is a personal cosmetic decision, but ignoring the signal is a preventive mistake. At <strong>A Healing Heart Medical Clinic</strong>, we help you bridge the gap between your metabolism and your heart. We use precision diagnostics to identify oxidative stress early, while reversal is still within reach.</p>
 
           <div style="background: #e6f2f2; border-radius: 10px; padding: 30px; text-align: center; margin: 40px 0; border: 1px solid #008080;">
             <h4 class="fw-bold" style="color: #2c4964;">Stop masking the signal. Start optimizing the biology.</h4>
-            <p>If you are experiencing premature greying, it is time for a high-resolution vascular assessment.</p>
-            <a href="/booking" class="btn btn-primary rounded-pill px-5 py-2 mt-2" style="background-color: #008080; border: none;">Book a Metabolic Assessment</a>
+            <p>If you are greying early, get a high-resolution view of your vascular health today.</p>
+            <a href="/booking" class="btn btn-primary rounded-pill px-5 py-2 mt-2" style="background-color: #008080; border: none;">Book a Vascular Assessment</a>
           </div>
 
           <div class="ip-notice-box">
-            Intellectual Property Notice: The Clinical Stewardship protocols and "Vascular Burnout" frameworks are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
+            Intellectual Property Notice: The Clinical Stewardship protocols and "Biological Mirror" framework are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
           </div>
         </div>
       </div>
