@@ -150,7 +150,9 @@ description: Clinical insights on cardiology, metabolic synergy, and vascular lo
     <div class="container">
       <div class="row g-3 justify-content-center" id="article-grid">
 
-        {% for article in site.articles %}
+{% assign sorted_articles = site.articles | sort: 'date' | reverse %}
+
+        {% for article in sorted_articles %}
         <div class="col-md-6 col-lg-4 article-item" data-category="{{ article.category }}">
           <a href="{{ article.url }}" class="article-link-wrapper">
             <div class="article-card">
