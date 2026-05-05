@@ -26,6 +26,11 @@ google_ratings:
   platform: "Google"
   link: "https://g.page/ahealingheartmedical"
 
+collections:
+  articles:
+    output: true
+    permalink: /articles/:path/
+
 exclude:
   - Gemfile
   - Gemfile.lock
