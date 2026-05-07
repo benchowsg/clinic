@@ -45,6 +45,11 @@ faq_schema:
     --soft-bg: #f9fbfb;
   }
 
+  .article-content { padding-top: 140px; }
+  .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
+
+  .author-box { background: #f8f9fa; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 40px; }
+  
   .section-heading { color: var(--deep-navy); font-weight: 700; margin-top: 3rem; margin-bottom: 1.2rem; position: relative; padding-left: 15px; }
   .section-heading::before { content: ''; position: absolute; left: 0; top: 5px; bottom: 5px; width: 4px; background: var(--primary-teal); border-radius: 2px; }
   
@@ -68,12 +73,32 @@ faq_schema:
   .node-pulse { animation: pulse 3s infinite ease-in-out; transform-origin: center; }
 </style>
 
-<div class="container py-5">
+<main id="main" class="article-content">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-9">
-      <h1 class="display-5 fw-bold mb-4" style="color: var(--deep-navy);">Immune Friction: Why Your "Healthy" Choices Might Be Aging Your Heart</h1>
 
-      <p class="lead text-muted mb-5">Most people view allergies as an occasional inconvenience. In longevity medicine, we identify them as <strong>"Immune Friction"</strong>—a silent driver of vascular decay and metabolic resistance.</p>
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
+            <li class="breadcrumb-item active">Longevity Metabolic Health</li>
+          </ol>
+        </nav>
+      
+      <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Immune Friction: Why Your "Healthy" Choices Might Be Aging Your Heart</h1>
+
+        <div class="author-box d-flex align-items-center">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover; margin-right: 15px;" alt="Dr Gerald Thang">
+          <div>
+            <p class="mb-0 fw-bold">By Dr. Gerald Thang</p>
+            <p class="mb-0 text-primary fw-bold small text-uppercase">Principal Physician</p>
+            <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology</p>
+          </div>
+        </div>
+
+      <div class="article-body">
+        <p>Most people view allergies as an occasional inconvenience. In longevity medicine, we identify them as <strong>"Immune Friction"</strong>—a silent driver of vascular decay and metabolic resistance.</p>
 
       <h3 class="section-heading">The "Why": Beyond the Itch</h3>
       <p>An undiagnosed allergy is essentially a low-grade internal forest fire. It keeps your immune system in a state of constant aggression, which affects three major systems:</p>
