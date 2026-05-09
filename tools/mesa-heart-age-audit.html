@@ -40,7 +40,12 @@ description: "The MESA database is used to calculate the velocity of your arteri
 
   #resultPanel { transition: opacity 0.8s ease-in-out, transform 0.8s ease-out; }
   #narrativeText a { color: var(--primary-teal); font-weight: 600; text-decoration: underline; }
-  #gaugeNeedle { transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 160px 160px; }
+  
+  #gaugeNeedle { 
+    transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    /* This is the critical fix: anchor it to the center of the 320x180 box */
+    transform-origin: 160px 160px; 
+  }
 
   .package-cta-box {
     background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
@@ -95,16 +100,20 @@ description: "The MESA database is used to calculate the velocity of your arteri
           <div id="resultPanel" class="col-md-7 ps-md-5 text-center d-flex flex-column align-items-center opacity-25">
             <h4 class="fw-bold mb-2" style="color: var(--deep-navy);">2. Audit Report</h4>
             
-            <svg width="320" height="180" viewBox="0 0 320 180" id="gaugeSVG">
-              <path d="M40,160 A120,120 0 0,1 280,160" fill="none" stroke="#e2e8f0" stroke-width="20" stroke-linecap="round"/>
-              <path d="M40,160 A120,120 0 0,1 100,65" fill="none" stroke="#48bb78" stroke-width="20" />
-              <path d="M100,65 A120,120 0 0,1 220,65" fill="none" stroke="#ecc94b" stroke-width="20" />
-              <path d="M220,65 A120,120 0 0,1 280,160" fill="none" stroke="#e53e3e" stroke-width="20" />
-              <polygon id="gaugeNeedle" points="160,160 155,155 160,50 165,155" fill="#2c4964" transform="rotate(-90, 160, 160)" />
-              <circle cx="160" cy="160" r="8" fill="#2c4964" />
-              <text x="50" y="175" font-size="12" fill="#999">Low Risk</text>
-              <text x="235" y="175" font-size="12" fill="#999">High Risk</text>
-            </svg>
+          <svg width="320" height="180" viewBox="0 0 320 180" id="gaugeSVG" style="overflow: visible;">
+            <path d="M40,160 A120,120 0 0,1 280,160" fill="none" stroke="#e2e8f0" stroke-width="20" stroke-linecap="round"/>
+            
+            <path d="M40,160 A120,120 0 0,1 100,65" fill="none" stroke="#48bb78" stroke-width="20" />
+            <path d="M100,65 A120,120 0 0,1 220,65" fill="none" stroke="#ecc94b" stroke-width="20" />
+            <path d="M220,65 A120,120 0 0,1 280,160" fill="none" stroke="#e53e3e" stroke-width="20" />
+            
+            <polygon id="gaugeNeedle" points="156,160 164,160 160,50" fill="#2c4964" transform="rotate(-90, 160, 160)" />
+            
+            <circle cx="160" cy="160" r="8" fill="#2c4964" />
+            
+            <text x="50" y="175" font-size="12" fill="#999" font-family="sans-serif">Low Risk</text>
+            <text x="235" y="175" font-size="12" fill="#999" font-family="sans-serif">High Risk</text>
+          </svg>
             
             <div id="ageDisplay" class="d-none w-100 p-3 bg-white border rounded-pill shadow-sm">
               <p class="mb-0 small text-muted">Biological Heart Age:</p>
@@ -149,9 +158,22 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   const age = parseInt(document.getElementById('age').value);
   const cac = parseInt(document.getElementById('cacScore').value);
   
-  if (!age || isNaN(cac)) { alert('Please enter both age and score.'); return; }
+  // Validation check first
+  if (!age || isNaN(cac)) { 
+    alert('Please enter both age and score.'); 
+    return; 
+  }
 
-  // Logic: Simplified MESA mapping
+  // 1. Rotate Needle logic (Mapping 0-400+ score to 180 degrees)
+  // We do this inside the function so 'cac' is available
+  const scoreFactor = Math.min(cac, 400);
+  const rotation = (scoreFactor / 400) * 180 - 90;
+  
+  // Apply rotation around the center point (160, 160)
+  const needle = document.getElementById('gaugeNeedle');
+  needle.setAttribute('transform', `rotate(${rotation}, 160, 160)`);
+
+  // 2. Logic: Simplified MESA mapping
   let heartAge;
   if (cac === 0) { 
     heartAge = Math.max(30, age - 5); 
@@ -161,7 +183,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   }
   heartAge = Math.min(Math.round(heartAge), 90);
 
-  // UI Updates: Remove the "white wash" opacity
+  // 3. UI Updates: Reveal the result panel
   const resultPanel = document.getElementById('resultPanel');
   resultPanel.classList.remove('opacity-25');
   resultPanel.style.opacity = '1';
@@ -182,12 +204,8 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     compText.style.color = "var(--primary-teal)";
     document.getElementById('ctaBox').classList.add('d-none'); 
   }
-
-  // Rotate Needle
-  const scoreFactor = Math.min(cac, 400);
-  const rotation = (scoreFactor / 400) * 180 - 90;
-  document.getElementById('gaugeNeedle').setAttribute('transform', `rotate(${rotation}, 160, 160)`);
   
+  // 4. Update Narrative
   document.getElementById('narrativeText').innerHTML = (cac > 100) ? 
     "<b>Finding:</b> Significant plaque burden. This suggests <b>Metabolic Friction</b>. We need to audit your <a href='/articles/metabolic-syndrome-singapore-heart-health'>Metabolic Health</a> to find the root cause." :
     "<b>Finding:</b> Minimal or zero calcification detected. Focus on maintaining vascular stewardship and routine monitoring.";
