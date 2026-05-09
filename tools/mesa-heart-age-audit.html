@@ -19,7 +19,8 @@ description: "The MESA database is used to calculate the velocity of your arteri
 #mesaCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
 #mesaCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
 
-#resultPanel { transition: opacity 0.5s ease; }
+/* Result Panel Fix: Added transition for smooth reveal */
+#resultPanel { transition: opacity 0.8s ease-in-out, transform 0.8s ease-out; }
 #narrativeText a { color: var(--primary-teal); font-weight: 600; text-decoration: underline; }
 #gaugeNeedle { transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 160px 160px; }
 
@@ -92,7 +93,7 @@ description: "The MESA database is used to calculate the velocity of your arteri
               <p id="heartAgeOutput" class="h2 fw-bold mb-0 text-primary">--</p>
             </div>
             <p id="ageComparisonText" class="small mt-2 fw-bold"></p>
-            <div id="narrativeText" class="d-none mt-3 p-3 bg-white border rounded-4 text-muted small text-start"></div>
+            <div id="narrativeText" class="d-none mt-3 p-3 bg-white border rounded-4 text-muted small text-start shadow-sm"></div>
           </div>
         </div>
       </div>
@@ -111,23 +112,17 @@ description: "The MESA database is used to calculate the velocity of your arteri
   </div>
 
   <section class="mt-5 pt-4 border-top">
-  <div class="row">
-    <div class="col-12">
-      <h5 class="fw-bold small text-uppercase text-muted mb-3">Clinical References & Data Sources</h5>
-      <ul class="list-unstyled small text-muted">
-        <li class="mb-2">
-          1. McClelland ND, et al. <strong>"10-Year Angiographic and Clinical Outcomes Based on Coronary Artery Calcium."</strong> <em>Journal of the American College of Cardiology</em> (MESA Study).
-        </li>
-        <li class="mb-2">
-          2. Hecht HS, et al. <strong>"Arterial Age vs. Biological Age: Interpreting CAC Scores in Asymptomatic Patients."</strong> <em>Society of Cardiovascular Computed Tomography</em>.
-        </li>
-        <li>
-          3. <strong>The Power of Zero:</strong> Based on clinical consensus regarding the 5-year warranty period of a CAC score of 0.
-        </li>
-      </ul>
+    <div class="row">
+      <div class="col-12">
+        <h5 class="fw-bold small text-uppercase text-muted mb-3">Clinical References & Data Sources</h5>
+        <ul class="list-unstyled small text-muted">
+          <li class="mb-2">1. McClelland ND, et al. <strong>"10-Year Angiographic and Clinical Outcomes Based on Coronary Artery Calcium."</strong> <em>Journal of the American College of Cardiology</em> (MESA Study).</li>
+          <li class="mb-2">2. Hecht HS, et al. <strong>"Arterial Age vs. Biological Age: Interpreting CAC Scores in Asymptomatic Patients."</strong> <em>Society of Cardiovascular Computed Tomography</em>.</li>
+          <li>3. <strong>The Power of Zero:</strong> Based on clinical consensus regarding the 5-year warranty period of a CAC score of 0.</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </main>
 
 <script>
@@ -140,15 +135,19 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
 
   // Logic: Simplified MESA mapping
   let heartAge;
-  if (cac === 0) { heartAge = Math.max(30, age - 5); } 
-  else {
+  if (cac === 0) { 
+    heartAge = Math.max(30, age - 5); 
+  } else {
     let multiplier = (gender === 'male') ? 0.12 : 0.15;
     heartAge = age + (cac * multiplier);
   }
   heartAge = Math.min(Math.round(heartAge), 90);
 
-  // UI Updates
-  document.getElementById('resultPanel').style.opacity = '1';
+  // UI Updates: Remove the "white wash" opacity
+  const resultPanel = document.getElementById('resultPanel');
+  resultPanel.classList.remove('opacity-25');
+  resultPanel.style.opacity = '1';
+
   document.getElementById('ageDisplay').classList.remove('d-none');
   document.getElementById('narrativeText').classList.remove('d-none');
   document.getElementById('heartAgeOutput').innerText = heartAge + ' Years';
@@ -159,19 +158,20 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   if (ageDiff > 2) {
     compText.innerText = "Biological Mismatch Detected: Heart is " + ageDiff + " years older.";
     compText.style.color = "var(--danger-red)";
-    document.getElementById('ctaBox').classList.remove('d-none'); // Show CTA
+    document.getElementById('ctaBox').classList.remove('d-none'); 
   } else {
     compText.innerText = "Heart Age is healthy relative to your IC age.";
     compText.style.color = "var(--primary-teal)";
+    document.getElementById('ctaBox').classList.add('d-none'); 
   }
 
-  // Rotate Needle (Mapping 0-400+ score to 180 degrees)
+  // Rotate Needle
   const scoreFactor = Math.min(cac, 400);
   const rotation = (scoreFactor / 400) * 180 - 90;
   document.getElementById('gaugeNeedle').setAttribute('transform', `rotate(${rotation}, 160, 160)`);
   
   document.getElementById('narrativeText').innerHTML = (cac > 100) ? 
-    "<b>Finding:</b> Significant plaque burden. This suggests <b>Metabolic Friction</b>. We need to audit your <a href='/articles/metabolic-syndrome-singapore-heart-health'>Metabolic Health</a>." :
-    "<b>Finding:</b> Minimal or zero calcification. Focus on maintaining vascular stewardship.";
+    "<b>Finding:</b> Significant plaque burden. This suggests <b>Metabolic Friction</b>. We need to audit your <a href='/articles/metabolic-syndrome-singapore-heart-health'>Metabolic Health</a> to find the root cause." :
+    "<b>Finding:</b> Minimal or zero calcification detected. Focus on maintaining vascular stewardship and routine monitoring.";
 });
 </script>
