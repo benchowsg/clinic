@@ -1,0 +1,154 @@
+---
+layout: default
+permalink: /mesa-heart-age-audit
+title: "The MESA Heart Age Audit: A Doctor's Tool"
+description: "The MESA database is used to calculate the velocity of your arterial ageing. Convert your Agatston score into a biological heart age."
+---
+
+<style>
+/* Custom Tool Variables */
+:root {
+  --primary-teal: #008080;
+  --deep-navy: #2c4964;
+  --danger-red: #e53e3e;
+  --accent-gold: #d4af37;
+}
+
+#mesaCalculator .form-label { color: #555; }
+#mesaCalculator .form-control, #mesaCalculator .form-select { border-color: #ddd; padding: 12px 20px; }
+#mesaCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
+#mesaCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
+
+#resultPanel { transition: opacity 0.5s ease; }
+#narrativeText a { color: var(--primary-teal); font-weight: 600; text-decoration: underline; }
+#gaugeNeedle { transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 160px 160px; }
+
+/* Conversion Box Styling */
+.package-cta-box {
+  background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
+  border: 2px solid var(--primary-teal);
+  border-radius: 25px;
+  padding: 40px;
+  margin: 50px 0;
+}
+.btn-stewardship {
+  background: var(--deep-navy);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+</style>
+
+<main id="main" class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      
+      <h3 class="section-heading fw-bold mb-3" style="color: var(--deep-navy);">The MESA Heart Age Audit</h3>
+      <p>A standard lab report only gives you the raw Agatston Score (quantity). A true cardiologist audit uses the <strong>MESA (Multi-Ethnic Study of Atherosclerosis)</strong> database to calculate the <strong>velocity</strong> of your arterial ageing.</p>
+      <p>This is the tool Dr. Gerald Thang uses during consultations to determine if your heart is ageing faster than your identity card.</p>
+
+      <div id="mesaCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
+        <div class="calculator-ui row g-4 align-items-center">
+          
+          <div class="col-md-5 border-end pe-md-5">
+            <h4 class="fw-bold mb-4" style="color: var(--primary-teal);">1. Input CAC Data</h4>
+            <div class="form-group mb-3">
+              <label class="form-label small text-muted">Gender</label>
+              <select id="gender" class="form-select rounded-pill">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label small text-muted">Current Age (IC Age)</label>
+              <input type="number" id="age" class="form-control rounded-pill" placeholder="e.g. 45">
+            </div>
+            <div class="form-group mb-4">
+              <label class="form-label small text-muted">Raw Agatston Score</label>
+              <input type="number" id="cacScore" class="form-control rounded-pill" placeholder="e.g. 150">
+            </div>
+            <button id="calculateBtn" class="btn btn-teal w-100 rounded-pill fw-bold text-white py-3">Run Heart Audit</button>
+          </div>
+
+          <div id="resultPanel" class="col-md-7 ps-md-5 text-center d-flex flex-column align-items-center opacity-25">
+            <h4 class="fw-bold mb-2" style="color: var(--deep-navy);">2. Audit Report</h4>
+            
+            <svg width="320" height="180" viewBox="0 0 320 180" id="gaugeSVG">
+              <path d="M40,160 A120,120 0 0,1 280,160" fill="none" stroke="#e2e8f0" stroke-width="20" stroke-linecap="round"/>
+              <path d="M40,160 A120,120 0 0,1 100,65" fill="none" stroke="#48bb78" stroke-width="20" />
+              <path d="M100,65 A120,120 0 0,1 220,65" fill="none" stroke="#ecc94b" stroke-width="20" />
+              <path d="M220,65 A120,120 0 0,1 280,160" fill="none" stroke="#e53e3e" stroke-width="20" />
+              <polygon id="gaugeNeedle" points="160,160 155,155 160,50 165,155" fill="#2c4964" transform="rotate(-90, 160, 160)" />
+              <circle cx="160" cy="160" r="8" fill="#2c4964" />
+              <text x="50" y="175" font-size="12" fill="#999">Low Risk</text>
+              <text x="235" y="175" font-size="12" fill="#999">High Risk</text>
+            </svg>
+            
+            <div id="ageDisplay" class="d-none w-100 p-3 bg-white border rounded-pill shadow-sm">
+              <p class="mb-0 small text-muted">Biological Heart Age:</p>
+              <p id="heartAgeOutput" class="h2 fw-bold mb-0 text-primary">--</p>
+            </div>
+            <p id="ageComparisonText" class="small mt-2 fw-bold"></p>
+            <div id="narrativeText" class="d-none mt-3 p-3 bg-white border rounded-4 text-muted small text-start"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ctaBox" class="package-cta-box d-none">
+        <h3 class="fw-bold mb-3" style="color: var(--deep-navy);">Protect Your Vascular Reserve</h3>
+        <p>A high heart age mismatch is a signal that your "internal environment" is aggressive. Our <strong>Heart Stewardship Package</strong> includes the CT Calcium Scan and a stabilization roadmap with Dr. Gerald Thang.</p>
+        <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn-stewardship">View Screening Packages</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const gender = document.getElementById('gender').value;
+  const age = parseInt(document.getElementById('age').value);
+  const cac = parseInt(document.getElementById('cacScore').value);
+  
+  if (!age || isNaN(cac)) { alert('Please enter both age and score.'); return; }
+
+  // Logic: Simplified MESA mapping
+  let heartAge;
+  if (cac === 0) { heartAge = Math.max(30, age - 5); } 
+  else {
+    let multiplier = (gender === 'male') ? 0.12 : 0.15;
+    heartAge = age + (cac * multiplier);
+  }
+  heartAge = Math.min(Math.round(heartAge), 90);
+
+  // UI Updates
+  document.getElementById('resultPanel').style.opacity = '1';
+  document.getElementById('ageDisplay').classList.remove('d-none');
+  document.getElementById('narrativeText').classList.remove('d-none');
+  document.getElementById('heartAgeOutput').innerText = heartAge + ' Years';
+
+  const ageDiff = heartAge - age;
+  const compText = document.getElementById('ageComparisonText');
+  
+  if (ageDiff > 2) {
+    compText.innerText = "Biological Mismatch Detected: Heart is " + ageDiff + " years older.";
+    compText.style.color = "var(--danger-red)";
+    document.getElementById('ctaBox').classList.remove('d-none'); // Show CTA
+  } else {
+    compText.innerText = "Heart Age is healthy relative to your IC age.";
+    compText.style.color = "var(--primary-teal)";
+  }
+
+  // Rotate Needle (Mapping 0-400+ score to 180 degrees)
+  const scoreFactor = Math.min(cac, 400);
+  const rotation = (scoreFactor / 400) * 180 - 90;
+  document.getElementById('gaugeNeedle').setAttribute('transform', `rotate(${rotation}, 160, 160)`);
+  
+  document.getElementById('narrativeText').innerHTML = (cac > 100) ? 
+    "<b>Finding:</b> Significant plaque burden. This suggests <b>Metabolic Friction</b>. We need to audit your <a href='/articles/metabolic-syndrome-singapore-heart-health'>Metabolic Health</a>." :
+    "<b>Finding:</b> Minimal or zero calcification. Focus on maintaining vascular stewardship.";
+});
+</script>
