@@ -6,49 +6,67 @@ description: "The MESA database is used to calculate the velocity of your arteri
 ---
 
 <style>
-/* Custom Tool Variables */
-:root {
-  --primary-teal: #008080;
-  --deep-navy: #2c4964;
-  --danger-red: #e53e3e;
-  --accent-gold: #d4af37;
-}
+  /* Ensure the main content doesn't hide under the fixed navbar */
+  .article-container {
+    padding-top: 100px; /* Desktop Header clearance */
+    padding-bottom: 80px;
+  }
 
-#mesaCalculator .form-label { color: #555; }
-#mesaCalculator .form-control, #mesaCalculator .form-select { border-color: #ddd; padding: 12px 20px; }
-#mesaCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
-#mesaCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
+  /* Responsive adjustment for mobile */
+  @media (max-width: 768px) {
+    .article-container {
+      padding-top: 80px; 
+    }
+  }
 
-/* Result Panel Fix: Added transition for smooth reveal */
-#resultPanel { transition: opacity 0.8s ease-in-out, transform 0.8s ease-out; }
-#narrativeText a { color: var(--primary-teal); font-weight: 600; text-decoration: underline; }
-#gaugeNeedle { transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 160px 160px; }
+  .main-title {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem; /* Standard H1 size */
+  }
 
-/* Conversion Box Styling */
-.package-cta-box {
-  background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
-  border: 2px solid var(--primary-teal);
-  border-radius: 25px;
-  padding: 40px;
-  margin: 50px 0;
-}
-.btn-stewardship {
-  background: var(--deep-navy);
-  color: white;
-  padding: 15px 35px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-block;
-}
+  /* Custom Tool Variables */
+  :root {
+    --primary-teal: #008080;
+    --deep-navy: #2c4964;
+    --danger-red: #e53e3e;
+    --accent-gold: #d4af37;
+  }
+
+  #mesaCalculator .form-label { color: #555; }
+  #mesaCalculator .form-control, #mesaCalculator .form-select { border-color: #ddd; padding: 12px 20px; }
+  #mesaCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
+  #mesaCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
+
+  #resultPanel { transition: opacity 0.8s ease-in-out, transform 0.8s ease-out; }
+  #narrativeText a { color: var(--primary-teal); font-weight: 600; text-decoration: underline; }
+  #gaugeNeedle { transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 160px 160px; }
+
+  .package-cta-box {
+    background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
+    border: 2px solid var(--primary-teal);
+    border-radius: 25px;
+    padding: 40px;
+    margin: 50px 0;
+  }
+  .btn-stewardship {
+    background: var(--deep-navy);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+  }
 </style>
 
-<main id="main" class="container mt-5 pt-5">
-  <div class="row justify-content-center">
+<main id="main" class="article-container">
+  <div class="container">
+    <div class="row justify-content-center">
     <div class="col-lg-10">
       
-      <h3 class="section-heading fw-bold mb-3" style="color: var(--deep-navy);">The MESA Heart Age Audit</h3>
-      <p>A standard lab report only gives you the raw Agatston Score (quantity). A true cardiologist audit uses the <strong>MESA (Multi-Ethnic Study of Atherosclerosis)</strong> database to calculate the <strong>velocity</strong> of your arterial ageing.</p>
+     <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The MESA Heart Age Audit</h1>
+      <p class="lead">A standard lab report only gives you the raw Agatston Score (quantity). A true cardiologist audit uses the <strong>MESA (Multi-Ethnic Study of Atherosclerosis)</strong> database to calculate the <strong>velocity</strong> of your arterial ageing.</p>
       <p>This is the tool Dr. Gerald Thang uses during consultations to determine if your heart is ageing faster than your identity card.</p>
 
       <div id="mesaCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
