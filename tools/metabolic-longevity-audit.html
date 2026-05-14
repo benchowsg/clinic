@@ -61,6 +61,21 @@ description: "Calculate your Visceral Fat risk and Relative Fat Mass (RFM). A ca
     text-decoration: none;
     display: inline-block;
   }
+
+  .border-danger {
+      border-left: 5px solid var(--danger-red) !important;
+    }
+    .bi-exclamation-triangle-fill {
+      margin-right: 8px;
+    }
+    /* A subtle animation to draw attention to the warning */
+    #narrativeText {
+      animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 </style>
 
 <main id="main" class="article-container">
@@ -169,17 +184,36 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   
   narrative.classList.remove('d-none');
 
-  // Decision Logic
+// Decision Logic
   if (whtr > 0.52 || (gender === 'male' && rfm > 25) || (gender === 'female' && rfm > 32)) {
     riskText.innerText = "Visceral Fat Warning Detected";
     riskText.style.color = "var(--danger-red)";
     cta.classList.remove('d-none');
-    narrative.innerHTML = "<b>Finding:</b> Your measurements suggest a high accumulation of <b>Visceral Fat</b>. Even if your BMI is normal, this 'hidden' fat increases systemic inflammation and arterial risk. A focused metabolic intervention is recommended.";
+    
+    // Elevated "Unhealthy" Narrative
+    narrative.innerHTML = `
+      <div class="p-2">
+        <p class="mb-2"><b>Finding:</b> Your measurements suggest an accumulation of <b>Visceral Fat</b>. Even if your weight seems normal, this "hidden" fat is metabolically active—releasing inflammatory markers that directly damage your arterial lining.</p>
+        
+        <div class="p-3 bg-white border-start border-danger border-4 rounded-3 shadow-sm my-3">
+          <h6 class="fw-bold text-danger mb-2" style="font-size: 0.85rem; text-uppercase; letter-spacing: 1px;">The Metabolic Friction Checklist</h6>
+          <ul class="list-unstyled mb-0" style="font-size: 0.8rem; line-height: 1.6;">
+            <li><i class="text-danger">●</i> Difficulty losing weight despite "eating less"</li>
+            <li><i class="text-danger">●</i> Post-meal fatigue or energy "crashes"</li>
+            <li><i class="text-danger">●</i> Waist-to-Height ratio exceeding 0.50</li>
+            <li><i class="text-danger">●</i> Tendency for "skinny-fat" body composition</li>
+          </ul>
+        </div>
+        
+        <p class="small mb-0"><strong>Clinical Note:</strong> This profile often correlates with <b>Insulin Resistance</b>. Dr. Thang recommends a stewardship audit to check your fasting insulin and ApoB levels.</p>
+      </div>
+    `;
   } else {
+    // Healthy Narrative
     riskText.innerText = "Healthy Metabolic Composition";
     riskText.style.color = "var(--primary-teal)";
     cta.classList.add('d-none');
-    narrative.innerHTML = "<b>Finding:</b> Your body composition is currently within the longevity-optimized range. Focus on maintaining muscle mass through resistance training to preserve this metabolic baseline.";
+    narrative.innerHTML = "<b>Finding:</b> Your body composition is currently within the longevity-optimized range. Your visceral fat risk is low. Focus on maintaining high-quality protein intake and resistance training to protect this metabolic baseline as you age.";
   }
 });
 </script>
