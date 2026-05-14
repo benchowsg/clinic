@@ -1,0 +1,185 @@
+---
+layout: default
+permalink: /metabolic-longevity-audit
+title: "The Ultimate Metabolic Audit: Beyond BMI"
+description: "Calculate your Visceral Fat risk and Relative Fat Mass (RFM). A cardiologist's approach to weight loss and metabolic health."
+---
+
+<style>
+  /* Ensure the main content doesn't hide under the fixed navbar */
+  .article-container {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .article-container { padding-top: 80px; }
+  }
+
+  .main-title {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+  }
+
+  :root {
+    --primary-teal: #008080;
+    --deep-navy: #2c4964;
+    --danger-red: #e53e3e;
+    --accent-gold: #d4af37;
+  }
+
+  #metabolicCalculator .form-label { color: #555; }
+  #metabolicCalculator .form-control, #metabolicCalculator .form-select { border-color: #ddd; padding: 12px 20px; }
+  #metabolicCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
+  #metabolicCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
+
+  #resultPanel { transition: opacity 0.8s ease-in-out; }
+  
+  .metric-pill {
+    background: white;
+    border: 1px solid #eef2f3;
+    border-radius: 50px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  .package-cta-box {
+    background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
+    border: 2px solid var(--primary-teal);
+    border-radius: 25px;
+    padding: 40px;
+    margin: 50px 0;
+  }
+  .btn-stewardship {
+    background: var(--deep-navy);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+  }
+</style>
+
+<main id="main" class="article-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        
+        <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The Ultimate Metabolic Audit</h1>
+        <p class="lead">Weight is a poor proxy for health. A <strong>Metabolic Audit</strong> looks deeper at <strong>Visceral Fat</strong>—the inflammatory tissue wrapped around your organs that drives heart disease.</p>
+        <p>Using the <strong>Relative Fat Mass (RFM)</strong> index and <strong>Waist-to-Height</strong> ratios, this tool identifies if your "weight loss" needs to be a "fat loss" priority to protect your longevity.</p>
+
+        <div id="metabolicCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
+          <div class="calculator-ui row g-4">
+            
+            <div class="col-md-5 border-end pe-md-5">
+              <h4 class="fw-bold mb-4" style="color: var(--primary-teal);">1. Core Metrics</h4>
+              <div class="form-group mb-3">
+                <label class="form-label small text-muted">Gender</label>
+                <select id="gender" class="form-select rounded-pill">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div class="form-group mb-3">
+                <label class="form-label small text-muted">Current Weight (kg)</label>
+                <input type="number" id="weight" class="form-control rounded-pill" placeholder="e.g. 70">
+              </div>
+              <div class="form-group mb-3">
+                <label class="form-label small text-muted">Height (cm)</label>
+                <input type="number" id="height" class="form-control rounded-pill" placeholder="e.g. 170">
+              </div>
+              <div class="form-group mb-4">
+                <label class="form-label small text-muted">Waist Circumference (cm)</label>
+                <input type="number" id="waist" class="form-control rounded-pill" placeholder="Measure at navel">
+              </div>
+              <button id="calculateBtn" class="btn btn-teal w-100 rounded-pill fw-bold text-white py-3">Run Metabolic Audit</button>
+            </div>
+
+            <div id="resultPanel" class="col-md-7 ps-md-5 text-center d-flex flex-column justify-content-center opacity-25">
+              <h4 class="fw-bold mb-4" style="color: var(--deep-navy);">2. Composition Report</h4>
+              
+              <div class="metric-pill">
+                <span class="small text-muted d-block">Est. Body Fat (RFM)</span>
+                <strong id="rfmOutput" class="h2 fw-bold text-primary">--</strong>
+              </div>
+
+              <div class="metric-pill">
+                <span class="small text-muted d-block">BMI (Mass Index)</span>
+                <strong id="bmiOutput" class="h4">--</strong>
+              </div>
+
+              <p id="riskLevelText" class="fw-bold mt-2"></p>
+              <div id="narrativeText" class="d-none mt-3 p-3 bg-white border rounded-4 text-muted small text-start shadow-sm"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="ctaBox" class="package-cta-box d-none">
+          <h3 class="fw-bold mb-3" style="color: var(--deep-navy);">Address the Metabolic Root Cause</h3>
+          <p>Hidden visceral fat is often the result of insulin resistance or metabolic friction. Our <strong>Executive Health Screening</strong> includes advanced lipid profiling and metabolic markers to build your roadmap to lean longevity.</p>
+          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn-stewardship">View Metabolic Screening</a>
+        </div>
+
+        <p class="text-center mt-3" style="font-size: 0.8rem; color: #999;">
+          <strong>Clinical Note:</strong> RFM (Relative Fat Mass) is a validated formula from the <em>Scientific Reports (Nature)</em> journal, found to be more accurate than BMI in estimating whole-body fat percentage.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const gender = document.getElementById('gender').value;
+  const weight = parseFloat(document.getElementById('weight').value);
+  const height = parseFloat(document.getElementById('height').value);
+  const waist = parseFloat(document.getElementById('waist').value);
+
+  if (!weight || !height || !waist) {
+    alert('Please enter all measurements to proceed.');
+    return;
+  }
+
+  // BMI Calculation
+  const bmi = (weight / ((height / 100) ** 2)).toFixed(1);
+  
+  // RFM Calculation (Relative Fat Mass)
+  // Male: 64 - (20 * (height/waist)) | Female: 76 - (20 * (height/waist))
+  let rfm = (gender === 'male') ? (64 - (20 * (height / waist))) : (76 - (20 * (height / waist)));
+  rfm = Math.max(rfm, 2).toFixed(1);
+
+  // Waist-to-Height Ratio (Critical for Visceral Fat)
+  const whtr = waist / height;
+
+  // UI Reveal
+  const resultPanel = document.getElementById('resultPanel');
+  resultPanel.classList.remove('opacity-25');
+  resultPanel.style.opacity = '1';
+  
+  document.getElementById('bmiOutput').innerText = bmi;
+  document.getElementById('rfmOutput').innerText = rfm + "%";
+  
+  const riskText = document.getElementById('riskLevelText');
+  const narrative = document.getElementById('narrativeText');
+  const cta = document.getElementById('ctaBox');
+  
+  narrative.classList.remove('d-none');
+
+  // Decision Logic
+  if (whtr > 0.52 || (gender === 'male' && rfm > 25) || (gender === 'female' && rfm > 32)) {
+    riskText.innerText = "Visceral Fat Warning Detected";
+    riskText.style.color = "var(--danger-red)";
+    cta.classList.remove('d-none');
+    narrative.innerHTML = "<b>Finding:</b> Your measurements suggest a high accumulation of <b>Visceral Fat</b>. Even if your BMI is normal, this 'hidden' fat increases systemic inflammation and arterial risk. A focused metabolic intervention is recommended.";
+  } else {
+    riskText.innerText = "Healthy Metabolic Composition";
+    riskText.style.color = "var(--primary-teal)";
+    cta.classList.add('d-none');
+    narrative.innerHTML = "<b>Finding:</b> Your body composition is currently within the longevity-optimized range. Focus on maintaining muscle mass through resistance training to preserve this metabolic baseline.";
+  }
+});
+</script>
