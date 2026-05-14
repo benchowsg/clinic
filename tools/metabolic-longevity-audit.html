@@ -154,66 +154,65 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   const height = parseFloat(document.getElementById('height').value);
   const waist = parseFloat(document.getElementById('waist').value);
 
+  // 1. Basic Field Check
   if (!weight || !height || !waist) {
     alert('Please enter all measurements to proceed.');
     return;
   }
 
-  // BMI Calculation
+  // 2. SANITY CHECK: Catch typos (like entering inches instead of cm)
+  // Most adult waists are > 55cm. A ratio < 0.3 is physically unlikely for your patient profile.
+  if (waist < 50 || (waist / height) < 0.3) {
+    alert('The waist measurement seems unusually small. Please check if you entered CM correctly (e.g., a 32-inch waist is ~81 cm).');
+    return;
+  }
+
+  // 3. The Math
   const bmi = (weight / ((height / 100) ** 2)).toFixed(1);
-  
-  // RFM Calculation (Relative Fat Mass)
-  // Male: 64 - (20 * (height/waist)) | Female: 76 - (20 * (height/waist))
   let rfm = (gender === 'male') ? (64 - (20 * (height / waist))) : (76 - (20 * (height / waist)));
   rfm = Math.max(rfm, 2).toFixed(1);
-
-  // Waist-to-Height Ratio (Critical for Visceral Fat)
   const whtr = waist / height;
 
-  // UI Reveal
+  // 4. UI Reveal Logic
   const resultPanel = document.getElementById('resultPanel');
-  resultPanel.classList.remove('opacity-25');
-  resultPanel.style.opacity = '1';
-  
-  document.getElementById('bmiOutput').innerText = bmi;
-  document.getElementById('rfmOutput').innerText = rfm + "%";
-  
   const riskText = document.getElementById('riskLevelText');
   const narrative = document.getElementById('narrativeText');
   const cta = document.getElementById('ctaBox');
-  
+
+  resultPanel.classList.remove('opacity-25');
+  resultPanel.style.opacity = '1';
+  document.getElementById('bmiOutput').innerText = bmi;
+  document.getElementById('rfmOutput').innerText = rfm + "%";
   narrative.classList.remove('d-none');
 
-// Decision Logic
+  // 5. Decision Logic: Using the enhanced "Clinical Checklist"
   if (whtr > 0.52 || (gender === 'male' && rfm > 25) || (gender === 'female' && rfm > 32)) {
     riskText.innerText = "Visceral Fat Warning Detected";
     riskText.style.color = "var(--danger-red)";
     cta.classList.remove('d-none');
     
-    // Elevated "Unhealthy" Narrative
     narrative.innerHTML = `
       <div class="p-2">
-        <p class="mb-2"><b>Finding:</b> Your measurements suggest an accumulation of <b>Visceral Fat</b>. Even if your weight seems normal, this "hidden" fat is metabolically active—releasing inflammatory markers that directly damage your arterial lining.</p>
+        <p class="mb-2"><b>Finding:</b> Your metrics suggest an accumulation of <b>Visceral Fat</b>. This "internal" fat is metabolically active, releasing markers that drive arterial ageing.</p>
         
         <div class="p-3 bg-white border-start border-danger border-4 rounded-3 shadow-sm my-3">
-          <h6 class="fw-bold text-danger mb-2" style="font-size: 0.85rem; text-uppercase; letter-spacing: 1px;">The Metabolic Friction Checklist</h6>
+          <h6 class="fw-bold text-danger mb-2" style="font-size: 0.85rem; text-transform: uppercase;">Metabolic Friction Checklist</h6>
           <ul class="list-unstyled mb-0" style="font-size: 0.8rem; line-height: 1.6;">
-            <li><i class="text-danger">●</i> Difficulty losing weight despite "eating less"</li>
-            <li><i class="text-danger">●</i> Post-meal fatigue or energy "crashes"</li>
+            <li><i class="text-danger">●</i> Resistance to weight loss despite exercise</li>
+            <li><i class="text-danger">●</i> Post-meal energy crashes or fatigue</li>
             <li><i class="text-danger">●</i> Waist-to-Height ratio exceeding 0.50</li>
-            <li><i class="text-danger">●</i> Tendency for "skinny-fat" body composition</li>
+            <li><i class="text-danger">●</i> "Skinny-fat" profile (High fat, low muscle)</li>
           </ul>
         </div>
         
-        <p class="small mb-0"><strong>Clinical Note:</strong> This profile often correlates with <b>Insulin Resistance</b>. Dr. Thang recommends a stewardship audit to check your fasting insulin and ApoB levels.</p>
+        <p class="small mb-0"><strong>Dr. Thang's Advice:</strong> This profile often signals <b>Insulin Resistance</b>. We recommend a stewardship audit to measure your ApoB and metabolic baseline.</p>
       </div>
     `;
   } else {
-    // Healthy Narrative
     riskText.innerText = "Healthy Metabolic Composition";
     riskText.style.color = "var(--primary-teal)";
     cta.classList.add('d-none');
-    narrative.innerHTML = "<b>Finding:</b> Your body composition is currently within the longevity-optimized range. Your visceral fat risk is low. Focus on maintaining high-quality protein intake and resistance training to protect this metabolic baseline as you age.";
+    narrative.innerHTML = "<b>Finding:</b> Your body composition is currently within the longevity-optimized range. Your visceral fat risk is low. Focus on maintaining high-quality protein intake and resistance training to preserve this baseline.";
   }
 });
 </script>
