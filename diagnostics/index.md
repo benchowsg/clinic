@@ -80,8 +80,31 @@ custom_schema: |
   }
 ---
 
-<section class="section">
-<div class="container" style="max-width: 960px; margin: 0 auto;">
+<style>
+  .diagnostics-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333;
+    line-height: 1.7;
+  }
+  .diagnostics-container h1 { font-size: 2.2rem; font-weight: 700; color: #111; margin-bottom: 20px; }
+  .diagnostics-container h2 { font-size: 1.6rem; font-weight: 600; color: #222; margin-top: 40px; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+  .diagnostics-container h3 { font-size: 1.2rem; font-weight: 600; color: #333; margin-top: 25px; margin-bottom: 10px; }
+  .diagnostics-container p { margin-bottom: 20px; }
+  .diagnostics-container ul { margin-bottom: 25px; padding-left: 20px; }
+  .diagnostics-container li { margin-bottom: 12px; }
+  .diagnostics-container table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.95rem; text-align: left; }
+  .diagnostics-container th { background-color: #f8f9fa; color: #111; font-weight: 600; padding: 12px 15px; border-bottom: 2px solid #dde1e5; }
+  .diagnostics-container td { padding: 12px 15px; border-bottom: 1px solid #eef1f4; vertical-align: top; }
+  .diagnostics-container hr { border: 0; border-top: 1px solid #eef1f4; margin: 30px 0; }
+  .diagnostics-container a { color: #0066cc; text-decoration: none; font-weight: 500; }
+  .diagnostics-container a:hover { text-decoration: underline; }
+  .clinic-footer-box { background: #f8f9fa; border-left: 4px solid #0066cc; padding: 20px; margin-top: 40px; border-radius: 4px; }
+</style>
+
+<div class="diagnostics-container">
 
 # Cardio-Metabolic Diagnostics & Symptom Evaluation Directory
 
@@ -157,11 +180,14 @@ Our clinic uploads your critical health records, chronic management plans, and n
 
 ---
 
-### Clinical Review and Accountability
-*All diagnostic protocols, testing criteria, and clinical pathways listed in this directory are structured, reviewed, and overseen by **Dr. Gerald Thang**, Principal Physician and Medical Director of A Healing Heart Medical Clinic (MBBS NUS, Diploma of Cardiology, MRCP/MRCPS UK).*
+<div class="clinic-footer-box">
 
-**Clinic Location:** 134 Geylang East Avenue 1, #01-227, Singapore 380134 (4-minute walk from Aljunied MRT / 10-minute walk from Paya Lebar MRT). 
-**Contact Clinical Desk:** +65 6962 1362
+### Clinical Review and Accountability
+All diagnostic protocols, testing criteria, and clinical pathways listed in this directory are structured, reviewed, and overseen by **Dr. Gerald Thang**, Principal Physician and Medical Director of A Healing Heart Medical Clinic *(MBBS NUS, Diploma of Cardiology, MRCP/MRCPS UK)*.
+
+* **Clinic Location:** 134 Geylang East Avenue 1, #01-227, Singapore 380134 (4-minute walk from Aljunied MRT / 10-minute walk from Paya Lebar MRT). 
+* **Contact Clinical Desk:** +65 6962 1362
 
 </div>
-</section>
+
+</div>
