@@ -80,6 +80,11 @@ custom_schema: |
   }
 ---
 
+<section class="section">
+<div class="container" style="max-width: 960px; margin: 0 auto;">
+
+# Cardio-Metabolic Diagnostics & Symptom Evaluation Directory
+
 Welcome to the Intermediate Care Diagnostics Directory at A Healing Heart Medical Clinic. Led by Dr. Gerald Thang, our clinic provides specialist-grade clinical depth for complex, evolving, or anxious cardiovascular and metabolic symptoms. 
 
 We bridge the gap between 2-minute standard primary care and costly private specialist referrals. Equipped with an on-site laboratory, we offer 15-minute rapid diagnostic clarity for acute cardiac concerns and metabolic instability during your consultation.
@@ -157,3 +162,6 @@ Our clinic uploads your critical health records, chronic management plans, and n
 
 **Clinic Location:** 134 Geylang East Avenue 1, #01-227, Singapore 380134 (4-minute walk from Aljunied MRT / 10-minute walk from Paya Lebar MRT). 
 **Contact Clinical Desk:** +65 6962 1362
+
+</div>
+</section>
