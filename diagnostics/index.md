@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 permalink: /diagnostics/
 category: Cardiology
 redirect_from:
