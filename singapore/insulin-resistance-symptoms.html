@@ -6,60 +6,145 @@ description: "Clinical evaluation of insulin resistance symptoms in Singapore. W
 ---
 
 <style>
-    .shim-layout-container { max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .shim-layout-container .back-link { font-size: 0.9rem; margin-bottom: 20px; display: block; color: #0066cc; text-decoration: none; font-weight: 500; }
-    .shim-layout-container h1 { font-size: 2.2rem; color: #111; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
-    .shim-layout-container h2 { font-size: 1.6rem; margin-top: 40px; color: #222; border-bottom: 1px solid #eee; padding-bottom: 8px; font-weight: 600; }
-    .shim-layout-container h3 { font-size: 1.2rem; margin-top: 25px; color: #444; margin-bottom: 8px; font-weight: 600; }
-    .shim-layout-container p { margin-bottom: 20px; text-align: justify; }
-    .shim-layout-container ul { padding-left: 20px; margin-bottom: 25px; list-style-type: disc; }
-    .shim-layout-container li { margin-bottom: 10px; }
-    .shim-layout-container .warning-box { background: #fff8f8; border-left: 4px solid #cc0000; padding: 20px; margin: 25px 0; border-radius: 4px; }
-    .shim-layout-container .matrix-box { background: #f8f9fa; border-left: 4px solid #0066cc; padding: 20px; margin-top: 45px; border-radius: 4px; }
-    .shim-layout-container .matrix-box ul { margin-bottom: 0; }
-    .shim-layout-container a { color: #0066cc; text-decoration: none; }
-    .shim-layout-container a:hover { text-decoration: underline; }
+    /* Two-column layout container */
+    .shim-flex-wrapper {
+        display: flex;
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        gap: 40px;
+    }
+
+    /* Left Navigation Panel styling */
+    .shim-left-nav {
+        width: 280px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 40px;
+        height: fit-content;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 6px;
+        border: 1px solid #eef1f4;
+    }
+    .shim-left-nav h4 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    .shim-left-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .shim-left-nav li {
+        margin-bottom: 12px;
+    }
+    .shim-left-nav a {
+        color: #444;
+        text-decoration: none;
+        font-size: 0.95rem;
+        display: block;
+        padding: 6px 10px;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+    .shim-left-nav a:hover {
+        background: #eef1f4;
+        color: #0066cc;
+    }
+    .shim-left-nav li.active a {
+        background: #0066cc;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    /* Main Content Area styling */
+    .shim-main-content {
+        flex-grow: 1;
+        color: #333;
+        line-height: 1.7;
+    }
+    .shim-main-content .back-link { font-size: 0.9rem; margin-bottom: 20px; display: block; color: #0066cc; text-decoration: none; font-weight: 500; }
+    .shim-main-content h1 { font-size: 2.2rem; color: #111; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
+    .shim-main-content h2 { font-size: 1.6rem; margin-top: 40px; color: #222; border-bottom: 1px solid #eee; padding-bottom: 8px; font-weight: 600; }
+    .shim-main-content h3 { font-size: 1.2rem; margin-top: 25px; color: #444; margin-bottom: 8px; font-weight: 600; }
+    .shim-main-content p { margin-bottom: 20px; text-align: justify; }
+    .shim-main-content ul { padding-left: 20px; margin-bottom: 25px; list-style-type: disc; }
+    .shim-main-content li { margin-bottom: 10px; }
+    .shim-main-content .warning-box { background: #fff8f8; border-left: 4px solid #cc0000; padding: 20px; margin: 25px 0; border-radius: 4px; }
+    .shim-main-content .matrix-box { background: #f8f9fa; border-left: 4px solid #0066cc; padding: 20px; margin-top: 45px; border-radius: 4px; }
+    .shim-main-content .matrix-box ul { margin-bottom: 0; }
+    .shim-main-content a { color: #0066cc; text-decoration: none; }
+    .shim-main-content a:hover { text-decoration: underline; }
+
+    /* Mobile Responsive Tweak */
+    @media (max-width: 768px) {
+        .shim-flex-wrapper { flex-direction: column; }
+        .shim-left-nav { width: 100%; position: relative; top: 0; }
+    }
 </style>
 
-<div class="shim-layout-container">
+<div class="shim-flex-wrapper">
 
-    <a href="/singapore/" class="back-link">← Cardio-Metabolic Services Directory</a>
-
-    <h1>Insulin Resistance Symptoms & Warning Signs</h1>
-    
-    <p>Insulin resistance occurs when cells throughout your muscle, fat, and liver tissue begin to ignore signals from the hormone insulin. Because the cells cannot easily absorb glucose from your bloodstream, your pancreas is forced to compensate by producing massive, constant surges of insulin to force the energy into your cells. This hidden compensation loop means you can experience severe physical symptoms for years while your routine fasting blood sugar metrics continue to read as perfectly normal.</p>
-
-    <div class="warning-box">
-        <strong>The Normal Glucose Paradox:</strong> Standard corporate health screenings usually only test your <em>Fasting Blood Glucose</em> or <em>HbA1c</em>. If your pancreas is working overtime, it can keep your glucose numbers in the green temporarily, masking a profound underlying metabolic decline.
-    </div>
-
-    <h2>Core Clinical Symptoms of Hyperinsulinemia</h2>
-    
-    <h3>1. Chronic Post-Meal Fatigue & Energy Crashes</h3>
-    <p>When cellular receptors are resistant, the energy from food cannot efficiently enter the mitochondria of your cells to be converted into ATP (cellular energy). Despite eating adequate carbohydrates, your body's energy grid experiences a severe localized deficit, leading to immediate drowsiness, brain fog, and an intense desire to sleep shortly after eating a meal.</p>
-
-    <h3>2. Uncontrollable Carbohydrate & Sugar Cravings</h3>
-    <p>Because circulating glucose is blocked from entering your tissues, your brain perceives that the body is in a state of starvation. This triggers primitive survival mechanisms that manifest as constant, urgent cravings for rapid-acting carbohydrates, sugar, and caffeine to artificially spark energy levels.</p>
-
-    <h3>3. Central Obesity & Stubborn Visceral Fat Accumulation</h3>
-    <p>Insulin is fundamentally an energy-storage hormone. When circulating levels are chronically elevated (hyperinsulinemia), it acts as a biochemical lock on your adipose tissue, completely blocking lipolysis (the breakdown of fat for fuel). This typically results in expanding waist circumferences and stubborn visceral fat deposits around internal organs that fail to budge despite rigorous exercise or standard caloric restriction.</p>
-
-    <h3>4. Brain Fog & Impaired Cognitive Focus</h3>
-    <p>The human brain requires highly stable glucose metabolism to maintain optimal executive function. Fluctuating insulin surges lead to micro-level energy drops across your neurological pathways, causing transient memory lapses, processing fatigue, and difficulty maintaining deep focus throughout the working day.</p>
-
-    <h3>5. Physical Structural Changes (Acanthosis Nigricans)</h3>
-    <p>Sustained high levels of insulin in the bloodstream can cause skin cells to reproduce rapidly. In highly resistant individuals, this presents physically as dark, thickened, velvety patches of skin forming in flexural folds, most commonly around the back of the neck, armpits, or groin area.</p>
-
-    <h2>Clinical Step: Moving Beyond Symptom Tracking</h2>
-    <p>Because these warning signs mimic other systemic issues like thyroid irregularities or lifestyle stress, self-diagnosis based on symptoms alone is unreliable. Dr. Gerald Thang utilizes objective blood biomarker indexing to calculate your true underlying metabolic score via the HOMA-IR metric, allowing for immediate corrective intervention before irreversible cellular damage occurs.</p>
-
-    <div class="matrix-box">
-        <p><strong>Related Insulin Resistance Information:</strong></p>
+    <nav class="shim-left-nav">
+        <h4>Insulin Registry</h4>
         <ul>
-            <li>Schedule an objective blood panel: <a href="/singapore/insulin-resistance-test">Fasting Insulin & HOMA-IR Testing Singapore</a></li>
-            <li>Review clinical titration options: <a href="/singapore/insulin-resistance-treatment">Clinical Insulin Resistance Treatment Protocols</a></li>
-            <li>Protect long-term arterial lining: <a href="/singapore/insulin-resistance-prevention">Preventing Vascular Aging & Metabolic Syndrome</a></li>
+            <li class="active"><a href="/singapore/insulin-resistance-symptoms">1. Symptoms & Signs</a></li>
+            <li><a href="/singapore/insulin-resistance-test">2. Diagnostic Testing</a></li>
+            <li><a href="/singapore/insulin-resistance-treatment">3. Clinical Treatment</a></li>
+            <li><a href="/singapore/insulin-resistance-prevention">4. Vascular Prevention</a></li>
         </ul>
-    </div>
+        <h4 style="margin-top: 30px;">Core Directory</h4>
+        <ul>
+            <li><a href="/singapore/">← All Medical Services</a></li>
+        </ul>
+    </nav>
 
+    <main class="shim-main-content">
+
+        <a href="/singapore/" class="back-link">← Cardio-Metabolic Services Directory</a>
+
+        <h1>Insulin Resistance Symptoms & Warning Signs</h1>
+        
+        <p>Insulin resistance occurs when cells throughout your muscle, fat, and liver tissue begin to ignore signals from the hormone insulin. Because the cells cannot easily absorb glucose from your bloodstream, your pancreas is forced to compensate by producing massive, constant surges of insulin to force the energy into your cells. This hidden compensation loop means you can experience severe physical symptoms for years while your routine fasting blood sugar metrics continue to read as perfectly normal.</p>
+
+        <div class="warning-box">
+            <strong>The Normal Glucose Paradox:</strong> Standard corporate health screenings usually only test your <em>Fasting Blood Glucose</em> or <em>HbA1c</em>. If your pancreas is working overtime, it can keep your glucose numbers in the green temporarily, masking a profound underlying metabolic decline.
+        </div>
+
+        <h2>Core Clinical Symptoms of Hyperinsulinemia</h2>
+        
+        <h3>1. Chronic Post-Meal Fatigue & Energy Crashes</h3>
+        <p>When cellular receptors are resistant, the energy from food cannot efficiently enter the mitochondria of your cells to be converted into ATP (cellular energy). Despite eating adequate carbohydrates, your body's energy grid experiences a severe localized deficit, leading to immediate drowsiness, brain fog, and an intense desire to sleep shortly after eating a meal.</p>
+
+        <h3>2. Uncontrollable Carbohydrate & Sugar Cravings</h3>
+        <p>Because circulating glucose is blocked from entering your tissues, your brain perceives that the body is in a state of starvation. This triggers primitive survival mechanisms that manifest as constant, urgent cravings for rapid-acting carbohydrates, sugar, and caffeine to artificially spark energy levels.</p>
+
+        <h3>3. Central Obesity & Stubborn Visceral Fat Accumulation</h3>
+        <p>Insulin is fundamentally an energy-storage hormone. When circulating levels are chronically elevated (hyperinsulinemia), it acts as a biochemical lock on your adipose tissue, completely blocking lipolysis (the breakdown of fat for fuel). This typically results in expanding waist circumferences and stubborn visceral fat deposits around internal organs that fail to budge despite rigorous exercise or standard caloric restriction.</p>
+
+        <h3>4. Brain Fog & Impaired Cognitive Focus</h3>
+        <p>The human brain requires highly stable glucose metabolism to maintain optimal executive function. Fluctuating insulin surges lead to micro-level energy drops across your neurological pathways, causing transient memory lapses, processing fatigue, and difficulty maintaining deep focus throughout the working day.</p>
+
+        <h3>5. Physical Structural Changes (Acanthosis Nigricans)</h3>
+        <p>Sustained high levels of insulin in the bloodstream can cause skin cells to reproduce rapidly. In highly resistant individuals, this presents physically as dark, thickened, velvety patches of skin forming in flexural folds, most commonly around the back of the neck, armpits, or groin area.</p>
+
+        <h2>Clinical Step: Moving Beyond Symptom Tracking</h2>
+        <p>Because these warning signs mimic other systemic issues like thyroid irregularities or lifestyle stress, self-diagnosis based on symptoms alone is unreliable. Dr. Gerald Thang utilizes objective blood biomarker indexing to calculate your true underlying metabolic score via the HOMA-IR metric, allowing for immediate corrective intervention before irreversible cellular damage occurs.</p>
+
+        <div class="matrix-box">
+            <p><strong>Related Insulin Resistance Information:</strong></p>
+            <ul>
+                <li>Schedule an objective blood panel: <a href="/singapore/insulin-resistance-test">Fasting Insulin & HOMA-IR Testing Singapore</a></li>
+                <li>Review clinical titration options: <a href="/singapore/insulin-resistance-treatment">Clinical Insulin Resistance Treatment Protocols</a></li>
+                <li>Protect long-term arterial lining: <a href="/singapore/insulin-resistance-prevention">Preventing Vascular Aging & Metabolic Syndrome</a></li>
+            </ul>
+        </div>
+
+    </main>
 </div>
