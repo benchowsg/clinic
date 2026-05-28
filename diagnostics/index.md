@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: article
 permalink: /diagnostics/
 category: Cardiology
 redirect_from:
@@ -80,8 +80,6 @@ custom_schema: |
   }
 ---
 
-# Cardio-Metabolic Diagnostics & Symptom Evaluation Directory
-
 Welcome to the Intermediate Care Diagnostics Directory at A Healing Heart Medical Clinic. Led by Dr. Gerald Thang, our clinic provides specialist-grade clinical depth for complex, evolving, or anxious cardiovascular and metabolic symptoms. 
 
 We bridge the gap between 2-minute standard primary care and costly private specialist referrals. Equipped with an on-site laboratory, we offer 15-minute rapid diagnostic clarity for acute cardiac concerns and metabolic instability during your consultation.
@@ -101,6 +99,7 @@ We bridge the gap between 2-minute standard primary care and costly private spec
 ---
 
 ## 2. Cardiorespiratory & Cardiology Symptom Evaluators
+
 If you are experiencing undifferentiated or evolving symptoms, select a targeted evaluation pathway below to review clinical protocols, timelines, and diagnostic baselines:
 
 * **[Left Arm Pain with Normal ECG Evaluation](/diagnostics/left-arm-pain-normal-ecg)** – Learn why a standard resting ECG can miss early ischemia and how 15-minute advanced cardiac markers establish true myocardial stress.
@@ -112,6 +111,7 @@ If you are experiencing undifferentiated or evolving symptoms, select a targeted
 ---
 
 ## 3. Metabolic, Hormonal & Insulin Resistance Evaluators
+
 For tracking, managing, or diagnosing complex metabolic shifts, chronic fatigue, and hidden pre-diabetic markers:
 
 * **[Fasting Insulin vs Fasting Glucose Resistance Audit](/diagnostics/insulin-resistance-fasting-insulin)** – Why your HbA1c or glucose may look normal while hidden insulin surges are driving metabolic dysfunction.
