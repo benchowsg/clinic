@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /arterial-plaque-threshold-calculator
-title: "Heart Plaque Risk & Timeline Calculator"
+title: "Heart Health Risk & Timeline Calculator"
 description: "An evidence-based screening tool evaluating the intersection of family history, metabolic factors, and vascular health timelines."
 ---
 
@@ -195,7 +195,7 @@ description: "An evidence-based screening tool evaluating the intersection of fa
               <span id="timelineBadge" class="timeline-badge">EVALUATION PENDING</span>
             </div>
             
-            <h4 class="fw-bold text-dark mb-1">Your Estimated Plaque Risk Age:</h4>
+            <h4 class="fw-bold text-dark mb-1">Your Estimated Acceleration Onset Age:</h4>
             <div class="my-2">
               <span id="thresholdAgeOutput" class="age-highlight">--</span>
               <span class="h3 fw-bold text-muted">Years Old</span>
@@ -238,4 +238,114 @@ description: "An evidence-based screening tool evaluating the intersection of fa
             The timeline mapping algorithm built into this educational engine corresponds with peer-reviewed cardiovascular profiling matrices. Specifically, the risk adjustment coefficients leverage long-term epidemiology datasets tracking how genetic markers interact with metabolic conditions:
           </p>
           <ul class="study-citation-list">
-            <li class="mb-2"><strong>The Multi-Ethnic Study of Atherosclerosis (MESA):</strong> Observational cohort metrics confirming that a history of premature myocardial infarction in first-degree biological relatives shifts the subclinical atherosclerosis presentation window up to 12
+            <li class="mb-2"><strong>The Multi-Ethnic Study of Atherosclerosis (MESA):</strong> Observational cohort metrics confirming that a history of premature myocardial infarction in first-degree biological relatives shifts the subclinical atherosclerosis presentation window up to 12–15 years earlier compared to normal populations.</li>
+            <li class="mb-2"><strong>The European Association of Preventive Cardiology (EAPC):</strong> Core consensus pathways identifying visceral adiposity and markers of metabolic health friction as secondary inflammatory catalysts that alter endothelial lining permissions, causing soft lipid pools to accumulate rapidly.</li>
+            <li><strong>The "Area Under the Curve" Lipid Infiltration Concept:</strong> Published findings in <em>The Lancet</em> illustrating that early, cumulative exposure to atherogenic lipid substrates over time dictates the speed of soft, non-calcified structural arterial wall conversion.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="ctaBox" class="cta-dark-box d-none">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <span class="text-uppercase small fw-bold" style="color: #00cbcb; letter-spacing: 1.5px;">Your Next Practical Step</span>
+          <h2 class="fw-bold mt-2 mb-3">Go Beyond Guesswork. Get a Clear Map.</h2>
+          <p class="mb-0 opacity-75 fs-5">
+            Calculators can only guess based on statistics, but your body has its own unique story. <strong>Dr. Gerald Thang</strong> helps patients with a family history look beneath the surface. By ordering advanced, highly specific blood tests and protective vascular scans, he can help you see exactly what is happening inside your blood vessels and stop plaque before it starts.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn btn-stewardship py-3 px-5 fs-5 shadow">Book a Heart Audit Appointment</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+// Sync slider value dynamically with label view layout
+const ageInput = document.getElementById('ageInput');
+const ageVal = document.getElementById('ageVal');
+ageInput.addEventListener('input', function() {
+  ageVal.innerText = this.value + " years old";
+});
+
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const currentAge = parseInt(ageInput.value);
+  const history = document.getElementById('familyHistory').value;
+  const metabolism = document.getElementById('metabolicProfile').value;
+  const lipids = document.getElementById('lipidStatus').value;
+
+  // Reset custom layout box border markers to clean slate
+  document.getElementById('wrapper-history').querySelector('.input-box-custom').style.borderColor = '#e2e8f0';
+  document.getElementById('wrapper-metabolism').querySelector('.input-box-custom').style.borderColor = '#e2e8f0';
+  document.getElementById('wrapper-lipids').querySelector('.input-box-custom').style.borderColor = '#e2e8f0';
+
+  // Validation Verification
+  let missingInput = false;
+  if (!history) {
+    document.getElementById('wrapper-history').querySelector('.input-box-custom').style.borderColor = '#e53e3e';
+    missingInput = true;
+  }
+  if (!metabolism) {
+    document.getElementById('wrapper-metabolism').querySelector('.input-box-custom').style.borderColor = '#e53e3e';
+    missingInput = true;
+  }
+  if (!lipids) {
+    document.getElementById('wrapper-lipids').querySelector('.input-box-custom').style.borderColor = '#e53e3e';
+    missingInput = true;
+  }
+
+  if (missingInput) {
+    alert('Please choose an option for all fields before continuing.');
+    return;
+  }
+
+  // Statistical Core Risk Projection Mapping
+  let criticalAge = 62; 
+
+  if (history === 'yes_severe') criticalAge -= 14;
+  else if (history === 'yes_moderate') criticalAge -= 6;
+
+  if (metabolism === 'high_friction') criticalAge -= 10;
+  else if (metabolism === 'moderate_friction') criticalAge -= 4;
+
+  if (lipids === 'high' || lipids === 'unknown') criticalAge -= 4;
+
+  criticalAge = Math.max(35, criticalAge);
+
+  // Interface Animation and Display Adjustments
+  const resultPanel = document.getElementById('resultPanel');
+  const badge = document.getElementById('timelineBadge');
+  const narrative = document.getElementById('narrativeText');
+  const cta = document.getElementById('ctaBox');
+  
+  resultPanel.classList.remove('opacity-25');
+  document.getElementById('thresholdAgeOutput').innerText = criticalAge;
+  narrative.classList.remove('d-none');
+  cta.classList.remove('d-none');
+
+  // Inject user-specific conversational evaluations with MOH-aligned terminology
+  if (currentAge >= criticalAge) {
+    badge.innerText = "REVIEW RECOMMENDED";
+    badge.style.background = "#fff5f5";
+    badge.style.color = "#e53e3e";
+    
+    narrative.innerHTML = `
+      <h6 class="fw-bold text-danger mb-2">📊 You Have Crossed the Estimated Timeline</h6>
+      <p class="mb-0">Based on your family history and habits, your body may have reached the age where plaque can begin accumulating silently. <strong>Don't panic—this is an educational estimation, not a formal medical diagnosis.</strong> It simply means it is time to stop guessing. We suggest scheduling a baseline assessment with Dr. Gerald Thang to review your markers and verify your actual vascular status directly.</p>
+    `;
+  } else {
+    badge.innerText = "PREVENTIVE WINDOW OPEN";
+    badge.style.background = "#e6f2f2";
+    badge.style.color = "#008080";
+    
+    narrative.innerHTML = `
+      <h6 class="fw-bold text-success mb-2">🛡️ You Have Time on Your Side</h6>
+      <p class="mb-0">You are currently younger than your projected acceleration age (${criticalAge}). This is great news because it means you have a valuable window to protect your health. Since heart issues run in your family, keeping a specialized eye on your metabolic habits now ensures your risk profile stays naturally low as you get older. Consider setting up a strategic checkup with Dr. Gerald Thang to build a clear preservation plan.</p>
+    `;
+  }
+});
+</script>
