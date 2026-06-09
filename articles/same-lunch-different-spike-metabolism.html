@@ -109,42 +109,59 @@ custom_schema: |
               </div>
 
             <div class="chart-container">
-              <div class="chart-title">Blood Glucose Response to an Identical Lunch</div>
-              <div class="chart-subtitle">Representative curves over 2 hours post-meal (Healthy Adults, n=8)</div>
+              <div class="chart-title">How long blood sugar stayed elevated after the same lunch</div>
+              <div class="chart-subtitle">Schematic of post-lunch blood sugar rise and return — type 2 diabetic subjects, n=8 (Jovanovic et al., Diabetes Care, 2009)</div>
               <div class="chart-legend">
                 <div class="legend-item">
                   <span style="display:inline-block; width:12px; height:12px; background:#e63946; border-radius:2px;"></span>
-                  <span>Skipped Breakfast (3.2 mmol/L Peak)</span>
+                  <span>Skipped breakfast — blood sugar climbed high and stayed elevated</span>
                 </div>
                 <div class="legend-item">
                   <span style="display:inline-block; width:12px; height:12px; background:#008080; border-radius:2px;"></span>
-                  <span>Ate Breakfast (0.9 mmol/L Peak)</span>
+                  <span>Ate breakfast — blood sugar rose only modestly and cleared quickly</span>
                 </div>
               </div>
-              
-              <svg viewBox="0 0 500 240" width="100%" height="100%" style="overflow: visible; font-family: inherit;">
-                <line x1="40" y1="200" x2="480" y2="200" stroke="#cbd5e1" stroke-width="2" />
-                <line x1="40" y1="20" x2="40" y2="200" stroke="#cbd5e1" stroke-width="2" />
-                
-                <text x="30" y="204" font-size="10" fill="#718096" text-anchor="end">0</text>
-                <text x="30" y="150" font-size="10" fill="#718096" text-anchor="end">1</text>
-                <text x="30" y="100" font-size="10" fill="#718096" text-anchor="end">2</text>
-                <text x="30" y="50" font-size="10" fill="#718096" text-anchor="end">3</text>
-                <text x="25" y="110" font-size="10" fill="#718096" text-anchor="middle" transform="rotate(-90 25 110)">Glucose Rise (mmol/L)</text>
-                
-                <text x="40" y="218" font-size="10" fill="#718096" text-anchor="middle">0h</text>
-                <text x="150" y="218" font-size="10" fill="#718096" text-anchor="middle">30 min</text>
-                <text x="290" y="218" font-size="10" fill="#718096" text-anchor="middle">1h</text>
-                <text x="440" y="218" font-size="10" fill="#718096" text-anchor="middle">2h</text>
-                
-                <path d="M 40 200 Q 150 35 290 120 T 440 190" fill="none" stroke="#e63946" stroke-width="3" />
-                <circle cx="150" cy="48" r="5" fill="#e63946" />
-                <text x="150" y="33" font-size="11" fill="#e63946" font-weight="bold" text-anchor="middle">Skipped Breakfast</text>
-                
-                <path d="M 40 200 Q 150 150 290 170 T 440 195" fill="none" stroke="#008080" stroke-width="3" />
-                <circle cx="150" cy="153" r="5" fill="#008080" />
-                <text x="150" y="143" font-size="11" fill="#008080" font-weight="bold" text-anchor="middle">Ate Breakfast</text>
+ 
+              <svg viewBox="0 0 500 260" width="100%" height="100%" style="overflow: visible; font-family: inherit;">
+                <!-- Y axis -->
+                <line x1="60" y1="210" x2="480" y2="210" stroke="#cbd5e1" stroke-width="1.5" />
+                <line x1="60" y1="20" x2="60" y2="210" stroke="#cbd5e1" stroke-width="1.5" />
+ 
+                <!-- Y axis labels — qualitative only -->
+                <text x="50" y="214" font-size="10" fill="#718096" text-anchor="end">baseline</text>
+                <text x="50" y="130" font-size="10" fill="#718096" text-anchor="end">moderate</text>
+                <text x="50" y="47" font-size="10" fill="#718096" text-anchor="end">high</text>
+ 
+                <!-- Y gridlines -->
+                <line x1="60" y1="130" x2="480" y2="130" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4"/>
+                <line x1="60" y1="47" x2="480" y2="47" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4"/>
+ 
+                <!-- Y axis title -->
+                <text x="14" y="120" font-size="10" fill="#718096" text-anchor="middle" transform="rotate(-90 14 120)">Blood sugar level</text>
+ 
+                <!-- X axis labels -->
+                <text x="60" y="228" font-size="10" fill="#718096" text-anchor="middle">Lunch</text>
+                <text x="185" y="228" font-size="10" fill="#718096" text-anchor="middle">30 min</text>
+                <text x="310" y="228" font-size="10" fill="#718096" text-anchor="middle">1 hr</text>
+                <text x="435" y="228" font-size="10" fill="#718096" text-anchor="middle">2–3 hrs</text>
+                <text x="248" y="248" font-size="10" fill="#718096" text-anchor="middle">Time after eating</text>
+ 
+                <!-- Skipped breakfast curve — peaks high, slow return -->
+                <path d="M 60 210 C 110 210 140 48 185 44 C 230 40 270 90 310 120 C 360 155 410 185 460 200" fill="none" stroke="#e63946" stroke-width="2.5" />
+                <circle cx="185" cy="44" r="5" fill="#e63946" />
+                <text x="196" y="36" font-size="11" fill="#e63946" font-weight="bold">Skipped breakfast</text>
+                <text x="196" y="50" font-size="10" fill="#e63946">Climbed sharply, cleared slowly</text>
+ 
+                <!-- Ate breakfast curve — small, quick resolution -->
+                <path d="M 60 210 C 110 210 145 195 185 192 C 230 189 270 198 310 203 C 370 207 420 209 460 210" fill="none" stroke="#008080" stroke-width="2.5" />
+                <circle cx="185" cy="192" r="5" fill="#008080" />
+                <text x="196" y="186" font-size="11" fill="#008080" font-weight="bold">Ate breakfast</text>
+                <text x="196" y="200" font-size="10" fill="#008080">Rose modestly, returned to baseline quickly</text>
               </svg>
+
+              <p style="font-size:1rem; color:#718096; margin-top:8px; margin-bottom:0;">
+                This chart is a schematic illustration based on Jovanovic et al. (2009). The Y-axis is qualitative; it shows the relative pattern of blood sugar change, not specific mmol/L readings. Technical values are cited in the references section below.
+              </p>
             </div>
 
             <p>
