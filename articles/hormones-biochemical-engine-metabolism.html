@@ -3,7 +3,7 @@ layout: default
 permalink: /articles/hormones-biochemical-engine-metabolism
 category: Metabolic
 title: "The Invisible Engine: Why Hormones Matter More Than Your Calorie Tracker"
-description: "Moving past the baseline of calories in vs. calories out—how subtle hormonal shifts govern your energy, sleep quality, and long-term cardiovascular baseline."
+description: "Why weight loss, deep sleep, and daily energy depend entirely on your underlying hormonal balance rather than simple math equations."
 last_reviewed: 2026-06-17
 author_name: "Dr. Gerald Thang"
 custom_schema: |
@@ -17,50 +17,31 @@ custom_schema: |
       "name": "Dr. Gerald Thang",
       "jobTitle": "Principal Physician",
       "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
-    },
-    "mainEntity": {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do hormones affect weight loss and energy levels?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Hormones act as cellular messengers that dictate whether your body burns incoming nutrients for energy or stores them as adipose tissue. When hormones like insulin, thyroid, or cortisol are imbalanced, weight loss can stall even in a caloric deficit."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why does a cardiac clinic evaluate hormone levels?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Hormonal shifts directly impact endothelial health, systemic inflammation (hs-CRP), and lipid clearance mechanisms. Evaluating endocrine profiles early allows us to identify subclinical cardiovascular risks before physical plaque accumulates."
-          }
-        }
-      ]
-    },
-    "isPartOf": {
-      "@type": "MedicalBusiness",
-      "id": "https://www.ahealingheartmedical.com"
     }
   }
 ---
 
 <style>
   .article-content { padding-top: 140px; padding-bottom: 80px; }
-  .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; }
-  .ip-notice { background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; font-size: 0.85rem; color: #6c757d; border-radius: 8px; margin-top: 50px; }
-  .author-box { background: #fdfcf0; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 40px; }
-  .insight-quote { border-left: 5px solid #008080; background: #f0f7ff; padding: 20px; margin: 25px 0; font-style: italic; color: #2c4964; }
-  .medical-disclaimer { font-size: 0.8rem; color: #777; margin-top: 20px; padding: 15px; background: #fafafa; border-radius: 5px; }
-  .diagnostic-shift blockquote { border-left: 4px solid #008080; padding-left: 20px; font-style: normal; background: #e6f2f2; padding: 15px; border-radius: 0 8px 8px 0; color: #2c4964; }
+  .article-body p { line-height: 1.7; margin-bottom: 1.25rem; color: #333; font-size: 1.05rem; }
+  .ip-notice { background: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; font-size: 0.85rem; color: #555; border-radius: 8px; margin-top: 40px; }
+  .author-box { background: #fdfcf0; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 25px; }
   
-  /* Layout Metrics Box */
-  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 30px 0; }
-  .metric-card { background: #ffffff; border: 1px solid #edf2f7; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
-  .metric-icon { font-size: 1.8rem; margin-bottom: 8px; display: inline-block; }
-  .metric-title { font-weight: 700; color: #2c4964; margin-bottom: 6px; }
-  .metric-desc { font-size: 0.85rem; color: #718096; line-height: 1.4; }
+  /* Modern 2x2 Layout Grid */
+  .pillars-2x2 { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
+  @media (min-width: 576px) { .pillars-2x2 { grid-template-columns: 1fr 1fr; } }
+  .pillar-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+  .pillar-item:hover { transform: translateY(-2px); }
+  .pillar-title { font-weight: 700; color: #2c4964; font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .pillar-desc { font-size: 0.9rem; color: #555; line-height: 1.5; }
+
+  /* Audio Control Panel Styles */
+  .tts-container { background: #f4f7f6; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 35px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+  .tts-info { display: flex; align-items: center; gap: 10px; color: #2c4964; font-size: 0.9rem; font-weight: 600; }
+  .tts-controls { display: flex; align-items: center; gap: 10px; }
+  .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+  .tts-btn.active-play { background: #008080; border-color: #008080; color: #ffffff; }
+  .tts-status { font-size: 0.75rem; color: #718096; font-weight: normal; margin-left: 5px; }
 </style>
 
 <main id="main" class="article-content">
@@ -76,141 +57,186 @@ custom_schema: |
           </ol>
         </nav>
 
-        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">The Invisible Engine: Why Hormones Matter More Than Your Calorie Tracker</h1>
-        <p class="subtitle fs-5 mb-4">Moving past the simplistic model of math to explore how underlying chemical signals govern your energy efficiency, recovery, and long-term vascular health.</p>
+        <h1 class="display-6 fw-bold mb-3" style="color: #2c4964;">The Invisible Engine: Why Hormones Matter More Than Your Calorie Tracker</h1>
+        <p class="subtitle fs-5 mb-4 text-muted">Why your body behaves like a dynamic biological system, not a static math calculator.</p>
         
         <div class="author-box d-flex align-items-center">
-          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;" alt="Dr Gerald Thang">
           <div>
             <p class="mb-0 fw-bold">Written & Reviewed by Dr. Gerald Thang</p>
-            <p class="mb-0 text-primary fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
-            <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
+            <p class="mb-0 text-primary fw-bold small text-uppercase">Principal Physician</p>
           </div>
         </div>
 
-        <div class="article-body">
-          <p>
-            When individuals in Singapore resolve to optimize their health or improve their body composition, they almost universally default to a simple mathematical formula: **calories consumed versus calories burned**. They monitor step counts diligently and adjust portion sizes strictly. Yet, at <strong>A Healing Heart Medical</strong>, one of the most frequent clinical puzzles we encounter is the patient who is executing everything perfectly on paper, but remains chronically exhausted, suffers from poor sleep quality, or finds it impossible to lose visceral weight.
-          </p>
-          <p>
-            This frustration stems from viewing the human body as a basic calculator. In reality, our metabolism behaves far more like a highly sensitive biochemical engine. Calories provide the crude fuel, but your **hormones dictate exactly how that fuel is distributed**. If your underlying chemical messengers are out of balance, your body's efficiency stalls regardless of how disciplined your lifestyle habits appear.
-          </p>
-
-          <section class="diagnostic-shift">
-            <h2>1. The Four Pillars of Hormonal Optimization</h2>
-            <p>
-              Hormones are not isolated compounds; they are microscopic conductors that maintain your biological rhythm. When a physician looks beneath the surface, they evaluate how these distinct systems interact to manage your daily performance and long-term vitality:
-            </p>
-
-            <div class="metrics-grid">
-              <div class="metric-card">
-                <span class="metric-icon">⚡</span>
-                <div class="metric-title">Energy Metabolism</div>
-                <div class="metric-desc">Hormones like thyroid T3/T4 and insulin function as the master throttles for your cells, determining whether incoming nutrients are converted into usable energy or stored persistently as fat.</div>
-              </div>
-              <div class="metric-card">
-                <span class="metric-icon">🛠️</span>
-                <div class="metric-title">Tissue Recovery</div>
-                <div class="metric-desc">Androgens, growth hormone parameters, and DHEA manage the micro-repair of tissues, governing how effectively your cardiovascular system and muscles rebuild after physical stress.</div>
-              </div>
-              <div class="metric-card">
-                <span class="metric-icon">🌙</span>
-                <div class="metric-title">Sleep Architecture</div>
-                <div class="metric-desc">The delicate, reciprocal dance between cortisol (your stress signal) and melatonin regulates your circadian rhythm, ensuring you achieve deep, truly restorative sleep phases.</div>
-              </div>
-              <div class="metric-card">
-                <span class="metric-icon">❤️</span>
-                <div class="metric-title">Long-Term Health</div>
-                <div class="metric-desc">Subtle declines in protective sex hormones directly impact blood vessel elasticity, endothelial lining defense, and lipid profile stability over time.</div>
-              </div>
-            </div>
-
-            <blockquote>
-              <strong>The Longevity Shift:</strong> Hormonal changes rarely occur overnight. Age-related adjustments and subclinical imbalances drift slowly over several years, altering your underlying cellular health long before they trigger an obvious symptom or atypical standard lab report.
-            </blockquote>
-          </section>
-
-          <section class="advanced-lipids">
-            <h2>2. Longevity is a Journey, Not a Snapshot</h2>
-            <p>
-              The fundamental mistake of modern wellness marketing is treating longevity like a checklist item—a single, transactional health screening done once a year and then forgotten. True metabolic and cardiovascular preservation does not work that way. **Longevity is an ongoing journey, not a one-time health check.**
-            </p>
-            <p>
-              Because your endocrine and vascular systems adapt dynamically to stress, aging, and lifestyle shifts, your biological data is most valuable when it is tracked consistently over time. A single blood test tells us where you stand today; longitudinal data tells us *the trajectory of where your body is heading*. Mapping these trends sequentially is what allows for genuinely targeted, preventive care before problems take root.
-            </p>
-            <p>
-              At our clinic, we are built to act as long-term data stewards for your health ecosystem, meeting you exactly where you are today:
-            </p>
-            <ul>
-              <li><strong>If You Have Existing Health Reports:</strong> You do not need to discard your medical history. Bring your previous screening results, blood panels, or lipid charts to us. We will organize your past metrics, contextualize them within an advanced cardiology framework, and partner with you to guide your journey moving forward.</li>
-              <li><strong>If You Are Starting Completely Fresh:</strong> If you have never had deep metabolic or endocrine testing done before, we will establish a highly precise, clean diagnostic baseline. This serves as the rock-solid foundation from which we track and protect your health over the coming years.</li>
-            </ul>
-          </section>
-
-          <section class="clinical-stewardship">
-            <h2>3. The Clinical Standard of Care</h2>
-            <p>
-              At our clinic, we treat endocrine evaluation as an essential component of comprehensive vascular stewardship. Your hormones, metabolic health, and heart are fundamentally connected. For example, insulin resistance directly stresses the lining of your arteries, while elevated stress hormones alter baseline blood pressure metrics.
-            </p>
-            <p>
-              True precision care means evaluating the whole person. We examine your unique blood profiles, structural metrics, and symptom patterns to build an integrated management strategy. Whether you require targeted micronutrient support to optimize thyroid conversion, deliberate lifestyle pacing to reset a disrupted cortisol pattern, or medical guidance to navigate age-related transitions safely, every decision is tailored strictly to your individual physiology.
-            </p>
-          </section>
-
-          <hr class="my-5" />
-
-          <section class="audit-cta" style="background-color: #f4f7f6; padding: 30px; border-radius: 10px; border-left: 5px solid #008080;">
-            <h3 class="mb-3">Ready to Begin Your Longevity Roadmap?</h3>
-            <p>
-              Whether you want to unpack a stack of existing health reports and establish a continuous care journey henceforth, or you are starting completely fresh and need a proper diagnostic baseline, we are here to help you navigate every step.
-            </p>
-            <p>
-              Join us for a tailored **Vascular & Metabolic Baseline Assessment**. Let’s step away from transactional medical checks and begin a continuous, data-driven partnership to protect your daily energy and long-term vitality.
-            </p>
-            <a href="/booking/" class="btn btn-lg" style="background-color: #008080; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Book Your Appointment</a>
-          </section>
-        </div>
-
-        <div class="article-body">
-          <section class="faq-section">
-            <h2 class="mb-4" style="color: #2c4964;">Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-              <p class="faq-question">1. My standard blood test results came back 'normal,' but I still feel chronically tired. Why?</p>
-              <p>Standard screening panels often utilize broad population averages that emphasize detecting advanced illness over verifying optimal function. Your results can comfortably clear a generic reference boundary while remaining poorly aligned with your personal biological needs and energy demands.</p>
-            </div>
-
-            <div class="faq-item">
-              <p class="faq-question">2. How long does a personalized metabolic restoration protocol take to show results?</p>
-              <p>Because endocrine systems regulate complex cellular pathways, structural stabilization occurs gradually. While initial improvements in daily energy patterns and sleep quality are commonly noted within 4 to 6 weeks, genuine systemic changes in body composition and vascular markers typically map across a 3 to 6-month window.</p>
-            </div>
-
-            <div class="faq-item">
-              <p class="faq-question">3. What is the link between age-related hormonal changes and cardiovascular health?</p>
-              <p>Endocrine markers act as natural vascular protectors by supporting endothelial repair and keeping systemic inflammation low. When these levels naturally taper due to aging, the blood vessels lose a layer of defense, making the tracking of markers like ApoB and hs-CRP highly essential.</p>
-            </div>
-          </section>  
-
-          <hr class="my-5" />
-          
-          <div class="ip-notice">
-            <strong>Scientific References & Singapore Clinical Context:</strong>
-            <p class="small text-muted mt-2 mb-3" style="line-height: 1.5;">
-              Evaluating systemic balance matches local guidelines regarding metabolic profiling, illustrating the deep intersection between endocrine trends and national health risks:
-            </p>
-            <ul class="mb-0 ps-3" style="font-size: 0.85rem; line-height: 1.6;">
-              <li class="mb-2"><strong>Singapore Myocardial Infarction Registry (SMIR):</strong> Long-term tracking reveals that metabolic and endocrine dysregulation are heavily present in vascular events across Singapore, with 75.2% of cardiac patients presenting with underlying hypertension and 51.5% with insulin-related conditions.</li>
-              <li class="mb-2"><strong>The Lancet Diabetes & Endocrinology Cohort Studies:</strong> Published tracking data confirms that subclinical variations in thyroid axis performance and diurnal cortisol lines serve as early, independent risk enhancers for cardiorespiratory fitness declines and metabolic syndrome acceleration.</li>
-              <li><strong>MOH Agency for Care Effectiveness (ACE) Clinical Guidance:</strong> Current national guidelines emphasize moving away from isolated risk tracking toward assessing an individual's comprehensive metabolic health profile to guide prevention strategies early.</li>
-            </ul>
+        <div class="tts-container">
+          <div class="tts-info">
+            <span style="font-size: 1.2rem;">🔊</span>
+            <span>Listen to this article <span id="audio-status-text" class="tts-status">(Ready)</span></span>
+          </div>
+          <div class="tts-controls">
+            <button id="btn-tts-play" class="tts-btn" onclick="togglePlayPause()">
+              <span id="play-icon">▶</span> <span id="play-text">Play Audio</span>
+            </button>
+            <button id="btn-tts-stop" class="tts-btn" onclick="stopAudio()" disabled style="opacity: 0.5; cursor: not-allowed;">
+              <span>⏹</span> Stop
+            </button>
           </div>
         </div>
 
-        <p class="medical-disclaimer text-center mt-5">
-          <strong>Medical Disclaimer:</strong> This article is for informational and educational purposes only and does not constitute medical advice. Complete evaluation of endocrine baselines and metabolic health trajectories requires a formal clinical consultation with a qualified physician.
+        <div id="speakable-content" class="article-body">
+          <p>
+            When we decide to improve our health, most of us run directly to a familiar math equation: <strong>Calories In vs. Calories Out</strong>. We cut portion sizes, skip treats, and track our daily steps. 
+          </p>
+          <p>
+            Yet, at <strong>A Healing Heart Medical</strong>, many patients tell me the exact same story: <em>"Doctor, I am doing everything right on paper, but my weight won't budge, my energy is terrible, and I am waking up exhausted."</em>
+          </p>
+          <p>
+            The reason is simple: your body is not a basic calculator. It is a highly sensitive chemical engine. Calories provide the crude fuel, but your <strong>hormones dictate exactly how that fuel is spent</strong>. If your hormones are out of sync, your metabolism stalls—no matter how disciplined your diet is.
+          </p>
+
+          <h2 class="h4 fw-bold mt-4 mb-2" style="color: #2c4964;">The Four Pillars of Your Internal Engine</h2>
+          <p>Hormones act as cellular messengers. They run four critical quadrants of your daily life and health history:</p>
+
+          <div class="pillars-2x2">
+            <div class="pillar-item">
+              <div class="pillar-title">⚡ 1. Energy Metabolism</div>
+              <div class="pillar-desc">Hormones like insulin and thyroid markers function as your master throttle. They decide whether the food you eat is instantly burned for clean energy or stored directly away as stubborn abdominal fat.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">🛠️ 2. Tissue Recovery</div>
+              <div class="pillar-desc">Your recovery speed depends on steady hormone signaling. They handle the quiet micro-repair of your muscles, tissues, and blood vessels after physical exercise or mental stress.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">🌙 3. Sleep Architecture</div>
+              <div class="pillar-desc">True sleep isn't just about closing your eyes; it is controlled by the balance between cortisol (your stress signal) and melatonin. If your cortisol stays high at night, you cannot enter deep, restorative sleep.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">❤️ 4. Vascular Health</div>
+              <div class="pillar-desc">Protective hormones keep your blood vessel walls flexible and elastic. When these levels begin to taper naturally as we age, your arteries lose a layer of defense against cholesterol buildup.</div>
+            </div>
+          </div>
+
+          <h2 class="h4 fw-bold mt-4" style="color: #2c4964;">Longevity is a Continuous Journey, Not a Snapshot</h2>
+          <p>
+            The biggest mistake people make is treating their health like a transaction—booking a single medical screening once a year, glancing at the results, and forgetting about it. 
+          </p>
+          <p>
+            <strong>Longevity is a steady journey, not a one-time check.</strong> Your body shifts constantly under the surface. Health data is most valuable when it is tracked over time, showing us the trajectory of where your health is heading before actual symptoms or disease show up. 
+          </p>
+          <p>
+            Whether you are navigating change or building from the ground up, we align with your current realities:
+          </p>
+          <ul>
+            <li><strong>If you have existing health reports:</strong> Bring them along. We don't throw away your history. We organize your past results, map out the trends, and journey with you seamlessly from this point forward.</li>
+            <li><strong>If you are starting completely new:</strong> We will build a highly detailed, clean diagnostic baseline. This serves as our starting point to protect your vascular health and energy levels for the years ahead.</li>
+          </ul>
+
+          <hr class="my-4" />
+
+          <section class="audit-cta" style="background-color: #f4f7f6; padding: 25px; border-radius: 10px; border-left: 5px solid #008080;">
+            <h3 class="h5 fw-bold mb-2">Let's Find Your True Baseline</h3>
+            <p class="small text-muted mb-3">
+              Stop guessing with generic diet charts or one-off checks. Whether you want to unpack past medical data or map out a fresh baseline trend, we are ready to help you coordinate your long-term wellness.
+            </p>
+            <a href="/booking/" class="btn" style="background-color: #008080; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 0.9rem;">Book a Baseline Audit</a>
+          </section>
+        </div>
+
+        <div class="ip-notice">
+          <strong style="color: #2c4964; display: block; margin-bottom: 8px;">Scientific Foundation & Local Singapore Data:</strong>
+          <ul class="mb-0 ps-3" style="line-height: 1.6;">
+            <li class="mb-2"><strong>Singapore Myocardial Infarction Registry (SMIR):</strong> National data underscores that cardiovascular health is deeply metabolic. Over 75% of local cardiac event patients present with underlying lifestyle-driven metabolic friction, including silent hypertension and insulin-related conditions.</li>
+            <li class="mb-2"><strong>MOH Agency for Care Effectiveness (ACE) Guidelines:</strong> National clinical guidance explicitly advocates for tracking an individual's complete metabolic and cardiorespiratory health profile over time, rather than relying strictly on single, isolated laboratory thresholds.</li>
+            <li><strong>The Lancet Diabetes & Endocrinology Cohort Tracking:</strong> Long-term data shows that subclinical hormonal shifts and flat cortisol rhythms act as early, independent risk markers that accelerate fat accumulation and decrease daily vascular recovery.</li>
+          </ul>
+        </div>
+
+        <p class="medical-disclaimer text-center mt-4">
+          <strong>Medical Disclaimer:</strong> This article is for informational purposes only and does not constitute medical advice. Assessing your unique metabolic baseline requires a formal clinical consultation with a qualified physician.
         </p>
 
       </div> 
     </div> 
   </div> 
 </main>
+
+<script>
+  let synth = window.speechSynthesis;
+  let utterance = null;
+  let isSpeaking = false;
+  let isPaused = false;
+
+  const playBtn = document.getElementById('btn-tts-play');
+  const stopBtn = document.getElementById('btn-tts-stop');
+  const playIcon = document.getElementById('play-icon');
+  const playText = document.getElementById('play-text');
+  const statusText = document.getElementById('audio-status-text');
+
+  function togglePlayPause() {
+    if (!synth) {
+      alert("Text-to-speech features are not supported on this browser version.");
+      return;
+    }
+
+    if (!isSpeaking) {
+      const contentContainer = document.getElementById('speakable-content');
+      let rawText = contentContainer.innerText || contentContainer.textContent;
+      let cleanText = rawText.replace(/⚡|🛠️|🌙|❤️/g, "").replace(/⏹|▶|⏸/g, "");
+
+      utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.rate = 1.05;
+
+      utterance.onend = function() { resetAudioInterface(); };
+      utterance.onerror = function() { resetAudioInterface(); };
+
+      synth.speak(utterance);
+      isSpeaking = true;
+      isPaused = false;
+      
+      playBtn.classList.add('active-play');
+      playIcon.innerText = "⏸";
+      playText.innerText = "Pause";
+      statusText.innerText = "(Playing)";
+      stopBtn.disabled = false;
+      stopBtn.style.opacity = "1";
+      stopBtn.style.cursor = "pointer";
+    } else {
+      if (!isPaused) {
+        synth.pause();
+        isPaused = true;
+        playIcon.innerText = "▶";
+        playText.innerText = "Resume";
+        statusText.innerText = "(Paused)";
+      } else {
+        synth.resume();
+        isPaused = false;
+        playIcon.innerText = "⏸";
+        playText.innerText = "Pause";
+        statusText.innerText = "(Playing)";
+      }
+    }
+  }
+
+  function stopAudio() {
+    if (synth && isSpeaking) {
+      synth.cancel();
+      resetAudioInterface();
+    }
+  }
+
+  function resetAudioInterface() {
+    isSpeaking = false;
+    isPaused = false;
+    playBtn.classList.remove('active-play');
+    playIcon.innerText = "▶";
+    playText.innerText = "Play Audio";
+    statusText.innerText = "(Ready)";
+    stopBtn.disabled = true;
+    stopBtn.style.opacity = "0.5";
+    stopBtn.style.cursor = "not-allowed";
+  }
+
+  window.onbeforeunload = function() {
+    if (synth) { synth.cancel(); }
+  };
+</script>
