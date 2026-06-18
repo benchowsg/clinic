@@ -11,7 +11,7 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
   "@type": "MedicalWebPage",
   "name": "Cardiology Care & Heart Management",
   "description": "Intermediate heart care in Singapore led by Dr. Gerald Thang, focusing on heart failure, hypertension, and post-hospitalization recovery.",
-  "lastReviewed": "2026-02-21",
+  "lastReviewed": "2026-06-18",
   "mainEntity": {
     "@type": "Physician",
     "name": "Dr. Gerald Thang",
@@ -28,26 +28,58 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "What is intermediate cardiology care?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Intermediate cardiology care bridges the gap between acute hospital treatment and standard primary care. We focus on post-hospitalization recovery, titration of heart medications, and continuous monitoring using rapid cardiac biomarkers to prevent re-admission."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do I need a cardiac baseline assessment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A cardiac baseline establishes your current heart function and lipid profile. This data allows Dr. Gerald Thang to track changes over time, ensuring your treatment plan for conditions like High Blood Pressure or High Cholesterol is proactive."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a referral to see a heart-focused consultation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, you can book directly with A Healing Heart Medical Clinic for heart-related concerns, second opinions, or post-discharge reviews. As your Principal Physician, we will work alongside other specialists to provide day-to-day stability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a cardiac review take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depending on the complexity your medical condition, please set aside minimally 30-60 minutes. If rapid diagnostics are required, our on-site laboratory can often provide results within the same visit."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What are the first signs of a weak heart?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Early signs of a weak heart include shortness of breath when climbing stairs or lying flat, persistent fatigue, and swelling in the ankles or legs. Waking up breathless at night or needing more pillows to sleep comfortably are also significant indicators."
+          "text": "Early signs are often subtle: shortness of breath when climbing stairs or lying flat, unusual fatigue, and swelling in the ankles or feet. Needing more pillows to sleep or waking up breathless at night are particularly concerning red flags."
         }
       },
       {
         "@type": "Question",
-        "name": "How much does a full heart check cost in Singapore?",
+        "name": "How much does a full heart check cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Heart check costs vary based on complexity. Basic screenings are affordable, while comprehensive packages including echocardiograms, treadmill stress tests, and calcium scans can range from a few hundred to over a thousand dollars."
+          "text": "Costs in Singapore vary by complexity. A basic screening is relatively affordable, while comprehensive packages including Echocardiograms, Treadmill Stress Tests, and Calcium Scans can range from a few hundred to over a thousand dollars."
         }
       },
       {
         "@type": "Question",
-        "name": "Can a weak heart get stronger again?",
+        "name": "What are the red flags that your heart is weak?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, in many cases, a weak heart can partially or significantly recover through early treatment, modern medicines like ARNIs and SGLT2 inhibitors, and supervised cardiac rehabilitation."
+          "text": "Major red flags include shortness of breath with mild activity, sudden weight gain from fluid, chest pain/tightness during exertion, and fainting spells. Severe chest pain or sudden breathlessness are emergencies; call an ambulance immediately."
         }
       },
       {
@@ -55,7 +87,7 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
         "name": "What is Stage 1 heart failure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Stage 1 heart failure (Stage A) means you are at high risk due to conditions like hypertension or diabetes but do not yet have structural heart changes or symptoms. This is the best window for preventive action."
+          "text": "Stage 1 heart failure means you are at high risk due to conditions like high blood pressure or diabetes, but have no structural damage or symptoms yet. This is a crucial window to prevent progression."
         }
       }
     ]
@@ -70,75 +102,80 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
   }
   
   .hero-light {
-    background-color: #f8f9fa !important; 
-    min-height: 40vh;
+    background-color: #f4f7f6 !important; 
+    min-height: 45vh;
     display: flex;
     align-items: center;
-    color: #3498DB !important; 
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid #e2e8f0;
   }
 
   .btn-sync-primary {
-    background-color: #3498DB;
+    background-color: #008080;
     color: white;
     border: none;
     transition: all 0.3s ease;
   }
 
   .btn-sync-primary:hover {
-    background-color: #ffc107 !important;
-    color: #2c4964 !important;
+    background-color: #006666 !important;
+    color: white !important;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 128, 128, 0.2);
   }
 
   .btn-sync-outline {
-    border: 2px solid #3498DB;
-    color: #3498DB;
+    border: 2px solid #008080;
+    color: #008080;
     background: transparent;
     transition: all 0.3s ease;
   }
 
   .btn-sync-outline:hover {
-    background-color: #ffc107 !important;
-    border-color: #ffc107 !important;
-    color: #2c4964 !important;
+    background-color: #f0f7f7 !important;
+    color: #006666 !important;
+    border-color: #006666 !important;
   }
+
+  /* Core 2x2 Quadrant Framework Grid */
+  .pillars-2x2 { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
+  @media (min-width: 768px) { .pillars-2x2 { grid-template-columns: 1fr 1fr; } }
+  .pillar-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+  .pillar-item:hover { transform: translateY(-2px); }
+  .pillar-title { font-weight: 700; color: #2c4964; font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .pillar-desc { font-size: 0.95rem; color: #555; line-height: 1.6; }
+
+  /* Interactive Tool Linking Box */
+  .support-links-box { background: #fdfcf0; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 20px; margin: 35px 0; }
+  .support-btn { border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-decoration: none; padding: 10px 18px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s; }
 
   .sync-card {
     border-radius: 20px;
     background: #ffffff !important;
-    color: #3498DB !important;
-    box-shadow: 0 10px 40px rgba(52, 152, 219, 0.08);
+    color: #2c4964 !important;
+    box-shadow: 0 10px 40px rgba(44, 73, 100, 0.06);
     padding: 2.5rem;
     border: 1px solid #eef2f6;
   }
 
-  .insight-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    height: 100%;
-    border-left: 4px solid #3498DB;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  .accordion-button:not(.collapsed) {
+    background-color: #e6f2f2 !important;
+    color: #008080 !important;
   }
-
-  .faq-answer { color: #555; line-height: 1.7; }
 </style>
 
 <main id="main">
   <section class="hero-light pt-5">
     <div class="container py-5 mt-4">
       <div class="row align-items-center">
-        <div class="col-lg-8 text-center text-lg-start">
-          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Cardiology Care & Management</h1>
-          <h2 class="h3 fw-bold mb-4" style="color: #2c4964;">Proactive Heart Health in Singapore</h2>
-          <p class="lead mb-4" style="color: #4a5568;">
-            Led by Dr. Gerald Thang, we provide specialized intermediate cardiology care. We focus on recovery, medication optimization, and preventing the cycle of re-hospitalization.
+        <div class="col-lg-9 text-center text-lg-start">
+          <h1 class="display-5 fw-bold mb-3" style="color: #2c4964;">Cardiology Care & Management</h1>
+          <h2 class="h4 fw-bold mb-4" style="color: #008080;">Did you know your body behaves like a dynamic biological system, not a static math calculator?</h2>
+          <p class="lead mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.6;">
+            If you have ever felt a sudden, terrifying flutter in your chest only to be told "it's just stress," you know how frustrating guessing can be. Managing an active heart condition requires more than ticking boxes on a generic annual form. We bridge the critical gap between acute hospital diagnosis and long-term recovery, focusing on your heart's real-time biology.
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
-             <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-2 fw-bold shadow-sm">Book Cardiac Review</a>
-             <a href="#cardio-insights" class="btn btn-sync-outline rounded-pill px-5 py-2 fw-bold">Heart Health Insights</a>
+             <a href="#the-bridge" class="btn btn-sync-primary rounded-pill px-5 py-2.5 fw-bold shadow-sm">The Clinical Advantage</a>
+             <a href="/heart-health-screening" class="btn btn-sync-outline rounded-pill px-5 py-2.5 fw-bold">View Cardiac Packages</a>
           </div>
         </div>
       </div>
@@ -146,68 +183,65 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
   </section>
 
   <section id="the-bridge" class="py-5 bg-white">
-    <div class="container">
+    <div class="container py-3">
       <div class="row g-5 align-items-center">
-        <div class="col-lg-6">
-          <h2 class="fw-bold" style="color: #3498DB;">Bridging the Gap in Heart Care</h2>
-          <p class="mt-4">Managing a heart condition requires more than standard check-ups. Our clinic provides the intensive oversight needed for <strong>Heart Failure, Ischaemic Heart Disease, and Arrhythmias</strong>.</p>
+        <div class="col-lg-12">
+          <h2 class="fw-bold mb-2" style="color: #2c4964;">Bridging the Gap in Heart Care</h2>
+          <p class="text-muted mb-4" style="font-size: 1.05rem;">
+            Standard heart management often drops patients into an passive cycle of waiting months for their next hospital appointment. Our clinical system provides proactive, continuous data collection for conditions like Heart Failure, Ischemic Heart Disease, and Hypertension.
+          </p>
           
-          <div class="mt-4">
-            <div class="d-flex mb-3">
-              <i class="fa-solid fa-check-circle me-3 mt-1 text-primary"></i>
-              <p><strong>Rapid Biomarker Testing:</strong> Results for Troponin and NT-proBNP in 15 minutes.</p>
+          <div class="pillars-2x2">
+            <div class="pillar-item">
+              <div class="pillar-title">🛣️ 1. Transition Management</div>
+              <div class="pillar-desc">A dedicated medical bridge for patients moving from acute hospital discharge back into daily life. We tightly manage the transition window by fine-tuning and titrating medications safely.</div>
             </div>
-            <div class="d-flex mb-3">
-              <i class="fa-solid fa-check-circle me-3 mt-1 text-primary"></i>
-              <p><strong>Medication Titration:</strong> Precise adjustment of ARNIs, Beta-Blockers, and SGLT2 Inhibitors.</p>
+            <div class="pillar-item">
+              <div class="pillar-title">⏱️ 2. 15-Minute Precision Biomarkers</div>
+              <div class="pillar-desc">We eliminate guessing. By utilizing rapid on-site blood diagnostics for acute cardiac markers, your medical optimization is driven cleanly by what your biological data says today.</div>
             </div>
-            <div class="d-flex mb-3">
-              <i class="fa-solid fa-check-circle me-3 mt-1 text-primary"></i>
-              <p><strong>Post-Discharge Recovery:</strong> Dedicated care following hospital release.</p>
+            <div class="pillar-item">
+              <div class="pillar-title">💓 3. Symptom-Moment Catching</div>
+              <div class="pillar-desc">Rhythm conditions like palpitations or intermittent flutters hide during calm office visits. We use non-invasive, continuous monitoring tools to capture electrical disruptions exactly while you are symptomatic.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">🛡️ 4. Vascular Preservation</div>
+              <div class="pillar-desc">We target the source of arterial aging. By systematically tracking advanced lipid tracking protocols (like ApoB) and metabolic markers, we proactively protect your endothelial lining health.</div>
+            </div>
+          </div>
+
+          <div class="support-links-box">
+            <h4 class="h6 fw-bold mb-2" style="color: #2c4964;">⚙️ Interactive Clinical Toolkits:</h4>
+            <p class="small text-muted mb-3">
+              Because vascular risk profiles and hormonal dynamics express themselves differently based on gender physiology, select a targeted pathway to view how we structure our cardio-metabolic audit algorithms:
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="https://www.ahealingheartmedical.com/men-cardio-metabolic-audit" class="support-btn" style="background: #e2e8f0; color: #2c4964;">Explore Men's Cardiac & Metabolic Audits →</a>
+              <a href="https://www.ahealingheartmedical.com/women-cardio-metabolic-audit" class="support-btn" style="background: #e2e8f0; color: #008080;">Explore Women's Cardiac & Metabolic Audits →</a>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-lg-6">
-          <div class="sync-card">
-            <h4 class="fw-bold mb-3">Cardiac Screening Packages</h4>
-            <p class="text-muted small mb-4">Identify structural and electrical heart risks before they manifest as symptoms.</p>
-            <a href="/heart-health-screening" class="btn btn-sync-primary w-100 rounded-pill py-3 fw-bold">View Heart Health Screening</a>
+      <div class="row mt-4 justify-content-center">
+        <div class="col-lg-10">
+          <div class="sync-card text-center text-md-start d-md-flex align-items-center justify-content-between gap-4">
+            <div>
+              <h4 class="fw-bold mb-2" style="color: #2c4964;">Comprehensive Baseline Evaluation</h4>
+              <p class="text-muted small mb-0">Our structured tracking pathways are designed to catch hidden risks early and track your cardiovascular trends over time.</p>
+            </div>
+            <div class="mt-3 mt-md-0 flex-shrink-0">
+              <a href="/heart-health-screening" class="btn btn-sync-primary rounded-pill px-4 py-3 fw-bold text-nowrap">Compare Screening Packages</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="cardio-insights" class="py-5" style="background-color: #f8f9fa;">
+  <section class="py-5 bg-light">
     <div class="container">
-      <h3 class="fw-bold mb-5 text-center" style="color: #3498DB;">Cardiovascular Health Insights</h3>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-4">
-          <div class="insight-card">
-            <h5 class="fw-bold">Common Heart Problems</h5>
-            <p class="small text-muted">The five most common conditions we manage are Coronary Artery Disease, Hypertensive Heart Disease, Heart Failure, Arrhythmias, and Valvular Heart Disease. Often, these conditions are linked by shared risks like diabetes and high cholesterol.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="insight-card">
-            <h5 class="fw-bold">Can a Weak Heart Recover?</h5>
-            <p class="small text-muted">In many cases, yes. Modern pharmacology (ARNIs, SGLT2i) helps the heart remodel. Combined with cardiac rehab and treating root causes like sleep apnea or alcohol use, function can improve dramatically.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="insight-card">
-            <h5 class="fw-bold">Heart-Healthy Hydration</h5>
-            <p class="small text-muted">Plain water is the gold standard. Unsweetened green tea and moderate coffee are generally safe, but sugary soft drinks and energy drinks should be avoided to protect weight and blood pressure.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-5 bg-white">
-    <div class="container">
-      <h3 class="fw-bold mb-5 text-center" style="color: #3498DB;">Cardiology FAQ</h3>
+      <h3 class="fw-bold mb-4 text-center" style="color: #2c4964;">Cardiology FAQ</h3>
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <div class="accordion" id="cardioFAQ">
@@ -215,12 +249,12 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
             <div class="accordion-item mb-3 border-0 shadow-sm">
               <h2 class="accordion-header">
                 <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                  What are the first signs of a weak heart?
+                  What is intermediate cardiology care?
                 </button>
               </h2>
               <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#cardioFAQ">
-                <div class="accordion-body faq-answer">
-                  Early signs are often subtle: shortness of breath when climbing stairs or lying flat, unusual fatigue, and swelling in the ankles or feet. Needing more pillows to sleep or waking up breathless at night are particularly concerning red flags that require medical attention.
+                <div class="accordion-body">
+                  Intermediate cardiology care bridges the gap between acute hospital treatment and standard primary care. We focus on post-hospitalization recovery, titration of heart medications, and continuous monitoring using rapid cardiac biomarkers to prevent re-admission.
                 </div>
               </div>
             </div>
@@ -228,12 +262,12 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
             <div class="accordion-item mb-3 border-0 shadow-sm">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                  How much does a full heart check cost?
+                  Why do I need a cardiac baseline assessment?
                 </button>
               </h2>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
-                <div class="accordion-body faq-answer">
-                  Costs in Singapore vary by complexity. A basic screening is relatively affordable, while comprehensive packages including Echocardiograms, Treadmill Stress Tests, and Calcium Scans can range from a few hundred to over a thousand dollars depending on the included diagnostics.
+                <div class="accordion-body">
+                  A cardiac baseline establishes your current heart function and lipid profile. This data allows Dr. Gerald Thang to track changes over time, ensuring your treatment plan for conditions like High Blood Pressure or High Cholesterol is proactive.
                 </div>
               </div>
             </div>
@@ -241,12 +275,12 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
             <div class="accordion-item mb-3 border-0 shadow-sm">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                  What are the red flags that your heart is weak?
+                  Do I need a referral to see a heart-focused consultation?
                 </button>
               </h2>
               <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
-                <div class="accordion-body faq-answer">
-                  Major red flags include shortness of breath with mild activity, sudden weight gain from fluid, chest pain/tightness during exertion, and fainting spells. Severe chest pain or sudden breathlessness are emergencies; call an ambulance immediately.
+                <div class="accordion-body">
+                  No, you can book directly for heart-related concerns or post-discharge reviews. We work alongside other specialists to provide day-to-day stability.
                 </div>
               </div>
             </div>
@@ -254,31 +288,83 @@ description: Dedicated intermediate cardiology care led by Dr. Gerald Thang. Bri
             <div class="accordion-item mb-3 border-0 shadow-sm">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                  What is Stage 1 heart failure?
+                  What are the first signs of a weak heart?
                 </button>
               </h2>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
-                <div class="accordion-body faq-answer">
-                  Stage 1 (Stage A) means you are at high risk due to conditions like high blood pressure or diabetes, but have no structural damage or symptoms yet. This is a crucial window to prevent progression through tight medical management and lifestyle changes.
+                <div class="accordion-body">
+                  Early signs are often subtle: shortness of breath when climbing stairs, unusual fatigue, and swelling in the ankles or feet. Needing more pillows to sleep or waking up breathless at night are particularly concerning red flags.
                 </div>
               </div>
             </div>
 
-          </div>
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  How much does a full heart check cost?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
+                <div class="accordion-body">
+                  In Singapore, costs vary. Basic screenings are accessible, while comprehensive packages including Echocardiograms and Treadmill Stress Tests can range from a few hundred to over a thousand dollars depending on the clinical depth required.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                  How long does a cardiac review take?
+                </button>
+              </h2>
+              <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
+                <div class="accordion-body">
+                  Depending on the complexity your medical condition, please set aside minimally 30-60 minutes. If rapid diagnostics are required, our on-site laboratory can often provide results within the same visit.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                  What are the red flags that your heart is weak?
+                </button>
+              </h2>
+              <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
+                <div class="accordion-body">
+                  Major red flags include shortness of breath with mild activity, sudden weight gain from fluid, chest pain during exertion, and fainting. Severe chest pain or sudden breathlessness are emergencies—call 995 immediately.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border-0 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                  What is Stage 1 heart failure?
+                </button>
+              </h2>
+              <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#cardioFAQ">
+                <div class="accordion-body">
+                  Stage 1 heart failure means you are at high risk due to conditions like high blood pressure or diabetes, but have no structural damage or symptoms yet. This is a crucial window to prevent progression.
+                </div>
+              </div>
+            </div>
+
+          </div> 
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5 text-center bg-light border-top">
-    <div class="container">
-      <h2 class="fw-bold mb-4" style="color: #3498DB;">Establish Your Cardiac Baseline Today</h2>
-      <p class="mb-5 text-muted mx-auto" style="max-width: 600px;">
-        Don't wait for symptoms to emerge. Proactive heart care is the key to long-term vitality.
+  <section class="py-5 text-center bg-white border-top">
+    <div class="container py-3">
+      <h2 class="fw-bold mb-3" style="color: #2c4964;">Don't Settle For Just 'Monitoring'. Seek True Recovery.</h2>
+      <p class="mb-5 text-muted mx-auto" style="max-width: 650px; font-size: 1.05rem; line-height: 1.7;">
+        Whether you have tracked odd heart spikes on your smartwatch, hold a stack of past medical charts from a previous laboratory that you want us to untangle, or are starting entirely from scratch—<strong>your symptoms are worth investigating.</strong> Stop waiting for the next episodic scare. Let's map your dynamic data path together.
       </p>
       <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-3 fw-bold shadow">Request a Consultation</a>
-        <a href="tel:+6569621362" class="btn btn-sync-outline rounded-pill px-5 py-3 fw-bold">Call 6962 1362</a>
+        <a href="/booking" class="btn btn-sync-primary rounded-pill px-5 py-3 fw-bold shadow">Book A Baseline Consultation</a>
+        <a href="tel:+6569621362" class="btn btn-sync-outline rounded-pill px-5 py-3 fw-bold">Speak with Our Team: 6962 1362</a>
       </div>
     </div>
   </section>
