@@ -81,6 +81,21 @@ custom_schema: |
   .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; gap: 6px; }
   .tts-btn.active-play { background: #008080; border-color: #008080; color: #ffffff; }
   .tts-status { font-size: 0.75rem; color: #718096; font-weight: normal; margin-left: 5px; }
+
+  /* NATIVE INLINE WIDGET STYLES (No more iframes) */
+  .widget-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 35px; }
+  .form-group { margin-bottom: 20px; }
+  .widget-card label { display: block; font-weight: 600; margin-bottom: 8px; color: #2c4964; font-size: 0.95rem; }
+  .widget-card input[type='number'] { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+  .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+  .checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: normal !important; font-size: 0.9rem; cursor: pointer; color: #334155; }
+  .checkbox-label input { width: 16px; height: 16px; accent-color: #008080; margin: 0; }
+  .calc-btn { background-color: #008080; color: white; border: none; width: 100%; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+  .calc-btn:hover { background-color: #006666; }
+  .results-panel { display: none; margin-top: 24px; padding: 16px; border-radius: 8px; border-left: 4px solid #cbd5e1; background-color: #f8fafc; }
+  .results-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 6px; color: #2c4964; }
+  .bmi-val { font-size: 1.5rem; font-weight: 800; color: #008080; margin: 5px 0 12px 0; }
+  .note-text { font-size: 0.8rem; color: #64748b; margin-top: 15px; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 10px; }
 </style>
 
 <main id="main" class="article-content">
@@ -202,98 +217,34 @@ custom_schema: |
           <h2 class="h4 fw-bold mb-3" style="color: #2c4964;">Evaluate Your Metabolic Alignment</h2>
           <p>Use our interactive clinical indicator tool below to see if your biometric profile aligns with the established medical guidelines used by local health authorities in Singapore.</p>
           
-          <iframe srcdoc="
-            <!DOCTYPE html>
-            <html>
-            <head>
-              <style>
-                body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #334155; padding: 10px; margin: 0; background-color: #ffffff; }
-                .widget-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-                .form-group { margin-bottom: 20px; }
-                label { display: block; font-weight: 600; margin-bottom: 8px; color: #2c4964; font-size: 0.95rem; }
-                input[type='number'] { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
-                .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
-                .checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: normal; font-size: 0.9rem; cursor: pointer; }
-                .checkbox-label input { width: 16px; height: 16px; accent-color: #008080; }
-                .calc-btn { background-color: #008080; color: white; border: none; width: 100%; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
-                .calc-btn:hover { background-color: #006666; }
-                .results-panel { display: none; margin-top: 24px; padding: 16px; border-radius: 8px; border-left: 4px solid #cbd5e1; background-color: #f8fafc; }
-                .results-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 6px; color: #2c4964; }
-                .bmi-val { font-size: 1.5rem; font-weight: 800; color: #008080; margin: 5px 0 12px 0; }
-                .note-text { font-size: 0.8rem; color: #64748b; margin-top: 15px; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-              </style>
-            </head>
-            <body>
-              <div class='widget-card'>
-                <div class='form-group'>
-                  <label for='weight'>Your Body Weight (kg)</label>
-                  <input type='number' id='weight' placeholder='e.g. 78' min='30' max='250'>
-                </div>
-                <div class='form-group'>
-                  <label for='height'>Your Height (cm)</label>
-                  <input type='number' id='height' placeholder='e.g. 170' min='100' max='250'>
-                </div>
-                <div class='form-group'>
-                  <label>Existing Weight-Related Health Risks</label>
-                  <div class='checkbox-group'>
-                    <label class='checkbox-label'><input type='checkbox' id='bp'> High Blood Pressure / Hypertension</label>
-                    <label class='checkbox-label'><input type='checkbox' id='chol'> High Cholesterol / Dyslipidemia</label>
-                    <label class='checkbox-label'><input type='checkbox' id='db'> Type 2 Diabetes / Borderline Blood Sugar</label>
-                  </div>
-                </div>
-                <button class='calc-btn' id='runAssessmentBtn'>Run Metabolic Assessment</button>
-                
-                <div id='resBox' class='results-panel'>
-                  <div class='results-title' id='resTitle'>Assessment Complete</div>
-                  <div class='bmi-val' id='resBmi'>BMI: --</div>
-                  <div id='resDesc' style='font-size: 0.95rem; line-height: 1.5;'></div>
-                  <div class='note-text'>
-                    <strong>Educational Context Only:</strong> This interactive form evaluates systemic biometric thresholds based on standardized Asian metabolic guidelines. It does not replace or constitute an official clinical diagnosis or a prescription route.
-                  </div>
-                </div>
+          <div class='widget-card'>
+            <div class='form-group'>
+              <label for='weight'>Your Body Weight (kg)</label>
+              <input type='number' id='weight' placeholder='e.g. 78' min='30' max='250'>
+            </div>
+            <div class='form-group'>
+              <label for='height'>Your Height (cm)</label>
+              <input type='number' id='height' placeholder='e.g. 170' min='100' max='250'>
+            </div>
+            <div class='form-group'>
+              <label>Existing Weight-Related Health Risks</label>
+              <div class='checkbox-group'>
+                <label class='checkbox-label'><input type='checkbox' id='bp'> High Blood Pressure / Hypertension</label>
+                <label class='checkbox-label'><input type='checkbox' id='chol'> High Cholesterol / Dyslipidemia</label>
+                <label class='checkbox-label'><input type='checkbox' id='db'> Type 2 Diabetes / Borderline Blood Sugar</label>
               </div>
-
-              <script>
-                document.getElementById('runAssessmentBtn').addEventListener('click', function() {
-                  var w = parseFloat(document.getElementById('weight').value);
-                  var h = parseFloat(document.getElementById('height').value);
-                  var hasComorbidity = document.getElementById('bp').checked || document.getElementById('chol').checked || document.getElementById('db').checked;
-                  
-                  if(!w || !h || w<=0 || h<=0) {
-                    alert('Please enter valid, positive numbers for weight and height.');
-                    return;
-                  }
-                  
-                  var bmi = w / ((h / 100) * (h / 100));
-                  bmi = Math.round(bmi * 10) / 10;
-                  
-                  var box = document.getElementById('resBox');
-                  var rBmi = document.getElementById('resBmi');
-                  var rDesc = document.getElementById('resDesc');
-                  
-                  box.style.display = 'block';
-                  rBmi.innerHTML = 'Calculated BMI: ' + bmi + ' kg/m²';
-                  
-                  if (bmi < 23) {
-                    box.style.borderLeftColor = '#22c55e';
-                    rDesc.innerHTML = '<strong>Classification: Healthy / Baseline Normal</strong><br><br>Your calculated body mass index rests within the healthy clinical spectrum for individuals of Asian descent. Your primary management goal centers around maintaining lifestyle metabolic vitality through optimal nutrition and routine cardiovascular fitness.';
-                  } else if (bmi >= 23 && bmi < 27) {
-                    if (hasComorbidity) {
-                      box.style.borderLeftColor = '#eab308';
-                      rDesc.innerHTML = '<strong>Classification: Overweight with Metabolic Risk Markers</strong><br><br>Your weight sits in the overweight bracket, and you have noted accompanying chronic risk factors. Based on medical frameworks, you are an appropriate candidate for a comprehensive clinical consultation to evaluate early metabolic preservation options and safeguard your vascular endothelium.';
-                    } else {
-                      box.style.borderLeftColor = '#3b82f6';
-                      rDesc.innerHTML = '<strong>Classification: Overweight (Lifestyle Modification Indicated)</strong><br><br>Your biometrics register inside the overweight range. Standard local health guidelines recommend pursuing personalized lifestyle changes, targeted aerobic resistance plans, and comprehensive nutritional structuring to prevent shifting into higher health risk classifications.';
-                    }
-                  } else {
-                    box.style.borderLeftColor = '#ef4444';
-                    rDesc.innerHTML = '<strong>Classification: Potential Candidate for Clinical Evaluation</strong><br><br>Your current BMI profile meets the formal criteria for obesity (BMI ≥ 30) or severe metabolic weight retention (BMI ≥ 27 with chronic indicators). Modern medical weight protocols may be clinically indicated as a helpful adjunct to support your long-term metabolic recovery. A formal physician evaluation is recommended.';
-                  }
-                });
-              </script>
-            </body>
-            </html>
-          " style="width: 100%; height: 530px; border: none; margin-bottom: 35px;"></iframe>
+            </div>
+            <button class='calc-btn' id='runAssessmentBtn'>Run Metabolic Assessment</button>
+            
+            <div id='resBox' class='results-panel'>
+              <div class='results-title' id='resTitle'>Assessment Complete</div>
+              <div class='bmi-val' id='resBmi'>BMI: --</div>
+              <div id='resDesc' style='font-size: 0.95rem; line-height: 1.5;'></div>
+              <div class='note-text'>
+                <strong>Educational Context Only:</strong> This interactive form evaluates systemic biometric thresholds based on standardized Asian metabolic guidelines. It does not replace or constitute an official clinical diagnosis or a prescription route.
+              </div>
+            </div>
+          </div>
 
           <hr class="my-4" />
 
@@ -326,6 +277,49 @@ custom_schema: |
 </main>
 
 <script>
+  /* ------------------------------------ */
+  /* 1. NATIVE CALCULATOR LOGIC           */
+  /* ------------------------------------ */
+  document.getElementById('runAssessmentBtn').addEventListener('click', function() {
+    var w = parseFloat(document.getElementById('weight').value);
+    var h = parseFloat(document.getElementById('height').value);
+    var hasComorbidity = document.getElementById('bp').checked || document.getElementById('chol').checked || document.getElementById('db').checked;
+    
+    if(!w || !h || w <= 0 || h <= 0) {
+      alert('Please enter valid, positive numbers for weight and height.');
+      return;
+    }
+    
+    var bmi = w / ((h / 100) * (h / 100));
+    bmi = Math.round(bmi * 10) / 10;
+    
+    var box = document.getElementById('resBox');
+    var rBmi = document.getElementById('resBmi');
+    var rDesc = document.getElementById('resDesc');
+    
+    box.style.display = 'block';
+    rBmi.innerHTML = 'Calculated BMI: ' + bmi + ' kg/m²';
+    
+    if (bmi < 23) {
+      box.style.borderLeftColor = '#22c55e';
+      rDesc.innerHTML = '<strong>Classification: Healthy / Baseline Normal</strong><br><br>Your calculated body mass index rests within the healthy clinical spectrum for individuals of Asian descent. Your primary management goal centers around maintaining lifestyle metabolic vitality through optimal nutrition and routine cardiovascular fitness.';
+    } else if (bmi >= 23 && bmi < 27) {
+      if (hasComorbidity) {
+        box.style.borderLeftColor = '#eab308';
+        rDesc.innerHTML = '<strong>Classification: Overweight with Metabolic Risk Markers</strong><br><br>Your weight sits in the overweight bracket, and you have noted accompanying chronic risk factors. Based on medical frameworks, you are an appropriate candidate for a comprehensive clinical consultation to evaluate early metabolic preservation options and safeguard your vascular endothelium.';
+      } else {
+        box.style.borderLeftColor = '#3b82f6';
+        rDesc.innerHTML = '<strong>Classification: Overweight (Lifestyle Modification Indicated)</strong><br><br>Your biometrics register inside the overweight range. Standard local health guidelines recommend pursuing personalized lifestyle changes, targeted aerobic resistance plans, and comprehensive nutritional structuring to prevent shifting into higher health risk classifications.';
+      }
+    } else {
+      box.style.borderLeftColor = '#ef4444';
+      rDesc.innerHTML = '<strong>Classification: Potential Candidate for Clinical Evaluation</strong><br><br>Your current BMI profile meets the formal criteria for obesity (BMI ≥ 30) or severe metabolic weight retention (BMI ≥ 27 with chronic indicators). Modern medical weight protocols may be clinically indicated as a helpful adjunct to support your long-term metabolic recovery. A formal physician evaluation is recommended.';
+    }
+  });
+
+  /* ------------------------------------ */
+  /* 2. TEXT-TO-SPEECH (AUDIO) COMPONENTS */
+  /* ------------------------------------ */
   let synth = window.speechSynthesis;
   let utterance = null;
   let isSpeaking = false;
