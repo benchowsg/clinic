@@ -165,4 +165,243 @@ custom_schema: |
           <div class="pillars-2x2">
             <div class="pillar-item">
               <div class="pillar-title">🧠 Central Satiety Control</div>
-              <div class="pillar-desc">The molecule binds to precise receptors in your hypothalamus. This pathway effectively mutes persistent "food noise" (the constant, intrusive thoughts of eating), allowing you to feel satisfied with
+              <div class="pillar-desc">The molecule binds to precise receptors in your hypothalamus. This pathway effectively mutes persistent "food noise" (the constant, intrusive thoughts of eating), allowing you to feel satisfied with smaller meals.</div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-title">⏱️ Delayed Gastric Emptying</div>
+              <div class="pillar-desc">It slows down the physical clearance rate at which food leaves your stomach. This mechanic significantly extends the duration of fullness following smaller food portions.</div>
+            </div>
+          </div>
+
+          <div class="support-links-box">
+            <p class="small fw-bold mb-2" style="color: #2c4964;">🔎 Deep Dive: Explore how metabolic dynamics express themselves differently across gender baselines:</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="https://www.ahealingheartmedical.com/men-cardio-metabolic-audit" target="_blank" rel="noopener noreferrer" class="support-btn" style="background: #e2e8f0; color: #2c4964;">Read about Men's Metabolic Architecture →</a>
+              <a href="https://www.ahealingheartmedical.com/women-cardio-metabolic-audit" target="_blank" rel="noopener noreferrer" class="support-btn" style="background: #e2e8f0; color: #008080;">Read about Women's Metabolic Architecture →</a>
+            </div>
+          </div>
+
+          <h2 class="h4 fw-bold mt-4 mb-2" style="color: #2c4964;">Why Medication Alone is Incomplete: Preventing the "Rebound"</h2>
+          <p>
+            One of the most frequent questions patients ask during consultations is: <em>"What happens when I stop taking the treatment?"</em>
+          </p>
+          <p>
+            Long-term clinical trials confirm that stopping GLP-1 therapies without permanent metabolic and behavioral reprogramming results in a complete weight rebound. If you suppress your appetite with a medical compound without altering your fundamental resting metabolic rate or protecting your skeletal muscle mass, your original hunger levels will return the moment the compound clears your system.
+          </p>
+          <p>
+            A truly sustainable weight management plan requires an ongoing, doctor-led clinical partnership built on key medical steps:
+          </p>
+          <ul>
+            <li><strong>Preserving Lean Muscle Mass:</strong> Monitoring body composition closely to make sure you are losing adipose fat tissue, not active muscle structure.</li>
+            <li><strong>Insulin Sensitivity Optimization:</strong> Shifting to low-glycemic, high-protein nutritional habits that stabilize your blood sugar trends organically.</li>
+            <li><strong>Structured Down-Titration:</strong> Carefully and slowly tapering clinical support under real-time observation so your nervous system adapts permanently to its new weight set-point.</li>
+          </ul>
+
+          <hr class="my-4" />
+
+          <h2 class="h4 fw-bold mb-3" style="color: #2c4964;">Evaluate Your Metabolic Alignment</h2>
+          <p>Use our interactive clinical indicator tool below to see if your biometric profile aligns with the established medical guidelines used by local health authorities in Singapore.</p>
+          
+          <iframe srcdoc="
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <style>
+                body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #334155; padding: 10px; margin: 0; background-color: #ffffff; }
+                .widget-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+                .form-group { margin-bottom: 20px; }
+                label { display: block; font-weight: 600; margin-bottom: 8px; color: #2c4964; font-size: 0.95rem; }
+                input[type='number'] { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+                .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+                .checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: normal; font-size: 0.9rem; cursor: pointer; }
+                .checkbox-label input { width: 16px; height: 16px; accent-color: #008080; }
+                .calc-btn { background-color: #008080; color: white; border: none; width: 100%; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+                .calc-btn:hover { background-color: #006666; }
+                .results-panel { display: none; margin-top: 24px; padding: 16px; border-radius: 8px; border-left: 4px solid #cbd5e1; background-color: #f8fafc; }
+                .results-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 6px; color: #2c4964; }
+                .bmi-val { font-size: 1.5rem; font-weight: 800; color: #008080; margin: 5px 0 12px 0; }
+                .note-text { font-size: 0.8rem; color: #64748b; margin-top: 15px; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+              </style>
+            </head>
+            <body>
+              <div class='widget-card'>
+                <div class='form-group'>
+                  <label for='weight'>Your Body Weight (kg)</label>
+                  <input type='number' id='weight' placeholder='e.g. 78' min='30' max='250'>
+                </div>
+                <div class='form-group'>
+                  <label for='height'>Your Height (cm)</label>
+                  <input type='number' id='height' placeholder='e.g. 170' min='100' max='250'>
+                </div>
+                <div class='form-group'>
+                  <label>Existing Weight-Related Health Risks</label>
+                  <div class='checkbox-group'>
+                    <label class='checkbox-label'><input type='checkbox' id='bp'> High Blood Pressure / Hypertension</label>
+                    <label class='checkbox-label'><input type='checkbox' id='chol'> High Cholesterol / Dyslipidemia</label>
+                    <label class='checkbox-label'><input type='checkbox' id='db'> Type 2 Diabetes / Borderline Blood Sugar</label>
+                  </div>
+                </div>
+                <button class='calc-btn' id='runAssessmentBtn'>Run Metabolic Assessment</button>
+                
+                <div id='resBox' class='results-panel'>
+                  <div class='results-title' id='resTitle'>Assessment Complete</div>
+                  <div class='bmi-val' id='resBmi'>BMI: --</div>
+                  <div id='resDesc' style='font-size: 0.95rem; line-height: 1.5;'></div>
+                  <div class='note-text'>
+                    <strong>Educational Context Only:</strong> This interactive form evaluates systemic biometric thresholds based on standardized Asian metabolic guidelines. It does not replace or constitute an official clinical diagnosis or a prescription route.
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                document.getElementById('runAssessmentBtn').addEventListener('click', function() {
+                  var w = parseFloat(document.getElementById('weight').value);
+                  var h = parseFloat(document.getElementById('height').value);
+                  var hasComorbidity = document.getElementById('bp').checked || document.getElementById('chol').checked || document.getElementById('db').checked;
+                  
+                  if(!w || !h || w<=0 || h<=0) {
+                    alert('Please enter valid, positive numbers for weight and height.');
+                    return;
+                  }
+                  
+                  var bmi = w / ((h / 100) * (h / 100));
+                  bmi = Math.round(bmi * 10) / 10;
+                  
+                  var box = document.getElementById('resBox');
+                  var rBmi = document.getElementById('resBmi');
+                  var rDesc = document.getElementById('resDesc');
+                  
+                  box.style.display = 'block';
+                  rBmi.innerHTML = 'Calculated BMI: ' + bmi + ' kg/m²';
+                  
+                  if (bmi < 23) {
+                    box.style.borderLeftColor = '#22c55e';
+                    rDesc.innerHTML = '<strong>Classification: Healthy / Baseline Normal</strong><br><br>Your calculated body mass index rests within the healthy clinical spectrum for individuals of Asian descent. Your primary management goal centers around maintaining lifestyle metabolic vitality through optimal nutrition and routine cardiovascular fitness.';
+                  } else if (bmi >= 23 && bmi < 27) {
+                    if (hasComorbidity) {
+                      box.style.borderLeftColor = '#eab308';
+                      rDesc.innerHTML = '<strong>Classification: Overweight with Metabolic Risk Markers</strong><br><br>Your weight sits in the overweight bracket, and you have noted accompanying chronic risk factors. Based on medical frameworks, you are an appropriate candidate for a comprehensive clinical consultation to evaluate early metabolic preservation options and safeguard your vascular endothelium.';
+                    } else {
+                      box.style.borderLeftColor = '#3b82f6';
+                      rDesc.innerHTML = '<strong>Classification: Overweight (Lifestyle Modification Indicated)</strong><br><br>Your biometrics register inside the overweight range. Standard local health guidelines recommend pursuing personalized lifestyle changes, targeted aerobic resistance plans, and comprehensive nutritional structuring to prevent shifting into higher health risk classifications.';
+                    }
+                  } else {
+                    box.style.borderLeftColor = '#ef4444';
+                    rDesc.innerHTML = '<strong>Classification: Potential Candidate for Clinical Evaluation</strong><br><br>Your current BMI profile meets the formal criteria for obesity (BMI ≥ 30) or severe metabolic weight retention (BMI ≥ 27 with chronic indicators). Modern medical weight protocols may be clinically indicated as a helpful adjunct to support your long-term metabolic recovery. A formal physician evaluation is recommended.';
+                  }
+                });
+              </script>
+            </body>
+            </html>
+          " style="width: 100%; height: 530px; border: none; margin-bottom: 35px;"></iframe>
+
+          <hr class="my-4" />
+
+          <section class="audit-cta" style="background-color: #f4f7f6; padding: 25px; border-radius: 10px; border-left: 5px solid #008080;">
+            <h3 class="h5 fw-bold mb-2">Coordinate Your Long-Term Wellness</h3>
+            <p class="small text-muted mb-3">
+              Stop trying to out-guess your internal biochemistry with generic diet trends or isolated metric trackers. Whether you want to sort through past medical files or build a comprehensive metabolic profile, our clinical team is here to accompany your journey.
+            </p>
+            <a href="/booking/" class="btn" style="background-color: #008080; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 0.9rem;">Book a Metabolic & Baseline Audit</a>
+          </section>
+        </div>
+
+        <div class="ip-notice">
+          <strong style="color: #2c4964; display: block; margin-bottom: 8px;">Scientific Foundation & Local Singapore Data:</strong>
+          <ul class="mb-0 ps-3" style="line-height: 1.6;">
+            <li class="mb-2"><strong>Health Sciences Authority (HSA) Regulation:</strong> Local drug entry frameworks restrict prescription GLP-1 receptor therapies to specific patient protocols, explicitly separating public medical education from retail drug promotion.</li>
+            <li class="mb-2"><strong>The New England Journal of Medicine (STEP Trials):</strong> Landmark multinational clinical evaluations tracking Semaglutide molecules confirm a mean 14.9% drop in total body weight when treatment is integrated into a multi-disciplinary medical lifestyle program over 68 weeks.</li>
+            <li class="mb-2"><strong>Singapore National Population Health Survey:</strong> Collected local longitudinal public data highlights a steady upward trajectory in adult obesity rates from 10.5% to 12.7%, tracking alongside higher incidents of chronic systemic hypertension.</li>
+            <li><strong>MOH Agency for Care Excellence (ACE) Guidelines:</strong> National healthcare clinical positions emphasize using early multi-metric metabolic evaluations rather than relying solely on isolated fat scales to protect long-term cardio-metabolic longevity.</li>
+          </ul>
+        </div>
+
+        <p class="medical-disclaimer text-center mt-4 small text-muted" style="line-height: 1.5; font-style: italic;">
+          <strong>Medical Disclaimer:</strong> This article is provided strictly for educational and public health informational purposes and does not constitute medical advice, diagnosis, or promotion of any specific commercial health product. In strict accordance with Singapore Ministry of Health (MOH) regulations, prescription-only medications (POMs) cannot be advertised or sold directly to consumers. Any therapeutic clinical intervention or medication mentioned herein is strictly subject to a doctor's clinical discretion following a thorough, face-to-face medical evaluation and diagnostic audit. Always consult a registered medical practitioner before commencing any weight management or medical protocol.
+        </p>
+
+      </div> 
+    </div> 
+  </div> 
+</main>
+
+<script>
+  let synth = window.speechSynthesis;
+  let utterance = null;
+  let isSpeaking = false;
+  let isPaused = false;
+
+  const playBtn = document.getElementById('btn-tts-play');
+  const stopBtn = document.getElementById('btn-tts-stop');
+  const playIcon = document.getElementById('play-icon');
+  const playText = document.getElementById('play-text');
+  const statusText = document.getElementById('audio-status-text');
+
+  function togglePlayPause() {
+    if (!synth) {
+      alert("Text-to-speech features are not supported on this browser version.");
+      return;
+    }
+
+    if (!isSpeaking) {
+      const contentContainer = document.getElementById('speakable-content');
+      let rawText = contentContainer.innerText || contentContainer.textContent;
+      let cleanText = rawText.replace(/🧠|⏱️|⚡|🛠️|🌙|❤️/g, "").replace(/⏹|▶|⏸|➔/g, " ");
+
+      utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.rate = 1.05;
+
+      utterance.onend = function() { resetAudioInterface(); };
+      utterance.onerror = function() { resetAudioInterface(); };
+
+      synth.speak(utterance);
+      isSpeaking = true;
+      isPaused = false;
+      
+      playBtn.classList.add('active-play');
+      playIcon.innerText = "⏸";
+      playText.innerText = "Pause";
+      statusText.innerText = "(Playing)";
+      stopBtn.disabled = false;
+      stopBtn.style.opacity = "1";
+      stopBtn.style.cursor = "pointer";
+    } else {
+      if (!isPaused) {
+        synth.pause();
+        isPaused = true;
+        playIcon.innerText = "▶";
+        playText.innerText = "Resume";
+        statusText.innerText = "(Paused)";
+      } else {
+        synth.resume();
+        isPaused = false;
+        playIcon.innerText = "⏸";
+        playText.innerText = "Pause";
+        statusText.innerText = "(Playing)";
+      }
+    }
+  }
+
+  function stopAudio() {
+    if (synth && isSpeaking) {
+      synth.cancel();
+      resetAudioInterface();
+    }
+  }
+
+  function resetAudioInterface() {
+    isSpeaking = false;
+    isPaused = false;
+    playBtn.classList.remove('active-play');
+    playIcon.innerText = "▶";
+    playText.innerText = "Play Audio";
+    statusText.innerText = "(Ready)";
+    stopBtn.disabled = true;
+    stopBtn.style.opacity = "0.5";
+    stopBtn.style.cursor = "not-allowed";
+  }
+
+  window.onbeforeunload = function() {
+    if (synth) { synth.cancel(); }
+  };
+</script>
