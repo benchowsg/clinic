@@ -57,11 +57,6 @@ custom_schema: |
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- KaTeX for equation rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 
   <style>
     body {
@@ -197,7 +192,7 @@ custom_schema: |
             Losing weight is frequently framed as a simple test of personal willpower—a straightforward matter of eating less food and adding more steps. However, modern metabolic science tells a completely different story. For many individuals, biological barriers like metabolic adaptation make sustained fat loss highly difficult using standard lifestyle adjustments alone. 
           </p>
           <p>
-            According to recent clinical reviews published in the <em>Singapore Medical Journal</em>, adult obesity definitions require lower BMI thresholds for Asian populations due to a higher predisposition to visceral adiposity and cardiovascular risk at lower weight levels. In Singapore, public health interventions are recommended for adults with an Asian BMI of \(\ge 23 \text{ kg/m}^2\) (overweight risk) and \(\ge 27.5 \text{ kg/m}^2\) (high risk/obese).
+            According to recent clinical reviews published in the <em>Singapore Medical Journal</em>, adult obesity definitions require lower BMI thresholds for Asian populations due to a higher predisposition to visceral adiposity and cardiovascular risk at lower weight levels. In Singapore, public health interventions are recommended for adults with an Asian BMI of &ge; 23 kg/m² (overweight risk) and &ge; 27.5 kg/m² (high risk/obese).
           </p>
 
           <h2 class="h4 fw-bold mt-4 mb-2" style="color: #2c4964;">The Biology of Weight Regulation: Beyond Calories</h2>
@@ -208,9 +203,18 @@ custom_schema: |
             To safely bypass this metabolic defense loop, medical interventions focus directly on the chemical messengers within your endocrine system—specifically targeting the receptors that regulate daily appetite and satiety. The core clinical equation of weight dynamics is governed not just by simple thermodynamics, but by hormonal signaling efficiency:
           </p>
           
-          <p class="text-center my-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-mono text-sm overflow-x-auto">
-            \[\text{Metabolic Equilibrium} = f(\text{Caloric Balance}, \text{Hormonal Signaling Satiety})\]
-          </p>
+          <div class="text-center my-4 py-3 px-4 bg-slate-50 border border-slate-200 rounded-xl overflow-x-auto">
+            <div class="inline-flex flex-wrap items-center justify-center gap-2 font-medium text-slate-800">
+              <span class="bg-teal-50 text-teal-800 border border-teal-200 px-3 py-1 rounded-md text-sm font-semibold">Metabolic Equilibrium</span>
+              <span>=</span>
+              <span class="italic font-serif text-lg text-slate-600">f</span>
+              <span class="text-slate-500">(</span>
+              <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-md text-sm font-sans">Caloric Balance</span>
+              <span class="text-slate-400">,</span>
+              <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-md text-sm font-sans">Hormonal Satiety Signaling</span>
+              <span class="text-slate-500">)</span>
+            </div>
+          </div>
 
           <h2 class="h4 fw-bold mt-4 mb-2" style="color: #2c4964;">Understanding GLP-1 Receptor Agonists</h2>
           <p>
@@ -329,7 +333,7 @@ custom_schema: |
             <li class="mt-2">
               <strong>Renal Preservation (Diabetic Kidney Disease):</strong> 
               Clinical studies focusing on chronic kidney disease (CKD) have shown that GLP-1 RAs provide powerful nephroprotection. 
-              The <strong>FLOW Trial</strong> (2024) demonstrated that once-weekly GLP-1 therapy led to a <strong>24% risk reduction</strong> in kidney disease progression, cardiovascular mortality, and severe renal events in patients with type 2 diabetes and chronic kidney disease, protecting the glomerular filtration rate (\(eGFR\)).
+              The <strong>FLOW Trial</strong> (2024) demonstrated that once-weekly GLP-1 therapy led to a <strong>24% risk reduction</strong> in kidney disease progression, cardiovascular mortality, and severe renal events in patients with type 2 diabetes and chronic kidney disease, protecting the glomerular filtration rate (eGFR).
             </li>
             <li class="mt-2">
               <strong>Obstructive Sleep Apnea (OSA) Resolution:</strong> 
@@ -347,7 +351,7 @@ custom_schema: |
             In addition to improving specific organ health, GLP-1 agonists directly modulate biological aging pathways. Chronic, low-grade systemic inflammation (often called "inflammaging") is the primary engine behind age-related vascular disease and metabolic decay. 
           </p>
           <p>
-            By calming chronic systemic inflammatory cascades—specifically down-regulating inflammatory cytokines like interleukin-6 (\(IL\text{-}6\)) and tumor necrosis factor-alpha (\(TNF\text{-}\alpha\))—GLP-1 receptor activation preserves the lining of your blood vessels (vascular endothelium) and protects long-term arterial flexibility. This systemic anti-inflammatory effect, combined with improved insulin sensitivity, directly aligns with modern longevity strategies that optimize human healthspan and cellular integrity.
+            By calming chronic systemic inflammatory cascades—specifically down-regulating inflammatory cytokines like interleukin-6 (IL-6) and tumor necrosis factor-alpha (TNF-&alpha;)—GLP-1 receptor activation preserves the lining of your blood vessels (vascular endothelium) and protects long-term arterial flexibility. This systemic anti-inflammatory effect, combined with improved insulin sensitivity, directly aligns with modern longevity strategies that optimize human healthspan and cellular integrity.
           </p>
 
           <div class="support-links-box">
@@ -426,7 +430,7 @@ custom_schema: |
         <div class="ip-notice">
           <strong style="color: #2c4964; display: block; margin-bottom: 8px;">Scientific Foundation & Local Singapore Data:</strong>
           <ul class="mb-0 ps-3" style="line-height: 1.6;">
-            <li class="mb-2"><strong>Singapore Medical Journal (SMJ) Consensus:</strong> Adult obesity definitions set lowered weight boundaries (overweight risk at \(23 \text{ kg/m}^2\), obese-range risk at \(27.5 \text{ kg/m}^2\)) to address high visceral fat ratios in Asian bodies.</li>
+            <li class="mb-2"><strong>Singapore Medical Journal (SMJ) Consensus:</strong> Adult obesity definitions set lowered weight boundaries (overweight risk at 23 kg/m², obese-range risk at 27.5 kg/m²) to address high visceral fat ratios in Asian bodies.</li>
             <li class="mb-2"><strong>Annals of the Academy of Medicine Singapore (2024):</strong> Multi-disciplinary clinical guidelines indicate screening and weight loss intervention as non-surgical therapeutic pathways to address sleep quality deterioration in obstructive sleep apnea.</li>
             <li class="mb-2"><strong>National Heart Centre Singapore (NHCS) Guidelines:</strong> Emphasizes the cardiovascular threat of "The Three Highs" and underscores GLP-1 receptor agonists' role in improving vascular endothelium function and calming arterial inflammation.</li>
             <li class="mb-2"><strong>The New England Journal of Medicine (SELECT & STEP Trials):</strong> Evaluates cardiovascular longevity benefits showing a 20% drop in major adverse cardiac events (MACE) and average weight loss ranges reaching over 15% across long-term monitoring.</li>
@@ -549,14 +553,12 @@ custom_schema: |
       const contentContainer = document.getElementById('speakable-content');
       let rawText = contentContainer.innerText || contentContainer.textContent;
       
-      // Filter out raw math markdown and emojis for clean natural voice pronunciation
+      // Clean up text filters since raw LaTeX brackets are completely removed
       let cleanText = rawText
         .replace(/🧠|⏱️|⚡|🛠️|🌙|❤️|📌/g, "")
         .replace(/⏹|▶|⏸|➔/g, " ")
-        .replace(/\\ge/g, "greater than or equal to")
-        .replace(/kg\/m\^2/g, "kilograms per square meter")
-        .replace(/f\(/g, "function of (")
-        .replace(/\\text\{[^\}]*\}/g, (m) => m.slice(6, -1));
+        .replace(/&ge;|≥/g, " greater than or equal to ")
+        .replace(/kg\/m²/g, " kilograms per square meter ");
 
       utterance = new SpeechSynthesisUtterance(cleanText);
       utterance.rate = 1.05;
