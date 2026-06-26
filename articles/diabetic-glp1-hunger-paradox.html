@@ -1,0 +1,376 @@
+---
+layout: default
+permalink: /articles/diabetic-glp1-hunger-paradox
+category: Diabetes
+title: "The Diabetic Hunger Paradox on GLP-1 Therapy: Why You Feel Hungrier and Why You Shouldn't Give Up"
+description: "Experiencing intense hunger waves after starting Semaglutide or Liraglutide? Discover the medical science behind this diabetic paradox and why it is temporary."
+last_reviewed: 2026-06-26
+author_name: "Dr. Gerald Thang"
+custom_schema: |
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "headline": "The Diabetic Hunger Paradox on GLP-1 Therapy: Why You Feel Hungrier and Why You Shouldn't Give Up",
+    "lastReviewed": "2026-06-26",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Gerald Thang",
+      "jobTitle": "Principal Physician",
+      "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do I feel hungrier after starting GLP-1 medications for diabetes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In diabetic patients, especially those starting with a high HbA1c, rapid drops in blood sugar can trigger a 'relative hypoglycemia' response where the brain demands food despite normal readings. Additionally, delayed gastric emptying can cause silent acid reflux that feels like a gnawing, empty stomach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will the increased hunger on GLP-1 therapy go away?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. For the vast majority of patients, this paradoxical hunger subsides by the 2nd or 3rd month. This is because the brain resets its blood sugar threshold to normal levels, insulin sensitivity improves, and the stomach adapts to the medication."
+          }
+        }
+      ]
+    },
+    "isPartOf": {
+      "@type": "MedicalBusiness",
+      "id": "https://www.ahealingheartmedical.com"
+    }
+  }
+---
+
+ <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .article-content { padding-top: 140px; padding-bottom: 80px; }
+    .article-body p { line-height: 1.75; margin-bottom: 1.5rem; color: #334155; font-size: 1.05rem; }
+    .ip-notice { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; font-size: 0.9rem; color: #475569; border-radius: 12px; margin-top: 40px; }
+    .author-box { background: #fafaf9; padding: 24px; border-radius: 16px; border: 1px solid #e7e5e4; margin-bottom: 30px; }
+    
+    /* TL;DR Summary Panel Style */
+    .tldr-box { background: #fef2f2; border-left: 4px solid #ef4444; padding: 24px; border-radius: 0 16px 16px 0; margin-bottom: 40px; }
+    .tldr-title { font-weight: 700; color: #991b1b; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .tldr-list { margin-bottom: 0; padding-left: 20px; }
+    .tldr-list li { font-size: 0.975rem; color: #7f1d1d; margin-bottom: 10px; line-height: 1.6; }
+    .tldr-list li:last-child { margin-bottom: 0; }
+
+    /* Modern 2x2 Layout Grid */
+    .pillars-2x2 { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 35px 0; }
+    @media (min-width: 576px) { .pillars-2x2 { grid-template-columns: 1fr 1fr; } }
+    .pillar-item { background: #ffffff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 24px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03); }
+    .pillar-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06); }
+    .pillar-title { font-weight: 700; color: #0f172a; font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .pillar-desc { font-size: 0.95rem; color: #475569; line-height: 1.6; }
+
+    /* Timeline Widget Styles */
+    .timeline-widget { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin: 35px 0; }
+    .timeline-nav { display: flex; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 8px; }
+    .timeline-tab { background: none; border: none; font-size: 0.95rem; font-weight: 700; color: #64748b; cursor: pointer; padding: 10px 20px; white-space: nowrap; border-radius: 8px; transition: all 0.2s; }
+    .timeline-tab.active-tab { color: #0d9488; background-color: #ccfbf1; }
+    .timeline-pane { display: none; }
+    .timeline-pane.active-pane { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+    /* Decoder Widget Card */
+    .widget-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05); margin: 40px 0; }
+    .form-group { margin-bottom: 20px; }
+    .widget-card label { display: block; font-weight: 600; margin-bottom: 8px; color: #0f172a; font-size: 1rem; }
+    .select-input { width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem; background-color: #fff; }
+    .calc-btn { background-color: #0d9488; color: white; border: none; width: 100%; padding: 14px; border-radius: 10px; font-weight: bold; font-size: 1.05rem; cursor: pointer; transition: background 0.2s; }
+    .calc-btn:hover { background-color: #0f766e; }
+    
+    .results-panel { display: none; margin-top: 30px; padding: 24px; border-radius: 12px; border-left: 5px solid #cbd5e1; background-color: #f8fafc; }
+    .results-title { font-weight: 800; font-size: 1.2rem; margin-bottom: 8px; color: #0f172a; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+
+<main id="main" class="article-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" class="text-teal-600 no-underline hover:underline font-medium">Home</a></li>
+            <li class="breadcrumb-item"><a href="/articles/" class="text-teal-600 no-underline hover:underline font-medium">Health Library</a></li>
+            <li class="breadcrumb-item active text-slate-500 font-medium">Diabetes Care</li>
+          </ol>
+        </nav>
+
+        <h1 class="display-6 fw-bold mb-3" style="color: #0f172a; line-height: 1.25;">The Diabetic Hunger Paradox on GLP-1 Therapy: Why You Feel Hungrier and Why You Shouldn't Give Up</h1>
+        <p class="subtitle fs-5 mb-4 text-slate-500 leading-relaxed">Have you started a medication like Semaglutide or Liraglutide only to be met with intense, gnawing hunger? Let’s decode the metabolic science behind this common response.</p>
+        
+        <div class="author-box d-flex align-items-center">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
+          <div>
+            <p class="mb-0 fw-bold text-slate-900">Reviewed by Dr. Gerald Thang</p>
+            <p class="mb-0 text-teal-600 fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
+            <p class="mb-0 small text-slate-500">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
+          </div>
+        </div>
+
+        <!-- TL;DR Warning/Symptom Panel -->
+        <div class="tldr-box">
+          <div class="tldr-title">⚠️ The Core Message for Diabetic Patients</div>
+          <ul class="tldr-list list-disc pl-5">
+            <li><strong>You Are Not Failing:</strong> Feeling hungrier after starting a GLP-1 medication is a well-documented physiological response, particularly in patients with higher baseline HbA1c levels.</li>
+            <li><strong>It Is Temporary:</strong> This is a transition phase. For most patients, the hunger resolves beautifully by the end of the second or third month as your biology adapts.</li>
+            <li><strong>The Big Picture Wins:</strong> Pushing through this phase unlocks profound, long-term cardiovascular, renal, and glycemic benefits that protect your life and healthspan.</li>
+          </ul>
+        </div>
+
+        <!-- Main Article Content Body -->
+        <div id="speakable-content" class="article-body">
+          <p>
+            When patients with Type 2 Diabetes are prescribed modern peptide therapies like once-weekly Semaglutide or daily Liraglutide, they are usually excited by the promise of quieted "food noise" and gradual weight management. But for some, the reality of the first few weeks is completely different. 
+          </p>
+          <p>
+            Instead of feeling full, they experience sudden, intense waves of urgent hunger, or a constant, hollow gnawing in their stomachs. This "hunger paradox" can be deeply discouraging, leading many to believe that the medication isn't working or that their diabetes is worsening. In reality, this response is a sign of your internal biochemistry aggressively recalibrating itself.
+          </p>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">Why Does This Happen? The Diabetic Science</h2>
+          <p>
+            In patients with Type 2 Diabetes—particularly those starting therapy with an elevated HbA1c of 9% or higher—the body’s metabolic baseline has adapted to chronic hyperglycemia (high blood sugar). When we introduce a powerful glycemic-stabilizing agent, it triggers three unique physiological mechanisms:
+          </p>
+
+          <div class="pillars-2x2">
+            <div class="pillar-item" style="border-left: 4px solid #ef4444;">
+              <div class="pillar-title" style="font-size: 1.05rem;">📉 1. The "Relative Hypo" response</div>
+              <div class="pillar-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                If your body is used to blood sugars of 12 to 15 mmol/L, a sudden, rapid drop to a perfectly healthy 5.5 mmol/L feels like an emergency crash to your brain. To protect itself from perceived starvation, your hypothalamus releases a surge of adrenaline and hunger hormones, causing sudden, intense cravings.
+              </div>
+            </div>
+            <div class="pillar-item" style="border-left: 4px solid #ef4444;">
+              <div class="pillar-title" style="font-size: 1.05rem;">🔒 2. Intracellular Starvation</div>
+              <div class="pillar-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                With an HbA1c of 9%, insulin resistance is severe. Your blood is saturated with glucose, but it cannot get inside your cells to be used as energy. Even as the medication begins to clear glucose out of your blood, your starved cells continue to send urgent "need food" signals to your brain.
+              </div>
+            </div>
+            <div class="pillar-item" style="border-left: 4px solid #3b82f6;">
+              <div class="pillar-title" style="font-size: 1.05rem;">🔥 3. Gastric Acid Mimicry</div>
+              <div class="pillar-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                These medications slow gastric emptying. For some patients, this means natural stomach acid sits in the stomach for longer, causing silent acid reflux (GERD) or mild gastritis. The physical sensation of acid gnawing or burning is very frequently misinterpreted by the brain as an "empty stomach" hunger pang.
+              </div>
+            </div>
+            <div class="pillar-item" style="border-left: 4px solid #3b82f6;">
+              <div class="pillar-title" style="font-size: 1.05rem;">💧 4. Dehydration-Induced Thirst</div>
+              <div class="pillar-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                When blood sugar drops, your kidneys work overtime to flush out glucose through urination (osmotic diuresis). Simultaneously, peptide therapies can naturally suppress your thirst drive. Because the brain uses overlapping pathways for hunger and thirst, your body’s cry for hydration is often misread as a craving for food.
+              </div>
+            </div>
+          </div>
+
+          <!-- TIMELINE WIDGET -->
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900 font-semibold">The 3-Month Metabolic Turnaround: What to Expect</h2>
+          <p>
+            The most important clinical question is: <strong>"Will this hunger last forever?"</strong> The answer is a reassuring **no**. For the vast majority of patients, this is a temporary adaptation phase that shifts dramatically over a predictable timeline:
+          </p>
+
+          <div class="timeline-widget">
+            <div class="timeline-nav" id="timelineNav">
+              <button class="timeline-tab active-tab" onclick="switchTimeline(0)">Month 1</button>
+              <button class="timeline-tab" onclick="switchTimeline(1)">Month 2</button>
+              <button class="timeline-tab" onclick="switchTimeline(2)">Month 3 & Beyond</button>
+            </div>
+
+            <div class="timeline-pane active-pane" id="pane-0">
+              <h4 class="h6 fw-bold" style="color: #0d9488;">The Recalibration Phase (Weeks 1 to 4)</h4>
+              <p class="small text-slate-500 mb-3">During the initial low-dose titration, your blood sugar levels are in highly active flux. Relative hypoglycemic hunger, acid-reflux mimicry, and hydration shifts are at their peak. Your nervous system is working hard to establish a new normal.</p>
+              <div class="p-3 bg-white border rounded-lg small text-slate-600">
+                👉 <strong>Your Strategy:</strong> Do not panic. Test your blood sugar during hunger waves to verify if it is a "relative" drop (above 4.0 mmol/L) or a true hypo. Keep hydrated and focus on solid, lean proteins.
+              </div>
+            </div>
+
+            <div class="timeline-pane" id="pane-1">
+              <h4 class="h6 fw-bold" style="color: #0d9488;">The Stabilization Phase (Weeks 5 to 8)</h4>
+              <p class="small text-slate-500 mb-3">Your brain’s internal "thermostat" begins to accept lower, healthier blood sugar levels as normal. The frequency of relative hypoglycemia declines, and cellular insulin sensitivity begins to recover, allowing fuel to finally reach your cells.</p>
+              <div class="p-3 bg-white border rounded-lg small text-slate-600">
+                👉 <strong>Your Strategy:</strong> Discuss with your physician if your stomach acid needs temporary buffering (e.g., with a PPI). You should notice hunger starting to settle into a quiet, manageable baseline.
+              </div>
+            </div>
+
+            <div class="timeline-pane" id="pane-2">
+              <h4 class="h6 fw-bold" style="color: #0d9488;">The Satiety Phase (Weeks 9 to 12+)</h4>
+              <p class="small text-slate-500 mb-3">By the third month, your metabolism has achieved a healthy equilibrium. The powerful appetite-suppressing, "food noise"-muting effects of the medication become dominant and consistent. Intracellular starvation is resolved, and glycemic trends are beautifully stabilized.</p>
+              <div class="p-3 bg-white border rounded-lg small text-teal-900 bg-teal-50 border-teal-200">
+                🎉 <strong>The Reward:</strong> Your HbA1c shows significant improvement, your daily energy levels are stable without wild spikes and crashes, and sustainable weight management becomes effortless.
+              </div>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE WIDGET: HUNGER DECODER -->
+          <div class="widget-card">
+            <h4 class="text-slate-900 font-bold mb-3 text-lg flex items-center gap-2">
+              🔍 The Diabetic Hunger Decoder Tool
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-500 mb-4 leading-relaxed">
+              Answer the questions below to understand the clinical cause behind your hunger spikes and get instant guidance on how to manage it.
+            </p>
+            
+            <div class="form-group">
+              <label for="qSugar">1. Have your blood sugars recently dropped from a highly elevated level?</label>
+              <select id="qSugar" class="select-input">
+                <option value="yes">Yes, my HbA1c was high and blood sugars are dropping fast</option>
+                <option value="no">No, my sugars have been relatively stable</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="qSensation">2. Where do you feel the "hunger" sensation most?</label>
+              <select id="qSensation" class="select-input">
+                <option value="gnaw">In my upper chest/throat as a burning or hollow, empty gnawing</option>
+                <option value="shake">In my whole body as a shaky, urgent need for immediate sugar</option>
+                <option value="mind">In my mind as generalized appetite or cravings</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="qWater">3. Are you drinking at least 2 liters of water daily?</label>
+              <select id="qWater" class="select-input">
+                <option value="no">No, I am drinking less, or urinating very frequently</option>
+                <option value="yes">Yes, I am staying highly hydrated</option>
+              </select>
+            </div>
+
+            <button class="calc-btn" id="decodeBtn">Decode My Hunger</button>
+
+            <div id="decoderRes" class="results-panel">
+              <div class="results-title" id="decTitle">Analysis Result</div>
+              <div id="decDesc" class="text-sm text-slate-700 leading-relaxed"></div>
+              <div class="note-text text-xs text-slate-500 border-t mt-3 pt-3">
+                <strong>Important Safety Note:</strong> If you are taking other diabetes medications like Insulin or Sulfonylureas (e.g., Gliclazide) and experience shakiness, sweating, or confusion, check your blood sugar immediately. If it is below 4.0 mmol/L, treat it immediately using the 15-gram fast-acting carb rule.
+              </div>
+            </div>
+          </div>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">Focus on the Horizon: The Lifesaving Benefits of Staying the Course</h2>
+          <p>
+            While the first few weeks can feel like a metabolic tug-of-war, the scientific consensus is clear: **persevering through the adaptation phase is life-changing.** For patients with Type 2 Diabetes, the long-term clinical benefits of these therapies extend far beyond simple blood sugar management:
+          </p>
+
+          <ul class="list-disc pl-5 space-y-4 mb-4 text-slate-700">
+            <li>
+              <strong>Unmatched Glycemic Control (Pancreatic Rest):</strong> 
+              Unlike older medications that force your pancreas to secrete insulin until it burns out, these peptide therapies are glucose-dependent. They only work when food is present, allowing your insulin-producing beta cells to rest, recover, and preserve their long-term function.
+            </li>
+            <li>
+              <strong>Comprehensive Cardiorenal Protection:</strong> 
+              Type 2 Diabetes places an immense burden on your blood vessels and kidneys. Large-scale clinical trials (such as the landmark <em>SELECT</em> and <em>FLOW</em> trials) have proven that these therapies reduce the risk of major adverse cardiovascular events (like strokes and heart attacks) by <strong>20%</strong>, and reduce chronic kidney disease progression and renal mortality by <strong>24%</strong>.
+            </li>
+            <li>
+              <strong>Systemic Inflammation Cooling:</strong> 
+              Persistent high blood sugar fuels systemic inflammation ("inflammaging"), which slowly damages arteries and organs. By cooling this internal cellular alarm, patients not only protect their cardiovascular systems but also frequently report improved joint comfort, increased daily energy, and the clearing of chronic inflammatory skin conditions like eczema and psoriasis.
+            </li>
+          </ul>
+
+          <p class="font-medium text-teal-800 bg-teal-50 border-l-4 border-teal-500 p-4 rounded-r-lg my-4">
+            💬 <strong>A Message from Our Clinical Team:</strong><br>
+            If you are currently experiencing hunger spikes on your medication, please do not give up. This is not a sign of failure—it is the sound of your metabolic engine shifting gears. Talk to your doctor, decode your symptoms, keep your hydration high, and give your body the 8 to 12 weeks it needs to build a healthier, more resilient metabolic foundation.
+          </p>
+
+          <hr class="my-5" />
+
+          <!-- Call to Action Section -->
+          <section class="audit-cta" style="background-color: #f0fdfa; padding: 30px; border-radius: 16px; border-left: 6px solid #0d9488;">
+            <h3 class="h5 fw-bold mb-2 text-slate-900">Partner with Us for an Optimized Metabolic Journey</h3>
+            <p class="small text-slate-600 mb-4 leading-relaxed">
+              Don't navigate the complex pathways of diabetic adaptation alone. Our comprehensive Metabolic &amp; Baseline Audit is specifically designed to support existing patients through their glycemic transitions—monitoring body composition, managing side effects like gastric acid, and dynamically tailoring your treatment for maximum safety, comfort, and success.
+            </p>
+            <a href="/booking/" class="btn" style="background-color: #0d9488; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 0.95rem;">Book a Metabolic &amp; Baseline Audit</a>
+          </section>
+        </div>
+
+        <!-- Local References and Citations Box -->
+        <div class="ip-notice">
+          <strong style="color: #0f172a; display: block; margin-bottom: 12px; font-size: 1.05rem;">Scientific Foundations &amp; References:</strong>
+          <ul class="mb-0 ps-3 text-slate-600" style="line-height: 1.6; font-size: 0.85rem;">
+            <li class="mb-2"><strong>The New England Journal of Medicine (STEP &amp; SELECT Trials):</strong> Establishes the cardiovascular protection of peptide therapies, demonstrating a 20% reduction in MACE (Major Adverse Cardiovascular Events) independent of weight loss.</li>
+            <li class="mb-2"><strong>The Lancet (FLOW Renal Trial):</strong> Highlights a landmark 24% reduction in kidney disease progression and renal mortality in patients with type 2 diabetes and chronic kidney disease on once-weekly peptide support.</li>
+            <li class="mb-0"><strong>Singapore Medical Journal (SMJ) Endocrine Guidelines:</strong> Discusses the high clinical prevalence of relative hypoglycemia symptoms in poorly controlled diabetic patients undergoing rapid glycemic optimization.</li>
+          </ul>
+        </div>
+
+        <!-- Compliant Medical Disclaimer -->
+        <p class="mt-5 text-xs text-slate-400 text-center leading-relaxed italic">
+          <strong>Medical Disclaimer:</strong> This article is provided strictly for educational and public health informational purposes and does not constitute medical advice, diagnosis, or promotion of any specific commercial health product. In strict accordance with Singapore Ministry of Health (MOH) regulations, prescription-only medications cannot be advertised or sold directly to consumers. Any therapeutic clinical intervention or medication mentioned herein is strictly subject to a doctor's clinical discretion following a thorough, face-to-face medical evaluation and diagnostic audit. Always consult a registered medical practitioner before commencing any weight management or medical protocol.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  /* ------------------------------------ */
+  /* 1. TIMELINE SWITCHING LOGIC          */
+  /* ------------------------------------ */
+  function switchTimeline(index) {
+    const tabs = document.querySelectorAll('.timeline-tab');
+    const panes = document.querySelectorAll('.timeline-pane');
+    
+    tabs.forEach((tab, i) => {
+      if (i === index) {
+        tab.classList.add('active-tab');
+      } else {
+        tab.classList.remove('active-tab');
+      }
+    });
+    
+    panes.forEach((pane, i) => {
+      if (i === index) {
+        pane.classList.add('active-pane');
+      } else {
+        pane.classList.remove('active-pane');
+      }
+    });
+  }
+
+  /* ------------------------------------ */
+  /* 2. HUNGER DECODER LOGIC              */
+  /* ------------------------------------ */
+  document.getElementById('decodeBtn').addEventListener('click', function() {
+    const qSugar = document.getElementById('qSugar').value;
+    const qSensation = document.getElementById('qSensation').value;
+    const qWater = document.getElementById('qWater').value;
+    
+    const resBox = document.getElementById('decoderRes');
+    const decTitle = document.getElementById('decTitle');
+    const decDesc = document.getElementById('decDesc');
+    
+    resBox.style.display = 'block';
+    
+    // Core Logic Routing
+    if (qSensation === 'gnaw') {
+      resBox.style.borderLeftColor = "#3b82f6"; // Blue
+      decTitle.innerHTML = "🔍 Diagnostic Output: Silent Gastric Acid & Reflux Mimicry";
+      decDesc.innerHTML = "Your hunger is likely a physical misinterpretation of increased stomach acid sitting in your digestive tract due to slowed digestion. This 'gnawing' or burning sensation feels identical to an empty stomach, which is temporarily relieved when you coat it with food.<br><br><strong>Action Plan:</strong> Talk to your doctor about starting a short course of a mild antacid or a PPI (e.g., Omeprazole). Focus on smaller, highly frequent, non-acidic meals, and avoid lying down for 2 hours after eating.";
+    } 
+    else if (qSensation === 'shake' && qSugar === 'yes') {
+      resBox.style.borderLeftColor = "#ef4444"; // Red
+      decTitle.innerHTML = "⚠️ Diagnostic Output: Relative Hypoglycemia (The Hypo-Mimic)";
+      decDesc.innerHTML = "Because your body has adapted to chronically elevated blood sugars, your brain is treating the sudden, healthy drop into normal ranges as a dangerous crash. Even if your blood sugar is a safe 5.0 to 6.0 mmol/L, your hypothalamus is signaling an emergency threat, causing shakiness and intense hunger cravings.<br><br><strong>Action Plan:</strong> Verify your blood sugar with a meter. If it is above 4.0 mmol/L, do not take fast-acting sugar. Sit down, drink water, and eat a small portion of slow-digesting lean protein to soothe the brain’s alarm system. This relative response will resolve by Month 2 or 3.";
+    } 
+    else if (qWater === 'no') {
+      resBox.style.borderLeftColor = "#f59e0b"; // Amber
+      decTitle.innerHTML = "💧 Diagnostic Output: Cellular Dehydration Masquerading as Hunger";
+      decDesc.innerHTML = "Your body is dumping excess fluids as your blood sugars stabilize, while the medication suppresses your natural thirst drive. Your brain is misinterpreting a critical cry for water as a demand for food.<br><br><strong>Action Plan:</strong> Drink a full glass of water with electrolytes and wait 15 minutes. Ensure you are hitting a strict target of 2 to 2.5 liters of fluids daily, consciously drinking water even in the absence of thirst.";
+    } 
+    else {
+      resBox.style.borderLeftColor = "#10b981"; // Green
+      decTitle.innerHTML = "🧬 Diagnostic Output: Intracellular Starvation / Normal Titration Curve";
+      decDesc.innerHTML = "Your cells are still temporarily locked out from using blood glucose efficiently due to lingering insulin resistance. This is a very common adaptation during your first 4 weeks as your receptors begin to sensitize.<br><br><strong>Action Plan:</strong> Stick with the medication! Keep your meals built around solid, dense proteins to naturally prompt your intestines' own satiety chemicals. Your cellular energy pathways are projected to normalize, and hunger noise will drop sharply by Month 2.";
+    }
+  });
+</script>
