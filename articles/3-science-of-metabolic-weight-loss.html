@@ -513,37 +513,43 @@ custom_schema: |
               <div class="clinical-hub-pane" id="hub-pane-1">
                 <h3 class="h5 fw-bold mb-3 text-slate-900">HSA Regulatory Framework: Approved Clinical Indications</h3>
                 <p class="text-sm text-slate-600 mb-3">
-                  In Singapore, the Health Sciences Authority (HSA) regulates prescription medications strictly based on registered brand names and approved medical indications:
+                  In Singapore, the Health Sciences Authority (HSA) regulates prescription medications based strictly on generic active chemical ingredients and approved medical indications. The therapeutic landscape includes:
                 </p>
 
                 <div class="table-responsive mb-4">
                   <table class="table table-bordered table-sm text-xs">
                     <thead class="table-light">
                       <tr>
-                        <th>Compound Name</th>
-                        <th>Glycemic Control Brand (T2DM)</th>
-                        <th>Weight Management Brand (Obese/Overweight)</th>
-                        <th>HSA Registration Notes</th>
+                        <th>Active Compound (Generic)</th>
+                        <th>Administration Route</th>
+                        <th>Approved Clinical Indications (Singapore HSA)</th>
+                        <th>Clinical Progression &amp; Titration Notes</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td class="fw-semibold">Semaglutide (Injectable)</td>
-                        <td><strong>Ozempic®</strong> (Approved 2021)</td>
-                        <td><strong>Wegovy®</strong> (Approved 2023)</td>
-                        <td>Both are prescription-only medicines; Wegovy is titrated to higher maximum dosing curves.</td>
+                        <td>Once-Weekly Subcutaneous Injection</td>
+                        <td>Type 2 Diabetes Mellitus &amp; Chronic Weight Management</td>
+                        <td>Prescription-only; chronic weight management protocols utilize a higher titrated maximum maintenance dose compared to standard glycemic control curves.</td>
                       </tr>
                       <tr>
                         <td class="fw-semibold">Semaglutide (Oral)</td>
-                        <td><strong>Rybelsus®</strong> (Approved)</td>
-                        <td><em>None Registered</em></td>
-                        <td>Strictly approved as oral glycemic support.</td>
+                        <td>Once-Daily Oral Tablet</td>
+                        <td>Type 2 Diabetes Mellitus (Glycemic Support)</td>
+                        <td>Strictly indicated for glycemic optimization; not currently registered as a primary weight management compound in oral tablet form.</td>
                       </tr>
                       <tr>
                         <td class="fw-semibold">Tirzepatide (Injectable)</td>
-                        <td><strong>Mounjaro®</strong> (Approved 2023)</td>
-                        <td><strong>Mounjaro®</strong> (Dual-Indication 2025)</td>
-                        <td>Singapore retains the single "Mounjaro" brand name for both health targets.</td>
+                        <td>Once-Weekly Subcutaneous Injection</td>
+                        <td>Type 2 Diabetes Mellitus &amp; Chronic Weight Management</td>
+                        <td>A dual GIP/GLP-1 receptor agonist targeting complementary metabolic pathways for synergistic glycemic and weight regulation.</td>
+                      </tr>
+                      <tr>
+                        <td class="fw-semibold">Liraglutide (Injectable)</td>
+                        <td>Once-Daily Subcutaneous Injection</td>
+                        <td>Type 2 Diabetes Mellitus &amp; Chronic Weight Management</td>
+                        <td>An established daily GLP-1 receptor agonist option; requires progressive daily titration up to therapeutic levels under supervision.</td>
                       </tr>
                     </tbody>
                   </table>
@@ -551,9 +557,9 @@ custom_schema: |
 
                 <h4 class="h6 fw-bold mb-2 text-slate-900">Clinical Verification Framework</h4>
                 <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
-                  <li><strong>For Weight Management Patients:</strong> Indicated strictly for individuals with an Asian BMI of &ge; 30 kg/m² (obese), or &ge; 27 kg/m² (overweight) accompanied by at least one chronic comorbidity.</li>
-                  <li><strong>The Local "Off-Label" Stand:</strong> Due to global supply shortages, the Ministry of Health (MOH) urges medical practitioners to preserve diabetes-specific lines (Ozempic) strictly for diabetic patients to prevent access gaps.</li>
-                  <li><strong>MOH Directories & Safety Portals:</strong> Medical criteria and safety monographs can be cross-verified on the <strong>Singapore National Drug Formulary (ndf.gov.sg)</strong> and patient guides via <strong>HealthHub Singapore (healthhub.sg)</strong>.</li>
+                  <li><strong>For Weight Management Patients:</strong> Indicated strictly for individuals with an Asian BMI of $BMI \ge 30 \text{ kg/m}^2$ (obese), or $BMI \ge 27 \text{ kg/m}^2$ (overweight) when accompanied by at least one weight-related chronic comorbidity.</li>
+                  <li><strong>The Local "Off-Label" Stand:</strong> Due to global supply shortages, the Ministry of Health (MOH) urges medical practitioners to prioritize generic compounds primarily indicated for diabetes strictly for diabetic patients to protect essential therapeutic access.</li>
+                  <li><strong>MOH Directories &amp; Safety Portals:</strong> Medical criteria and safety monographs can be cross-verified on the <strong>Singapore National Drug Formulary (ndf.gov.sg)</strong> and patient guides via <strong>HealthHub Singapore (healthhub.sg)</strong>.</li>
                 </ul>
               </div>
             </div>
