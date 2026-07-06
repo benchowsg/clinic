@@ -61,17 +61,50 @@ custom_schema: |
   }
 ---
 
-<style>
-  .article-content { padding-top: 140px; }
-  .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #444; font-size: 1.1rem; }
-  .stage-box { background: #f8f9fa; border-radius: 15px; padding: 25px; margin: 30px 0; border: 1px solid #e1e8ed; }
-  .author-box { background: #f8f9fa; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 40px; }
-  .section-heading { color: #2c4964; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; display: block; }
-  .check-list { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
-  .check-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: #444; }
-  .check-list li::before { content: "✓"; color: #3498db; font-weight: bold; position: absolute; left: 0; }
-  .medication-card { background: #fff; border: 1px solid #e1e8ed; border-radius: 12px; padding: 20px; margin-bottom: 15px; transition: transform 0.2s; }
-</style>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .article-content { padding-top: 140px; padding-bottom: 80px; }
+    .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #334155; font-size: 1.05rem; }
+    .stage-box { background: #f8fafc; border-radius: 16px; padding: 25px; margin: 30px 0; border: 1px solid #cbd5e1; border-left: 5px solid #0d9488; }
+    .author-box { background: #fafaf9; padding: 24px; border-radius: 16px; border: 1px solid #e7e5e4; margin-bottom: 30px; }
+    
+    /* TL;DR Summary Panel Style */
+    .tldr-box { background: #f0fdfa; border-left: 4px solid #0d9488; padding: 24px; border-radius: 0 16px 16px 0; margin-bottom: 40px; }
+    .tldr-title { font-weight: 700; color: #111827; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .tldr-list { margin-bottom: 0; padding-left: 20px; }
+    .tldr-list li { font-size: 0.975rem; color: #334155; margin-bottom: 10px; line-height: 1.6; }
+    .tldr-list li:last-child { margin-bottom: 0; }
+
+    /* Danger Alert Card Style */
+    .danger-box { background: #fef2f2; border-left: 4px solid #ef4444; padding: 24px; border-radius: 0 16px 16px 0; margin: 35px 0; }
+    .danger-title { font-weight: 700; color: #991b1b; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    
+    /* Modern 2x2 Layout Grid */
+    .pillars-2x2 { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 35px 0; }
+    @media (min-width: 576px) { .pillars-2x2 { grid-template-columns: 1fr 1fr; } }
+    .pillar-item { background: #ffffff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 24px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03); }
+    .pillar-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06); }
+    .pillar-title { font-weight: 700; color: #0f172a; font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .pillar-desc { font-size: 0.95rem; color: #475569; line-height: 1.6; }
+
+    /* Audio Control Panel Styles */
+    .tts-container { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 24px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+    .tts-info { display: flex; align-items: center; gap: 12px; color: #0f172a; font-size: 0.95rem; font-weight: 600; }
+    .tts-controls { display: flex; align-items: center; gap: 12px; }
+    .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 8px 16px; font-size: 0.875rem; font-weight: 600; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .tts-btn.active-play { background: #0d9488; border-color: #0d9488; color: #ffffff; }
+    .tts-status { font-size: 0.8rem; color: #64748b; font-weight: normal; margin-left: 5px; }
+
+    /* Custom Checklists */
+    .check-list { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
+    .check-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: #334155; line-height: 1.6; font-size: 1.025rem; }
+    .check-list li::before { content: "✓"; color: #0d9488; font-weight: bold; position: absolute; left: 0; font-size: 1.15rem; }
+
+    /* Compliance IP Notice */
+    .ip-notice { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; font-size: 0.9rem; color: #475569; border-radius: 12px; margin-top: 40px; }
+  </style>
 
 <main id="main" class="article-content">
   <div class="container">
@@ -80,75 +113,277 @@ custom_schema: |
         
         <nav aria-label="breadcrumb" class="mb-4">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
-            <li class="breadcrumb-item active">HGH & Recovery</li>
+            <li class="breadcrumb-item"><a href="/" class="text-teal-600 no-underline hover:underline font-medium">Home</a></li>
+            <li class="breadcrumb-item"><a href="/articles/" class="text-teal-600 no-underline hover:underline font-medium">Health Library</a></li>
+            <li class="breadcrumb-item active text-slate-500 font-medium">HGH &amp; Recovery</li>
           </ol>
         </nav>
 
-        <h1 class="display-5 fw-bold mb-4" style="color: #2c4964;">Human Growth Hormone (Somatotropin): Beyond Growth</h1>
+        <h1 class="display-6 fw-bold mb-3" style="color: #0f172a; line-height: 1.25;">Human Growth Hormone (Somatotropin): Beyond Growth</h1>
+        <p class="subtitle fs-5 mb-4 text-slate-500 leading-relaxed">Is cellular recovery and tissue preservation merely a matter of active rest, or is your endocrine system the true coordinator of your physical vitality?</p>
 
         <div class="author-box d-flex align-items-center">
-          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover; margin-right: 15px;" alt="Dr Gerald Thang">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
           <div>
-            <p class="mb-0 fw-bold">By Dr. Gerald Thang</p>
-            <p class="mb-0 text-primary fw-bold small text-uppercase">Principal Physician</p>
-            <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
+            <p class="mb-0 fw-bold text-slate-900">Written & Reviewed by Dr. Gerald Thang</p>
+            <p class="mb-0 text-teal-600 fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
+            <p class="mb-0 small text-slate-500">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
           </div>
         </div>
 
-        <div class="article-body">
-          <p>Human Growth Hormone (HGH), or <strong>Somatotropin</strong>, is often misunderstood as a supplement solely for children or athletes. In 2026, clinical intermediate care views HGH as a master regulator of tissue repair, metabolic efficiency, and cardiovascular stability.</p>
+        <!-- Audio Control Panel -->
+        <div class="tts-container">
+          <div class="tts-info">
+            <span style="font-size: 1.25rem;">🔊</span>
+            <span class="text-slate-900 font-semibold text-sm sm:text-base">Listen to this article <span id="audio-status-text" class="tts-status">(Ready)</span></span>
+          </div>
+          <div class="tts-controls">
+            <button id="btn-tts-play" class="tts-btn" onclick="togglePlayPause()">
+              <span id="play-icon">▶</span> <span id="play-text">Play Audio</span>
+            </button>
+            <button id="btn-tts-stop" class="tts-btn" onclick="stopAudio()" disabled style="opacity: 0.5; cursor: not-allowed;">
+              <span>⏹</span> Stop
+            </button>
+          </div>
+        </div>
 
-          <h2 class="section-heading h4">1. Metabolic Synergy: Burning Fat, Not Just Muscle</h2>
-          <p>HGH plays a critical role in how your body handles energy. When levels are optimized, the body shifts into a state of metabolic efficiency:</p>
+        <!-- TL;DR Quick Summary Panel -->
+        <div class="tldr-box">
+          <div class="tldr-title">📌 Article Summary (TL;DR)</div>
+          <ul class="tldr-list list-disc pl-5">
+            <li><strong>The Core Axis:</strong> Exogenous Somatropin acts indirectly by signaling the liver to produce Insulin-like Growth Factor 1 (IGF-1), directing essential structural and vascular repair.</li>
+            <li><strong>Cardiorenal Protection:</strong> Normal growth hormone levels are required to preserve cardiac chambers and protect the flexible lining of your blood vessels.</li>
+            <li><strong>Anabolic Steroid Dangers:</strong> Using unmonitored anabolic steroids or gray-market peptides causes severe organ damage, heart wall thickening, and complete endocrine failure.</li>
+            <li><strong>Regulatory Safeguards:</strong> Under HSA guidelines, medical replacement is strictly indicated for documented Adult Growth Hormone Deficiency (AGHD) using clinical stimulation tests.</li>
+          </ul>
+        </div>
+
+        <!-- Main Article Content Body -->
+        <div id="speakable-content" class="article-body">
+          <p>
+            Human Growth Hormone (HGH), or <strong>Somatotropin</strong>, is often misunderstood as a performance-enhancing supplement reserved solely for pediatric growth challenges or elite athletes. In contemporary metabolic and cardiorenal care, clinical science views natural Somatotropin as a master endocrine coordinator of tissue remodeling, cellular preservation, and cardiovascular stability. 
+          </p>
+          <p>
+            As we navigate our adult years, the focus of growth hormone shifts from structural height extension to **metabolic maintenance and cellular protection**. Understanding how this delicate endocrine network drives lean muscle preservation and tissue repair allows us to design safer, scientifically validated pathways to long-term vitality.
+          </p>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">1. Metabolic Synergy: Burning Fat, Preserving Lean Mass</h2>
+          <p>
+            Somatotropin plays a foundational role in how your body partitioning and manages its daily energy reserves. Rather than acting as a simple calorie burner, it coordinates key pathways that shift your cellular engine toward structural preservation:
+          </p>
           <ul class="check-list">
-            <li><strong>Lipolysis:</strong> Directly stimulating the breakdown of stored adipose tissue (fat).</li>
-            <li><strong>Insulin Sensitivity:</strong> Helping the body manage blood sugar levels more effectively.</li>
-            <li><strong>Abdominal Fat Reduction:</strong> Targeting visceral fat that surrounds vital organs.</li>
+            <li><strong>Active Lipolysis:</strong> Directly stimulating the breakdown and mobilization of stored adipose tissue (fat), forcing cells to use lipids as their primary daily fuel source.</li>
+            <li><strong>Visceral Fat Reduction:</strong> Target-clearing dangerous, metabolically active visceral fat deposits surrounding your heart, liver, and abdominal organs.</li>
+            <li><strong>Nitrogen Retention:</strong> Promoting positive cellular nitrogen balance and protein deposition, protecting active skeletal muscle structure from breaking down.</li>
+          </ul>
+          <p>
+            This metabolic partitioning is critical because preserving skeletal muscle is your primary safeguard against age-related metabolic decay. Muscle tissue acts as your largest physical sink for glucose disposal, making its protection essential for long-term glycemic control.
+          </p>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">2. The Heart Muscle Connection</h2>
+          <p>
+            The heart is a muscle, and like any skeletal muscle, its structural integrity and pumping capacity depend directly on steady endocrine support. Clinical cardiology has established a strong link between growth hormone levels and vascular health:
+          </p>
+          <div class="stage-box">
+            <h5 class="fw-bold mb-3" style="color: #0f172a;">Cardiovascular Benefits of Endocrine Balance</h5>
+            <p class="small mb-2" style="color: #334155;"><strong>Endothelial Elasticity:</strong> Supporting healthy endothelial nitric oxide synthesis, promoting natural vasodilation and normal blood pressure profiles.</p>
+            <p class="small mb-2" style="color: #334155;"><strong>Myocardial Structure:</strong> Preserving the thickness and healthy pumping function of the left ventricle wall, protecting against pathological cardiorenal stress.</p>
+            <p class="small mb-0" style="color: #334155;"><strong>Lipid Regulation:</strong> Maintaining healthy clearance of LDL cholesterol and circulating triglycerides through liver metabolic pathways.</p>
+          </div>
+          <p>
+            Conversely, documented Growth Hormone Deficiency (GHD) is frequently linked to silent, compounding cardiovascular stressors, including elevated arterial stiffness, subclinical plaque accumulation, and compromised myocardial contraction force.
+          </p>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">3. Post-Trauma, Wound Healing, and Structural Repair</h2>
+          <p>
+            During physical recovery—whether healing from major surgery, severe trauma, or orthopedic injury—your endocrine system acts as the primary coordinator of tissue repair. 
+          </p>
+          <p>
+            Once Somatotropin is released by the pituitary gland, it signals the liver to produce **Insulin-like Growth Factor 1 (IGF-1)**. Together, they act as the body’s principal repair team. They stimulate cellular replication, increase protein synthesis, and accelerate the migration of fibroblasts to synthesize collagen. This dual action is vital for restoring the mechanical strength of recovering skin, tendons, ligaments, and bone matrix.
+          </p>
+
+          <!-- IMPORTANT SAFETY CRITICAL SECTION ON ANABOLIC MISUSE -->
+          <h2 class="h4 fw-bold mt-5 mb-3 text-red-600">4. The Threat of "Anabolics" and Unregulated Misuse</h2>
+          <p>
+            While anabolic and regenerative support is essential for healing, attempting to bypass your body’s natural endocrine harmony using illegal, unregulated "anabolic" compounds—such as black-market steroids or unmonitored gray-market peptides—carries severe and often permanent health consequences.
+          </p>
+
+          <div class="danger-box">
+            <div class="danger-title">🚨 Severe Clinical Risks of Unregulated Anabolic Use</div>
+            <p class="small mb-2 text-rose-950"><strong>Pathological Left Ventricular Hypertrophy (LVH):</strong> Synthetic anabolics stimulate growth across all muscle tissue, including the heart. This causes abnormal, irreversible thickening of your heart wall, dramatically increasing the risk of arrhythmias, strokes, and early-onset heart attacks.</p>
+            <p class="small mb-2 text-rose-950"><strong>Total Endocrine System Collapse:</strong> Flooding your bloodstream with artificial hormones signals your pituitary gland to permanently shut down its own natural production. This results in severe hormonal crashes, profound muscle wasting, metabolic rebound, and mood disorders when the drugs are stopped.</p>
+            <p class="small mb-0 text-rose-950"><strong>Severe Hepatic and Renal Stress:</strong> Orally ingested synthetic steroids place toxic, compounding stress on your liver and kidneys, frequently leading to chemical scarring, jaundice, or acute renal failure.</p>
+          </div>
+          <p>
+            Your endocrine system operates like a finely tuned symphony. Attempting to force cellular growth using unmonitored synthetic substances destroys this balance, creating an inflammatory, high-risk vascular environment that accelerates plaque buildup and cardiorenal decay.
+          </p>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">5. Safe Protocols: Clinical Standards vs. Natural Axis Optimization</h2>
+          <p>
+            To safely and legally support your body’s tissue repair, metabolic health, and muscle preservation in Singapore, clinical medicine recognizes two distinct, scientifically backed pathways:
+          </p>
+
+          <div class="pillars-2x2">
+            <div class="pillar-item" style="border-left: 4px solid #0d9488;">
+              <div class="pillar-title" style="font-size: 1.05rem;">🧬 Pathway A: The Clinical Diagnostic Standard</div>
+              <div class="pillar-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                Exogenous hormone therapy is strictly reserved for patients with a clinically confirmed deficiency—<strong>Adult Growth Hormone Deficiency (AGHD)</strong>. Diagnosis requires rigorous dynamic stimulation testing (evaluating the pituitary's output under supervision) and tracking baseline organ markers. If confirmed, micro-dose replacement is initiated under strict physician monitoring to keep levels safely within the optimal physiological range.
+              </div>
+            </div>
+            <div class="pillar-item" style="border-left: 4px solid #0d9488;">
+              <div class="pillar-title" style="font-size: 1.05rem;">✨ Pathway B: Natural Pituitary Optimization</div>
+              <div class="pillar-desc" style="font-size: 0.95rem; line-height: 1.6;">
+                For patients looking to naturally support their pituitary gland's endogenous release, targeted metabolic habits are highly effective: prioritizing deep Stage 3 slow-wave sleep (where up to 75% of daily hormone release occurs), practicing evening glycemic control (as high insulin suppresses growth hormone), engaging in intense resistance exercise, and incorporating protein-dense nutrition.
+              </div>
+            </div>
+          </div>
+
+          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900 font-semibold">6. Clinical Evidence: International and Local Acclaimed Studies</h2>
+          <p>
+            The medical parameters governing modern metabolic and endocrine care are established through rigorous global and regional clinical trials:
+          </p>
+          <ul class="list-disc pl-5 space-y-3 text-slate-700 text-sm mb-5">
+            <li>
+              <strong>Vascular Endothelial Health (The Endocrine Society Guidelines):</strong> 
+              Conducted global meta-analyses showing that physiological growth hormone replacement in deficient adults significantly reduces carotid intima-media thickness (a primary marker of arterial plaque) and restores healthy vascular elasticity.
+            </li>
+            <li>
+              <strong>Sarcopenia and Lean Tissue Preservation (JCEM Consensus):</strong> 
+              Longitudinal trials published in the <em>Journal of Clinical Endocrinology and Metabolism</em> demonstrated that maintaining optimal growth hormone and IGF-1 levels prevents pathological muscle wasting, optimizes skeletal muscle mass, and decreases abdominal visceral adiposity in aging patient cohorts.
+            </li>
+            <li>
+              <strong>Endocrine Regulation Frameworks (Singapore MOH &amp; HSA Standards):</strong> 
+              Singapore healthcare policies strictly regulate Somatropin prescribing, confining therapeutic use to documented Adult Growth Hormone Deficiency (AGHD) and severe pediatric genetic syndromes to protect public safety and prevent unmonitored lifestyle misuse.
+            </li>
           </ul>
 
-          <h2 class="section-heading h4">2. The Heart Muscle Connection</h2>
-          <p>The heart is a muscle, and like any muscle, it requires hormonal support to maintain its structural integrity. HGH deficiency is often linked to "silent" cardiac stressors:</p>
-          <div class="stage-box">
-            <h5 class="fw-bold mb-3">Cardiovascular Benefits of Optimization</h5>
-            <p class="small mb-2"><strong>Lipid Profile:</strong> Reduction in "bad" LDL cholesterol and triglycerides.</p>
-            <p class="small mb-2"><strong>Muscle Integrity:</strong> Supporting the strength of the heart's pumping chambers.</p>
-            <p class="small mb-0"><strong>Vascular Health:</strong> Promoting healthy endothelial function and blood flow.</p>
-          </div>
-
-          <h2 class="section-heading h4">3. Post-Trauma and Surgical Regeneration</h2>
-          <p>In our "Bridge to Recovery" model, HGH is a catalyst for healing. Whether recovering from a major cardiac event or orthopedic surgery, HGH accelerates the repair of connective tissues and protein synthesis.</p>
-
-          <h2 class="section-heading h4">4. Height vs. Cellular Maintenance</h2>
-          <p>While HGH drives height growth in children, its role in adults is <strong>maintenance</strong>. It protects bone density, preventing the early onset of osteoporosis, and ensures that cellular turnover keeps skin and organs functioning at peak capacity.</p>
-
-          <h2 class="section-heading h4">5. Muscle Growth and Strength (Sarcopenia Prevention)</h2>
-          <p>As we age, we lose muscle mass (sarcopenia). HGH triggers the release of IGF-1, which drives the proliferation of muscle cells, ensuring that your "internal battery" has the physical strength to sustain an active lifestyle.</p>
-
           <div class="faq-section mt-5 pt-4 border-top">
-            <h3 class="fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions</h3>
+            <h3 class="fw-bold mb-4" style="color: #0f172a;">Frequently Asked Questions</h3>
             <div class="mb-4">
-              <p class="fw-bold mb-2">How does HGH affect weight loss?</p>
-              <p class="text-muted">It forces the body to use stored fat for fuel while preserving lean muscle mass, making it a powerful tool for metabolic health.</p>
+              <p class="fw-bold mb-2 text-slate-900">How does natural growth hormone affect visceral weight loss?</p>
+              <p class="text-slate-600">By stimulating the lipolysis pathway, it encourages your body to break down and mobilize abdominal visceral fat tissue to use as cellular energy, helping to defend against cardiorenal risk markers.</p>
             </div>
             <div class="mb-4">
-              <p class="fw-bold mb-2">Is it only for recovery after trauma?</p>
-              <p class="text-muted">No. While it is excellent for post-trauma, it is also used for long-term metabolic stability and protecting heart muscle function.</p>
+              <p class="fw-bold mb-2 text-slate-900">Why are black-market anabolic steroids highly dangerous to the heart?</p>
+              <p class="text-slate-600">Synthetic steroids stimulate cellular growth in your heart walls, causing pathological left ventricular hypertrophy. This thickening of the cardiac tissue makes your heart stiff, dramatically elevating risks of irregular heartbeats, hypertension, and cardiac failure.</p>
             </div>
           </div>
 
+          <!-- Call to Action Section -->
           <div class="mt-5 p-4 border rounded shadow-sm bg-light text-center">
-            <h3 class="h5 fw-bold" style="color: #2c4964;">Is Your Hormonal Baseline Optimal?</h3>
-            <p>Establish your metabolic profile with our intermediate care protocols.</p>
-            <a href="/booking" class="btn btn-primary rounded-pill px-4 py-2">Request a Clinical Review</a>
+            <h3 class="h5 fw-bold" style="color: #0f172a;">Is Your Hormonal Baseline Optimal?</h3>
+            <p class="small text-slate-600 mb-4">Establish your comprehensive metabolic and endocrine profile under strict clinical guidance.</p>
+            <a href="/booking" class="btn btn-primary rounded-pill px-4 py-2" style="background-color: #0d9488; border-color: #0d9488; font-weight: 600;">Request a Clinical Review</a>
           </div>
 
-          <div class="mt-5 p-3 bg-white border-left border-secondary" style="font-size: 0.85rem; color: #666; border-left: 3px solid #ccc;">
-            <strong>Intellectual Property Notice:</strong> This clinical framework regarding HGH and Regenerative Recovery is the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
+          <!-- Compliance IP Notice -->
+          <div class="ip-notice">
+            <strong style="color: #0f172a; display: block; margin-bottom: 12px; font-size: 1.05rem;">Intellectual Property &amp; Educational Notice:</strong>
+            <p class="mb-0 text-xs text-slate-500 leading-relaxed">
+              This comprehensive clinical framework regarding HGH, endocrine regulation, and metabolic recovery is the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
+            </p>
           </div>
         </div>
+
+        <!-- Compliant Medical Disclaimer -->
+        <p class="mt-5 text-xs text-slate-400 text-center leading-relaxed italic">
+          <strong>Medical Disclaimer:</strong> This article is provided strictly for educational and public health informational purposes and does not constitute medical advice, diagnosis, or promotion of any specific commercial health product. In strict accordance with Singapore Ministry of Health (MOH) regulations, prescription-only medications (POMs) cannot be advertised or sold directly to consumers. Any therapeutic clinical intervention or medication mentioned herein is strictly subject to a doctor's clinical discretion following a thorough, face-to-face medical evaluation and diagnostic audit. Always consult a registered medical practitioner before commencing any weight management or medical protocol.
+        </p>
+
       </div>
     </div>
   </div>
 </main>
+
+<script>
+  /* ------------------------------------ */
+  /* TEXT-TO-SPEECH AUDIO CONTROL ENGINE */
+  /* ------------------------------------ */
+  let synth = window.speechSynthesis;
+  let utterance = null;
+  let isSpeaking = false;
+  let isPaused = false;
+
+  const playBtn = document.getElementById('btn-tts-play');
+  const stopBtn = document.getElementById('btn-tts-stop');
+  const playIcon = document.getElementById('play-icon');
+  const playText = document.getElementById('play-text');
+  const statusText = document.getElementById('audio-status-text');
+
+  function togglePlayPause() {
+    if (!synth) {
+      statusText.innerText = "(Not Supported)";
+      return;
+    }
+
+    if (!isSpeaking) {
+      const contentContainer = document.getElementById('speakable-content');
+      let rawText = contentContainer.innerText || contentContainer.textContent;
+      
+      // Clean up text filter formats for smooth reading
+      let cleanText = rawText
+        .replace(/🧠|⏱️|⚡|🛠️|🌙|❤️|📌|🚨|⚠️|✓|👉|🎉/g, "")
+        .replace(/⏹|▶|⏸|➔/g, " ")
+        .replace(/&ge;|≥/g, " greater than or equal to ")
+        .replace(/kg\/m²/g, " kilograms per square meter ");
+
+      utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.rate = 1.05;
+
+      utterance.onend = function() { resetAudioInterface(); };
+      utterance.onerror = function() { resetAudioInterface(); };
+
+      synth.speak(utterance);
+      isSpeaking = true;
+      isPaused = false;
+      
+      playBtn.classList.add('active-play');
+      playIcon.innerText = "⏸";
+      playText.innerText = "Pause";
+      statusText.innerText = "(Speaking Now)";
+      
+      stopBtn.disabled = false;
+      stopBtn.style.opacity = "1";
+      stopBtn.style.cursor = "pointer";
+    } else {
+      if (!isPaused) {
+        synth.pause();
+        isPaused = true;
+        playIcon.innerText = "▶";
+        playText.innerText = "Resume";
+        statusText.innerText = "(Speech Paused)";
+      } else {
+        synth.resume();
+        isPaused = false;
+        playIcon.innerText = "⏸";
+        playText.innerText = "Pause";
+        statusText.innerText = "(Speaking Now)";
+      }
+    }
+  }
+
+  function stopAudio() {
+    if (synth && isSpeaking) {
+      synth.cancel();
+      resetAudioInterface();
+    }
+  }
+
+  function resetAudioInterface() {
+    isSpeaking = false;
+    isPaused = false;
+    
+    playBtn.classList.remove('active-play');
+    playIcon.innerText = "▶";
+    playText.innerText = "Play Audio";
+    statusText.innerText = "(Ready)";
+    
+    stopBtn.disabled = true;
+    stopBtn.style.opacity = "0.5";
+    stopBtn.style.cursor = "not-allowed";
+  }
+
+  window.onbeforeunload = function() {
+    if (synth) { synth.cancel(); }
+  };
+</script>
