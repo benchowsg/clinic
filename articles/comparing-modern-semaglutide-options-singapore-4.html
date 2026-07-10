@@ -98,8 +98,14 @@ custom_schema: |
     .price-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }
     .price-card.featured { border-color: #0d9488; box-shadow: 0 8px 20px -4px rgba(13, 148, 136, 0.08); }
     .price-card:hover { transform: translateY(-2px); }
-    .price-amt { font-size: 1.75rem; font-weight: 800; color: #0f172a; margin: 10px 0; }
-
+    .price-amt { 
+        font-size: 2.5rem; /* Up from 1.75rem to give it a dominant focal point */
+        font-weight: 900;  /* Extra bold look */
+        color: #0d9488;    /* Using a premium teal to match the accent badge */
+        margin: 8px 0; 
+        letter-spacing: -0.05em;
+      }
+   
     /* Compliance Note */
     .ip-notice { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; font-size: 0.9rem; color: #475569; border-radius: 12px; margin-top: 40px; }
   </style>
