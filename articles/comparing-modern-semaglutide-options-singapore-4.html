@@ -92,6 +92,14 @@ custom_schema: |
     .tts-btn.active-play { background: #0d9488; border-color: #0d9488; color: #ffffff; }
     .tts-status { font-size: 0.8rem; color: #64748b; font-weight: normal; margin-left: 5px; }
 
+     /* Pricing Grid Cards */
+    .price-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
+    @media (min-width: 768px) { .price-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .price-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }
+    .price-card.featured { border-color: #0d9488; box-shadow: 0 8px 20px -4px rgba(13, 148, 136, 0.08); }
+    .price-card:hover { transform: translateY(-2px); }
+    .price-amt { font-size: 1.75rem; font-weight: 800; color: #0f172a; margin: 10px 0; }
+
     /* Compliance Note */
     .ip-notice { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; font-size: 0.9rem; color: #475569; border-radius: 12px; margin-top: 40px; }
   </style>
@@ -159,7 +167,7 @@ custom_schema: |
             However, because "semaglutide" is now available in different clinical profiles—each with its own administration route and specific health advantages—many patients are unsure how to take the first step. Below, we outline our unified clinical evaluation model and compare the unique advantages of these modern options to help you map out a clear path forward.
           </p>
 
- <!-- SPOTLIGHT COMPLIANT STARTER CARD -->
+<!-- SPOTLIGHT COMPLIANT STARTER CARD -->
 <div class="spotlight-card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 24px; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
   <div class="row align-items-center">
     <div class="col-md-7">
@@ -178,12 +186,14 @@ custom_schema: |
     <div class="col-md-5 text-center mt-4 mt-md-0 border-start border-slate-100 ps-md-4">
       <!-- UPDATED PREMIUM PRICE CARD WITH GRADIENT AND SHADOW -->
       <div class="p-4 rounded-3xl border border-slate-100" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);">
-        <span class="text-xs text-slate-500 block uppercase font-bold tracking-widest mb-2" style="font-size: 0.7rem;">Programme Fees Begin From</span>
+        <span class="text-xs text-slate-500 block uppercase font-bold tracking-widest mb-1" style="font-size: 0.7rem;">Programme Fees Begin From</span>
         
-        <div class="my-3">
-          <span class="text-5xl font-black text-teal-600 tracking-tight" style="font-weight: 900;">$500</span>
+        <!-- Cleaned up text using your custom class -->
+        <div class="price-amt">
+          $500
         </div>  
         
+        <!-- Added inline-block back so mb-4 works perfectly -->
         <span class="inline-block bg-teal-50 text-teal-700 text-xs px-3 py-1 rounded-full font-semibold border border-teal-100 mb-4">
           All-Inclusive Starter Rate
         </span>
