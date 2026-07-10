@@ -3,7 +3,7 @@ layout: default
 permalink: /articles/comparing-modern-semaglutide-options-singapore-3
 category: Metabolic
 title: "Comparing Modern Semaglutide GLP-1 Options: Finding Your Ideal Metabolic Fit"
-description: "Injectable vs. oral GLP-1 therapy in Singapore — understand the clinical differences, costs, long-term timeline targets, and what to expect from doctor-supervised care."
+description: "Injectable vs. oral GLP-1 therapy in Singapore. Understand the clinical differences, entry pricing bundles, and long-term supervision pathways under Dr. Gerald Thang."
 last_reviewed: 2026-07-10
 author_name: "Dr. Gerald Thang"
 custom_schema: |
@@ -23,26 +23,18 @@ custom_schema: |
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is the difference between once-weekly injections and once-daily oral semaglutide?",
+          "name": "What is the mandatory clinical protocol for starting a GLP-1 program in Singapore?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Once-weekly subcutaneous injections provide continuous receptor activation and bypass gastric degradation. Once-daily oral tablets offer a needle-free alternative but require strict morning fasting parameters to secure clinical absorption."
+            "text": "To comply with MOH safety standards, patients must complete their first two visits in-person at our physical clinic. Visit 1 involves the consultation and the Metabolic Blood Panel. Visit 2 covers the diagnostic review, body composition profiling, and initial therapeutic training. Subsequent check-ins may transition to periodic remote reviews."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I bring my own recent blood test results to the clinic?",
+          "name": "Can I bring my own recent blood test results to save on package costs?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. If you have a metabolic health screening report or blood panel performed within the last 6 months, you can bring it to your consultation. The physician will assess its validity and only order additional testing if clinically necessary."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does a supervised semaglutide program cost in Singapore?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "First-month clinical jumpstart frameworks start from $350 for oral options and $500 for injectable paths. These pricing metrics include the initial $50 physician consultation fee, baseline metabolic laboratory assessments, and your starter therapeutic dose."
+            "text": "Yes. If you have verified metabolic health screening reports less than 6 months old, you can bring them to your first in-person clinic visit. If audited and accepted by the doctor, you can access our Variable Starter Pathway starting from $300."
           }
         }
       ]
@@ -56,66 +48,61 @@ custom_schema: |
 
 <style>
   .article-content { padding-top: 140px; padding-bottom: 80px; }
-  .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #334155; font-size: 1.05rem; }
-  .feature-box { background: #ffffff; border-radius: 16px; padding: 25px; margin: 30px 0; border: 1px solid #cbd5e1; border-top: 5px solid #0d9488; }
-  .author-box { background: #fafaf9; padding: 24px; border-radius: 16px; border: 1px solid #e7e5e4; margin-bottom: 30px; }
+  .article-body p { line-height: 1.7; margin-bottom: 1.25rem; color: #334155; font-size: 1.05rem; }
+  .author-box { background: #fafaf9; padding: 20px; border-radius: 16px; border: 1px solid #e7e5e4; margin-bottom: 25px; }
 
-  /* Summary Panel Style */
-  .tldr-box { background: #f0fdfa; border-left: 4px solid #0d9488; padding: 24px; border-radius: 0 16px 16px 0; margin-bottom: 40px; }
-  .tldr-title { font-weight: 700; color: #111827; font-size: 1.15rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-  .tldr-list { margin-bottom: 0; padding-left: 20px; }
-  .tldr-list li { font-size: 0.975rem; color: #334155; margin-bottom: 10px; line-height: 1.6; }
+  /* High-Impact Alert / Hook */
+  .tldr-box { background: #f0fdfa; border-left: 4px solid #0d9488; padding: 20px; border-radius: 0 16px 16px 0; margin-bottom: 30px; }
+  .tldr-title { font-weight: 700; color: #111827; font-size: 1.1rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .tldr-list li { font-size: 0.95rem; color: #334155; margin-bottom: 8px; line-height: 1.5; }
 
-  /* Clinical Option Cards */
-  .price-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin: 35px 0; }
+  /* Visual Step Timeline Box */
+  .step-container { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin: 30px 0; }
+  .step-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+  @media (min-width: 768px) { .step-grid { grid-template-columns: 1fr 1fr 1fr; } }
+  .step-card { background: #f8fafc; padding: 18px; border-radius: 12px; border: 1px solid #f1f5f9; position: relative; }
+  .step-card.mandatory { border-left: 4px solid #0d9488; background: #ffffff; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.05); }
+  .step-badge { position: absolute; top: -10px; right: 10px; background: #e2e8f0; color: #334155; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-uppercase: true; }
+  .step-card.mandatory .step-badge { background: #0d9488; color: #ffffff; }
+  .step-card h4 { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+  .step-card p { font-size: 0.875rem; color: #475569; margin-bottom: 0; line-height: 1.4; }
+
+  /* Pricing Grid Cards */
+  .price-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
   @media (min-width: 768px) { .price-grid { grid-template-columns: 1fr 1fr 1fr; } }
-  .price-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
-  .price-card.featured { border-color: #0d9488; box-shadow: 0 10px 25px -5px rgba(13, 148, 136, 0.1); }
-  .price-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.08); }
+  .price-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }
+  .price-card.featured { border-color: #0d9488; box-shadow: 0 8px 20px -4px rgba(13, 148, 136, 0.08); }
+  .price-card:hover { transform: translateY(-2px); }
+  .price-amt { font-size: 1.75rem; font-weight: 800; color: #0f172a; margin: 10px 0; }
 
-  /* Program Table Custom Classes */
-  .clinic-table-container { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin: 35px 0; }
-  .clinic-data-table { width: 100%; margin-bottom: 0; vertical-align: middle; }
-  .clinic-data-table th { background-color: #f8fafc; color: #0f172a; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding: 14px; }
-  .clinic-data-table td { padding: 16px 14px; color: #334155; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem; line-height: 1.6; }
-  .clinic-data-table tr:last-child td { border-bottom: none; }
-
-  /* Audio Control Panel Styles */
-  .tts-container { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 24px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-  .tts-info { display: flex; align-items: center; gap: 12px; color: #0f172a; font-size: 0.95rem; font-weight: 600; }
-  .tts-controls { display: flex; align-items: center; gap: 12px; }
-  .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 8px 16px; font-size: 0.875rem; font-weight: 600; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
-  .tts-btn.active-play { background: #0d9488; border-color: #0d9488; color: #ffffff; }
-  .tts-status { font-size: 0.8rem; color: #64748b; font-weight: normal; margin-left: 5px; }
-
-  /* Lists */
-  .check-list { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
-  .check-list li { margin-bottom: 10px; padding-left: 28px; position: relative; color: #475569; font-size: 0.95rem; line-height: 1.5; }
-  .check-list li::before { content: "✓"; color: #0d9488; font-weight: bold; position: absolute; left: 0; font-size: 1.1rem; }
-
-  /* Interactive Journey Tool */
-  .widget-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05); margin: 40px 0; }
-  .form-group { margin-bottom: 22px; }
-  .widget-card label { display: block; font-weight: 600; margin-bottom: 8px; color: #0f172a; font-size: 1rem; line-height: 1.4; }
-  .select-input { width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 1rem; background-color: #fff; color: #334155; }
-  .calc-btn { background-color: #0d9488; color: white; border: none; width: 100%; padding: 14px; border-radius: 10px; font-weight: bold; font-size: 1.05rem; cursor: pointer; transition: background 0.2s; }
+  /* Interactive Journey Blueprint Widget */
+  .widget-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 28px; box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05); margin: 35px 0; }
+  .form-group { margin-bottom: 18px; }
+  .widget-card label { display: block; font-weight: 600; margin-bottom: 6px; color: #0f172a; font-size: 0.95rem; }
+  .select-input { width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; background-color: #fff; color: #334155; }
+  .calc-btn { background-color: #0d9488; color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
   .calc-btn:hover { background-color: #0f766e; }
-  .results-panel { display: none; margin-top: 30px; padding: 24px; border-radius: 12px; border-left: 5px solid #0d9488; background-color: #f8fafc; }
+  .results-panel { display: none; margin-top: 25px; padding: 20px; border-radius: 12px; border-left: 5px solid #0d9488; background-color: #f8fafc; }
 
-  /* SVG Timeline Styles */
-  .svg-timeline-container { margin: 35px 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; }
-  .milestone-text-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 15px; }
-  @media (min-width: 576px) { .milestone-text-grid { grid-template-columns: 1fr 1fr 1fr; } }
-  .milestone-col { background: #f8fafc; padding: 16px; border-radius: 10px; border: 1px solid #f1f5f9; }
-  .milestone-col h4 { font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-  .milestone-col p { font-size: 0.875rem; color: #475569; margin-bottom: 0; line-height: 1.5; }
+  /* Common Lists */
+  .check-list { list-style: none; padding-left: 0; margin-bottom: 1rem; }
+  .check-list li { margin-bottom: 8px; padding-left: 24px; position: relative; color: #475569; font-size: 0.9rem; line-height: 1.4; }
+  .check-list li::before { content: "✓"; color: #0d9488; font-weight: bold; position: absolute; left: 0; }
 
-  /* Compliance & FAQ */
-  .ip-notice { background: #f8fafc; border: 1px solid #e2e8f0; padding: 24px; font-size: 0.9rem; color: #475569; border-radius: 12px; margin-top: 40px; }
-  .faq-item { border-bottom: 1px solid #e2e8f0; padding: 22px 0; }
+  /* Technical/Compliance Footer Elements */
+  .ip-notice { background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; font-size: 0.85rem; color: #475569; border-radius: 12px; margin-top: 35px; }
+  .faq-item { border-bottom: 1px solid #e2e8f0; padding: 16px 0; }
   .faq-item:last-child { border-bottom: none; }
-  .faq-q { font-weight: 700; color: #0f172a; font-size: 1.02rem; margin-bottom: 8px; }
-  .faq-a { color: #475569; font-size: 0.98rem; line-height: 1.7; margin: 0; }
+  .faq-q { font-weight: 700; color: #0f172a; font-size: 1rem; margin-bottom: 6px; }
+  .faq-a { color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
+  /* Audio Panel Style */
+  .tts-container { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 20px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .tts-info { display: flex; align-items: center; gap: 8px; color: #0f172a; font-size: 0.9rem; font-weight: 600; }
+  .tts-controls { display: flex; align-items: center; gap: 10px; }
+  .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 12px; font-size: 0.85rem; font-weight: 600; color: #334155; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+  .tts-btn.active-play { background: #0d9488; border-color: #0d9488; color: #ffffff; }
+  .tts-status { font-size: 0.75rem; color: #64748b; font-weight: normal; }
 </style>
 
 <main id="main" class="article-content">
@@ -123,7 +110,7 @@ custom_schema: |
     <div class="row justify-content-center">
       <div class="col-lg-8">
 
-        <nav aria-label="breadcrumb" class="mb-4">
+        <nav aria-label="breadcrumb" class="mb-3">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/" class="text-teal-600 no-underline hover:underline font-medium">Home</a></li>
             <li class="breadcrumb-item"><a href="/articles/" class="text-teal-600 no-underline hover:underline font-medium">Health Library</a></li>
@@ -131,23 +118,23 @@ custom_schema: |
           </ol>
         </nav>
 
-        <h1 class="display-6 fw-bold mb-3" style="color: #0f172a; line-height: 1.25;">Comparing Modern Semaglutide Options: Finding Your Ideal Metabolic Fit</h1>
-        <p class="subtitle fs-5 mb-4 text-slate-500 leading-relaxed">A comprehensive overview of long-term GLP-1 pathways, diagnostic frameworks, and realistic investment timelines under physician supervision in Singapore.</p>
+        <h1 class="display-6 fw-bold mb-2" style="color: #0f172a; line-height: 1.25;">Comparing Modern Semaglutide Options: Finding Your Ideal Metabolic Fit</h1>
+        <p class="subtitle fs-5 mb-4 text-slate-500 leading-relaxed">A scannable overview of patient treatment pathways, long-term timeline benchmarks, clinical research data, and structural starter costs in Singapore.</p>
 
         <div class="author-box d-flex align-items-center">
-          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 65px; height: 65px; object-fit: cover;" alt="Dr Gerald Thang">
           <div>
             <p class="mb-0 fw-bold text-slate-900">Written & Reviewed by Dr. Gerald Thang</p>
-            <p class="mb-0 text-teal-600 fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
-            <p class="mb-0 small text-slate-500">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
+            <p class="mb-0 text-teal-600 fw-bold small text-uppercase" style="letter-spacing: 0.5px;">Principal Physician</p>
+            <p class="mb-0 small text-slate-500" style="font-size: 0.85rem;">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
           </div>
         </div>
 
         <!-- Audio Control Panel -->
         <div class="tts-container">
           <div class="tts-info">
-            <span style="font-size: 1.25rem;">🔊</span>
-            <span class="text-slate-900 font-semibold text-sm sm:text-base">Listen to this article <span id="audio-status-text" class="tts-status">(Ready)</span></span>
+            <span>🔊</span>
+            <span class="text-slate-900 font-semibold">Listen to this article <span id="audio-status-text" class="tts-status">(Ready)</span></span>
           </div>
           <div class="tts-controls">
             <button id="btn-tts-play" class="tts-btn" onclick="togglePlayPause()">
@@ -161,277 +148,238 @@ custom_schema: |
 
         <!-- TL;DR Quick Summary Panel -->
         <div class="tldr-box">
-          <div class="tldr-title">📌 Clinical Highlights (TL;DR)</div>
-          <ul class="tldr-list list-disc pl-5">
-            <li><strong>Long-Term Management:</strong> Sustainable metabolic modification requires a commitment far exceeding 1 month, typically scaling across 6 to 12+ months to preserve lean muscle mass.</li>
-            <li><strong>Lab Transparency:</strong> The 1-Month Jumpstart bundles our dedicated Metabolic Weight Management Blood Panel. Patients with recent laboratory screenings (under 6 months old) can bring reports along to avoid redundant testing fees.</li>
-            <li><strong>Beyond Weight Loss:</strong> Peer-reviewed trials confirm deep cardio-kidney-metabolic safety, showing up to a 20% reduction in major adverse cardiovascular events (SELECT Trial) and 24% slow down in chronic kidney disease progression (FLOW Trial).</li>
-            <li><strong>Program Threshold Fees:</strong> Fully all-inclusive first-month configurations start from $350 (Oral Route) and $500 (1mg Injectable Route). These encompass a baseline $50 consultation fee, medical screening components, and therapeutic supplies.</li>
+          <div class="tldr-title">📌 Program Blueprint (TL;DR)</div>
+          <ul class="tldr-list list-disc pl-4 mb-0">
+            <li><strong>Mandatory Clinical Protocol:</strong> To meet safety standards, patients must complete their first two visits in person at our physical clinic. Remote video reviews are only available after baseline profiles and initial training are secured.</li>
+            <li><strong>Starter Pricing Framework:</strong> Comprehensive entry bundles start from $350 (Variable/Existing Labs), $500 (Oral Route), and $800 (Injectable Route). All packages completely cover your initial consultation fees.</li>
+            <li><strong>The Lab Rules:</strong> A standardized Metabolic Blood Panel is bundled into our starter packages. If you possess valid laboratory reports less than 6 months old, bring them along to access our Variable pathway and skip redundant retesting.</li>
+            <li><strong>Beyond Simple Weight Loss:</strong> Peer-reviewed trials prove deep cardio-kidney health integration, highlighting up to a 20% reduction in cardiovascular events (SELECT Trial) and a 24% slow down in chronic kidney damage progression (FLOW Trial).</li>
           </ul>
         </div>
 
         <!-- Main Article Content Body -->
         <div id="speakable-content" class="article-body">
           <p>
-            GLP-1 receptor agonists have fundamentally redefined modern metabolic medicine. Rather than acting as a short-term, cosmetic intervention, this tier of clinical care repairs complex physiological blockades—addressing persistent leptin resistance, chronic insulin spikes, and neurological "food noise" that frequently render traditional calorie restrictions unsustainable.
-          </p>
-          <p>
-            However, achieving lifelong health improvements is an ongoing medical journey, not a brief 30-day trial. Choosing the ideal therapeutic vehicle requires analyzing delivery routes, clinical evidence profiles, and financial commitment markers before establishing an appropriate treatment foundation with a registered physician.
+            GLP-1 receptor agonists have completely transformed weight management from an outdated trial of willpower into a precise science. By correcting systemic biological imbalances like continuous leptin resistance, metabolic logjams, and intrusive neural food noise, these therapeutic options help patients reset their weight lines in a predictable, medically safe manner.
           </p>
 
-          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">1. Clinical Evidence Profiles: The Cardio-Kidney-Metabolic Spectrum</h2>
-          <p>
-            While substantial weight reduction is the most visible outcome of semaglutide therapy, large-scale international clinical trials demonstrate that the medication's profound impact on systemic inflammation and vascular health offers health benefits that go far beyond weight loss alone:
-          </p>
-          
-          <ul class="check-list">
-            <li><strong>Cardiovascular Risk Reduction (SELECT Trial):</strong> Investigating overweight and obese individuals without diabetes, this landmark global trial demonstrated a <strong>20% reduction in Major Adverse Cardiovascular Events (MACE)</strong>, including cardiovascular mortality, non-fatal myocardial infarctions (heart attacks), and strokes.</li>
-            <li><strong>Renal Function Protection (FLOW Trial):</strong> Clinical data demonstrated a <strong>24% reduction in primary kidney disease events</strong> and a significant slowdown in chronic kidney disease (CKD) progression, proving that GLP-1 receptors play an important role in preserving filtration architecture.</li>
-            <li><strong>Glycemic Stabilization (SUSTAIN-6 Trial):</strong> Long-term evaluations confirmed powerful, sustained reductions in baseline HbA1c indicators, alongside the meaningful resolution of hepatic steatosis (fatty liver tissue buildup).</li>
-          </ul>
-
-          <!-- SVG Visual Milestones Section -->
-          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">2. The 1-Month Metabolic Jumpstart Framework</h2>
-          <p>
-            Your first 30 days serve as a critical bridge to assess tolerance and establish baseline data lines. Our standardized entry framework combines direct clinical expertise, advanced body compositions, and comprehensive laboratory diagnostics.
-          </p>
-
-          <div class="svg-timeline-container text-center">
-            <svg viewBox="0 0 600 80" width="100%" height="auto" style="max-width: 100%; overflow: visible;" xmlns="http://www.w3.org/2000/svg">
-              <!-- Connecting Line -->
-              <line x1="50" y1="40" x2="550" y2="40" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="4 4" />
-              <line x1="50" y1="40" x2="300" y2="40" stroke="#0d9488" stroke-width="4" />
-              
-              <!-- Milestone Node 1 -->
-              <circle cx="50" cy="40" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="3" />
-              <text x="50" y="18" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#0f172a" text-anchor="middle">DAY 1</text>
-              
-              <!-- Milestone Node 2 -->
-              <circle cx="300" cy="40" r="12" fill="#0d9488" stroke="#ffffff" stroke-width="3" />
-              <text x="300" y="18" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#0f172a" text-anchor="middle">WEEKS 1 - 2</text>
-              
-              <!-- Milestone Node 3 -->
-              <circle cx="550" cy="40" r="12" fill="#cbd5e1" stroke="#ffffff" stroke-width="3" />
-              <text x="550" y="18" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="12" fill="#64748b" text-anchor="middle">WEEKS 3 - 4</text>
+          <!-- SVG STEP TIMELINE FLOW -->
+          <div class="step-container">
+            <h3 class="h5 fw-bold text-slate-900 mb-1">Your Medical Onboarding Journey</h3>
+            <p class="text-xs text-slate-500 mb-3">Singapore clinical guidelines require strict baseline management before prescription allocation.</p>
+            
+            <svg viewBox="0 0 600 60" width="100%" height="auto" style="overflow: visible;" xmlns="http://www.w3.org/2000/svg">
+              <line x1="40" y1="30" x2="560" y2="30" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="4 4" />
+              <line x1="40" y1="30" x2="300" y2="30" stroke="#0d9488" stroke-width="3" />
+              <circle cx="40" cy="30" r="10" fill="#0d9488" stroke="#fff" stroke-width="2" />
+              <circle cx="300" cy="30" r="10" fill="#0d9488" stroke="#fff" stroke-width="2" />
+              <circle cx="560" cy="30" r="10" fill="#cbd5e1" stroke="#fff" stroke-width="2" />
+              <text x="40" y="12" font-family="system-ui" font-weight="700" font-size="11" fill="#0f172a" text-anchor="middle">VISIT 1</text>
+              <text x="300" y="12" font-family="system-ui" font-weight="700" font-size="11" fill="#0f172a" text-anchor="middle">VISIT 2</text>
+              <text x="560" y="12" font-family="system-ui" font-weight="700" font-size="11" fill="#64748b" text-anchor="middle">SUBSEQUENT</text>
             </svg>
 
-            <div class="milestone-text-grid">
-              <div class="milestone-col text-start">
-                <h4>Diagnostics & Consultation</h4>
-                <p>In-person medical assessment, full body bio-impedance composition tracking, and our dedicated Metabolic Blood Panel.</p>
+            <div class="step-grid">
+              <div class="step-card mandatory">
+                <span class="step-badge">IN-CLINIC</span>
+                <h4>1. Medical & Labs</h4>
+                <p>Face-to-face physician consultation and our targeted Metabolic Blood Panel screening.</p>
               </div>
-              <div class="milestone-col text-start" style="border-left: 3px solid #0d9488;">
-                <h4>Hormone Introduction</h4>
-                <p>Initial starter-dosing curves begin. Quick silencing of baseline food noise occurs as receptors safely adapt to treatment.</p>
+              <div class="step-card mandatory">
+                <span class="step-badge">IN-CLINIC</span>
+                <h4>2. Review & Launch</h4>
+                <p>Blood metrics analysis, multi-point body composition mapping, and therapeutic training.</p>
               </div>
-              <div class="milestone-col text-start">
-                <h4>Tolerance Evaluation</h4>
-                <p>Tracking gastrointestinal patterns, review of liver/kidney biomarkers, and planning personalized dose titrations.</p>
+              <div class="step-card">
+                <span class="step-badge">FLEXIBLE</span>
+                <h4>3. Check-ins</h4>
+                <p>Periodic remote monitoring or physical visits to adapt titration doses and review muscle mass profiles.</p>
               </div>
             </div>
           </div>
 
-          <div class="clinic-table-container table-responsive">
-            <table class="clinic-data-table">
-              <thead>
-                <tr>
-                  <th>Program Pillar</th>
-                  <th>Clinical Execution Elements</th>
-                  <th>Medical Integrity Objective</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Clinical Assessment</strong></td>
-                  <td>In-depth consultation with Dr. Gerald Thang (Standard fee: \$50)</td>
-                  <td>Reviews family background, screens for underlying contraindications, and structures dosing timelines.</td>
-                </tr>
-                <tr>
-                  <td><strong>Laboratory Screening</strong></td>
-                  <td>Unified Metabolic Weight Management Blood Panel</td>
-                  <td>Establishes full organ function safety. *Patients who possess a valid screening report under 6 months old are encouraged to bring it along to avoid redundant testing; your physician will review and order targeted top-ups only if necessary.</td>
-                </tr>
-                <tr>
-                  <td><strong>Biometric Profiling</strong></td>
-                  <td>Advanced baseline bio-impedance diagnostic metrics</td>
-                  <td>Secures an accurate physiological baseline to carefully distinguish visceral adipose reduction from structural lean muscle mass preservation.</td>
-                </tr>
-                <tr>
-                  <td><strong>Month 1 Supply</strong></td>
-                  <td>4 weeks of customized starter-dose medical therapies</td>
-                  <td>Introduces the compound slowly to safely navigate potential early gastrointestinal symptoms.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">3. Projecting the Realistic Treatment Timeline</h2>
+          <h2 class="h5 fw-bold mt-4 mb-2 text-slate-900">1. Why In-Clinic Consultation is Mandatory</h2>
           <p>
-            A common metabolic pitfall is stopping treatment prematurely after a single pen or box. This often triggers rebound hunger signals because the body's baseline set-point has not had sufficient time to permanently reset. Long-term medical management under careful clinical guidance follows a multi-phase projection curve:
+            In strict compliance with local regulatory standards, <strong>your first two clinical steps must take place in person at our physical clinic</strong>. A healthcare transformation cannot safely be handled via completely remote subscription sites or text chats. 
+          </p>
+          <p>
+            Your initial in-clinic visit enables us to rule out key physical contraindications, configure precise biometric baselines via advanced body composition analyzers, and handle initial lab work safely. Your second in-clinic appointment ensures that your clinical test findings are thoroughly reviewed, your primary metabolic dose profile is set up accurately, and you receive hands-on self-administration guidance before moving forward with periodic check-ins.
           </p>
 
-          <ul class="check-list">
-            <li><strong>Months 1 to 3 (The Titration Phase):</strong> Gradual, stepped dosage increases to minimize adverse gastrointestinal side effects. The primary focus during this stage is establishing systemic tolerance while achieving an initial 3% to 5% weight adjustment.</li>
-            <li><strong>Months 4 to 9 (The Optimization & Target Phase):</strong> Reaching stable, therapeutic maintenance doses. This window drives maximum visceral fat loss, targeting a sustainable reduction of 10% to 15+% of initial body mass while optimizing blood pressure and lipid markers.</li>
-            <li><strong>Months 10+ (The Metabolic Consolidation Phase):</strong> Active lifestyle integration and structured, gradual step-down dosing protocols. This phase ensures the body locks in its new, lower weight baseline permanently, preventing metabolic bounceback.</li>
-          </ul>
-
-          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">4. Transparent Starter Pricing Structures</h2>
+          <h2 class="h5 fw-bold mt-4 mb-2 text-slate-900">2. Starter Pricing & Lab Verification Pathways</h2>
           <p>
-            In strict compliance with local healthcare advertising regulations regarding prescription medications, complete long-term pricing paths are finalized during an in-clinic evaluation. However, clear threshold entry pricing ensures absolute financial transparency from day one:
+            To provide complete transparency from your very first appointment, all initial package paths <strong>fully cover your pre-blood test physician consultation fee</strong>:
           </p>
 
           <div class="price-grid">
             <div class="price-card">
               <div>
-                <span class="badge mb-3 px-2.5 py-1.5 rounded" style="background: #fffbeb; color: #92400e; font-weight: 700; font-size: 0.75rem;">DAILY ORAL ROUTE</span>
-                <h3 class="h5 fw-bold mb-1 text-slate-900">Oral Jumpstart Package</h3>
-                <p class="text-sm text-slate-500 mb-4">Ideal for patients seeking a needle-free path who have structured morning fasting routines.</p>
-                <div class="fs-4 fw-bold text-slate-900 mb-1">Starting from $350</div>
-                <p class="text-xs text-slate-500 mb-4">Includes basic therapeutic supplies for Month 1.</p>
-                <ul class="check-list" style="font-size: 0.85rem;">
-                  <li>Includes \$50 Doctor Consultation</li>
-                  <li>Includes Metabolic Blood Panel</li>
-                  <li>Advanced Body Composition Check</li>
+                <span class="badge mb-2 px-2 py-1 rounded" style="background: #fffbeb; color: #92400e; font-weight: 700; font-size: 0.7rem;">ORAL THERAPY</span>
+                <h3 class="h6 fw-bold mb-1 text-slate-900">Oral Jumpstart Package</h3>
+                <p class="text-xs text-slate-500 mb-3">Perfect for needle-free administration combined with strict morning fasting setups.</p>
+                <div class="price-amt">From $500</div>
+                <ul class="check-list">
+                  <li>Consultation Included</li>
+                  <li>Metabolic Blood Panel Included</li>
+                  <li>1st Month Oral Medication</li>
+                  <li>In-Clinic Body Metrics</li>
                 </ul>
               </div>
             </div>
 
             <div class="price-card featured">
               <div>
-                <span class="badge mb-3 px-2.5 py-1.5 rounded" style="background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 0.75rem;">WEEKLY INJECTABLE ROUTE</span>
-                <h3 class="h5 fw-bold mb-1 text-slate-900">1mg Injectable Jumpstart</h3>
-                <p class="text-sm text-slate-500 mb-4">Optimized for reliable, slow-release systemic peptide activation over 4 weeks.</p>
-                <div class="fs-4 fw-bold text-slate-900 mb-1">Starting from $500</div>
-                <p class="text-xs text-slate-500 mb-4">Includes basic therapeutic supplies for Month 1.</p>
-                <ul class="check-list" style="font-size: 0.85rem;">
-                  <li>Includes \$50 Doctor Consultation</li>
-                  <li>Includes Metabolic Blood Panel</li>
-                  <li>Advanced Body Composition Check</li>
+                <span class="badge mb-2 px-2 py-1 rounded" style="background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 0.7rem;">INJECTABLE THERAPY</span>
+                <h3 class="h6 fw-bold mb-1 text-slate-900">Injectable Jumpstart</h3>
+                <p class="text-xs text-slate-500 mb-3">Slow-release continuous weekly activation designed for targeted appetite control.</p>
+                <div class="price-amt">From $800</div>
+                <ul class="check-list">
+                  <li>Consultation Included</li>
+                  <li>Metabolic Blood Panel Included</li>
+                  <li>1st Month Injectable Pen (1mg)</li>
+                  <li>In-Clinic Body Metrics</li>
                 </ul>
               </div>
             </div>
 
             <div class="price-card">
               <div>
-                <span class="badge mb-3 px-2.5 py-1.5 rounded" style="background: #f8fafc; color: #475569; font-weight: 700; font-size: 0.75rem;">EXISTING LAB CREDIT</span>
-                <h3 class="h5 fw-bold mb-1 text-slate-900">Jumpstart (With Own Labs)</h3>
-                <p class="text-sm text-slate-500 mb-4">Applicable to either route if you provide valid metabolic reports under 6 months old.</p>
-                <div class="fs-5 fw-bold text-teal-600 mb-1">Lab Fee Deducted</div>
-                <p class="text-xs text-slate-500 mb-4">Subject to clinical report audit by our medical team during consultation.</p>
-                <ul class="check-list" style="font-size: 0.85rem;">
-                  <li>Includes \$50 Doctor Consultation</li>
-                  <li>Doctor-led review of brought reports</li>
-                  <li>Targeted laboratory top-ups only if clinically indicated</li>
+                <span class="badge mb-2 px-2 py-1 rounded" style="background: #f0fdf4; color: #166534; font-weight: 700; font-size: 0.7rem;">FLEXIBLE LAB PATH</span>
+                <h3 class="h6 fw-bold mb-1 text-slate-900">Variable Starter Package</h3>
+                <p class="text-xs text-slate-500 mb-3">Applicable if you supply independent medical reports from the past 6 months.</p>
+                <div class="price-amt">From $300</div>
+                <ul class="check-list">
+                  <li>Consultation Included</li>
+                  <li>Brought Reports Audited</li>
+                  <li>Oral or Injectable Meds Added</li>
+                  <li>No Redundant Retest Fees</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <!-- THE STICKINESS FACTOR SECTION -->
-          <h2 class="h4 fw-bold mt-5 mb-3 text-slate-900">5. Continuous Clinical Continuity: Why Patients Stay With Us</h2>
-          <p>
-            While highly competitive pricing tiers ensure our packages remain deeply accessible across Singapore, medical weight management is not a simple transaction. True clinical success requires a supportive partnership that automated telehealth apps or "pill-shipping platforms" cannot duplicate:
-          </p>
-          <p>
-            <strong>Preserving Your Structural Lean Muscle:</strong> Dropping weight too quickly without expert monitoring can lead to losing critical skeletal muscle mass alongside body fat. This damages your long-term metabolic rate. We utilize medical-grade bio-impedance composition mapping at every clinical touchpoint, tracking your muscle-to-fat loss ratio to protect your active lean tissue.
-          </p>
-          <p>
-            <strong>Direct, Continuity-Driven Physician Care:</strong> You are never routed to automated chatbots or varying on-call doctors. Your entire health transformation is personally overseen from day one by Dr. Gerald Thang, allowing for immediate, individualized dosage modifications based on real-time physiological feedback and long-term diagnostic tracking.
+          <p class="text-xs text-slate-500">
+            *<em>Lab Validation Policy:</em> Metabolic traits fluctuate rapidly under weight shifts. Reports older than 6 months do not reflect current organ or metabolic performance accurately and cannot be utilized to build a secure treatment foundation.
           </p>
 
-          <hr class="my-5" />
+          <h2 class="h5 fw-bold mt-4 mb-2 text-slate-900">3. Beyond Weight Loss: Cardio-Kidney Protection</h2>
+          <p>
+            Modern clinical research highlights that GLP-1 peptide treatments deliver critical metabolic benefits that extend far beyond numbers on a scale:
+          </p>
+          <ul class="check-list">
+            <li><strong>Cardiovascular Protection (SELECT Trial):</strong> Peer-reviewed evidence demonstrated a <strong>20% reduction in Major Adverse Cardiovascular Events (MACE)</strong>, protecting patients from sudden myocardial infarctions and strokes.</li>
+            <li><strong>Renal Preservation (FLOW Trial):</strong> Research confirmed a <strong>24% decrease in severe kidney function events</strong>, proving that the medication helps preserve underlying renal filtration architecture.</li>
+            <li><strong>Glycemic Optimization (SUSTAIN-6 Trial):</strong> Long-term tracking demonstrated sustained reductions in baseline HbA1c indicators alongside meaningful decreases in systemic fatty tissue accumulation within the liver.</li>
+          </ul>
 
-          <!-- INTENT & SUSTAINABILITY INTERACTIVE QUIZ ENGINE -->
-          <h2 class="h4 fw-bold mb-3 text-slate-900">Map Your Long-Term Metabolic Journey</h2>
-          <p>Before scheduling your consultation, use this interactive evaluation tool to gain clarity on your metabolic timeline, routine compliance, and long-term financial sustainability.</p>
+          <h2 class="h5 fw-bold mt-4 mb-2 text-slate-900">4. Projecting Your Long-Term Management Arc</h2>
+          <p>
+            Stopping your program prematurely after a single pen or box often triggers immediate hunger rebound signals because the body's native weight set-point has not had sufficient time to permanently reset. Long-term medical management under careful clinical guidance follows a multi-phase projection curve:
+          </p>
+          <ul class="check-list">
+            <li><strong>Months 1 - 3 (Titration Phase):</strong> Stepped, low-dose introduction protocols engineered to cultivate systemic tolerance while securing an initial 3% to 5% reduction in body weight.</li>
+            <li><strong>Months 4 - 9 (Optimization Phase):</strong> Reaching stable maintenance dose levels to maximize target fat reduction, aiming for a sustainable 10% to 15+% drop in body mass.</li>
+            <li><strong>Months 10+ (Consolidation Phase):</strong> Structured maintenance step-down adjustments designed to lock in your lower weight line permanently and prevent weight bounceback.</li>
+          </ul>
+
+          <h2 class="h5 fw-bold mt-4 mb-2 text-slate-900">5. Continuous Clinical Continuity: Why Patients Choose Our Clinic</h2>
+          <p>
+            While highly competitive entry pricing structures ensure our packages remain deeply accessible, medical weight loss is not a transactional purchase. Patients choose to stay with us for our comprehensive, high-touch clinical standard:
+          </p>
+          <p>
+            <strong>Preserving Active Muscle Mass:</strong> Rapid fat loss can inadvertently result in lean skeletal muscle wasting if unmonitored. We utilize medical-grade bio-impedance composition mapping at every clinical touchpoint, tracking your muscle-to-fat loss ratio to protect your active lean tissue and safeguard your metabolic rate.
+          </p>
+          <p>
+            <strong>Direct, Continuity-Driven Physician Access:</strong> Your medical transformation is overseen from day one by Dr. Gerald Thang. You are never routed to automated chatbots, shifting call-center providers, or varying on-call doctors, allowing for immediate, individualized dosage modifications based on real-time physiological feedback and long-term diagnostic tracking.
+          </p>
+
+          <hr class="my-4" />
+
+          <!-- INTERACTIVE JOURNEY BLUEPRINT ENGINE -->
+          <h3 class="h5 fw-bold mb-2 text-slate-900">Map Your Long-Term Metabolic Journey</h3>
+          <p class="text-sm text-slate-600">Before scheduling your visit, use this interactive evaluation tool to gain clarity on your required timelines, clinical steps, and long-term financial sustainability.</p>
 
           <div class="widget-card">
             <div class="form-group">
-              <label for="qPhobia">1. Administration Preference &amp; Routine Style:</label>
-              <select id="qPhobia" class="select-input">
+              <label for="qRoute">1. Administration Preference &amp; Daily Routine:</label>
+              <select id="qRoute" class="select-input">
                 <option value="injectable">I prefer a once-weekly micro-needle injection (no daily routine tracking)</option>
                 <option value="oral">I prefer a needle-free daily tablet (requires daily morning fasting rules)</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="qSustainability">2. Long-Term Financial Commitment Window:</label>
-              <select id="qSustainability" class="select-input">
-                <option value="short">I am hoping to try it for just 1 month to evaluate progress</option>
-                <option value="long">I can commit to a realistic 4 to 9+ month sustainable treatment budget</option>
+              <label for="qCommitment">2. Intended Treatment Commitment Window:</label>
+              <select id="qCommitment" class="select-input">
+                <option value="short">I am looking to test treatment for only 1 month</option>
+                <option value="long">I can commit to a realistic 4 to 9+ month sustainable plan</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="qLabs">3. Baseline Diagnostic Diagnostic Labs Availability:</label>
               <select id="qLabs" class="select-input">
-                <option value="nolabs">I need a complete, fresh Metabolic Blood Panel performed in-clinic</option>
+                <option value="nolabs">I need a fresh Metabolic Blood Panel performed in-clinic</option>
                 <option value="haslabs">I have verified health screening reports less than 6 months old</option>
               </select>
             </div>
 
-            <button class="calc-btn" id="findBtn">Analyze My Metabolic Journey Profile</button>
+            <button class="calc-btn" id="findBtn">Analyze My Journey Blueprint</button>
 
             <div id="resBox" class="results-panel">
-              <div class="results-title" id="resTitle" style="font-weight: 700; color: #0f172a; font-size: 1.1rem;">Your Personalized Journey Blueprint:</div>
-              <div id="resDesc" style="font-size: 0.95rem; line-height: 1.6; color: #334155; margin-top: 10px;"></div>
-              <div class="note-text" style="font-size: 0.85rem; color: #64748b; margin-top: 20px; line-height: 1.5; border-top: 1px solid #e2e8f0; padding-top: 15px;">
-                <strong>Singapore Clinical Regulatory Compliance Notice:</strong> This interactive profiling utility serves educational functions and does not replace medical advice or product selection. Final eligibility, specific therapeutic concentrations, and precise expenditure paths are determined exclusively via in-person diagnostic evaluation with your physician.
+              <div class="results-title" id="resTitle" style="font-weight: 700; color: #0f172a; font-size: 1rem;">Your Journey Mapping Strategy:</div>
+              <div id="resDesc" style="font-size: 0.95rem; line-height: 1.5; color: #334155; margin-top: 8px;"></div>
+              <div class="note-text" style="font-size: 0.8rem; color: #64748b; margin-top: 15px; line-height: 1.4; border-top: 1px solid #e2e8f0; padding-top: 12px;">
+                <strong>Singapore Clinical Regulatory Compliance Notice:</strong> This mapping tool serves educational functions and does not replace medical advice or product selection. Final eligibility, specific therapeutic concentrations, and precise expenditure paths are determined exclusively via in-person evaluation with your physician at our physical clinic.
               </div>
             </div>
           </div>
 
-          <hr class="my-5" />
+          <hr class="my-4" />
 
           <!-- FAQ Section -->
-          <h2 class="h4 fw-bold mb-4 text-slate-900">Frequently Asked Questions in Singapore</h2>
+          <h2 class="h5 fw-bold mb-3 text-slate-900">Frequently Asked Questions</h2>
 
           <div class="faq-item">
-            <p class="faq-q">Are metabolic GLP-1 treatments legal and accessible in Singapore?</p>
-            <p class="faq-a">Yes. Various formulations of semaglutide-based medications are fully registered and approved by the Health Sciences Authority (HSA) for specific medical indications, including type 2 diabetes management and chronic weight control. Because they are legally classified as Prescription-Only Medicines, they can only be dispensed through registered clinical facilities following a formal, face-to-face medical evaluation with a licensed physician.</p>
+            <p class="faq-q">Why must the first two onboarding visits be fully in-person?</p>
+            <p class="faq-a">Singapore medical guidelines emphasize patient safety when initiating active prescription therapies. The first two in-clinic visits allow your physician to complete baseline physical audits, conduct clinical lab screenings, track precise body compositions, and provide crucial self-administration training. Once these steps are successfully completed, subsequent monitoring can transition to remote check-ins.</p>
           </div>
 
           <div class="faq-item">
-            <p class="faq-q">Why is the minimum validity threshold for past blood tests set strictly at 6 months?</p>
-            <p class="faq-a">Metabolic indicators like fasting lipids, liver enzymes, and HbA1c exhibit a short clinical shelf-life. Because initiating GLP-1 therapy fundamentally shifts endocrine, gastrointestinal, and renal dynamics, your physician requires an accurate reflection of your modern baseline health to ensure total treatment safety. Reports exceeding 6 months do not capture current organ performance accurately.</p>
+            <p class="faq-q">Can I buy weight management options online without visiting a clinic?</p>
+            <p class="faq-a">No. Sourcing prescription medications through unregulated online platforms, social channels, or international parallel imports is illegal in Singapore and carries significant health risks. Treatments must always be managed through authorized clinical channels following a formal, face-to-face evaluation with a licensed physician.</p>
           </div>
 
           <div class="faq-item">
-            <p class="faq-q">Can I purchase these weight management options online or via personal parallel imports?</p>
-            <p class="faq-a">No. Sourcing prescription medications through unregulated digital channels, social platforms, or unauthorized international suppliers is illegal and extremely dangerous. It leaves you exposed to counterfeit, unsterilized, or poorly stored formulations that can permanently compromise your health. In accordance with the Ministry of Health (MOH) and HSA regulations, these treatments must only be managed through authorized clinical channels inside Singapore.</p>
+            <p class="faq-q">What are the primary medical contraindications for this treatment category?</p>
+            <p class="faq-a">This class of treatment is generally not recommended for individuals with a personal or family history of medullary thyroid carcinoma, Multiple Endocrine Neoplasia syndrome type 2, severe underlying pancreatic conditions, or women who are currently pregnant or breastfeeding. A full clinical screening is mandatory to verify your eligibility safely.</p>
           </div>
 
-          <div class="faq-item">
-            <p class="faq-q">What side effects should I prepare for, and how are they clinical handled?</p>
-            <p class="faq-a">The most frequent side effects are gastrointestinal, including mild nausea, acid reflux, occasional bloating, diarrhea, or constipation. These symptoms generally peak during the early phases of dose escalation and steadily fade as your digestive tract adapts. Our program uses a slow, stepped dose progression specifically designed to give your body time to adjust and minimize these responses.</p>
-          </div>
-
-          <hr class="my-5" />
+          <hr class="my-4" />
 
           <!-- Call to Action Section -->
-          <section class="audit-cta" style="background-color: #f0fdfa; padding: 30px; border-radius: 16px; border-left: 6px solid #0d9488;">
-            <h3 class="h5 fw-bold mb-2 text-slate-900">Ready to Explore Your Options?</h3>
-            <p class="small text-slate-600 mb-4 leading-relaxed">
-              A comprehensive Metabolic Baseline Assessment with Dr. Gerald Thang reviews your current biomarkers, medical history, and physical profile. This assessment provides a clear, medically sound perspective on which treatment path fits your body, alongside a transparent, itemized quotation for your chosen framework.
+          <section class="audit-cta" style="background-color: #f0fdfa; padding: 24px; border-radius: 16px; border-left: 6px solid #0d9488;">
+            <h3 class="h6 fw-bold mb-2 text-slate-900">Ready to Begin Your In-Clinic Assessment?</h3>
+            <p class="small text-slate-600 mb-3 leading-relaxed">
+              Schedule your primary in-person baseline consult with Dr. Gerald Thang. We will review your medical history, complete your initial metabolic screening panels, and construct a sustainable long-term treatment plan mapped to your body.
             </p>
-            <a href="/booking/" class="btn" style="background-color: #0d9488; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 0.95rem;">Book a Consultation</a>
+            <a href="/booking/" class="btn" style="background-color: #0d9488; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 0.9rem;">Book In-Clinic Consultation</a>
           </section>
         </div>
 
         <!-- Local References Box -->
         <div class="ip-notice">
-          <strong style="color: #0f172a; display: block; margin-bottom: 12px; font-size: 1.05rem;">Scientific Foundations &amp; Regulatory References:</strong>
-          <ul class="mb-0 ps-3 text-slate-600" style="line-height: 1.6; font-size: 0.85rem;">
-            <li class="mb-3"><strong>The New England Journal of Medicine (SELECT Trial Framework):</strong> Documenting a 20% reduction in major adverse cardiovascular outcomes (MACE) utilizing long-term weekly semaglutide interventions in overweight populations without diabetes.</li>
-            <li class="mb-3"><strong>The FLOW Trial Analysis (2024-2026 updates):</strong> Clinical documentation confirming a 24% reduction in major renal disease events and the therapeutic preservation of overall kidney filtration functionality.</li>
-            <li class="mb-0"><strong>Singapore Health Sciences Authority (HSA) Compliance Guidelines:</strong> Medical standards regulating the clinical distribution, mandatory face-to-face physician screening protocols, and prescription parameters for metabolic therapeutic agents.</li>
+          <strong style="color: #0f172a; display: block; margin-bottom: 8px; font-size: 0.95rem;">Scientific Foundations &amp; Regulatory References:</strong>
+          <ul class="mb-0 ps-3 text-slate-600" style="line-height: 1.5; font-size: 0.85rem;">
+            <li class="mb-2"><strong>The New England Journal of Medicine (SELECT Trial):</strong> Documenting a 20% reduction in major adverse cardiovascular outcomes (MACE) utilizing long-term weekly semaglutide protocols.</li>
+            <li class="mb-2"><strong>The FLOW Trial Framework (2024-2026):</strong> Peer-reviewed data confirming a 24% lower risk of chronic kidney disease progression and primary renal complications.</li>
+            <li class="mb-0"><strong>Singapore Ministry of Health (MOH) &amp; HSA Standards:</strong> Direct medical rules mandating physical clinical consults, hands-on administrative training, and face-to-face evaluations for all prescription-only weight management strategies.</li>
           </ul>
         </div>
 
         <!-- Compliant Medical Disclaimer -->
-        <p class="mt-5 text-xs text-slate-400 text-center leading-relaxed italic">
-          <strong>Medical Disclaimer:</strong> This educational asset is distributed strictly for public health informational purposes and does not represent formal clinical diagnosis, individual medical advice, or the direct promotion of any proprietary trade name medication. In strict accordance with the Singapore Ministry of Health (MOH) and Health Sciences Authority (HSA) guidelines, prescription-only options cannot be promoted or sold direct-to-consumer. Treatment implementations and pharmaceutical allocations remain entirely subject to a registered physician's professional assessment following a comprehensive face-to-face evaluation and multi-point metabolic audit. Always speak directly with a licensed medical practitioner before launching any clinical weight or metabolic program.
+        <p class="mt-4 text-xs text-slate-400 text-center leading-relaxed italic">
+          <strong>Medical Disclaimer:</strong> This educational asset is distributed strictly for public health informational purposes and does not represent formal clinical diagnosis, individual medical advice, or the direct promotion of any proprietary trade name medication. In strict accordance with the Singapore Ministry of Health (MOH) and Health Sciences Authority (HSA) guidelines, prescription-only options cannot be promoted or sold direct-to-consumer. Treatment implementations and pharmaceutical allocations remain entirely subject to a registered physician's professional assessment following a comprehensive face-to-face evaluation and multi-point metabolic audit at our physical clinic facility. Always speak directly with a licensed medical practitioner before launching any clinical weight or metabolic program.
         </p>
 
       </div>
@@ -441,11 +389,11 @@ custom_schema: |
 
 <script>
   /* ------------------------------------ */
-  /* INTENT-MAPPING QUIZ ENGINE */
+  /* INTENT & TIMELINE BLUEPRINT ENGINE */
   /* ------------------------------------ */
   document.getElementById('findBtn').addEventListener('click', function() {
-    const route = document.getElementById('qPhobia').value;
-    const sustainability = document.getElementById('qSustainability').value;
+    const route = document.getElementById('qRoute').value;
+    const commitment = document.getElementById('qCommitment').value;
     const labs = document.getElementById('qLabs').value;
 
     const box = document.getElementById('resBox');
@@ -454,34 +402,33 @@ custom_schema: |
     box.style.display = 'block';
     let points = [];
 
+    // Mandatory Clinic Visit Reminder
+    points.push("<strong>Mandatory In-Clinic Protocol:</strong> Regardless of your chosen path, your first two onboarding steps must take place physically at our clinic for medical evaluation, advanced bio-impedance body profiling, and hands-on therapeutic training.");
+
     // Delivery Route Mapping
     if (route === 'oral') {
-      points.push("<strong>Delivery Route Strategy:</strong> Your preference aligns with the once-daily oral tablet route. Be prepared to discuss your morning habits with the doctor, as this method requires a strict fasting protocol first thing in the morning with a minimal water window.");
+      points.push("<strong>Delivery Route Blueprint:</strong> Your choice matches the once-daily oral tablet route. This pathway features a starting price from <strong>$500</strong> (fully including your doctor consultation fee and Metabolic Blood Panel). Note that this method requires a strict morning fasting routine.");
     } else {
-      points.push("<strong>Delivery Route Strategy:</strong> Your preference points toward the once-weekly injectable route. This option provides continuous receptor activation across 7 days without requiring daily routine tracking.");
+      points.push("<strong>Delivery Route Blueprint:</strong> Your choice aligns with the once-weekly injectable route. This pathway features a starting price from <strong>$800</strong> (fully including your doctor consultation fee and Metabolic Blood Panel), which delivers steady, slow-release peptide signaling without requiring daily tracking.");
     }
 
-    // Sustainability and The Rebound Danger Check
-    if (sustainability === 'short') {
-      points.push("<strong>⚠️ Critical Timeline Notice:</strong> You indicated a desire to test treatment for only 1 month. Professionally, we must highlight that metabolic modifications require 4 to 9+ months to permanently reset your body's weight set-point. <em>Stopping after a single month or pen frequently causes food noise to return rapidly and results in weight rebound.</em> Please discuss a sustainable long-term budget strategy with Dr. Thang.");
+    // Sustainability Check (The Rebound Alert)
+    if (commitment === 'short') {
+      points.push("<strong>⚠️ Critical Timeline Alert:</strong> You indicated a preference to try the program for only 1 month. Please note that changing your metabolic weight baseline typically requires 4 to 9+ months of clinical supervision. <em>Stopping prematurely after a single month or pen can cause food noise to return abruptly, often leading to a weight rebound.</em> Discuss a realistic long-term care strategy with your physician.");
     } else {
-      points.push("<strong>Clinical Timeline Alignment:</strong> Excellent. Your commitment matches realistic physiological timelines. Over a 6 to 12+ month arc, your doctor can safely guide you through gradual titration curves, target fat reduction windows, and a structured maintenance step-down phase.");
+      points.push("<strong>Clinical Timeline Alignment:</strong> Your expectation aligns perfectly with realistic medical timelines. Over a 6 to 12+ month window, your doctor can safely guide you through gradual dose escalations, stable target fat reduction, and a structured maintenance step-down phase.");
     }
 
     // Lab Credit Mapping
     if (labs === 'haslabs') {
-      points.push("<strong>Financial Savings Opportunity:</strong> Because you possess metabolic reports under 6 months old, please bring them to your consultation. Dr. Thang will review these baselines directly; if they meet our profiling criteria, the lab cost element will be deducted, saving you from unnecessary retesting fees.");
+      points.push("<strong>Existing Lab Savings:</strong> Because you possess metabolic reports under 6 months old, bring them along to your first physical clinic visit. If audited and accepted by the doctor, you can access our Variable Pathway (starting from <strong>$300</strong>), saving you from redundant retesting fees.");
     } else {
-      points.push("<strong>Diagnostic Foundation:</strong> Your program will integrate our comprehensive Metabolic Weight Management Blood Panel to map out underlying cardiovascular, hepatic, and glycemic baselines safely before starting therapy.");
+      points.push("<strong>Diagnostic Setup:</strong> Your starting framework will integrate our comprehensive Metabolic Blood Panel during your first physical visit to ensure total metabolic safety before your treatment launch.");
     }
 
-    // Baseline Entry Cost Clarification
-    let packageEstimate = (route === 'oral') ? "$350" : "$500";
-    points.push(`<strong>Estimated First-Month Budget:</strong> Based on your selections, your comprehensive Jumpstart framework (including the initial $50 doctor consultation fee, metabolic evaluation assets, and starting therapeutic supplies) starts from approximately <strong>${packageEstimate}</strong>.`);
+    points.push("<strong>Our Clinical Advantage:</strong> To prevent the loss of active skeletal muscle tissue during fat reduction, we monitor your lean muscle mass via medical-grade bio-impedance composition tracking at every phase, with direct access to your physician.");
 
-    points.push("<strong>The Continuous Care Edge:</strong> At our facility, your progress is tracked via regular medical-grade bio-impedance composition mapping to ensure you lose body fat while maintaining critical skeletal muscle tissue, with direct, uninhibited access to your principal physician.");
-
-    rDesc.innerHTML = "<ul style='padding-left:20px; margin:0;'>" + points.map(p => `<li style="margin-bottom:10px;">${p}</li>`).join('') + "</ul>";
+    rDesc.innerHTML = "<ul style='padding-left:18px; margin:0;'>" + points.map(p => `<li style="margin-bottom:8px;">${p}</li>`).join('') + "</ul>";
   });
 
   /* ------------------------------------ */
