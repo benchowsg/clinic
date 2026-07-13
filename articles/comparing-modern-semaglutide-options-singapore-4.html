@@ -2,7 +2,7 @@
 layout: default
 permalink: /articles/comparing-modern-semaglutide-options-singapore-4
 category: Metabolic
-title: "Comparing Semaglutide Options & Weight Loss Programme Cost in Singapore"
+title: "Comparing Modern Semaglutide Options: Finding Your Ideal Fit & Weight Loss Programme Cost in Singapore"
 description: "Discover the clinical uses, unique physiological advantages, and the clinical starter programme pathway and costs in Singapore."
 last_reviewed: 2026-07-13
 author_name: "Dr. Gerald Thang"
@@ -46,7 +46,10 @@ custom_schema: |
   }
 ---
 
- <style>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
     .article-content { padding-top: 140px; padding-bottom: 80px; }
     .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #334155; font-size: 1.05rem; }
     .feature-box { background: #ffffff; border-radius: 16px; padding: 25px; margin: 30px 0; border: 1px solid #cbd5e1; border-top: 5px solid #0d9488; }
@@ -104,13 +107,16 @@ custom_schema: |
       border-color: #cbd5e1;
       transform: translateX(4px);
     }
+
+    /* Fixed Readability and Mobile Optimization for Glass Panel */
     .pricing-glass-panel {
-      background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       border-radius: 24px;
       padding: 35px 25px;
       color: #ffffff;
-      box-shadow: 0 15px 30px -10px rgba(17, 24, 39, 0.25);
+      box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.3);
       position: relative;
+      border: 1px solid #334155;
     }
     .pricing-glass-panel::after {
       content: "";
@@ -119,7 +125,7 @@ custom_schema: |
       right: 0;
       width: 100px;
       height: 100px;
-      background: radial-gradient(circle, rgba(13, 148, 136, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(13, 148, 136, 0.2) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -327,24 +333,28 @@ custom_schema: |
                 </div>
               </div>
               
-              <!-- Stunning Pricing Panel -->
+              <!-- Stunning Pricing Panel (Fixed Mobile Readability & Increased Price Size) -->
               <div class="col-md-5 mt-4 mt-md-0 ps-md-4">
                 <div class="pricing-glass-panel text-center">
-                  <span class="text-xs uppercase font-extrabold tracking-widest text-teal-400 block mb-2" style="font-size: 0.7rem;">PROMETHEUS ACCESS</span>
-                  <p class="text-slate-300 small mb-4 font-medium px-2">An all-inclusive baseline evaluation to safely initiate your clinical weight management journey.</p>
+                  <span class="text-xs uppercase font-extrabold tracking-widest text-teal-300 block mb-2" style="font-size: 0.75rem; letter-spacing: 1px;">PROMETHEUS ACCESS</span>
+                  <p class="text-slate-100 small mb-4 font-medium px-2 leading-relaxed" style="font-size: 0.85rem;">An all-inclusive baseline evaluation to safely initiate your clinical weight management journey.</p>
                   
                   <div class="my-4">
-                    <span class="text-xs text-slate-400 block font-bold tracking-wider uppercase mb-1">PROGRAMME FEES BEGIN FROM</span>
+                    <span class="text-slate-200 block font-bold tracking-wider uppercase mb-2" style="font-size: 0.725rem; letter-spacing: 0.5px;">PROGRAMME FEES BEGIN FROM</span>
                     <div class="d-flex align-items-center justify-content-center gap-1">
-                      <span class="text-5xl font-extrabold tracking-tight text-white" style="font-weight: 900;">$500</span>
-                      <span class="text-sm text-teal-400 font-semibold align-self-end mb-1">NET</span>
+                      <!-- Significantly larger $500 value -->
+                      <span class="text-6xl font-black tracking-tight text-white" style="font-weight: 900; font-size: 4rem; line-height: 1;">$500</span>
+                      <span class="text-base text-teal-400 font-bold align-self-end mb-1">NET</span>
                     </div>
-                    <span class="text-xs text-slate-400 block mt-2 font-medium">All-Inclusive Clinical Package</span>
+                    <!-- Highly legible label badge -->
+                    <span class="inline-block bg-teal-900/60 text-teal-200 text-xs px-3 py-1 rounded-full font-bold border border-teal-500/30 mt-3">
+                      All-Inclusive Clinical Package
+                    </span>
                   </div>
                   
-                  <hr class="border-slate-700 my-4">
+                  <hr class="border-slate-600 my-4">
                   
-                  <p class="text-slate-400 leading-relaxed mb-0" style="font-size: 0.725rem;">
+                  <p class="text-slate-300 leading-relaxed mb-0 font-medium" style="font-size: 0.725rem;">
                     Subject to physical evaluation and clinical diagnostic clearance under MOH care standards.
                   </p>
                 </div>
@@ -688,3 +698,4 @@ custom_schema: |
     if (synth) { synth.cancel(); }
   };
 </script>
+</body>
