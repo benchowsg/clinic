@@ -1,0 +1,199 @@
+---
+layout: default
+permalink: /bmr-metabolic-calculator
+title: "The Singapore BMR & TDEE Calculator: Real Metabolic Baseline"
+description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy needs. A localized approach to calories, physical activity, and metabolic health."
+---
+
+<style>
+  /* Ensure the main content doesn't hide under the fixed navbar */
+  .article-container {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .article-container { padding-top: 80px; }
+  }
+
+  .main-title {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+  }
+
+  :root {
+    --primary-teal: #008080;
+    --deep-navy: #2c4964;
+    --danger-red: #e53e3e;
+    --accent-gold: #d4af37;
+  }
+
+  #bmrCalculator .form-label { color: #555; }
+  #bmrCalculator .form-control, #bmrCalculator .form-select { border-color: #ddd; padding: 12px 20px; }
+  #bmrCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
+  #bmrCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
+
+  #resultPanel { transition: opacity 0.8s ease-in-out; }
+  
+  .metric-pill {
+    background: white;
+    border: 1px solid #eef2f3;
+    border-radius: 50px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  .package-cta-box {
+    background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
+    border: 2px solid var(--primary-teal);
+    border-radius: 25px;
+    padding: 40px;
+    margin: 50px 0;
+  }
+  .btn-stewardship {
+    background: var(--deep-navy);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .border-warning-custom {
+    border-left: 5px solid var(--accent-gold) !important;
+  }
+  
+  #narrativeText {
+    animation: slideIn 0.5s ease-out;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<main id="main" class="article-container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        
+        <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The Singapore BMR & TDEE Calculator</h1>
+        <p class="lead">Weight management isn't a one-size-fits-all equation. Your **Basal Metabolic Rate (BMR)** represents the absolute minimum energy your body burns at rest just to keep you alive and your organs functioning.</p>
+        <p>In our Asian context, factors like body composition, ambient humidity, and local activity patterns (like walking to MRT stations vs. desk-bound lifestyles) heavily impact our real daily caloric needs. Estimate your baseline and Total Daily Energy Expenditure (TDEE) below.</p>
+
+        <div id="bmrCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
+          <div class="calculator-ui row g-4">
+            
+            <div class="col-md-5 border-end pe-md-5">
+              <h4 class="fw-bold mb-4" style="color: var(--primary-teal);">1. Your Profile</h4>
+              
+              <div class="form-group mb-3">
+                <label class="form-label small text-muted">Gender</label>
+                <select id="gender" class="form-select rounded-pill">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div class="form-row row mb-3">
+                <div class="form-group col-6">
+                  <label class="form-label small text-muted">Age (Years)</label>
+                  <input type="number" id="age" class="form-control rounded-pill" placeholder="e.g. 30">
+                </div>
+                <div class="form-group col-6">
+                  <label class="form-label small text-muted">Weight (kg)</label>
+                  <input type="number" id="weight" class="form-control rounded-pill" placeholder="e.g. 65">
+                </div>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label small text-muted">Height (cm)</label>
+                <input type="number" id="height" class="form-control rounded-pill" placeholder="e.g. 170">
+              </div>
+
+              <div class="form-group mb-4">
+                <label class="form-label small text-muted">Activity Level (Singapore Context)</label>
+                <select id="activity" class="form-select rounded-pill" style="font-size: 0.9rem;">
+                  <option value="sedentary">Sedentary (Desk job, MRT/Grab, little exercise)</option>
+                  <option value="light">Lightly Active (Brisk walks/Fitness corner 1-3x/week)</option>
+                  <option value="moderate">Moderately Active (Gym/Runs/Badminton 4-5x/week)</option>
+                  <option value="very">Very Active (ActiveSG regular/Hard workouts daily)</option>
+                  <option value="extreme">Extremely Active (NSF Combat unit/Active delivery rider)</option>
+                </select>
+              </div>
+
+              <button id="calculateBtn" class="btn btn-teal w-100 rounded-pill fw-bold text-white py-3">Calculate Metabolic Baseline</button>
+            </div>
+
+            <div id="resultPanel" class="col-md-7 ps-md-5 text-center d-flex flex-column justify-content-center opacity-25">
+              <h4 class="fw-bold mb-4" style="color: var(--deep-navy);">2. Daily Energy Expenditure</h4>
+              
+              <div class="metric-pill">
+                <span class="small text-muted d-block">Basal Metabolic Rate (BMR)</span>
+                <strong id="bmrOutput" class="h2 fw-bold text-primary">--</strong>
+                <span class="small text-muted">kcal / day (Survival baseline)</span>
+              </div>
+
+              <div class="metric-pill">
+                <span class="small text-muted d-block">Est. Daily Calorie Needs (TDEE)</span>
+                <strong id="tdeeOutput" class="h4" style="color: var(--primary-teal);">--</strong>
+                <span class="small text-muted d-block">kcal / day (To maintain current weight)</span>
+              </div>
+
+              <p id="localTipText" class="fw-bold mt-2"></p>
+              <div id="narrativeText" class="d-none mt-3 p-3 bg-white border rounded-4 text-muted small text-start shadow-sm"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="ctaBox" class="package-cta-box d-none">
+          <h3 class="fw-bold mb-3" style="color: var(--deep-navy);">Looking Beyond Calories In / Calories Out?</h3>
+          <p>For many Singaporeans, weight loss plates despite running a caloric deficit. This is often driven by metabolic friction, high visceral fat, or underlying insulin resistance. Our <strong>Metabolic & Longevity Audit</strong> goes beyond general numbers to evaluate your metabolic flexibility.</p>
+          <a href="/metabolic-longevity-audit" class="btn-stewardship">Take the Metabolic Audit</a>
+        </div>
+
+        <p class="text-center mt-3" style="font-size: 0.8rem; color: #999;">
+          <strong>Clinical Note:</strong> BMR is calculated using the scientifically validated <em>Mifflin-St Jeor</em> equation. Adjustments for Asian populations are crucial as we carry a higher fat-to-muscle ratio at lower BMIs compared to Western cohorts.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const gender = document.getElementById('gender').value;
+  const age = parseFloat(document.getElementById('age').value);
+  const weight = parseFloat(document.getElementById('weight').value);
+  const height = parseFloat(document.getElementById('height').value);
+  const activity = document.getElementById('activity').value;
+
+  // 1. Basic Field Check
+  if (!age || !weight || !height) {
+    alert('Please enter your age, weight, and height to proceed.');
+    return;
+  }
+
+  // 2. Sanity Checks
+  if (age < 12 || age > 100) {
+    alert('Please enter a realistic age.');
+    return;
+  }
+  if (height < 100 || height > 250) {
+    alert('Please check your height. Use centimeters (e.g., 170 instead of 1.7).');
+    return;
+  }
+
+  // 3. Mifflin-St Jeor Formula
+  let bmr = 0;
+  if (gender === 'male') {
+    bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+  } else {
+    bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+  }
+  bmr = Math.round(bmr);
+
+  // 4. Activity Multipliers (
