@@ -1,0 +1,766 @@
+---
+layout: default
+permalink: /metabolic-health-weight-2
+title: Metabolic Health & Medical Weight Management | A Healing Heart Medical
+description: Beyond calories. Our clinical approach to weight management focuses on insulin sensitivity, hormonal balance, and metabolic flexibility in Singapore.
+custom_schema: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "name": "Metabolic Health and Weight Management Clinic",
+      "description": "Evidence-based metabolic optimization focusing on reversing insulin resistance and managing metabolic syndrome through clinical oversight.",
+      "mainEntity": {
+        "@type": "MedicalCondition",
+        "name": "Metabolic Syndrome",
+        "possibleComplication": ["Type 2 Diabetes", "Non-alcoholic Fatty Liver Disease", "Cardiovascular Disease"],
+        "primaryPrevention": {
+          "@type": "MedicalTherapy",
+          "name": "Metabolic Optimization and Insulin Sensitivity Training"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Metabolic Flexibility?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Metabolic flexibility is the body's ability to efficiently switch between burning carbohydrates and burning fat for fuel. Poor flexibility is often a root cause of weight plateaus."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does insulin resistance prevent weight loss?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "High insulin levels act as a 'fat-storage' signal. When the body is insulin resistant, insulin stays high, effectively locking fat cells and making it difficult to lose weight despite calorie restriction."
+          }
+        }
+      ]
+    }
+  ]
+---
+
+<style>
+  /* Global reset for this page to match theme branding */
+  #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  .preventive-hero {
+    background-color: #f8f9fa !important; 
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    color: #3498DB !important; 
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .btn-get-started-custom {
+    background: #3498db;
+    color: white !important;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+  }
+  .btn-get-started-custom:hover { background: #2980b9; }
+
+  .btn-outline-primary-custom {
+    border: 2px solid #3498db;
+    color: #3498db !important;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+  }
+  .btn-outline-primary-custom:hover {
+    background: #3498db;
+    color: #fff !important;
+  }
+
+  .cycle-container {
+    padding: 20px;
+    border-left: 2px dashed #3498db;
+    margin-left: 20px;
+  }
+  .cycle-step {
+    position: relative;
+    padding-bottom: 30px;
+    padding-left: 30px;
+  }
+  .cycle-step::before {
+    content: "\f107"; 
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: -11px;
+    top: 0;
+    background: #f8f9fa;
+    color: #3498db;
+    padding: 5px 0;
+  }
+  .cycle-step:last-child::before { content: "\f01e"; } 
+
+  .systemic-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid #eef2f6;
+    height: 100%;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+  }
+  .systemic-card:hover { 
+    border-color: #3498db; 
+    transform: translateY(-5px); 
+  }
+  
+  .lead-in-box {
+    background: linear-gradient(135deg, #2c4964 0%, #1a3044 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* --- LIGHT-THEMED WHITE SPOTLIGHT CARD --- */
+  .premium-spotlight {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 28px;
+    padding: 40px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px -10px rgba(44, 73, 100, 0.08);
+  }
+  .premium-spotlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to bottom, #3498db, #2c4964);
+  }
+  .badge-premium {
+    background: linear-gradient(135deg, #3498db 0%, #2c4964 100%);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.725rem;
+  }
+  .feature-item-pill {
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 14px;
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+  }
+  .feature-item-pill:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    transform: translateX(4px);
+  }
+
+  /* Light Themed Clean Pricing Panel */
+  .pricing-clean-panel {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 35px 25px;
+    color: #2c4964;
+    box-shadow: 0 10px 25px -5px rgba(44, 73, 100, 0.05);
+    position: relative;
+    border: 2px solid #3498db;
+  }
+  .pricing-clean-panel::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Compelling Redirect Bridge Box */
+  .article-bridge-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd;
+    border-radius: 24px;
+    padding: 35px;
+    margin: 40px 0;
+    box-shadow: 0 12px 30px -10px rgba(52, 152, 219, 0.1);
+    transition: transform 0.2s ease;
+  }
+  .article-bridge-card:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Onboarding Timeline Step Container */
+  .step-container {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 24px;
+    padding: 32px;
+    margin: 35px 0;
+    box-shadow: 0 10px 25px -5px rgba(44, 73, 100, 0.03);
+  }
+  .step-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  @media (min-width: 768px) {
+    .step-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  .step-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  .step-card:hover {
+    transform: translateY(-2px);
+    border-color: #3498db;
+  }
+  .step-card.mandatory {
+    border-left: 4px solid #3498db;
+  }
+  .step-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .step-card.mandatory .step-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+  .step-card:not(.mandatory) .step-badge {
+    background: #f1f5f9;
+    color: #475569;
+  }
+
+  /* Custom checklists style */
+  .check-list-custom {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  .check-list-custom li {
+    margin-bottom: 10px;
+    padding-left: 28px;
+    position: relative;
+    color: #4a5568;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .check-list-custom li::before {
+    content: "✓";
+    color: #3498db;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.1rem;
+  }
+
+  /* Biometric Widget Form */
+  .widget-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 25px -5px rgba(44, 73, 100, 0.05);
+    margin: 40px 0;
+  }
+  .form-group-widget {
+    margin-bottom: 20px;
+  }
+  .widget-card label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2c4964;
+    font-size: 1rem;
+  }
+  .select-input-widget {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+  }
+  .calc-btn-widget {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .calc-btn-widget:hover {
+    background-color: #2980b9;
+  }
+  .results-panel-widget {
+    display: none;
+    margin-top: 30px;
+    padding: 24px;
+    border-radius: 12px;
+    border-left: 5px solid #3498db;
+    background-color: #f8fafc;
+  }
+  .checkbox-group-widget {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .checkbox-label-widget {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: normal !important;
+    font-size: 0.95rem;
+    cursor: pointer;
+    color: #4a5568;
+  }
+  .checkbox-label-widget input {
+    width: 18px;
+    height: 18px;
+    accent-color: #3498db;
+    margin: 0;
+  }
+</style>
+
+<main id="main">
+
+  <section class="preventive-hero pt-5">
+    <div class="container py-5 mt-4">
+      <div class="row align-items-center">
+        <div class="col-lg-8 text-center text-lg-start">
+          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Metabolic Health</h1>
+          <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Weight Management Through Biological Optimization</h2>
+          <p class="lead mb-4" style="color: #4a5568;">
+            Weight management is not a battle of willpower; it is a function of biology. At A Healing Heart, we focus on the metabolic markers to help you achieve a sustainable, healthy weight.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+            <a href="/booking" class="btn-get-started-custom">Book Metabolic Review</a>
+            <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart,%20I'd%20like%20to%20inquire%20about%20Metabolic%20Health%20and%20Weight%20Management%20services." 
+              class="btn-outline-primary-custom rounded-pill px-5 py-2 fw-bold">
+               <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BIOLOGICAL INTRODUCTION -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4" style="color: #2c4964;">The Insulin-Weight Connection</h2>
+          <p class="text-muted">When your metabolism is out of sync, your body enters a "Storage-Only" mode. We identify and treat the underlying hormonal triggers that cause weight plateaus.</p>
+          
+          <div class="p-4 rounded-4 mb-3" style="background: #f0f9ff; border-left: 5px solid #3498db;">
+             <h6 class="fw-bold" style="color: #2c4964;"><i class="fa-solid fa-droplet text-primary me-2"></i> Insulin Sensitivity Review</h6>
+             <p class="small mb-0">We measure fasting insulin and glucose to determine if your body is efficiently using fuel or storing it as visceral fat.</p>
+          </div>
+
+          <div class="p-4 rounded-4 mb-3" style="background: #fdfcf0; border-left: 5px solid #f1c40f;">
+            <h6 class="fw-bold" style="color: #2c4964;"><i class="fa-solid fa-liver me-2"></i> Fatty Liver Prevention</h6>
+            <p class="small mb-0 text-muted">Metabolic health is closely tied to liver function. We screen for early signs of NAFLD (Non-alcoholic Fatty Liver Disease) as part of our weight management protocol.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="ps-lg-5">
+            <h4 class="fw-bold mb-4" style="color: #2c4964;">Signs of Metabolic Dysfunction</h4>
+            <ul class="list-unstyled">
+              <li class="mb-3 d-flex align-items-start">
+                <i class="fa-solid fa-triangle-exclamation text-warning mt-1 me-3"></i>
+                <span><strong>Persistent Midsection Fat:</strong> Often an indicator of high cortisol or insulin resistance.</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="fa-solid fa-triangle-exclamation text-warning mt-1 me-3"></i>
+                <span><strong>Energy Crashes:</strong> Difficulty maintaining energy levels after meals (Post-prandial fatigue).</span>
+              </li>
+              <li class="mb-3 d-flex align-items-start">
+                <i class="fa-solid fa-triangle-exclamation text-warning mt-1 me-3"></i>
+                <span><strong>Inability to Lose Weight:</strong> Despite strict calorie counting and exercise.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM SPOTLIGHT STARTER CARD (WHITE BACKGROUND BRASH STYLE) -->
+  <section class="py-4 bg-light">
+    <div class="container">
+      <div class="premium-spotlight">
+        <div class="row align-items-center">
+          <div class="col-md-7">
+            <div class="mb-3">
+              <span class="badge-premium uppercase tracking-wider">CLINICAL PROGRAMME PATHWAY</span>
+            </div>
+            <h2 class="h3 fw-bold text-slate-900 mb-3" style="line-height: 1.3; font-weight: 800;">
+              Clinical Evaluation<br>
+              <span class="text-teal-600" style="color: #3498db;">Starter Pack for Weight Loss Programme</span>
+            </h2>
+            <p class="small text-slate-600 mb-4" style="line-height: 1.6; font-size: 0.95rem;">
+              Establishing your baseline is the cornerstone of safe and permanent tissue preservation. Our net-priced starter program combines professional clinical consultations, vital diagnostic cardiovascular-blood panels, and your initial month's tailored therapy.
+            </p>
+            
+            <!-- Custom Dashboard List Items -->
+            <div class="mb-4">
+              <div class="feature-item-pill">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 text-blue-600 font-bold text-sm" style="color: #3498db; background-color: #f0f9ff;">1</span>
+                <div class="text-sm">
+                  <strong class="text-slate-900" style="color: #2c4964;">Comprehensive First Consultation</strong>
+                  <p class="text-slate-500 mb-0 text-xs">Detailed metabolic mapping and personalized lifestyle analysis with Dr. Gerald Thang</p>
+                </div>
+              </div>
+              <div class="feature-item-pill">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 text-blue-600 font-bold text-sm" style="color: #3498db; background-color: #f0f9ff;">2</span>
+                <div class="text-sm">
+                  <strong class="text-slate-900" style="color: #2c4964;">Diagnostic Blood Panel</strong>
+                  <p class="text-slate-500 mb-0 text-xs">Evaluating lipids, liver function, blood sugar stability, and baseline cardiorenal health</p>
+                </div>
+              </div>
+              <div class="feature-item-pill">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 text-blue-600 font-bold text-sm" style="color: #3498db; background-color: #f0f9ff;">3</span>
+                <div class="text-sm">
+                  <strong class="text-slate-900" style="color: #2c4964;">First Month's Therapeutic Medication</strong>
+                  <p class="text-slate-500 mb-0 text-xs">Your initial titrated therapeutic course (either subcutaneous weekly or daily oral, based on physician suitability)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Clean White Pricing Panel -->
+          <div class="col-md-5 mt-4 mt-md-0 ps-md-4">
+            <div class="pricing-clean-panel text-center">
+              <span class="text-xs uppercase font-extrabold tracking-widest text-blue-500 block mb-2" style="font-size: 0.75rem; letter-spacing: 1px; color: #3498db;">PROMETHEUS ACCESS</span>
+              <p class="text-slate-600 small mb-4 font-semibold px-2 leading-relaxed" style="font-size: 0.85rem;">An all-inclusive baseline evaluation to safely initiate your clinical weight management journey.</p>
+              
+              <div class="my-4">
+                <span class="text-slate-500 block font-bold tracking-wider uppercase mb-1" style="font-size: 0.725rem; letter-spacing: 0.5px;">PROGRAMME FEES</span>
+                <span class="text-slate-600 block text-sm font-extrabold uppercase mt-1">STARTS FROM</span>
+                <div class="d-flex align-items-center justify-content-center gap-1">
+                  <!-- Large pricing display for immediate high legibility -->
+                  <span class="text-6xl font-black tracking-tight" style="font-weight: 900; font-size: 4.5rem; line-height: 1; color: #3498db;">$500</span>
+                  <span class="text-base text-slate-900 font-extrabold align-self-end mb-1">NET</span>
+                </div>
+                <!-- High contrast badge -->
+                <span class="inline-block bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-full font-bold border border-blue-200 mt-3" style="color: #2980b9; background-color: #f0f9ff; border-color: #bae6fd;">
+                  All-Inclusive Clinical Package
+                </span>
+              </div>
+
+              <!-- High-Converting CTA Booking Button Inside Card -->
+              <div class="my-4">
+                <a href="/booking" class="btn w-full d-block text-white font-bold py-3 px-4 rounded-xl transition-all duration-200 hover:scale-[1.02] no-underline" style="background-color: #3498db; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25);">
+                  Book Starter Pack Evaluation
+                </a>
+              </div>
+              
+              <hr class="border-slate-200 my-4">
+              
+              <p class="text-slate-500 leading-relaxed mb-0 font-semibold" style="font-size: 0.725rem;">
+                Subject to physical evaluation and clinical diagnostic clearance under MOH care standards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- THE CLINICAL COMPARISON BRIDGE CARD --- -->
+  <section class="py-3 bg-white">
+    <div class="container">
+      <div class="article-bridge-card">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <span class="badge mb-2 px-2.5 py-1.5 rounded bg-blue-100 text-blue-800 font-bold" style="font-size: 0.75rem; color: #1d4ed8; background-color: #dbeafe;">COMPREHENSIVE PEPTIDE DECISION GUIDE</span>
+            <h3 class="h5 fw-bold text-slate-900 mb-2 leading-snug" style="color: #2c4964;">Which Delivery Pathway Matches Your Biological Blueprint?</h3>
+            <p class="small text-slate-600 mb-0 leading-relaxed">
+              Should you proceed with once-weekly subcutaneous injections or once-daily oral tablets? Different GLP-1 peptide pathways behave uniquely inside Asian bodies. Learn how each option coordinates central appetite suppression, cardiovascular defense, and morning lifestyle convenience before making your selection.
+            </p>
+          </div>
+          <div class="col-md-4 mt-3 mt-md-0 text-md-end">
+            <a href="/articles/comparing-modern-semaglutide-options-singapore-4" class="btn d-inline-block text-white font-bold py-3 px-4 rounded-xl transition-all duration-200 no-underline shadow-md" style="background-color: #2c4964; font-size: 0.9rem;">
+              Read Comparison Guide →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SVG STEP TIMELINE FLOW -->
+  <section class="py-4 bg-light">
+    <div class="container">
+      <div class="step-container">
+        <h3 class="h5 fw-bold text-slate-900 mb-1" style="color: #2c4964;">Your Medical Onboarding Journey</h3>
+        <p class="text-xs text-slate-500 mb-3">Singapore clinical guidelines require strict baseline management before prescription allocation.</p>
+        
+        <svg viewBox="0 0 600 60" width="100%" height="auto" style="overflow: visible;" xmlns="http://www.w3.org/2000/svg">
+          <line x1="40" y1="30" x2="560" y2="30" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="4 4" />
+          <line x1="40" y1="30" x2="300" y2="30" stroke="#3498db" stroke-width="3" />
+          <circle cx="40" cy="30" r="10" fill="#3498db" stroke="#fff" stroke-width="2" />
+          <circle cx="300" cy="30" r="10" fill="#3498db" stroke="#fff" stroke-width="2" />
+          <circle cx="560" cy="30" r="10" fill="#cbd5e1" stroke="#fff" stroke-width="2" />
+          <text x="40" y="12" font-family="system-ui" font-weight="700" font-size="11" fill="#0f172a" text-anchor="middle">VISIT 1</text>
+          <text x="300" y="12" font-family="system-ui" font-weight="700" font-size="11" fill="#0f172a" text-anchor="middle">VISIT 2</text>
+          <text x="560" y="12" font-family="system-ui" font-weight="700" font-size="11" fill="#64748b" text-anchor="middle">SUBSEQUENT</text>
+        </svg>
+
+        <div class="step-grid">
+          <div class="step-card mandatory">
+            <span class="step-badge">IN-CLINIC</span>
+            <h4>1. Medical &amp; Labs</h4>
+            <p>Face-to-face physician consultation and our targeted Metabolic Blood Panel screening.</p>
+          </div>
+          <div class="step-card mandatory">
+            <span class="step-badge">IN-CLINIC</span>
+            <h4>2. Review &amp; Launch</h4>
+            <p>Blood metrics analysis, multi-point body composition mapping, and therapeutic training.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-badge">FLEXIBLE</span>
+            <h4>3. Check-ins</h4>
+            <p>Periodic remote monitoring or physical visits to adapt titration doses and review muscle mass profiles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE THREE-PILLAR FRAMEWORK -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #2c4964;">Our Metabolic Framework</h2>
+        <p class="text-muted">A three-pillar approach to sustainable weight loss.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="systemic-card">
+            <div class="text-primary mb-3" style="color: #3498db !important;"><i class="fa-solid fa-dna fa-2xl"></i></div>
+            <h5 class="fw-bold">Bio-Individual Analysis</h5>
+            <p class="small text-muted">Understanding your unique hormonal profile to create a plan that works with your biology, not against it.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="systemic-card">
+            <div class="text-primary mb-3" style="color: #3498db !important;"><i class="fa-solid fa-fire-flame-curved fa-2xl"></i></div>
+            <h5 class="fw-bold">Metabolic Flexibility</h5>
+            <p class="small text-muted">Training your body to switch between fuel sources, improving energy levels and fat utilization.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="systemic-card">
+            <div class="text-primary mb-3" style="color: #3498db !important;"><i class="fa-solid fa-user-nurse fa-2xl"></i></div>
+            <h5 class="fw-bold">Clinical Oversight</h5>
+            <p class="small text-muted">Regular monitoring of inflammatory markers to ensure your weight loss is improving your long-term heart health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE EVALUATION WIDGET -->
+  <section class="py-4 bg-light">
+    <div class="container">
+      <h2 class="h4 fw-bold mb-3 text-center" style="color: #2c4964;">Evaluate Your Metabolic Alignment</h2>
+      <p class="text-center text-muted mb-4 small">Use our interactive clinical indicator tool below to see if your biometric profile aligns with the established medical guidelines used by local health authorities in Singapore.</p>
+      
+      <div class="widget-card">
+        <div class="form-group-widget">
+          <label for="weight">Your Body Weight (kg)</label>
+          <input type="number" id="weight" class="select-input-widget" placeholder="e.g. 78" min="30" max="250">
+        </div>
+        <div class="form-group-widget">
+          <label for="height">Your Height (cm)</label>
+          <input type="number" id="height" class="select-input-widget" placeholder="e.g. 170" min="100" max="250">
+        </div>
+        <div class="form-group-widget">
+          <label>Existing Weight-Related Health Risks</label>
+          <div class="checkbox-group-widget">
+            <label class="checkbox-label-widget"><input type="checkbox" id="bp"> High Blood Pressure / Hypertension</label>
+            <label class="checkbox-label-widget"><input type="checkbox" id="chol"> High Cholesterol / Dyslipidemia</label>
+            <label class="checkbox-label-widget"><input type="checkbox" id="db"> Type 2 Diabetes / Borderline Blood Sugar</label>
+            <label class="checkbox-label-widget"><input type="checkbox" id="osa"> Diagnosed Obstructive Sleep Apnea</label>
+            <label class="checkbox-label-widget"><input type="checkbox" id="pcos"> Polycystic Ovary Syndrome (PCOS)</label>
+          </div>
+        </div>
+        <button class="calc-btn-widget" id="runAssessmentBtn">Run Metabolic Assessment</button>
+        
+        <div id="resBox" class="results-panel-widget">
+          <div class="results-title" id="resTitle" style="font-weight: 800; font-size: 1.2rem; margin-bottom: 8px; color: #2c4964;">Assessment Complete</div>
+          <div class="bmi-val" id="resBmi" style="font-size: 1.75rem; font-weight: 800; color: #3498db; margin: 8px 0 16px 0;">BMI: --</div>
+          <div id="resDesc" style="font-size: 0.95rem; line-height: 1.5; color: #4a5568;"></div>
+          <div class="note-text" style="font-size: 0.85rem; color: #64748b; margin-top: 20px; line-height: 1.5; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+            <strong>Educational Context Only:</strong> This interactive form evaluates systemic biometric thresholds based on standardized Asian metabolic guidelines. It does not replace or constitute an official clinical diagnosis or a prescription route.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CLINICAL FAQ PANEL -->
+  <section class="py-5 bg-white border-top border-bottom">
+    <div class="container">
+      <div class="mb-5 text-center text-lg-start">
+        <h2 class="fw-bold" style="color: #2c4964;">Metabolic Health: Clinical FAQ</h2>
+      </div>
+      <div class="row g-4 text-start">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Is weight management only about calories?</h3>
+          <p class="small text-muted">While calories matter, <strong>hormonal signaling</strong> (like insulin) dictates whether those calories are burned or stored. We focus on fixing the signaling first.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">What is Metabolic Syndrome?</h3>
+          <p class="small text-muted">It is a cluster of conditions (increased blood pressure, high blood sugar, excess body fat around the waist, and abnormal cholesterol levels) that occur together, increasing your risk of heart disease.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">What is Metabolic Flexibility?</h3>
+          <p class="small text-muted">Metabolic flexibility is the body's ability to efficiently switch between burning carbohydrates and burning fat for fuel. Poor flexibility is often a root cause of weight plateaus.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">How does insulin resistance prevent weight loss?</h3>
+          <p class="small text-muted">High insulin levels act as a "fat-storage" signal. When the body is insulin resistant, insulin stays high, effectively locking fat cells and making it difficult to lose weight despite calorie restriction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTION-DRIVEN STRATEGY BLOCK -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="p-5 rounded-4 border-start border-5" style="background-color: #f0f9ff; border-left-color: #3498db !important;">
+        <h3 class="h5 fw-bold mb-2 text-slate-900" style="color: #2c4964;">Secure Your Personalized Metabolic Strategy</h3>
+        <p class="small text-slate-600 mb-4 leading-relaxed">
+          Stop trying to out-guess your internal biochemistry with generic diet trends or isolated metric trackers. Our Metabolic &amp; Baseline Audit is designed to build custom, medical-grade pathways for *everyone*—whether that involves advanced medical protocols, non-pharmacological therapies, or clinical nutritional restructuring. No matter where you sit on the metabolic spectrum, our clinical team is here to accompany your journey.
+        </p>
+        <a href="/booking" class="btn text-white font-bold py-3 px-4 rounded-xl transition-all duration-200 hover:bg-blue-700 no-underline shadow-md" style="background-color: #3498db; font-size: 0.95rem;">Book a Metabolic &amp; Baseline Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE AND LOCAL DATA REFERENCE INFO -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="p-4 rounded-4" style="background: #f8fafc; border: 1px solid #e2e8f0; font-size: 0.9rem; color: #475569;">
+        <strong style="color: #2c4964; display: block; margin-bottom: 12px; font-size: 1.05rem;">Scientific Foundation &amp; Local Singapore Data:</strong>
+        <ul class="mb-0 ps-3" style="line-height: 1.6; font-size: 0.85rem; color: #64748b;">
+          <li class="mb-3"><strong>Singapore Medical Journal (SMJ) Consensus:</strong> Adult obesity definitions set lowered weight boundaries (overweight risk at 23.0 kg/m², obese-range risk at 27.5 kg/m²) to address high visceral fat ratios in Asian bodies.</li>
+          <li class="mb-3"><strong>The New England Journal of Medicine (SELECT &amp; STEP Trials):</strong> Evaluates cardiovascular longevity benefits showing a 20% drop in major adverse cardiac events (MACE) and average weight loss ranges reaching over 15% across long-term monitoring.</li>
+          <li class="mb-0"><strong>The Lancet (FLOW Renal Trial Results):</strong> Established that once-weekly GLP-1 therapy achieves a landmark 24% relative risk reduction in diabetic kidney disease progression and severe renal events in patients with type 2 diabetes and chronic kidney disease.</li>
+        </ul>
+      </div>
+      
+      <!-- Compliant Medical Disclaimer -->
+      <p class="mt-5 text-xs text-slate-400 text-center leading-relaxed italic" style="font-size: 0.725rem; color: #94a3b8;">
+        <strong>Medical Disclaimer:</strong> This article is provided strictly for educational and public health informational purposes and does not constitute medical advice, diagnosis, or promotion of any specific commercial health product. In strict accordance with Singapore Ministry of Health (MOH) regulations, prescription-only medications (POMs) cannot be advertised or sold directly to consumers. Any therapeutic clinical intervention or medication mentioned herein is strictly subject to a doctor's clinical discretion following a thorough, face-to-face medical evaluation and diagnostic audit. Always consult a registered medical practitioner before commencing any weight management or medical protocol.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  /* ------------------------------------ */
+  /* BIOMETRIC ASSESSMENT LOGIC          */
+  /* ------------------------------------ */
+  document.getElementById('runAssessmentBtn').addEventListener('click', function() {
+    const w = parseFloat(document.getElementById('weight').value);
+    const h = parseFloat(document.getElementById('height').value);
+    const hasComorbidity = document.getElementById('bp').checked || 
+                          document.getElementById('chol').checked || 
+                          document.getElementById('db').checked ||
+                          document.getElementById('osa').checked ||
+                          document.getElementById('pcos').checked;
+    
+    const box = document.getElementById('resBox');
+    const rBmi = document.getElementById('resBmi');
+    const rDesc = document.getElementById('resDesc');
+
+    // Soft non-blocking validation instead of alerts
+    if(!w || !h || w <= 30 || h <= 100 || w > 250 || h > 250) {
+      box.style.borderLeftColor = "#ef4444";
+      box.style.display = 'block';
+      rBmi.innerHTML = '⚠️ Validation Error';
+      rDesc.innerHTML = 'Please enter valid biometric inputs (Weight: 30-250 kg, Height: 100-250 cm) to generate your assessment.';
+      return;
+    }
+    
+    const bmi = w / ((h / 100) * (h / 100));
+    const bmiFixed = bmi.toFixed(1);
+    
+    box.style.display = 'block';
+    rBmi.innerHTML = 'Calculated BMI: ' + bmiFixed + ' kg/m²';
+    
+    if (bmi < 23) {
+      box.style.borderLeftColor = "#22c55e"; // green
+      rDesc.innerHTML = '<strong>Classification: Healthy / Baseline Normal</strong><br><br>Your calculated body mass index rests within the healthy clinical spectrum for individuals of Asian descent. Your primary management goal centers around maintaining lifestyle metabolic vitality through optimal nutrition and routine cardiovascular fitness.';
+    } else if (bmi >= 23 && bmi < 27.5) {
+      if (bmi >= 25.0 && hasComorbidity) {
+        box.style.borderLeftColor = "#ef4444"; // red
+        rDesc.innerHTML = '<strong>Classification: Overweight with Accompanying Metabolic Risk Markers (High Risk)</strong><br><br>While your weight sits in the overweight bracket, your reported co-existing metabolic indicators meet the thresholds where clinical practice models and telemedicine channels can safely consider medical weight management as an option. Based on this profile, a multi-disciplinary assessment looking at metabolic support pathways is highly appropriate.';
+      } else if (hasComorbidity) {
+        box.style.borderLeftColor = "#f59e0b"; // amber
+        rDesc.innerHTML = '<strong>Classification: Overweight with Early Risk Markers</strong><br><br>Your weight registers in the overweight category, accompanied by chronic health risk factors. Undergoing a clinical consultation is recommended to evaluate proactive lifestyle corrections and early systemic monitoring to protect your metabolic and cardiorenal pathways.';
+      } else {
+        box.style.borderLeftColor = "#3498db"; // blue
+        rDesc.innerHTML = '<strong>Classification: Overweight (Lifestyle Modification Indicated)</strong><br><br>Your biometrics register inside the overweight range (23.0 - 27.4). Standard local Healthier SG care protocols recommend pursuing lifestyle adjustments, structured dietary optimizations, and cardiovascular activity to maintain health and prevent weight escalations.';
+      }
+    } else {
+      box.style.borderLeftColor = "#b91c1c"; // deep red
+      if (hasComorbidity || bmi >= 30.0) {
+        rDesc.innerHTML = '<strong>Classification: Candidate for Clinical Evaluation &amp; Pharmacotherapy</strong><br><br>Your current BMI profile meets the criteria for severe metabolic weight retention for individuals of Asian background (BMI &ge; 27.5). Under official MOH Care Protocols, weight-loss pharmacotherapy (such as HSA-approved GLP-1 receptor agonists) is indicated as a helpful adjunct to lifestyle therapies for individuals with a BMI &ge; 30.0, or BMI &ge; 27.5 with comorbidities. A formal physician evaluation is recommended to map your path.';
+      } else {
+        rDesc.innerHTML = '<strong>Classification: Obese (High Risk)</strong><br><br>Your current BMI profile meets the criteria for obesity for individuals of Asian background (BMI &ge; 27.5). At this threshold, risks for cardiovascular decline, insulin resistance, and fatty liver disease escalate. Under local guidelines, a formal physician consultation is recommended to assess your cardiovascular risk, run baseline labs, and discuss whether therapeutic weight management options are clinically suitable.';
+      }
+    }
+  });
+</script>
