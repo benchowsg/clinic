@@ -1,9 +1,25 @@
 ---
 layout: default
 permalink: /bmr-metabolic-calculator
-title: "The Singapore BMR & TDEE Calculator: Real Metabolic Baseline"
-description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy needs. A localized approach to calories, physical activity, and metabolic health."
+title: "BMR Calculator Singapore: Calculate Your Real TDEE & Metabolic Baseline"
+description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy needs using a localized Singapore context. Learn how Asian body composition affects your caloric needs."
 ---
+
+<script type="application/ld-json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Singapore BMR & TDEE Metabolic Calculator",
+  "operatingSystem": "All",
+  "applicationCategory": "HealthApplication",
+  "description": "A localized metabolic calculator that estimates Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) based on Singapore-specific activity levels and Asian metabolic risk factors.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SGD"
+  }
+}
+</script>
 
 <style>
   /* Ensure the main content doesn't hide under the fixed navbar */
@@ -34,7 +50,7 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
   #bmrCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
   #bmrCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
 
-  /* Custom state for result panel visibility state instead of Bootstrap's !important utilities */
+  /* Custom state for result panel visibility instead of Bootstrap's !important utilities */
   .results-hidden {
     opacity: 0.15;
     pointer-events: none;
@@ -84,6 +100,27 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Styling for the supporting educational content */
+  .educational-content h2 {
+    color: var(--deep-navy);
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+  .educational-content h3 {
+    color: var(--primary-teal);
+    font-weight: 600;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+  }
+  .educational-content p {
+    line-height: 1.7;
+    color: #4a5568;
+    margin-bottom: 1.2rem;
+  }
 </style>
 
 <main id="main" class="article-container">
@@ -92,8 +129,8 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
       <div class="col-lg-10">
         
         <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The Singapore BMR & TDEE Calculator</h1>
-        <p class="lead">Weight management isn't a one-size-fits-all equation. Your Basal Metabolic Rate (BMR) represents the absolute minimum energy your body burns at rest just to keep you alive and your organs functioning.</p>
-        <p>In our Asian context, factors like body composition, ambient humidity, and local activity patterns (like walking to MRT stations vs. desk-bound lifestyles) heavily impact our real daily caloric needs. Estimate your baseline and Total Daily Energy Expenditure (TDEE) below.</p>
+        <p class="lead">Weight management is not a standard mathematical equation. Your **Basal Metabolic Rate (BMR)** represents the absolute baseline energy your body expends at rest to sustain vital organ functions.</p>
+        <p>In a localized Asian context, typical calculators often miss the mark. Our genetics, food landscapes, and daily habits (ranging from intense humidity exposure to sedentary office commutes) demand a more customized metabolic assessment. Calculate your daily baseline and Total Daily Energy Expenditure (TDEE) below.</p>
 
         <div id="bmrCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
           <div class="calculator-ui row g-4">
@@ -160,13 +197,35 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
           </div>
         </div>
 
+        <hr class="my-5">
+
+        <article class="educational-content">
+          <h2>Why Standard BMR Calculations Fail the Asian Phenotype</h2>
+          <p>Most standard metabolic rate calculators on the internet rely on mathematical models built using Western cohorts. However, clinical research shows that East Asian, South Asian, and Malay populations display a unique body composition dynamic often called the <strong>"Asian Phenotype."</strong></p>
+          <p>Even at a normal BMI, individuals of Asian descent tend to carry a higher percentage of body fat—specifically <strong>visceral fat</strong> (internal fat wrapped around vital organs)—and a lower percentage of lean muscle mass compared to Caucasians of the exact same weight. Because muscle is far more metabolically active than fat tissue, a lower muscle mass baseline means your actual, resting BMR might be lower than what generic calculators estimate.</p>
+
+          <h3>Understanding BMR vs. TDEE</h3>
+          <p>It is crucial to differentiate between your Basal Metabolic Rate (BMR) and your Total Daily Energy Expenditure (TDEE):</p>
+          <ul>
+            <li><strong>Basal Metabolic Rate (BMR):</strong> The exact amount of energy (calories) your body requires to perform life-sustaining functions—like cellular respiration, circulation, and hormone regulation—completely at rest.</li>
+            <li><strong>Total Daily Energy Expenditure (TDEE):</strong> The total amount of calories you burn in a 24-hour window once physical movement, daily commutes, digestion, and deliberate exercise are added to your baseline BMR.</li>
+          </ul>
+
+          <h3>Adjusting for the Singaporean Lifestyle</h3>
+          <p>Your daily physical activity is heavily influenced by your environment. In Singapore, daily energy expenditure is rarely represented by a standard western "active" profile. A typical commuter walking to and from MRT stations, taking escalators, and working in an air-conditioned office averages between 5,000 to 7,000 steps daily. While this prevents a purely sedentary state, it does not equate to structured aerobic or resistance exercise.</p>
+          <p>Conversely, our intense local humidity increases cardiovascular strain during outdoor workouts, meaning your heart rate rises faster during a run at a local park connector than it would in cooler climates, mildly elevating acute recovery energy costs.</p>
+
+          <h3>How to Safely Use Your Results for Weight Loss</h3>
+          <p>If your goal is sustainable fat loss, you should avoid dropping your daily caloric intake below your calculated BMR. Doing so forces your body to downregulate thyroid output, reduce muscle tissue, and lower your overall metabolic baseline to preserve energy. Instead, aim for a conservative deficit of 300 to 500 calories below your calculated <strong>TDEE</strong>. This preserves essential lean tissue while systematically tapping into stored fat reserves.</p>
+        </article>
+
         <div id="ctaBox" class="package-cta-box d-none">
           <h3 class="fw-bold mb-3" style="color: var(--deep-navy);">Looking Beyond Calories In / Calories Out?</h3>
           <p>For many Singaporeans, weight loss plates despite running a caloric deficit. This is often driven by metabolic friction, high visceral fat, or underlying insulin resistance. Our <strong>Metabolic & Longevity Audit</strong> goes beyond general numbers to evaluate your metabolic flexibility.</p>
           <a href="/metabolic-longevity-audit" class="btn-stewardship">Take the Metabolic Audit</a>
         </div>
 
-        <p class="text-center mt-3" style="font-size: 0.8rem; color: #999;">
+        <p class="text-center mt-4" style="font-size: 0.8rem; color: #999;">
           <strong>Clinical Note:</strong> BMR is calculated using the scientifically validated <em>Mifflin-St Jeor</em> equation. Adjustments for Asian populations are crucial as we carry a higher fat-to-muscle ratio at lower BMIs compared to Western cohorts.
         </p>
       </div>
