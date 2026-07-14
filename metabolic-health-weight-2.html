@@ -365,6 +365,51 @@ custom_schema: |
     accent-color: #3498db;
     margin: 0;
   }
+
+  /* Premium Responsive Table Styles */
+  .table-responsive-container {
+    margin: 40px 0;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(44, 73, 100, 0.03);
+  }
+  .clinical-matrix-table {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+  }
+  .clinical-matrix-table th {
+    background-color: #f8fafc;
+    color: #2c4964;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 18px 20px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .clinical-matrix-table td {
+    padding: 20px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.6;
+  }
+  .clinical-matrix-table tr:hover {
+    background-color: #f8fafc;
+  }
+  .condition-badge {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 0.725rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 </style>
 
 <main id="main">
@@ -374,9 +419,9 @@ custom_schema: |
       <div class="row align-items-center">
         <div class="col-lg-8 text-center text-lg-start">
           <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Metabolic Health</h1>
-          <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Weight Management Through Biological Optimization</h2>
+          <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Weight Management &amp; Endocrine Harmony</h2>
           <p class="lead mb-4" style="color: #4a5568;">
-            Weight management is not a battle of willpower; it is a function of biology. At A Healing Heart, we focus on the metabolic markers to help you achieve a sustainable, healthy weight.
+            Weight retention, fatigue, and vascular decline are rarely issues of willpower. They are symptoms of deeper biological imbalance. At A Healing Heart, we address the full endocrine axis to recover your metabolic flexibility, cardiovascular defense, and physical vitality.
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
             <a href="/booking" class="btn-get-started-custom">Book Metabolic Review</a>
@@ -415,19 +460,119 @@ custom_schema: |
             <ul class="list-unstyled">
               <li class="mb-3 d-flex align-items-start">
                 <i class="fa-solid fa-triangle-exclamation text-warning mt-1 me-3"></i>
-                <span><strong>Persistent Midsection Fat:</strong> Often an indicator of high cortisol or insulin resistance.</span>
+                <span><strong>Persistent Midsection Fat:</strong> Often an indicator of high cortisol, thyroid delay, or insulin resistance.</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
                 <i class="fa-solid fa-triangle-exclamation text-warning mt-1 me-3"></i>
-                <span><strong>Energy Crashes:</strong> Difficulty maintaining energy levels after meals (Post-prandial fatigue).</span>
+                <span><strong>Energy Crashes:</strong> Difficulty maintaining energy levels after meals (Post-prandial fatigue) or cold intolerance.</span>
               </li>
               <li class="mb-3 d-flex align-items-start">
                 <i class="fa-solid fa-triangle-exclamation text-warning mt-1 me-3"></i>
-                <span><strong>Inability to Lose Weight:</strong> Despite strict calorie counting and exercise.</span>
+                <span><strong>Inability to Lose Weight:</strong> Despite strict calorie counting, intensive exercise, or rigid diets.</span>
               </li>
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ULTIMATE METABOLIC AND ENDOCRINE MATRIX SECTION -->
+  <section class="py-5 bg-white border-top">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #2c4964;">The Whole-Body Axis: Beyond Weight Loss</h2>
+        <p class="text-muted max-w-2xl mx-auto">True metabolic health cannot be treated in silos. Our diagnostic-first approach integrates thyroid optimization, PCOS insulin-sensitization, and comprehensive hormonal therapies to safely address the roots of systemic decline.</p>
+      </div>
+
+      <div class="table-responsive-container">
+        <table class="clinical-matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Condition / Axis</th>
+              <th style="width: 25%;">The Metabolic &amp; Vascular Risks</th>
+              <th style="width: 28%;">Diagnostic &amp; Therapeutic Targets</th>
+              <th style="width: 25%;">Go-To Clinic Intervention</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="condition-badge" style="background: #fee2e2; color: #991b1b;">Hypothyroidism</span>
+                <div class="mt-2 fw-bold text-slate-900 small">Underactive Thyroid</div>
+              </td>
+              <td>
+                Slowing of the basal metabolic rate, promoting systemic water retention, elevated diastolic blood pressure, and high LDL cholesterol plaque risk.
+              </td>
+              <td>
+                Evaluating Free T3, Free T4, and high-sensitivity TSH levels. Tracking thyroid antibody panels to rule out Hashimoto’s thyroiditis.
+              </td>
+              <td class="font-semibold text-slate-800">
+                Calibrated thyroid hormone replacement and cellular iodine/selenium trace element optimization.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="condition-badge" style="background: #fef3c7; color: #92400e;">Hyperthyroidism</span>
+                <div class="mt-2 fw-bold text-slate-900 small">Overactive Thyroid</div>
+              </td>
+              <td>
+                Restlessness, hand tremors, chronic muscle wasting (sarcopenia), atrial fibrillation risks, and severe resting tachycardia.
+              </td>
+              <td>
+                Symptom monitoring paired with thyroid receptor antibodies (TRAb) checks and targeted resting cardiometabolic ECG evaluations.
+              </td>
+              <td class="font-semibold text-slate-800">
+                Antithyroid therapy titration coupled with heart rate-stabilizing beta-blockers for myocardial protection.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="condition-badge" style="background: #e0f2fe; color: #0369a1;">PCOS</span>
+                <div class="mt-2 fw-bold text-slate-900 small">Polycystic Ovary Syndrome</div>
+              </td>
+              <td>
+                Severe insulin resistance causing metabolic fat retention around the lower midsection, hyperandrogenism (acne, hair thinning), and risk of early Type 2 Diabetes.
+              </td>
+              <td>
+                Glucose-insulin stability testing, baseline ovarian follicle mapping, and circulating free androgen ratio panels.
+              </td>
+              <td class="font-semibold text-slate-800">
+                Insulin-sensitizing protocols combining Metformin, lifestyle interventions, and targeted GLP-1 receptor therapies.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="condition-badge" style="background: #f0fdf4; color: #166534;">Hormone Therapy</span>
+                <div class="mt-2 fw-bold text-slate-900 small">Menopause / Andropause</div>
+              </td>
+              <td>
+                Rapid vascular stiffening, sharp drops in lean skeletal muscle mass, bone density decay, and accelerated accumulation of abdominal visceral fat.
+              </td>
+              <td>
+                Detailed estradiol, progesterone, free testosterone, sex hormone-binding globulin (SHBG), and lipid panel checks.
+              </td>
+              <td class="font-semibold text-slate-800">
+                Symptom-calibrated Bioidentical Hormone Replacement Therapy (BHRT) aimed at cardiovascular and bone defense.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="condition-badge" style="background: #f3e8ff; color: #6b21a8;">Metabolic Syndrome</span>
+                <div class="mt-2 fw-bold text-slate-900 small">The "Three Highs"</div>
+              </td>
+              <td>
+                A dangerous combination of visceral obesity, high blood pressure, pre-diabetes, and elevated triglycerides driving three-fold cardiac risks.
+              </td>
+              <td>
+                Evaluating visceral fat ratios, liver enzyme levels (screening for fatty liver/MASLD), and vascular endothelial inflammation (hs-CRP).
+              </td>
+              <td class="font-semibold text-slate-800">
+                Diagnostic-first care plans using advanced peptides, renal protection metrics, and in-person physiological support.
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
