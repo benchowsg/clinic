@@ -34,7 +34,18 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
   #bmrCalculator .btn-teal { background-color: var(--primary-teal); border-color: var(--primary-teal); transition: all 0.3s ease; }
   #bmrCalculator .btn-teal:hover { background-color: #006666; transform: translateY(-1px); }
 
-  #resultPanel { transition: opacity 0.8s ease-in-out; }
+  /* Custom state for result panel visibility state instead of Bootstrap's !important utilities */
+  .results-hidden {
+    opacity: 0.15;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out;
+  }
+  
+  .results-visible {
+    opacity: 1 !important;
+    pointer-events: auto;
+    transition: opacity 0.6s ease-in-out;
+  }
   
   .metric-pill {
     background: white;
@@ -81,7 +92,7 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
       <div class="col-lg-10">
         
         <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The Singapore BMR & TDEE Calculator</h1>
-        <p class="lead">Weight management isn't a one-size-fits-all equation. Your **Basal Metabolic Rate (BMR)** represents the absolute minimum energy your body burns at rest just to keep you alive and your organs functioning.</p>
+        <p class="lead">Weight management isn't a one-size-fits-all equation. Your Basal Metabolic Rate (BMR) represents the absolute minimum energy your body burns at rest just to keep you alive and your organs functioning.</p>
         <p>In our Asian context, factors like body composition, ambient humidity, and local activity patterns (like walking to MRT stations vs. desk-bound lifestyles) heavily impact our real daily caloric needs. Estimate your baseline and Total Daily Energy Expenditure (TDEE) below.</p>
 
         <div id="bmrCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
@@ -128,7 +139,7 @@ description: "Calculate your true Basal Metabolic Rate (BMR) and daily energy ne
               <button id="calculateBtn" class="btn btn-teal w-100 rounded-pill fw-bold text-white py-3">Calculate Metabolic Baseline</button>
             </div>
 
-            <div id="resultPanel" class="col-md-7 ps-md-5 text-center d-flex flex-column justify-content-center opacity-25">
+            <div id="resultPanel" class="col-md-7 ps-md-5 text-center d-flex flex-column justify-content-center results-hidden">
               <h4 class="fw-bold mb-4" style="color: var(--deep-navy);">2. Daily Energy Expenditure</h4>
               
               <div class="metric-pill">
@@ -196,4 +207,51 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   }
   bmr = Math.round(bmr);
 
-  // 4. Activity Multipliers (
+  // 4. Activity Multipliers (TDEE)
+  let multiplier = 1.2;
+  switch (activity) {
+    case 'sedentary': multiplier = 1.2; break;
+    case 'light':     multiplier = 1.375; break;
+    case 'moderate':  multiplier = 1.55; break;
+    case 'very':      multiplier = 1.725; break;
+    case 'extreme':   multiplier = 1.9; break;
+  }
+  const tdee = Math.round(bmr * multiplier);
+
+  // 5. UI Reveal Logic
+  const resultPanel = document.getElementById('resultPanel');
+  const localTip = document.getElementById('localTipText');
+  const narrative = document.getElementById('narrativeText');
+  const cta = document.getElementById('ctaBox');
+
+  // Switch classes to trigger smooth CSS transition
+  resultPanel.classList.remove('results-hidden');
+  resultPanel.classList.add('results-visible');
+  
+  document.getElementById('bmrOutput').innerText = bmr + " kcal";
+  document.getElementById('tdeeOutput').innerText = tdee + " kcal";
+  narrative.classList.remove('d-none');
+  cta.classList.remove('d-none');
+
+  // 6. Food Equivalent Visualizers (Singapore Hawker Context)
+  const chickenRiceEquiv = (tdee / 600).toFixed(1);
+
+  localTip.innerText = "Daily Energy Context";
+  localTip.style.color = "var(--primary-teal)";
+
+  narrative.innerHTML = `
+    <div class="p-2">
+      <p class="mb-2"><b>Understanding your numbers:</b> Your base metabolic rate is <b>${bmr} calories/day</b>. Factor in your physical activity level, and your body burns approximately <b>${tdee} calories/day</b>.</p>
+      
+      <div class="p-3 bg-white border-start border-warning-custom border-4 rounded-3 shadow-sm my-3">
+        <h6 class="fw-bold text-dark mb-2" style="font-size: 0.85rem; text-transform: uppercase; color: var(--deep-navy) !important;">The Singapore Hawker Equivalency</h6>
+        <p class="mb-0" style="font-size: 0.8rem; line-height: 1.6;">
+          Your total daily energy expenditure of <strong>${tdee} kcal</strong> is physically equivalent to burning roughly <strong>${chickenRiceEquiv} plates</strong> of standard roasted chicken rice every single day.
+        </p>
+      </div>
+      
+      <p class="small mb-0"><strong>Metabolic Advice:</strong> If you are looking to lose weight, aiming for a modest deficit of 300–500 kcal off your TDEE (${tdee - 300} to ${tdee - 500} kcal/day) is safer and far more sustainable than dropping below your vital BMR baseline (${bmr} kcal).</p>
+    </div>
+  `;
+});
+</script>
