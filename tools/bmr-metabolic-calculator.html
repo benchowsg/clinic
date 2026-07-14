@@ -73,6 +73,26 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
     box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   }
 
+  /* Intro and Outro Call to Action Boxes */
+  .intro-program-box {
+    background: #f8fbfb;
+    border-left: 5px solid var(--primary-teal);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 35px;
+  }
+  .btn-program-link {
+    color: var(--primary-teal);
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s ease;
+  }
+  .btn-program-link:hover {
+    color: #006666;
+    text-decoration: underline;
+  }
+
   .package-cta-box {
     background: linear-gradient(135deg, #fdfcfb 0%, #f0f7f7 100%);
     border: 2px solid var(--primary-teal);
@@ -132,6 +152,15 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
         <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The Singapore BMR & TDEE Calculator</h1>
         <p class="lead">Weight management is not a standard mathematical equation. Your **Basal Metabolic Rate (BMR)** represents the absolute baseline energy your body expends at rest to sustain vital organ functions.</p>
         <p>In a localized Asian context, typical calculators often miss the mark. Our genetics, food landscapes, and daily habits (ranging from intense humidity exposure to sedentary office commutes) demand a more customized metabolic assessment. Calculate your daily baseline and Total Daily Energy Expenditure (TDEE) below.</p>
+
+        <!-- Program Introduction Box -->
+        <div class="intro-program-box shadow-sm">
+          <h5 class="fw-bold mb-2" style="color: var(--deep-navy);">A Clinically Supervised Path to Sustainable Fat Loss</h5>
+          <p class="small mb-3" style="color: #555;">Calorie calculations are just one piece of the puzzle. Real weight management requires targeting the metabolic roots of your body composition, preserving lean muscle mass, and identifying underlying hormonal bottlenecks.</p>
+          <a href="https://www.ahealingheartmedical.com/metabolic-health-weight" target="_blank" class="btn-program-link">
+            Explore our Metabolic Health & Weight Management Program <i class="bi bi-arrow-right-short"></i>
+          </a>
+        </div>
 
         <!-- Calculator Interface -->
         <div id="bmrCalculator" class="stewardship-card border rounded-4 bg-light p-4 p-md-5 my-5 shadow-sm">
