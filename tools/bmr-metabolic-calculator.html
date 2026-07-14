@@ -150,15 +150,15 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
       <div class="col-lg-10">
         
         <h1 class="main-title fw-bold" style="color: var(--deep-navy);">The Singapore BMR & TDEE Calculator</h1>
-        <p class="lead">Weight management is not a standard mathematical equation. Your Basal Metabolic Rate (BMR) represents the absolute baseline energy your body expends at rest to sustain vital organ functions.</p>
-        <p>In a localized Asian context, typical calculators often miss the mark. Our genetics, food landscapes, and daily habits (ranging from intense humidity exposure to sedentary office commutes) demand a more customized metabolic assessment. Calculate your daily baseline and Total Daily Energy Expenditure (TDEE) below.</p>
+        <p class="lead">Weight management is not a standard mathematical equation. Your **Basal Metabolic Rate (BMR)** represents the absolute baseline energy your body expends at rest to sustain vital organ functions.</p>
+        <p>In a localized Asian context, typical calculators often miss the mark. Our genetics, food landscapes, and daily habits demand a more customized metabolic assessment. Calculate your daily baseline and Total Daily Energy Expenditure (TDEE) below based on your specific body composition goals.</p>
 
         <!-- Program Introduction Box -->
         <div class="intro-program-box shadow-sm">
-          <h5 class="fw-bold mb-2" style="color: var(--deep-navy);">A Clinically Supervised Path to Sustainable Weight Loss</h5>
-          <p class="small mb-3" style="color: #555;">Calorie calculations are just one piece of the puzzle. Real weight management requires targeting the metabolic roots of your body composition, preserving lean muscle mass, and identifying underlying hormonal bottlenecks.</p>
+          <h5 class="fw-bold mb-2" style="color: var(--deep-navy);">A Clinically Supervised Path to Sustainable Body Recomposition</h5>
+          <p class="small mb-3" style="color: #555;">Whether your goal is targeted fat loss or building clean, functional muscle mass, metabolic health is the foundation. Real progress requires optimization of your lean mass ratios, hormones, and nutrient timing.</p>
           <a href="https://www.ahealingheartmedical.com/metabolic-health-weight" target="_blank" class="btn-program-link">
-            >> Explore our Metabolic Health & Weight Management Program <i class="bi bi-arrow-right-short"></i>
+            Explore our Metabolic Health & Weight Management Program <i class="bi bi-arrow-right-short"></i>
           </a>
         </div>
 
@@ -194,6 +194,15 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
                 <input type="number" id="height" class="form-control rounded-pill" placeholder="e.g. 170">
               </div>
 
+              <div class="form-group mb-3">
+                <label class="form-label small text-muted">Your Primary Goal</label>
+                <select id="goal" class="form-select rounded-pill">
+                  <option value="lose">Lose Fat / Weight Loss</option>
+                  <option value="maintain">Maintain Current Weight</option>
+                  <option value="gain">Build Muscle / Weight Gain</option>
+                </select>
+              </div>
+
               <div class="form-group mb-4">
                 <label class="form-label small text-muted">Activity Level (Singapore Context)</label>
                 <select id="activity" class="form-select rounded-pill" style="font-size: 0.9rem;">
@@ -219,9 +228,9 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
               </div>
 
               <div class="metric-pill">
-                <span class="small text-muted d-block">Est. Daily Calorie Needs (TDEE)</span>
+                <span class="small text-muted d-block" id="tdeeLabel">Est. Daily Calorie Needs (TDEE)</span>
                 <strong id="tdeeOutput" class="h4" style="color: var(--primary-teal);">--</strong>
-                <span class="small text-muted d-block">kcal / day (To maintain current weight)</span>
+                <span class="small text-muted d-block" id="tdeeSublabel">kcal / day (To maintain current weight)</span>
               </div>
 
               <p id="localTipText" class="fw-bold mt-2"></p>
@@ -236,12 +245,12 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
         <article class="educational-content">
           <h2>Why Standard BMR Calculations Fail the Asian Phenotype</h2>
           <p>Most standard metabolic rate calculators on the internet rely on mathematical models built using Western cohorts. However, clinical research shows that East Asian, South Asian, and Malay populations display a unique body composition dynamic often called the <strong>"Asian Phenotype."</strong></p>
-          <p>Even at a normal BMI, individuals of Asian descent tend to carry a higher percentage of body fat, specifically <strong>visceral fat</strong> (internal fat wrapped around vital organs), and a lower percentage of lean muscle mass compared to Caucasians of the exact same weight. Because muscle is far more metabolically active than fat tissue, a lower muscle mass baseline means your actual, resting BMR might be lower than what generic calculators estimate.</p>
+          <p>Even at a normal BMI, individuals of Asian descent tend to carry a higher percentage of body fat—specifically <strong>visceral fat</strong> (internal fat wrapped around vital organs)—and a lower percentage of lean muscle mass compared to Caucasians of the exact same weight. Because muscle is far more metabolically active than fat tissue, a lower muscle mass baseline means your actual, resting BMR might be lower than what generic calculators estimate.</p>
 
           <h3>Understanding BMR vs. TDEE</h3>
           <p>It is crucial to differentiate between your Basal Metabolic Rate (BMR) and your Total Daily Energy Expenditure (TDEE):</p>
           <ul>
-            <li><strong>Basal Metabolic Rate (BMR):</strong> The exact amount of energy (calories) your body requires to perform life-sustaining functions (e.g. cellular respiration, circulation, and hormone regulation) completely at rest.</li><br>
+            <li><strong>Basal Metabolic Rate (BMR):</strong> The exact amount of energy (calories) your body requires to perform life-sustaining functions—like cellular respiration, circulation, and hormone regulation—completely at rest.</li>
             <li><strong>Total Daily Energy Expenditure (TDEE):</strong> The total amount of calories you burn in a 24-hour window once physical movement, daily commutes, digestion, and deliberate exercise are added to your baseline BMR.</li>
           </ul>
 
@@ -249,14 +258,18 @@ description: "Estimate your true Basal Metabolic Rate (BMR) and daily energy nee
           <p>Your daily physical activity is heavily influenced by your environment. In Singapore, daily energy expenditure is rarely represented by a standard western "active" profile. A typical commuter walking to and from MRT stations, taking escalators, and working in an air-conditioned office averages between 5,000 to 7,000 steps daily. While this prevents a purely sedentary state, it does not equate to structured aerobic or resistance exercise.</p>
           <p>Conversely, our intense local humidity increases cardiovascular strain during outdoor workouts, meaning your heart rate rises faster during a run at a local park connector than it would in cooler climates, mildly elevating acute recovery energy costs.</p>
 
-          <h3>How to Safely Use Your Results for Weight Loss</h3>
-          <p>If your goal is sustainable fat loss, you should avoid dropping your daily caloric intake below your calculated BMR. Doing so forces your body to downregulate thyroid output, reduce muscle tissue, and lower your overall metabolic baseline to preserve energy. Instead, aim for a conservative deficit of 300 to 500 calories below your calculated <strong>TDEE</strong>. This preserves essential lean tissue while systematically tapping into stored fat reserves.</p>
+          <h3>Weight Gain vs. Fat Loss: Caloric Targets</h3>
+          <p>How you utilize your calculated TDEE depends entirely on your objective:</p>
+          <ul>
+            <li><strong>For Fat Loss:</strong> Avoid dropping below your vital BMR. Aim for a conservative deficit of 300 to 500 calories below your TDEE to systematically burn fat while preserving critical lean muscle mass.</li>
+            <li><strong>For Muscle Building / Weight Gain:</strong> Your body cannot build new tissue out of nothing. To grow muscle, you must create a clinical "caloric surplus"—typically consuming 300 to 500 calories *above* your TDEE. This must be paired with progressive resistance training and adequate daily protein intake (1.6 to 2.2g per kg of body weight) to ensure the weight gained is high-quality skeletal muscle rather than body fat.</li>
+          </ul>
         </article>
 
         <!-- Call to Action Box -->
         <div id="ctaBox" class="package-cta-box d-none">
           <h3 class="fw-bold mb-3" style="color: var(--deep-navy);">Looking Beyond Calories In / Calories Out?</h3>
-          <p>For many Singaporeans, weight loss plates despite running a caloric deficit. This is often driven by metabolic friction, high visceral fat, or underlying insulin resistance. Our <strong>Metabolic & Longevity Audit</strong> goes beyond general numbers to evaluate your metabolic flexibility.</p>
+          <p>Whether you struggle with a stubborn plateau, high visceral fat, or struggle to gain healthy skeletal mass due to high metabolic burn, our <strong>Metabolic & Longevity Audit</strong> evaluates your exact physiological blueprint.</p>
           <a href="/metabolic-longevity-audit" class="btn-stewardship">Take the Metabolic Audit</a>
         </div>
 
@@ -278,6 +291,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   const weight = parseFloat(document.getElementById('weight').value);
   const height = parseFloat(document.getElementById('height').value);
   const activity = document.getElementById('activity').value;
+  const goal = document.getElementById('goal').value;
 
   // 1. Basic Field Check
   if (!age || !weight || !height) {
@@ -315,7 +329,22 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   }
   const tdee = Math.round(bmr * multiplier);
 
-  // 5. UI Reveal Logic
+  // 5. Target Calculations based on Goal
+  let targetCalories = tdee;
+  let tdeeLabelText = "Est. Daily Calorie Needs (TDEE)";
+  let tdeeSublabelTextText = "kcal / day (To maintain current weight)";
+  
+  if (goal === 'lose') {
+    targetCalories = tdee - 400; // conservative 400 deficit
+    tdeeLabelText = "Target Intake for Fat Loss";
+    tdeeSublabelTextText = "kcal / day (Deficit target)";
+  } else if (goal === 'gain') {
+    targetCalories = tdee + 400; // clean 400 surplus
+    tdeeLabelText = "Target Intake for Muscle/Weight Gain";
+    tdeeSublabelTextText = "kcal / day (Surplus target)";
+  }
+
+  // 6. UI Reveal Logic
   const resultPanel = document.getElementById('resultPanel');
   const localTip = document.getElementById('localTipText');
   const narrative = document.getElementById('narrativeText');
@@ -326,29 +355,68 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   resultPanel.classList.add('results-visible');
   
   document.getElementById('bmrOutput').innerText = bmr + " kcal";
-  document.getElementById('tdeeOutput').innerText = tdee + " kcal";
+  document.getElementById('tdeeLabel').innerText = tdeeLabelText;
+  document.getElementById('tdeeOutput').innerText = targetCalories + " kcal";
+  document.getElementById('tdeeSublabel').innerText = tdeeSublabelTextText;
+  
   narrative.classList.remove('d-none');
   cta.classList.remove('d-none');
 
-  // 6. Food Equivalent Visualizers (Singapore Hawker Context)
-  const chickenRiceEquiv = (tdee / 600).toFixed(1);
+  // 7. Dynamic Narrative Generation based on Goal
+  const chickenRiceEquiv = (targetCalories / 600).toFixed(1);
+  const minProtein = Math.round(weight * 1.6);
+  const maxProtein = Math.round(weight * 2.2);
 
   localTip.innerText = "Daily Energy Context";
   localTip.style.color = "var(--primary-teal)";
 
-  narrative.innerHTML = `
-    <div class="p-2">
-      <p class="mb-2"><b>Understanding your numbers:</b> Your base metabolic rate is <b>${bmr} calories/day</b>. Factor in your physical activity level, and your body burns approximately <b>${tdee} calories/day</b>.</p>
-      
-      <div class="p-3 bg-white border-start border-warning-custom border-4 rounded-3 shadow-sm my-3">
-        <h6 class="fw-bold text-dark mb-2" style="font-size: 0.85rem; text-transform: uppercase; color: var(--deep-navy) !important;">The Singapore Hawker Equivalency</h6>
-        <p class="mb-0" style="font-size: 0.8rem; line-height: 1.6;">
-          Your total daily energy expenditure of <strong>${tdee} kcal</strong> is physically equivalent to burning roughly <strong>${chickenRiceEquiv} plates</strong> of standard roasted chicken rice every single day.
-        </p>
+  if (goal === 'gain') {
+    narrative.innerHTML = `
+      <div class="p-2">
+        <p class="mb-2"><b>Understanding your growth target:</b> Your resting survival baseline (BMR) is <b>${bmr} kcal</b>, and your maintenance TDEE is <b>${tdee} kcal</b>. To systematically build new muscle tissue, your target surplus intake is <b>${targetCalories} calories/day</b>.</p>
+        
+        <div class="p-3 bg-white border-start border-warning-custom border-4 rounded-3 shadow-sm my-3">
+          <h6 class="fw-bold text-dark mb-2" style="font-size: 0.85rem; text-transform: uppercase; color: var(--deep-navy) !important;">Singapore Hawker & Protein Targets</h6>
+          <p class="mb-1" style="font-size: 0.8rem; line-height: 1.6;">
+            Consuming <strong>${targetCalories} kcal</strong> is equivalent to burning off <strong>${chickenRiceEquiv} plates</strong> of roasted chicken rice.
+          </p>
+          <p class="mb-0 text-success fw-bold" style="font-size: 0.8rem;">
+            Target Protein: Aim for ${minProtein}g to ${maxProtein}g of high-quality protein daily to support recovery.
+          </p>
+        </div>
+        
+        <p class="small mb-0"><strong>Muscle Growth Tip:</strong> A caloric surplus must be paired with progressive resistance training. Simply overeating without physical stimulus will lead to body fat gain rather than skeletal muscle hypertrophy.</p>
       </div>
-      
-      <p class="small mb-0"><strong>Metabolic Advice:</strong> If you are looking to lose weight, aiming for a modest deficit of 300–500 kcal off your TDEE (${tdee - 300} to ${tdee - 500} kcal/day) is safer and far more sustainable than dropping below your vital BMR baseline (${bmr} kcal).</p>
-    </div>
-  `;
+    `;
+  } else if (goal === 'lose') {
+    narrative.innerHTML = `
+      <div class="p-2">
+        <p class="mb-2"><b>Understanding your deficit target:</b> Your resting survival baseline (BMR) is <b>${bmr} kcal</b>. To systematically lose fat sustainably, your daily intake target is <b>${targetCalories} calories/day</b>.</p>
+        
+        <div class="p-3 bg-white border-start border-warning-custom border-4 rounded-3 shadow-sm my-3">
+          <h6 class="fw-bold text-dark mb-2" style="font-size: 0.85rem; text-transform: uppercase; color: var(--deep-navy) !important;">The Singapore Hawker Equivalency</h6>
+          <p class="mb-0" style="font-size: 0.8rem; line-height: 1.6;">
+            Your target intake of <strong>${targetCalories} kcal</strong> is physically equivalent to <strong>${chickenRiceEquiv} plates</strong> of standard roasted chicken rice.
+          </p>
+        </div>
+        
+        <p class="small mb-0"><strong>Metabolic Advice:</strong> Avoid dropping your daily intake below your vital BMR baseline of <b>${bmr} kcal</b>. Extreme calorie restriction forces the thyroid and metabolism to downregulate, stalling fat loss and degrading muscle tissue.</p>
+      </div>
+    `;
+  } else {
+    // Maintenance Goal
+    narrative.innerHTML = `
+      <div class="p-2">
+        <p class="mb-2"><b>Understanding your maintenance target:</b> To stay exactly as you are, you should aim to balance your energy output with an intake of <b>${tdee} calories/day</b>.</p>
+        
+        <div class="p-3 bg-white border-start border-warning-custom border-4 rounded-3 shadow-sm my-3">
+          <h6 class="fw-bold text-dark mb-2" style="font-size: 0.85rem; text-transform: uppercase; color: var(--deep-navy) !important;">The Singapore Hawker Equivalency</h6>
+          <p class="mb-0" style="font-size: 0.8rem; line-height: 1.6;">
+            Your maintenance intake of <strong>${tdee} kcal</strong> matches the caloric load of roughly <strong>${chickenRiceEquiv} plates</strong> of standard roasted chicken rice.
+          </p>
+        </div>
+      </div>
+    `;
+  }
 });
 </script>
