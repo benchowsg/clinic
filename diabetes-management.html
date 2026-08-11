@@ -1,18 +1,19 @@
 ---
 layout: default
-permalink: /diabetes-management
-title: Diabetes Management | A Healing Heart Medical
-description: Comprehensive diabetes care in Singapore. Focused on blood sugar stability, vascular health, and preventing long-term heart and organ damage.
+permalink: /diabetes-management-2
+title: "Clinical Diabetes Management & Precision Metabolic Health | A Healing Heart Medical Clinic"
+description: "Comprehensive diabetes & prediabetes care in Singapore. Precision glycemic evaluations using HbA1c, OGTT, and dynamic glucose monitoring (BGM) for long-term vascular & organ protection."
 custom_schema: |
   [
     {
       "@context": "https://schema.org",
       "@type": "MedicalWebPage",
-      "name": "Clinical Diabetes Management & Vascular Protection",
-      "description": "Evidence-based management of Type 2 Diabetes and Pre-Diabetes in Singapore, focusing on HbA1c stabilization and prevention of cardiovascular complications.",
+      "name": "Clinical Diabetes Management & Precision Metabolic Health",
+      "description": "Evidence-based management of Type 2 Diabetes and Pre-Diabetes in Singapore using HbA1c, OGTT, and dynamic glucose monitoring to prevent cardiovascular complications.",
+      "medicalSpecialty": ["Endocrinology", "Cardiology", "Internal Medicine"],
       "mainEntity": {
         "@type": "MedicalCondition",
-        "name": "Type 2 Diabetes Mellitus",
+        "name": "Type 2 Diabetes Mellitus & Prediabetes",
         "associatedAnatomy": {
           "@type": "AnatomicalSystem",
           "name": "Circulatory System"
@@ -20,7 +21,7 @@ custom_schema: |
         "possibleComplication": ["Heart Attack", "Stroke", "Diabetic Retinopathy", "Kidney Failure"],
         "primaryPrevention": {
           "@type": "MedicalTherapy",
-          "name": "HbA1c Stabilization and Lifestyle Optimization"
+          "name": "Precision Glycemic Assessment (HbA1c, OGTT, BGM) and Metabolic Optimization"
         }
       }
     },
@@ -38,10 +39,34 @@ custom_schema: |
         },
         {
           "@type": "Question",
+          "name": "Why is an Oral Glucose Tolerance Test (OGTT) better than fasting glucose for detecting prediabetes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fasting blood glucose only provides a static snapshot after rest. In early insulin resistance, the body compensates by overproducing insulin to keep fasting levels normal. An OGTT challenges your system with a standardized glucose drink to reveal hidden post-meal spikes that fasting tests miss."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What is a healthy HbA1c range for Asians?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "According to MOH Singapore guidelines, an optimal range is below 6.0%. Pre-diabetes is 6.0% to 6.4%, and the management goal for diagnosed diabetics is typically to maintain a level below 7.0% to protect organs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a lower limit for blood sugar target ranges?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Lowering blood sugar is not an unlimited goal. A real-time blood glucose level dropping below 3.9 mmol/L triggers hypoglycemia, causing symptoms such as shakiness, cognitive fog, cardiac palpitations, and severe dizziness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the clinic protect against medication-induced hypoglycemia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We prioritize modern, glucose-dependent pharmacological options—such as SGLT2 inhibitors and GLP-1 receptor agonists—that only lower blood sugar when elevated."
           }
         }
       ]
@@ -141,6 +166,31 @@ custom_schema: |
     position: relative;
     z-index: 10;
   }
+
+  .diag-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .diag-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(44, 73, 100, 0.08);
+  }
+  .diag-badge {
+    display: inline-block;
+    background-color: #e6f2f2;
+    color: #008080;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 </style>
 
 <main id="main">
@@ -149,10 +199,10 @@ custom_schema: |
     <div class="container py-5 mt-4">
       <div class="row align-items-center">
         <div class="col-lg-8 text-center text-lg-start">
-          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Diabetes Management</h1>
+          <h1 class="display-4 fw-bold mb-3" style="color: #3498DB;">Diabetes & Metabolic Management</h1>
           <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Proactive Care for Vascular & Heart Protection</h2>
           <p class="lead mb-4" style="color: #4a5568;">
-            Diabetes is more than just blood sugar levels. At A Healing Heart, we provide systemic clinical management to stabilize glucose, protect your micro-vessels, and significantly reduce the risk of cardiovascular complications.
+            Diabetes is more than just fasting blood sugar. At A Healing Heart, we combine precision diagnostics, including <strong>HbA1c</strong>, <strong>OGTT</strong>, and <strong>dynamic glucose monitoring</strong>, to stabilize glucose, protect your micro-vessels, and significantly reduce cardiovascular risk.
           </p>
           <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
             <a href="/booking" class="btn-get-started-custom">Book Diabetes Consult</a>
@@ -160,6 +210,53 @@ custom_schema: |
                class="btn-outline-primary-custom rounded-pill px-5 py-2 fw-bold">
                <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp Inquiry
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: THREE-TIERED DIAGNOSTIC ARCHITECTURE -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #2c4964;">Our Precision Diagnostic Framework</h2>
+        <p class="text-muted mx-auto" style="max-width: 700px;">
+          Metabolic dysfunction begins years before fasting blood sugar rises. We evaluate your complete glycemic architecture using three complementary diagnostic pillars:
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- HbA1c -->
+        <div class="col-lg-4">
+          <div class="diag-card h-100">
+            <span class="diag-badge">Tier 1: 3-Month Average</span>
+            <h3 class="h4 fw-bold mb-3" style="color: #2c4964;">HbA1c Testing</h3>
+            <p class="text-muted small mb-0">
+              Measures the percentage of glycated hemoglobin to establish your 2 to 3-month glycemic baseline. It offers an accurate, non-fasting indicator of long-term blood sugar stability and therapeutic progress.
+            </p>
+          </div>
+        </div>
+
+        <!-- OGTT -->
+        <div class="col-lg-4">
+          <div class="diag-card h-100">
+            <span class="diag-badge">Tier 2: The Stress Test</span>
+            <h3 class="h4 fw-bold mb-3" style="color: #2c4964;">OGTT (Oral Glucose Tolerance)</h3>
+            <p class="text-muted small mb-0">
+              Evaluates your body’s dynamic glucose clearance capacity after consuming a standardized 75g glucose drink. Crucial for detecting early <strong>Impaired Glucose Tolerance (IGT)</strong> and prediabetes that standard fasting tests miss.
+            </p>
+          </div>
+        </div>
+
+        <!-- BGM / Dynamic Monitoring -->
+        <div class="col-lg-4">
+          <div class="diag-card h-100">
+            <span class="diag-badge">Tier 3: Real-World Pattern Mapping</span>
+            <h3 class="h4 fw-bold mb-3" style="color: #2c4964;">BGM & Dynamic Tracking</h3>
+            <p class="text-muted small mb-0">
+              Utilizes Blood Glucose Monitoring (BGM) and continuous sensors to map real-time postprandial (post-meal) spikes, lifestyle responses, and daily glycemic variability to tailor personalized intervention.
+            </p>
           </div>
         </div>
       </div>
@@ -227,14 +324,14 @@ custom_schema: |
           <div class="systemic-card">
             <div class="text-primary mb-3"><i class="fa-solid fa-chart-line fa-2xl"></i></div>
             <h5 class="fw-bold">HbA1c Stabilization</h5>
-            <p class="small text-muted">Continuous oversight to keep your average blood sugar within the "Heart-Safe" zone to prevent nerve damage.</p>
+            <p class="small text-muted">Continuous oversight to keep your average blood sugar within the "Heart-Safe" zone to prevent nerve and vessel damage.</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="systemic-card">
             <div class="text-primary mb-3"><i class="fa-solid fa-stethoscope fa-2xl"></i></div>
-            <h5 class="fw-bold">Vascular Assessment</h5>
-            <p class="small text-muted">Regular screening for arterial stiffness and carotid health specifically for diabetic patients.</p>
+            <h5 class="fw-bold">Dynamic Clearance (OGTT)</h5>
+            <p class="small text-muted">Periodic stress testing to evaluate postprandial insulin sensitivity and catch early metabolic drift.</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -273,7 +370,7 @@ custom_schema: |
           <ul class="list-unstyled mt-4">
             <li class="mb-4 d-flex align-items-start">
               <div class="me-3 text-primary"><i class="fa-solid fa-vial fa-xl"></i></div>
-              <div><strong>Personalized Medication Plans:</strong> Tailored therapies to manage glucose spikes without causing unnecessary side effects.</div>
+              <div><strong>Precision Diagnostic Testing:</strong> Utilizing HbA1c, OGTT, and BGM to build a complete picture of your glucose clearance.</div>
             </li>
             <li class="mb-4 d-flex align-items-start">
               <div class="me-3 text-primary"><i class="fa-solid fa-user-doctor fa-xl"></i></div>
@@ -308,11 +405,69 @@ custom_schema: |
                 </div>
              </div>
              <p class="x-small text-muted mt-3 text-center" style="font-size: 0.75rem;">
-               <em>*Reference: MOH Clinical Practice Guidelines. Note: Managing levels early is key to preventing heart complications.</em>
+                <em>*Reference: MOH Clinical Practice Guidelines. Note: Managing levels early is key to preventing heart complications.</em>
              </p>
           </div>
         </div>
       </div>
+
+      <!-- PATIENT TIP CARD: RECOGNIZING & TREATING LOW BLOOD SUGAR -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="p-4 rounded-4 bg-white border shadow-sm" style="border-left: 5px solid #ef3340 !important;">
+            <div class="d-flex align-items-center mb-3">
+              <div class="me-3 text-danger"><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+              <div>
+                <h4 class="fw-bold mb-0" style="color: #2c4964; font-size: 1.2rem;">Clinical Patient Guidance: Managing Low Blood Sugar</h4>
+                <p class="small text-muted mb-0">What to do if your blood glucose (BGM) drops below <strong>3.9 mmol/L</strong></p>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <!-- EARLY WARNING SIGNS -->
+              <div class="col-md-5">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <h6 class="fw-bold mb-2" style="color: #ef3340; font-size: 1.1rem;">
+                    <i class="fa-solid fa-bell me-1"></i> Recognize Early Signs
+                  </h6>
+                  <ul class="x-small text-muted ps-3 mb-0" style="font-size: 0.95rem; line-height: 1.8;">
+                    <li>Shakiness or subtle hand tremors</li>
+                    <li>Cold sweats or sudden clamminess</li>
+                    <li>Rapid heart rate / palpitations</li>
+                    <li>Unexplained anxiety or irritability</li>
+                    <li>Lightheadedness or sudden hunger</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- THE 15-15 RULE -->
+              <div class="col-md-7">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <h6 class="fw-bold mb-2" style="color: #2c4964; font-size: 1.1rem;">
+                    <i class="fa-solid fa-clock-rotate-left me-1"></i> The 15-15 Protocol
+                  </h6>
+                  <ol class="x-small text-muted ps-3 mb-0" style="font-size: 0.95rem; line-height: 1.8;">
+                    <li class="mb-1">
+                      <strong>Consume 15g Fast-Acting Carbs:</strong> Take 1/2 cup of fruit juice, 3–4 glucose tablets, or 1 tablespoon of honey/sugar. Avoid fat-heavy foods like chocolate, as fat slows sugar absorption.
+                    </li>
+                    <li class="mb-1">
+                      <strong>Rest for 15 Minutes:</strong> Allow your body time to absorb the glucose.
+                    </li>
+                    <li>
+                      <strong>Recheck Blood Glucose (BGM):</strong> If still below <strong>3.9 mmol/L</strong>, repeat step 1. Once normalized, eat a light protein-rich meal or snack to keep levels stable.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <p class="x-small text-muted mb-0 text-center" style="font-size: 0.8rem;">
+              <em><strong>Important:</strong> If symptoms worsen, cause confusion, or fail to resolve after two treatment cycles, seek immediate medical attention or emergency assistance.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -329,31 +484,43 @@ custom_schema: |
     </div>
   </section>
 
-<section class="py-5" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
-  <div class="container">
-    <div class="mb-5">
-      <h2 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Diabetes Management: Clinical FAQ</h2>
-      <p class="text-muted">Expert insights on metabolic health and preventing long-term complications.</p>
+  <section class="py-5" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+    <div class="container">
+      <div class="mb-5">
+        <h2 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Diabetes Management: Clinical FAQ</h2>
+        <p class="text-muted">Expert insights on metabolic health and preventing long-term complications.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Why is diabetes linked to heart disease?</h3>
+          <p class="small text-muted">High glucose levels cause <strong>Endothelial Inflammation</strong>, damaging the lining of your arteries. This makes it significantly easier for plaque to build up, leading to a much higher risk of heart attack and stroke compared to non-diabetics.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Why is an OGTT test recommended for prediabetes?</h3>
+          <p class="small text-muted">Fasting glucose only shows your sugar level after rest. An <strong>Oral Glucose Tolerance Test (OGTT)</strong> challenges your body with a standardized sugar drink to reveal hidden post-meal spikes caused by early insulin resistance—often long before fasting glucose becomes abnormal.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Can "Pre-Diabetes" really be reversed?</h3>
+          <p class="small text-muted">Yes. In the pre-diabetes stage (HbA1c 6.0% - 6.4%), the body is still highly responsive to <strong>metabolic optimization</strong>. With personalized nutrition, dynamic glucose monitoring (BGM), and targeted clinical guidance, it is possible to restore insulin sensitivity and prevent Type 2 Diabetes.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">How often should I have my HbA1c checked?</h3>
+          <p class="small text-muted">For those under management, we recommend a review every 3 to 6 months. This allows Dr. Thang to adjust your <strong>Risk Stratification Roadmap</strong> and ensure your medication dosage is at the lowest effective level for organ protection.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Is there a lower limit for blood sugar target ranges?</h3>
+          <p class="small text-muted">
+            Yes. Lowering blood sugar is not an unlimited goal. A real-time blood glucose level dropping below <strong>3.9 mmol/L</strong> triggers hypoglycemia, causing neuroglycopenic symptoms such as shakiness, cognitive fog, cardiac palpitations, and severe dizziness. In diabetes management, avoiding low blood sugar episodes is as vital as preventing high spikes.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">How does the clinic protect against medication-induced hypoglycemia?</h3>
+          <p class="small text-muted">
+            We prioritize modern, glucose-dependent pharmacological options—such as SGLT2 inhibitors and GLP-1 receptor agonists—that only lower blood sugar when elevated. By utilizing dynamic monitoring (BGM) and individualized HbA1c target stratification, Dr. Thang continuously adjusts therapy to maintain optimal vascular protection without over-medicating or causing dangerous drops.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="row g-4">
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">Why is diabetes linked to heart disease?</h3>
-        <p class="small text-muted">High glucose levels cause <strong>Endothelial Inflammation</strong>, damaging the lining of your arteries. This makes it significantly easier for plaque to build up, leading to a much higher risk of heart attack and stroke compared to non-diabetics.</p>
-      </div>
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">Can "Pre-Diabetes" really be reversed?</h3>
-        <p class="small text-muted">Yes. In the pre-diabetes stage (HbA1c 6.0% - 6.4%), the body is still highly responsive to <strong>metabolic optimization</strong>. With personalized nutrition and targeted clinical guidance, it is possible to restore insulin sensitivity and prevent the progression to Type 2 Diabetes.</p>
-      </div>
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">How often should I have my HbA1c checked?</h3>
-        <p class="small text-muted">For those under management, we recommend a review every 3 to 6 months. This allows Dr. Thang to adjust your <strong>Risk Stratification Roadmap</strong> and ensure your medication dosage is at the lowest effective level for organ protection.</p>
-      </div>
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">What is the goal for an Asian diabetic patient?</h3>
-        <p class="small text-muted">While the general goal is an HbA1c below 7.0%, we focus on <strong>Clinical Synergy</strong>, ensuring that your blood pressure and cholesterol are also managed, as these three factors together determine your total vascular safety.</p>
-      </div>
-    </div>
-  </div>
-</section>
-                     
+  </section>
+                        
 </main>
