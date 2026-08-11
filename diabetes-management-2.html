@@ -52,6 +52,22 @@ custom_schema: |
             "@type": "Answer",
             "text": "According to MOH Singapore guidelines, an optimal range is below 6.0%. Pre-diabetes is 6.0% to 6.4%, and the management goal for diagnosed diabetics is typically to maintain a level below 7.0% to protect organs."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a lower limit for blood sugar target ranges?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Lowering blood sugar is not an unlimited goal. A real-time blood glucose level dropping below 3.9 mmol/L triggers hypoglycemia, causing symptoms such as shakiness, cognitive fog, cardiac palpitations, and severe dizziness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the clinic protect against medication-induced hypoglycemia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We prioritize modern, glucose-dependent pharmacological options—such as SGLT2 inhibitors and GLP-1 receptor agonists—that only lower blood sugar when elevated."
+          }
         }
       ]
     }
@@ -394,63 +410,65 @@ custom_schema: |
           </div>
         </div>
       </div>
-    </div>
 
+      <!-- PATIENT TIP CARD: RECOGNIZING & TREATING LOW BLOOD SUGAR -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="p-4 rounded-4 bg-white border shadow-sm" style="border-left: 5px solid #ef3340 !important;">
+            <div class="d-flex align-items-center mb-3">
+              <div class="me-3 text-danger"><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
+              <div>
+                <h4 class="fw-bold mb-0" style="color: #2c4964; font-size: 1.2rem;">Clinical Patient Guidance: Managing Low Blood Sugar</h4>
+                <p class="small text-muted mb-0">What to do if your blood glucose drops below <strong>3.9 mmol/L</strong></p>
+              </div>
+            </div>
 
-  <!-- PATIENT TIP CARD: RECOGNIZING & TREATING LOW BLOOD SUGAR -->
-<div class="p-4 rounded-4 bg-white border shadow-sm my-4" style="border-left: 5px solid #ef3340 !important;">
-  <div class="d-flex align-items-center mb-3">
-    <div class="me-3 text-danger"><i class="fa-solid fa-triangle-exclamation fa-2x"></i></div>
-    <div>
-      <h4 class="fw-bold mb-0" style="color: #2c4964; font-size: 1.2rem;">Clinical Patient Guidance: Managing Low Blood Sugar</h4>
-      <p class="small text-muted mb-0">What to do if your blood glucose drops below <strong>3.9 mmol/L</strong></p>
-    </div>
-  </div>
+            <div class="row g-3 mb-3">
+              <!-- EARLY WARNING SIGNS -->
+              <div class="col-md-5">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <h6 class="fw-bold mb-2" style="color: #ef3340; font-size: 0.95rem;">
+                    <i class="fa-solid fa-bell me-1"></i> Recognize Early Signs
+                  </h6>
+                  <ul class="x-small text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.6;">
+                    <li>Shakiness or subtle hand tremors</li>
+                    <li>Cold sweats or sudden clamminess</li>
+                    <li>Rapid heart rate / palpitations</li>
+                    <li>Unexplained anxiety or irritability</li>
+                    <li>Lightheadedness or sudden hunger</li>
+                  </ul>
+                </div>
+              </div>
 
-  <div class="row g-3 mb-3">
-    <!-- EARLY WARNING SIGNS -->
-    <div class="col-md-5">
-      <div class="p-3 bg-light rounded-3 h-100">
-        <h6 class="fw-bold mb-2" style="color: #ef3340; font-size: 0.95rem;">
-          <i class="fa-solid fa-bell me-1"></i> Recognize Early Signs
-        </h6>
-        <ul class="x-small text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.6;">
-          <li>Shakiness or subtle hand tremors</li>
-          <li>Cold sweats or sudden clamminess</li>
-          <li>Rapid heart rate / palpitations</li>
-          <li>Unexplained anxiety or irritability</li>
-          <li>Lightheadedness or sudden hunger</li>
-        </ul>
+              <!-- THE 15-15 RULE -->
+              <div class="col-md-7">
+                <div class="p-3 bg-light rounded-3 h-100">
+                  <h6 class="fw-bold mb-2" style="color: #2c4964; font-size: 0.95rem;">
+                    <i class="fa-solid fa-clock-rotate-left me-1"></i> The 15-15 Protocol
+                  </h6>
+                  <ol class="x-small text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.6;">
+                    <li class="mb-1">
+                      <strong>Consume 15g Fast-Acting Carbs:</strong> Take 1/2 cup of fruit juice, 3–4 glucose tablets, or 1 tablespoon of honey/sugar. Avoid fat-heavy foods like chocolate, as fat slows sugar absorption.
+                    </li>
+                    <li class="mb-1">
+                      <strong>Rest for 15 Minutes:</strong> Allow your body time to absorb the glucose.
+                    </li>
+                    <li>
+                      <strong>Recheck Blood Glucose (BGM):</strong> If still below <strong>3.9 mmol/L</strong>, repeat step 1. Once normalized, eat a light protein-rich meal or snack to keep levels stable.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <p class="x-small text-muted mb-0 text-center" style="font-size: 0.8rem;">
+              <em><strong>Important:</strong> If symptoms worsen, cause confusion, or fail to resolve after two treatment cycles, seek immediate medical attention or emergency assistance.</em>
+            </p>
+          </div>
+        </div>
       </div>
+
     </div>
-
-    <!-- THE 15-15 RULE -->
-    <div class="col-md-7">
-      <div class="p-3 bg-light rounded-3 h-100">
-        <h6 class="fw-bold mb-2" style="color: #2c4964; font-size: 0.95rem;">
-          <i class="fa-solid fa-clock-rotate-left me-1"></i> The 15-15 Protocol
-        </h6>
-        <ol class="x-small text-muted ps-3 mb-0" style="font-size: 0.85rem; line-height: 1.6;">
-          <li class="mb-1">
-            <strong>Consume 15g Fast-Acting Carbs:</strong> Take 1/2 cup of fruit juice, 3–4 glucose tablets, or 1 tablespoon of honey/sugar. Avoid fat-heavy foods like chocolate, as fat slows sugar absorption.
-          </li>
-          <li class="mb-1">
-            <strong>Rest for 15 Minutes:</strong> Allow your body time to absorb the glucose.
-          </li>
-          <li>
-            <strong>Recheck Blood Glucose (BGM):</strong> If still below <strong>3.9 mmol/L</strong>, repeat step 1. Once normalized, eat a light protein-rich meal or snack to keep levels stable.
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  
-
-  <p class="x-small text-muted mb-0 text-center" style="font-size: 0.8rem;">
-    <em><strong>Important:</strong> If symptoms worsen, cause confusion, or fail to resolve after two treatment cycles, seek immediate medical attention or emergency assistance.</em>
-  </p>
-</div>
-
   </section>
 
   <section class="py-5 text-center bg-light">
@@ -465,47 +483,44 @@ custom_schema: |
       </div>
     </div>
   </section>
-          
 
-<section class="py-5" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
-  <div class="container">
-    <div class="mb-5">
-      <h2 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Diabetes Management: Clinical FAQ</h2>
-      <p class="text-muted">Expert insights on metabolic health and preventing long-term complications.</p>
+  <section class="py-5" style="background-color: #f8f9fa; border-top: 1px solid #dee2e6;">
+    <div class="container">
+      <div class="mb-5">
+        <h2 class="fw-bold" style="color: #2c4964; text-transform: none !important;">Diabetes Management: Clinical FAQ</h2>
+        <p class="text-muted">Expert insights on metabolic health and preventing long-term complications.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Why is diabetes linked to heart disease?</h3>
+          <p class="small text-muted">High glucose levels cause <strong>Endothelial Inflammation</strong>, damaging the lining of your arteries. This makes it significantly easier for plaque to build up, leading to a much higher risk of heart attack and stroke compared to non-diabetics.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Why is an OGTT test recommended for prediabetes?</h3>
+          <p class="small text-muted">Fasting glucose only shows your sugar level after rest. An <strong>Oral Glucose Tolerance Test (OGTT)</strong> challenges your body with a standardized sugar drink to reveal hidden post-meal spikes caused by early insulin resistance—often long before fasting glucose becomes abnormal.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Can "Pre-Diabetes" really be reversed?</h3>
+          <p class="small text-muted">Yes. In the pre-diabetes stage (HbA1c 6.0% - 6.4%), the body is still highly responsive to <strong>metabolic optimization</strong>. With personalized nutrition, dynamic glucose monitoring (BGM), and targeted clinical guidance, it is possible to restore insulin sensitivity and prevent Type 2 Diabetes.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">How often should I have my HbA1c checked?</h3>
+          <p class="small text-muted">For those under management, we recommend a review every 3 to 6 months. This allows Dr. Thang to adjust your <strong>Risk Stratification Roadmap</strong> and ensure your medication dosage is at the lowest effective level for organ protection.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">Is there a lower limit for blood sugar target ranges?</h3>
+          <p class="small text-muted">
+            Yes. Lowering blood sugar is not an unlimited goal. A real-time blood glucose level dropping below <strong>3.9 mmol/L</strong> triggers hypoglycemia, causing neuroglycopenic symptoms such as shakiness, cognitive fog, cardiac palpitations, and severe dizziness. In diabetes management, avoiding low blood sugar episodes is as vital as preventing high spikes.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h5 fw-bold" style="color: #2c4964;">How does the clinic protect against medication-induced hypoglycemia?</h3>
+          <p class="small text-muted">
+            We prioritize modern, glucose-dependent pharmacological options—such as SGLT2 inhibitors and GLP-1 receptor agonists—that only lower blood sugar when elevated. By utilizing dynamic monitoring (BGM) and individualized HbA1c target stratification, Dr. Thang continuously adjusts therapy to maintain optimal vascular protection without over-medicating or causing dangerous drops.
+          </p>
+        </div>
+      </div>
     </div>
-    <div class="row g-4">
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">Why is diabetes linked to heart disease?</h3>
-        <p class="small text-muted">High glucose levels cause <strong>Endothelial Inflammation</strong>, damaging the lining of your arteries. This makes it significantly easier for plaque to build up, leading to a much higher risk of heart attack and stroke compared to non-diabetics.</p>
-      </div>
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">Why is an OGTT test recommended for prediabetes?</h3>
-        <p class="small text-muted">Fasting glucose only shows your sugar level after rest. An <strong>Oral Glucose Tolerance Test (OGTT)</strong> challenges your body with a standardized sugar drink to reveal hidden post-meal spikes caused by early insulin resistance—often long before fasting glucose becomes abnormal.</p>
-      </div>
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">Can "Pre-Diabetes" really be reversed?</h3>
-        <p class="small text-muted">Yes. In the pre-diabetes stage (HbA1c 6.0% - 6.4%), the body is still highly responsive to <strong>metabolic optimization</strong>. With personalized nutrition, dynamic glucose monitoring (BGM), and targeted clinical guidance, it is possible to restore insulin sensitivity and prevent Type 2 Diabetes.</p>
-      </div>
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">How often should I have my HbA1c checked?</h3>
-        <p class="small text-muted">For those under management, we recommend a review every 3 to 6 months. This allows Dr. Thang to adjust your <strong>Risk Stratification Roadmap</strong> and ensure your medication dosage is at the lowest effective level for organ protection.</p>
-      </div>
-      <!-- HYPOGLYCEMIA & SAFETY LIMITS FAQ BLOCK -->
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">Is there a lower limit for blood sugar target ranges?</h3>
-        <p class="small text-muted">
-          Yes. Lowering blood sugar is not an unlimited goal. A real-time blood glucose level dropping below <strong>3.9 mmol/L</strong> triggers hypoglycemia, causing neuroglycopenic symptoms such as shakiness, cognitive fog, cardiac palpitations, and severe dizziness. In diabetes management, avoiding low blood sugar episodes is as vital as preventing high spikes.
-        </p>
-      </div>
-      
-      <div class="col-md-6">
-        <h3 class="h5 fw-bold" style="color: #2c4964;">How does the clinic protect against medication-induced hypoglycemia?</h3>
-        <p class="small text-muted">
-          We prioritize modern, glucose-dependent pharmacological options—such as SGLT2 inhibitors and GLP-1 receptor agonists—that only lower blood sugar when elevated. By utilizing dynamic monitoring (BGM) and individualized HbA1c target stratification, Dr. Thang continuously adjusts therapy to maintain optimal vascular protection without over-medicating or causing dangerous drops.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-                      
+  </section>
+                        
 </main>
