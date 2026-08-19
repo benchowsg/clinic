@@ -411,7 +411,6 @@ custom_schema: |
             </table>
           </div>
 
-<!-- Lipid Unit Converter Component -->
 <div class="converter-card">
   <div class="d-flex align-items-center mb-3">
     <span style="font-size: 1.5rem;" class="me-2">🧮</span>
@@ -423,7 +422,7 @@ custom_schema: |
 
   <div class="converter-grid">
     <div class="converter-field">
-      <label for="lipid-type">Lipid Marker</label>
+      <label for="lipid-type">1. Select Lipid Marker</label>
       <select id="lipid-type" onchange="calculateLipidConversion()">
         <option value="cholesterol">Total Cholesterol / LDL / HDL</option>
         <option value="triglycerides">Triglycerides</option>
@@ -431,22 +430,14 @@ custom_schema: |
     </div>
 
     <div class="converter-field">
-      <label for="value-mgdl">Value in mg/dL</label>
-      <input type="number" id="value-mgdl" placeholder="e.g. 100" value="100" oninput="calculateLipidConversion()">
-    </div>
-
-    <div class="converter-field">
-      <label for="conversion-direction">Direction</label>
-      <select id="conversion-direction" onchange="calculateLipidConversion()">
-        <option value="mgToMmol">mg/dL ➔ mmol/L (Singapore)</option>
-        <option value="mmolToMg">mmol/L ➔ mg/dL (US)</option>
-      </select>
+      <label for="value-mgdl">2. Enter Value in mg/dL</label>
+      <input type="number" id="value-mgdl" placeholder="e.g. 100" value="" oninput="calculateLipidConversion()">
     </div>
   </div>
 
   <div class="converter-result-box">
-    <div id="converter-output" class="converter-result-value">2.58 mmol/L</div>
-    <div id="converter-target-note" class="converter-result-label">Singapore Optimal Target: &lt; 2.6 mmol/L (General Risk)</div>
+    <div id="converter-output" class="converter-result-value">-- mmol/L</div>
+    <div id="converter-target-note" class="converter-result-label">Enter a value in mg/dL above to calculate</div>
   </div>
 </div>
 
@@ -612,60 +603,45 @@ custom_schema: |
   </div>
 
 
-  <script>
+<script>
   function calculateLipidConversion() {
     const lipidType = document.getElementById('lipid-type').value;
     const inputVal = parseFloat(document.getElementById('value-mgdl').value);
-    const direction = document.getElementById('conversion-direction').value;
     const outputElem = document.getElementById('converter-output');
     const noteElem = document.getElementById('converter-target-note');
 
+    // Handles empty or invalid inputs dynamically
     if (isNaN(inputVal) || inputVal <= 0) {
-      outputElem.innerText = "--";
-      noteElem.innerText = "Please enter a valid numeric value";
+      outputElem.innerText = "-- mmol/L";
+      noteElem.innerText = "Enter a value in mg/dL above to calculate";
       return;
     }
 
-    let result = 0;
-    let unitText = "";
-
-    // Conversion Factors:
-    // Cholesterol (Total, LDL, HDL): mg/dL / 38.67 = mmol/L
-    // Triglycerides: mg/dL / 88.57 = mmol/L
+    // Dynamic conversion factors:
+    // Cholesterol: mg/dL ÷ 38.67 | Triglycerides: mg/dL ÷ 88.57
     const factor = (lipidType === 'triglycerides') ? 88.57 : 38.67;
+    const result = (inputVal / factor).toFixed(2);
 
-    if (direction === 'mgToMmol') {
-      result = (inputVal / factor).toFixed(2);
-      unitText = "mmol/L";
-    } else {
-      result = (inputVal * factor).toFixed(1);
-      unitText = "mg/dL";
-    }
+    // Updates text dynamically based on typed value
+    outputElem.innerText = `${result} mmol/L`;
 
-    outputElem.innerText = `${result} ${unitText}`;
-
-    // Dynamic Contextual Guidance Note based on Singapore MOH standards
+    // Dynamic guidance notes based on Singapore targets
     if (lipidType === 'cholesterol') {
-      if (direction === 'mgToMmol') {
-        noteElem.innerText = result < 2.6 
-          ? "✅ Optimal for low/moderate risk adults (< 2.6 mmol/L)" 
-          : "⚠️ Above optimal target range for general screening";
+      if (result < 2.6) {
+        noteElem.innerText = "✅ Optimal for low/moderate risk adults (< 2.6 mmol/L)";
+      } else if (result <= 3.4) {
+        noteElem.innerText = "⚠️ Borderline elevated for general risk screening";
       } else {
-        noteElem.innerText = "US Target Equivalent: < 100 mg/dL";
+        noteElem.innerText = "❗ Elevated — Clinical evaluation recommended";
       }
     } else if (lipidType === 'triglycerides') {
-      if (direction === 'mgToMmol') {
-        noteElem.innerText = result < 1.7 
-          ? "✅ Normal Singapore Target (< 1.7 mmol/L)" 
-          : "⚠️ Borderline or High Triglyceride level";
+      if (result < 1.7) {
+        noteElem.innerText = "✅ Normal Singapore Target (< 1.7 mmol/L)";
       } else {
-        noteElem.innerText = "US Target Equivalent: < 150 mg/dL";
+        noteElem.innerText = "⚠️ Borderline or High Triglyceride level (≥ 1.7 mmol/L)";
       }
     }
   }
-
-  // Run on page load to initialize defaults
-  document.addEventListener("DOMContentLoaded", calculateLipidConversion);
 </script>
   
 </main>
