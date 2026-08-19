@@ -575,4 +575,62 @@ custom_schema: |
       </div>
     </div>
   </div>
+
+
+  <script>
+  function calculateLipidConversion() {
+    const lipidType = document.getElementById('lipid-type').value;
+    const inputVal = parseFloat(document.getElementById('value-mgdl').value);
+    const direction = document.getElementById('conversion-direction').value;
+    const outputElem = document.getElementById('converter-output');
+    const noteElem = document.getElementById('converter-target-note');
+
+    if (isNaN(inputVal) || inputVal <= 0) {
+      outputElem.innerText = "--";
+      noteElem.innerText = "Please enter a valid numeric value";
+      return;
+    }
+
+    let result = 0;
+    let unitText = "";
+
+    // Conversion Factors:
+    // Cholesterol (Total, LDL, HDL): mg/dL / 38.67 = mmol/L
+    // Triglycerides: mg/dL / 88.57 = mmol/L
+    const factor = (lipidType === 'triglycerides') ? 88.57 : 38.67;
+
+    if (direction === 'mgToMmol') {
+      result = (inputVal / factor).toFixed(2);
+      unitText = "mmol/L";
+    } else {
+      result = (inputVal * factor).toFixed(1);
+      unitText = "mg/dL";
+    }
+
+    outputElem.innerText = `${result} ${unitText}`;
+
+    // Dynamic Contextual Guidance Note based on Singapore MOH standards
+    if (lipidType === 'cholesterol') {
+      if (direction === 'mgToMmol') {
+        noteElem.innerText = result < 2.6 
+          ? "✅ Optimal for low/moderate risk adults (< 2.6 mmol/L)" 
+          : "⚠️ Above optimal target range for general screening";
+      } else {
+        noteElem.innerText = "US Target Equivalent: < 100 mg/dL";
+      }
+    } else if (lipidType === 'triglycerides') {
+      if (direction === 'mgToMmol') {
+        noteElem.innerText = result < 1.7 
+          ? "✅ Normal Singapore Target (< 1.7 mmol/L)" 
+          : "⚠️ Borderline or High Triglyceride level";
+      } else {
+        noteElem.innerText = "US Target Equivalent: < 150 mg/dL";
+      }
+    }
+  }
+
+  // Run on page load to initialize defaults
+  document.addEventListener("DOMContentLoaded", calculateLipidConversion);
+</script>
+  
 </main>
