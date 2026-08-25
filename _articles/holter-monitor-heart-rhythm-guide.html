@@ -2,20 +2,19 @@
 layout: default
 permalink: /articles/holter-monitor-heart-rhythm-guide
 category: Cardiology
-title: "Holter Monitor Test: Signs, Prep, Wearable Benefits & Diagnostic Yield"
-description: "A comprehensive clinical guide on continuous Holter monitoring for palpitations and heart rhythm evaluation. Learn how discrete wire-free wearables, skin prep, and activity guidelines optimize diagnostic yield for your doctor."
+title: "Holter Monitor Guide: Prep, Wearable Benefits & Indications"
+description: "Quick clinical guide on continuous Holter monitoring for heart palpitations. Learn patch monitor benefits, skin prep, and key indications."
 last_reviewed: 2026-08-19
 author_name: "Dr. Gerald Thang"
 custom_schema: |
   {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
-    "headline": "Holter Monitor Test: Signs, Prep, Wearable Benefits & Diagnostic Yield",
+    "headline": "Holter Monitor Guide: Prep, Wearable Benefits & Indications",
     "lastReviewed": "2026-08-19",
     "author": {
       "@type": "Person",
       "name": "Dr. Gerald Thang",
-      "jobTitle": "Principal Physician",
       "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
     },
     "mainEntity": {
@@ -23,685 +22,173 @@ custom_schema: |
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Why do I need a Holter monitor if my standard clinic ECG was normal?",
+          "name": "Why do I need a Holter monitor if my ECG was normal?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A standard resting ECG only records your heart rhythm for 10 seconds. Many cardiac arrhythmias (like Atrial Fibrillation or Premature Ventricular Contractions) occur intermittently. A continuous ambulatory Holter monitor records every heartbeat over 24 to 48 hours, capturing transient rhythm abnormalities that a brief clinic ECG misses."
+            "text": "A standard ECG is only a 10-second recording. A Holter monitor continuously tracks your heart for 24–48 hours to catch intermittent rhythm issues like AFib or skipped beats."
           }
         },
         {
           "@type": "Question",
-          "name": "What are the advantages of a modern wire-free patch Holter monitor vs traditional wired Holter?",
+          "name": "How do I prep my skin for a Holter monitor?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Modern patch-style Holter monitors are lightweight, cable-free, and sit flat against the upper chest. Compared to traditional wired monitors with multiple dangling leads, patch wearables offer lower motion artifacts, higher signal-to-noise ratio, and complete discretion under everyday clothing."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How should I prepare my skin before getting a Holter monitor fitted?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Shower right before your clinic appointment using plain soap, avoid applying body lotions, powders, or oils to the chest area, wear loose clothing, and allow clinic staff to gently trim excess chest hair to ensure strong electroconductive adhesion."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How to prevent skin irritation from Holter adhesive?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Inform your doctor if you have sensitive skin or adhesive allergies before fitting. Clinics can apply hypoallergenic medical adhesives or skin-barrier wipes to minimize localized contact dermatitis while maintaining secure electrode contact."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What timeframe yields a reasonable diagnostic scope for clinical interpretation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A continuous 24 to 48-hour ambulatory recording window generally provides sufficient diagnostic yield to evaluate circadian heart rate variability, quantify overall ectopic burden, and allow precise correlation between patient-logged symptoms and underlying ECG traces."
+            "text": "Shower with plain soap before your appointment, avoid lotions or oils on your chest, and wear loose clothing."
           }
         }
       ]
-    },
-    "isPartOf": {
-      "@type": "MedicalBusiness",
-      "id": "https://www.ahealingheartmedical.com"
     }
   }
 ---
 
 <style>
-  .article-content { padding-top: 140px; padding-bottom: 80px; }
-  .article-body p { line-height: 1.7; margin-bottom: 1.25rem; color: #333; font-size: 1.05rem; }
-  .ip-notice { background: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; font-size: 0.85rem; color: #555; border-radius: 8px; margin-top: 40px; }
-  .author-box { background: #fdfcf0; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 25px; }
-  
-  /* GEO / AEO Summary Callout Box */
-  .geo-summary-box { background: #f0f7ff; border-left: 4px solid #1d4ed8; padding: 18px 22px; border-radius: 0 10px 10px 0; margin-bottom: 25px; font-size: 1rem; line-height: 1.6; color: #1e293b; }
-  
-  /* Stat/Metrics Grid Styling */
-  .stat-grid-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 25px 0; }
-  @media (min-width: 576px) { .stat-grid-wrapper { grid-template-columns: repeat(3, 1fr); } }
-  .stat-card-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; text-align: center; }
-  .stat-card-number { font-size: 1.6rem; font-weight: 800; color: #e53e3e; line-height: 1.2; }
-  .stat-card-label { font-size: 0.85rem; font-weight: 600; color: #475569; margin-top: 5px; }
-
-  /* 2x2 Grid Styling */
-  .pillars-2x2 { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
-  @media (min-width: 576px) { .pillars-2x2 { grid-template-columns: 1fr 1fr; } }
-  .pillar-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-  .pillar-item:hover { transform: translateY(-2px); }
-  .pillar-title { font-weight: 700; color: #2c4964; font-size: 1.1rem; margin-bottom: 8px; }
-  .pillar-desc { font-size: 0.9rem; color: #555; line-height: 1.5; }
-
-  /* Table Custom Styling */
-  .custom-table-wrapper { overflow-x: auto; margin: 25px 0; }
-  .custom-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  .custom-table th { background-color: #2c4964; color: #ffffff; padding: 12px 15px; text-align: left; }
-  .custom-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; color: #333; }
-  .custom-table tr:nth-child(even) { background-color: #f8fafc; }
-
-  /* Interactive Symptom Checker Card */
-  .checker-card {
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    padding: 24px;
-    margin: 30px 0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  }
-  .checker-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  @media (min-width: 576px) {
-    .checker-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  .checker-field label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #2c4964;
-    margin-bottom: 6px;
-  }
-  .checker-field select, .checker-field input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    color: #334155;
-    background-color: #f8fafc;
-  }
-  .checker-result-box {
-    background: #f0f7ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 8px;
-    padding: 16px;
-    text-align: center;
-    margin-top: 15px;
-  }
-  .checker-result-value {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #1e40af;
-    line-height: 1.3;
-  }
-  .checker-result-label {
-    font-size: 0.85rem;
-    color: #1d4ed8;
-    font-weight: 600;
-    margin-top: 4px;
-  }
-
-  /* Contextual Inline Links */
-  .support-links-box { background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 15px; margin: 25px 0 35px 0; }
-  .support-btn { border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-decoration: none; padding: 8px 16px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s; }
-
-  /* Audio Control Panel */
-  .tts-container { background: #f4f7f6; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-  .tts-info { display: flex; align-items: center; gap: 10px; color: #2c4964; font-size: 0.9rem; font-weight: 600; }
-  .tts-controls { display: flex; align-items: center; gap: 10px; }
-  .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-  .tts-btn.active-play { background: #008080; border-color: #008080; color: #ffffff; }
-  .tts-status { font-size: 0.75rem; color: #718096; font-weight: normal; margin-left: 5px; }
+  .article-content { padding-top: 100px; padding-bottom: 60px; }
+  .geo-summary-box { background: #f0f7ff; border-left: 4px solid #1d4ed8; padding: 15px 18px; border-radius: 0 8px 8px 0; margin-bottom: 20px; font-size: 0.95rem; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; text-align: center; }
+  .stat-num { font-size: 1.4rem; font-weight: 800; color: #e53e3e; }
+  .stat-lbl { font-size: 0.8rem; color: #475569; font-weight: 600; }
+  .checker-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 18px; margin: 25px 0; }
+  .custom-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 15px 0; }
+  .custom-table th { background: #2c4964; color: #fff; padding: 10px; }
+  .custom-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
 </style>
 
-<main id="main" class="article-content">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
-            <li class="breadcrumb-item active">Cardiovascular Diagnostics</li>
-          </ol>
-        </nav>
+<main class="article-content">
+  <div class="container" style="max-width: 760px;">
+    
+    <h1 class="h3 fw-bold mb-2" style="color: #2c4964;">Holter Monitor Test: Quick Patient Guide</h1>
+    <p class="text-muted small mb-3">Medically reviewed by Dr. Gerald Thang | Updated August 2026</p>
 
-        <h1 class="display-6 fw-bold mb-3" style="color: #2c4964;">Holter Monitor Test: Signs, Prep, Wearable Benefits &amp; Diagnostic Yield</h1>
-        <p class="subtitle fs-5 mb-4 text-muted">A clinical guide on continuous ambulatory ECG monitoring, patch-style wearable benefits, skin preparation, and optimizing diagnostic yield for arrhythmia evaluation.</p>
-        
-        <div class="author-box d-flex align-items-center">
-          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang - Principal Physician and Preventive Cardiology">
-          <div>
-            <p class="mb-0 fw-bold">Reviewed by Dr. Gerald Thang</p>
-            <p class="mb-0 text-primary fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
-            <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
-          </div>
+    <!-- AI / Voice Search BLUF Box -->
+    <div class="geo-summary-box">
+      <strong>Quick Answer:</strong> A <strong>Holter monitor</strong> is a continuous 24 to 48-hour ambulatory ECG test. While a standard clinic ECG only records 10 seconds, a Holter captures intermittent palpitations, dizziness, or Atrial Fibrillation during your normal daily activities.
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">~100k</div>
+        <div class="stat-lbl">Beats Logged Daily</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24–48 hrs</div>
+        <div class="stat-lbl">Standard Test Duration</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">Cable-Free Discretion</div>
+      </div>
+    </div>
+
+    <!-- Core Benefits Bulleted -->
+    <h2 class="h5 fw-bold mt-4" style="color: #2c4964;">Why Use a Patch Holter vs. Traditional Wires?</h2>
+    <ul class="mb-4">
+      <li><strong>No Cables:</strong> A single, lightweight chest patch replaces messy hanging lead wires.</li>
+      <li><strong>Invisible:</strong> Fits discreetly under your normal daily clothing.</li>
+      <li><strong>Better Signal:</strong> Reduces wire movement interference, producing cleaner ECG readings.</li>
+      <li><strong>Comfortable Sleep:</strong> Enables sleep in any position without pulling leads.</li>
+    </ul>
+
+    <!-- Quick Prep List -->
+    <h2 class="h5 fw-bold mt-4" style="color: #2c4964;">How to Prepare for Fitting</h2>
+    <div class="p-3 bg-light rounded border mb-4" style="font-size: 0.95rem;">
+      <ul class="mb-0 ps-3">
+        <li><strong>Shower before fitting:</strong> You must keep the monitor dry during the test.</li>
+        <li><strong>Skip lotions/oils:</strong> Avoid chest moisturizers so the adhesive stays attached.</li>
+        <li><strong>Wear loose clothes:</strong> Button-up shirts make placement quick and simple.</li>
+        <li><strong>Chest hair:</strong> Clinic staff may trim a small patch for proper electrode stick.</li>
+      </ul>
+    </div>
+
+    <!-- Quick Results Table -->
+    <h2 class="h5 fw-bold mt-4" style="color: #2c4964;">What Doctors Look For</h2>
+    <div style="overflow-x: auto;">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>What It Evaluates</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Heart Rate Range</strong></td>
+            <td>Tracks continuous low, average, and high heart rates day and night.</td>
+          </tr>
+          <tr>
+            <td><strong>Ectopic Burden</strong></td>
+            <td>Measures the percentage of premature (extra) heartbeats like PVCs or PACs.</td>
+          </tr>
+          <tr>
+            <td><strong>AFib Detection</strong></td>
+            <td>Identifies short, hidden spells of Atrial Fibrillation to manage stroke risk.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Dynamic Needs Calculator Widget -->
+    <div class="checker-card">
+      <h3 class="h6 fw-bold mb-2" style="color: #2c4964;">⚡ Quick Monitor Duration Checker</h3>
+      <div class="mb-2">
+        <label class="small fw-bold text-muted">Select Your Main Symptom:</label>
+        <select id="symptom-select" class="form-select form-select-sm mt-1" onchange="checkNeed()">
+          <option value="daily">Daily Flutters / Palpitations</option>
+          <option value="weekly">Occasional Symptoms (1–2x per week)</option>
+          <option value="syncope">Unexplained Dizziness or Fainting</option>
+        </select>
+      </div>
+      <div id="checker-out" class="p-2 mt-2 rounded bg-primary-subtle text-primary fw-bold small text-center">
+        Recommended: Standard 24-Hour Continuous Holter Monitor
+      </div>
+    </div>
+
+    <!-- Minimal Accordion FAQ -->
+    <h2 class="h5 fw-bold mt-4 mb-3" style="color: #2c4964;">Frequently Asked Questions</h2>
+    <div class="accordion mb-4" id="faqAccordion">
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
+            Can I shower with a patch Holter?
+          </button>
+        </h3>
+        <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body small text-muted">Unless assigned a specialized waterproof patch, take sponge baths and keep the chest patch completely dry.</div>
         </div>
-
-        <div class="tts-container">
-          <div class="tts-info">
-            <span style="font-size: 1.2rem;">🔊</span>
-            <span>Listen to this clinical guide <span id="audio-status-text" class="tts-status">(Ready)</span></span>
-          </div>
-          <div class="tts-controls">
-            <button id="btn-tts-play" class="tts-btn" onclick="togglePlayPause()">
-              <span id="play-icon">▶</span> <span id="play-text">Play Audio</span>
-            </button>
-            <button id="btn-tts-stop" class="tts-btn" onclick="stopAudio()" disabled style="opacity: 0.5; cursor: not-allowed;">
-              <span>⏹</span> Stop
-            </button>
-          </div>
-        </div>
-
-        <!-- GEO Definition Callout Box -->
-        <div class="geo-summary-box">
-          <strong>Direct Definition:</strong> A <strong>Holter monitor</strong> is a portable ambulatory electrocardiogram (ECG) device that continuously records your heart's electrical rhythm for 24 to 48 hours (or up to 7 days). Unlike a standard 10-second clinic ECG, continuous Holter monitoring captures transient cardiac arrhythmias, evaluates ectopic burden, and correlates daily symptoms like palpitations or dizziness with actual real-time ECG readings.
-        </div>
-
-        <!-- Key Metrics Grid -->
-        <div class="stat-grid-wrapper">
-          <div class="stat-card-item">
-            <div class="stat-card-number">~100,000</div>
-            <div class="stat-card-number" style="font-size:0.85rem; font-weight:600; color:#475569;">Heartbeats Recorded in 24 Hours</div>
-            <div class="stat-card-label">Continuous Ambulatory ECG</div>
-          </div>
-          <div class="stat-card-item">
-            <div class="stat-card-number">5x Higher</div>
-            <div class="stat-card-label">Stroke Risk from Unidentified Atrial Fibrillation</div>
-          </div>
-          <div class="stat-card-item">
-            <div class="stat-card-number">100% Discrete</div>
-            <div class="stat-card-label">Compact Wearable Fits Under Daily Attire</div>
-          </div>
-        </div>
-
-        <!-- Direct Answer Callout Box -->
-        <div class="direct-answer-box p-4 mb-4" style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;">
-          <h2 class="h5 fw-bold mb-3" style="color: #166534;">
-            <span class="me-2">💡</span> Clinical Summary: Why Do You Need a Wearable Holter Monitor?
-          </h2>
-          
-          <p class="mb-3" style="color: #15803d; font-weight: 500;">
-            <strong>A resting ECG is a 10-second snapshot; a continuous Holter monitor is a full 24-to-48-hour continuous movie:</strong>
-          </p>
-
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="p-3 bg-white rounded border border-light shadow-sm h-100">
-                <strong class="d-block text-dark mb-1">🔍 Key Diagnostic Indications:</strong>
-                <ul class="mb-0 ps-3 small text-muted">
-                  <li><strong>Transient Palpitations:</strong> Sensations of skipped beats, fluttering, or racing heart that disappear before reaching a clinic.</li>
-                  <li><strong>Unexplained Dizziness/Fainting:</strong> Checking if lightheadedness (syncope) stems from sudden sinus pauses or heart block.</li>
-                  <li><strong>Silent AFib Screening:</strong> Uncovering asymptomatic Atrial Fibrillation following an unexplained stroke or TIA.</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="col-md-6">
-              <div class="p-3 bg-white rounded border border-light shadow-sm h-100">
-                <strong class="d-block text-dark mb-1">🎯 Patch Holter Monitor vs Traditional Wired Holter:</strong>
-                <ul class="mb-0 ps-3 small text-muted">
-                  <li><strong>Cable-Free Design:</strong> Patch wearables eliminate dangling lead wires and bulky waist-pack recorders.</li>
-                  <li><strong>Higher Signal Quality:</strong> Reduces motion artifacts for cleaner electroconductive ECG traces.</li>
-                  <li><strong>Total Discretion:</strong> Sits flat under normal attire with zero lifestyle disruption during work, sleep, or light activity.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="speakable-content" class="article-body">
-          <p>
-            You are sitting at your desk when your heart suddenly flutters or skips a beat. Yet by the time you visit a cardiology clinic, your standard 10-second resting ECG shows a completely normal sinus rhythm. This intermittent nature of heart rhythm disorders is one of the most common challenges in cardiovascular diagnostics.
-          </p>
-          <p>
-            According to guidelines from the <em>American College of Cardiology (ACC)</em> and the <em>American Heart Association (AHA)</em>, continuous <strong>ambulatory ECG monitoring</strong> using a Holter device is the diagnostic gold standard for capturing sporadic arrhythmias and measuring total ectopic burden over full circadian cycles.
-          </p>
-
-          <!-- SVG Visual Diagram: Holter Monitoring Workflow -->
-          <div class="my-4 text-center">
-            <svg viewBox="0 0 800 480" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; max-width:800px; font-family:system-ui, -apple-system, sans-serif; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);" role="img" aria-label="Comparison workflow between continuous wearable Holter monitor and clinic resting ECG">
-              <text x="400" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">The Continuous Diagnostic Pathway</text>
-              <text x="400" y="54" text-anchor="middle" font-size="14" fill="#64748b">From symptom onset to continuous ECG recording &amp; clinical treatment</text>
-
-              <!-- Step 1 Card -->
-              <g transform="translate(30, 80)">
-                <rect x="0" y="0" width="220" height="310" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-                <rect x="0" y="0" width="220" height="46" rx="10" fill="#2c4964"/>
-                <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">1. Symptom Trigger</text>
-                
-                <circle cx="110" cy="95" r="28" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
-                <text x="110" y="101" text-anchor="middle" font-size="20">💓</text>
-                
-                <text x="18" y="150" font-size="15" fill="#1e293b" font-weight="700">Clinical Indications:</text>
-                <text x="18" y="172" font-size="13" fill="#475569">
-                  <tspan x="18" dy="0">• Fluttering chest sensations</tspan>
-                  <tspan x="18" dy="18">• Dizziness or near-fainting</tspan>
-                  <tspan x="18" dy="18">• Racing heart at rest</tspan>
-                  <tspan x="18" dy="18">• Inconclusive clinic ECG</tspan>
-                </text>
-
-                <rect x="15" y="260" width="190" height="34" rx="6" fill="#e2e8f0"/>
-                <text x="110" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#1e293b">Indication Confirmed</text>
-              </g>
-
-              <!-- Step 2 Card -->
-              <g transform="translate(290, 80)">
-                <rect x="0" y="0" width="220" height="310" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-                <rect x="0" y="0" width="220" height="46" rx="10" fill="#008080"/>
-                <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">2. Discrete Wear</text>
-
-                <circle cx="110" cy="95" r="28" fill="#ccfbf1" stroke="#14b8a6" stroke-width="2"/>
-                <text x="110" y="101" text-anchor="middle" font-size="20">⌚</text>
-
-                <text x="18" y="150" font-size="15" fill="#1e293b" font-weight="700">Seamless Monitoring:</text>
-                <text x="18" y="172" font-size="13" fill="#475569">
-                  <tspan x="18" dy="0">• Wire-free patch sensor</tspan>
-                  <tspan x="18" dy="18">• Hidden beneath daily attire</tspan>
-                  <tspan x="18" dy="18">• Sleep &amp; activity compatible</tspan>
-                  <tspan x="18" dy="18">• Zero lifestyle disruption</tspan>
-                </text>
-
-                <rect x="15" y="260" width="190" height="34" rx="6" fill="#ccfbf1"/>
-                <text x="110" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#0f766e">&gt; 100,000 Beats Logged</text>
-              </g>
-
-              <!-- Step 3 Card -->
-              <g transform="translate(550, 80)">
-                <rect x="0" y="0" width="220" height="310" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-                <rect x="0" y="0" width="220" height="46" rx="10" fill="#d97706"/>
-                <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">3. Doctor Review</text>
-
-                <circle cx="110" cy="95" r="28" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-                <text x="110" y="101" text-anchor="middle" font-size="20">📊</text>
-
-                <text x="18" y="150" font-size="15" fill="#1e293b" font-weight="700">Report Analysis:</text>
-                <text x="18" y="172" font-size="13" fill="#475569">
-                  <tspan x="18" dy="0">• Quantifies arrhythmia burden</tspan>
-                  <tspan x="18" dy="18">• Detects AFib, PVCs, or pauses</tspan>
-                  <tspan x="18" dy="18">• Correlates diary with ECG strip</tspan>
-                  <tspan x="18" dy="18">• Guides targeted therapy</tspan>
-                </text>
-
-                <rect x="15" y="260" width="190" height="34" rx="6" fill="#fef3c7"/>
-                <text x="110" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#78350f">Precision Medical Plan</text>
-              </g>
-
-              <!-- Bottom Banner -->
-              <rect x="30" y="415" width="740" height="40" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
-              <text x="400" y="440" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">💡 Compact, wire-free patch Holter wearables allow full daily freedom while capturing clean ECG traces.</text>
-            </svg>
-          </div>
-
-          <!-- AEO Question Header 1 -->
-          <h2 class="h4 fw-bold mt-4 mb-3" style="color: #2c4964;">What are the advantages of a patch Holter monitor vs traditional wired Holter?</h2>
-          <p>
-            <strong>Patch-style wearable Holter monitors replace bulky cables and waist recorders with a single, lightweight adhesive sensor applied to the upper chest.</strong> This shift in ambulatory ECG technology provides significant clinical and practical benefits:
-          </p>
-
-          <div class="pillars-2x2">
-            <div class="pillar-item">
-              <div class="pillar-title">🪶 Compact &amp; Cable-Free</div>
-              <div class="pillar-desc">
-                By eliminating external lead cables and heavy battery waist packs, single-piece patch devices let you stretch, move, and go about your workday without fear of wires catching or disconnecting.
-              </div>
-            </div>
-            <div class="pillar-item">
-              <div class="pillar-title">👔 Hidden Discreetly Under Attire</div>
-              <div class="pillar-desc">
-                The slim profile sits flush against the sternum, remaining invisible beneath business attire, blouses, or casual shirts so you can attend work and social functions without drawing attention.
-              </div>
-            </div>
-            <div class="pillar-item">
-              <div class="pillar-title">🌙 Uninterrupted Nocturnal Monitoring</div>
-              <div class="pillar-desc">
-                Without hard edges or pulling wires, you can sleep comfortably in any position (back, side, or stomach). This ensures clean recording during sleep to evaluate nocturnal heart rate drops or pauses.
-              </div>
-            </div>
-            <div class="pillar-item">
-              <div class="pillar-title">🎯 Superior Signal-to-Noise Ratio</div>
-              <div class="pillar-desc">
-                Traditional Holter wires frequently move against clothing, creating "motion artifacts" that mimic heart arrhythmias. Cable-free patches maintain stable skin contact, yielding significantly cleaner ECG traces.
-              </div>
-            </div>
-          </div>
-
-          <!-- AEO Question Header 2 -->
-          <h2 class="h4 fw-bold mt-4 mb-3" style="color: #2c4964;">Who needs a Holter monitor? Main clinical indications</h2>
-          <p>
-            <strong>Cardiologists prescribe continuous Holter monitoring when a patient reports intermittent cardiac symptoms or requires risk evaluation for structural heart disease.</strong> Common medical reasons include:
-          </p>
-
-          <div class="pillars-2x2">
-            <div class="pillar-item">
-              <div class="pillar-title">⚠️ Symptomatic Patient Profiles</div>
-              <div class="pillar-desc">
-                <ul>
-                  <li><strong>Palpitations:</strong> Sensations of skipped beats, pounding, flutter-flutters, or sudden racing heart.</li>
-                  <li><strong>Unexplained Dizziness / Lightheadedness:</strong> Transient drops in cerebral blood flow caused by sudden cardiac slowing or excessively rapid rhythms.</li>
-                  <li><strong>Syncope (Fainting Spells):</strong> Unexplained loss of consciousness where electrical heart blocks or ventricular tachyarrhythmias must be ruled out.</li>
-                  <li><strong>Exertional Shortness of Breath:</strong> Breathlessness during daily activity that does not stem from primary pulmonary conditions.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="pillar-item">
-              <div class="pillar-title">🩺 Targeted Clinical Screening</div>
-              <div class="pillar-desc">
-                <ul>
-                  <li><strong>Post-Stroke / TIA Evaluation:</strong> Searching for subclinical, paroxysmal Atrial Fibrillation (AFib) to prevent secondary cardioembolic strokes.</li>
-                  <li><strong>Post-Myocardial Infarction Checks:</strong> Assessing Premature Ventricular Contraction (PVC) burden following a heart attack.</li>
-                  <li><strong>Cardiomyopathy Monitoring:</strong> Tracking arrhythmia progression in hypertrophic or dilated cardiomyopathy.</li>
-                  <li><strong>Medication &amp; Pacemaker Evaluation:</strong> Verifying anti-arrhythmic drug safety (e.g., monitoring QTc intervals) or assessing pacemaker capture.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- AEO Question Header 3 -->
-          <h2 class="h4 fw-bold mt-4 mb-3" style="color: #2c4964;">How should I prepare my skin before getting a Holter monitor fitted?</h2>
-          <p>
-            <strong>Proper skin preparation ensures the electroconductive gel and adhesive pads stay firmly attached to your chest, preventing lost data or signal noise.</strong>
-          </p>
-
-          <div class="p-4 mb-4 rounded-3" style="background-color: #f8fafc; border: 1px solid #cbd5e1;">
-            <h3 class="h6 fw-bold mb-3" style="color: #2c4964;">🧼 Step-by-Step Prep Guidelines Before Your Clinic Visit</h3>
-            <ul class="mb-3 text-muted" style="font-size: 0.95rem; line-height: 1.6;">
-              <li><strong>Shower Immediately Before Fitting:</strong> Wash your chest thoroughly with plain soap. You will need to avoid getting the device wet during the monitoring test.</li>
-              <li><strong>Avoid Moisturizers, Oils &amp; Powders:</strong> Do not apply body lotions, sunscreens, or oils to your torso on the day of fitting, as oily residues weaken adhesive bonding.</li>
-              <li><strong>Wear Loose, Button-Down Top:</strong> Choose loose clothing that makes applying the sensor effortless and prevents unnecessary rubbing against the patch.</li>
-              <li><strong>Chest Hair Trimming:</strong> If you have chest hair, clinic staff will gently clip a small area to ensure direct skin contact and pain-free patch removal.</li>
-            </ul>
-
-            <h3 class="h6 fw-bold mb-3" style="color: #2c4964;">🚫 What Activities Should You Avoid During Monitoring?</h3>
-            <ul class="mb-0 text-muted" style="font-size: 0.95rem; line-height: 1.6;">
-              <li><strong>Submerging the Device:</strong> Avoid swimming, taking hot baths/sauna, or directing shower spray onto the monitor unless assigned a specialized fully waterproof patch. (Sponge baths are recommended).</li>
-              <li><strong>Heavy Sweating &amp; Intense Workouts:</strong> Avoid strenuous cardiovascular workouts or saunas. Excessive sweat can dissolve the adhesive backing and cause early dislodgement.</li>
-              <li><strong>Peeling or Re-adjusting the Edges:</strong> Refrain from picking at the patch border or shifting the device once it has been secured by the nursing team.</li>
-              <li><strong>How to prevent skin irritation from Holter adhesive:</strong> If you have sensitive skin or known allergies, inform the technician before placement so they can apply hypoallergenic pads or a protective skin-barrier wipe.</li>
-            </ul>
-          </div>
-
-          <!-- AEO Question Header 4 -->
-          <h2 class="h4 fw-bold mt-4 mb-3" style="color: #2c4964;">How does a doctor interpret your Holter monitor results?</h2>
-          <p>
-            <strong>A cardiologist analyzes the complete Holter recording using specialized software to measure baseline rates, arrhythmia events, and symptom correlations.</strong> The final report assesses four key diagnostic indicators:
-          </p>
-
-          <div class="custom-table-wrapper">
-            <table class="custom-table">
-              <thead>
-                <tr>
-                  <th>Report Parameter</th>
-                  <th>Clinical Definition</th>
-                  <th>Normal Baseline Target</th>
-                  <th>Abnormal Findings to Evaluate</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Heart Rate Trends</strong></td>
-                  <td>Minimum, mean, and peak heart rate recorded across awake and sleeping hours.</td>
-                  <td>60 – 100 bpm (Resting)<br>Nocturnal dip (45–55 bpm)</td>
-                  <td>Sustained Sinus Bradycardia (&lt;40 bpm) or inappropriate Tachycardia (&gt;120 bpm at rest).</td>
-                </tr>
-                <tr>
-                  <td><strong>Ectopic Burden (%)</strong></td>
-                  <td>Percentage of total daily heartbeats originating from abnormal electrical premature contractions (PVCs or PACs).</td>
-                  <td>&lt; 1% total ectopic burden</td>
-                  <td>Frequent PVC burden (&gt;5% to 10%) which can induce reversible arrhythmia-mediated cardiomyopathy.</td>
-                </tr>
-                <tr>
-                  <td><strong>Atrial Fibrillation (AFib)</strong></td>
-                  <td>Rapid, disorganized atrial electrical activity leading to an irregularly irregular ventricular response.</td>
-                  <td>Zero episodes detected</td>
-                  <td>Paroxysmal AFib episodes requiring stroke risk stratification (CHA₂DS₂-VASc) and oral anticoagulation therapy.</td>
-                </tr>
-                <tr>
-                  <td><strong>Sinus Pauses &amp; AV Blocks</strong></td>
-                  <td>Interruption or delay of electrical conduction causing temporary cardiac pauses.</td>
-                  <td>Pauses &lt; 2.0 seconds during deep sleep</td>
-                  <td>Symptomatic pauses &gt; 3.0 seconds indicating sick sinus syndrome or high-grade Atrioventricular (AV) block requiring <a href="/services/cardiology-diagnostics" class="text-primary text-decoration-underline">pacemaker evaluation</a>.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Interactive Symptom Evaluator Widget -->
-          <div class="checker-card">
-            <div class="d-flex align-items-center mb-3">
-              <span style="font-size: 1.5rem;" class="me-2">🩺</span>
-              <div>
-                <h3 class="h6 fw-bold mb-0" style="color: #2c4964;">Interactive Holter Needs Evaluator</h3>
-                <p class="small text-muted mb-0">Select your symptom profile to determine the ideal diagnostic duration</p>
-              </div>
-            </div>
-
-            <div class="checker-grid">
-              <div class="checker-field">
-                <label for="symptom-type">1. Primary Symptom Profile</label>
-                <select id="symptom-type" onchange="evaluateHolterNeed()">
-                  <option value="palpitations_frequent">Frequent / Daily Palpitations</option>
-                  <option value="palpitations_intermittent">Intermittent Palpitations (1-2x a week)</option>
-                  <option value="syncope">Fainting Spells (Syncope) / Dizziness</option>
-                  <option value="stroke_history">Post-Stroke / TIA AFib Screening</option>
-                </select>
-              </div>
-
-              <div class="checker-field">
-                <label for="ecg-status">2. Standard Clinic ECG Result</label>
-                <select id="ecg-status" onchange="evaluateHolterNeed()">
-                  <option value="normal">Normal ECG (Symptom was absent during test)</option>
-                  <option value="borderline">Borderline / Inconclusive ECG</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="checker-result-box">
-              <div id="checker-output-title" class="checker-result-value">Recommended: Standard 24-Hour Holter Monitor</div>
-              <div id="checker-output-desc" class="checker-result-label">Ideal diagnostic scope for capturing daily flutters and establishing a comprehensive baseline reading for clinical interpretation.</div>
-            </div>
-          </div>
-
-          <!-- Frequently Asked Questions (FAQ) Section -->
-          <h2 class="h4 fw-bold mt-5 mb-3" style="color: #2c4964;">Frequently Asked Questions About Holter Monitoring</h2>
-          
-          <div class="accordion mb-4" id="holterFaqAccordion">
-            <div class="accordion-item border rounded mb-2">
-              <h3 class="accordion-header" id="faq1Heading">
-                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
-                  Why do I need a Holter monitor if my standard clinic ECG was normal?
-                </button>
-              </h3>
-              <div id="faq1" class="accordion-collapse collapse" aria-labelledby="faq1Heading" data-bs-parent="#holterFaqAccordion">
-                <div class="accordion-body text-muted">
-                  A standard resting ECG only records your heart rhythm for 10 seconds. Many cardiac arrhythmias (like Atrial Fibrillation or Premature Ventricular Contractions) occur intermittently. A continuous ambulatory Holter monitor records every heartbeat over 24 to 48 hours, capturing transient rhythm abnormalities that a brief clinic ECG misses.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item border rounded mb-2">
-              <h3 class="accordion-header" id="faq2Heading">
-                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                  What are the advantages of a modern wire-free patch Holter monitor vs traditional wired Holter?
-                </button>
-              </h3>
-              <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading" data-bs-parent="#holterFaqAccordion">
-                <div class="accordion-body text-muted">
-                  Modern patch-style Holter monitors are lightweight, cable-free, and sit flat against the upper chest. Compared to traditional wired monitors with multiple dangling leads, patch wearables offer lower motion artifacts, higher signal-to-noise ratio, and complete discretion under everyday clothing.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item border rounded mb-2">
-              <h3 class="accordion-header" id="faq3Heading">
-                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                  How should I prepare my skin before getting a Holter monitor fitted?
-                </button>
-              </h3>
-              <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading" data-bs-parent="#holterFaqAccordion">
-                <div class="accordion-body text-muted">
-                  Shower right before your clinic appointment using plain soap, avoid applying body lotions, powders, or oils to the chest area, wear loose clothing, and allow clinic staff to gently trim excess chest hair to ensure strong electroconductive adhesion.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item border rounded mb-2">
-              <h3 class="accordion-header" id="faq4Heading">
-                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
-                  How to prevent skin irritation from Holter adhesive?
-                </button>
-              </h3>
-              <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4Heading" data-bs-parent="#holterFaqAccordion">
-                <div class="accordion-body text-muted">
-                  Inform your doctor if you have sensitive skin or adhesive allergies before fitting. Clinics can apply hypoallergenic medical adhesives or skin-barrier wipes to minimize localized contact dermatitis while maintaining secure electrode contact.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item border rounded mb-2">
-              <h3 class="accordion-header" id="faq5Heading">
-                <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
-                  What timeframe yields a reasonable diagnostic scope for clinical interpretation?
-                </button>
-              </h3>
-              <div id="faq5" class="accordion-collapse collapse" aria-labelledby="faq5Heading" data-bs-parent="#holterFaqAccordion">
-                <div class="accordion-body text-muted">
-                  A continuous 24 to 48-hour ambulatory recording window generally provides sufficient diagnostic yield to evaluate circadian heart rate variability, quantify overall ectopic burden, and allow precise correlation between patient-logged symptoms and underlying ECG traces.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contextual Support Box -->
-          <div class="support-links-box text-center">
-            <h3 class="h6 fw-bold mb-2" style="color: #2c4964;">Experiencing Heart Palpitations or Unexplained Flutters?</h3>
-            <p class="small text-muted mb-3">Our medical team provides comprehensive cardiovascular assessments, continuous rhythm tracking, and personalized care plans.</p>
-            <a href="/contact/" class="support-btn btn-primary text-white me-2">Schedule a Cardiac Consultation</a>
-            <a href="tel:+6569621362" class="support-btn btn-outline-secondary">Call Clinic: +65 6962 1362</a>
-          </div>
-
-          <div class="ip-notice">
-            <strong>Medical Disclaimer &amp; Editorial Standards:</strong> The information contained in this guide is reviewed by certified cardiology specialists and aligns with peer-reviewed cardiovascular guidelines from the American College of Cardiology (ACC) and American Heart Association (AHA). It is intended solely for educational purposes and should not replace clinical medical evaluation, diagnosis, or treatment.
-          </div>
-
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
+            What if my skin gets irritated?
+          </button>
+        </h3>
+        <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body small text-muted">Inform clinic staff prior to placement if you have sensitive skin so they can apply hypoallergenic pads or a skin barrier wipe.</div>
         </div>
       </div>
     </div>
+
+    <!-- Contact CTA -->
+    <div class="p-3 text-center border rounded bg-white">
+      <p class="fw-bold mb-1 small" style="color: #2c4964;">Need a Heart Rhythm Evaluation?</p>
+      <a href="/contact/" class="btn btn-sm btn-primary me-2">Book Appointment</a>
+      <a href="tel:+6569621362" class="btn btn-sm btn-outline-secondary">Call +65 6962 1362</a>
+    </div>
+
   </div>
 </main>
 
 <script>
-  /* Interactive Holter Need Evaluator Script */
-  function evaluateHolterNeed() {
-    const symptom = document.getElementById('symptom-type').value;
-    const ecg = document.getElementById('ecg-status').value;
-    const titleElem = document.getElementById('checker-output-title');
-    const descElem = document.getElementById('checker-output-desc');
-
-    if (symptom === 'palpitations_intermittent') {
-      titleElem.innerText = "Recommended: Extended 48-Hour or 7-Day Wearable Patch";
-      descElem.innerText = "Because flutters occur 1-2 times a week, an extended monitoring window significantly increases the diagnostic yield for intermittent arrhythmias.";
-    } else if (symptom === 'stroke_history') {
-      titleElem.innerText = "Recommended: Targeted Paroxysmal AFib Screening";
-      descElem.innerText = "Screening for subclinical Atrial Fibrillation is vital post-stroke or TIA to determine if oral anticoagulation is needed to prevent secondary strokes.";
-    } else if (symptom === 'syncope') {
-      titleElem.innerText = "Recommended: Urgent 24-48 Hour Holter & Cardiac Assessment";
-      descElem.innerText = "Unexplained syncope requires prompt evaluation to rule out dangerous sinus pauses, high-grade AV blocks, or ventricular tachyarrhythmias.";
+  function checkNeed() {
+    const val = document.getElementById('symptom-select').value;
+    const out = document.getElementById('checker-out');
+    if (val === 'weekly') {
+      out.innerText = "Recommended: Extended 7-Day Wearable Patch";
+    } else if (val === 'syncope') {
+      out.innerText = "Recommended: Urgent 24-48 Hr Holter + Physician Check";
     } else {
-      titleElem.innerText = "Recommended: Standard 24-Hour Continuous Holter Monitor";
-      descElem.innerText = "Ideal diagnostic scope for capturing daily flutters and establishing a comprehensive baseline reading for clinical interpretation.";
+      out.innerText = "Recommended: Standard 24-Hour Continuous Holter";
     }
-  }
-
-  /* Text-to-Speech (TTS) Functionality */
-  let synth = window.speechSynthesis;
-  let utterance = null;
-  let isPlaying = false;
-
-  function togglePlayPause() {
-    if (!synth) {
-      alert("Text-to-speech is not supported in your browser.");
-      return;
-    }
-
-    const btnPlay = document.getElementById('btn-tts-play');
-    const btnStop = document.getElementById('btn-tts-stop');
-    const playIcon = document.getElementById('play-icon');
-    const playText = document.getElementById('play-text');
-    const statusText = document.getElementById('audio-status-text');
-
-    if (isPlaying) {
-      if (synth.speaking && !synth.paused) {
-        synth.pause();
-        playIcon.innerText = '▶';
-        playText.innerText = 'Resume Audio';
-        statusText.innerText = '(Paused)';
-      } else if (synth.paused) {
-        synth.resume();
-        playIcon.innerText = '⏸';
-        playText.innerText = 'Pause Audio';
-        statusText.innerText = '(Playing)';
-      }
-    } else {
-      const textToRead = document.getElementById('speakable-content').innerText;
-      utterance = new SpeechSynthesisUtterance(textToRead);
-      utterance.rate = 0.95;
-      utterance.pitch = 1.0;
-
-      utterance.onend = function() {
-        stopAudio();
-      };
-
-      synth.speak(utterance);
-      isPlaying = true;
-
-      btnPlay.classList.add('active-play');
-      playIcon.innerText = '⏸';
-      playText.innerText = 'Pause Audio';
-      statusText.innerText = '(Playing)';
-
-      btnStop.disabled = false;
-      btnStop.style.opacity = '1.0';
-      btnStop.style.cursor = 'pointer';
-    }
-  }
-
-  function stopAudio() {
-    if (synth) {
-      synth.cancel();
-    }
-    isPlaying = false;
-
-    const btnPlay = document.getElementById('btn-tts-play');
-    const btnStop = document.getElementById('btn-tts-stop');
-    const playIcon = document.getElementById('play-icon');
-    const playText = document.getElementById('play-text');
-    const statusText = document.getElementById('audio-status-text');
-
-    btnPlay.classList.remove('active-play');
-    playIcon.innerText = '▶';
-    playText.innerText = 'Play Audio';
-    statusText.innerText = '(Ready)';
-
-    btnStop.disabled = true;
-    btnStop.style.opacity = '0.5';
-    btnStop.style.cursor = 'not-allowed';
   }
 </script>
