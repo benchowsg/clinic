@@ -18,6 +18,10 @@ custom_schema: |
       "jobTitle": "Principal Physician",
       "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
     },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Singapore"
+    },
     "mainEntity": {
       "@type": "FAQPage",
       "mainEntity": [
@@ -34,7 +38,7 @@ custom_schema: |
           "name": "What is the difference between LDL-C and ApoB?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "LDL-C measures the total mass of cholesterol carried inside low-density particles (in mmol/L), while ApoB counts the exact number of plaque-building particles in circulation (in g/L or mg/dL). ApoB is a superior predictor of arterial plaque formation because small, dense LDL particles can carry less cholesterol while still posing a high arterial threat."
+            "text": "LDL-C measures the total mass of cholesterol carried inside low-density particles (in mmol/L), while ApoB counts the exact number of plaque-building particles in circulation. ApoB is a superior predictor of arterial plaque formation because small, dense LDL particles can carry less cholesterol while still posing a high arterial threat."
           }
         },
         {
@@ -49,111 +53,59 @@ custom_schema: |
     },
     "isPartOf": {
       "@type": "MedicalBusiness",
-      "id": "https://www.ahealingheartmedical.com"
+      "@id": "https://www.ahealingheartmedical.com"
     }
   }
 ---
 
 <style>
   .article-content { padding-top: 140px; padding-bottom: 80px; }
-  .article-body p { line-height: 1.7; margin-bottom: 1.25rem; color: #333; font-size: 1.05rem; }
-  .ip-notice { background: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; font-size: 0.85rem; color: #555; border-radius: 8px; margin-top: 40px; }
-  .author-box { background: #fdfcf0; padding: 20px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 25px; }
+  .article-body p { line-height: 1.7; margin-bottom: 1.25rem; color: #1e293b; font-size: 1.05rem; }
+  .author-box { background: #fdfcf0; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 25px; }
+  
+  /* Executive Summary Box */
+  .summary-box { background-color: #f8fafc; border-left: 4px solid #008080; padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 30px; }
+  .summary-title { font-weight: 800; color: #1e293b; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .takeaway-list { margin-top: 10px; padding-left: 20px; color: #334155; font-size: 0.95rem; }
+  .takeaway-list li { margin-bottom: 6px; }
+
+  /* Audio Control Panel (a11y Enhanced) */
+  .tts-container { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 12px; padding: 15px 20px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+  .tts-info { display: flex; align-items: center; gap: 10px; color: #0f172a; font-size: 0.95rem; font-weight: 700; }
+  .tts-controls { display: flex; align-items: center; gap: 10px; }
+  .tts-btn { background: #ffffff; border: 1px solid #94a3b8; border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; font-weight: 700; color: #1e293b; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+  .tts-btn:focus { outline: 3px solid #008080; }
   
   /* Stat/Metrics Grid Styling */
   .stat-grid-wrapper { display: grid; grid-template-columns: 1fr; gap: 15px; margin: 25px 0; }
   @media (min-width: 576px) { .stat-grid-wrapper { grid-template-columns: repeat(3, 1fr); } }
   .stat-card-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; text-align: center; }
-  .stat-card-number { font-size: 1.6rem; font-weight: 800; color: #e53e3e; line-height: 1.2; }
-  .stat-card-label { font-size: 0.85rem; font-weight: 600; color: #475569; margin-top: 5px; }
+  .stat-card-number { font-size: 1.6rem; font-weight: 800; color: #b91c1c; line-height: 1.2; }
+  .stat-card-label { font-size: 0.85rem; font-weight: 600; color: #334155; margin-top: 5px; }
 
   /* 2x2 Grid Styling */
   .pillars-2x2 { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
   @media (min-width: 576px) { .pillars-2x2 { grid-template-columns: 1fr 1fr; } }
-  .pillar-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; transition: transform 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-  .pillar-item:hover { transform: translateY(-2px); }
-  .pillar-title { font-weight: 700; color: #2c4964; font-size: 1.1rem; margin-bottom: 8px; }
-  .pillar-desc { font-size: 0.9rem; color: #555; line-height: 1.5; }
+  .pillar-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+  .pillar-title { font-weight: 700; color: #0f172a; font-size: 1.1rem; margin-bottom: 8px; }
+  .pillar-desc { font-size: 0.95rem; color: #334155; line-height: 1.5; }
 
   /* Table Custom Styling */
   .custom-table-wrapper { overflow-x: auto; margin: 25px 0; }
   .custom-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-  .custom-table th { background-color: #2c4964; color: #ffffff; padding: 12px 15px; text-align: left; }
-  .custom-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; color: #333; }
+  .custom-table th { background-color: #0f172a; color: #ffffff; padding: 12px 15px; text-align: left; }
+  .custom-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; color: #1e293b; }
   .custom-table tr:nth-child(even) { background-color: #f8fafc; }
 
-  /* Contextual Inline Links */
-  .support-links-box { background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 15px; margin: 25px 0 35px 0; }
-  .support-btn { border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-decoration: none; padding: 8px 16px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s; }
-
-  /* Audio Control Panel */
-  .tts-container { background: #f4f7f6; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
-  .tts-info { display: flex; align-items: center; gap: 10px; color: #2c4964; font-size: 0.9rem; font-weight: 600; }
-  .tts-controls { display: flex; align-items: center; gap: 10px; }
-  .tts-btn { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 14px; font-size: 0.85rem; font-weight: 600; color: #475569; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-  .tts-btn.active-play { background: #008080; border-color: #008080; color: #ffffff; }
-  .tts-status { font-size: 0.75rem; color: #718096; font-weight: normal; margin-left: 5px; }
-
-/* Interactive Lipid Converter Styling */
-.converter-card {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 24px;
-  margin: 30px 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-.converter-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-}
-@media (min-width: 576px) {
-  .converter-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-.converter-field label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #2c4964;
-  margin-bottom: 6px;
-}
-.converter-field input, .converter-field select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  color: #334155;
-  background-color: #f8fafc;
-}
-.converter-field input:focus, .converter-field select:focus {
-  outline: none;
-  border-color: #008080;
-  background-color: #ffffff;
-}
-.converter-result-box {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-  margin-top: 15px;
-}
-.converter-result-value {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #166534;
-  line-height: 1.2;
-}
-.converter-result-label {
-  font-size: 0.85rem;
-  color: #15803d;
-  font-weight: 600;
-  margin-top: 4px;
-}
+  /* Interactive Lipid Converter Styling */
+  .converter-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 24px; margin: 30px 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+  .converter-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+  @media (min-width: 576px) { .converter-grid { grid-template-columns: 1fr 1fr; } }
+  .converter-field label { display: block; font-size: 0.85rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+  .converter-field input, .converter-field select { width: 100%; padding: 10px 12px; border: 1px solid #94a3b8; border-radius: 6px; font-size: 0.95rem; color: #0f172a; background-color: #f8fafc; }
+  .converter-result-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; text-align: center; margin-top: 15px; }
+  .converter-result-value { font-size: 1.8rem; font-weight: 800; color: #14532d; line-height: 1.2; }
+  .converter-result-label { font-size: 0.85rem; color: #15803d; font-weight: 700; margin-top: 4px; }
 </style>
 
 <main id="main" class="article-content">
@@ -161,91 +113,98 @@ custom_schema: |
     <div class="row justify-content-center">
       <div class="col-lg-8">
         
+        <!-- Breadcrumb Navigation -->
         <nav aria-label="breadcrumb" class="mb-4">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
-            <li class="breadcrumb-item active">Cardiovascular Health</li>
+            <li class="breadcrumb-item active" aria-current="page">Cardiovascular Health</li>
           </ol>
         </nav>
 
-        <h1 class="display-6 fw-bold mb-3" style="color: #2c4964;">Blood Markers for Heart Arterial Blockage: How to Interpret Your Results</h1>
+        <h1 class="display-6 fw-bold mb-3" style="color: #0f172a;">Blood Markers for Heart Arterial Blockage: How to Interpret Your Lab Results</h1>
         <p class="subtitle fs-5 mb-4 text-muted">A practical clinical guide on advanced cardiac blood markers, interpreting Singapore standard mmol/L lipid values, identifying silent coronary plaque risks, and MOH CDMP funding pathways.</p>
         
+        <!-- Author Byline Box -->
         <div class="author-box d-flex align-items-center">
-          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang, Principal Physician">
           <div>
-            <p class="mb-0 fw-bold">Written & Reviewed by Dr. Gerald Thang</p>
+            <p class="mb-0 fw-bold text-dark">Written & Reviewed by Dr. Gerald Thang</p>
             <p class="mb-0 text-primary fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
             <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
           </div>
         </div>
 
-        <div class="tts-container">
+        <!-- Accessible Audio Control Panel -->
+        <div class="tts-container" aria-label="Audio Reader">
           <div class="tts-info">
-            <span style="font-size: 1.2rem;">🔊</span>
-            <span>Listen to this article <span id="audio-status-text" class="tts-status">(Ready)</span></span>
+            <span aria-hidden="true" style="font-size: 1.3rem;">🔊</span>
+            <span>Listen to Article <span id="audio-status-text" class="fw-normal text-muted" aria-live="polite">(Ready)</span></span>
           </div>
           <div class="tts-controls">
-            <button id="btn-tts-play" class="tts-btn" onclick="togglePlayPause()">
-              <span id="play-icon">▶</span> <span id="play-text">Play Audio</span>
+            <button id="btn-tts-play" class="tts-btn" onclick="togglePlayPause()" aria-label="Play audio version of this article">
+              <span id="play-icon" aria-hidden="true">▶</span> <span id="play-text">Play Audio</span>
             </button>
-            <button id="btn-tts-stop" class="tts-btn" onclick="stopAudio()" disabled style="opacity: 0.5; cursor: not-allowed;">
-              <span>⏹</span> Stop
+            <button id="btn-tts-stop" class="tts-btn" onclick="stopAudio()" disabled aria-label="Stop audio" style="opacity: 0.5; cursor: not-allowed;">
+              <span aria-hidden="true">⏹</span> Stop
             </button>
           </div>
         </div>
 
-        <!-- Executive Summary -->
-        <div style="background-color: #fdfcf0; border-left: 4px solid #cbd5e1; padding: 15px 20px; border-radius: 0 8px 8px 0; margin-bottom: 25px; font-size: 0.95rem; line-height: 1.6; color: #475569;">
-          <strong>TL;DR:</strong> Coronary Artery Disease (CAD) develops silently over decades before causing chest pain or heart attacks. Standard Singapore lipid panels (reported in <strong>mmol/L</strong>) give a baseline, but modern cardiac diagnostics evaluate <strong>ApoB</strong> (plaque-building particle counts), <strong>hs-CRP</strong> (arterial inflammation), and <strong>Lp(a)</strong> (genetic risk) to pinpoint early arterial blockage risk. In Singapore, routine cardiovascular blood testing and long-term lipid management are subsidized under the <strong>MOH Chronic Disease Management Programme (CDMP)</strong> using MediSave.
+        <!-- Executive Summary (TL;DR & Takeaways) -->
+        <div class="summary-box" role="region" aria-label="Executive Summary">
+          <div class="summary-title">⚡ TL;DR & Core Takeaways</div>
+          <p class="mb-2" style="font-size: 0.95rem; color: #334155;">
+            Coronary Artery Disease (CAD) develops silently over decades before triggering chest pain or a heart attack. While standard lipid panels in Singapore use <strong>mmol/L</strong>, comprehensive risk assessments require advanced biomarkers to evaluate real arterial threat.
+          </p>
+          <ul class="takeaway-list mb-0">
+            <li><strong>Most Important Takeaway:</strong> Blood tests do not image a physical blockage, but markers like <strong>ApoB</strong> (particle count), <strong>hs-CRP</strong> (inflammation), and <strong>Lp(a)</strong> (genetic risk) determine whether plaque is actively building or unstable.</li>
+            <li><strong>Singapore Subsidy Pathway:</strong> Chronic lipid management and monitoring are subsidized under the <strong>MOH Chronic Disease Management Programme (CDMP)</strong> using MediSave (up to $500–$700/year).</li>
+          </ul>
         </div>
 
         <!-- Key Metrics Grid -->
-        <div class="stat-grid-wrapper">
+        <div class="stat-grid-wrapper" role="region" aria-label="Key Health Statistics">
           <div class="stat-card-item">
             <div class="stat-card-number">#1</div>
-            <div class="stat-card-label">Cause of Sudden Death in Adults with Silent Coronary Artery Disease (CAD)</div>
+            <div class="stat-card-label">Cause of Sudden Death in Adults with Silent CAD</div>
           </div>
           <div class="stat-card-item">
             <div class="stat-card-number">Up to $700</div>
-            <div class="stat-card-label">Annual Outpatient MediSave Use for Chronic Disease Management Programme (CDMP)</div>
+            <div class="stat-card-label">Annual MediSave Limit for Outpatient CDMP Claims</div>
           </div>
           <div class="stat-card-item">
             <div class="stat-card-number">1 in 5</div>
-            <div class="stat-card-label">People Carrying High Genetic Lp(a) Arterial Risk</div>
+            <div class="stat-card-label">People Carrying High Genetic Lp(a) Risk</div>
           </div>
         </div>
 
-        <!-- Direct Answer Callout Box -->
+        <!-- Direct Answer Callout Box for AEO/GEO -->
         <div class="direct-answer-box p-4 mb-4" style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;">
-          <h2 class="h5 fw-bold mb-3" style="color: #166534;">
-            <span class="me-2">💡</span> Clinical Insight: Can Blood Tests Detect Heart Blockages?
+          <h2 class="h5 fw-bold mb-3" style="color: #14532d;">
+            <span class="me-2" aria-hidden="true">💡</span> Clinical Answer: Can Blood Tests Detect Heart Blockages?
           </h2>
-          
-          <p class="mb-3" style="color: #15803d; font-weight: 500;">
-            <strong>Blood tests do not take a picture of a blockage, but they reveal the biological environment causing plaque accumulation and rupture:</strong>
+          <p class="mb-3" style="color: #15803d; font-weight: 600;">
+            Blood tests do not take a physical scan of an arterial blockage, but they measure the biological conditions that cause plaque to form, calcify, or rupture:
           </p>
-
           <div class="row g-3">
             <div class="col-md-6">
               <div class="p-3 bg-white rounded border border-light shadow-sm h-100">
-                <strong class="d-block text-dark mb-1">🧪 What Blood Markers Measure:</strong>
-                <ul class="mb-0 ps-3 small text-muted">
-                  <li><strong>Particle Burden (ApoB):</strong> Total concentration of plaque-forming lipoproteins.</li>
-                  <li><strong>Inflammatory Activity (hs-CRP):</strong> How volatile or unstable arterial plaque is.</li>
-                  <li><strong>Genetic Susceptibility [Lp(a)]:</strong> Inherited sticky particles that accelerate clogging.</li>
+                <strong class="d-block text-dark mb-1">🧪 Key Blood Biomarkers:</strong>
+                <ul class="mb-0 ps-3 small text-secondary">
+                  <li><strong>ApoB:</strong> Measures total number of plaque-building particles.</li>
+                  <li><strong>hs-CRP:</strong> Measures vessel wall inflammation and plaque instability.</li>
+                  <li><strong>Lp(a):</strong> Detects inherited sticky particles that accelerate clogging.</li>
                 </ul>
               </div>
             </div>
-            
             <div class="col-md-6">
               <div class="p-3 bg-white rounded border border-light shadow-sm h-100">
-                <strong class="d-block text-dark mb-1">🫀 Why It Matters Early:</strong>
-                <ul class="mb-0 ps-3 small text-muted">
-                  <li><strong>Silent Atherosclerosis:</strong> Blockages often build up to 70% without symptoms.</li>
-                  <li><strong>Plaque Stability:</strong> Inflamed, soft plaques are more prone to sudden rupture.</li>
-                  <li><strong>Preventative Action:</strong> Early lifestyle & medical care can halt progression.</li>
+                <strong class="d-block text-dark mb-1">🫀 Diagnostic Value:</strong>
+                <ul class="mb-0 ps-3 small text-secondary">
+                  <li><strong>Early Detection:</strong> Catherers catch issues before 70% blockage occurs.</li>
+                  <li><strong>Rupture Prevention:</strong> Flags unstable, soft plaque prone to sudden clots.</li>
+                  <li><strong>Actionable Care:</strong> Enables targeted medical therapy to reverse risk.</li>
                 </ul>
               </div>
             </div>
@@ -254,114 +213,85 @@ custom_schema: |
 
         <div id="speakable-content" class="article-body">
           <p>
-            Imagine driving your car with the "check engine" light blinking. You know something is happening under the hood, but until a mechanic plugs in a diagnostic scanner, you cannot tell whether it is a simple sensor replacement or a major engine breakdown.
+            Imagine driving your car with the "check engine" light on. You know something is happening under the hood, but until a mechanic plugs in a diagnostic scanner, you cannot tell whether it is a simple sensor issue or a major engine breakdown.
           </p>
           <p>
-            When it comes to your heart, <strong>blood markers act as that diagnostic scanner</strong>. In Singapore medical practices, lipid levels are routinely measured in <strong>mmol/L (millimoles per litre)</strong>. Advanced clinical diagnostics look deep inside blood chemistry to count plaque-building particles, detect vessel inflammation, and measure genetic risk long before an arterial blockage triggers a medical emergency.
+            When it comes to your heart, <strong>cardiac blood markers act as that diagnostic scanner</strong>. In Singapore medical practice, lipid panels are measured in <strong>mmol/L (millimoles per litre)</strong>. Advanced diagnostic panels evaluate particle counts and vascular inflammation long before an arterial blockage triggers an emergency.
           </p>
 
-     <!-- SVG Diagram: Arterial Plaque Build-Up & Biomarkers (Optimized Spacing & Larger Fonts) -->
-<div class="my-4 text-center">
-  <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; max-width:800px; font-family:system-ui, -apple-system, sans-serif; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
-    <!-- Diagram Title & Subtitle -->
-    <text x="400" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#2c4964">Arterial Blockage Progression & Key Blood Markers</text>
-    <text x="400" y="54" text-anchor="middle" font-size="14" fill="#64748b">How blood chemistry drives coronary plaque formation (Singapore Target Units)</text>
+          <!-- SVG Diagram with Accessible Title/Desc -->
+          <div class="my-4 text-center">
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-title svg-desc" style="width:100%; height:auto; max-width:800px; font-family:system-ui, sans-serif; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:15px;">
+              <title id="svg-title">Arterial Blockage Progression Diagram</title>
+              <desc id="svg-desc">A 3-step diagram explaining Particle Infiltration (ApoB/LDL), Vascular Inflammation (hs-CRP), and Genetic Clot Risk (Lp(a)) with target clinical thresholds.</desc>
+              
+              <text x="400" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Arterial Blockage Progression & Key Blood Markers</text>
+              <text x="400" y="54" text-anchor="middle" font-size="14" fill="#475569">How blood chemistry drives coronary plaque formation (Singapore Target Units)</text>
 
-    <!-- STAGE 1 CARD -->
-    <g transform="translate(30, 80)">
-      <rect x="0" y="0" width="220" height="330" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-      <rect x="0" y="0" width="220" height="46" rx="10" fill="#2c4964"/>
-      <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">1. Particle Infiltration</text>
-      
-      <!-- Circle Icon -->
-      <circle cx="110" cy="100" r="32" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
-      <text x="110" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#991b1b">ApoB / LDL</text>
-      
-      <!-- Descriptions with <tspan> to prevent text overflow -->
-      <text x="18" y="160" font-size="13" fill="#1e293b" font-weight="700">Primary Driver:</text>
-      <text x="18" y="182" font-size="12" fill="#475569">
-        <tspan x="18" dy="0">• Small, dense LDL particles</tspan>
-        <tspan x="28" dy="16">penetrate vessel lining.</tspan>
-      </text>
-      <text x="18" y="230" font-size="12" fill="#475569">
-        <tspan x="18" dy="0">• High ApoB counts speed</tspan>
-        <tspan x="28" dy="16">up trapped plaque lipid levels.</tspan>
-      </text>
+              <!-- Stage 1 -->
+              <g transform="translate(30, 80)">
+                <rect x="0" y="0" width="220" height="330" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+                <rect x="0" y="0" width="220" height="46" rx="10" fill="#0f172a"/>
+                <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">1. Particle Infiltration</text>
+                <circle cx="110" cy="100" r="32" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+                <text x="110" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#991b1b">ApoB / LDL</text>
+                <text x="18" y="160" font-size="13" fill="#0f172a" font-weight="700">Primary Driver:</text>
+                <text x="18" y="182" font-size="12" fill="#334155">
+                  <tspan x="18" dy="0">• Small LDL particles</tspan>
+                  <tspan x="28" dy="16">penetrate vessel lining.</tspan>
+                </text>
+                <rect x="15" y="275" width="190" height="36" rx="6" fill="#e2e8f0"/>
+                <text x="110" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Target LDL: &lt; 2.6 mmol/L</text>
+              </g>
 
-      <!-- Target Pill -->
-      <rect x="15" y="275" width="190" height="36" rx="6" fill="#e2e8f0"/>
-      <text x="110" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Target LDL: &lt; 2.6 mmol/L</text>
-    </g>
+              <!-- Stage 2 -->
+              <g transform="translate(290, 80)">
+                <rect x="0" y="0" width="220" height="330" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+                <rect x="0" y="0" width="220" height="46" rx="10" fill="#d97706"/>
+                <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">2. Vascular Inflammation</text>
+                <circle cx="110" cy="100" r="32" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+                <text x="110" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#92400e">hs-CRP</text>
+                <text x="18" y="160" font-size="13" fill="#0f172a" font-weight="700">Inflammatory Fuel:</text>
+                <text x="18" y="182" font-size="12" fill="#334155">
+                  <tspan x="18" dy="0">• Inflamed foam cells</tspan>
+                  <tspan x="28" dy="16">destabilize plaque cap.</tspan>
+                </text>
+                <rect x="15" y="275" width="190" height="36" rx="6" fill="#fef3c7"/>
+                <text x="110" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">Target hs-CRP: &lt; 1.0 mg/L</text>
+              </g>
 
-    <!-- STAGE 2 CARD -->
-    <g transform="translate(290, 80)">
-      <rect x="0" y="0" width="220" height="330" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-      <rect x="0" y="0" width="220" height="46" rx="10" fill="#d97706"/>
-      <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">2. Vascular Inflammation</text>
+              <!-- Stage 3 -->
+              <g transform="translate(550, 80)">
+                <rect x="0" y="0" width="220" height="330" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+                <rect x="0" y="0" width="220" height="46" rx="10" fill="#b91c1c"/>
+                <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">3. Genetic Risk</text>
+                <circle cx="110" cy="100" r="32" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
+                <text x="110" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#881337">Lp(a)</text>
+                <text x="18" y="160" font-size="13" fill="#0f172a" font-weight="700">Genetic Accelerator:</text>
+                <text x="18" y="182" font-size="12" fill="#334155">
+                  <tspan x="18" dy="0">• Sticky particles speed up</tspan>
+                  <tspan x="28" dy="16">arterial calcification.</tspan>
+                </text>
+                <rect x="15" y="275" width="190" height="36" rx="6" fill="#ffe4e6"/>
+                <text x="110" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#9f1239">Target Lp(a): &lt; 50 nmol/L</text>
+              </g>
 
-      <!-- Circle Icon -->
-      <circle cx="110" cy="100" r="32" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-      <text x="110" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#92400e">hs-CRP</text>
+              <rect x="30" y="435" width="740" height="40" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
+              <text x="400" y="460" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b">💡 Evaluating ApoB + hs-CRP + Lp(a) yields higher diagnostic accuracy than basic cholesterol alone.</text>
+            </svg>
+          </div>
 
-      <!-- Descriptions with <tspan> -->
-      <text x="18" y="160" font-size="13" fill="#1e293b" font-weight="700">Inflammatory Fuel:</text>
-      <text x="18" y="182" font-size="12" fill="#475569">
-        <tspan x="18" dy="0">• Macrophages absorb fats,</tspan>
-        <tspan x="28" dy="16">forming unstable foam cells.</tspan>
-      </text>
-      <text x="18" y="230" font-size="12" fill="#475569">
-        <tspan x="18" dy="0">• Elevated hs-CRP flags high</tspan>
-        <tspan x="28" dy="16">risk of plaque rupture.</tspan>
-      </text>
-
-      <!-- Target Pill -->
-      <rect x="15" y="275" width="190" height="36" rx="6" fill="#fef3c7"/>
-      <text x="110" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#78350f">Target hs-CRP: &lt; 1.0 mg/L</text>
-    </g>
-
-    <!-- STAGE 3 CARD -->
-    <g transform="translate(550, 80)">
-      <rect x="0" y="0" width="220" height="330" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
-      <rect x="0" y="0" width="220" height="46" rx="10" fill="#b91c1c"/>
-      <text x="110" y="29" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">3. Genetic &amp; Clot Risk</text>
-
-      <!-- Circle Icon -->
-      <circle cx="110" cy="100" r="32" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/>
-      <text x="110" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#881337">Lp(a)</text>
-
-      <!-- Descriptions with <tspan> -->
-      <text x="18" y="160" font-size="13" fill="#1e293b" font-weight="700">Genetic Accelerator:</text>
-      <text x="18" y="182" font-size="12" fill="#475569">
-        <tspan x="18" dy="0">• Ultra-sticky lipoprotein</tspan>
-        <tspan x="28" dy="16">drives rapid calcification.</tspan>
-      </text>
-      <text x="18" y="230" font-size="12" fill="#475569">
-        <tspan x="18" dy="0">• Blocks natural clot breakdown</tspan>
-        <tspan x="28" dy="16">during arterial tears.</tspan>
-      </text>
-
-      <!-- Target Pill -->
-      <rect x="15" y="275" width="190" height="36" rx="6" fill="#ffe4e6"/>
-      <text x="110" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#9f1239">Target Lp(a): &lt; 50 nmol/L</text>
-    </g>
-
-    <!-- BOTTOM CALLOUT BANNER -->
-    <rect x="30" y="435" width="740" height="40" rx="8" fill="#f1f5f9" stroke="#cbd5e1"/>
-    <text x="400" y="460" text-anchor="middle" font-size="13" font-weight="600" fill="#334155">💡 Combined interpretation of ApoB + hs-CRP + Lp(a) yields superior risk accuracy than basic cholesterol.</text>
-  </svg>
-</div>
-
-          <h2 class="h4 fw-bold mt-4 mb-3" style="color: #2c4964;">1. Decoding Primary Blood Markers in Singapore Units (mmol/L)</h2>
-          <p>When reviewing lab results with your doctor in Singapore, lipid profiles use <strong>mmol/L</strong>, while specific protein and genetic markers use standard SI metric units (g/L, mg/L, or nmol/L).</p>
+          <h2 class="h4 fw-bold mt-4 mb-3" style="color: #0f172a;">1. Decoding Primary Blood Markers in Singapore Units (mmol/L)</h2>
+          <p>When reviewing lab results with your physician in Singapore, standard lipid profiles are reported in <strong>mmol/L</strong>, while secondary proteins use international SI metric units (g/L, mg/L, or nmol/L).</p>
 
           <div class="custom-table-wrapper">
             <table class="custom-table">
               <thead>
                 <tr>
-                  <th>Blood Marker</th>
-                  <th>Singapore Target (mmol/L)</th>
-                  <th>US Reference Equivalent (mg/dL)</th>
-                  <th>Clinical Meaning & Blockage Relevance</th>
+                  <th scope="col">Blood Marker</th>
+                  <th scope="col">Singapore Target (mmol/L)</th>
+                  <th scope="col">US Equivalent (mg/dL)</th>
+                  <th scope="col">Clinical Relevance</th>
                 </tr>
               </thead>
               <tbody>
@@ -369,279 +299,201 @@ custom_schema: |
                   <td><strong>Total Cholesterol</strong></td>
                   <td><strong>&lt; 5.2 mmol/L</strong></td>
                   <td>&lt; 200 mg/dL</td>
-                  <td>Baseline measure of overall circulating cholesterol.</td>
+                  <td>Baseline measure of total circulating cholesterol.</td>
                 </tr>
                 <tr>
                   <td><strong>LDL-C (Low-Density Lipoprotein)</strong></td>
-                  <td><strong>&lt; 2.6 mmol/L</strong> (General)<br><strong>&lt; 1.8 to 1.4 mmol/L</strong> (High Risk / Heart Patients)</td>
-                  <td>&lt; 100 mg/dL<br>&lt; 70 to 55 mg/dL</td>
-                  <td>Primary "bad" cholesterol target in Singapore guidelines. Measures cholesterol mass driving plaque accumulation.</td>
+                  <td><strong>&lt; 2.6 mmol/L</strong> (Standard)<br><strong>&lt; 1.4 - 1.8 mmol/L</strong> (High Risk)</td>
+                  <td>&lt; 100 mg/dL<br>&lt; 55 - 70 mg/dL</td>
+                  <td>Primary "bad" cholesterol target. Drives plaque accumulation in coronary walls.</td>
                 </tr>
                 <tr>
                   <td><strong>HDL-C (High-Density Lipoprotein)</strong></td>
                   <td><strong>&gt; 1.0 mmol/L</strong> (Men)<br><strong>&gt; 1.3 mmol/L</strong> (Women)</td>
-                  <td>&gt; 40 mg/dL (Men)<br>&gt; 50 mg/dL (Women)</td>
-                  <td>"Good" cholesterol that helps carry excess fats from blood vessels back to the liver for clearing.</td>
+                  <td>&gt; 40 mg/dL<br>&gt; 50 mg/dL</td>
+                  <td>"Good" cholesterol that helps shuttle lipids back to the liver for clearance.</td>
                 </tr>
                 <tr>
                   <td><strong>Triglycerides</strong></td>
                   <td><strong>&lt; 1.7 mmol/L</strong></td>
                   <td>&lt; 150 mg/dL</td>
-                  <td>Circulating blood fats. Elevated triglycerides reflect metabolic risk, visceral fat, and dense LDL formation.</td>
+                  <td>Circulating blood fats. Indicates metabolic syndrome and dense LDL particle formation.</td>
                 </tr>
                 <tr>
                   <td><strong>Apolipoprotein B (ApoB)</strong></td>
                   <td><strong>&lt; 0.80 g/L</strong> (Optimal)<br><strong>&lt; 0.65 g/L</strong> (High Risk)</td>
                   <td>&lt; 80 mg/dL<br>&lt; 65 mg/dL</td>
-                  <td>Directly counts the total number of circulating plaque-building particles (LDL, VLDL, IDL). Detects hidden risk when LDL-C appears normal.</td>
+                  <td>Counts total atherogenic particles (LDL, VLDL, IDL). Reveals hidden risk when LDL appears normal.</td>
                 </tr>
                 <tr>
-                  <td><strong>hs-CRP (High-Sensitivity C-Reactive Protein)</strong></td>
+                  <td><strong>hs-CRP (C-Reactive Protein)</strong></td>
                   <td><strong>&lt; 1.0 mg/L</strong> (Low Risk)<br><strong>&gt; 3.0 mg/L</strong> (High Risk)</td>
                   <td>&lt; 1.0 mg/L<br>&gt; 3.0 mg/L</td>
-                  <td>Measures vascular wall inflammation. High levels signal that existing arterial plaque is unstable and prone to rupture.</td>
+                  <td>Measures vascular inflammation. High levels indicate unstable, rupture-prone plaque.</td>
                 </tr>
                 <tr>
                   <td><strong>Lipoprotein(a) [Lp(a)]</strong></td>
                   <td><strong>&lt; 50 nmol/L</strong> (or &lt; 30 mg/dL)</td>
                   <td>&lt; 30 mg/dL</td>
-                  <td>Genetically inherited particle that accelerates arterial calcification and clot formation. Usually checked once in a lifetime.</td>
+                  <td>Genetically inherited particle that accelerates arterial calcification and clot risk.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-<div class="converter-card">
-  <div class="d-flex align-items-center mb-3">
-    <span style="font-size: 1.5rem;" class="me-2">🧮</span>
-    <div>
-      <h3 class="h6 fw-bold mb-0" style="color: #2c4964;">Interactive Lipid Unit Converter</h3>
-      <p class="small text-muted mb-0">Convert overseas US lab results (mg/dL) to Singapore standard units (mmol/L)</p>
-    </div>
-  </div>
+          <!-- Interactive Converter Module -->
+          <div class="converter-card" role="region" aria-label="Interactive Unit Converter">
+            <div class="d-flex align-items-center mb-3">
+              <span style="font-size: 1.5rem;" class="me-2" aria-hidden="true">🧮</span>
+              <div>
+                <h3 class="h6 fw-bold mb-0" style="color: #0f172a;">Interactive Lipid Unit Converter</h3>
+                <p class="small text-muted mb-0">Convert overseas US lab results (mg/dL) to Singapore standard units (mmol/L)</p>
+              </div>
+            </div>
+            <div class="converter-grid">
+              <div class="converter-field">
+                <label for="lipid-type">1. Select Lipid Marker</label>
+                <select id="lipid-type" onchange="calculateLipidConversion()">
+                  <option value="cholesterol">Total Cholesterol / LDL / HDL</option>
+                  <option value="triglycerides">Triglycerides</option>
+                </select>
+              </div>
+              <div class="converter-field">
+                <label for="value-mgdl">2. Enter Value in mg/dL</label>
+                <input type="number" id="value-mgdl" placeholder="e.g. 100" oninput="calculateLipidConversion()" aria-label="Enter mg/dL value">
+              </div>
+            </div>
+            <div class="converter-result-box" aria-live="polite">
+              <div id="converter-output" class="converter-result-value">-- mmol/L</div>
+              <div id="converter-target-note" class="converter-result-label">Enter a value in mg/dL above to calculate</div>
+            </div>
+          </div>
 
-  <div class="converter-grid">
-    <div class="converter-field">
-      <label for="lipid-type">1. Select Lipid Marker</label>
-      <select id="lipid-type" onchange="calculateLipidConversion()">
-        <option value="cholesterol">Total Cholesterol / LDL / HDL</option>
-        <option value="triglycerides">Triglycerides</option>
-      </select>
-    </div>
-
-    <div class="converter-field">
-      <label for="value-mgdl">2. Enter Value in mg/dL</label>
-      <input type="number" id="value-mgdl" placeholder="e.g. 100" value="" oninput="calculateLipidConversion()">
-    </div>
-  </div>
-
-  <div class="converter-result-box">
-    <div id="converter-output" class="converter-result-value">-- mmol/L</div>
-    <div id="converter-target-note" class="converter-result-label">Enter a value in mg/dL above to calculate</div>
-  </div>
-</div>
-
-          <h2 class="h4 fw-bold mt-4 mb-2" style="color: #2c4964;">2. Who Needs Testing? Symptoms, Triggers & Family History</h2>
+          <h2 class="h4 fw-bold mt-4 mb-2" style="color: #0f172a;">2. Who Needs Testing? Symptoms & Risk Triggers</h2>
           <p>
-            Coronary artery disease is notoriously silent. Up to 50% of men and 64% of women who die suddenly from coronary heart disease had no prior symptoms. Relying solely on physical symptoms to seek medical testing can mean catching disease at a late stage.
+            Coronary artery disease is often silent. Up to 50% of men and 64% of women who die suddenly from coronary heart disease had no prior symptoms. Relying strictly on physical symptoms can lead to late-stage diagnoses.
           </p>
 
           <div class="pillars-2x2">
             <div class="pillar-item">
-              <div class="pillar-title">🧬 Family History & Genetic Triggers</div>
+              <div class="pillar-title">🧬 Family History & Genetics</div>
               <div class="pillar-desc">
-                <ul>
-                  <li><strong>Early Premature CAD:</strong> A first-degree male relative (father, brother) diagnosed with heart attack under age 55, or female relative under age 65.</li>
-                  <li><strong>Familial Hypercholesterolemia (FH):</strong> Inherited high cholesterol causing severe LDL elevation (&gt; 4.9 mmol/L) despite healthy diet and exercise.</li>
-                  <li><strong>Asian Phenotype Risk:</strong> South Asian and East Asian populations frequently exhibit higher small-dense LDL and elevated Lp(a) at lower body weights.</li>
+                <ul class="mb-0 ps-3">
+                  <li><strong>Premature CAD:</strong> First-degree male relative diagnosed under age 55, or female relative under age 65.</li>
+                  <li><strong>Familial Hypercholesterolemia (FH):</strong> Inherited high cholesterol causing severe LDL elevation (&gt; 4.9 mmol/L).</li>
+                  <li><strong>Asian Phenotype Risk:</strong> Higher baseline rates of small-dense LDL and elevated Lp(a) at lower BMI thresholds.</li>
                 </ul>
               </div>
             </div>
             <div class="pillar-item">
               <div class="pillar-title">⚠️ Subtle Symptoms & Clinical Flags</div>
               <div class="pillar-desc">
-                <ul>
-                  <li><strong>Exertional Discomfort:</strong> Tightness, pressure, or burning in the chest, neck, jaw, or shoulder during exercise that resolves with rest.</li>
-                  <li><strong>Unexplained Fatigue & Breathlessness:</strong> Tiring prematurely during routine stair climbing or walking up inclines.</li>
-                  <li><strong>Metabolic Syndrome Signs:</strong> Central abdominal obesity (waist &gt;90cm in men, &gt;80cm in women) combined with borderline blood pressure.</li>
+                <ul class="mb-0 ps-3">
+                  <li><strong>Exertional Discomfort:</strong> Tightness, pressure, or burning in the chest, neck, or arm during activity.</li>
+                  <li><strong>Unexplained Fatigue:</strong> Tiring prematurely during routine stair climbing or walking up inclines.</li>
+                  <li><strong>Metabolic Signs:</strong> Central abdominal obesity combined with borderline high blood pressure.</li>
                 </ul>
               </div>
             </div>
           </div>
 
-<h2 class="h4 fw-bold mt-4 mb-2" style="color: #2c4964;">Singapore MOH CDMP: Affordability & Subsidies</h2>
+          <h2 class="h4 fw-bold mt-4 mb-2" style="color: #0f172a;">3. Singapore MOH CDMP Subsidies & Funding Pathways</h2>
           <p>
-            Managing cardiovascular risk factors requires long-term monitoring rather than a one-off blood test. In Singapore, the Ministry of Health (MOH) covers hyperlipidemia (high cholesterol), hypertension, and diabetes under the <strong>Chronic Disease Management Programme (CDMP)</strong>.
+            Managing cardiovascular risk factors requires ongoing clinical monitoring. In Singapore, the Ministry of Health (MOH) covers hyperlipidemia, hypertension, and diabetes under the <strong>Chronic Disease Management Programme (CDMP)</strong>.
           </p>
 
           <div class="custom-table-wrapper">
             <table class="custom-table">
               <thead>
                 <tr>
-                  <th>Category</th>
-                  <th>Eligible Conditions</th>
-                  <th>Current MediSave Limits</th>
-                  <th>Enhanced Limits (From 1 Jan 2027)</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Eligible Conditions</th>
+                  <th scope="col">MediSave Allowance</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Simple CDMP Condition</strong></td>
-                  <td>Management of 1 chronic condition (e.g., Hyperlipidemia alone).</td>
+                  <td>1 chronic condition (e.g., Hyperlipidemia alone).</td>
                   <td>Up to <strong>$500/year</strong> per patient.</td>
-                  <td>Up to <strong>$700/year</strong> per patient under the renamed <em>MediSave Chronic & Preventive Care</em> scheme.</td>
                 </tr>
                 <tr>
                   <td><strong>Complex CDMP Conditions</strong></td>
-                  <td>Management of 2 or more conditions (e.g., Hyperlipidemia + Hypertension + Diabetes).</td>
+                  <td>2 or more conditions (e.g., Hyperlipidemia + Hypertension).</td>
                   <td>Up to <strong>$700/year</strong> per patient.</td>
-                  <td>Up to <strong>$1,000/year</strong> per patient for comprehensive chronic management.</td>
                 </tr>
                 <tr>
-                  <td><strong>CHAS Subsidies (Eligible Singaporeans)</strong></td>
+                  <td><strong>CHAS Subsidies</strong></td>
                   <td>CHAS Blue, Orange, Green, Pioneer, or Merdeka Generation cardholders.</td>
-                  <td colspan="2">Tiered subsidies for outpatient consultations, routine monitoring blood tests, and CDMP medications at participating private clinics.</td>
+                  <td>Tiered subsidies for consultations, monitoring lab tests, and medications at CHAS GP clinics.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <!-- Callout Box: Why Choose Us -->
+          <!-- Clinic Value Callout Box -->
           <div class="my-4 p-4 rounded-3 border-start border-4 border-primary" style="background-color: #f0f7ff;">
             <h3 class="h5 fw-bold text-dark mb-2">Why Choose A Healing Heart Medical Clinic?</h3>
             <p class="mb-3 text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
-              Navigating heart disease prevention requires specialized cardiology expertise combined with accessible, compassionate primary care. Led by <strong>Dr. Gerald Thang</strong>, our clinic provides comprehensive cardio-metabolic evaluation under one roof:
+              Led by <strong>Dr. Gerald Thang</strong>, our clinic provides comprehensive cardio-metabolic evaluation under one roof:
             </p>
-            <ul class="mb-0 ps-3 text-secondary" style="font-size: 0.9rem; line-height: 2;">
-              <li><strong>Advanced Biomarker Panels:</strong> Beyond standard mmol/L lipid profiles, we evaluate ApoB, hs-CRP, Lp(a), and glycemic architecture.</li>
-              <li><strong>Diagnostic Synergy:</strong> Seamless integration of rapid blood testing with Resting ECG, Holter, Treadmill Exercise Stress Testing, and Echocardiography.</li>
-              <li><strong>MOH CDMP Accredited:</strong> Direct MediSave claims and CHAS subsidy processing for hassle-free long-term chronic management.</li>
-              <li><strong>Personalized Risk Stratification:</strong> Tailored preventative strategies combining lifestyle modifications with targeted medical therapy.</li>
+            <ul class="mb-0 ps-3 text-secondary" style="font-size: 0.9rem; line-height: 1.9;">
+              <li><strong>Advanced Biomarker Panels:</strong> Complete evaluation of ApoB, hs-CRP, Lp(a), and lipid architecture.</li>
+              <li><strong>Diagnostic Integration:</strong> Rapid blood testing coupled with ECG, Treadmill Stress Testing, and Echocardiography.</li>
+              <li><strong>MOH CDMP Accredited:</strong> Direct MediSave claims and CHAS subsidy processing for outpatient chronic care.</li>
             </ul>
           </div>
 
-          <div class="support-links-box">
-            <p class="small fw-bold mb-2" style="color: #2c4964;">🔎 Deep Dive: Explore integrated heart assessment options:</p>
-            <div class="d-flex flex-wrap gap-2">
-              <a href="https://www.ahealingheartmedical.com/men-cardio-metabolic-audit" target="_blank" rel="noopener noreferrer" class="support-btn" style="background: #e2e8f0; color: #2c4964;">Read about Men's Cardiovascular Audit →</a>
-              <a href="https://www.ahealingheartmedical.com/women-cardio-metabolic-audit" target="_blank" rel="noopener noreferrer" class="support-btn" style="background: #e2e8f0; color: #008080;">Read about Women's Cardiovascular Audit →</a>
+        </div> <!-- End #speakable-content -->
+
+        <!-- FAQ Section -->
+        <div class="faq-section mt-5 pt-4 border-top">
+          <h2 class="h4 fw-bold mb-4" style="color: #0f172a;">Frequently Asked Questions (FAQ)</h2>
+          
+          <div class="accordion" id="arterialMarkersFaq">
+            <div class="accordion-item mb-3 border rounded">
+              <h3 class="accordion-header" id="faqHeadingOne">
+                <button class="accordion-button fw-bold text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+                  Can a blood test detect an arterial blockage in the heart?
+                </button>
+              </h3>
+              <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#arterialMarkersFaq">
+                <div class="accordion-body text-secondary" style="font-size: 0.95rem; line-height: 1.6;">
+                  Blood tests do not take a physical picture of a coronary blockage. Instead, advanced cardiac blood markers (ApoB, hs-CRP, Lp(a), and lipid panels in mmol/L) evaluate particle counts, vascular inflammation, and plaque stability—providing early detection of coronary artery disease risk before a heart attack occurs.
+                </div>
+              </div>
             </div>
           </div>
-
-          <!-- FAQ Section -->
-          <div class="faq-section mt-5 pt-4 border-top">
-            <h2 class="h4 fw-bold mb-4" style="color: #2c4964;">Frequently Asked Questions (FAQ)</h2>
-            
-            <div class="accordion" id="arterialMarkersFaq">
-              
-              <!-- FAQ 1 -->
-              <div class="accordion-item mb-3 border rounded">
-                <h3 class="accordion-header" id="faqHeadingOne">
-                  <button class="accordion-button fw-bold text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
-                    Can a blood test detect an arterial blockage in the heart?
-                  </button>
-                </h3>
-                <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#arterialMarkersFaq">
-                  <div class="accordion-body text-muted" style="font-size: 0.95rem; line-height: 1.6;">
-                    Blood tests do not take a physical scan or picture of a coronary blockage. Instead, advanced cardiac blood markers (ApoB, hs-CRP, Lp(a), and lipid panels in mmol/L) evaluate the atherogenic particle burden, vessel wall inflammation, and genetic risk factors driving plaque growth. If blood markers indicate high risk or if exertional symptoms exist, non-invasive imaging tests like Coronary Artery Calcium (CAC) scoring or CT Coronary Angiography (CCTA) may be arranged.
-                  </div>
-                </div>
-              </div>
-
-              <!-- FAQ 2 -->
-              <div class="accordion-item mb-3 border rounded">
-                <h3 class="accordion-header" id="faqHeadingTwo">
-                  <button class="accordion-button fw-bold text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
-                    What is the difference between LDL-C and ApoB?
-                  </button>
-                </h3>
-                <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#arterialMarkersFaq">
-                  <div class="accordion-body text-muted" style="font-size: 0.95rem; line-height: 1.6;">
-                    LDL-C measures the total cholesterol mass carried inside low-density particles (expressed in mmol/L in Singapore). ApoB counts the actual number of plaque-causing particles in circulation (in g/L or mg/dL). Because small, dense LDL particles carry less cholesterol individually, a patient might have a "normal" LDL-C level (e.g., &lt; 2.6 mmol/L) but a dangerously high ApoB particle count, hiding a significant risk of arterial blockage.
-                  </div>
-                </div>
-              </div>
-
-              <!-- FAQ 3 -->
-              <div class="accordion-item mb-3 border rounded">
-                <h3 class="accordion-header" id="faqHeadingThree">
-                  <button class="accordion-button fw-bold text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
-                    Can I use MediSave for heart blood tests and cholesterol treatment in Singapore?
-                  </button>
-                </h3>
-                <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#arterialMarkersFaq">
-                  <div class="accordion-body text-muted" style="font-size: 0.95rem; line-height: 1.6;">
-                    Yes. Under the Ministry of Health (MOH) Chronic Disease Management Programme (CDMP), eligible patients diagnosed with hyperlipidemia (high cholesterol) or associated cardiovascular conditions can claim up to $500 or $700 per year from MediSave to offset consultations, routine monitoring blood tests, and prescribed chronic medications.
-                  </div>
-                </div>
-              </div>
-
-              <!-- FAQ 4 -->
-              <div class="accordion-item mb-3 border rounded">
-                <h3 class="accordion-header" id="faqHeadingFour">
-                  <button class="accordion-button fw-bold text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
-                    How often should I test my cardiac blood markers?
-                  </button>
-                </h3>
-                <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#arterialMarkersFaq">
-                  <div class="accordion-body text-muted" style="font-size: 0.95rem; line-height: 1.6;">
-                    For healthy adults with no family history or symptoms, a standard lipid profile (in mmol/L) is recommended every 1 to 3 years starting at age 30. For individuals with elevated risk factors, a strong family history of early heart attack, or those undergoing cholesterol-lowering therapy, blood testing is typically performed every 3 to 6 months to evaluate treatment response and adjust medication safely.
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="ip-notice">
-            <strong>Medical Disclaimer:</strong> The information provided in this article is for educational purposes only and does not constitute medical advice or formal clinical diagnosis. Always consult a qualified physician or cardiologist to interpret your specific blood markers and discuss appropriate diagnostic testing.
-          </div>
-
         </div>
+
       </div>
     </div>
   </div>
-
+</main>
 
 <script>
+  // Script for Interactive Unit Converter
   function calculateLipidConversion() {
+    const valMgdl = parseFloat(document.getElementById('value-mgdl').value);
     const lipidType = document.getElementById('lipid-type').value;
-    const inputVal = parseFloat(document.getElementById('value-mgdl').value);
     const outputElem = document.getElementById('converter-output');
     const noteElem = document.getElementById('converter-target-note');
 
-    // Handles empty or invalid inputs dynamically
-    if (isNaN(inputVal) || inputVal <= 0) {
-      outputElem.innerText = "-- mmol/L";
-      noteElem.innerText = "Enter a value in mg/dL above to calculate";
+    if (isNaN(valMgdl) || valMgdl <= 0) {
+      outputElem.textContent = '-- mmol/L';
+      noteElem.textContent = 'Enter a value in mg/dL above to calculate';
       return;
     }
 
-    // Dynamic conversion factors:
-    // Cholesterol: mg/dL ÷ 38.67 | Triglycerides: mg/dL ÷ 88.57
-    const factor = (lipidType === 'triglycerides') ? 88.57 : 38.67;
-    const result = (inputVal / factor).toFixed(2);
-
-    // Updates text dynamically based on typed value
-    outputElem.innerText = `${result} mmol/L`;
-
-    // Dynamic guidance notes based on Singapore targets
+    let resultMmol = 0;
     if (lipidType === 'cholesterol') {
-      if (result < 2.6) {
-        noteElem.innerText = "✅ Optimal for low/moderate risk adults (< 2.6 mmol/L)";
-      } else if (result <= 3.4) {
-        noteElem.innerText = "⚠️ Borderline elevated for general risk screening";
-      } else {
-        noteElem.innerText = "❗ Elevated — Clinical evaluation recommended";
-      }
+      resultMmol = valMgdl / 38.67; // mg/dL to mmol/L conversion for cholesterol
+      outputElem.textContent = resultMmol.toFixed(2) + ' mmol/L';
+      noteElem.textContent = resultMmol < 2.6 ? 'Within optimal general LDL target (< 2.6 mmol/L)' : 'Above optimal general target (≥ 2.6 mmol/L)';
     } else if (lipidType === 'triglycerides') {
-      if (result < 1.7) {
-        noteElem.innerText = "✅ Normal Singapore Target (< 1.7 mmol/L)";
-      } else {
-        noteElem.innerText = "⚠️ Borderline or High Triglyceride level (≥ 1.7 mmol/L)";
-      }
+      resultMmol = valMgdl / 88.57; // mg/dL to mmol/L conversion for triglycerides
+      outputElem.textContent = resultMmol.toFixed(2) + ' mmol/L';
+      noteElem.textContent = resultMmol < 1.7 ? 'Within normal target (< 1.7 mmol/L)' : 'Elevated triglycerides (≥ 1.7 mmol/L)';
     }
   }
 </script>
-  
-</main>
