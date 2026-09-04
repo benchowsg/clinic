@@ -13,10 +13,16 @@ custom_schema: |
       "@type": "MedicalWebPage",
       "@headline": "Beyond a Sore Throat: How Singapore's Haze Impacts Your Lungs and Blood Sugar",
       "@description": "A preventive health guide on the respiratory and metabolic impacts of PM2.5 haze exposure, including acute insulin resistance and airway inflammation.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.ahealingheartmedical.com/assets/img/articles/haze-pm25-cardiometabolic-risk-singapore.png",
+        "caption": "1-hour PM2.5 readings vs Cardio-Metabolic Risks"
+      },
       "lastReviewed": "2026-09-02",
       "medicalSpecialty": [
         "Pulmonology",
         "Endocrinology",
+        "Cardiovascular",
         "Primary Care"
       ],
       "author": {
@@ -40,6 +46,14 @@ custom_schema: |
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. Fine particulate matter (PM2.5) enters your bloodstream upon inhalation, triggering systemic inflammation and stress hormones like cortisol, which temporarily causes acute insulin resistance and higher blood sugar readings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does PM2.5 haze affect blood pressure and vascular health?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Microfine PM2.5 particles bypass lung filters directly into systemic circulation. This triggers rapid endothelial inflammation, blood vessel constriction, and increased blood viscosity—causing acute surges in blood pressure and placing higher strain on the cardiovascular system."
           }
         },
         {
@@ -122,6 +136,19 @@ custom_schema: |
           <p>As regional dry weather conditions bring haze concerns back to Singapore, most people prepare for familiar symptoms: stinging eyes, scratchy throats, and dry coughs. However, the medical impact of regional haze goes far beyond superficial respiratory discomfort.</p>
 
           <p>The primary threat in haze is <strong>PM2.5</strong>—fine particulate matter measuring less than 2.5 micrometres in diameter. Because these particles are 30 times smaller than a strand of human hair, they bypass your upper airway's natural defenses. Once inhaled, they penetrate deep into your lungs' alveoli and cross directly into your bloodstream, causing a two-front health challenge: <strong>acute respiratory stress</strong> and <strong>metabolic disruption</strong>.</p>
+
+          <!-- Infographic Image Embed -->
+          <div class="my-4 text-center">
+            <img 
+              src="/assets/img/articles/haze-pm25-cardiometabolic-risk-singapore.png" 
+              alt="Infographic: 1-hour PM2.5 readings vs Cardiometabolic Risks in Singapore" 
+              class="img-fluid rounded-4 shadow-sm"
+              style="max-width: 100%; height: auto;"
+              loading="lazy">
+            <figcaption class="figure-caption text-center mt-2" style="font-size: 0.85rem; color: #64748b;">
+              Guide to 1-hour PM2.5 readings, cardiometabolic impacts, and outdoor activity precautions.
+            </figcaption>
+          </div>
 
           <h2 id="haze-impact-table" class="section-heading h4">How PM2.5 Affects Your Lungs and Metabolism</h2>
 
@@ -248,6 +275,11 @@ custom_schema: |
             <div class="faq-item mb-4">
               <p class="fw-bold mb-1" style="color: #0f172a;">Can haze pollution raise my blood sugar levels?</p>
               <p class="text-secondary" style="font-size: 0.95rem;">Yes. Fine particulate matter (PM2.5) enters your bloodstream upon inhalation, triggering systemic inflammation and stress hormones like cortisol, which temporarily causes acute insulin resistance and higher blood sugar readings.</p>
+            </div>
+
+            <div class="faq-item mb-4">
+              <p class="fw-bold mb-1" style="color: #0f172a;">How does PM2.5 haze affect blood pressure and vascular health?</p>
+              <p class="text-secondary" style="font-size: 0.95rem;">Microfine PM2.5 particles bypass lung filters directly into systemic circulation. This triggers rapid endothelial inflammation, blood vessel constriction, and increased blood viscosity—causing acute surges in blood pressure and placing higher strain on the cardiovascular system.</p>
             </div>
             
             <div class="faq-item mb-4">
