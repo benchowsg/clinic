@@ -1,0 +1,268 @@
+---
+layout: default
+permalink: /articles/hawker-health-sodium-calories-guide
+title: You Can't Out-Run a 4,000mg Salt Diet: Low-Hassle Hawker Guide | A Healing Heart Medical
+description: 95% of Singaporeans overdose on sodium despite hitting exercise goals. Learn low-hassle hawker hacks to protect your blood pressure without giving up your favorite foods.
+last_modified: 2026-10-06
+tags: ["Singapore Hawker Health", "Sodium Intake Singapore", "High Blood Pressure Prevention", "Healthier SG", "Preventive Cardiology SG"]
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "You Can't Out-Run a 4,000mg Salt Diet: The Low-Hassle Guide to Hawker Eating",
+  "description": "National survey data shows 87% of Singaporeans exercise, but 95% exceed daily sodium limits. Learn how simple hawker meal adjustments prevent high blood pressure and heart strain.",
+  "author": {
+    "@type": "MedicalOrganization",
+    "name": "A Healing Heart Medical Clinic",
+    "url": "https://www.ahealingheartmedical.com"
+  },
+  "publisher": {
+    "@type": "MedicalOrganization",
+    "name": "A Healing Heart Medical Clinic",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.ahealingheartmedical.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": "https://www.ahealingheartmedical.com/guides/hawker-health-sodium-calories-guide"
+}
+</script>
+
+<style>
+  #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  .guide-hero {
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 3rem 0;
+  }
+
+  .interactive-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+  }
+
+  .hack-card {
+    background: #ffffff;
+    border-left: 5px solid #3498db;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    height: 100%;
+  }
+
+  .stat-badge {
+    background: #fee2e2;
+    color: #991b1b;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  .stat-badge-success {
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+</style>
+
+<main id="main">
+  <!-- Hero Section -->
+  <section class="guide-hero">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 text-center text-lg-start">
+          <span class="stat-badge mb-2">Singapore Health & Nutrition Insights</span>
+          <h1 class="display-5 fw-bold text-dark mb-3">You Can't Out-Run a 4,000mg Salt Diet</h1>
+          <h2 class="h4 text-secondary mb-4">The Low-Hassle Hawker Guide to Protecting Your Blood Pressure</h2>
+          <p class="lead text-muted">
+            The latest National Health Survey reveals a striking paradox: while <strong>87.3% of Singaporeans hit their weekly exercise goals</strong>, over <strong>95% consume dangerous levels of sodium</strong> (averaging ~4,000mg daily—double the recommended limit). Here is how small hawker hacks protect your heart without giving up your favorite meals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Section -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="interactive-card mb-5">
+            <h3 class="fw-bold text-dark mb-2 text-center">Interactive Hawker Impact Calculator</h3>
+            <p class="text-muted text-center mb-4 small">Select a standard Singaporean meal and toggle the "Low-Hassle Hacks" to see immediate reductions in sodium, calories, and cardiac strain.</p>
+
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6">
+                <label for="mealSelect" class="form-label fw-bold">Select Usual Order:</label>
+                <select id="mealSelect" class="form-select mb-3" onchange="calculateImpact()">
+                  <option value="fishball">Fishball Noodle Soup (Standard)</option>
+                  <option value="laksa">Katong Laksa (Standard)</option>
+                  <option value="chickenrice">Chicken Rice with Sauce & Soup</option>
+                  <option value="briyani">Mutton Briyani with Gravy</option>
+                </select>
+
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" id="hackSoup" onchange="calculateImpact()" checked>
+                  <label class="form-check-label fw-semibold" for="hackSoup">Hack 1: Leave 50% Soup / Gravy Behind</label>
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                  <input class="form-check-input" type="checkbox" id="hackRice" onchange="calculateImpact()" checked>
+                  <label class="form-check-label fw-semibold" for="hackRice">Hack 2: Ask for "Shao Fan" (Less Rice) / Less Oil</label>
+                </div>
+
+                <div class="p-3 bg-light rounded text-dark small">
+                  <strong>Daily Limits Reference:</strong><br>
+                  • Sodium Limit: 2,000 mg/day<br>
+                  • Ideal Single Meal Calorie Target: ~650 kcal
+                </div>
+              </div>
+
+              <div class="col-md-6 text-center">
+                <!-- Dynamic SVG Gauge -->
+                <svg width="220" height="140" viewBox="0 0 200 120">
+                  <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" stroke-width="18" stroke-linecap="round"/>
+                  <path id="gaugePath" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#22c55e" stroke-width="18" stroke-dasharray="251" stroke-dashoffset="100" stroke-linecap="round"/>
+                  <text id="gaugeScore" x="100" y="85" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">Moderate</text>
+                  <text x="100" y="105" text-anchor="middle" font-size="11" fill="#64748b">Estimated Cardiac Strain</text>
+                </svg>
+
+                <div class="d-flex justify-content-around mt-3">
+                  <div>
+                    <div class="small text-muted">Est. Sodium</div>
+                    <div id="sodiumVal" class="fs-5 fw-bold text-primary">1,800 mg</div>
+                  </div>
+                  <div>
+                    <div class="small text-muted">Est. Calories</div>
+                    <div id="calorieVal" class="fs-5 fw-bold text-primary">520 kcal</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 3 Zero-Hassle Rules -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-9 text-center">
+          <h2 class="fw-bold text-dark">The 3 "Zero-Hassle" Hawker Rules</h2>
+          <p class="text-muted">You don't need to eat plain steamed chicken every day. Break the habit pattern with simple compromises.</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="hack-card">
+            <span class="stat-badge mb-2">Rule #1</span>
+            <h4 class="fw-bold text-dark h5 mt-2">Eat the Noodles, Leave the Soup</h4>
+            <p class="small text-muted mb-0">
+              Up to 70% of a noodle dish's sodium resides in the broth. Enjoying your Fishball or Prawn Noodle soup but leaving half the broth behind instantly cuts <strong>1,000mg–1,500mg of sodium</strong> without altering your taste preferences.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="hack-card" style="border-left-color: #27ae60;">
+            <span class="stat-badge-success mb-2">Rule #2</span>
+            <h4 class="fw-bold text-dark h5 mt-2">The "Shao Fan" 100-Calorie Hack</h4>
+            <p class="small text-muted mb-0">
+              An extra 100 calories daily above your baseline creates <strong>~5kg of fat gain per year</strong>. Asking for less rice or skipping gravy drizzles saves 100–150 kcal per meal, preventing subtle weight creep and heart strain.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="hack-card" style="border-left-color: #f1c40f;">
+            <span class="stat-badge mb-2" style="background:#fef3c7; color:#92400e;">Rule #3</span>
+            <h4 class="fw-bold text-dark h5 mt-2">Exercise Doesn't Wipe Out Sodium</h4>
+            <p class="small text-muted mb-0">
+              While running burns calories, sweat only excretes a small fraction of ingested salt. A 5km run cannot offset a 4,000mg sodium intake. Sweat trains heart muscle, but nutrition protects blood vessel elasticity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-5 text-center text-white" style="background-color: #3498DB;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-3">Is High Sodium Affecting Your Blood Pressure?</h2>
+          <p class="lead mb-4">Boundary-line hypertension often presents zero symptoms until structural heart strain occurs. Track your cardiovascular baseline under Healthier SG with our clinic team.</p>
+          <a href="/booking" class="btn btn-light rounded-pill px-5 py-3 fw-bold shadow" style="color: #3498DB;">Book A Heart Screening</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const mealData = {
+    fishball: { baseSodium: 2700, baseCal: 480, soupSodium: 1300, riceCal: 80 },
+    laksa: { baseSodium: 3300, baseCal: 700, soupSodium: 1600, riceCal: 120 },
+    chickenrice: { baseSodium: 1500, baseCal: 720, soupSodium: 600, riceCal: 150 },
+    briyani: { baseSodium: 2200, baseCal: 880, soupSodium: 900, riceCal: 180 }
+  };
+
+  function calculateImpact() {
+    const meal = document.getElementById('mealSelect').value;
+    const leaveSoup = document.getElementById('hackSoup').checked;
+    const shaoFan = document.getElementById('hackRice').checked;
+
+    let data = mealData[meal];
+    let finalSodium = data.baseSodium - (leaveSoup ? data.soupSodium : 0);
+    let finalCal = data.baseCal - (shaoFan ? data.riceCal : 0);
+
+    document.getElementById('sodiumVal').innerText = finalSodium.toLocaleString() + ' mg';
+    document.getElementById('calorieVal').innerText = finalCal.toLocaleString() + ' kcal';
+
+    // Update SVG Gauge
+    const gaugePath = document.getElementById('gaugePath');
+    const gaugeScore = document.getElementById('gaugeScore');
+
+    // Total arc length is ~251
+    let ratio = (finalSodium / 3300); 
+    if (ratio > 1) ratio = 1;
+    let offset = 251 - (251 * ratio);
+    gaugePath.style.strokeDashoffset = offset;
+
+    if (finalSodium > 2200) {
+      gaugePath.style.stroke = '#ef4444'; // Red
+      gaugeScore.innerText = 'High Strain';
+      gaugeScore.style.fill = '#ef4444';
+    } else if (finalSodium > 1400) {
+      gaugePath.style.stroke = '#f59e0b'; // Amber
+      gaugeScore.innerText = 'Moderate';
+      gaugeScore.style.fill = '#f59e0b';
+    } else {
+      gaugePath.style.stroke = '#22c55e'; // Green
+      gaugeScore.innerText = 'Protected';
+      gaugeScore.style.fill = '#22c55e';
+    }
+  }
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', calculateImpact);
+</script>
