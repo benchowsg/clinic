@@ -127,46 +127,71 @@ custom_schema: |
           <h2 id="interactive-tg-calculator" class="section-heading h4">Interactive Triglyceride-to-HDL Ratio Estimator</h2>
           <p>Enter your lipid panel readings below to calculate your estimated Triglyceride-to-HDL ratio and view your cardiometabolic profile.</p>
 
-<!-- Interactive Calculator Widget (Fixed Dynamic Gauge Text) -->
+<!-- Interactive Calculator Widget (MOH-Compliant & Responsive UI) -->
 <div class="interactive-calculator-card">
   <h3 class="h5 fw-bold text-dark mb-2 text-center">Comprehensive TG / HDL Risk Calculator</h3>
-  <p class="text-muted text-center mb-4 small">Enter your lipid panel readings (in mmol/L) to evaluate ratio and absolute risk thresholds.</p>
+  <p class="text-muted text-center mb-4 small">Enter your lipid panel readings (in mmol/L) to explore educational estimates of your cardiometabolic profile.</p>
 
   <div class="row g-4 align-items-center">
-    <div class="col-md-6">
-      <label for="tgInput" class="form-label fw-bold small">Triglycerides (mmol/L):</label>
-      <input type="number" id="tgInput" class="form-control form-control-sm mb-3" value="2.2" step="0.1" min="0.5" max="12.0" onchange="calculateTgRatio()">
+    <!-- Left Column: Inputs & Benchmarks -->
+    <div class="col-lg-6 col-md-12">
+      <label for="tgInput" class="form-label fw-bold small text-dark">Triglycerides (mmol/L):</label>
+      <input type="number" id="tgInput" class="form-control form-control-sm mb-3" value="0.9" step="0.1" min="0.3" max="15.0" onchange="calculateTgRatio()">
 
-      <label for="hdlInput" class="form-label fw-bold small">HDL Cholesterol (mmol/L):</label>
-      <input type="number" id="hdlInput" class="form-control form-control-sm mb-3" value="1.1" step="0.1" min="0.3" max="3.5" onchange="calculateTgRatio()">
+      <label for="hdlInput" class="form-label fw-bold small text-dark">HDL Cholesterol (mmol/L):</label>
+      <input type="number" id="hdlInput" class="form-control form-control-sm mb-3" value="0.6" step="0.1" min="0.3" max="4.0" onchange="calculateTgRatio()">
 
-      <div class="p-2.5 bg-light rounded text-dark extra-small" style="font-size: 0.82rem; line-height: 1.5;">
-        <strong>Clinical Benchmarks (Singapore Standards):</strong><br>
-        • Optimal Ratio: <strong>&lt; 1.5</strong> (Target TG &lt; 1.7 &amp; HDL &gt; 1.0)<br>
-        • Severe Pancreatitis Threshold: <strong>TG &gt; 5.6 mmol/L</strong>
+      <div class="p-3 bg-light rounded-3 text-dark extra-small" style="font-size: 0.82rem; line-height: 1.5; border: 1px solid #e2e8f0;">
+        <strong class="text-dark">Clinical Benchmarks (Singapore Guidelines):</strong>
+        <ul class="mb-0 ps-3 mt-1 text-secondary">
+          <li><strong>Optimal Ratio Target:</strong> &lt; 1.5 (with TG &lt; 1.7 mmol/L &amp; HDL &ge; 1.0 mmol/L)</li>
+          <li><strong>Severe Hypertriglyceridemia:</strong> TG &gt; 5.6 mmol/L (Requires medical attention)</li>
+        </ul>
       </div>
     </div>
 
-    <div class="col-md-6 text-center">
-      <svg width="210" height="135" viewBox="0 0 200 120">
-        <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" stroke-width="18" stroke-linecap="round"/>
-        <path id="gaugePathTg" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="251" stroke-dashoffset="100" stroke-linecap="round"/>
-        <!-- FIXED: Inner gauge text updates dynamically via JavaScript -->
-        <text id="gaugeScoreTg" x="100" y="82" text-anchor="middle" font-size="16" font-weight="bold" fill="#f59e0b">Elevated Ratio</text>
-        <text x="100" y="102" text-anchor="middle" font-size="10" fill="#64748b">Combined Clinical Profile</text>
-      </svg>
+    <!-- Right Column: Re-Architected SVG Gauge & Visual Results -->
+    <div class="col-lg-6 col-md-12 text-center">
+      <div class="d-inline-block position-relative" style="max-width: 240px; width: 100%;">
+        <!-- SVG Gauge with expanded viewBox to prevent text clipping on mobile & desktop -->
+        <svg viewBox="0 0 240 145" style="width: 100%; height: auto; overflow: visible;">
+          <!-- Outer Background Track -->
+          <path d="M 25 115 A 95 95 0 0 1 215 115" fill="none" stroke="#e2e8f0" stroke-width="20" stroke-linecap="round"/>
+          <!-- Dynamic Colored Arc -->
+          <path id="gaugePathTg" d="M 25 115 A 95 95 0 0 1 215 115" fill="none" stroke="#f59e0b" stroke-width="20" stroke-dasharray="298" stroke-dashoffset="149" stroke-linecap="round" style="transition: stroke-dashoffset 0.4s ease, stroke 0.4s ease;"/>
+          
+          <!-- Inner Dynamic Text (Sized & position-tuned for long labels like "Low HDL Warning") -->
+          <text id="gaugeScoreTg" x="120" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#f59e0b">Low HDL Warning</text>
+          <text x="120" y="112" text-anchor="middle" font-size="10" fill="#64748b" font-weight="500">Combined Clinical Profile</text>
+        </svg>
+      </div>
 
-      <div class="d-flex justify-content-around mt-2">
+      <div class="d-flex justify-content-around mt-3 p-2 rounded-3" style="background: #f8fafc; border: 1px solid #e2e8f0;">
         <div>
-          <div class="small text-muted">TG / HDL Ratio</div>
-          <div id="ratioVal" class="fw-bold text-primary">2.0</div>
+          <div class="extra-small text-muted text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 0.5px;">TG / HDL Ratio</div>
+          <div id="ratioVal" class="fw-bold fs-5 text-primary">1.5</div>
         </div>
+        <div style="border-left: 1px solid #cbd5e1;"></div>
         <div>
-          <div class="small text-muted">Insulin Status</div>
-          <div id="insulinVal" class="fw-bold text-primary" style="font-size: 0.9rem;">Borderline</div>
+          <div class="extra-small text-muted text-uppercase fw-bold" style="font-size: 0.72rem; letter-spacing: 0.5px;">Estimated Status</div>
+          <div id="insulinVal" class="fw-bold fs-6 text-warning" style="margin-top: 2px;">Impaired Clearing</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Educational Status Explainer -->
+  <div class="mt-4 p-3 rounded-3" style="background: #f1f5f9; border-left: 4px solid #008080;" id="statusExplanationBox">
+    <h4 class="h6 fw-bold text-dark mb-1" id="expTitle">💡 What Does "Impaired Clearing" Mean?</h4>
+    <p class="small text-secondary mb-0" id="expBody">
+      Although your TG/HDL ratio appears low, an HDL level below 1.0 mmol/L means your body's "reverse cholesterol transport" (arterial cleanup capacity) is reduced. Discussing lifestyle strategies with a doctor helps optimize HDL function.
+    </p>
+  </div>
+
+  <!-- MOH Regulatory Medical Disclaimer Box -->
+  <div class="mt-3 p-2.5 rounded-2 text-muted extra-small" style="background: #fafafa; border: 1px solid #e2e8f0; font-size: 0.78rem; line-height: 1.45;">
+    <strong>⚖️ Important Medical & Regulatory Notice:</strong><br>
+    This interactive calculator is created strictly for general health education and illustrative purposes under MOH preventive guidelines. It is <strong>not a medical diagnostic tool</strong>, software medical device, or a substitute for professional clinical judgment. Laboratory values should always be interpreted by a qualified doctor in the context of your complete medical history and cardiovascular profile.
   </div>
 </div>
 
@@ -383,6 +408,35 @@ custom_schema: |
 </main>
 
 <script>
+  // Educational Explanation Dictionary
+  const statusExplanations = {
+    pancreatitis: {
+      title: "🚨 Severe TG Spike (Acute Pancreatitis Warning)",
+      body: "Triglycerides at or above 5.6 mmol/L require prompt medical review. At severe levels, blood fats can trigger acute inflammation of the pancreas (pancreatitis), regardless of your HDL level. Please consult a physician promptly.",
+      color: "#ef4444"
+    },
+    highRisk: {
+      title: "⚠️ High Risk Profile (Possible Insulin Resistance)",
+      body: "A high TG/HDL ratio (&ge; 3.0) or TG &ge; 2.3 mmol/L strongly correlates with insulin resistance and small, dense LDL particles. This combination increases long-term cardiovascular strain and liver fat buildup.",
+      color: "#ef4444"
+    },
+    lowHdl: {
+      title: "💡 Low HDL Warning (Impaired Clearing Capacity)",
+      body: "Even if your calculated ratio looks low, an HDL level under 1.0 mmol/L indicates reduced arterial clearing capacity. HDL acts as your blood vessels' cleanup crew, so low levels warrant proactive lifestyle attention.",
+      color: "#f59e0b"
+    },
+    borderline: {
+      title: "🔍 Borderline Profile (Early Dietary Opportunity)",
+      body: "Your numbers indicate an early transition state. Simple, low-hassle adjustments—such as reducing liquid sugars, swapping refined carbs, and increasing daily movement—can help restore optimal balance.",
+      color: "#f59e0b"
+    },
+    optimal: {
+      title: "✅ Optimal Profile (Insulin Sensitive)",
+      body: "Your triglycerides and HDL cholesterol are well-balanced. This indicates healthy cellular insulin sensitivity and effective fat clearance from your bloodstream.",
+      color: "#16a34a"
+    }
+  };
+
   function calculateTgRatio() {
     const tg = parseFloat(document.getElementById('tgInput').value) || 0;
     const hdl = parseFloat(document.getElementById('hdlInput').value) || 1;
@@ -393,45 +447,60 @@ custom_schema: |
     const gaugePath = document.getElementById('gaugePathTg');
     const gaugeScore = document.getElementById('gaugeScoreTg');
     const insulinVal = document.getElementById('insulinVal');
+    
+    const expTitle = document.getElementById('expTitle');
+    const expBody = document.getElementById('expBody');
+    const expBox = document.getElementById('statusExplanationBox');
 
-    // Gauge Dash Offset calculation
+    // Total Arc Length for viewBox 240x145 with radius 95 is ~298
     let scoreRatio = ratio / 4.0;
     if (scoreRatio > 1) scoreRatio = 1;
-    let offset = 251 - (251 * scoreRatio);
+    let offset = 298 - (298 * scoreRatio);
     gaugePath.style.strokeDashoffset = offset;
 
-    // MULTI-FACTOR CLINICAL LOGIC (Dynamically updates gauge AND status text)
+    let statusKey = 'optimal';
+
     if (tg >= 5.6) {
+      statusKey = 'pancreatitis';
       gaugePath.style.stroke = '#ef4444';
       gaugeScore.textContent = 'Severe TG Spike';
       gaugeScore.setAttribute('fill', '#ef4444');
       insulinVal.innerText = 'Pancreatitis Risk!';
       insulinVal.style.color = '#ef4444';
     } else if (ratio >= 3.0 || tg >= 2.3) {
+      statusKey = 'highRisk';
       gaugePath.style.stroke = '#ef4444';
       gaugeScore.textContent = 'High Risk Profile';
       gaugeScore.setAttribute('fill', '#ef4444');
       insulinVal.innerText = 'Insulin Resistant';
       insulinVal.style.color = '#ef4444';
     } else if (hdl < 1.0) {
+      statusKey = 'lowHdl';
       gaugePath.style.stroke = '#f59e0b';
       gaugeScore.textContent = 'Low HDL Warning';
       gaugeScore.setAttribute('fill', '#f59e0b');
       insulinVal.innerText = 'Impaired Clearing';
       insulinVal.style.color = '#f59e0b';
     } else if (ratio >= 1.5 || tg >= 1.7) {
+      statusKey = 'borderline';
       gaugePath.style.stroke = '#f59e0b';
       gaugeScore.textContent = 'Elevated Ratio';
       gaugeScore.setAttribute('fill', '#f59e0b');
       insulinVal.innerText = 'Borderline';
       insulinVal.style.color = '#f59e0b';
     } else {
+      statusKey = 'optimal';
       gaugePath.style.stroke = '#22c55e';
       gaugeScore.textContent = 'Optimal Profile';
       gaugeScore.setAttribute('fill', '#22c55e');
       insulinVal.innerText = 'Insulin Sensitive';
       insulinVal.style.color = '#22c55e';
     }
+
+    // Update Explainer Text Box dynamically
+    expTitle.innerHTML = statusExplanations[statusKey].title;
+    expBody.innerHTML = statusExplanations[statusKey].body;
+    expBox.style.borderLeftColor = statusExplanations[statusKey].color;
   }
 
   document.addEventListener('DOMContentLoaded', calculateTgRatio);
