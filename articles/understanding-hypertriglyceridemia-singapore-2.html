@@ -127,7 +127,7 @@ custom_schema: |
           <h2 id="interactive-tg-calculator" class="section-heading h4">Interactive Triglyceride-to-HDL Ratio Estimator</h2>
           <p>Enter your lipid panel readings below to calculate your estimated Triglyceride-to-HDL ratio and view your cardiometabolic profile.</p>
 
-<!-- Interactive Calculator Widget (Multi-Factor Safety Logic) -->
+<!-- Interactive Calculator Widget (Fixed Dynamic Gauge Text) -->
 <div class="interactive-calculator-card">
   <h3 class="h5 fw-bold text-dark mb-2 text-center">Comprehensive TG / HDL Risk Calculator</h3>
   <p class="text-muted text-center mb-4 small">Enter your lipid panel readings (in mmol/L) to evaluate ratio and absolute risk thresholds.</p>
@@ -151,7 +151,8 @@ custom_schema: |
       <svg width="210" height="135" viewBox="0 0 200 120">
         <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" stroke-width="18" stroke-linecap="round"/>
         <path id="gaugePathTg" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="251" stroke-dashoffset="100" stroke-linecap="round"/>
-        <text id="gaugeScoreTg" x="100" y="82" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">Elevated Ratio</text>
+        <!-- FIXED: Inner gauge text updates dynamically via JavaScript -->
+        <text id="gaugeScoreTg" x="100" y="82" text-anchor="middle" font-size="16" font-weight="bold" fill="#f59e0b">Elevated Ratio</text>
         <text x="100" y="102" text-anchor="middle" font-size="10" fill="#64748b">Combined Clinical Profile</text>
       </svg>
 
@@ -161,7 +162,7 @@ custom_schema: |
           <div id="ratioVal" class="fw-bold text-primary">2.0</div>
         </div>
         <div>
-          <div class="small text-muted">Status Note</div>
+          <div class="small text-muted">Insulin Status</div>
           <div id="insulinVal" class="fw-bold text-primary" style="font-size: 0.9rem;">Borderline</div>
         </div>
       </div>
@@ -399,40 +400,35 @@ custom_schema: |
     let offset = 251 - (251 * scoreRatio);
     gaugePath.style.strokeDashoffset = offset;
 
-    // MULTI-FACTOR CLINICAL LOGIC
+    // MULTI-FACTOR CLINICAL LOGIC (Dynamically updates gauge AND status text)
     if (tg >= 5.6) {
-      // Priority 1: Severe Pancreatitis Risk (Absolute TG Override)
       gaugePath.style.stroke = '#ef4444';
-      gaugeScore.innerText = 'Severe TG Spike';
-      gaugeScore.style.fill = '#ef4444';
+      gaugeScore.textContent = 'Severe TG Spike';
+      gaugeScore.setAttribute('fill', '#ef4444');
       insulinVal.innerText = 'Pancreatitis Risk!';
       insulinVal.style.color = '#ef4444';
     } else if (ratio >= 3.0 || tg >= 2.3) {
-      // Priority 2: High Insulin Resistance & High TG
       gaugePath.style.stroke = '#ef4444';
-      gaugeScore.innerText = 'High Risk Profile';
-      gaugeScore.style.fill = '#ef4444';
+      gaugeScore.textContent = 'High Risk Profile';
+      gaugeScore.setAttribute('fill', '#ef4444');
       insulinVal.innerText = 'Insulin Resistant';
       insulinVal.style.color = '#ef4444';
     } else if (hdl < 1.0) {
-      // Priority 3: Low HDL Warning (Even if ratio is technically low)
       gaugePath.style.stroke = '#f59e0b';
-      gaugeScore.innerText = 'Low HDL Warning';
-      gaugeScore.style.fill = '#f59e0b';
+      gaugeScore.textContent = 'Low HDL Warning';
+      gaugeScore.setAttribute('fill', '#f59e0b');
       insulinVal.innerText = 'Impaired Clearing';
       insulinVal.style.color = '#f59e0b';
     } else if (ratio >= 1.5 || tg >= 1.7) {
-      // Priority 4: Borderline Ratio or Elevated TG
       gaugePath.style.stroke = '#f59e0b';
-      gaugeScore.innerText = 'Elevated Ratio';
-      gaugeScore.style.fill = '#f59e0b';
+      gaugeScore.textContent = 'Elevated Ratio';
+      gaugeScore.setAttribute('fill', '#f59e0b');
       insulinVal.innerText = 'Borderline';
       insulinVal.style.color = '#f59e0b';
     } else {
-      // Priority 5: Truly Optimal (Ratio < 1.5 AND TG < 1.7 AND HDL >= 1.0)
       gaugePath.style.stroke = '#22c55e';
-      gaugeScore.innerText = 'Optimal Profile';
-      gaugeScore.style.fill = '#22c55e';
+      gaugeScore.textContent = 'Optimal Profile';
+      gaugeScore.setAttribute('fill', '#22c55e');
       insulinVal.innerText = 'Insulin Sensitive';
       insulinVal.style.color = '#22c55e';
     }
