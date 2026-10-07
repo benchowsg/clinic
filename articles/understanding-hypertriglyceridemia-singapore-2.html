@@ -197,12 +197,12 @@ custom_schema: |
                 <!-- Central Liver Hub -->
                 <rect x="260" y="100" width="180" height="110" rx="16" fill="url(#liverGlow)" stroke="#60a5fa" stroke-width="2"/>
                 <text x="350" y="145" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="16">THE LIVER</text>
-                <text x="350" y="168" text-anchor="middle" fill="#93c5fd" font-size="12">(De Novo Lipogenesis)</text>
+                <text x="350" y="168" text-anchor="middle" fill="#93c5fd" font-size="12">(De novo lipogenesis (DNL) is the metabolic process where your body converts excess carbohydrates into fatty acids and stored fat.)</text>
 
                 <!-- Bloodstream Node -->
                 <circle cx="590" cy="155" r="45" fill="#1e293b" stroke="#ef4444" stroke-width="3" id="bloodNode"/>
                 <text x="590" y="150" text-anchor="middle" fill="#fca5a5" font-weight="bold" font-size="12">Bloodstream</text>
-                <text x="590" y="168" text-anchor="middle" fill="#ef4444" font-weight="bold" font-size="13" id="tgLevelText">High TG Spikes</text>
+                <text x="590" y="168" text-anchor="middle" fill="#ef4444" font-weight="bold" font-size="10" id="tgLevelText">High TG Spikes</text>
 
                 <!-- Flow Paths -->
                 <path d="M 130 50 Q 200 60, 260 120" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" id="pathSugar">
@@ -226,24 +226,24 @@ custom_schema: |
                 <path d="M 590 205 C 590 290, 350 290, 350 215" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,5" opacity="0.2" id="cyclePath">
                   <animate id="cycleAnim" attributeName="stroke-dashoffset" values="30;0" dur="1s" repeatCount="indefinite" begin="indefinite" />
                 </path>
-                <text x="470" y="275" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="bold" opacity="0.3" id="cycleText">🔄 Vicious Cycle: High TG Worsens Insulin Resistance</text>
+                <text x="470" y="275" text-anchor="middle" fill="#6ecffa" font-size="11" font-weight="bold" id="cycleText">🔄 Vicious Cycle: High TG Worsens Insulin Resistance</text>
 
                 <!-- Trigger Buttons -->
                 <g onclick="highlightTrigger('sugar')" style="cursor: pointer;">
                   <rect x="20" y="30" width="120" height="40" rx="8" fill="#334155" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="80" y="55" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">🍧 Refined Sugars</text>
+                  <text x="80" y="55" text-anchor="middle" fill="#ffffff" font-size="11">🍧 Refined Sugars</text>
                 </g>
                 <g onclick="highlightTrigger('alcohol')" style="cursor: pointer;">
                   <rect x="20" y="100" width="120" height="40" rx="8" fill="#334155" stroke="#ec4899" stroke-width="2"/>
-                  <text x="80" y="125" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">🍺 Alcohol Intake</text>
+                  <text x="80" y="125" text-anchor="middle" fill="#ffffff" font-size="11">🍺 Alcohol Intake</text>
                 </g>
                 <g onclick="highlightTrigger('fat')" style="cursor: pointer;">
                   <rect x="20" y="170" width="120" height="40" rx="8" fill="#334155" stroke="#10b981" stroke-width="2"/>
-                  <text x="80" y="195" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">🧘 Visceral Fat</text>
+                  <text x="80" y="195" text-anchor="middle" fill="#ffffff" font-size="11">🧘 Visceral Fat</text>
                 </g>
                 <g onclick="highlightTrigger('insulin')" style="cursor: pointer;">
                   <rect x="20" y="240" width="120" height="40" rx="8" fill="#334155" stroke="#8b5cf6" stroke-width="2"/>
-                  <text x="80" y="265" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="bold">⚡ Insulin Resistance</text>
+                  <text x="80" y="265" text-anchor="middle" fill="#ffffff" font-size="11">⚡ Insulin Resistance</text>
                 </g>
               </svg>
             </div>
@@ -270,7 +270,7 @@ custom_schema: |
           <!-- Callout: Vicious Cycle -->
           <div class="lifestyle-callout" style="border-left-color: #3b82f6; background: #eff6ff;">
             <h3 class="h5 fw-bold mb-2" style="color: #1e40af;">🔄 The Vicious Cycle of High Triglycerides</h3>
-            <p class="mb-0" style="color: #1e3a8a; font-size: 0.95rem;">
+            <p class="mb-0" style="color: #6ecffa; font-size: 0.95rem;">
               As triglycerides remain elevated, they further impair insulin sensitivity in the liver. This creates a compounding loop: <strong>higher triglycerides lead to greater insulin resistance, which in turn causes the liver to produce even more triglycerides</strong>.
             </p>
           </div>
