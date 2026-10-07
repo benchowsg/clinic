@@ -169,93 +169,94 @@ custom_schema: |
             </div>
           </div>
 
-          <h2 id="how-triglycerides-leave-optimal-zone" class="section-heading h4">How Triglycerides Leave the "Optimal Zone": Triggers & Aggravating Factors</h2>
-          <p>Triglycerides do not become elevated overnight. Because they represent unused energy circulating in your blood, your levels rise whenever your body receives more simple energy than its metabolic engine can burn or clear efficiently.</p>
+<h2 id="how-triglycerides-leave-optimal-zone" class="section-heading h4">How Triglycerides Leave the "Optimal Zone": Triggers & Aggravating Factors</h2>
+<p>Triglycerides do not become elevated overnight. Because they represent unused energy circulating in your blood, your levels rise whenever your body receives more simple energy than its metabolic engine can burn or clear efficiently.</p>
 
-          <!-- Interactive SVG Diagram Component -->
-          <div class="my-5 p-4 rounded-4 shadow-sm" style="background: #0f172a; color: #ffffff;">
-            <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
-              <div>
-                <span class="badge bg-danger mb-1">Interactive Metabolism Diagram</span>
-                <h3 class="h5 fw-bold text-white mb-0">How Triglycerides Accumulate in Blood</h3>
-              </div>
-              <div class="btn-group mt-2 mt-sm-0" role="group">
-                <button type="button" class="btn btn-sm btn-outline-light active" id="btnOverview" onclick="setDiagramState('overview')">Full Pathways</button>
-                <button type="button" class="btn btn-sm btn-outline-warning" id="btnCycle" onclick="setDiagramState('cycle')">🔄 Play Vicious Cycle</button>
-              </div>
-            </div>
+<!-- Interactive SVG Diagram Component (Fixed Contrast & Layout) -->
+<div class="my-5 p-4 rounded-4 shadow-sm" style="background: #0f172a; color: #ffffff;">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+    <div>
+      <span class="badge bg-danger mb-1">Interactive Metabolism Diagram</span>
+      <h3 class="h5 fw-bold text-white mb-0">How Triglycerides Accumulate in Blood</h3>
+    </div>
+    <div class="btn-group mt-2 mt-sm-0" role="group">
+      <button type="button" class="btn btn-sm btn-outline-light active" id="btnOverview" onclick="setDiagramState('overview')">Full Pathways</button>
+      <button type="button" class="btn btn-sm btn-outline-warning" id="btnCycle" onclick="setDiagramState('cycle')">🔄 Play Vicious Cycle</button>
+    </div>
+  </div>
 
-            <div class="text-center my-3" style="overflow-x: auto;">
-              <svg viewBox="0 0 700 320" style="width: 100%; min-width: 550px; height: auto;">
-                <defs>
-                  <linearGradient id="liverGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#3b82f6" />
-                    <stop offset="100%" stop-color="#1d4ed8" />
-                  </linearGradient>
-                </defs>
+  <div class="text-center my-3" style="overflow-x: auto;">
+    <svg viewBox="0 0 700 340" style="width: 100%; min-width: 580px; height: auto;">
+      <defs>
+        <linearGradient id="liverGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#2563eb" />
+          <stop offset="100%" stop-color="#1d4ed8" />
+        </linearGradient>
+      </defs>
 
-                <!-- Central Liver Hub -->
-                <rect x="260" y="100" width="180" height="110" rx="16" fill="url(#liverGlow)" stroke="#60a5fa" stroke-width="2"/>
-                <text x="350" y="145" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="16">THE LIVER</text>
-                <text x="350" y="168" text-anchor="middle" fill="#93c5fd" font-size="12">(De novo lipogenesis (DNL) is the metabolic process where your body converts excess carbohydrates into fatty acids and stored fat.)</text>
+      <!-- Central Liver Hub -->
+      <rect x="250" y="90" width="200" height="120" rx="16" fill="url(#liverGlow)" stroke="#60a5fa" stroke-width="2"/>
+      <text x="350" y="135" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="16">THE LIVER</text>
+      <text x="350" y="158" text-anchor="middle" fill="#bfdbfe" font-size="11" font-weight="600">(De Novo Lipogenesis)</text>
+      <text x="350" y="175" text-anchor="middle" fill="#93c5fd" font-size="9.5">Converts Surplus Carbs → Fats</text>
 
-                <!-- Bloodstream Node -->
-                <circle cx="590" cy="155" r="45" fill="#1e293b" stroke="#ef4444" stroke-width="3" id="bloodNode"/>
-                <text x="590" y="150" text-anchor="middle" fill="#fca5a5" font-weight="bold" font-size="12">Bloodstream</text>
-                <text x="590" y="168" text-anchor="middle" fill="#ef4444" font-weight="bold" font-size="10" id="tgLevelText">High TG Spikes</text>
+      <!-- Bloodstream Node -->
+      <circle cx="600" cy="150" r="48" fill="#1e293b" stroke="#ef4444" stroke-width="3" id="bloodNode"/>
+      <text x="600" y="145" text-anchor="middle" fill="#fca5a5" font-weight="bold" font-size="12">Bloodstream</text>
+      <text x="600" y="163" text-anchor="middle" fill="#f87171" font-weight="bold" font-size="11" id="tgLevelText">High TG Spikes</text>
 
-                <!-- Flow Paths -->
-                <path d="M 130 50 Q 200 60, 260 120" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" id="pathSugar">
-                  <animate attributeName="stroke-dashoffset" values="24;0" dur="1s" repeatCount="indefinite" />
-                </path>
-                <path d="M 130 120 Q 190 130, 260 140" fill="none" stroke="#ec4899" stroke-width="3" stroke-dasharray="6,6" id="pathAlcohol">
-                  <animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite" />
-                </path>
-                <path d="M 130 200 Q 190 180, 260 160" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" id="pathFat">
-                  <animate attributeName="stroke-dashoffset" values="24;0" dur="1.4s" repeatCount="indefinite" />
-                </path>
-                <path d="M 130 270 Q 200 250, 260 180" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-dasharray="6,6" id="pathInsulin">
-                  <animate attributeName="stroke-dashoffset" values="24;0" dur="1.1s" repeatCount="indefinite" />
-                </path>
+      <!-- Flow Paths -->
+      <path d="M 130 50 Q 190 60, 250 115" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" id="pathSugar">
+        <animate attributeName="stroke-dashoffset" values="24;0" dur="1s" repeatCount="indefinite" />
+      </path>
+      <path d="M 130 120 Q 190 130, 250 135" fill="none" stroke="#ec4899" stroke-width="3" stroke-dasharray="6,6" id="pathAlcohol">
+        <animate attributeName="stroke-dashoffset" values="24;0" dur="1.2s" repeatCount="indefinite" />
+      </path>
+      <path d="M 130 200 Q 190 180, 250 165" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" id="pathFat">
+        <animate attributeName="stroke-dashoffset" values="24;0" dur="1.4s" repeatCount="indefinite" />
+      </path>
+      <path d="M 130 270 Q 190 250, 250 185" fill="none" stroke="#a855f7" stroke-width="3" stroke-dasharray="6,6" id="pathInsulin">
+        <animate attributeName="stroke-dashoffset" values="24;0" dur="1.1s" repeatCount="indefinite" />
+      </path>
 
-                <!-- Output Arrow -->
-                <path d="M 440 155 L 540 155" fill="none" stroke="#ef4444" stroke-width="4" id="pathOutput"/>
-                <polygon points="545,155 535,148 535,162" fill="#ef4444" />
+      <!-- Output Arrow -->
+      <path d="M 450 150 L 545 150" fill="none" stroke="#ef4444" stroke-width="4" id="pathOutput"/>
+      <polygon points="552,150 540,143 540,157" fill="#ef4444" />
 
-                <!-- Feedback Loop -->
-                <path d="M 590 205 C 590 290, 350 290, 350 215" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,5" opacity="0.2" id="cyclePath">
-                  <animate id="cycleAnim" attributeName="stroke-dashoffset" values="30;0" dur="1s" repeatCount="indefinite" begin="indefinite" />
-                </path>
-                <text x="470" y="275" text-anchor="middle" fill="#6ecffa" font-size="11" font-weight="bold" id="cycleText">🔄 Vicious Cycle: High TG Worsens Insulin Resistance</text>
+      <!-- Feedback Loop (Fixed Contrast Color) -->
+      <path d="M 600 200 C 600 295, 350 295, 350 215" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,5" opacity="0.4" id="cyclePath">
+        <animate id="cycleAnim" attributeName="stroke-dashoffset" values="30;0" dur="1s" repeatCount="indefinite" begin="indefinite" />
+      </path>
+      <text x="475" y="280" text-anchor="middle" fill="#7dd3fc" font-size="11.5" font-weight="bold" id="cycleText">🔄 Vicious Cycle: High TG Worsens Insulin Resistance</text>
 
-                <!-- Trigger Buttons -->
-                <g onclick="highlightTrigger('sugar')" style="cursor: pointer;">
-                  <rect x="20" y="30" width="120" height="40" rx="8" fill="#334155" stroke="#f59e0b" stroke-width="2"/>
-                  <text x="80" y="55" text-anchor="middle" fill="#ffffff" font-size="11">🍧 Refined Sugars</text>
-                </g>
-                <g onclick="highlightTrigger('alcohol')" style="cursor: pointer;">
-                  <rect x="20" y="100" width="120" height="40" rx="8" fill="#334155" stroke="#ec4899" stroke-width="2"/>
-                  <text x="80" y="125" text-anchor="middle" fill="#ffffff" font-size="11">🍺 Alcohol Intake</text>
-                </g>
-                <g onclick="highlightTrigger('fat')" style="cursor: pointer;">
-                  <rect x="20" y="170" width="120" height="40" rx="8" fill="#334155" stroke="#10b981" stroke-width="2"/>
-                  <text x="80" y="195" text-anchor="middle" fill="#ffffff" font-size="11">🧘 Visceral Fat</text>
-                </g>
-                <g onclick="highlightTrigger('insulin')" style="cursor: pointer;">
-                  <rect x="20" y="240" width="120" height="40" rx="8" fill="#334155" stroke="#8b5cf6" stroke-width="2"/>
-                  <text x="80" y="265" text-anchor="middle" fill="#ffffff" font-size="11">⚡ Insulin Resistance</text>
-                </g>
-              </svg>
-            </div>
+      <!-- Trigger Buttons -->
+      <g onclick="highlightTrigger('sugar')" style="cursor: pointer;">
+        <rect x="20" y="30" width="120" height="40" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+        <text x="80" y="55" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="bold">🍧 Refined Sugars</text>
+      </g>
+      <g onclick="highlightTrigger('alcohol')" style="cursor: pointer;">
+        <rect x="20" y="100" width="120" height="40" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="2"/>
+        <text x="80" y="125" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="bold">🍺 Alcohol Intake</text>
+      </g>
+      <g onclick="highlightTrigger('fat')" style="cursor: pointer;">
+        <rect x="20" y="170" width="120" height="40" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+        <text x="80" y="195" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="bold">🧘 Visceral Fat</text>
+      </g>
+      <g onclick="highlightTrigger('insulin')" style="cursor: pointer;">
+        <rect x="20" y="240" width="120" height="40" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+        <text x="80" y="265" text-anchor="middle" fill="#ffffff" font-size="11.5" font-weight="bold">⚡ Insulin Resistance</text>
+      </g>
+    </svg>
+  </div>
 
-            <!-- Dynamic Text Card -->
-            <div class="p-3 rounded-3" style="background: #1e293b; border: 1px solid #334155;" id="triggerDesc">
-              <h4 class="h6 fw-bold text-warning mb-1" id="descTitle">💡 Click on any trigger above or hit "Play Vicious Cycle"</h4>
-              <p class="small text-slate-300 mb-0" id="descBody">
-                Triglycerides rise when your body receives more simple energy than its metabolic engine can burn. Explore the 4 key physiological pathways that flood your liver with excess fat.
-              </p>
-            </div>
-          </div>
+  <!-- Dynamic Text Box (Fixed High Contrast CSS) -->
+  <div class="p-3.5 rounded-3 mt-3" style="background: #1e293b; border: 1px solid #334155;" id="triggerDesc">
+    <h4 class="h6 fw-bold text-warning mb-2" id="descTitle" style="color: #fbbf24 !important;">💡 Multi-Factor Triglyceride Accumulation</h4>
+    <p class="mb-0" id="descBody" style="color: #e2e8f0 !important; font-size: 0.95rem; line-height: 1.6;">
+      Triglycerides rise when your body receives more simple energy than its metabolic engine can burn. Click any left trigger button above or hit "Play Vicious Cycle" to explore its specific metabolic pathway.
+    </p>
+  </div>
+</div>
 
           <p>The primary triggers that push triglycerides out of the optimal zone include:</p>
 
