@@ -452,15 +452,15 @@ custom_schema: |
     const expBody = document.getElementById('expBody');
     const expBox = document.getElementById('statusExplanationBox');
 
-    // Total Arc Length for viewBox 240x145 with radius 95 is ~298
+    // Default arc ratio calculation based on math
     let scoreRatio = ratio / 4.0;
     if (scoreRatio > 1) scoreRatio = 1;
-    let offset = 298 - (298 * scoreRatio);
-    gaugePath.style.strokeDashoffset = offset;
 
     let statusKey = 'optimal';
 
     if (tg >= 5.6) {
+      // OVERRIDE: Severe Pancreatitis Spike forces full 100% red arc
+      scoreRatio = 1.0;
       statusKey = 'pancreatitis';
       gaugePath.style.stroke = '#ef4444';
       gaugeScore.textContent = 'Severe TG Spike';
@@ -468,6 +468,8 @@ custom_schema: |
       insulinVal.innerText = 'Pancreatitis Risk!';
       insulinVal.style.color = '#ef4444';
     } else if (ratio >= 3.0 || tg >= 2.3) {
+      // OVERRIDE: High risk profile forces full 100% red arc
+      scoreRatio = 1.0;
       statusKey = 'highRisk';
       gaugePath.style.stroke = '#ef4444';
       gaugeScore.textContent = 'High Risk Profile';
@@ -496,6 +498,11 @@ custom_schema: |
       insulinVal.innerText = 'Insulin Sensitive';
       insulinVal.style.color = '#22c55e';
     }
+
+    // Calculate dynamic arc dash offset after all threshold & override checks
+    // Total Arc Length for viewBox 240x145 with radius 95 is ~298
+    let offset = 298 - (298 * scoreRatio);
+    gaugePath.style.strokeDashoffset = offset;
 
     // Update Explainer Text Box dynamically
     expTitle.innerHTML = statusExplanations[statusKey].title;
