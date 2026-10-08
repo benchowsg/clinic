@@ -419,7 +419,12 @@ custom_schema: |
     },
     highRisk: {
       title: "⚠️ High Risk Profile (Possible Insulin Resistance)",
-      body: "A high TG/HDL ratio (&ge; 3.0) or TG &ge; 2.3 mmol/L strongly correlates with insulin resistance and small, dense LDL particles. This combination increases long-term cardiovascular strain and liver fat buildup.",
+      body: "A high TG/HDL ratio (&ge; 3.0) and high triglycerides strongly correlate with insulin resistance and small, dense LDL particles. This combination increases long-term cardiovascular strain and liver fat buildup.",
+      color: "#ef4444"
+    },
+    elevatedTg: {
+      title: "⚠️ Elevated Triglycerides (High HDL Masking)",
+      body: "Although your high HDL level yields a low TG/HDL ratio, an absolute triglyceride level of 2.3 mmol/L or higher indicates active liver fat overproduction or delayed clearance. Discuss targeted dietary adjustments with a doctor.",
       color: "#ef4444"
     },
     lowHdl: {
@@ -469,8 +474,25 @@ custom_schema: |
       gaugeScore.setAttribute('fill', '#ef4444');
       insulinVal.innerText = 'Pancreatitis Risk!';
       insulinVal.style.color = '#ef4444';
-    } else if (ratio >= 3.0 || tg >= 2.3) {
-      // OVERRIDE: High risk profile forces full 100% red arc
+    } else if (tg >= 2.3) {
+      // OVERRIDE: High TG forces red arc
+      scoreRatio = 1.0;
+      gaugePath.style.stroke = '#ef4444';
+      gaugeScore.setAttribute('fill', '#ef4444');
+
+      if (ratio >= 3.0) {
+        statusKey = 'highRisk';
+        gaugeScore.textContent = 'High Risk Profile';
+        insulinVal.innerText = 'Insulin Resistant';
+      } else {
+        // Edge Case Handling: TG >= 2.3 but high HDL keeps ratio < 3.0
+        statusKey = 'elevatedTg';
+        gaugeScore.textContent = 'Elevated TG';
+        insulinVal.innerText = 'Elevated TG';
+      }
+      insulinVal.style.color = '#ef4444';
+    } else if (ratio >= 3.0) {
+      // High ratio even if TG < 2.3 (e.g. TG 2.1 / HDL 0.6)
       scoreRatio = 1.0;
       statusKey = 'highRisk';
       gaugePath.style.stroke = '#ef4444';
