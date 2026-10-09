@@ -29,6 +29,19 @@ author_name: "Dr. Gerald Thang"
 
   .interactive-calculator-card { background: #ffffff; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 25px; margin: 35px 0; }
   .condition-card { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 22px; margin-bottom: 24px; border-top: 4px solid #008080; }
+  
+  .patho-container { background: #0f172a; color: #ffffff; border-radius: 16px; padding: 24px; margin: 30px 0; }
+  .patho-flow { display: flex; flex-direction: column; gap: 16px; }
+  @media (min-width: 992px) { .patho-flow { flex-direction: row; align-items: stretch; } }
+  .patho-col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .patho-card { background: #1e293b; border-radius: 12px; padding: 16px; border: 2px solid transparent; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .patho-card.haze { border-color: #f59e0b; }
+  .patho-card.sodium { border-color: #ef4444; }
+  .patho-card.arteries { background: #1e3a8a; border-color: #3b82f6; text-align: center; }
+  .patho-card.events { background: #7f1d1d; border-color: #f87171; }
+  .flow-arrow { display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 1.2rem; font-weight: bold; padding: 4px; }
+  @media (min-width: 992px) { .flow-arrow { transform: rotate(0deg); } }
+  @media (max-width: 991px) { .flow-arrow { transform: rotate(90deg); margin: -6px 0; } }
 </style>
 
 <main id="main" class="article-content">
@@ -79,10 +92,10 @@ author_name: "Dr. Gerald Thang"
 <div class="interactive-calculator-card">
   <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
     <div>
+      <span class="badge bg-primary px-3 py-2" style="font-size: 0.75rem;">Preventive Cardiology Tool</span>
       <h3 class="h5 fw-bold text-dark mb-0">Haze & Sodium Vascular Pressure Estimator</h3>
       <p class="text-muted small mb-0">Evaluate how environmental PM2.5 vasoconstriction and dietary salt fluid load compound your blood pressure.</p>
     </div>
-    <span class="badge bg-primary px-3 py-2" style="font-size: 0.75rem;">Preventive Cardiology Tool</span>
   </div>
 
   <div class="row g-4 align-items-center">
@@ -120,7 +133,7 @@ author_name: "Dr. Gerald Thang"
       <div class="form-check form-switch p-2 rounded bg-light border">
         <input class="form-check-input ms-0 me-2" type="checkbox" id="applyHacks" onchange="calculateHazeRiskBar()" checked>
         <label class="form-check-label fw-semibold small text-dark" for="applyHacks">
-          🛡️ Apply Protection Hacks (HEPA Indoor Air + Leave 50% Hawker Soup)
+        Apply Protection Hacks (HEPA Indoor Air + Leave 50% Hawker Soup)
         </label>
       </div>
     </div>
@@ -177,50 +190,76 @@ author_name: "Dr. Gerald Thang"
           <p>To understand why haze season sees spikes in hospital admissions for acute myocardial infarction (heart attack) and hypertensive crises in Singapore, we must look at the synergistic pathway between inhaled particles and dietary sodium:</p>
 
           <!-- Pathophysiology Diagram Component -->
-          <div class="my-4 p-4 rounded-4 shadow-sm" style="background: #0f172a; color: #ffffff;">
-            <div class="mb-3">
-              <span class="badge bg-danger mb-1">Pathophysiology Model</span>
-              <h3 class="h5 fw-bold text-white mb-0">The Dual Mechanism of Vascular Overload</h3>
-            </div>
+<div class="patho-container">
+  <div class="mb-3">
+    <span class="badge bg-danger mb-2 px-2 py-1" style="font-size: 0.75rem;">Pathophysiology Model</span>
+    <h3 class="h5 fw-bold text-white mb-0">The Dual Mechanism of Vascular Overload</h3>
+  </div>
 
-            <div class="text-center my-3" style="overflow-x: auto;">
-              <svg viewBox="0 0 680 260" style="width: 100%; min-width: 550px; height: auto;">
-                <!-- Environmental Input -->
-                <rect x="20" y="30" width="180" height="70" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
-                <text x="110" y="58" text-anchor="middle" fill="#f59e0b" font-weight="bold" font-size="13">Inhaled PM2.5 (Haze)</text>
-                <text x="110" y="78" text-anchor="middle" fill="#cbd5e1" font-size="10">Endothelial Inflammation & Vasoconstriction</text>
+  <div class="patho-flow align-items-center">
+    
+    <!-- Column 1: Dual Inputs -->
+    <div class="patho-col">
+      <div class="patho-card haze">
+        <div class="fw-bold text-warning mb-1" style="font-size: 0.95rem;">
+          🌫️ Inhaled PM2.5 (Haze)
+        </div>
+        <div class="small text-slate-300" style="font-size: 0.82rem; line-height: 1.4;">
+          Endothelial Inflammation & Vasoconstriction
+        </div>
+      </div>
 
-                <!-- Dietary Input -->
-                <rect x="20" y="150" width="180" height="70" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
-                <text x="110" y="178" text-anchor="middle" fill="#ef4444" font-weight="bold" font-size="13">High Sodium Diet (Hawker)</text>
-                <text x="110" y="198" text-anchor="middle" fill="#cbd5e1" font-size="10">Fluid Retention & Blood Volume Surge</text>
+      <div class="patho-card sodium">
+        <div class="fw-bold text-danger mb-1" style="font-size: 0.95rem;">
+          🧂 High Sodium Diet (Hawker)
+        </div>
+        <div class="small text-slate-300" style="font-size: 0.82rem; line-height: 1.4;">
+          Fluid Retention & Blood Volume Surge
+        </div>
+      </div>
+    </div>
 
-                <!-- Central Vascular Junction -->
-                <rect x="260" y="80" width="180" height="100" rx="12" fill="#1e3a8a" stroke="#3b82f6" stroke-width="2"/>
-                <text x="350" y="115" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="14">SYSTEMIC ARTERIES</text>
-                <text x="350" y="135" text-anchor="middle" fill="#93c5fd" font-size="10.5">Narrowed Vessels + High Volume</text>
-                <text x="350" y="152" text-anchor="middle" fill="#bfdbfe" font-size="10" font-weight="bold">= Severe Wall Shear Stress</text>
+    <!-- Arrow 1 -->
+    <div class="flow-arrow">➔</div>
 
-                <!-- Target Organs Output -->
-                <rect x="490" y="80" width="170" height="100" rx="12" fill="#7f1d1d" stroke="#f87171" stroke-width="2"/>
-                <text x="575" y="115" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="13">CLINICAL EVENTS</text>
-                <text x="575" y="135" text-anchor="middle" fill="#fca5a5" font-size="10">• Acute BP Spikes</text>
-                <text x="575" y="150" text-anchor="middle" fill="#fca5a5" font-size="10">• Plaque Rupture / Myocardial Infarction</text>
-                <text x="575" y="165" text-anchor="middle" fill="#fca5a5" font-size="10">• Atrial Fibrillation Spikes</text>
+    <!-- Column 2: Systemic Vascular Strain -->
+    <div class="patho-col">
+      <div class="patho-card arteries py-3">
+        <div class="fw-bold text-white text-uppercase tracking-wide mb-1" style="font-size: 0.9rem; letter-spacing: 0.5px;">
+          SYSTEMIC ARTERIES
+        </div>
+        <div class="text-blue-200 small mb-1" style="color: #bfdbfe; font-size: 0.82rem;">
+          Narrowed Vessels + High Volume
+        </div>
+        <div class="fw-bold text-white small" style="font-size: 0.85rem;">
+          = Severe Wall Shear Stress
+        </div>
+      </div>
+    </div>
 
-                <!-- Connecting Arrows -->
-                <path d="M 200 65 L 260 110" fill="none" stroke="#f59e0b" stroke-width="3" />
-                <polygon points="260,110 248,103 252,115" fill="#f59e0b"/>
+    <!-- Arrow 2 -->
+    <div class="flow-arrow">➔</div>
 
-                <path d="M 200 185 L 260 150" fill="none" stroke="#ef4444" stroke-width="3" />
-                <polygon points="260,150 252,145 248,157" fill="#ef4444"/>
+    <!-- Column 3: Clinical Outcomes -->
+    <div class="patho-col">
+      <div class="patho-card events">
+        <div class="fw-bold text-white mb-1 text-center" style="font-size: 0.9rem; letter-spacing: 0.5px;">
+          CLINICAL EVENTS
+        </div>
+        <ul class="list-unstyled mb-0 small text-red-200" style="color: #fca5a5; font-size: 0.82rem; line-height: 1.5;">
+          <li>• Acute BP Spikes</li>
+          <li>• Plaque Rupture / Myocardial Infarction</li>
+          <li>• Atrial Fibrillation Spikes</li>
+        </ul>
+      </div>
+    </div>
 
-                <path d="M 440 130 L 490 130" fill="none" stroke="#f87171" stroke-width="4" />
-                <polygon points="490,130 480,123 480,137" fill="#f87171"/>
-              </svg>
-            </div>
-            <p class="small text-slate-300 mb-0 text-center">Figure 1: Synergistic pathway showing how inhaled atmospheric toxins and dietary salt converge on blood vessel walls.</p>
-          </div>
+  </div>
+
+  <p class="small text-slate-400 mb-0 mt-3 text-center" style="font-size: 0.78rem; color: #94a3b8;">
+    Figure 1: Synergistic pathway showing how inhaled atmospheric toxins and dietary salt converge on blood vessel walls.
+  </p>
+</div>
 
           <h2 id="impact-on-chronic-conditions" class="section-heading h4">Impact Across 4 Metabolic Health Profiles</h2>
 
@@ -311,7 +350,7 @@ author_name: "Dr. Gerald Thang"
 
             <div class="text-center pt-2">
               <div class="d-flex flex-wrap justify-content-center gap-3">
-                <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn-custom-primary" style="padding: 12px 28px; font-size: 1rem;">Book Health Screening →</a>
+                <a href="https://www.ahealingheartmedical.com/health-screening" class="btn-custom-primary" style="padding: 12px 28px; font-size: 1rem;">Book Health Screening →</a>
                 <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart%20Medical,%20I%20would%20like%20to%20enquire%20about%20a%20cardiovascular%20screening." target="_blank" rel="noopener" class="btn-custom-secondary" style="padding: 12px 24px; font-size: 1rem;">WhatsApp Clinic Desk</a>
               </div>
             </div>
@@ -342,7 +381,7 @@ author_name: "Dr. Gerald Thang"
               <p class="fw-bold mb-1" style="color: #0f172a;">Related Guides from Our Health Library:</p>
               <ul class="list-unstyled">
                 <li class="mb-2"><a href="/articles/hawker-health-sodium-calories-guide" class="fw-bold text-primary">You Can't Out-Run a 4,000mg Salt Diet: The Low-Hassle Guide to Hawker Eating →</a></li>
-                <li class="mb-2"><a href="/articles/understanding-hypertriglyceridemia-singapore-2" class="fw-bold text-primary">The Forgotten Blood Fat: Why High Triglycerides Silently Strain Your Heart & Liver →</a></li>
+                <li class="mb-2"><a href="/articles/understanding-hypertriglyceridemia-singapore" class="fw-bold text-primary">The Forgotten Blood Fat: Why High Triglycerides Silently Strain Your Heart & Liver →</a></li>
               </ul>
             </div>
           </div>
