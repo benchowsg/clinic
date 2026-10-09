@@ -75,57 +75,103 @@ author_name: "Dr. Gerald Thang"
           <p>Adjust the airborne PM2.5 level and your estimated daily sodium intake to calculate your estimated vascular pressure index during haze season.</p>
 
           <!-- Interactive Calculator Widget -->
-          <div class="interactive-calculator-card">
-            <h3 class="h5 fw-bold text-dark mb-2 text-center">Haze + Sodium Dual Risk Estimator</h3>
-            <p class="text-muted text-center mb-4 small">Select atmospheric air quality conditions and daily sodium patterns to evaluate combined arterial workload.</p>
+<!-- Interactive Dual Strain Component: Linear Stress Bar Design -->
+<div class="interactive-calculator-card">
+  <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+    <div>
+      <h3 class="h5 fw-bold text-dark mb-0">Haze & Sodium Vascular Pressure Estimator</h3>
+      <p class="text-muted small mb-0">Evaluate how environmental PM2.5 vasoconstriction and dietary salt fluid load compound your blood pressure.</p>
+    </div>
+    <span class="badge bg-primary px-3 py-2" style="font-size: 0.75rem;">Preventive Cardiology Tool</span>
+  </div>
 
-            <div class="row g-4 align-items-center">
-              <div class="col-md-6">
-                <label for="hazeLevel" class="form-label fw-bold small text-dark">Air Quality / 1-hr PM2.5 Level:</label>
-                <select id="hazeLevel" class="form-select form-select-sm mb-3" onchange="calculateHazeRisk()">
-                  <option value="normal">Normal / Clean Air (&lt; 15 µg/m³)</option>
-                  <option value="moderate">Elevated Haze (16 – 55 µg/m³)</option>
-                  <option value="unhealthy">Unhealthy Haze / High PSI (56 – 150 µg/m³)</option>
-                  <option value="hazardous">Very Unhealthy / Severe Haze (&gt; 150 µg/m³)</option>
-                </select>
+  <div class="row g-4 align-items-center">
+    <!-- Left Column: Patient Profile & Input Controls -->
+    <div class="col-lg-6">
+      <div class="mb-3">
+        <label for="hazeLevel" class="form-label fw-bold small text-dark mb-1">1. Atmospheric Air Quality (1-hr PM2.5):</label>
+        <select id="hazeLevel" class="form-select form-select-sm" onchange="calculateHazeRiskBar()">
+          <option value="normal">Normal / Clean Air (&lt; 15 µg/m³)</option>
+          <option value="moderate" selected>Elevated Haze / Moderate PSI (16 – 55 µg/m³)</option>
+          <option value="unhealthy">Unhealthy Haze / High PSI (56 – 150 µg/m³)</option>
+          <option value="hazardous">Very Unhealthy / Severe Haze (&gt; 150 µg/m³)</option>
+        </select>
+      </div>
 
-                <label for="sodiumLevel" class="form-label fw-bold small text-dark">Daily Sodium Intake Pattern:</label>
-                <select id="sodiumLevel" class="form-select form-select-sm mb-3" onchange="calculateHazeRisk()">
-                  <option value="low">Controlled Low-Sodium Diet (~1,500 - 2,000 mg)</option>
-                  <option value="average" selected>Typical SG Hawker Diet (~3,500 - 4,000 mg)</option>
-                  <option value="high">High Gravy / Soup Finisher Diet (&gt; 4,500 mg)</option>
-                </select>
+      <div class="mb-3">
+        <label for="sodiumLevel" class="form-label fw-bold small text-dark mb-1">2. Estimated Daily Hawker Sodium Intake:</label>
+        <select id="sodiumLevel" class="form-select form-select-sm" onchange="calculateHazeRiskBar()">
+          <option value="low">Low Sodium / Controlled Diet (~1,800 mg)</option>
+          <option value="average" selected>Typical SG Hawker Diet (~3,800 mg)</option>
+          <option value="high">High Gravy & Soup Finisher (~4,800 mg)</option>
+        </select>
+      </div>
 
-                <div class="p-2 bg-light rounded text-dark extra-small" style="font-size: 0.8rem; border: 1px solid #e2e8f0;">
-                  <strong>Physiological Interaction:</strong><br>
-                  • PM2.5 causes arterial wall constriction & stiffness.<br>
-                  • Excess Sodium increases intravascular fluid volume.<br>
-                  • Combined effect: High peripheral resistance against elevated blood volume.
-                </div>
-              </div>
+      <div class="mb-3">
+        <label for="patientBaseline" class="form-label fw-bold small text-dark mb-1">3. Personal Health Profile:</label>
+        <select id="patientBaseline" class="form-select form-select-sm" onchange="calculateHazeRiskBar()">
+          <option value="normal">Healthy Baseline / Screening Clear</option>
+          <option value="hypertension" selected>Diagnosed / Borderline High Blood Pressure</option>
+          <option value="diabetic">Diabetes / Fatty Liver / High Cholesterol</option>
+          <option value="cardiac">Known Heart Condition / Post-Stent</option>
+        </select>
+      </div>
 
-              <div class="col-md-6 text-center">
-                <svg width="220" height="135" viewBox="0 0 200 120">
-                  <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" stroke-width="18" stroke-linecap="round"/>
-                  <path id="hazeGaugePath" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#22c55e" stroke-width="18" stroke-dasharray="251" stroke-dashoffset="100" stroke-linecap="round" style="transition: stroke-dashoffset 0.4s ease, stroke 0.4s ease;"/>
-                  <text id="hazeGaugeScore" x="100" y="85" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">Baseline</text>
-                  <text x="100" y="105" text-anchor="middle" font-size="10" fill="#64748b">Combined Vascular Workload</text>
-                </svg>
+      <div class="form-check form-switch p-2 rounded bg-light border">
+        <input class="form-check-input ms-0 me-2" type="checkbox" id="applyHacks" onchange="calculateHazeRiskBar()" checked>
+        <label class="form-check-label fw-semibold small text-dark" for="applyHacks">
+          🛡️ Apply Protection Hacks (HEPA Indoor Air + Leave 50% Hawker Soup)
+        </label>
+      </div>
+    </div>
 
-                <div class="d-flex justify-content-around mt-2 p-2 rounded" style="background: #f8fafc; border: 1px solid #e2e8f0;">
-                  <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">Arterial Tone</div>
-                    <div id="toneVal" class="fw-bold text-primary fs-6">Normal</div>
-                  </div>
-                  <div style="border-left: 1px solid #cbd5e1;"></div>
-                  <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">Fluid Strain</div>
-                    <div id="fluidVal" class="fw-bold text-primary fs-6">Elevated</div>
-                  </div>
-                </div>
-              </div>
+    <!-- Right Column: Visual Linear Stress Bar & Real Metric Cards -->
+    <div class="col-lg-6">
+      <div class="p-3 rounded-3" style="background: #f8fafc; border: 1px solid #cbd5e1;">
+        
+        <!-- Top Output Metrics -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="small font-monospace text-uppercase fw-bold text-muted" style="font-size: 0.75rem;">Est. Vascular Pressure Surge</span>
+          <span id="bpSurgeVal" class="fw-bold fs-4 text-danger">+14 mmHg</span>
+        </div>
+
+        <!-- Linear Progress / Thermometer Bar -->
+        <div class="progress mb-2" style="height: 22px; border-radius: 12px; background-color: #e2e8f0; overflow: hidden;">
+          <div id="stressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
+               role="progressbar" 
+               style="width: 50%; transition: width 0.5s ease, background-color 0.5s ease;" 
+               aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            <span id="barStatusText" class="fw-bold text-dark px-2" style="font-size: 0.75rem;">Moderate Strain</span>
+          </div>
+        </div>
+
+        <!-- Scale Benchmarks under the bar -->
+        <div class="d-flex justify-content-between text-muted extra-small mb-3" style="font-size: 0.7rem;">
+          <span>0 (Normal)</span>
+          <span>+10 mmHg (Moderate)</span>
+          <span>+20 mmHg+ (Severe Strain)</span>
+        </div>
+
+        <!-- Dual Breakdown Indicators (Arterial Tone vs. Fluid Volume) -->
+        <div class="row g-2 text-center pt-2 border-top">
+          <div class="col-6">
+            <div class="p-2 rounded bg-white border">
+              <div class="text-muted extra-small text-uppercase fw-bold" style="font-size: 0.68rem;">Arterial Tone</div>
+              <div id="toneVal" class="fw-bold small text-primary">Mild Spasm</div>
             </div>
           </div>
+          <div class="col-6">
+            <div class="p-2 rounded bg-white border">
+              <div class="text-muted extra-small text-uppercase fw-bold" style="font-size: 0.68rem;">Fluid Load</div>
+              <div id="fluidVal" class="fw-bold small text-primary">2,280 mg Sodium</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
           <h2 id="double-jeopardy-mechanism" class="section-heading h4">How Haze & Sodium Collide: The Pathophysiology</h2>
           <p>To understand why haze season sees spikes in hospital admissions for acute myocardial infarction (heart attack) and hypertensive crises in Singapore, we must look at the synergistic pathway between inhaled particles and dietary sodium:</p>
@@ -312,53 +358,74 @@ author_name: "Dr. Gerald Thang"
 </main>
 
 <script>
-  function calculateHazeRisk() {
-    const haze = document.getElementById('hazeLevel').value;
-    const sodium = document.getElementById('sodiumLevel').value;
+function calculateHazeRiskBar() {
+  const haze = document.getElementById('hazeLevel').value;
+  const sodium = document.getElementById('sodiumLevel').value;
+  const baseline = document.getElementById('patientBaseline').value;
+  const applyHacks = document.getElementById('applyHacks').checked;
 
-    const path = document.getElementById('hazeGaugePath');
-    const score = document.getElementById('hazeGaugeScore');
-    const toneVal = document.getElementById('toneVal');
-    const fluidVal = document.getElementById('fluidVal');
+  // 1. Base PM2.5 Vasoconstriction Multiplier
+  let hazeMultiplier = 1.0;
+  if (haze === 'moderate') hazeMultiplier = 1.25;
+  else if (haze === 'unhealthy') hazeMultiplier = 1.60;
+  else if (haze === 'hazardous') hazeMultiplier = 2.10;
 
-    let riskScore = 0;
+  // 2. Base Sodium Fluid Load (in mg)
+  let sodiumMg = 1800;
+  if (sodium === 'average') sodiumMg = 3800;
+  else if (sodium === 'high') sodiumMg = 4800;
 
-    if (haze === 'normal') riskScore += 0;
-    else if (haze === 'moderate') riskScore += 1;
-    else if (haze === 'unhealthy') riskScore += 2;
-    else if (haze === 'hazardous') riskScore += 3;
-
-    if (sodium === 'low') riskScore += 0;
-    else if (sodium === 'average') riskScore += 1;
-    else if (sodium === 'high') riskScore += 2;
-
-    if (haze === 'normal') toneVal.innerText = 'Normal';
-    else if (haze === 'moderate') toneVal.innerText = 'Mild Spasm';
-    else toneVal.innerText = 'Constricted';
-
-    if (sodium === 'low') fluidVal.innerText = 'Optimal';
-    else if (sodium === 'average') fluidVal.innerText = 'Elevated';
-    else fluidVal.innerText = 'High Strain';
-
-    let ratio = riskScore / 5;
-    if (ratio > 1) ratio = 1;
-    let offset = 251 - (251 * ratio);
-    path.style.strokeDashoffset = offset;
-
-    if (riskScore >= 4) {
-      path.style.stroke = '#ef4444';
-      score.innerText = 'Severe Risk';
-      score.style.fill = '#ef4444';
-    } else if (riskScore >= 2) {
-      path.style.stroke = '#f59e0b';
-      score.innerText = 'Moderate Strain';
-      score.style.fill = '#f59e0b';
-    } else {
-      path.style.stroke = '#22c55e';
-      score.innerText = 'Low Risk';
-      score.style.fill = '#22c55e';
-    }
+  // 3. Apply Intervention Hacks (-40% sodium from soup, -50% haze exposure from HEPA)
+  if (applyHacks) {
+    sodiumMg = Math.max(1600, sodiumMg * 0.6);
+    hazeMultiplier = 1.0 + (hazeMultiplier - 1.0) * 0.4;
   }
 
-  document.addEventListener('DOMContentLoaded', calculateHazeRisk);
+  // 4. Patient Susceptibility Multiplier
+  let susceptibility = 1.0;
+  if (baseline === 'hypertension') susceptibility = 1.35;
+  else if (baseline === 'diabetic') susceptibility = 1.45;
+  else if (baseline === 'cardiac') susceptibility = 1.75;
+
+  // 5. Calculate Estimated Systolic Pressure Surge (mmHg)
+  const excessSodiumRatio = Math.max(0, (sodiumMg - 1500) / 1000); // Per 1g excess sodium above baseline
+  let bpSurge = Math.round((excessSodiumRatio * 3.5) * hazeMultiplier * susceptibility);
+
+  // UI Updates
+  document.getElementById('bpSurgeVal').innerText = `+${bpSurge} mmHg`;
+  document.getElementById('fluidVal').innerText = `${Math.round(sodiumMg).toLocaleString()} mg Sodium`;
+
+  // Text Breakdown for Tone
+  const toneVal = document.getElementById('toneVal');
+  if (haze === 'normal') toneVal.innerText = applyHacks ? 'Optimal' : 'Normal';
+  else if (haze === 'moderate') toneVal.innerText = applyHacks ? 'Protected (HEPA)' : 'Mild Spasm';
+  else if (haze === 'unhealthy') toneVal.innerText = applyHacks ? 'Moderate Spasm' : 'Constricted';
+  else toneVal.innerText = applyHacks ? 'Constricted' : 'Severe Spasm';
+
+  // Bar Percentage & Color Logic (Max scale capped at 25 mmHg surge = 100%)
+  const bar = document.getElementById('stressBar');
+  const barText = document.getElementById('barStatusText');
+  let pct = Math.min(100, Math.max(8, (bpSurge / 24) * 100));
+
+  bar.style.width = pct + '%';
+
+  if (bpSurge >= 16) {
+    bar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-danger';
+    barText.innerText = 'High Strain';
+    barText.className = 'fw-bold text-white px-2';
+    document.getElementById('bpSurgeVal').className = 'fw-bold fs-4 text-danger';
+  } else if (bpSurge >= 8) {
+    bar.className = 'progress-bar progress-bar-striped progress-bar-animated bg-warning';
+    barText.innerText = 'Moderate Strain';
+    barText.className = 'fw-bold text-dark px-2';
+    document.getElementById('bpSurgeVal').className = 'fw-bold fs-4 text-warning';
+  } else {
+    bar.className = 'progress-bar bg-success';
+    barText.innerText = 'Protected / Low';
+    barText.className = 'fw-bold text-white px-2';
+    document.getElementById('bpSurgeVal').className = 'fw-bold fs-4 text-success';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', calculateHazeRiskBar);
 </script>
