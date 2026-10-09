@@ -61,3 +61,304 @@ author_name: "Dr. Gerald Thang"
           <ul class="mb-0 ps-3" style="line-height: 1.8; color: #1e293b;">
             <li><strong>PM2.5 Systemic Penetration:</strong> Fine particulate matter (PM2.5) during haze seasons bypasses lung filtration, entering blood circulation to cause rapid endothelial dysfunction and sympathetic nervous system activation.</li>
             <li><strong>The Sodium Volumetric Surge:</strong> Singaporeans consume nearly 4,000mg of sodium daily. Excess sodium increases blood volume, forcing the heart to pump against arteries that are already constricted by haze pollution.</li>
+            <li><strong>Metabolic Escalation:</strong> The double burden exacerbates four major conditions: <strong>Hypertension, Hyperlipidemia, Diabetes, and Thyroid Dysfunction</strong>.</li>
+            <li><strong>Protective Strategy:</strong> Combining indoor air purification with low-sodium hawker modifications and anti-inflammatory dietary choices drastically reduces acute cardiac events during haze episodes.</li>
+          </ul>
+        </div>
+
+        <div class="article-body">
+          <p>During transboundary haze episodes in Singapore, public health advisories routinely warn against outdoor exercise to protect lung function. However, modern cardiovascular medicine reveals a far more immediate concern: <strong>fine particulate matter (PM2.5) is primarily a vascular toxin</strong>.</p>
+
+          <p>When microscopic PM2.5 particles are inhaled, they pass through lung alveoli directly into the bloodstream. There, they induce systemic oxidative stress, trigger acute arterial spasm, and activate the sympathetic nervous system ("fight-or-flight" response). When this environmental stressor collides with Singapore's dietary baseline—where 95% of residents consume an average of 4,000mg of sodium daily—it creates a dangerous biological phenomenon known as <strong>The Double Jeopardy</strong>.</p>
+
+          <h2 id="interactive-haze-calculator" class="section-heading h4">Interactive Haze & Sodium Cardiac Strain Estimator</h2>
+          <p>Adjust the airborne PM2.5 level and your estimated daily sodium intake to calculate your estimated vascular pressure index during haze season.</p>
+
+          <!-- Interactive Calculator Widget -->
+          <div class="interactive-calculator-card">
+            <h3 class="h5 fw-bold text-dark mb-2 text-center">Haze + Sodium Dual Risk Estimator</h3>
+            <p class="text-muted text-center mb-4 small">Select atmospheric air quality conditions and daily sodium patterns to evaluate combined arterial workload.</p>
+
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6">
+                <label for="hazeLevel" class="form-label fw-bold small text-dark">Air Quality / 1-hr PM2.5 Level:</label>
+                <select id="hazeLevel" class="form-select form-select-sm mb-3" onchange="calculateHazeRisk()">
+                  <option value="normal">Normal / Clean Air (&lt; 15 µg/m³)</option>
+                  <option value="moderate">Elevated Haze (16 – 55 µg/m³)</option>
+                  <option value="unhealthy">Unhealthy Haze / High PSI (56 – 150 µg/m³)</option>
+                  <option value="hazardous">Very Unhealthy / Severe Haze (&gt; 150 µg/m³)</option>
+                </select>
+
+                <label for="sodiumLevel" class="form-label fw-bold small text-dark">Daily Sodium Intake Pattern:</label>
+                <select id="sodiumLevel" class="form-select form-select-sm mb-3" onchange="calculateHazeRisk()">
+                  <option value="low">Controlled Low-Sodium Diet (~1,500 - 2,000 mg)</option>
+                  <option value="average" selected>Typical SG Hawker Diet (~3,500 - 4,000 mg)</option>
+                  <option value="high">High Gravy / Soup Finisher Diet (&gt; 4,500 mg)</option>
+                </select>
+
+                <div class="p-2 bg-light rounded text-dark extra-small" style="font-size: 0.8rem; border: 1px solid #e2e8f0;">
+                  <strong>Physiological Interaction:</strong><br>
+                  • PM2.5 causes arterial wall constriction & stiffness.<br>
+                  • Excess Sodium increases intravascular fluid volume.<br>
+                  • Combined effect: High peripheral resistance against elevated blood volume.
+                </div>
+              </div>
+
+              <div class="col-md-6 text-center">
+                <svg width="220" height="135" viewBox="0 0 200 120">
+                  <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e2e8f0" stroke-width="18" stroke-linecap="round"/>
+                  <path id="hazeGaugePath" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#22c55e" stroke-width="18" stroke-dasharray="251" stroke-dashoffset="100" stroke-linecap="round" style="transition: stroke-dashoffset 0.4s ease, stroke 0.4s ease;"/>
+                  <text id="hazeGaugeScore" x="100" y="85" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">Baseline</text>
+                  <text x="100" y="105" text-anchor="middle" font-size="10" fill="#64748b">Combined Vascular Workload</text>
+                </svg>
+
+                <div class="d-flex justify-content-around mt-2 p-2 rounded" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+                  <div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">Arterial Tone</div>
+                    <div id="toneVal" class="fw-bold text-primary fs-6">Normal</div>
+                  </div>
+                  <div style="border-left: 1px solid #cbd5e1;"></div>
+                  <div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">Fluid Strain</div>
+                    <div id="fluidVal" class="fw-bold text-primary fs-6">Elevated</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 id="double-jeopardy-mechanism" class="section-heading h4">How Haze & Sodium Collide: The Pathophysiology</h2>
+          <p>To understand why haze season sees spikes in hospital admissions for acute myocardial infarction (heart attack) and hypertensive crises in Singapore, we must look at the synergistic pathway between inhaled particles and dietary sodium:</p>
+
+          <!-- Pathophysiology Diagram Component -->
+          <div class="my-4 p-4 rounded-4 shadow-sm" style="background: #0f172a; color: #ffffff;">
+            <div class="mb-3">
+              <span class="badge bg-danger mb-1">Pathophysiology Model</span>
+              <h3 class="h5 fw-bold text-white mb-0">The Dual Mechanism of Vascular Overload</h3>
+            </div>
+
+            <div class="text-center my-3" style="overflow-x: auto;">
+              <svg viewBox="0 0 680 260" style="width: 100%; min-width: 550px; height: auto;">
+                <!-- Environmental Input -->
+                <rect x="20" y="30" width="180" height="70" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+                <text x="110" y="58" text-anchor="middle" fill="#f59e0b" font-weight="bold" font-size="13">Inhaled PM2.5 (Haze)</text>
+                <text x="110" y="78" text-anchor="middle" fill="#cbd5e1" font-size="10">Endothelial Inflammation & Vasoconstriction</text>
+
+                <!-- Dietary Input -->
+                <rect x="20" y="150" width="180" height="70" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+                <text x="110" y="178" text-anchor="middle" fill="#ef4444" font-weight="bold" font-size="13">High Sodium Diet (Hawker)</text>
+                <text x="110" y="198" text-anchor="middle" fill="#cbd5e1" font-size="10">Fluid Retention & Blood Volume Surge</text>
+
+                <!-- Central Vascular Junction -->
+                <rect x="260" y="80" width="180" height="100" rx="12" fill="#1e3a8a" stroke="#3b82f6" stroke-width="2"/>
+                <text x="350" y="115" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="14">SYSTEMIC ARTERIES</text>
+                <text x="350" y="135" text-anchor="middle" fill="#93c5fd" font-size="10.5">Narrowed Vessels + High Volume</text>
+                <text x="350" y="152" text-anchor="middle" fill="#bfdbfe" font-size="10" font-weight="bold">= Severe Wall Shear Stress</text>
+
+                <!-- Target Organs Output -->
+                <rect x="490" y="80" width="170" height="100" rx="12" fill="#7f1d1d" stroke="#f87171" stroke-width="2"/>
+                <text x="575" y="115" text-anchor="middle" fill="#ffffff" font-weight="bold" font-size="13">CLINICAL EVENTS</text>
+                <text x="575" y="135" text-anchor="middle" fill="#fca5a5" font-size="10">• Acute BP Spikes</text>
+                <text x="575" y="150" text-anchor="middle" fill="#fca5a5" font-size="10">• Plaque Rupture / Myocardial Infarction</text>
+                <text x="575" y="165" text-anchor="middle" fill="#fca5a5" font-size="10">• Atrial Fibrillation Spikes</text>
+
+                <!-- Connecting Arrows -->
+                <path d="M 200 65 L 260 110" fill="none" stroke="#f59e0b" stroke-width="3" />
+                <polygon points="260,110 248,103 252,115" fill="#f59e0b"/>
+
+                <path d="M 200 185 L 260 150" fill="none" stroke="#ef4444" stroke-width="3" />
+                <polygon points="260,150 252,145 248,157" fill="#ef4444"/>
+
+                <path d="M 440 130 L 490 130" fill="none" stroke="#f87171" stroke-width="4" />
+                <polygon points="490,130 480,123 480,137" fill="#f87171"/>
+              </svg>
+            </div>
+            <p class="small text-slate-300 mb-0 text-center">Figure 1: Synergistic pathway showing how inhaled atmospheric toxins and dietary salt converge on blood vessel walls.</p>
+          </div>
+
+          <h2 id="impact-on-chronic-conditions" class="section-heading h4">Impact Across 4 Metabolic Health Profiles</h2>
+
+          <!-- Condition 1: Hypertension -->
+          <div class="condition-card">
+            <h3 class="h5 fw-bold text-dark mb-2">1. Hypertension (High Blood Pressure)</h3>
+            <p class="small text-muted mb-2"><strong>The Vulnerability:</strong> PM2.5 triggers reflex sympathetic nervous system activation, raising resting heart rate and constricting small arteries.</p>
+            <p class="small text-secondary mb-0">
+              <strong>The Action Plan:</strong> During haze days, strictly cap sodium to &lt; 1,500 mg/day. Avoid soup dishes entirely and switch to steamed, non-gravy hawker options. Maintain home blood pressure logging morning and night.
+            </p>
+          </div>
+
+          <!-- Condition 2: Hyperlipidemia -->
+          <div class="condition-card" style="border-top-color: #2563eb;">
+            <h3 class="h5 fw-bold text-dark mb-2">2. Hyperlipidemia & Atherosclerosis</h3>
+            <p class="small text-muted mb-2"><strong>The Vulnerability:</strong> Inhaled particulate matter oxidizes circulating LDL particles, accelerating foam cell formation and making existing arterial plaques unstable.</p>
+            <p class="small text-secondary mb-0">
+              <strong>The Action Plan:</strong> Increase dietary antioxidants (berries, green tea, dark leafy greens) to neutralize oxidative stress. Avoid deep-fried hawker foods (e.g., You Tiao, fried fish batter) which contain oxidized fats that compound vascular inflammation.
+            </p>
+          </div>
+
+          <!-- Condition 3: Diabetes Mellitus -->
+          <div class="condition-card" style="border-top-color: #d97706;">
+            <h3 class="h5 fw-bold text-dark mb-2">3. Diabetes & Insulin Resistance</h3>
+            <p class="small text-muted mb-2"><strong>The Vulnerability:</strong> Systemic inflammation induced by PM2.5 increases circulating cortisol and inflammatory cytokines, worsening tissue insulin resistance.</p>
+            <p class="small text-secondary mb-0">
+              <strong>The Action Plan:</strong> Avoid liquid sugars (sweetened hawker drinks, bubble tea) which fuel liver fat production. Choose low-GI meals with ample fiber (e.g., Economic Rice with 2 veg + 1 lean protein, less rice) to keep blood glucose stable.
+            </p>
+          </div>
+
+          <!-- Condition 4: Thyroid Disorders -->
+          <div class="condition-card" style="border-top-color: #7c3aed;">
+            <h3 class="h5 fw-bold text-dark mb-2">4. Thyroid Dysfunction</h3>
+            <p class="small text-muted mb-2"><strong>The Vulnerability:</strong> Patients with Hypothyroidism already suffer from reduced fluid clearance and sluggish cardiac contractility, while Hyperthyroid patients face elevated baseline heart rates that PM2.5 can amplify into arrhythmia.</p>
+            <p class="small text-secondary mb-0">
+              <strong>The Action Plan:</strong> Ensure adequate indoor air filtration (HEPA purifiers). Avoid excessive stimulants (caffeine/energy drinks) and balance sodium closely to prevent fluid overload.
+            </p>
+          </div>
+
+          <h2 id="what-to-avoid-haze-table" class="section-heading h4">Haze Season Nutrition: What to Limit vs. What to Swap</h2>
+          <p>Protecting your cardiovascular system during haze episodes requires targeted nutritional adjustments:</p>
+
+          <div class="custom-table-wrapper my-4">
+            <table class="table table-bordered table-striped align-middle mb-0" style="border-color: #e2e8f0;">
+              <thead style="background-color: #0f172a; color: #ffffff;">
+                <tr>
+                  <th scope="col" style="width: 25%;">Item / Food Category</th>
+                  <th scope="col" style="width: 35%;">Why It Exacerbates Haze Risk</th>
+                  <th scope="col" style="width: 40%;">Cardioprotective Alternative</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.92rem; color: #334155;">
+                <tr>
+                  <td><strong>Heavy Salt Soups (Ban Mian / Laksa Broth)</strong></td>
+                  <td>Surges fluid volume against constricted vessels, driving blood pressure spikes.</td>
+                  <td>Dry version with sauce on the side; leave 70% of soup unconsumed.</td>
+                </tr>
+                <tr>
+                  <td><strong>Deep-Fried Hawker Snacks (You Tiao, Goreng Pisang)</strong></td>
+                  <td>Contains oxidized trans fats that accelerate PM2.5-induced endothelial damage.</td>
+                  <td>Steamed Popiah (no sweet sauce) or steamed chickpeas/edamame.</td>
+                </tr>
+                <tr>
+                  <td><strong>Sweetened Hawker Beverages (Teh C, Kopi Siew Dai)</strong></td>
+                  <td>Refined sugars drive rapid glucose spikes and liver lipid synthesis.</td>
+                  <td>Teh-O Kosong, Kopi-O Kosong, or Chrysanthemum Tea (no sugar).</td>
+                </tr>
+                <tr>
+                  <td><strong>Processed Meats (Lup Cheong, Salted Fish)</strong></td>
+                  <td>Extremely high sodium and nitrites aggravate vascular stiffness.</td>
+                  <td>Steamed fresh sliced fish, tofu, or skinless chicken breast.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Preventive Care Banner -->
+          <div class="cta-banner">
+            <div class="row align-items-center">
+              <div class="col-lg-12 text-center">
+                <span class="badge bg-light text-dark fw-bold mb-3 px-3 py-2" style="font-size: 0.85rem; letter-spacing: 0.5px;">PREVENTIVE CARDIOLOGY & METABOLIC HEALTH</span>
+                <h3 class="h4 fw-bold text-white mb-3">Protect Your Heart Through Changing Seasons</h3>
+                <p class="text-white-50 mb-4 mx-auto" style="max-width: 650px; line-height: 1.6;">
+                  Whether facing seasonal haze or managing daily diet habits, evaluating your cardiovascular baseline provides clarity and protection. Schedule a clinical review with Dr. Gerald Thang under Healthier SG.
+                </p>
+              </div>
+            </div>
+
+            <div class="text-center pt-2">
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn-custom-primary" style="padding: 12px 28px; font-size: 1rem;">Book Health Screening →</a>
+                <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart%20Medical,%20I%20would%20like%20to%20enquire%20about%20a%20cardiovascular%20screening." target="_blank" rel="noopener" class="btn-custom-secondary" style="padding: 12px 24px; font-size: 1rem;">WhatsApp Clinic Desk</a>
+              </div>
+            </div>
+          </div>
+
+          <h2 id="physician-note" class="section-heading h4">A Personal Note from Dr. Gerald Thang</h2>
+          <p>"When haze levels rise in Singapore, many patients focus solely on respiratory symptoms like coughing or eye irritation. However, as cardiologists, we monitor arterial pressure and cardiac stress. By combining air filtration at home with low-sodium, anti-inflammatory hawker choices, you effectively shield your vascular system from environmental and dietary double jeopardy."</p>
+
+          <div id="faq" class="faq-section mt-5 pt-4 border-top">
+            <h2 class="section-heading h4 mb-4">Frequently Asked Questions</h2>
+            
+            <div class="faq-item mb-4">
+              <p class="fw-bold mb-1" style="color: #0f172a;">How does PM2.5 fine particulate matter during haze affect the cardiovascular system?</p>
+              <p class="text-secondary" style="font-size: 0.95rem;">Ultra-fine PM2.5 particles cross the alveolar-capillary membrane directly into the bloodstream, triggering systemic oxidative stress, endothelial dysfunction, sympathetic nervous system overdrive, and increased blood viscosity, raising acute heart attack and arrhythmia risks.</p>
+            </div>
+
+            <div class="faq-item mb-4">
+              <p class="fw-bold mb-1" style="color: #0f172a;">Why is a high-sodium hawker diet more dangerous during haze season?</p>
+              <p class="text-secondary" style="font-size: 0.95rem;">High sodium intake expands intravascular fluid volume, raising arterial pressure. When combined with haze-induced PM2.5 vasoconstriction and vascular inflammation, blood vessels face a double pressure load, significantly compounding cardiac strain.</p>
+            </div>
+
+            <div class="faq-item mb-4">
+              <p class="fw-bold mb-1" style="color: #0f172a;">Can dietary antioxidants help protect the heart during haze episodes?</p>
+              <p class="text-secondary" style="font-size: 0.95rem;">Yes. Consuming foods rich in polyphenols, vitamin C, and omega-3 fatty acids helps counteract PM2.5-induced endothelial oxidative stress, though reducing sodium intake and avoiding outdoor exertion remain the primary defenses.</p>
+            </div>
+
+            <div class="faq-item mb-4">
+              <p class="fw-bold mb-1" style="color: #0f172a;">Related Guides from Our Health Library:</p>
+              <ul class="list-unstyled">
+                <li class="mb-2"><a href="/articles/hawker-health-sodium-calories-guide" class="fw-bold text-primary">You Can't Out-Run a 4,000mg Salt Diet: The Low-Hassle Guide to Hawker Eating →</a></li>
+                <li class="mb-2"><a href="/articles/understanding-hypertriglyceridemia-singapore-2" class="fw-bold text-primary">The Forgotten Blood Fat: Why High Triglycerides Silently Strain Your Heart & Liver →</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ip-notice-box">
+            Intellectual Property Notice: Clinical protocols and patient guidelines are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  function calculateHazeRisk() {
+    const haze = document.getElementById('hazeLevel').value;
+    const sodium = document.getElementById('sodiumLevel').value;
+
+    const path = document.getElementById('hazeGaugePath');
+    const score = document.getElementById('hazeGaugeScore');
+    const toneVal = document.getElementById('toneVal');
+    const fluidVal = document.getElementById('fluidVal');
+
+    let riskScore = 0;
+
+    if (haze === 'normal') riskScore += 0;
+    else if (haze === 'moderate') riskScore += 1;
+    else if (haze === 'unhealthy') riskScore += 2;
+    else if (haze === 'hazardous') riskScore += 3;
+
+    if (sodium === 'low') riskScore += 0;
+    else if (sodium === 'average') riskScore += 1;
+    else if (sodium === 'high') riskScore += 2;
+
+    if (haze === 'normal') toneVal.innerText = 'Normal';
+    else if (haze === 'moderate') toneVal.innerText = 'Mild Spasm';
+    else toneVal.innerText = 'Constricted';
+
+    if (sodium === 'low') fluidVal.innerText = 'Optimal';
+    else if (sodium === 'average') fluidVal.innerText = 'Elevated';
+    else fluidVal.innerText = 'High Strain';
+
+    let ratio = riskScore / 5;
+    if (ratio > 1) ratio = 1;
+    let offset = 251 - (251 * ratio);
+    path.style.strokeDashoffset = offset;
+
+    if (riskScore >= 4) {
+      path.style.stroke = '#ef4444';
+      score.innerText = 'Severe Risk';
+      score.style.fill = '#ef4444';
+    } else if (riskScore >= 2) {
+      path.style.stroke = '#f59e0b';
+      score.innerText = 'Moderate Strain';
+      score.style.fill = '#f59e0b';
+    } else {
+      path.style.stroke = '#22c55e';
+      score.innerText = 'Low Risk';
+      score.style.fill = '#22c55e';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', calculateHazeRisk);
+</script>
