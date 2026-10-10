@@ -1,0 +1,17 @@
+---
+layout: null
+---
+[
+  {% assign pages_and_posts = site.pages | concat: site.posts %}
+  {% for item in pages_and_posts %}
+    {% if item.permalink contains '/articles/' and item.permalink != '/articles/' %}
+    {
+      "title": {{ item.title | jsonify }},
+      "category": {{ item.category | jsonify }},
+      "url": {{ item.permalink | default: item.url | jsonify }},
+      "description": {{ item.description | jsonify }},
+      "tags": {{ item.tags | default: "" | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]
