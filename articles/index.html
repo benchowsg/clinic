@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /articles/
+permalink: /articles-test/
 title: Health Library | Dr. Gerald Thang
 description: Clinical insights on cardiology, metabolic synergy, and vascular longevity. Evidence-based guides by Principal Physician Dr. Gerald Thang.
 ---
@@ -14,7 +14,7 @@ description: Clinical insights on cardiology, metabolic synergy, and vascular lo
   }
   
   .filter-container {
-    padding: 15px 0;
+    padding: 20px 0;
     border-bottom: 1px solid #eee;
     background: #fff;
     position: sticky;
@@ -31,6 +31,38 @@ description: Clinical insights on cardiology, metabolic synergy, and vascular lo
     }
   }
 
+  .search-wrapper {
+    max-width: 550px;
+    margin: 0 auto 15px auto;
+  }
+
+  .search-input-box {
+    border-radius: 50px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+    transition: all 0.2s ease;
+  }
+
+  .search-input-box:focus-within {
+    border-color: #3498db;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+  }
+
+  .search-input-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 0.95rem;
+    color: #2c4964;
+    padding-left: 10px;
+  }
+
   .filter-btn {
     border: 1px solid #3498db;
     background: transparent;
@@ -39,7 +71,7 @@ description: Clinical insights on cardiology, metabolic synergy, and vascular lo
     border-radius: 50px;
     font-weight: 600;
     font-size: 0.85rem;
-    margin: 5px;
+    margin: 3px;
     cursor: pointer;
     transition: 0.3s;
   }
@@ -146,10 +178,22 @@ description: Clinical insights on cardiology, metabolic synergy, and vascular lo
 
   <div class="filter-container shadow-sm">
     <div class="container text-center">
+      <!-- Search Bar Component -->
+      <div class="search-wrapper px-2">
+        <div class="search-input-box">
+          <span style="color: #94a3b8; font-size: 0.9rem;">🔍</span>
+          <input type="text" id="articleSearchInput" placeholder="Search key phrases (e.g., haze, sodium, brain fog)...">
+        </div>
+      </div>
+
+      <!-- Category Filter Buttons -->
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="Cardiology">Cardiology</button>
       <button class="filter-btn" data-filter="Metabolic">Metabolic</button>
       <button class="filter-btn" data-filter="Wellness">Wellness</button>
+      
+      <!-- Results counter message -->
+      <div id="searchCounter" class="small fw-bold text-muted mt-2" style="display: none;"></div>
     </div>
   </div>
 
@@ -188,30 +232,50 @@ description: Clinical insights on cardiology, metabolic synergy, and vascular lo
 document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('.filter-btn');
   const items = document.querySelectorAll('.article-item');
-  const librarySection = document.getElementById('library-section');
+  const searchInput = document.getElementById('articleSearchInput');
+  const searchCounter = document.getElementById('searchCounter');
+  
+  let currentCategory = 'all';
 
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    items.forEach(item => {
+      const category = item.getAttribute('data-category');
+      const textContent = item.innerText.toLowerCase();
+
+      const matchesCategory = (currentCategory === 'all' || (category && category.includes(currentCategory)));
+      const matchesSearch = (query === '' || textContent.includes(query));
+
+      if (matchesCategory && matchesSearch) {
+        item.style.display = 'block';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (query !== '') {
+      searchCounter.style.display = 'block';
+      searchCounter.innerText = `Showing ${visibleCount} result(s) for "${query}"`;
+    } else {
+      searchCounter.style.display = 'none';
+    }
+  }
+
+  // Category Buttons Click
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      // 1. UI Update
       buttons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
 
-      // 2. Logic
-      const filter = button.getAttribute('data-filter');
-      items.forEach(item => {
-        const category = item.getAttribute('data-category');
-        if (filter === 'all' || (category && category.includes(filter))) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      // 3. Scroll to top of section (Prevents losing your place when results change)
-      const yOffset = -150; // Offset for sticky headers
-      const y = librarySection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({top: y, behavior: 'smooth'});
+      currentCategory = button.getAttribute('data-filter');
+      applyFilters();
     });
   });
+
+  // Search Input Keyup
+  searchInput.addEventListener('keyup', applyFilters);
 });
 </script>
