@@ -1,0 +1,495 @@
+---
+layout: default
+permalink: /haze-subsidy
+title: Haze Subsidy Scheme (HSS) Eligibility Checker | A Healing Heart Medical
+description: Check your eligibility and co-payment cap for subsidised treatment of haze-related conditions at A Healing Heart Medical Clinic under the MOH Haze Subsidy Scheme.
+---
+
+<style>  
+  #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a, #main select, #main option {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  .bg-corporate-navy {
+    background-color: #2c4964 !important;
+  }
+
+  .text-corporate-navy {
+    color: #2c4964 !important;
+  }
+
+  .recommendation-box {
+    background-color: #eef7ff;
+    border-left: 4px solid #2c4964;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .condition-card {
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 14px;
+    background-color: #ffffff;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .condition-card:hover {
+    border-color: #2c4964;
+    background-color: #f8fbfe;
+  }
+
+  /* --- PILL BUTTON STYLES --- */
+  .pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .pill-btn {
+    border: 2px solid #e0e6ed;
+    background-color: #ffffff;
+    color: #495057;
+    border-radius: 50rem; /* Pill shape */
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+  }
+
+  .pill-btn:hover {
+    border-color: #2c4964;
+    background-color: #f8fbfe;
+    color: #2c4964;
+  }
+
+  .pill-btn.active {
+    background-color: #2c4964 !important;
+    border-color: #2c4964 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(44, 73, 100, 0.25);
+  }
+
+  .step-container {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .fade-in-step {
+    animation: fadeIn 0.35s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<main id="main" class="mt-5 pt-5 text-start">
+  <!-- HERO / HEADER SECTION -->
+  <section class="py-5">
+    <div class="container">
+      <span class="badge rounded-pill bg-success-subtle text-success border border-success mb-2 px-3 py-2 fw-bold">MOH Haze Subsidy Scheme</span>
+      <h1 class="fw-bold text-corporate-navy">Haze Subsidy Scheme (HSS)</h1>
+      <p class="text-muted mt-3" style="max-width: 800px;">
+        As an accredited Primary Health Partnership Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides affordable, subsidised care for acute and chronic haze-related medical conditions.
+      </p>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE CHECKER SECTION -->
+  <section class="pb-5">
+    <div class="container">
+      <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-header p-4 bg-corporate-navy text-white text-center">
+          <h4 class="mb-0 fw-bold"><i class="fa-solid fa-calculator me-2 text-warning"></i>Check Your Haze Subsidy Eligibility</h4>
+        </div>
+        
+        <div class="card-body p-4 bg-white">
+          <form id="hssForm" onsubmit="return false;">
+            
+            <!-- Hidden inputs to track logic state -->
+            <input type="hidden" id="hssResidency" value="">
+            <input type="hidden" id="hssAge" value="">
+            <input type="hidden" id="hssCard" value="">
+
+            <div class="row g-4">
+              
+              <!-- STEP 1: RESIDENCY STATUS -->
+              <div class="col-md-12 step-container">
+                <label class="form-label fw-bold small text-muted">1. RESIDENCY STATUS</label>
+                <div class="pill-group" id="pillsResidency">
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'SC', this)">Singapore Citizen</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'PR', this)">Permanent Resident (PR)</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'Foreigner', this)">Foreigner</button>
+                </div>
+              </div>
+
+              <!-- STEP 2: AGE BRACKET (Only if SC selected) -->
+              <div class="col-md-12 step-container" id="stepAge" style="display: none;">
+                <label class="form-label fw-bold small text-muted">2. AGE GROUP</label>
+                <div class="pill-group" id="pillsAge">
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssAge', 'child', this)">18 and below (Child / Youth)</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssAge', 'adult', this)">19 to 64 (Adult)</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssAge', 'senior', this)">65 and above (Senior)</button>
+                </div>
+              </div>
+
+              <!-- STEP 3A: CARD STATUS FOR ADULTS (19-64) -->
+              <div class="col-md-12 step-container" id="stepCardAdult" style="display: none;">
+                <label class="form-label fw-bold small text-muted">3. CHAS / ASSISTANCE CARD</label>
+                <div class="pill-group" id="pillsCardAdult">
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'PA', this)">Public Assistance (PA) Card</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'BlueOrangeMFEC', this)">CHAS Blue / CHAS Orange / MFEC</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'NoneGreen', this)">CHAS Green / No CHAS Card</button>
+                </div>
+              </div>
+
+              <!-- STEP 3B: CARD STATUS FOR SENIORS (65+) -->
+              <div class="col-md-12 step-container" id="stepCardSenior" style="display: none;">
+                <label class="form-label fw-bold small text-muted">3. GENERATION / CHAS CARD (IF ANY)</label>
+                <div class="pill-group" id="pillsCardSenior">
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'PA', this)">Public Assistance (PA) Card</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'PGMG', this)">Pioneer / Merdeka Generation (PG/MG)</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'BlueOrangeMFEC', this)">CHAS Blue / CHAS Orange / MFEC</button>
+                  <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'SeniorDefault', this)">None of the Above</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- RESULT DISPLAY CARD -->
+            <div class="mt-4 p-4 rounded-4 border fade-in-step" id="hssResultBox" style="background-color: #f8fbfe; border-style: dashed !important; display: none;">
+              <div class="row align-items-center">
+                <div class="col-sm-7">
+                  <span class="text-muted small d-block mb-1">Your Max Co-Payment Cap Per Visit:</span>
+                  <h2 class="fw-bold mb-0 text-corporate-navy" id="hssPriceDisplay">$0.00</h2>
+                  <small class="text-muted d-block mt-1" id="hssDetailNote"></small>
+                </div>
+                <div class="col-sm-5 text-sm-end mt-3 mt-sm-0">
+                  <div id="hssStatusBadge" class="badge rounded-pill px-3 py-2" style="background-color: #198754;">Eligible</div>
+                </div>
+              </div>
+              
+              <div class="recommendation-box">
+                <h6 class="fw-bold mb-1 text-corporate-navy"><i class="fa-solid fa-circle-info me-2"></i>What is covered in this flat fee?</h6>
+                <div id="hssCoverageText" class="small text-secondary" style="line-height: 1.5;">
+                  The flat fee covers your doctor's consultation, basic investigations, and prescribed medications for covered haze-related conditions during this visit.
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERED CONDITIONS SECTION -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h3 class="fw-bold text-corporate-navy">6 Eligible Haze Conditions</h3>
+        <p class="text-muted">Subsidies apply when diagnosed with or treated for any of the following haze-aggravated conditions:</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-4 col-sm-6">
+          <div class="condition-card h-100 d-flex align-items-center">
+            <i class="fa-solid fa-head-side-cough text-corporate-navy fs-3 me-3"></i>
+            <div>
+              <h6 class="fw-bold mb-0">URTI</h6>
+              <small class="text-muted">Cough, sore throat, cold, viral fever</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="condition-card h-100 d-flex align-items-center">
+            <i class="fa-solid fa-lungs text-corporate-navy fs-3 me-3"></i>
+            <div>
+              <h6 class="fw-bold mb-0">Asthma</h6>
+              <small class="text-muted">Acute asthma flare-ups or management</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="condition-card h-100 d-flex align-items-center">
+            <i class="fa-solid fa-stethoscope text-corporate-navy fs-3 me-3"></i>
+            <div>
+              <h6 class="fw-bold mb-0">Bronchitis</h6>
+              <small class="text-muted">Airway inflammation & persistent coughing</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="condition-card h-100 d-flex align-items-center">
+            <i class="fa-solid fa-eye text-corporate-navy fs-3 me-3"></i>
+            <div>
+              <h6 class="fw-bold mb-0">Conjunctivitis</h6>
+              <small class="text-muted">Eye redness, itching, haze irritation</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="condition-card h-100 d-flex align-items-center">
+            <i class="fa-solid fa-lungs-virus text-corporate-navy fs-3 me-3"></i>
+            <div>
+              <h6 class="fw-bold mb-0">COPD</h6>
+              <small class="text-muted">Chronic Obstructive Pulmonary Disease</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="condition-card h-100 d-flex align-items-center">
+            <i class="fa-solid fa-head-side-virus text-corporate-navy fs-3 me-3"></i>
+            <div>
+              <h6 class="fw-bold mb-0">Allergic Rhinitis</h6>
+              <small class="text-muted">Nasal allergies, sneezing, runny nose</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALLOUT: NON-HAZE CONDITIONS -->
+      <div class="mt-4 p-4 rounded-4 bg-white border">
+        <h6 class="fw-bold text-corporate-navy mb-2"><i class="fa-solid fa-notes-medical me-2 text-primary"></i>What if I am treated for non-haze conditions during the same visit?</h6>
+        <p class="small text-muted mb-0" style="line-height: 1.6;">
+          Treatments, medications, or blood tests for non-haze conditions (e.g., skin rashes, high blood pressure, diabetes) are billed separately under standard clinic charges. However, <strong>our clinic will not charge a second consultation fee</strong> for treating non-haze conditions during the same consultation. You may also use standard CHAS or MediSave subsidies where applicable.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PATIENT FAQ SECTION -->
+  <section class="py-5 bg-white">
+    <div class="container" style="max-width: 900px;">
+      <h3 class="fw-bold text-corporate-navy mb-4 text-center">Frequently Asked Questions</h3>
+      
+      <div class="accordion accordion-flush" id="hssFaqAccordion">
+        
+        <div class="accordion-item border rounded-3 mb-2">
+          <h2 class="accordion-header" id="faqOne">
+            <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              Do I need to apply or register for the Haze Subsidy Scheme beforehand?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
+            <div class="accordion-body text-muted small" style="line-height: 1.6;">
+              No registration or pre-application is required. Eligibility is verified instantly at our counter when you present your physical or digital NRIC or CHAS / PG / MG card via the Singpass / HealthHub app.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2">
+          <h2 class="accordion-header" id="faqTwo">
+            <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              Can I use MediSave or Flexi-MediSave to pay the co-payment?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
+            <div class="accordion-body text-muted small" style="line-height: 1.6;">
+              Seniors aged 60 and above can use <strong>Flexi-MediSave</strong> to cover their $5 or $10 co-payment. For chronic conditions (such as Asthma or COPD) managed under CDMP, standard MediSave500/700 withdrawal rules apply.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2">
+          <h2 class="accordion-header" id="faqThree">
+            <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+              Can I request advance medication stockpiles under HSS?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
+            <div class="accordion-body text-muted small" style="line-height: 1.6;">
+              Under MOH guidelines, medications prescribed under the scheme are strictly limited to the necessary quantity required for the immediate episode of care. Prolonged advance stockpiles are not permitted under the bundled scheme fee.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border rounded-3 mb-2">
+          <h2 class="accordion-header" id="faqFour">
+            <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+              What documents do I need to bring to the clinic?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
+            <div class="accordion-body text-muted small" style="line-height: 1.6;">
+              Please bring a valid Singapore NRIC, Birth Certificate (for children $\le$ 18), or present your digital card on the Singpass / HealthHub app upon registration at our clinic counter.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CALL TO ACTION -->
+  <section class="py-5 bg-white border-top">
+    <div class="container text-center">
+      <h5 class="fw-bold mb-3 text-corporate-navy">Experiencing haze-related symptoms?</h5>
+      <a href="/booking" class="btn btn-primary rounded-pill px-5 py-3 shadow-sm fw-bold">Visit Our Clinic / Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- EXPLORE OTHER PATHWAYS -->
+  <section class="py-5 bg-white border-top">
+    <div class="container text-center">
+      <div class="text-center mb-4">
+        <h5 class="fw-bold text-muted" style="text-transform: none !important;">Explore Other Pathways</h5>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="/vaccination" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="border-color: #3498db; color: #3498db; text-transform: none !important;">
+          <i class="fa-solid fa-syringe me-2"></i>Vaccinations & Subsidies
+        </a>
+        <a href="/health-calculator" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="border-color: #3498db; color: #3498db; text-transform: none !important;">
+          <i class="fa-solid fa-calculator me-2"></i>Heart Risk Calculator
+        </a>
+        <a href="/health-screening" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-bold shadow-sm" style="border-color: #3498db; color: #3498db; text-transform: none !important;">
+          <i class="fa-solid fa-leaf me-2"></i>General Screening
+        </a>
+      </div>
+    </div>
+  </section>  
+</main>
+
+<script>
+function selectHssPill(inputId, value, element) {
+  // Update hidden field state
+  document.getElementById(inputId).value = value;
+
+  // Set active class on clicked button
+  const parent = element.parentElement;
+  const buttons = parent.querySelectorAll('.pill-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  element.classList.add('active');
+
+  // Progressive Flow Logic
+  if (inputId === 'hssResidency') {
+    if (value === 'SC') {
+      showStep('stepAge');
+      resetSteps(['stepCardAdult', 'stepCardSenior', 'hssResultBox']);
+      document.getElementById('hssAge').value = '';
+      document.getElementById('hssCard').value = '';
+      clearPills('pillsAge');
+    } else {
+      // PR or Foreigner -> Ineligible directly
+      hideStep('stepAge');
+      hideStep('stepCardAdult');
+      hideStep('stepCardSenior');
+      displayHssResult('Ineligible');
+    }
+  } 
+  else if (inputId === 'hssAge') {
+    if (value === 'child') {
+      // Child <= 18 automatically gets $10 cap
+      hideStep('stepCardAdult');
+      hideStep('stepCardSenior');
+      displayHssResult('Tier10Child');
+    } else if (value === 'adult') {
+      showStep('stepCardAdult');
+      hideStep('stepCardSenior');
+      resetSteps(['hssResultBox']);
+      document.getElementById('hssCard').value = '';
+      clearPills('pillsCardAdult');
+    } else if (value === 'senior') {
+      showStep('stepCardSenior');
+      hideStep('stepCardAdult');
+      resetSteps(['hssResultBox']);
+      document.getElementById('hssCard').value = '';
+      clearPills('pillsCardSenior');
+    }
+  } 
+  else if (inputId === 'hssCard') {
+    displayHssResult(value);
+  }
+}
+
+function displayHssResult(resultKey) {
+  const priceDisplay = document.getElementById('hssPriceDisplay');
+  const badge = document.getElementById('hssStatusBadge');
+  const detailNote = document.getElementById('hssDetailNote');
+
+  showStep('hssResultBox');
+
+  if (resultKey === 'Ineligible') {
+    priceDisplay.innerText = "Standard Clinic Fees";
+    badge.innerText = "Not Subsidised";
+    badge.style.backgroundColor = "#6c757d";
+    detailNote.innerText = "Subsidies under the Haze Subsidy Scheme at PHPCs apply to Singapore Citizens only. PRs and Foreigners pay standard clinic rates.";
+  } 
+  else if (resultKey === 'PA') {
+    priceDisplay.innerText = "$0.00";
+    badge.innerText = "Fully Subsidised ($0 Co-Pay)";
+    badge.style.backgroundColor = "#198754";
+    detailNote.innerText = "Eligible under Public Assistance (PA) cardholder status.";
+  } 
+  else if (resultKey === 'PGMG') {
+    priceDisplay.innerText = "Max $5.00";
+    badge.innerText = "Subsidised Tier (Max $5)";
+    badge.style.backgroundColor = "#0d6efd";
+    detailNote.innerText = "Eligible under Pioneer Generation (PG) or Merdeka Generation (MG) status.";
+  } 
+  else if (resultKey === 'BlueOrangeMFEC') {
+    priceDisplay.innerText = "Max $10.00";
+    badge.innerText = "Subsidised Tier (Max $10)";
+    badge.style.backgroundColor = "#0d6efd";
+    detailNote.innerText = "Eligible under CHAS Blue, CHAS Orange, or Medical Fee Exemption Card (MFEC) status.";
+  } 
+  else if (resultKey === 'Tier10Child') {
+    priceDisplay.innerText = "Max $10.00";
+    badge.innerText = "Subsidised Tier (Max $10)";
+    badge.style.backgroundColor = "#0d6efd";
+    detailNote.innerText = "Eligible automatically as a Singapore Citizen child aged 18 and below.";
+  } 
+  else if (resultKey === 'SeniorDefault') {
+    priceDisplay.innerText = "Max $10.00";
+    badge.innerText = "Subsidised Tier (Max $10)";
+    badge.style.backgroundColor = "#0d6efd";
+    detailNote.innerText = "Eligible automatically as a Singapore Citizen senior aged 65 and above.";
+  } 
+  else if (resultKey === 'NoneGreen') {
+    priceDisplay.innerText = "Standard Clinic Fees";
+    badge.innerText = "Not Subsidised";
+    badge.style.backgroundColor = "#6c757d";
+    detailNote.innerText = "Singapore Citizens aged 19 to 64 without CHAS Blue/Orange, PA, or MFEC cards are not eligible for HSS subsidies.";
+  }
+}
+
+function showStep(stepId) {
+  const elem = document.getElementById(stepId);
+  if (elem) {
+    elem.style.display = 'block';
+    elem.classList.add('fade-in-step');
+  }
+}
+
+function hideStep(stepId) {
+  const elem = document.getElementById(stepId);
+  if (elem) {
+    elem.style.display = 'none';
+  }
+}
+
+function resetSteps(stepIds) {
+  stepIds.forEach(id => {
+    hideStep(id);
+  });
+}
+
+function clearPills(groupId) {
+  const group = document.getElementById(groupId);
+  if (group) {
+    const buttons = group.querySelectorAll('.pill-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+  }
+}
+</script>
