@@ -1,9 +1,60 @@
 ---
 layout: default
 permalink: /haze-subsidy
-title: Haze Subsidy Scheme (HSS) Eligibility Checker | A Healing Heart Medical
-description: Check your eligibility and co-payment cap for subsidised treatment of haze-related conditions at A Healing Heart Medical Clinic under the MOH Haze Subsidy Scheme.
+title: Haze Subsidy Scheme (HSS) Clinic | A Healing Heart Medical Singapore
+description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10 co-payment cap at A Healing Heart Medical Clinic, an accredited PHPC clinic in Singapore.
 ---
+
+<!-- SCHEMA.ORG STRUCTURED DATA (SEO / GEO / AEO READY) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalClinic",
+      "@id": "https://ahealingheart.com.sg/#clinic",
+      "name": "A Healing Heart Medical Clinic",
+      "url": "https://ahealingheart.com.sg",
+      "description": "Accredited PHPC and CHAS clinic in Singapore providing subsidised healthcare services including Haze Subsidy Scheme (HSS) treatment.",
+      "medicalSpecialty": "PrimaryCare",
+      "availableService": {
+        "@type": "MedicalTherapy",
+        "name": "Haze Subsidy Scheme Treatment",
+        "description": "Subsidised consultation, medication, and treatment for URTI, Asthma, Bronchitis, Conjunctivitis, COPD, and Allergic Rhinitis under MOH Singapore HSS."
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Haze Subsidy Scheme (HSS) in Singapore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Haze Subsidy Scheme (HSS) is a Ministry of Health (MOH) Singapore initiative providing affordable medical treatment at participating PHPC clinics for haze-aggravated conditions. Eligible Singapore Citizens pay a capped co-payment of $0, $5, or $10 per visit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What conditions are covered under the Haze Subsidy Scheme?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The scheme covers 6 respiratory and eye conditions: Upper Respiratory Tract Infections (URTI), Asthma, Bronchitis, Conjunctivitis, Chronic Obstructive Pulmonary Disease (COPD), and Allergic Rhinitis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I have a non-haze condition during the same visit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non-haze treatments or chronic medications are billed separately at standard rates or standard CHAS/MediSave subsidies. However, A Healing Heart Medical Clinic will not charge a second doctor consultation fee for addressing non-haze conditions during the same visit."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <style>  
   #main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p, #main a, #main select, #main option {
@@ -52,7 +103,7 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
     border: 2px solid #e0e6ed;
     background-color: #ffffff;
     color: #495057;
-    border-radius: 50rem; /* Pill shape */
+    border-radius: 50rem;
     padding: 10px 20px;
     font-size: 0.9rem;
     font-weight: 600;
@@ -89,13 +140,13 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
 </style>
 
 <main id="main" class="mt-5 pt-5 text-start">
-  <!-- HERO / HEADER SECTION -->
+  <!-- HERO / HEADER SECTION (GEO & KEYWORD OPTIMIZED) -->
   <section class="py-5">
     <div class="container">
-      <span class="badge rounded-pill bg-success-subtle text-success border border-success mb-2 px-3 py-2 fw-bold">MOH Haze Subsidy Scheme</span>
-      <h1 class="fw-bold text-corporate-navy">Haze Subsidy Scheme (HSS)</h1>
-      <p class="text-muted mt-3" style="max-width: 800px;">
-        As an accredited Primary Health Partnership Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides affordable, subsidised care for acute and chronic haze-related medical conditions.
+      <span class="badge rounded-pill bg-success-subtle text-success border border-success mb-2 px-3 py-2 fw-bold">MOH Singapore Accredited PHPC Clinic</span>
+      <h1 class="fw-bold text-corporate-navy">Haze Subsidy Scheme (HSS) Clinic Singapore</h1>
+      <p class="text-muted mt-3" style="max-width: 850px;">
+        As an accredited Public Health Preparedness Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides affordable, subsidised doctor consultations and medications for acute and chronic haze-related respiratory and eye conditions under the Ministry of Health (MOH) Haze Subsidy Scheme.
       </p>
     </div>
   </section>
@@ -105,7 +156,7 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
     <div class="container">
       <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
         <div class="card-header p-4 bg-corporate-navy text-white text-center">
-          <h4 class="mb-0 fw-bold"><i class="fa-solid fa-calculator me-2 text-warning"></i>Check Your Haze Subsidy Eligibility</h4>
+          <h4 class="mb-0 fw-bold"><i class="fa-solid fa-calculator me-2 text-warning"></i>Haze Subsidy Scheme Eligibility & Co-Payment Checker</h4>
         </div>
         
         <div class="card-body p-4 bg-white">
@@ -174,11 +225,20 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
                 </div>
               </div>
               
-              <div class="recommendation-box">
-                <h6 class="fw-bold mb-1 text-corporate-navy"><i class="fa-solid fa-circle-info me-2"></i>What is covered in this flat fee?</h6>
-                <div id="hssCoverageText" class="small text-secondary" style="line-height: 1.5;">
-                  The flat fee covers your doctor's consultation, basic investigations, and prescribed medications for covered haze-related conditions during this visit.
-                </div>
+              <!-- RECOMMENDATION BOX: HIDDEN IF NOT SUBSIDISED -->
+              <div class="recommendation-box" id="hssCoverageBox">
+                <h6 class="fw-bold mb-2 text-corporate-navy"><i class="fa-solid fa-circle-info me-2"></i>What is covered in this flat fee?</h6>
+                <p class="small text-secondary mb-2" style="line-height: 1.5;">
+                  The flat fee covers doctor consultation, basic investigations, and prescribed medications for any of the <strong>6 eligible haze conditions</strong>:
+                </p>
+                <ul class="small text-secondary mb-0 ps-3" style="line-height: 1.6;">
+                  <li>Upper Respiratory Tract Infection (URTI / Cough & Cold)</li>
+                  <li>Asthma (Acute flare-ups & chronic management)</li>
+                  <li>Bronchitis</li>
+                  <li>Conjunctivitis (Eye Inflammation & irritation)</li>
+                  <li>Chronic Obstructive Pulmonary Disease (COPD)</li>
+                  <li>Allergic Rhinitis (Nasal allergies & sneezing)</li>
+                </ul>
               </div>
             </div>
 
@@ -188,11 +248,11 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
     </div>
   </section>
 
-  <!-- COVERED CONDITIONS SECTION -->
+  <!-- COVERED CONDITIONS SECTION (AEO KEYWORD TARGETING) -->
   <section class="py-5 bg-light">
     <div class="container">
       <div class="text-center mb-4">
-        <h3 class="fw-bold text-corporate-navy">6 Eligible Haze Conditions</h3>
+        <h3 class="fw-bold text-corporate-navy">6 Covered Haze Conditions at PHPC Clinics</h3>
         <p class="text-muted">Subsidies apply when diagnosed with or treated for any of the following haze-aggravated conditions:</p>
       </div>
 
@@ -262,20 +322,43 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
       <div class="mt-4 p-4 rounded-4 bg-white border">
         <h6 class="fw-bold text-corporate-navy mb-2"><i class="fa-solid fa-notes-medical me-2 text-primary"></i>What if I am treated for non-haze conditions during the same visit?</h6>
         <p class="small text-muted mb-0" style="line-height: 1.6;">
-          Treatments, medications, or blood tests for non-haze conditions (e.g., skin rashes, high blood pressure, diabetes) are billed separately under standard clinic charges. However, <strong>our clinic will not charge a second consultation fee</strong> for treating non-haze conditions during the same consultation. You may also use standard CHAS or MediSave subsidies where applicable.
+          Treatments, medications, or blood tests for non-haze conditions (e.g., skin rashes, high blood pressure, diabetes) are billed separately under standard clinic charges or standard CHAS/MediSave subsidies. However, <strong>our clinic will not charge a second consultation fee</strong> for treating non-haze conditions during the same consultation.
         </p>
       </div>
 
     </div>
   </section>
 
-  <!-- PATIENT FAQ SECTION -->
+  <!-- PATIENT FAQ SECTION (AEO SEARCH SNIPPET OPTIMIZED) -->
   <section class="py-5 bg-white">
     <div class="container" style="max-width: 900px;">
-      <h3 class="fw-bold text-corporate-navy mb-4 text-center">Frequently Asked Questions</h3>
+      <h3 class="fw-bold text-corporate-navy mb-4 text-center">Frequently Asked Questions (HSS Singapore)</h3>
       
       <div class="accordion accordion-flush" id="hssFaqAccordion">
         
+        <div class="accordion-item border rounded-3 mb-2">
+          <h2 class="accordion-header" id="faqNonHaze">
+            <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNonHaze">
+              What happens if I am not diagnosed with a haze condition, or if I have multiple diagnoses during the same visit?
+            </button>
+          </h2>
+          <div id="collapseNonHaze" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
+            <div class="accordion-body text-muted small" style="line-height: 1.6;">
+              <p class="mb-2"><strong>Case 1: Your condition is not haze-related</strong><br>
+              If your diagnosis is completely unrelated to the 6 haze conditions (e.g., skin infection, stomach flu, routine health check), your visit will be billed under our clinic's standard fee structure. You may still apply your usual CHAS Acute subsidies or MediSave where applicable.</p>
+              
+              <p class="mb-0"><strong>Case 2: You have both a haze-related AND a non-haze condition</strong><br>
+              If you seek treatment for a haze condition (e.g., asthma flare-up) alongside a non-haze issue (e.g., chronic hypertension refill or skin rash):
+              </p>
+              <ul class="mt-1 mb-0 ps-3">
+                <li>Your haze-related consultation, tests, and medications are capped at your HSS co-payment rate ($0, $5, or $10).</li>
+                <li>Your non-haze medications and tests are billed separately under standard clinic rates (or claimable under standard CHAS/MediSave rules).</li>
+                <li><strong>No Second Consultation Fee:</strong> Our clinic will not charge an additional doctor consultation fee for addressing the non-haze condition during the same visit.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div class="accordion-item border rounded-3 mb-2">
           <h2 class="accordion-header" id="faqOne">
             <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
@@ -363,16 +446,13 @@ description: Check your eligibility and co-payment cap for subsidised treatment 
 
 <script>
 function selectHssPill(inputId, value, element) {
-  // Update hidden field state
   document.getElementById(inputId).value = value;
 
-  // Set active class on clicked button
   const parent = element.parentElement;
   const buttons = parent.querySelectorAll('.pill-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
   element.classList.add('active');
 
-  // Progressive Flow Logic
   if (inputId === 'hssResidency') {
     if (value === 'SC') {
       showStep('stepAge');
@@ -381,7 +461,6 @@ function selectHssPill(inputId, value, element) {
       document.getElementById('hssCard').value = '';
       clearPills('pillsAge');
     } else {
-      // PR or Foreigner -> Ineligible directly
       hideStep('stepAge');
       hideStep('stepCardAdult');
       hideStep('stepCardSenior');
@@ -390,7 +469,6 @@ function selectHssPill(inputId, value, element) {
   } 
   else if (inputId === 'hssAge') {
     if (value === 'child') {
-      // Child <= 18 automatically gets $10 cap
       hideStep('stepCardAdult');
       hideStep('stepCardSenior');
       displayHssResult('Tier10Child');
@@ -417,6 +495,7 @@ function displayHssResult(resultKey) {
   const priceDisplay = document.getElementById('hssPriceDisplay');
   const badge = document.getElementById('hssStatusBadge');
   const detailNote = document.getElementById('hssDetailNote');
+  const coverageBox = document.getElementById('hssCoverageBox');
 
   showStep('hssResultBox');
 
@@ -425,42 +504,49 @@ function displayHssResult(resultKey) {
     badge.innerText = "Not Subsidised";
     badge.style.backgroundColor = "#6c757d";
     detailNote.innerText = "Subsidies under the Haze Subsidy Scheme at PHPCs apply to Singapore Citizens only. PRs and Foreigners pay standard clinic rates.";
+    coverageBox.style.display = 'none';
   } 
   else if (resultKey === 'PA') {
     priceDisplay.innerText = "$0.00";
     badge.innerText = "Fully Subsidised ($0 Co-Pay)";
     badge.style.backgroundColor = "#198754";
     detailNote.innerText = "Eligible under Public Assistance (PA) cardholder status.";
+    coverageBox.style.display = 'block';
   } 
   else if (resultKey === 'PGMG') {
     priceDisplay.innerText = "Max $5.00";
     badge.innerText = "Subsidised Tier (Max $5)";
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible under Pioneer Generation (PG) or Merdeka Generation (MG) status.";
+    coverageBox.style.display = 'block';
   } 
   else if (resultKey === 'BlueOrangeMFEC') {
     priceDisplay.innerText = "Max $10.00";
     badge.innerText = "Subsidised Tier (Max $10)";
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible under CHAS Blue, CHAS Orange, or Medical Fee Exemption Card (MFEC) status.";
+    coverageBox.style.display = 'block';
   } 
   else if (resultKey === 'Tier10Child') {
     priceDisplay.innerText = "Max $10.00";
     badge.innerText = "Subsidised Tier (Max $10)";
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible automatically as a Singapore Citizen child aged 18 and below.";
+    coverageBox.style.display = 'block';
   } 
   else if (resultKey === 'SeniorDefault') {
     priceDisplay.innerText = "Max $10.00";
     badge.innerText = "Subsidised Tier (Max $10)";
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible automatically as a Singapore Citizen senior aged 65 and above.";
+    coverageBox.style.display = 'block';
   } 
   else if (resultKey === 'NoneGreen') {
     priceDisplay.innerText = "Standard Clinic Fees";
     badge.innerText = "Not Subsidised";
     badge.style.backgroundColor = "#6c757d";
     detailNote.innerText = "Singapore Citizens aged 19 to 64 without CHAS Blue/Orange, PA, or MFEC cards are not eligible for HSS subsidies.";
+    coverageBox.style.display = 'none';
   }
 }
 
