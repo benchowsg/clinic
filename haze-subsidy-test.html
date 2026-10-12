@@ -177,7 +177,7 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
       <span class="badge rounded-pill bg-success-subtle text-success border border-success mb-2 px-3 py-2 fw-bold">MOH Singapore Accredited PHPC Clinic</span>
       <h1 class="fw-bold text-corporate-navy">Haze Subsidy Scheme (HSS) Eligibility Checker</h1>
       <p class="text-muted mt-2" style="max-width: 850px;">
-        As an accredited Public Health Preparedness Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides subsidised consultation and treatment for haze-related conditions under MOH guidelines.
+        As an accredited Public Health Preparedness Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides subsidised consultation and treatment for haze-related conditions under MOH guidelines. Please select the options below to view your haze subsidy amount.
       </p>
     </div>
   </section>
@@ -316,8 +316,8 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
     </div>
   </section>
 
-  <!-- COVERED CONDITIONS SECTION -->
-  <section class="py-5 bg-light">
+  <!-- COVERED CONDITIONS SECTION (HIDDEN INITIALLY, REVEALED AFTER STEP 2) -->
+  <section class="py-5 bg-light fade-in-step" id="secConditions" style="display: none;">
     <div class="container">
       <div class="text-center mb-4">
         <h3 class="fw-bold text-corporate-navy">6 Covered Haze Conditions at PHPC Clinics</h3>
@@ -391,8 +391,8 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
     </div>
   </section>
 
-  <!-- PATIENT FAQ SECTION -->
-  <section class="py-5 bg-white">
+  <!-- PATIENT FAQ SECTION (HIDDEN INITIALLY, REVEALED AFTER STEP 2) -->
+  <section class="py-5 bg-white fade-in-step" id="secFaq" style="display: none;">
     <div class="container" style="max-width: 900px;">
       <h3 class="fw-bold text-corporate-navy mb-4 text-center">Frequently Asked Questions (HSS Singapore)</h3>
       
@@ -507,6 +507,11 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
 </main>
 
 <script>
+function revealBelowContent() {
+  showStep('secConditions');
+  showStep('secFaq');
+}
+
 function selectHssPill(inputId, value, element) {
   document.getElementById(inputId).value = value;
 
@@ -528,9 +533,13 @@ function selectHssPill(inputId, value, element) {
       hideStep('stepCardAdult');
       hideStep('stepCardSenior');
       displayHssResult('Ineligible');
+      revealBelowContent();
     }
   } 
   else if (inputId === 'hssAge') {
+    // REVEAL CONDITIONS & FAQ ONCE STEP 2 IS CLICKED
+    revealBelowContent();
+
     if (value === 'child') {
       hideStep('stepCardAdult');
       hideStep('stepCardSenior');
@@ -552,6 +561,7 @@ function selectHssPill(inputId, value, element) {
     }
   } 
   else if (inputId === 'hssCard') {
+    revealBelowContent();
     displayHssResult(value);
   }
 }
