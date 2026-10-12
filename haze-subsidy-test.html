@@ -91,6 +91,29 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
     background-color: #f8fbfe;
   }
 
+  /* --- STEP GUIDE BANNER --- */
+  .how-it-works-badge {
+    background: #f8fbfe;
+    border: 1px dashed #2c4964;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #2c4964;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
   /* --- PILL BUTTON STYLES --- */
   .pill-group {
     display: flex;
@@ -100,12 +123,12 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
   }
 
   .pill-btn {
-    border: 2px solid #e0e6ed;
+    border: 2px solid #cbd5e1;
     background-color: #ffffff;
-    color: #495057;
+    color: #334155;
     border-radius: 50rem;
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: 10px 22px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -122,11 +145,19 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
     background-color: #2c4964 !important;
     border-color: #2c4964 !important;
     color: #ffffff !important;
-    box-shadow: 0 4px 10px rgba(44, 73, 100, 0.25);
+    box-shadow: 0 4px 12px rgba(44, 73, 100, 0.3);
   }
 
   .step-container {
     transition: all 0.3s ease-in-out;
+    scroll-margin-top: 100px;
+  }
+
+  .initial-prompt-box {
+    background-color: #fcf8f2;
+    border: 2px solid #f2d096;
+    border-radius: 16px;
+    padding: 18px;
   }
 
   .fade-in-step {
@@ -140,13 +171,13 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
 </style>
 
 <main id="main" class="mt-5 pt-5 text-start">
-  <!-- HERO / HEADER SECTION (GEO & KEYWORD OPTIMIZED) -->
-  <section class="py-5">
+  <!-- HERO / HEADER SECTION -->
+  <section class="py-4">
     <div class="container">
       <span class="badge rounded-pill bg-success-subtle text-success border border-success mb-2 px-3 py-2 fw-bold">MOH Singapore Accredited PHPC Clinic</span>
-      <h1 class="fw-bold text-corporate-navy">Haze Subsidy Scheme (HSS) Clinic Singapore</h1>
-      <p class="text-muted mt-3" style="max-width: 850px;">
-        As an accredited Public Health Preparedness Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides affordable, subsidised doctor consultations and medications for acute and chronic haze-related respiratory and eye conditions under the Ministry of Health (MOH) Haze Subsidy Scheme.
+      <h1 class="fw-bold text-corporate-navy">Haze Subsidy Scheme (HSS) Eligibility Checker</h1>
+      <p class="text-muted mt-2" style="max-width: 850px;">
+        As an accredited Public Health Preparedness Clinic (PHPC), <strong>A Healing Heart Medical Clinic</strong> provides subsidised consultation and treatment for haze-related conditions under MOH guidelines.
       </p>
     </div>
   </section>
@@ -154,9 +185,35 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
   <!-- INTERACTIVE CHECKER SECTION -->
   <section class="pb-5">
     <div class="container">
+      
+      <!-- SIMPLE 3-STEP INSTRUCTION BANNER -->
+      <div class="how-it-works-badge shadow-sm">
+        <div class="row align-items-center text-center text-md-start g-3">
+          <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+              <span class="step-number">1</span>
+              <span class="fw-bold text-corporate-navy">Select residency & age</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+              <span class="step-number">2</span>
+              <span class="fw-bold text-corporate-navy">View co-payment cap ($0–$10)</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+              <span class="step-number">3</span>
+              <span class="fw-bold text-corporate-navy">Present NRIC/Singpass at registration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
         <div class="card-header p-4 bg-corporate-navy text-white text-center">
-          <h4 class="mb-0 fw-bold"><i class="fa-solid fa-calculator me-2 text-warning"></i>Haze Subsidy Scheme Eligibility & Co-Payment Checker</h4>
+          <h4 class="mb-1 fw-bold"><i class="fa-solid fa-calculator me-2 text-warning"></i>Check Your Haze Subsidy Tier</h4>
+          <small class="text-white-50">Tap the options below to get your instant co-payment result</small>
         </div>
         
         <div class="card-body p-4 bg-white">
@@ -169,19 +226,26 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
 
             <div class="row g-4">
               
-              <!-- STEP 1: RESIDENCY STATUS -->
-              <div class="col-md-12 step-container">
-                <label class="form-label fw-bold small text-muted">1. RESIDENCY STATUS</label>
-                <div class="pill-group" id="pillsResidency">
-                  <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'SC', this)">Singapore Citizen</button>
-                  <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'PR', this)">Permanent Resident (PR)</button>
-                  <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'Foreigner', this)">Foreigner</button>
+              <!-- STEP 1: RESIDENCY STATUS (HIGHLIGHTED INITIALLY) -->
+              <div class="col-md-12 step-container" id="stepResidency">
+                <div class="initial-prompt-box">
+                  <label class="form-label fw-bold text-corporate-navy fs-6 mb-1">
+                    <i class="fa-solid fa-circle-right text-primary me-2"></i>STEP 1: What is your Residency Status?
+                  </label>
+                  <p class="small text-muted mb-2">Tap one to begin checking:</p>
+                  <div class="pill-group" id="pillsResidency">
+                    <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'SC', this)">Singapore Citizen</button>
+                    <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'PR', this)">Permanent Resident (PR)</button>
+                    <button type="button" class="pill-btn" onclick="selectHssPill('hssResidency', 'Foreigner', this)">Foreigner</button>
+                  </div>
                 </div>
               </div>
 
               <!-- STEP 2: AGE BRACKET (Only if SC selected) -->
               <div class="col-md-12 step-container" id="stepAge" style="display: none;">
-                <label class="form-label fw-bold small text-muted">2. AGE GROUP</label>
+                <label class="form-label fw-bold text-corporate-navy fs-6 mb-1">
+                  <i class="fa-solid fa-circle-right text-primary me-2"></i>STEP 2: Select Age Group
+                </label>
                 <div class="pill-group" id="pillsAge">
                   <button type="button" class="pill-btn" onclick="selectHssPill('hssAge', 'child', this)">18 and below (Child / Youth)</button>
                   <button type="button" class="pill-btn" onclick="selectHssPill('hssAge', 'adult', this)">19 to 64 (Adult)</button>
@@ -191,7 +255,9 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
 
               <!-- STEP 3A: CARD STATUS FOR ADULTS (19-64) -->
               <div class="col-md-12 step-container" id="stepCardAdult" style="display: none;">
-                <label class="form-label fw-bold small text-muted">3. CHAS / ASSISTANCE CARD</label>
+                <label class="form-label fw-bold text-corporate-navy fs-6 mb-1">
+                  <i class="fa-solid fa-circle-right text-primary me-2"></i>STEP 3: Do you hold any of these cards?
+                </label>
                 <div class="pill-group" id="pillsCardAdult">
                   <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'PA', this)">Public Assistance (PA) Card</button>
                   <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'BlueOrangeMFEC', this)">CHAS Blue / CHAS Orange / MFEC</button>
@@ -201,7 +267,9 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
 
               <!-- STEP 3B: CARD STATUS FOR SENIORS (65+) -->
               <div class="col-md-12 step-container" id="stepCardSenior" style="display: none;">
-                <label class="form-label fw-bold small text-muted">3. GENERATION / CHAS CARD (IF ANY)</label>
+                <label class="form-label fw-bold text-corporate-navy fs-6 mb-1">
+                  <i class="fa-solid fa-circle-right text-primary me-2"></i>STEP 3: Select Card / Generation Status (if any)
+                </label>
                 <div class="pill-group" id="pillsCardSenior">
                   <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'PA', this)">Public Assistance (PA) Card</button>
                   <button type="button" class="pill-btn" onclick="selectHssPill('hssCard', 'PGMG', this)">Pioneer / Merdeka Generation (PG/MG)</button>
@@ -454,6 +522,7 @@ function selectHssPill(inputId, value, element) {
       document.getElementById('hssAge').value = '';
       document.getElementById('hssCard').value = '';
       clearPills('pillsAge');
+      scrollToElem('stepAge');
     } else {
       hideStep('stepAge');
       hideStep('stepCardAdult');
@@ -472,12 +541,14 @@ function selectHssPill(inputId, value, element) {
       resetSteps(['hssResultBox']);
       document.getElementById('hssCard').value = '';
       clearPills('pillsCardAdult');
+      scrollToElem('stepCardAdult');
     } else if (value === 'senior') {
       showStep('stepCardSenior');
       hideStep('stepCardAdult');
       resetSteps(['hssResultBox']);
       document.getElementById('hssCard').value = '';
       clearPills('pillsCardSenior');
+      scrollToElem('stepCardSenior');
     }
   } 
   else if (inputId === 'hssCard') {
@@ -495,7 +566,7 @@ function displayHssResult(resultKey) {
   showStep('hssResultBox');
 
   if (resultKey === 'Ineligible') {
-    priceLabel.innerText = ".";
+    priceLabel.innerText = "Estimated Fee / Rate:";
     priceDisplay.innerText = "Standard Clinic Fees";
     badge.innerText = "Not Subsidised";
     badge.style.backgroundColor = "#6c757d";
@@ -550,6 +621,8 @@ function displayHssResult(resultKey) {
     detailNote.innerText = "Singapore Citizens aged 19 to 64 without CHAS Blue/Orange, PA, or MFEC cards are not eligible for HSS subsidies.";
     coverageBox.style.display = 'none';
   }
+
+  scrollToElem('hssResultBox');
 }
 
 function showStep(stepId) {
@@ -579,5 +652,14 @@ function clearPills(groupId) {
     const buttons = group.querySelectorAll('.pill-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
   }
+}
+
+function scrollToElem(elemId) {
+  setTimeout(() => {
+    const elem = document.getElementById(elemId);
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, 50);
 }
 </script>
