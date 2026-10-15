@@ -44,6 +44,14 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
         },
         {
           "@type": "Question",
+          "name": "What happens if I do not have a CHAS card or my CHAS card has expired?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Singaporeans aged 19 to 64 require a valid CHAS Blue, CHAS Orange, Public Assistance, or MFEC card to receive HSS co-payment caps. If your card has expired or you haven't applied, you can apply or renew online at www.chas.sg or log into HealthHub to check your status."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What happens if I have a non-haze condition during the same visit?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -74,6 +82,15 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
     background-color: #eef7ff;
     border-left: 4px solid #2c4964;
     padding: 15px;
+    margin-top: 15px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .chas-apply-box {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #16a34a;
+    padding: 16px;
     margin-top: 15px;
     border-radius: 0 8px 8px 0;
   }
@@ -308,6 +325,23 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
                   <li>Allergic Rhinitis</li>
                 </ul>
               </div>
+
+              <!-- DYNAMIC CALLOUT: APPLY / RENEW CHAS (SHOWN IF NO CHAS CARD / GREEN) -->
+              <div class="chas-apply-box" id="hssChasApplyBox" style="display: none;">
+                <h6 class="fw-bold mb-1 text-success"><i class="fa-solid fa-id-card me-2"></i>Don't have CHAS or has your card expired?</h6>
+                <p class="small text-secondary mb-2" style="line-height: 1.5;">
+                  Singaporean households can apply for or renew CHAS online anytime using Singpass. Online applications are generally processed within 15 working days. Once approved, your digital CHAS card will automatically appear in your Singpass app.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <a href="https://www.chas.sg" target="_blank" rel="noopener" class="btn btn-sm btn-success rounded-pill px-3 fw-bold">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Apply / Renew CHAS at CHAS.sg
+                  </a>
+                  <a href="https://www.healthhub.sg" target="_blank" rel="noopener" class="btn btn-sm btn-outline-success rounded-pill px-3 fw-bold">
+                    <i class="fa-solid fa-user-check me-1"></i>Check Card Status on HealthHub
+                  </a>
+                </div>
+              </div>
+
             </div>
 
           </form>
@@ -398,6 +432,28 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
       
       <div class="accordion accordion-flush" id="hssFaqAccordion">
         
+        <!-- FAQ: NO CHAS / EXPIRED CHAS -->
+        <div class="accordion-item border rounded-3 mb-2">
+          <h2 class="accordion-header" id="faqExpiredChas">
+            <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExpiredChas">
+              What if I do not have a CHAS card or my CHAS card has expired?
+            </button>
+          </h2>
+          <div id="collapseExpiredChas" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
+            <div class="accordion-body text-muted small" style="line-height: 1.6;">
+              <p class="mb-2">
+                      Singapore Citizens aged 19 to 64 require a valid CHAS Blue, CHAS Orange, Public Assistance, or MFEC card to qualify for the $10 Haze Subsidy Scheme (HSS) co-payment cap.
+                      </p>
+                      <p class="mb-2">
+                        Singaporean households can apply for or renew CHAS online anytime using Singpass at <a href="https://www.chas.sg" target="_blank" rel="noopener">www.chas.sg</a>. Online applications are generally processed within 15 working days. Once approved, your digital CHAS card will automatically appear in your Singpass and <a href="https://www.healthhub.sg" target="_blank" rel="noopener">HealthHub</a> app.
+                      </p>
+                      <p class="mb-0 text-secondary">
+                        <em>Note: Children aged 18 & below and Seniors aged 65 & above qualify automatically as Singapore Citizens for HSS subsidies without needing a CHAS card.</em>
+                      </p>
+            </div>
+          </div>
+        </div>
+
         <div class="accordion-item border rounded-3 mb-2">
           <h2 class="accordion-header" id="faqNonHaze">
             <button class="accordion-button collapsed fw-bold text-corporate-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNonHaze">
@@ -429,7 +485,7 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#hssFaqAccordion">
             <div class="accordion-body text-muted small" style="line-height: 1.6;">
-              No registration or pre-application is required. Eligibility is verified instantly at our counter when you present your physical or digital NRIC or CHAS / PG / MG card via the Singpass / HealthHub app.
+              No registration or pre-application is required for the haze scheme itself. Eligibility is verified instantly at our counter when you present your physical or digital NRIC or CHAS / PG / MG card via the Singpass / HealthHub app.
             </div>
           </div>
         </div>
@@ -503,7 +559,7 @@ description: Check your Haze Subsidy Scheme (HSS) eligibility and $0, $5, or $10
         </a>
       </div>
     </div>
-  </section>  
+  </section>   
 </main>
 
 <script>
@@ -572,6 +628,7 @@ function displayHssResult(resultKey) {
   const badge = document.getElementById('hssStatusBadge');
   const detailNote = document.getElementById('hssDetailNote');
   const coverageBox = document.getElementById('hssCoverageBox');
+  const chasApplyBox = document.getElementById('hssChasApplyBox');
 
   showStep('hssResultBox');
 
@@ -582,6 +639,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#6c757d";
     detailNote.innerText = "Subsidies under the Haze Subsidy Scheme at PHPCs apply to Singapore Citizens only. PRs and Foreigners pay standard clinic rates.";
     coverageBox.style.display = 'none';
+    chasApplyBox.style.display = 'none';
   } 
   else if (resultKey === 'PA') {
     priceLabel.innerText = "Your Max Co-Payment Cap Per Visit:";
@@ -590,6 +648,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#198754";
     detailNote.innerText = "Eligible under Public Assistance (PA) cardholder status.";
     coverageBox.style.display = 'block';
+    chasApplyBox.style.display = 'none';
   } 
   else if (resultKey === 'PGMG') {
     priceLabel.innerText = "Your Max Co-Payment Cap Per Visit:";
@@ -598,6 +657,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible under Pioneer Generation (PG) or Merdeka Generation (MG) status.";
     coverageBox.style.display = 'block';
+    chasApplyBox.style.display = 'none';
   } 
   else if (resultKey === 'BlueOrangeMFEC') {
     priceLabel.innerText = "Your Max Co-Payment Cap Per Visit:";
@@ -606,6 +666,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible under CHAS Blue, CHAS Orange, or Medical Fee Exemption Card (MFEC) status.";
     coverageBox.style.display = 'block';
+    chasApplyBox.style.display = 'none';
   } 
   else if (resultKey === 'Tier10Child') {
     priceLabel.innerText = "Your Max Co-Payment Cap Per Visit:";
@@ -614,6 +675,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible automatically as a Singapore Citizen child aged 18 and below.";
     coverageBox.style.display = 'block';
+    chasApplyBox.style.display = 'none';
   } 
   else if (resultKey === 'SeniorDefault') {
     priceLabel.innerText = "Your Max Co-Payment Cap Per Visit:";
@@ -622,6 +684,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#0d6efd";
     detailNote.innerText = "Eligible automatically as a Singapore Citizen senior aged 65 and above.";
     coverageBox.style.display = 'block';
+    chasApplyBox.style.display = 'none';
   } 
   else if (resultKey === 'NoneGreen') {
     priceLabel.innerText = "Estimated Fee / Rate:";
@@ -630,6 +693,7 @@ function displayHssResult(resultKey) {
     badge.style.backgroundColor = "#6c757d";
     detailNote.innerText = "Singapore Citizens aged 19 to 64 without CHAS Blue/Orange, PA, or MFEC cards are not eligible for HSS subsidies.";
     coverageBox.style.display = 'none';
+    chasApplyBox.style.display = 'block'; // SHOWS CHAS APPLICATION BOX
   }
 
   scrollToElem('hssResultBox');
