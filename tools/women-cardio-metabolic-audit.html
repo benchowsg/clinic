@@ -9,66 +9,66 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
   <div class="container" data-aos="fade-up">
 
     <header class="section-title text-center mb-5">
-      <h1 style="font-weight: 800; color: #2c4964; text-transform: none !important;">The Women's Cardio-Metabolic Axis</h1>
+      <h1 style="font-weight: 800; color: #0f172a; text-transform: none !important;">The Women's Cardio-Metabolic Axis</h1>
       <p style="font-size: 1.2rem; max-width: 900px; margin: 0 auto; color: #334155; line-height: 1.6; text-transform: none !important;">
         A Healing Heart Medical is a dedicated clinic for the intersection of cardiovascular and metabolic health.
         We move beyond symptom management to audit hormonal shifts that drive arterial aging.
       </p>
-      <p class="mobile-landscape-hint" style="display: none; font-size: 0.9rem; color: #e08e79; margin-top: 15px; font-weight: 600; text-transform: none !important;">
+      <p class="mobile-landscape-hint" style="display: none; font-size: 0.9rem; color: #be185d; margin-top: 15px; font-weight: 600; text-transform: none !important;">
         Rotate phone to landscape for a detailed view of the axis ↻
       </p>
     </header>
 
-    <section id="audit-tool" style="max-width: 1100px; margin: 0 auto 40px auto; background: #2c4964; padding: 35px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+    <section id="audit-tool" style="max-width: 1100px; margin: 0 auto 40px auto; background: linear-gradient(135deg, #831843 0%, #4c1d95 100%); padding: 35px; border-radius: 16px; color: white; text-align: center; box-shadow: 0 10px 30px rgba(131, 24, 67, 0.15);">
       <h3 style="color: white; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Start Your Metabolic Audit</h3>
       <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
         <label for="ageInput" style="font-weight: 600; font-size: 1.1rem; text-transform: none !important;">Your Age (25 - 85):</label>
         <input type="number" id="ageInput" min="25" max="85" placeholder="--" inputmode="numeric"
-               style="width: 100px; padding: 12px; font-size: 1.4rem; font-weight: 800; border-radius: 6px; border: 2px solid #c084fc; text-align: center; color: #2c4964;">
-        <button onclick="updateScanner()" style="padding: 14px 35px; font-size: 1.1rem; font-weight: 800; background: #c084fc; color: white; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 0 #9d59e0;">
+               style="width: 100px; padding: 12px; font-size: 1.4rem; font-weight: 800; border-radius: 8px; border: 2px solid #fbcfe8; text-align: center; color: #831843; background: #ffffff;">
+        <button onclick="updateScanner()" style="padding: 14px 35px; font-size: 1.1rem; font-weight: 800; background: #be185d; color: white; border: none; border-radius: 50px; cursor: pointer; text-transform: uppercase; transition: 0.3s; box-shadow: 0 4px 12px rgba(190, 24, 93, 0.3);">
           Run Audit
         </button>
       </div>
 
-      <div id="insightPanel" style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.1); border-radius: 10px; display: none; border: 1px solid rgba(255,255,255,0.2); animation: fadeIn 0.5s ease-in;">
+      <div id="insightPanel" style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.12); border-radius: 14px; display: none; border: 1px solid rgba(255,255,255,0.25); animation: fadeIn 0.5s ease-in;">
         <p id="insightText" style="margin: 0 0 20px 0; font-size: 1.3rem; font-weight: 500; color: #fff; text-transform: none !important;"></p>
-        <a href="/booking" class="btn" style="background:#fff; color:#2c4964; padding: 15px 40px; font-weight:800; border-radius:50px; text-transform:uppercase; text-decoration: none; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <a href="/screening/female-metabolic-hormonal-longevity-screening-singapore" class="btn" style="background:#ffffff; color:#831843; padding: 15px 40px; font-weight:800; border-radius:50px; text-transform:uppercase; text-decoration: none; display: inline-block; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
           Book Your Clinical Consultation
         </a>
       </div>
     </section>
 
-<div class="hormone-chart-container" style="max-width: 1100px; margin: 0 auto; background: #fdfcf0; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+    <div class="hormone-chart-container" style="max-width: 1100px; margin: 0 auto; background: #fff0f3; padding: 40px; border-radius: 20px; border: 1px solid #fbcfe8; box-shadow: 0 10px 30px rgba(190, 24, 93, 0.05);">
       
-    <div class="svg-wrapper" style="position: relative; width: 100%; padding-bottom: 55%;">
+      <div class="svg-wrapper" style="position: relative; width: 100%; padding-bottom: 55%;">
         <svg viewBox="0 0 1000 500" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: visible;" class="interactive-chart">
           
-          <text x="0" y="25" font-weight="bold" fill="#2c4964" font-size="16" text-anchor="start">Metabolic Function (% of Peak)</text>
-          <text x="1000" y="25" font-weight="bold" fill="#b22222" font-size="16" text-anchor="end">Cardiovascular Risk Index</text>
+          <text x="0" y="25" font-weight="bold" fill="#831843" font-size="16" text-anchor="start">Metabolic Function (% of Peak)</text>
+          <text x="1000" y="25" font-weight="bold" fill="#9f1239" font-size="16" text-anchor="end">Cardiovascular Risk Index</text>
 
-          <rect x="228" y="50" width="129" height="350" fill="#28a745" opacity="0.08"></rect> 
-          <rect x="357" y="50" width="103" height="350" fill="#c084fc" opacity="0.12"></rect> 
-          <rect x="460" y="50" width="410" height="350" fill="#b22222" opacity="0.08"></rect>
+          <rect x="228" y="50" width="129" height="350" fill="#0d9488" opacity="0.08"></rect> 
+          <rect x="357" y="50" width="103" height="350" fill="#7e22ce" opacity="0.12"></rect> 
+          <rect x="460" y="50" width="410" height="350" fill="#be185d" opacity="0.08"></rect>
 
-          <g stroke="#e2e8f0" stroke-dasharray="4">
-            <line x1="100" y1="50" x2="100" y2="400" stroke="#2c4964" stroke-dasharray="0"></line>
+          <g stroke="#fbcfe8" stroke-dasharray="4">
+            <line x1="100" y1="50" x2="100" y2="400" stroke="#831843" stroke-dasharray="0"></line>
             <line x1="228" y1="50" x2="228" y2="400"></line>
             <line x1="357" y1="50" x2="357" y2="400"></line>
             <line x1="485" y1="50" x2="485" y2="400"></line>
             <line x1="614" y1="50" x2="614" y2="400"></line>
             <line x1="742" y1="50" x2="742" y2="400"></line>
-            <line x1="870" y1="50" x2="870" y2="400" stroke="#2c4964" stroke-dasharray="0"></line>
-            <line x1="100" y1="400" x2="870" y2="400" stroke="#2c4964" stroke-dasharray="0" stroke-width="1"></line>
+            <line x1="870" y1="50" x2="870" y2="400" stroke="#831843" stroke-dasharray="0"></line>
+            <line x1="100" y1="400" x2="870" y2="400" stroke="#831843" stroke-dasharray="0" stroke-width="1"></line>
           </g>
 
-          <path id="line-progest" class="chart-line" fill="none" stroke="#2c4964" stroke-width="4" d="M 100,107 
+          <path id="line-progest" class="chart-line" fill="none" stroke="#4c1d95" stroke-width="4" d="M 100,107 
                  L 115,88 L 130,125 L 145,88 L 160,125 L 163,107
                  L 175,110 L 190,104 L 205,115 L 220,110 L 228,125
                  C 280,150 320,230 357,285
                  L 375,295 L 390,310 L 410,330 L 430,345 L 459,360
                  L 870,360"></path>
 
-          <path id="line-oestro" class="chart-line" fill="none" stroke="#e08e79" stroke-width="4" d="M 100,50 
+          <path id="line-oestro" class="chart-line" fill="none" stroke="#be185d" stroke-width="4" d="M 100,50 
                  L 115,67 L 130,50 L 145,67 L 164,50
                  C 190,60 220,95 234,102 L 240,109 L 254,102
                  L 383,155
@@ -76,29 +76,29 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
                  L 510,315 L 530,340 L 550,330
                  L 870,330" style="opacity: 0.8; stroke-width: 5px;"></path>
           
-          <path id="line-insulin" class="chart-line" fill="none" stroke="#28a745" stroke-width="4" stroke-dasharray="5,8" d="M 100,55
+          <path id="line-insulin" class="chart-line" fill="none" stroke="#0d9488" stroke-width="4" stroke-dasharray="5,8" d="M 100,55
                  C 220,55 350,230 420,325
                  C 460,370 650,380 870,390" style="opacity: 0.8; stroke-width: 4px;"></path>
 
-          <path id="line-testo" class="chart-line" fill="none" stroke="#d6a1a1" stroke-width="5" d="M 100,195 L 435,280 L 870,315" style="opacity: 0.8; stroke-width: 4px;"></path>
+          <path id="line-testo" class="chart-line" fill="none" stroke="#e11d48" stroke-width="5" d="M 100,195 L 435,280 L 870,315" style="opacity: 0.8; stroke-width: 4px;"></path>
 
-          <path id="line-mela" class="chart-line" fill="none" stroke="#00ced1" stroke-width="3" d="M 100,312 
+          <path id="line-mela" class="chart-line" fill="none" stroke="#7e22ce" stroke-width="3" d="M 100,312 
                  L 115,295 L 130,330 L 145,295 L 160,330 L 175,295 L 190,330 L 205,295 L 228,312 
                  L 245,303 L 260,321 L 275,303 L 290,321 L 305,303 L 320,321 L 335,303 L 345,312 
                  L 459,380 
                  L 870,380" style="opacity: 0.8; stroke-width: 3px;"></path>
 
-          <path id="line-risk" class="chart-line" fill="none" stroke="#b22222" stroke-width="6" d="M 100,398
+          <path id="line-risk" class="chart-line" fill="none" stroke="#9f1239" stroke-width="6" d="M 100,398
                  C 200,398 350,390 420,305
                  S 650,50 870,50" style="opacity: 0.8; stroke-width: 6px;"></path>
 
           <g id="scannerGroup" style="visibility: hidden;">
-            <line id="scannerLine" x1="0" y1="40" x2="0" y2="410" stroke="#c084fc" stroke-width="3" stroke-dasharray="4"></line>
-            <rect id="scannerBox" x="0" y="10" width="46" height="30" rx="5" fill="#c084fc"></rect>
+            <line id="scannerLine" x1="0" y1="40" x2="0" y2="410" stroke="#be185d" stroke-width="3" stroke-dasharray="4"></line>
+            <rect id="scannerBox" x="0" y="10" width="46" height="30" rx="5" fill="#be185d"></rect>
             <text id="scannerText" x="0" y="31" fill="white" font-size="16" font-weight="800" text-anchor="middle">--</text>
           </g>
 
-          <g font-size="16" fill="#2c4964" text-anchor="middle" font-weight="700">
+          <g font-size="16" fill="#831843" text-anchor="middle" font-weight="700">
             <text x="100" y="415">25</text><text x="228" y="415">35</text><text x="357" y="415">45</text>
             <text x="485" y="415">55</text><text x="614" y="415">65</text><text x="742" y="415">75</text><text x="870" y="415">85+</text>
             <text x="485" y="460" font-size="18" font-weight="800">Patient Age (Years)</text>
@@ -108,82 +108,79 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
 
       <div class="legend-grid">
         <div class="leg-card" onmouseover="highlight('line-oestro')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#e08e79"></span> Oestrogen
+            <span class="swatch" style="background:#be185d"></span> Oestrogen
         </div>
         <div class="leg-card" onmouseover="highlight('line-progest')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#2c4964"></span> Progesterone
+            <span class="swatch" style="background:#4c1d95"></span> Progesterone
         </div>
         <div class="leg-card" onmouseover="highlight('line-risk')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#b22222"></span> Cardiovascular Risk
+            <span class="swatch" style="background:#9f1239"></span> Cardiovascular Risk
         </div>
         <div class="leg-card" onmouseover="highlight('line-insulin')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#28a745; border:1px dashed #777"></span> Insulin Sensitivity
+            <span class="swatch" style="background:#0d9488; border:1px dashed #777"></span> Insulin Sensitivity
         </div>
         <div class="leg-card" onmouseover="highlight('line-mela')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#00ced1"></span> Melatonin
+            <span class="swatch" style="background:#7e22ce"></span> Melatonin
         </div>
         <div class="leg-card" onmouseover="highlight('line-testo')" onmouseout="resetHighlight()">
-            <span class="swatch" style="background:#d6a1a1"></span> Testosterone
+            <span class="swatch" style="background:#e11d48"></span> Testosterone
         </div>
       </div>
     </div>
 
-
-
     <section class="mt-5" style="max-width: 900px; margin: 0 auto; color: #334155;">
-      <h2 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Clinical Awareness Zones</h2>
+      <h2 style="color: #0f172a; text-align: center; margin-bottom: 30px; text-transform: none !important;">Clinical Awareness Zones</h2>
       <p style="font-size: 1.1rem; line-height: 1.7; text-align: center; text-transform: none !important;">
         Unlike men, a woman's hormonal transition is non-linear. Standard medicine often misses the silent metabolic changes occurring decades before a cardiac event. At <strong>A Healing Heart Medical</strong>, Singapore’s integrated Cardio-Metabolic clinic, we specialize in auditing these critical 'handoff' windows.
       </p>
       
       <div class="row mt-4">
         <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #28a745;">
-            <h4 style="color: #2c4964;">Zone 1: The Silent Decade</h4>
-            <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">PRE-MENOPAUSE (Ages 35–45)</p>
-            <p>The metabolic groundwork is laid here. While you feel well, <strong>Insulin Sensitivity</strong> begins its silent decline. This is the most critical window for intervention before the vascular shield starts to thin.</p>
+          <div class="zone-box" style="border-top: 5px solid #0d9488; background: #f8fafc; border-radius: 12px; padding: 22px; border: 1px solid #e2e8f0; border-top-width: 5px;">
+            <h4 style="color: #831843; font-weight: 700;">Zone 1: The Silent Decade</h4>
+            <p style="font-size: 0.85rem; color: #be185d; font-weight: 700; margin-bottom: 8px;">PRE-MENOPAUSE (Ages 35–45)</p>
+            <p style="font-size: 0.95rem;">The metabolic groundwork is laid here. While you feel well, <strong>Insulin Sensitivity</strong> begins its silent decline. This is the most critical window for intervention before the vascular shield starts to thin.</p>
           </div>
         </div>
       
         <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #c084fc;">
-            <h4 style="color: #2c4964;">Zone 2: The Hormonal Storm</h4>
-            <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">PERIMENOPAUSE (Ages 45–53)</p>
-            <p>The "Critical Handoff." Oestrogen becomes volatile and Progesterone drops steeply. Cardiovascular risk hits its steepest inflection point as your internal protection is dismantled.</p>
+          <div class="zone-box" style="border-top: 5px solid #7e22ce; background: #f8fafc; border-radius: 12px; padding: 22px; border: 1px solid #e2e8f0; border-top-width: 5px;">
+            <h4 style="color: #831843; font-weight: 700;">Zone 2: The Hormonal Storm</h4>
+            <p style="font-size: 0.85rem; color: #7e22ce; font-weight: 700; margin-bottom: 8px;">PERIMENOPAUSE (Ages 45–53)</p>
+            <p style="font-size: 0.95rem;">The "Critical Handoff." Oestrogen becomes volatile and Progesterone drops steeply. Cardiovascular risk hits its steepest inflection point as your internal protection is dismantled.</p>
           </div>
         </div>
       
         <div class="col-md-4 mb-4">
-          <div class="zone-box" style="border-top: 5px solid #b22222;">
-            <h4 style="color: #2c4964;">Zone 3: The Metabolic Trap</h4>
-            <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 5px;">POST-MENOPAUSE (Ages 53+)</p>
-            <p>Hormones stabilize at a low baseline. <strong>Cardiovascular Risk</strong> now dominates the axis. Stewardship shifts to active management of lipids, blood pressure, and regenerative metabolic health.</p>
+          <div class="zone-box" style="border-top: 5px solid #be185d; background: #f8fafc; border-radius: 12px; padding: 22px; border: 1px solid #e2e8f0; border-top-width: 5px;">
+            <h4 style="color: #831843; font-weight: 700;">Zone 3: The Metabolic Trap</h4>
+            <p style="font-size: 0.85rem; color: #9f1239; font-weight: 700; margin-bottom: 8px;">POST-MENOPAUSE (Ages 53+)</p>
+            <p style="font-size: 0.95rem;">Hormones stabilize at a low baseline. <strong>Cardiovascular Risk</strong> now dominates the axis. Stewardship shifts to active management of lipids, blood pressure, and regenerative metabolic health.</p>
           </div>
         </div>
       </div>
 
-      <div class="faq-section mt-5" style="background: #f8fafc; padding: 40px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 80px;">
-        <h3 style="color: #2c4964; text-align: center; margin-bottom: 30px; text-transform: none !important;">Cardio-Metabolic Health FAQ</h3>
-        <div style="text-transform: none !important; line-height: 1.6;">
+      <div class="faq-section mt-5" style="background: #fdf2f8; padding: 40px; border-radius: 16px; border: 1px solid #fbcfe8; margin-bottom: 80px;">
+        <h3 style="color: #831843; text-align: center; margin-bottom: 30px; text-transform: none !important; font-weight: 700;">Cardio-Metabolic Health FAQ</h3>
+        <div style="text-transform: none !important; line-height: 1.7; color: #334155;">
           
-          <p><strong style="color:#2c4964;">Why is Oestrogen called a "Vascular Shield"?</strong><br>
+          <p><strong style="color:#831843;">Why is Oestrogen called a "Vascular Shield"?</strong><br>
           Oestrogen is a powerful anti-inflammatory that protects a woman's arterial walls. When levels fluctuate and fall during perimenopause, this "shield" is removed, often causing a rapid decline in <strong>Insulin Sensitivity</strong>. We specialize in auditing this transition to ensure your metabolic health doesn't leave your heart vulnerable as your hormones shift.</p>
           
-          <hr style="margin: 25px 0; border: 0; border-top: 1px solid #cbd5e1;">
+          <hr style="margin: 25px 0; border: 0; border-top: 1px solid #fbcfe8;">
           
-          <p><strong style="color:#2c4964;">How does this differ from a standard health screening?</strong><br>
+          <p><strong style="color:#831843;">How does this differ from a standard health screening?</strong><br>
           Most screenings look for established disease (like high blood pressure, high cholesterol, and high sugar level). Our audit is designed for <strong>early-stage prevention</strong>. By identifying "silent" insulin resistance and hormonal imbalances decades before a cardiac event occurs, we provide a window for proactive stewardship rather than reactive, lifelong medication.</p>
         </div>
       </div>
     </section>
 
     <div class="container mt-5 mb-5">
-      <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; color: #64748b; font-size: 0.85rem; line-height: 1.5;">
+      <div style="border-top: 1px solid #fbcfe8; padding-top: 20px; color: #64748b; font-size: 0.85rem; line-height: 1.5;">
         <p><strong>Clinical Disclaimer:</strong> The Cardio-Metabolic Axis charts are for educational and illustrative purposes only. They represent established clinical patterns of biological aging and hormonal shifts observed in population-based metabolic studies. This representation is not a diagnostic tool and should not be used as a substitute for professional medical advice, diagnosis, or treatment. </p>
-        <p>Personalised clinical management and the titration of medication require a formal medical assessment and laboratory verification by Dr Gerald Thang. <a href="/booking" style="color: #43a7d5; text-decoration: underline; font-weight: 600;">Schedule a clinical audit</a> to determine your specific metabolic position.</p>
+        <p>Personalised clinical management and the titration of medication require a formal medical assessment and laboratory verification by Dr Gerald Thang. <a href="/screening/female-metabolic-hormonal-longevity-screening-singapore" style="color: #be185d; text-decoration: underline; font-weight: 600;">Schedule a clinical audit</a> to determine your specific metabolic position.</p>
       </div>
     </div>
-
 
     <a href="/men-cardio-metabolic-audit" class="female-toggle-btn men-toggle" title="View Men's Cardio-Metabolic Axis">
       <span class="toggle-icon">♂</span>
@@ -222,7 +219,7 @@ description: Singapore’s first integrated cardio-metabolic audit. Visualise "T
   }
 
   // Audit Scanner Logic (Faithful to female chart ranges)
-function updateScanner() {
+  function updateScanner() {
     const input = document.getElementById('ageInput');
     const group = document.getElementById('scannerGroup');
     const line = document.getElementById('scannerLine');
@@ -234,28 +231,17 @@ function updateScanner() {
     const age = parseFloat(input.value);
     
     if (age >= 25 && age <= 85) {
-      // Calculate X Position: Map 25-85 to SVG coordinates 100-870
-      // Formula: 100 + ((age - 25) / (85 - 25) * (870 - 100))
       const xPos = 100 + ((age - 25) * 12.833);
       
-      // Update Scanner Position
       line.setAttribute('x1', xPos); 
       line.setAttribute('x2', xPos);
-      
-      // Update Box Position (Centered on line)
       box.setAttribute('x', xPos - 23);
-      
-      // Update Text Position and Content
       txt.setAttribute('x', xPos); 
       txt.textContent = age;
       
-      // Make it visible
       group.style.visibility = "visible";
-      
-      // SHOW CTA PANEL & ADVICE
       panel.style.display = "block";
       
-      // Inside updateScanner() function...
       if (age < 35) {
           insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in the <strong>Protected Years</strong>. We focus on optimizing your baseline before the 'Silent Decade' begins.";
       } else if (age >= 35 && age < 45) {
@@ -266,26 +252,25 @@ function updateScanner() {
           insightText.innerHTML = "At <strong>age " + age + "</strong>, you are in <strong>Post-Menopause</strong>. Risk has crossed your hormonal shield. We prioritize cardio-metabolic regeneration.";
       }
       
-      // Smooth scroll to results
       panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     } else {
       alert("Please enter an age between 25 and 85.");
     }
-}
+  }
 </script>
 
 <style>
   @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-  .graph-container { padding-top: 140px; background: #fff; position: relative; }
-  .zone-box { background: rgba(0,0,0,0.02); padding: 25px; border-radius: 8px; height: 100%; text-transform: none !important; }
+  .graph-container { padding-top: 140px; background: #ffffff; position: relative; }
+  .zone-box { text-transform: none !important; }
   
   .legend-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     gap: 15px; 
     margin-top: 30px; 
-    border-top: 2px solid #f1f5f9; 
+    border-top: 2px solid #fbcfe8; 
     padding-top: 25px; 
   }
   
@@ -294,28 +279,28 @@ function updateScanner() {
     align-items: center; 
     font-size: 14px; 
     font-weight: 700; 
-    color: #2c4964; 
+    color: #831843; 
     padding: 12px; 
-    border-radius: 8px; 
-    background: white;
-    border: 1px solid #e2e8f0; 
+    border-radius: 10px; 
+    background: #ffffff;
+    border: 1px solid #fbcfe8; 
     text-transform: none !important; 
     cursor: pointer;
     transition: 0.3s ease;
   }
-  .leg-card:hover { background: #f1f5f9; transform: translateY(-2px); }
+  .leg-card:hover { background: #fdf2f8; transform: translateY(-2px); border-color: #be185d; }
   
   .swatch { width: 14px; height: 14px; margin-right: 10px; border-radius: 3px; display: inline-block; }
   .chart-line { transition: all 0.3s ease; opacity: 0.8; }
   .interactive-chart:hover .chart-line { opacity: 0.1; stroke-width: 2px; }
 
-  /* ADAPTIVE FLOATING SIDE TAB (Men's link) */
+  /* FLOATING SIDE TAB (Men's link) */
   .female-toggle-btn {
     position: fixed;
     right: 0;
-    bottom: 180px; /* Sits vertically above Desktop WhatsApp button */
-    background: #507b9f; /* Deep blue-grey for Men's link distinction */
-    color: #fff;
+    bottom: 180px;
+    background: #be185d;
+    color: #ffffff;
     width: 45px;
     padding: 20px 0;
     border-radius: 12px 0 0 12px;
@@ -326,12 +311,12 @@ function updateScanner() {
     gap: 12px;
     text-decoration: none;
     font-weight: 800;
-    box-shadow: -4px 4px 15px rgba(0,0,0,0.1);
+    box-shadow: -4px 4px 15px rgba(190, 24, 93, 0.2);
     z-index: 2000;
     text-transform: none !important;
     transition: 0.3s ease;
   }
-  .men-toggle:hover { width: 55px; background: #2c4964; }
+  .men-toggle:hover { width: 55px; background: #9d174d; }
 
   .toggle-text {
     writing-mode: vertical-rl;
