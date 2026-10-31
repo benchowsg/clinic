@@ -3,161 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediCheck - Attendance</title>
+  <title>MediCheck - Location-Verified Attendance</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js for Admin Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 min-h-screen">
+<body class="bg-slate-50 font-sans text-slate-800 min-h-screen flex flex-col">
 
-  <!-- NAVIGATION HEADER -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="font-bold text-lg text-slate-800">MediCheck</div>
-      
-      <!-- NAV TABS -->
-      <nav class="flex gap-2">
-        <button type="button" onclick="showTab('checkin')" id="btn-tab-checkin" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-sky-500 text-white">Check-In</button>
-        <button type="button" onclick="showTab('logs')" id="btn-tab-logs" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-200 text-slate-700">Attendance Log</button>
-        <button type="button" onclick="showTab('pins')" id="btn-tab-pins" class="px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-200 text-slate-700">Staff PINs</button>
-      </nav>
-    </div>
-  </header>
+  <!-- MAIN APP CONTAINER -->
+  <main class="max-w-5xl mx-auto w-full px-4 py-8 flex-1">
 
-  <main class="max-w-3xl mx-auto px-4 py-8">
-
-    <!-- CHECK-IN SECTION -->
-    <section id="tab-checkin" class="space-y-4">
-      <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm">
-        <h2 class="text-xl font-bold">Staff Attendance Check-In</h2>
-        
-        <div>
-          <label class="block text-xs font-semibold text-slate-500 mb-1">Enter 4-Digit Staff PIN</label>
-          <input type="password" id="staff-pin" maxlength="4" placeholder="1234" class="w-full text-center text-2xl font-mono p-2 border rounded-xl">
+    <!-- 1. LANDING & STAFF AUTHENTICATION SCREEN -->
+    <section id="view-login" class="max-w-md mx-auto my-12">
+      <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm text-center">
+        <div class="w-14 h-14 bg-sky-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4 shadow-md shadow-sky-100">
+          <i class="fa-solid fa-user-check"></i>
         </div>
+        <h1 class="text-2xl font-bold text-slate-800 leading-tight">MediCheck</h1>
+        <p class="text-xs text-slate-500 mt-1 mb-6">Location-Verified Attendance</p>
 
-        <button type="button" onclick="verifyPinAndGPS()" class="w-full py-3 bg-sky-500 text-white font-bold rounded-xl hover:bg-sky-600 transition">
-          Verify GPS Location & Submit
-        </button>
-
-        <div id="checkin-result" class="p-3 text-xs rounded-xl hidden font-semibold text-center"></div>
+        <form onsubmit="handleAuth(event)" class="space-y-4">
+          <div class="text-left">
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Staff Authentication</label>
+            <input type="password" id="pin-input" maxlength="4" placeholder="Enter 4-Digit PIN" class="w-full text-center text-3xl font-mono tracking-widest py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:outline-none">
+          </div>
+          <p id="login-error" class="text-xs text-rose-600 hidden font-medium"></p>
+          <button type="submit" class="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl shadow-md shadow-sky-100 transition">
+            Click Verify to Sign In
+          </button>
+        </form>
       </div>
     </section>
 
-    <!-- LOGS SECTION -->
-    <section id="tab-logs" class="hidden space-y-4">
-      <div class="flex justify-between items-center">
-        <h2 class="text-xl font-bold">Attendance Records</h2>
-        <button onclick="clearLogs()" class="text-xs text-rose-500 hover:underline">Clear Logs</button>
-      </div>
-
-      <div class="bg-white border rounded-xl overflow-hidden">
-        <table class="w-full text-left text-xs">
-          <thead class="bg-slate-100 font-bold border-b">
-            <tr>
-              <th class="p-3">Time</th>
-              <th class="p-3">Name</th>
-              <th class="p-3">Role</th>
-              <th class="p-3">Distance</th>
-              <th class="p-3">Status</th>
-            </tr>
-          </thead>
-          <tbody id="logs-body" class="divide-y font-mono"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- PINS SECTION -->
-    <section id="tab-pins" class="hidden space-y-4">
-      <h2 class="text-xl font-bold">Configured Staff PINs</h2>
-      <div class="bg-white border rounded-xl p-4">
-        <ul id="pins-list" class="divide-y text-xs"></ul>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    const PINS = {
-      "1234": { name: "Dr. Sarah Tan", role: "Doctor" },
-      "5678": { name: "Nurse John", role: "Nurse" },
-      "9999": { name: "Admin", role: "Manager" }
-    };
-
-    function showTab(tabName) {
-      document.getElementById('tab-checkin').classList.add('hidden');
-      document.getElementById('tab-logs').classList.add('hidden');
-      document.getElementById('tab-pins').classList.add('hidden');
-
-      document.getElementById('btn-tab-checkin').className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-200 text-slate-700";
-      document.getElementById('btn-tab-logs').className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-200 text-slate-700";
-      document.getElementById('btn-tab-pins').className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-slate-200 text-slate-700";
-
-      document.getElementById('tab-' + tabName).classList.remove('hidden');
-      document.getElementById('btn-tab-' + tabName).className = "px-3 py-1.5 text-xs font-bold rounded-lg bg-sky-500 text-white";
-
-      if (tabName === 'logs') renderLogs();
-      if (tabName === 'pins') renderPins();
-    }
-
-    function verifyPinAndGPS() {
-      const inputPin = document.getElementById('staff-pin').value.trim();
-      const res = document.getElementById('checkin-result');
-      
-      if (!PINS[inputPin]) {
-        res.className = "p-3 text-xs rounded-xl bg-rose-100 text-rose-700 block";
-        res.textContent = "Invalid Staff PIN!";
-        return;
-      }
-
-      const staff = PINS[inputPin];
-
-      if (!navigator.geolocation) {
-        alert("GPS unavailable");
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition((pos) => {
-        const entry = {
-          time: new Date().toLocaleTimeString(),
-          name: staff.name,
-          role: staff.role,
-          dist: "12m",
-          status: "Approved"
-        };
-
-        const logs = JSON.parse(localStorage.getItem('logs') || "[]");
-        logs.unshift(entry);
-        localStorage.setItem('logs', JSON.stringify(logs));
-
-        res.className = "p-3 text-xs rounded-xl bg-emerald-100 text-emerald-700 block";
-        res.textContent = `Check-in Successful for ${staff.name}!`;
-      }, (err) => {
-        alert("GPS Error: " + err.message);
-      });
-    }
-
-    function renderLogs() {
-      const logs = JSON.parse(localStorage.getItem('logs') || "[]");
-      const tbody = document.getElementById('logs-body');
-      tbody.innerHTML = logs.map(l => `
-        <tr>
-          <td class="p-3">${l.time}</td>
-          <td class="p-3 font-bold">${l.name}</td>
-          <td class="p-3">${l.role}</td>
-          <td class="p-3">${l.dist}</td>
-          <td class="p-3 text-emerald-600 font-bold">${l.status}</td>
-        </tr>
-      `).join('') || '<tr><td colspan="5" class="p-4 text-center text-slate-400">No logs yet</td></tr>';
-    }
-
-    function renderPins() {
-      const list = document.getElementById('pins-list');
-      list.innerHTML = Object.keys(PINS).map(p => `
-        <li class="py-2 flex justify-between">
-          <span class="font-mono font-bold text-sky-600">${p}</span>
-          <span>${PINS[p].name} (${PINS[p].role})</span>
-        </li>
-      `).join('');
-    }
-  </script>
-</body>
-</html>
+    <!-- 2. STAFF MOBILE CHECK-IN VIEW -->
+    <section id="view-staff" class="hidden space-y-6 max-w-lg mx-auto">
