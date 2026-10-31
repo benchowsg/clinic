@@ -10,6 +10,10 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- FIREBASE SDKs (Compatibility Build for Single-File HTML) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 min-h-screen flex flex-col">
 
@@ -77,17 +81,17 @@
           </div>
         </div>
 
-        <!-- PASTE THIS GPS DEBUG BOX HERE -->
-          <div id="gps-debug" class="p-3 bg-slate-100 border border-slate-200 rounded-xl text-xs font-mono space-y-1">
-            <div class="flex items-center justify-between">
-              <span class="font-bold text-slate-700">GPS Diagnostics</span>
-              <button type="button" onclick="checkGPSAccuracy()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-lg text-[11px]">
-                Test Accuracy
-              </button>
-            </div>
-            <p id="gps-debug-status" class="text-slate-500 text-[11px]">Tap 'Test Accuracy' to check signal strength...</p>
+        <!-- GPS DEBUG BOX -->
+        <div id="gps-debug" class="p-3 bg-slate-100 border border-slate-200 rounded-xl text-xs font-mono space-y-1">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-700">GPS Diagnostics</span>
+            <button type="button" onclick="checkGPSAccuracy()" class="px-2.5 py-1 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-lg text-[11px]">
+              Test Accuracy
+            </button>
           </div>
-          <!-- END GPS DEBUG BOX -->
+          <p id="gps-debug-status" class="text-slate-500 text-[11px]">Tap 'Test Accuracy' to check signal strength...</p>
+        </div>
+        <!-- END GPS DEBUG BOX -->
 
         <!-- Verify & Submit Button -->
         <button onclick="verifyAndSubmitAttendance()" id="btn-verify" class="w-full py-3.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl shadow-md shadow-sky-100 transition flex items-center justify-center gap-2">
@@ -292,7 +296,7 @@
             </div>
             <div>
               <label class="block text-[11px] font-bold text-slate-500 mb-1">Allowed Radius (Meters)</label>
-              <input type="number" id="input-clinic-radius" value="50" required class="w-full p-2 text-xs border rounded-lg font-mono">
+              <input type="number" id="input-clinic-radius" value="150" required class="w-full p-2 text-xs border rounded-lg font-mono">
             </div>
 
             <div class="md:col-span-4 flex justify-between items-center pt-2">
@@ -432,72 +436,118 @@
   </main>
 
   <script>
-    // --- INITIAL DEFAULTS & STORAGE ---
-    const DEFAULT_STAFF = [
-      { id: "S1", pin: "1234", name: "Dr. Sarah Tan", role: "General Practitioner", dateJoined: "2023-01-15", lastDay: "" },
-      { id: "S2", pin: "5678", name: "Nurse John Doe", role: "Senior Nurse", dateJoined: "2023-05-20", lastDay: "" },
-      { id: "S3", pin: "2468", name: "Mary Lim", role: "Receptionist", dateJoined: "2024-02-01", lastDay: "2026-10-01" } // Resigned sample
-    ];
+    // --- FIREBASE INITIALIZATION & CONFIGURATION ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyAqJGrMv1BMvMJIkgADtKZeaRmySHOfvDc",
+      authDomain: "medicheck-c83c6.firebaseapp.com",
+      databaseURL: "https://medicheck-c83c6-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "medicheck-c83c6",
+      storageBucket: "medicheck-c83c6.firebasestorage.app",
+      messagingSenderId: "857574484746",
+      appId: "1:857574484746:web:bd24dc4fd3e4c289b768f3"
+    };
 
-    const DEFAULT_CLINICS = [
-      { id: "C1", name: "Main Medical Clinic", lat: 1.3521, lng: 103.8198, radius: 50 }
-    ];
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-    const DEFAULT_SHIFTS = {
-      "Monday": "09:00",
-      "Tuesday": "09:00",
-      "Wednesday": "09:00",
-      "Thursday": "09:00",
-      "Friday": "09:00",
-      "Saturday": "09:00",
-      "Sunday": "09:00"
+    // In-memory cache populated live from Firebase
+    let dbState = {
+      staff: [
+        { id: "S1", pin: "1234", name: "Dr. Sarah Tan", role: "General Practitioner", dateJoined: "2023-01-15", lastDay: "" },
+        { id: "S2", pin: "5678", name: "Nurse John Doe", role: "Senior Nurse", dateJoined: "2023-05-20", lastDay: "" },
+        { id: "S3", pin: "2468", name: "Mary Lim", role: "Receptionist", dateJoined: "2024-02-01", lastDay: "2026-10-01" }
+      ],
+      clinics: [
+        { id: "C1", name: "Beacon Heights (8 Mar Thoma)", lat: 1.326375, lng: 103.862142, radius: 150 },
+        { id: "C2", name: "Main Medical Clinic", lat: 1.3521, lng: 103.8198, radius: 150 }
+      ],
+      shifts: {
+        "Monday": "09:00", "Tuesday": "09:00", "Wednesday": "09:00",
+        "Thursday": "09:00", "Friday": "09:00", "Saturday": "09:00", "Sunday": "09:00"
+      },
+      logs: [],
+      resets: {}
     };
 
     const ADMIN_PIN = "9999";
-
     let activeUser = null;
     let showInactiveStaff = false;
     let pieChartInstance = null;
     let barChartInstance = null;
 
-    // Local Storage Operations
-    function getStaffList() {
-      return JSON.parse(localStorage.getItem('mediCheck_staff') || JSON.stringify(DEFAULT_STAFF));
-    }
+    // --- REALTIME SYNC LISTENERS ---
+    db.ref("mediCheck").on("value", (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        if (data.staff) dbState.staff = data.staff;
+        if (data.clinics) dbState.clinics = data.clinics;
+        if (data.shifts) dbState.shifts = data.shifts;
+        if (data.logs) {
+          // Convert logs object to array sorted newest first
+          const rawLogs = typeof data.logs === 'object' ? Object.values(data.logs) : data.logs;
+          dbState.logs = rawLogs.reverse();
+        } else {
+          dbState.logs = [];
+        }
+        if (data.resets) dbState.resets = data.resets;
+
+        // Auto-refresh active views
+        if (activeUser) {
+          if (activeUser.role === "admin") {
+            renderAdminDashboard();
+            renderStaffDirectory();
+            renderClinicsList();
+            renderShiftsList();
+          } else {
+            renderStaffLateRecords();
+          }
+        }
+      } else {
+        // Seed default database state if fresh setup
+        db.ref("mediCheck").set(dbState);
+      }
+    });
+
+    // --- CLOUD STORAGE ACCESSORS ---
+    function getStaffList() { return dbState.staff; }
     function saveStaffList(list) {
-      localStorage.setItem('mediCheck_staff', JSON.stringify(list));
+      dbState.staff = list;
+      db.ref("mediCheck/staff").set(list);
     }
 
-    function getClinicsList() {
-      return JSON.parse(localStorage.getItem('mediCheck_clinics') || JSON.stringify(DEFAULT_CLINICS));
-    }
+    function getClinicsList() { return dbState.clinics; }
     function saveClinicsList(list) {
-      localStorage.setItem('mediCheck_clinics', JSON.stringify(list));
+      dbState.clinics = list;
+      db.ref("mediCheck/clinics").set(list);
     }
 
-    function getShiftSchedule() {
-      return JSON.parse(localStorage.getItem('mediCheck_shifts') || JSON.stringify(DEFAULT_SHIFTS));
-    }
+    function getShiftSchedule() { return dbState.shifts; }
     function saveShiftSchedule(shifts) {
-      localStorage.setItem('mediCheck_shifts', JSON.stringify(shifts));
+      dbState.shifts = shifts;
+      db.ref("mediCheck/shifts").set(shifts);
     }
 
-    function getLogs() {
-      return JSON.parse(localStorage.getItem('mediCheck_logs') || "[]");
-    }
+    function getLogs() { return dbState.logs; }
     function saveLog(entry) {
-      const logs = getLogs();
-      logs.unshift(entry);
-      localStorage.setItem('mediCheck_logs', JSON.stringify(logs));
+      db.ref("mediCheck/logs").push(entry);
     }
 
-    function getResetStates() {
-      return JSON.parse(localStorage.getItem('mediCheck_resets') || "{}");
-    }
+    function getResetStates() { return dbState.resets; }
     function setResetState(pin, value) {
-      const states = getResetStates();
-      states[pin] = value;
-      localStorage.setItem('mediCheck_resets', JSON.stringify(states));
+      dbState.resets[pin] = value;
+      db.ref(`mediCheck/resets/${pin}`).set(value);
+    }
+
+    // --- HAVERSINE DISTANCE MATH ---
+    function haversineDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371000;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
     }
 
     // --- AUTHENTICATION ---
@@ -558,112 +608,149 @@
       renderStaffLateRecords();
     }
 
-function verifyAndSubmitAttendance() {
-  const btn = document.getElementById('btn-verify');
-  const badge = document.getElementById('status-badge');
-  const desc = document.getElementById('status-description');
-  const timeBox = document.getElementById('timestamp-box');
-  const timeEl = document.getElementById('current-timestamp');
+    function checkGPSAccuracy() {
+      const output = document.getElementById('gps-debug-status');
+      output.innerHTML = "Fetching GPS fix from device...";
 
-  btn.disabled = true;
-  btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
+      if (!navigator.geolocation) {
+        output.innerHTML = "<span class='text-rose-600 font-bold'>Geolocation not supported by browser.</span>";
+        return;
+      }
 
-  if (!navigator.geolocation) {
-    alert("Geolocation is not supported by your browser.");
-    btn.disabled = false;
-    btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
-    return;
-  }
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0
+      };
 
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      const userLat = pos.coords.latitude;
-      const userLng = pos.coords.longitude;
-      
-      const clinics = getClinicsList();
-      if (!clinics || clinics.length === 0) {
-        alert("No clinic locations configured in Admin!");
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lng = position.coords.longitude.toFixed(6);
+          const accuracy = Math.round(position.coords.accuracy);
+
+          let statusColor = "text-emerald-600";
+          let statusText = "Excellent (True GPS/Wi-Fi)";
+
+          if (accuracy > 500) {
+            statusColor = "text-rose-600";
+            statusText = "Poor (Cell Tower Fallback)";
+          } else if (accuracy > 100) {
+            statusColor = "text-amber-600";
+            statusText = "Moderate (Needs 150m Radius)";
+          }
+
+          output.innerHTML = `
+            • <strong>Lat/Lng:</strong> ${lat}, ${lng}<br/>
+            • <strong>Accuracy:</strong> <span class="${statusColor} font-bold">±${accuracy} meters</span><br/>
+            • <strong>Signal:</strong> ${statusText}
+          `;
+        },
+        (error) => {
+          output.innerHTML = `<span class='text-rose-600 font-bold'>GPS Error (${error.code}): ${error.message}</span>`;
+        },
+        options
+      );
+    }
+
+    function verifyAndSubmitAttendance() {
+      const btn = document.getElementById('btn-verify');
+      const badge = document.getElementById('status-badge');
+      const desc = document.getElementById('status-description');
+      const timeBox = document.getElementById('timestamp-box');
+      const timeEl = document.getElementById('current-timestamp');
+
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
+
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
         btn.disabled = false;
         btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
         return;
       }
 
-      // --- MULTI-LOCATION VERIFICATION LOGIC ---
-      // Find the closest clinic among all configured locations
-      let closestClinic = null;
-      let minDistance = Infinity;
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const userLat = pos.coords.latitude;
+          const userLng = pos.coords.longitude;
+          
+          const clinics = getClinicsList();
+          if (!clinics || clinics.length === 0) {
+            alert("No clinic locations configured in Admin!");
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+            return;
+          }
 
-      clinics.forEach(clinic => {
-        const dist = Math.round(haversineDistance(userLat, userLng, clinic.lat, clinic.lng));
-        if (dist < minDistance) {
-          minDistance = dist;
-          closestClinic = clinic;
-        }
-      });
+          let closestClinic = null;
+          let minDistance = Infinity;
 
-      const distance = minDistance;
-      const targetClinic = closestClinic;
-      const isWithinRadius = distance <= targetClinic.radius;
-      // ------------------------------------------
+          clinics.forEach(clinic => {
+            const dist = Math.round(haversineDistance(userLat, userLng, clinic.lat, clinic.lng));
+            if (dist < minDistance) {
+              minDistance = dist;
+              closestClinic = clinic;
+            }
+          });
 
-      const now = new Date();
-      const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
-      timeEl.textContent = timestampStr;
-      timeBox.classList.remove('hidden');
+          const distance = minDistance;
+          const targetClinic = closestClinic;
+          const isWithinRadius = distance <= targetClinic.radius;
 
-      // Compute shift time dynamically per day
-      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      const currentDayName = days[now.getDay()];
-      const shifts = getShiftSchedule();
-      const shiftStartStr = shifts[currentDayName] || "09:00";
-      const [sHour, sMin] = shiftStartStr.split(":").map(Number);
+          const now = new Date();
+          const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
+          timeEl.textContent = timestampStr;
+          timeBox.classList.remove('hidden');
 
-      let isLate = false;
-      let minutesLate = 0;
-      if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
-        isLate = true;
-        minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
-      }
+          const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const currentDayName = days[now.getDay()];
+          const shifts = getShiftSchedule();
+          const shiftStartStr = shifts[currentDayName] || "09:00";
+          const [sHour, sMin] = shiftStartStr.split(":").map(Number);
 
-      const logEntry = {
-        pin: activeUser.pin,
-        name: activeUser.name,
-        timestamp: timestampStr,
-        distance: `${distance}m (${targetClinic.name})`,
-        approved: isWithinRadius,
-        isLate: isWithinRadius ? isLate : false,
-        minutesLate: isWithinRadius ? minutesLate : 0
-      };
+          let isLate = false;
+          let minutesLate = 0;
+          if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
+            isLate = true;
+            minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
+          }
 
-      saveLog(logEntry);
+          const logEntry = {
+            pin: activeUser.pin,
+            name: activeUser.name,
+            timestamp: timestampStr,
+            distance: `${distance}m (${targetClinic.name})`,
+            approved: isWithinRadius,
+            isLate: isWithinRadius ? isLate : false,
+            minutesLate: isWithinRadius ? minutesLate : 0
+          };
 
-      if (isWithinRadius) {
-        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
-        badge.textContent = "Approved & Submitted";
-        desc.innerHTML = `<span class="text-emerald-700 font-semibold">Location Verified at ${targetClinic.name}! (${distance}m away).</span> ${isLate ? `You checked in <strong>${minutesLate} mins late</strong>.` : 'Checked in on time!'}`;
-      } else {
-        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
-        badge.textContent = "Access Denied";
-        desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range for ${targetClinic.name}!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
-      }
+          saveLog(logEntry);
 
-      btn.disabled = false;
-      btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
-      
-      renderStaffLateRecords();
-    },
-    (err) => {
-      alert("GPS Error: " + err.message);
-      btn.disabled = false;
-      btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
-    },
-    { 
-  enableHighAccuracy: true, // Forces phone to combine GPS + Wi-Fi + Cell
-  timeout: 15000,           // Gives phone 15 seconds to refine location accuracy
-  maximumAge: 0             // Prevents returning old cached tower locations
+          if (isWithinRadius) {
+            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
+            badge.textContent = "Approved & Submitted";
+            desc.innerHTML = `<span class="text-emerald-700 font-semibold">Location Verified at ${targetClinic.name}! (${distance}m away).</span> ${isLate ? `You checked in <strong>${minutesLate} mins late</strong>.` : 'Checked in on time!'}`;
+          } else {
+            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
+            badge.textContent = "Access Denied";
+            desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range for ${targetClinic.name}!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
+          }
+
+          btn.disabled = false;
+          btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
+          
+          renderStaffLateRecords();
+        },
+        (err) => {
+          alert("GPS Error: " + err.message);
+          btn.disabled = false;
+          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+        },
+        { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+      );
     }
-  );
-}
 
     function renderStaffLateRecords() {
       const logs = getLogs();
@@ -675,7 +762,7 @@ function verifyAndSubmitAttendance() {
       const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
 
       document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late`;
-
+      
       const warningBanner = document.getElementById('dr-gerald-warning');
       if (effectiveLateCount >= 3) {
         warningBanner.classList.remove('hidden');
@@ -683,20 +770,20 @@ function verifyAndSubmitAttendance() {
         warningBanner.classList.add('hidden');
       }
 
-      const list = document.getElementById('staff-late-list');
+      const listEl = document.getElementById('staff-late-list');
       if (lateLogs.length === 0) {
-        list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
+        listEl.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
       } else {
-        list.innerHTML = lateLogs.map(l => `
-          <li class="py-1.5 flex justify-between">
+        listEl.innerHTML = lateLogs.map(l => `
+          <li class="py-1.5 flex items-center justify-between">
             <span>${l.timestamp}</span>
-            <span class="text-amber-600 font-bold">${l.minutesLate} mins late</span>
+            <span class="text-amber-600 font-bold">+${l.minutesLate} mins</span>
           </li>
         `).join('');
       }
     }
 
-    // --- ADMIN NAVIGATION & TABS ---
+    // --- ADMIN NAVIGATION & TAB SWITCHING ---
     function switchAdminTab(tab) {
       ['dashboard', 'staff', 'clinics', 'hours'].forEach(t => {
         document.getElementById(`atab-${t}`).classList.add('hidden');
@@ -706,9 +793,9 @@ function verifyAndSubmitAttendance() {
       document.getElementById(`atab-btn-${tab}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white";
 
       if (tab === 'dashboard') renderAdminDashboard();
-      if (tab === 'staff') renderStaffDirectoryTable();
-      if (tab === 'clinics') renderClinicsTable();
-      if (tab === 'hours') renderShiftsTable();
+      if (tab === 'staff') renderStaffDirectory();
+      if (tab === 'clinics') renderClinicsList();
+      if (tab === 'hours') renderShiftsList();
     }
 
     function toggleShowInactiveStaff() {
@@ -718,135 +805,166 @@ function verifyAndSubmitAttendance() {
       renderAdminDashboard();
     }
 
-    // --- ADMIN DASHBOARD RENDER ---
+    // --- ADMIN DASHBOARD RENDER & CHARTS ---
     function renderAdminDashboard() {
       const logs = getLogs();
-      const resets = getResetStates();
       const staffList = getStaffList();
-      const bentoContainer = document.getElementById('bento-grid');
-      const tableBody = document.getElementById('master-log-table');
-      bentoContainer.innerHTML = '';
-      tableBody.innerHTML = '';
+      const resets = getResetStates();
 
-      let totalOnTime = 0;
-      let totalLate = 0;
-      const staffLateMap = {};
-
-      const filteredStaff = showInactiveStaff ? staffList : staffList.filter(s => !s.lastDay || new Date(s.lastDay) >= new Date());
-
-      filteredStaff.forEach(staff => {
-        const staffLogs = logs.filter(l => l.pin === staff.pin);
-        const approvedLogs = staffLogs.filter(l => l.approved);
-        const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
-        const lateLogs = approvedLogs.filter(l => l.isLate);
-        
-        const resetOffset = resets[staff.pin] || 0;
-        const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
-
-        totalOnTime += onTimeCount;
-        totalLate += lateLogs.length;
-        staffLateMap[staff.name] = lateLogs.length;
-
-        const isWarning = effectiveLate >= 3;
-        const isResigned = staff.lastDay && new Date(staff.lastDay) < new Date();
-
-        const card = document.createElement('div');
-        card.className = `p-5 rounded-2xl border transition shadow-sm flex flex-col justify-between ${
-          isResigned ? 'opacity-40 bg-slate-100 border-slate-300' : (isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200')
-        }`;
-
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center justify-between mb-1">
-              <span class="font-bold text-slate-800">${staff.name}</span>
-              ${isResigned ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-slate-300 text-slate-700 rounded">RESIGNED</span>' : (isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : '')}
-            </div>
-            <p class="text-xs text-slate-500 mb-3">${staff.role}</p>
-
-            <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4">
-              <div class="bg-white/80 p-2 rounded-lg border">
-                <span class="block text-slate-400 text-[10px]">ON TIME</span>
-                <span class="font-bold text-emerald-600 text-sm">${onTimeCount}</span>
-              </div>
-              <div class="bg-white/80 p-2 rounded-lg border">
-                <span class="block text-slate-400 text-[10px]">LATE</span>
-                <span class="font-bold ${isWarning ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-slate-200/60">
-            ${isWarning && !isResigned ? `
-              <button onclick="acknowledgeAction('${staff.pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
-                <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset Count)
-              </button>
-            ` : ''}
-            <button onclick="openStaffModal('${staff.pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
-              View Detailed Logs
-            </button>
-          </div>
-        `;
-        bentoContainer.appendChild(card);
-      });
-
+      // Master Log Table
+      const logTbody = document.getElementById('master-log-table');
       if (logs.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No verification attempts logged yet.</td></tr>`;
+        logTbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400 italic">No attendance records logged yet.</td></tr>`;
       } else {
-        logs.forEach(l => {
-          const tr = document.createElement('tr');
-          tr.className = "hover:bg-slate-50";
-          tr.innerHTML = `
-            <td class="p-3 text-slate-500">${l.timestamp}</td>
-            <td class="p-3 font-semibold text-slate-800">${l.name}</td>
-            <td class="p-3 text-slate-600">${l.distance}</td>
-            <td class="p-3">
-              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
-                ${l.approved ? 'Approved' : 'Denied'}
-              </span>
-            </td>
-            <td class="p-3">
-              ${l.approved ? (l.isLate ? `<span class="text-amber-600 font-bold">${l.minutesLate}m Late</span>` : `<span class="text-emerald-600 font-bold">On-Time</span>`) : '<span class="text-slate-400">N/A</span>'}
-            </td>
+        logTbody.innerHTML = logs.map(l => {
+          const resBadge = l.approved 
+            ? `<span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-700 rounded-md">APPROVED</span>`
+            : `<span class="px-2.5 py-0.5 text-[10px] font-bold bg-rose-100 text-rose-700 rounded-md">DENIED</span>`;
+          
+          let puncBadge = `<span class="text-slate-400">--</span>`;
+          if (l.approved) {
+            puncBadge = l.isLate 
+              ? `<span class="text-amber-600 font-bold">Late (+${l.minutesLate}m)</span>`
+              : `<span class="text-emerald-600 font-bold">On Time</span>`;
+          }
+          return `
+            <tr class="hover:bg-slate-50">
+              <td class="p-3">${l.timestamp}</td>
+              <td class="p-3 font-semibold text-slate-800">${l.name}</td>
+              <td class="p-3 text-slate-500">${l.distance}</td>
+              <td class="p-3">${resBadge}</td>
+              <td class="p-3">${puncBadge}</td>
+            </tr>
           `;
-          tableBody.appendChild(tr);
-        });
+        }).join('');
       }
 
-      renderCharts(totalOnTime, totalLate, staffLateMap);
-    }
+      // Filter staff for Bento Grid
+      const filteredStaff = staffList.filter(s => {
+        if (showInactiveStaff) return true;
+        return !s.lastDay || new Date(s.lastDay) >= new Date();
+      });
 
-    function acknowledgeAction(pin) {
-      const logs = getLogs();
-      const lateCount = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
-      setResetState(pin, lateCount);
-      renderAdminDashboard();
-    }
+      // Bento Grid Cards
+      const bento = document.getElementById('bento-grid');
+      bento.innerHTML = filteredStaff.map(s => {
+        const sLogs = logs.filter(l => l.pin === s.pin && l.approved);
+        const lateLogs = sLogs.filter(l => l.isLate);
+        const resetCount = resets[s.pin] || 0;
+        const effectiveLate = Math.max(0, lateLogs.length - resetCount);
+        const isDeactivated = s.lastDay && new Date(s.lastDay) < new Date();
 
-    // --- STAFF DIRECTORY CRUD ---
-    function renderStaffDirectoryTable() {
-      const list = getStaffList();
-      const tbody = document.getElementById('staff-directory-tbody');
-      tbody.innerHTML = list.map(s => {
-        const isResigned = s.lastDay && new Date(s.lastDay) < new Date();
         return `
-          <tr class="${isResigned ? 'bg-slate-100 opacity-60' : 'hover:bg-slate-50'}">
-            <td class="p-3 font-bold text-sky-600">${s.pin}</td>
-            <td class="p-3 font-bold text-slate-800">${s.name}</td>
-            <td class="p-3">${s.role}</td>
-            <td class="p-3">${s.dateJoined || '-'}</td>
-            <td class="p-3">${s.lastDay || '-'}</td>
-            <td class="p-3">
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isResigned ? 'bg-slate-300 text-slate-700' : 'bg-emerald-100 text-emerald-700'}">
-                ${isResigned ? 'Resigned' : 'Active'}
-              </span>
-            </td>
-            <td class="p-3 text-right">
-              <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
-              <button onclick="deleteStaff('${s.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
-            </td>
-          </tr>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4 ${isDeactivated ? 'opacity-60 bg-slate-50' : ''}">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded-full ${isDeactivated ? 'bg-slate-200 text-slate-600' : 'bg-sky-100 text-sky-700'}">
+                  ${isDeactivated ? 'Resigned / Inactive' : 'Active Staff'}
+                </span>
+                <span class="text-xs font-mono text-slate-400">PIN: ${s.pin}</span>
+              </div>
+              <h4 class="font-bold text-slate-800 text-base">${s.name}</h4>
+              <p class="text-xs text-slate-500">${s.role}</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-center border-y py-3 text-xs font-mono">
+              <div>
+                <p class="text-slate-400">Total Check-ins</p>
+                <p class="font-bold text-slate-700 text-sm">${sLogs.length}</p>
+              </div>
+              <div>
+                <p class="text-slate-400">Effective Late</p>
+                <p class="font-bold ${effectiveLate >= 3 ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate} Mths</p>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <button onclick="viewStaffDetails('${s.pin}')" class="flex-1 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
+                <i class="fa-solid fa-clock-rotate-left mr-1"></i> View Logs
+              </button>
+              <button onclick="resetStaffLateCounter('${s.pin}')" class="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold rounded-lg transition" title="Reset Warning Counter">
+                <i class="fa-solid fa-rotate-left mr-1"></i> Reset Late
+              </button>
+            </div>
+          </div>
         `;
       }).join('');
+
+      // Render Charts
+      renderAnalyticsCharts(logs, staffList);
+    }
+
+    function renderAnalyticsCharts(logs, staffList) {
+      const approvedCount = logs.filter(l => l.approved).length;
+      const deniedCount = logs.filter(l => !l.approved).length;
+
+      // Pie Chart
+      const pieCtx = document.getElementById('chart-pie').getContext('2d');
+      if (pieChartInstance) pieChartInstance.destroy();
+      pieChartInstance = new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Approved', 'Denied'],
+          datasets: [{
+            data: [approvedCount, deniedCount],
+            backgroundColor: ['#10b981', '#f43f5e']
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      // Bar Chart (Late Counts per Staff)
+      const staffNames = staffList.map(s => s.name.split(' ')[1] || s.name);
+      const lateCounts = staffList.map(s => logs.filter(l => l.pin === s.pin && l.approved && l.isLate).length);
+
+      const barCtx = document.getElementById('chart-bar').getContext('2d');
+      if (barChartInstance) barChartInstance.destroy();
+      barChartInstance = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: staffNames,
+          datasets: [{
+            label: 'Late Occurrences',
+            data: lateCounts,
+            backgroundColor: '#f59e0b'
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+      });
+    }
+
+    function resetStaffLateCounter(pin) {
+      if (confirm("Reset the monthly late warning counter for this staff member?")) {
+        const logs = getLogs();
+        const totalLate = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
+        setResetState(pin, totalLate);
+        renderAdminDashboard();
+        alert("Late counter successfully reset to 0.");
+      }
+    }
+
+    // --- STAFF DIRECTORY TAB LOGIC ---
+    function renderStaffDirectory() {
+      const staff = getStaffList();
+      const tbody = document.getElementById('staff-directory-tbody');
+      tbody.innerHTML = staff.map(s => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3 font-bold">${s.pin}</td>
+          <td class="p-3">${s.name}</td>
+          <td class="p-3 text-slate-500">${s.role}</td>
+          <td class="p-3">${s.dateJoined}</td>
+          <td class="p-3">${s.lastDay || '--'}</td>
+          <td class="p-3">
+            <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${s.lastDay && new Date(s.lastDay) < new Date() ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">
+              ${s.lastDay && new Date(s.lastDay) < new Date() ? 'Deactivated' : 'Active'}
+            </span>
+          </td>
+          <td class="p-3 text-right">
+            <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:text-sky-800 font-bold mr-2">Edit</button>
+            <button onclick="deleteStaff('${s.id}')" class="text-rose-600 hover:text-rose-800 font-bold">Delete</button>
+          </td>
+        </tr>
+      `).join('');
     }
 
     function handleSaveStaff(e) {
@@ -856,41 +974,38 @@ function verifyAndSubmitAttendance() {
       const name = document.getElementById('input-staff-name').value.trim();
       const role = document.getElementById('input-staff-role').value.trim();
       const join = document.getElementById('input-staff-join').value;
-      const lastDay = document.getElementById('input-staff-lastday').value;
+      const last = document.getElementById('input-staff-lastday').value;
 
-      const list = getStaffList();
-
+      let list = getStaffList();
       if (id) {
-        const index = list.findIndex(s => s.id === id);
-        if (index !== -1) {
-          list[index] = { id, pin, name, role, dateJoined: join, lastDay };
-        }
+        list = list.map(s => s.id === id ? { id, pin, name, role, dateJoined: join, lastDay: last } : s);
       } else {
-        list.push({ id: 'S' + Date.now(), pin, name, role, dateJoined: join, lastDay });
+        list.push({ id: "S" + Date.now(), pin, name, role, dateJoined: join, lastDay: last });
       }
 
       saveStaffList(list);
       resetStaffForm();
-      renderStaffDirectoryTable();
+      renderStaffDirectory();
     }
 
     function editStaff(id) {
       const staff = getStaffList().find(s => s.id === id);
-      if (!staff) return;
-      document.getElementById('edit-staff-id').value = staff.id;
-      document.getElementById('input-staff-pin').value = staff.pin;
-      document.getElementById('input-staff-name').value = staff.name;
-      document.getElementById('input-staff-role').value = staff.role;
-      document.getElementById('input-staff-join').value = staff.dateJoined || '';
-      document.getElementById('input-staff-lastday').value = staff.lastDay || '';
-      document.getElementById('staff-form-title').textContent = "Update Staff Member";
+      if (staff) {
+        document.getElementById('edit-staff-id').value = staff.id;
+        document.getElementById('input-staff-pin').value = staff.pin;
+        document.getElementById('input-staff-name').value = staff.name;
+        document.getElementById('input-staff-role').value = staff.role;
+        document.getElementById('input-staff-join').value = staff.dateJoined;
+        document.getElementById('input-staff-lastday').value = staff.lastDay || '';
+        document.getElementById('staff-form-title').textContent = "Edit Staff Member";
+      }
     }
 
     function deleteStaff(id) {
-      if (confirm("Delete this staff member?")) {
+      if (confirm("Are you sure you want to delete this staff member?")) {
         const list = getStaffList().filter(s => s.id !== id);
         saveStaffList(list);
-        renderStaffDirectoryTable();
+        renderStaffDirectory();
       }
     }
 
@@ -904,19 +1019,19 @@ function verifyAndSubmitAttendance() {
       document.getElementById('staff-form-title').textContent = "Add New Staff Member";
     }
 
-    // --- CLINICS CRUD ---
-    function renderClinicsTable() {
-      const list = getClinicsList();
+    // --- CLINICS TAB LOGIC ---
+    function renderClinicsList() {
+      const clinics = getClinicsList();
       const tbody = document.getElementById('clinics-tbody');
-      tbody.innerHTML = list.map(c => `
+      tbody.innerHTML = clinics.map(c => `
         <tr class="hover:bg-slate-50">
           <td class="p-3 font-bold text-slate-800">${c.name}</td>
           <td class="p-3">${c.lat}</td>
           <td class="p-3">${c.lng}</td>
-          <td class="p-3">${c.radius}m</td>
+          <td class="p-3 font-bold text-sky-600">${c.radius}m</td>
           <td class="p-3 text-right">
-            <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
-            <button onclick="deleteClinic('${c.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
+            <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:text-sky-800 font-bold mr-2">Edit</button>
+            <button onclick="deleteClinic('${c.id}')" class="text-rose-600 hover:text-rose-800 font-bold">Delete</button>
           </td>
         </tr>
       `).join('');
@@ -930,35 +1045,35 @@ function verifyAndSubmitAttendance() {
       const lng = parseFloat(document.getElementById('input-clinic-lng').value);
       const radius = parseInt(document.getElementById('input-clinic-radius').value);
 
-      const list = getClinicsList();
+      let list = getClinicsList();
       if (id) {
-        const idx = list.findIndex(c => c.id === id);
-        if (idx !== -1) list[idx] = { id, name, lat, lng, radius };
+        list = list.map(c => c.id === id ? { id, name, lat, lng, radius } : c);
       } else {
-        list.push({ id: 'C' + Date.now(), name, lat, lng, radius });
+        list.push({ id: "C" + Date.now(), name, lat, lng, radius });
       }
 
       saveClinicsList(list);
       resetClinicForm();
-      renderClinicsTable();
+      renderClinicsList();
     }
 
     function editClinic(id) {
       const c = getClinicsList().find(item => item.id === id);
-      if (!c) return;
-      document.getElementById('edit-clinic-id').value = c.id;
-      document.getElementById('input-clinic-name').value = c.name;
-      document.getElementById('input-clinic-lat').value = c.lat;
-      document.getElementById('input-clinic-lng').value = c.lng;
-      document.getElementById('input-clinic-radius').value = c.radius;
-      document.getElementById('clinic-form-title').textContent = "Update Clinic Location";
+      if (c) {
+        document.getElementById('edit-clinic-id').value = c.id;
+        document.getElementById('input-clinic-name').value = c.name;
+        document.getElementById('input-clinic-lat').value = c.lat;
+        document.getElementById('input-clinic-lng').value = c.lng;
+        document.getElementById('input-clinic-radius').value = c.radius;
+        document.getElementById('clinic-form-title').textContent = "Edit Clinic Location";
+      }
     }
 
     function deleteClinic(id) {
       if (confirm("Delete this clinic location?")) {
         const list = getClinicsList().filter(c => c.id !== id);
         saveClinicsList(list);
-        renderClinicsTable();
+        renderClinicsList();
       }
     }
 
@@ -967,29 +1082,28 @@ function verifyAndSubmitAttendance() {
       document.getElementById('input-clinic-name').value = '';
       document.getElementById('input-clinic-lat').value = '';
       document.getElementById('input-clinic-lng').value = '';
-      document.getElementById('input-clinic-radius').value = 50;
+      document.getElementById('input-clinic-radius').value = '150';
       document.getElementById('clinic-form-title').textContent = "Add New Clinic Branch";
     }
 
     function setClinicFormToCurrentGPS() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => {
-          document.getElementById('input-clinic-lat').value = pos.coords.latitude;
-          document.getElementById('input-clinic-lng').value = pos.coords.longitude;
-        });
-      }
+      if (!navigator.geolocation) return alert("Geolocation not supported");
+      navigator.geolocation.getCurrentPosition(pos => {
+        document.getElementById('input-clinic-lat').value = pos.coords.latitude.toFixed(6);
+        document.getElementById('input-clinic-lng').value = pos.coords.longitude.toFixed(6);
+      }, err => alert("GPS Error: " + err.message), { enableHighAccuracy: true });
     }
 
-    // --- SHIFTS MANAGEMENT ---
-    function renderShiftsTable() {
+    // --- SHIFTS TAB LOGIC ---
+    function renderShiftsList() {
       const shifts = getShiftSchedule();
       const tbody = document.getElementById('shifts-tbody');
-      tbody.innerHTML = Object.keys(shifts).map(day => `
+      tbody.innerHTML = Object.entries(shifts).map(([day, time]) => `
         <tr class="hover:bg-slate-50">
           <td class="p-3 font-bold text-slate-800">${day}</td>
-          <td class="p-3 text-sky-600 font-bold">${shifts[day]} SGT</td>
+          <td class="p-3 font-mono font-bold text-sky-600">${time} SGT</td>
           <td class="p-3 text-right">
-            <button onclick="quickSetShift('${day}')" class="text-sky-600 hover:underline font-semibold">Modify</button>
+            <button onclick="editShift('${day}', '${time}')" class="text-sky-600 hover:text-sky-800 font-bold">Edit</button>
           </td>
         </tr>
       `).join('');
@@ -1003,38 +1117,37 @@ function verifyAndSubmitAttendance() {
       const shifts = getShiftSchedule();
       shifts[day] = time;
       saveShiftSchedule(shifts);
-      renderShiftsTable();
+      renderShiftsList();
     }
 
-    function quickSetShift(day) {
+    function editShift(day, time) {
       document.getElementById('input-shift-day').value = day;
-      document.getElementById('input-shift-time').value = getShiftSchedule()[day] || "09:00";
+      document.getElementById('input-shift-time').value = time;
     }
 
-    // --- MODAL & EXPORT ---
-    function openStaffModal(pin) {
-      const staff = getStaffList().find(s => s.pin === pin) || { name: "Staff", role: "Staff" };
+    // --- MODAL LOG HISTORY ---
+    function viewStaffDetails(pin) {
+      const staff = getStaffList().find(s => s.pin === pin);
       const logs = getLogs().filter(l => l.pin === pin);
-      const approved = logs.filter(l => l.approved);
+      
+      document.getElementById('modal-staff-name').textContent = staff ? staff.name : 'Staff Details';
+      document.getElementById('modal-staff-role').textContent = staff ? staff.role : '';
 
-      document.getElementById('modal-staff-name').textContent = staff.name;
-      document.getElementById('modal-staff-role').textContent = staff.role;
+      const onTime = logs.filter(l => l.approved && !l.isLate).length;
+      const late = logs.filter(l => l.approved && l.isLate).length;
+      const denied = logs.filter(l => !l.approved).length;
 
-      document.getElementById('modal-ontime-count').textContent = approved.filter(l => !l.isLate).length;
-      document.getElementById('modal-late-count').textContent = approved.filter(l => l.isLate).length;
-      document.getElementById('modal-denied-count').textContent = logs.filter(l => !l.approved).length;
+      document.getElementById('modal-ontime-count').textContent = onTime;
+      document.getElementById('modal-late-count').textContent = late;
+      document.getElementById('modal-denied-count').textContent = denied;
 
       const tbody = document.getElementById('modal-log-tbody');
       tbody.innerHTML = logs.map(l => `
         <tr>
-          <td class="p-2 text-slate-500">${l.timestamp}</td>
+          <td class="p-2">${l.timestamp}</td>
           <td class="p-2">${l.distance}</td>
-          <td class="p-2">
-            <span class="px-1.5 py-0.5 text-[9px] font-bold rounded ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
-              ${l.approved ? 'APPROVED' : 'DENIED'}
-            </span>
-          </td>
-          <td class="p-2 text-slate-600">${l.approved ? (l.isLate ? `${l.minutesLate}m Late` : 'On Time') : 'Out of Radius'}</td>
+          <td class="p-2 font-bold ${l.approved ? 'text-emerald-600' : 'text-rose-600'}">${l.approved ? 'APPROVED' : 'DENIED'}</td>
+          <td class="p-2 text-slate-500">${l.approved ? (l.isLate ? `Late +${l.minutesLate}m` : 'On Time') : 'Out of Range'}</td>
         </tr>
       `).join('');
 
@@ -1047,104 +1160,24 @@ function verifyAndSubmitAttendance() {
       document.getElementById('modal-staff-detail').classList.remove('flex');
     }
 
+    // --- EXPORT TO EXCEL (CSV) ---
     function exportAllLogsCSV() {
       const logs = getLogs();
       if (logs.length === 0) return alert("No logs available to export.");
 
-      let csv = "Timestamp,Staff Name,Distance,Status,Punctuality\n";
+      let csv = "Timestamp,Staff PIN,Staff Name,Distance & Location,Status,Punctuality\n";
       logs.forEach(l => {
-        const punctuality = l.approved ? (l.isLate ? `${l.minutesLate} mins late` : 'On Time') : 'Denied Scan';
-        csv += `"${l.timestamp}","${l.name}","${l.distance}","${l.approved ? 'Approved' : 'Denied'}","${punctuality}"\n`;
+        const punc = l.approved ? (l.isLate ? `Late (+${l.minutesLate} mins)` : 'On Time') : 'N/A';
+        csv += `"${l.timestamp}","${l.pin}","${l.name}","${l.distance}","${l.approved ? 'APPROVED' : 'DENIED'}","${punc}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `clinic_attendance_master_log.csv`;
+      a.setAttribute('href', url);
+      a.setAttribute('download', `MediCheck_Attendance_Export_${Date.now()}.csv`);
       a.click();
     }
-
-    function renderCharts(onTime, late, staffMap) {
-      if (pieChartInstance) pieChartInstance.destroy();
-      if (barChartInstance) barChartInstance.destroy();
-
-      const pieCtx = document.getElementById('chart-pie').getContext('2d');
-      pieChartInstance = new Chart(pieCtx, {
-        type: 'pie',
-        data: {
-          labels: ['On-Time', 'Late'],
-          datasets: [{ data: [onTime, late], backgroundColor: ['#10b981', '#f59e0b'] }]
-        },
-        options: { responsive: true, maintainAspectRatio: false }
-      });
-
-      const barCtx = document.getElementById('chart-bar').getContext('2d');
-      barChartInstance = new Chart(barCtx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(staffMap),
-          datasets: [{ label: 'Late Count', data: Object.values(staffMap), backgroundColor: '#f43f5e' }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
-      });
-    }
-
-    function haversineDistance(lat1, lon1, lat2, lon2) {
-      const R = 6371e3;
-      const rad = Math.PI / 180;
-      const dLat = (lat2 - lat1) * rad;
-      const dLon = (lon2 - lon1) * rad;
-      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    }
-
-
-    function checkGPSAccuracy() {
-        const output = document.getElementById('gps-debug-status');
-        output.innerHTML = "Fetching GPS fix from device...";
-      
-        if (!navigator.geolocation) {
-          output.innerHTML = "<span class='text-rose-600 font-bold'>Geolocation not supported by browser.</span>";
-          return;
-        }
-      
-        const options = {
-          enableHighAccuracy: true,
-          timeout: 15000,
-          maximumAge: 0
-        };
-      
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const lat = position.coords.latitude.toFixed(6);
-            const lng = position.coords.longitude.toFixed(6);
-            const accuracy = Math.round(position.coords.accuracy);
-      
-            let statusColor = "text-emerald-600";
-            let statusText = "Excellent (True GPS/Wi-Fi)";
-      
-            if (accuracy > 500) {
-              statusColor = "text-rose-600";
-              statusText = "Poor (Cell Tower Fallback)";
-            } else if (accuracy > 100) {
-              statusColor = "text-amber-600";
-              statusText = "Moderate (Needs 150m Radius)";
-            }
-      
-            output.innerHTML = `
-              • <strong>Lat/Lng:</strong> ${lat}, ${lng}<br/>
-              • <strong>Accuracy:</strong> <span class="${statusColor} font-bold">±${accuracy} meters</span><br/>
-              • <strong>Signal:</strong> ${statusText}
-            `;
-          },
-          (error) => {
-            output.innerHTML = `<span class='text-rose-600 font-bold'>GPS Error (${error.code}): ${error.message}</span>`;
-          },
-          options
-        );
-      }
   </script>
 </body>
 </html>
