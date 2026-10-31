@@ -644,7 +644,11 @@ function verifyAndSubmitAttendance() {
       btn.disabled = false;
       btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
     },
-    { enableHighAccuracy: true, timeout: 10000 }
+    { 
+  enableHighAccuracy: true, // Forces phone to combine GPS + Wi-Fi + Cell
+  timeout: 15000,           // Gives phone 15 seconds to refine location accuracy
+  maximumAge: 0             // Prevents returning old cached tower locations
+    }
   );
 }
 
