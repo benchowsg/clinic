@@ -545,89 +545,108 @@
       renderStaffLateRecords();
     }
 
-    function verifyAndSubmitAttendance() {
-      const btn = document.getElementById('btn-verify');
-      const badge = document.getElementById('status-badge');
-      const desc = document.getElementById('status-description');
-      const timeBox = document.getElementById('timestamp-box');
-      const timeEl = document.getElementById('current-timestamp');
+function verifyAndSubmitAttendance() {
+  const btn = document.getElementById('btn-verify');
+  const badge = document.getElementById('status-badge');
+  const desc = document.getElementById('status-description');
+  const timeBox = document.getElementById('timestamp-box');
+  const timeEl = document.getElementById('current-timestamp');
 
-      btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
+  btn.disabled = true;
+  btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
 
-      if (!navigator.geolocation) {
-        alert("Geolocation is not supported by your browser.");
+  if (!navigator.geolocation) {
+    alert("Geolocation is not supported by your browser.");
+    btn.disabled = false;
+    btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const userLat = pos.coords.latitude;
+      const userLng = pos.coords.longitude;
+      
+      const clinics = getClinicsList();
+      if (!clinics || clinics.length === 0) {
+        alert("No clinic locations configured in Admin!");
         btn.disabled = false;
         btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
         return;
       }
 
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const userLat = pos.coords.latitude;
-          const userLng = pos.coords.longitude;
-          
-          const clinics = getClinicsList();
-          const targetClinic = clinics[0] || DEFAULT_CLINICS[0];
+      // --- MULTI-LOCATION VERIFICATION LOGIC ---
+      // Find the closest clinic among all configured locations
+      let closestClinic = null;
+      let minDistance = Infinity;
 
-          const distance = Math.round(haversineDistance(userLat, userLng, targetClinic.lat, targetClinic.lng));
-          
-          const now = new Date();
-          const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
-          timeEl.textContent = timestampStr;
-          timeBox.classList.remove('hidden');
+      clinics.forEach(clinic => {
+        const dist = Math.round(haversineDistance(userLat, userLng, clinic.lat, clinic.lng));
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestClinic = clinic;
+        }
+      });
 
-          const isWithinRadius = distance <= targetClinic.radius;
-          
-          // Compute shift time dynamically per day
-          const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          const currentDayName = days[now.getDay()];
-          const shifts = getShiftSchedule();
-          const shiftStartStr = shifts[currentDayName] || "09:00";
-          const [sHour, sMin] = shiftStartStr.split(":").map(Number);
+      const distance = minDistance;
+      const targetClinic = closestClinic;
+      const isWithinRadius = distance <= targetClinic.radius;
+      // ------------------------------------------
 
-          let isLate = false;
-          let minutesLate = 0;
-          if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
-            isLate = true;
-            minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
-          }
+      const now = new Date();
+      const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
+      timeEl.textContent = timestampStr;
+      timeBox.classList.remove('hidden');
 
-          const logEntry = {
-            pin: activeUser.pin,
-            name: activeUser.name,
-            timestamp: timestampStr,
-            distance: `${distance}m`,
-            approved: isWithinRadius,
-            isLate: isWithinRadius ? isLate : false,
-            minutesLate: isWithinRadius ? minutesLate : 0
-          };
+      // Compute shift time dynamically per day
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const currentDayName = days[now.getDay()];
+      const shifts = getShiftSchedule();
+      const shiftStartStr = shifts[currentDayName] || "09:00";
+      const [sHour, sMin] = shiftStartStr.split(":").map(Number);
 
-          saveLog(logEntry);
+      let isLate = false;
+      let minutesLate = 0;
+      if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
+        isLate = true;
+        minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
+      }
 
-          if (isWithinRadius) {
-            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
-            badge.textContent = "Approved & Submitted";
-            desc.innerHTML = `<span class="text-emerald-700 font-semibold">Location Verified! (${distance}m from clinic).</span> ${isLate ? `You checked in <strong>${minutesLate} mins late</strong>.` : 'Checked in on time!'}`;
-          } else {
-            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
-            badge.textContent = "Access Denied";
-            desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
-          }
+      const logEntry = {
+        pin: activeUser.pin,
+        name: activeUser.name,
+        timestamp: timestampStr,
+        distance: `${distance}m (${targetClinic.name})`,
+        approved: isWithinRadius,
+        isLate: isWithinRadius ? isLate : false,
+        minutesLate: isWithinRadius ? minutesLate : 0
+      };
 
-          btn.disabled = false;
-          btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
-          
-          renderStaffLateRecords();
-        },
-        (err) => {
-          alert("GPS Error: " + err.message);
-          btn.disabled = false;
-          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
-        },
-        { enableHighAccuracy: true, timeout: 10000 }
-      );
-    }
+      saveLog(logEntry);
+
+      if (isWithinRadius) {
+        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
+        badge.textContent = "Approved & Submitted";
+        desc.innerHTML = `<span class="text-emerald-700 font-semibold">Location Verified at ${targetClinic.name}! (${distance}m away).</span> ${isLate ? `You checked in <strong>${minutesLate} mins late</strong>.` : 'Checked in on time!'}`;
+      } else {
+        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
+        badge.textContent = "Access Denied";
+        desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range for ${targetClinic.name}!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
+      
+      renderStaffLateRecords();
+    },
+    (err) => {
+      alert("GPS Error: " + err.message);
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
+}
 
     function renderStaffLateRecords() {
       const logs = getLogs();
