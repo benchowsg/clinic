@@ -13,10 +13,10 @@
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 min-h-screen flex flex-col">
 
-  <!-- MAIN APP CONTAINER -->
-  <main class="max-w-5xl mx-auto w-full px-4 py-8 flex-1">
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-6xl mx-auto w-full px-4 py-8 flex-1">
 
-    <!-- 1. LANDING & STAFF AUTHENTICATION SCREEN -->
+    <!-- 1. LANDING & STAFF AUTHENTICATION -->
     <section id="view-login" class="max-w-md mx-auto my-12">
       <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm text-center">
         <div class="w-14 h-14 bg-sky-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4 shadow-md shadow-sky-100">
@@ -72,7 +72,7 @@
           </div>
           <p id="status-description" class="text-xs text-slate-500">Tap below to verify location and submit attendance.</p>
           <div id="timestamp-box" class="text-[11px] font-mono text-slate-400 hidden pt-1 border-t border-slate-200/60">
-            Current Timestamp: <span id="current-timestamp" class="text-slate-700">--</span>
+            Current Timestamp (SGT): <span id="current-timestamp" class="text-slate-700">--</span>
           </div>
         </div>
 
@@ -89,20 +89,20 @@
           <span id="staff-late-count-badge" class="px-2 py-0.5 text-xs font-bold bg-slate-100 text-slate-700 rounded-md">0 Late</span>
         </div>
 
-        <!-- Warning Alert Banner -->
-        <div id="dr-gerald-warning" class="hidden p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-xs flex items-start gap-2.5">
+        <!-- Warning Alert Banner for Staff (3 Late Counts) -->
+        <div id="dr-gerald-warning" class="hidden p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-xs flex items-start gap-2.5">
           <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base mt-0.5"></i>
           <div>
             <p class="font-bold">Warning: 3 Late Check-ins Reached!</p>
-            <p class="mt-0.5">You have been late 3 times this month. <strong>Dr. Gerald has been notified.</strong></p>
+            <p class="mt-0.5">You have been late 3 times in this current cycle. <strong>Dr. Gerald has been alerted.</strong></p>
           </div>
         </div>
 
         <!-- Late Breakdown List -->
         <div>
-          <p class="text-xs text-slate-500 mb-2">Detailed Late Records (This Month):</p>
+          <p class="text-xs text-slate-500 mb-2">Detailed Late Records:</p>
           <ul id="staff-late-list" class="divide-y text-xs font-mono text-slate-600">
-            <li class="py-1.5 text-slate-400 italic">No late records this month.</li>
+            <li class="py-1.5 text-slate-400 italic">No late records found.</li>
           </ul>
         </div>
       </div>
@@ -114,67 +114,255 @@
       <!-- Top Admin Header -->
       <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
         <div>
-          <h2 class="text-lg font-bold text-slate-800">Admin Dashboard</h2>
-          <p class="text-xs text-slate-500">Clinic Attendance Overview & Staff Analytics</p>
+          <h2 class="text-lg font-bold text-slate-800">Admin Control Panel</h2>
+          <p class="text-xs text-slate-500">Manage Staff, Locations, Working Hours & View Logs</p>
         </div>
         <button onclick="logout()" class="px-3.5 py-1.5 text-xs font-medium bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-lg transition">
           <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout Admin
         </button>
       </div>
 
-      <!-- Analytics Charts Row -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="text-xs font-bold text-slate-600 uppercase mb-3">Attendance Distribution</h3>
-          <div class="h-48 flex justify-center">
-            <canvas id="chart-pie"></canvas>
+      <!-- Admin Navigation Tabs -->
+      <div class="flex gap-2 border-b border-slate-200 pb-2">
+        <button onclick="switchAdminTab('dashboard')" id="atab-btn-dashboard" class="px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white">
+          <i class="fa-solid fa-chart-pie mr-1.5"></i> Dashboard & Bento
+        </button>
+        <button onclick="switchAdminTab('staff')" id="atab-btn-staff" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700">
+          <i class="fa-solid fa-users mr-1.5"></i> Staff Directory
+        </button>
+        <button onclick="switchAdminTab('clinics')" id="atab-btn-clinics" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700">
+          <i class="fa-solid fa-clinic-medical mr-1.5"></i> Clinic Locations
+        </button>
+        <button onclick="switchAdminTab('hours')" id="atab-btn-hours" class="px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700">
+          <i class="fa-solid fa-clock mr-1.5"></i> Working Hours (SGT)
+        </button>
+      </div>
+
+      <!-- ADMIN TAB 1: DASHBOARD & BENTO -->
+      <div id="atab-dashboard" class="space-y-6">
+        <!-- Analytics Charts Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="text-xs font-bold text-slate-600 uppercase mb-3">Attendance Distribution</h3>
+            <div class="h-48 flex justify-center">
+              <canvas id="chart-pie"></canvas>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="text-xs font-bold text-slate-600 uppercase mb-3">Staff Late Breakdown</h3>
+            <div class="h-48 flex justify-center">
+              <canvas id="chart-bar"></canvas>
+            </div>
           </div>
         </div>
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="text-xs font-bold text-slate-600 uppercase mb-3">Staff Late Breakdown</h3>
-          <div class="h-48 flex justify-center">
-            <canvas id="chart-bar"></canvas>
+
+        <!-- Staff Bento Grid -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-bold text-slate-700">Staff Attendance Summary (Active Staff)</h3>
+            <button onclick="toggleShowInactiveStaff()" id="btn-toggle-inactive" class="px-3 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold rounded-lg transition">
+              Show All Staff (Includes Resigned)
+            </button>
+          </div>
+          <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Dynamic Staff Bento Cards -->
+          </div>
+        </div>
+
+        <!-- Full Attendance Table Log -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-bold text-slate-800">Master Attendance Log</h3>
+              <p class="text-xs text-slate-500">Every check-in attempt with timestamp and GPS distance</p>
+            </div>
+            <button onclick="exportAllLogsCSV()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+              <i class="fa-solid fa-file-excel"></i> Export Excel (CSV)
+            </button>
+          </div>
+
+          <div class="overflow-x-auto border border-slate-200 rounded-xl">
+            <table class="w-full text-left text-xs font-mono">
+              <thead class="bg-slate-50 border-b text-slate-500 uppercase">
+                <tr>
+                  <th class="p-3">Timestamp</th>
+                  <th class="p-3">Staff Name</th>
+                  <th class="p-3">Distance</th>
+                  <th class="p-3">Result</th>
+                  <th class="p-3">Punctuality</th>
+                </tr>
+              </thead>
+              <tbody id="master-log-table" class="divide-y divide-slate-100">
+                <!-- Dynamic Rows -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
-      <!-- Staff Bento Grid -->
-      <div>
-        <h3 class="text-sm font-bold text-slate-700 mb-3">Staff Attendance Summary (Bento Grid)</h3>
-        <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <!-- Dynamic Staff Bento Cards -->
-        </div>
-      </div>
+      <!-- ADMIN TAB 2: STAFF DIRECTORY MANAGEMENT -->
+      <div id="atab-staff" class="hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-slate-800" id="staff-form-title">Add New Staff Member</h3>
+          
+          <form onsubmit="handleSaveStaff(event)" class="grid grid-cols-1 md:grid-cols-5 gap-3">
+            <input type="hidden" id="edit-staff-id">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">4-Digit PIN</label>
+              <input type="text" id="input-staff-pin" maxlength="4" placeholder="1234" required class="w-full p-2 text-xs border rounded-lg font-mono">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Full Name</label>
+              <input type="text" id="input-staff-name" placeholder="Dr. Sarah Tan" required class="w-full p-2 text-xs border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Role / Position</label>
+              <input type="text" id="input-staff-role" placeholder="Senior Doctor" required class="w-full p-2 text-xs border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Date Joined</label>
+              <input type="date" id="input-staff-join" required class="w-full p-2 text-xs border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Last Day (Optional)</label>
+              <input type="date" id="input-staff-lastday" class="w-full p-2 text-xs border rounded-lg">
+            </div>
+            
+            <div class="md:col-span-5 flex justify-end gap-2 pt-2">
+              <button type="button" onclick="resetStaffForm()" class="px-3 py-1.5 text-xs bg-slate-100 text-slate-600 rounded-lg">Cancel / Clear</button>
+              <button type="submit" class="px-4 py-1.5 text-xs bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-lg shadow-sm">
+                Save Staff Directory
+              </button>
+            </div>
+          </form>
 
-      <!-- Full Attendance Table Log -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h3 class="text-sm font-bold text-slate-800">Master Attendance & Distance Log</h3>
-            <p class="text-xs text-slate-500">Logs every single verification attempt and distance from clinic.</p>
+          <!-- Staff Table -->
+          <div class="border rounded-xl overflow-hidden mt-4">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 border-b font-bold text-slate-500 uppercase">
+                <tr>
+                  <th class="p-3">PIN</th>
+                  <th class="p-3">Name</th>
+                  <th class="p-3">Role</th>
+                  <th class="p-3">Joined</th>
+                  <th class="p-3">Last Day</th>
+                  <th class="p-3">Status</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="staff-directory-tbody" class="divide-y font-mono">
+                <!-- Dynamic Rows -->
+              </tbody>
+            </table>
           </div>
-          <button onclick="exportAllLogsCSV()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition flex items-center gap-1.5">
-            <i class="fa-solid fa-file-excel"></i> Export Excel (CSV)
-          </button>
-        </div>
-
-        <div class="overflow-x-auto border border-slate-200 rounded-xl">
-          <table class="w-full text-left text-xs font-mono">
-            <thead class="bg-slate-50 border-b text-slate-500 uppercase">
-              <tr>
-                <th class="p-3">Timestamp</th>
-                <th class="p-3">Staff Name</th>
-                <th class="p-3">Distance</th>
-                <th class="p-3">Result</th>
-                <th class="p-3">Punctuality</th>
-              </tr>
-            </thead>
-            <tbody id="master-log-table" class="divide-y divide-slate-100">
-              <!-- Dynamic Rows -->
-            </tbody>
-          </table>
         </div>
       </div>
+
+      <!-- ADMIN TAB 3: CLINIC LOCATIONS MANAGEMENT -->
+      <div id="atab-clinics" class="hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-slate-800" id="clinic-form-title">Add New Clinic Branch</h3>
+          
+          <form onsubmit="handleSaveClinic(event)" class="grid grid-cols-1 md:grid-cols-4 gap-3">
+            <input type="hidden" id="edit-clinic-id">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Clinic Name</label>
+              <input type="text" id="input-clinic-name" placeholder="Central Clinic" required class="w-full p-2 text-xs border rounded-lg">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Latitude</label>
+              <input type="number" step="any" id="input-clinic-lat" placeholder="1.3521" required class="w-full p-2 text-xs border rounded-lg font-mono">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Longitude</label>
+              <input type="number" step="any" id="input-clinic-lng" placeholder="103.8198" required class="w-full p-2 text-xs border rounded-lg font-mono">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Allowed Radius (Meters)</label>
+              <input type="number" id="input-clinic-radius" value="50" required class="w-full p-2 text-xs border rounded-lg font-mono">
+            </div>
+
+            <div class="md:col-span-4 flex justify-between items-center pt-2">
+              <button type="button" onclick="setClinicFormToCurrentGPS()" class="text-xs text-sky-600 font-semibold hover:underline">
+                <i class="fa-solid fa-crosshairs mr-1"></i> Fill with My Current GPS Location
+              </button>
+              <div class="flex gap-2">
+                <button type="button" onclick="resetClinicForm()" class="px-3 py-1.5 text-xs bg-slate-100 text-slate-600 rounded-lg">Cancel</button>
+                <button type="submit" class="px-4 py-1.5 text-xs bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-lg shadow-sm">
+                  Save Clinic Location
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Clinics Table -->
+          <div class="border rounded-xl overflow-hidden mt-4">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 border-b font-bold text-slate-500 uppercase">
+                <tr>
+                  <th class="p-3">Clinic Name</th>
+                  <th class="p-3">Latitude</th>
+                  <th class="p-3">Longitude</th>
+                  <th class="p-3">Radius</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clinics-tbody" class="divide-y font-mono">
+                <!-- Dynamic Rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN TAB 4: WORKING HOURS (SGT) MANAGEMENT -->
+      <div id="atab-hours" class="hidden space-y-6">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-slate-800">Working Shift Schedule (Singapore Time)</h3>
+          <p class="text-xs text-slate-500">Define shift start times per day of the week. Arriving after this time triggers late count.</p>
+          
+          <form onsubmit="handleSaveShift(event)" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Day of Week</label>
+              <select id="input-shift-day" class="w-full p-2 text-xs border rounded-lg bg-white">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Shift Start Time (SGT)</label>
+              <input type="time" id="input-shift-time" value="09:00" required class="w-full p-2 text-xs border rounded-lg font-mono">
+            </div>
+            <div class="flex items-end">
+              <button type="submit" class="w-full py-2 bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs rounded-lg shadow-sm">
+                Set Shift Hour
+              </button>
+            </div>
+          </form>
+
+          <!-- Schedule List -->
+          <div class="border rounded-xl overflow-hidden mt-4">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 border-b font-bold text-slate-500 uppercase">
+                <tr>
+                  <th class="p-3">Day</th>
+                  <th class="p-3">Start Time (SGT)</th>
+                  <th class="p-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="shifts-tbody" class="divide-y font-mono">
+                <!-- Dynamic Rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ADMIN STAFF DETAIL MODAL -->
@@ -190,7 +378,6 @@
           </button>
         </div>
 
-        <!-- Detailed Metrics -->
         <div class="grid grid-cols-3 gap-3 text-center">
           <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
             <p class="text-xs text-slate-500">On Time</p>
@@ -206,7 +393,6 @@
           </div>
         </div>
 
-        <!-- History Table -->
         <div>
           <h4 class="text-xs font-bold text-slate-700 mb-2">Detailed Log History</h4>
           <div class="max-h-60 overflow-y-auto border rounded-xl">
@@ -233,28 +419,56 @@
   </main>
 
   <script>
-    // --- CLINIC & WORK SHIFT CONFIGURATION ---
-    const CLINIC_CONFIG = {
-      targetLat: 1.3521,    // Replace with your clinic latitude
-      targetLng: 103.8198,  // Replace with your clinic longitude
-      radiusMeters: 50,     // Max allowed radius in meters
-      shiftStartHour: 9,    // 09:00 AM work start time
-      shiftStartMinute: 0
+    // --- INITIAL DEFAULTS & STORAGE ---
+    const DEFAULT_STAFF = [
+      { id: "S1", pin: "1234", name: "Dr. Sarah Tan", role: "General Practitioner", dateJoined: "2023-01-15", lastDay: "" },
+      { id: "S2", pin: "5678", name: "Nurse John Doe", role: "Senior Nurse", dateJoined: "2023-05-20", lastDay: "" },
+      { id: "S3", pin: "2468", name: "Mary Lim", role: "Receptionist", dateJoined: "2024-02-01", lastDay: "2026-10-01" } // Resigned sample
+    ];
+
+    const DEFAULT_CLINICS = [
+      { id: "C1", name: "Main Medical Clinic", lat: 1.3521, lng: 103.8198, radius: 50 }
+    ];
+
+    const DEFAULT_SHIFTS = {
+      "Monday": "09:00",
+      "Tuesday": "09:00",
+      "Wednesday": "09:00",
+      "Thursday": "09:00",
+      "Friday": "09:00",
+      "Saturday": "09:00",
+      "Sunday": "09:00"
     };
 
-    // Preset Staff Accounts
-    const STAFF_ACCOUNTS = {
-      "1234": { id: "S1", name: "Dr. Sarah Tan", role: "General Practitioner" },
-      "5678": { id: "S2", name: "Nurse John Doe", role: "Senior Nurse" },
-      "2468": { id: "S3", name: "Mary Lim", role: "Clinic Receptionist" }
-    };
     const ADMIN_PIN = "9999";
 
-    let activeUser = null; // Currently logged in user
+    let activeUser = null;
+    let showInactiveStaff = false;
     let pieChartInstance = null;
     let barChartInstance = null;
 
-    // Local Storage Helpers
+    // Local Storage Operations
+    function getStaffList() {
+      return JSON.parse(localStorage.getItem('mediCheck_staff') || JSON.stringify(DEFAULT_STAFF));
+    }
+    function saveStaffList(list) {
+      localStorage.setItem('mediCheck_staff', JSON.stringify(list));
+    }
+
+    function getClinicsList() {
+      return JSON.parse(localStorage.getItem('mediCheck_clinics') || JSON.stringify(DEFAULT_CLINICS));
+    }
+    function saveClinicsList(list) {
+      localStorage.setItem('mediCheck_clinics', JSON.stringify(list));
+    }
+
+    function getShiftSchedule() {
+      return JSON.parse(localStorage.getItem('mediCheck_shifts') || JSON.stringify(DEFAULT_SHIFTS));
+    }
+    function saveShiftSchedule(shifts) {
+      localStorage.setItem('mediCheck_shifts', JSON.stringify(shifts));
+    }
+
     function getLogs() {
       return JSON.parse(localStorage.getItem('mediCheck_logs') || "[]");
     }
@@ -263,6 +477,7 @@
       logs.unshift(entry);
       localStorage.setItem('mediCheck_logs', JSON.stringify(logs));
     }
+
     function getResetStates() {
       return JSON.parse(localStorage.getItem('mediCheck_resets') || "{}");
     }
@@ -277,6 +492,7 @@
       e.preventDefault();
       const pin = document.getElementById('pin-input').value.trim();
       const err = document.getElementById('login-error');
+      const staffList = getStaffList();
 
       if (pin === ADMIN_PIN) {
         activeUser = { role: "admin" };
@@ -284,15 +500,23 @@
         document.getElementById('pin-input').value = '';
         showSection('view-admin');
         renderAdminDashboard();
-      } else if (STAFF_ACCOUNTS[pin]) {
-        activeUser = { pin: pin, ...STAFF_ACCOUNTS[pin] };
-        err.classList.add('hidden');
-        document.getElementById('pin-input').value = '';
-        showSection('view-staff');
-        setupStaffUI();
       } else {
-        err.textContent = "Invalid PIN. Please try again.";
-        err.classList.remove('hidden');
+        const staff = staffList.find(s => s.pin === pin);
+        if (staff) {
+          if (staff.lastDay && new Date(staff.lastDay) < new Date()) {
+            err.textContent = "This staff account has been deactivated (last day passed).";
+            err.classList.remove('hidden');
+            return;
+          }
+          activeUser = staff;
+          err.classList.add('hidden');
+          document.getElementById('pin-input').value = '';
+          showSection('view-staff');
+          setupStaffUI();
+        } else {
+          err.textContent = "Invalid PIN. Please try again.";
+          err.classList.remove('hidden');
+        }
       }
     }
 
@@ -308,12 +532,11 @@
       document.getElementById(id).classList.remove('hidden');
     }
 
-    // --- STAFF MOBILE CHECK-IN LOGIC ---
+    // --- STAFF MOBILE CHECK-IN ---
     function setupStaffUI() {
       document.getElementById('staff-greeting-name').textContent = activeUser.name;
       document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
       
-      // Reset Check-in Card Status
       document.getElementById('status-badge').className = "px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full";
       document.getElementById('status-badge').textContent = "Pending";
       document.getElementById('status-description').textContent = "Tap below to verify location and submit attendance.";
@@ -343,36 +566,43 @@
         (pos) => {
           const userLat = pos.coords.latitude;
           const userLng = pos.coords.longitude;
-          const distance = Math.round(haversineDistance(userLat, userLng, CLINIC_CONFIG.targetLat, CLINIC_CONFIG.targetLng));
+          
+          const clinics = getClinicsList();
+          const targetClinic = clinics[0] || DEFAULT_CLINICS[0];
+
+          const distance = Math.round(haversineDistance(userLat, userLng, targetClinic.lat, targetClinic.lng));
           
           const now = new Date();
-          const timestampStr = now.toLocaleString();
+          const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
           timeEl.textContent = timestampStr;
           timeBox.classList.remove('hidden');
 
-          const isWithinRadius = distance <= CLINIC_CONFIG.radiusMeters;
+          const isWithinRadius = distance <= targetClinic.radius;
           
-          // Calculate if late (After 09:00 AM)
+          // Compute shift time dynamically per day
+          const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const currentDayName = days[now.getDay()];
+          const shifts = getShiftSchedule();
+          const shiftStartStr = shifts[currentDayName] || "09:00";
+          const [sHour, sMin] = shiftStartStr.split(":").map(Number);
+
           let isLate = false;
           let minutesLate = 0;
-          if (now.getHours() > CLINIC_CONFIG.shiftStartHour || (now.getHours() === CLINIC_CONFIG.shiftStartHour && now.getMinutes() > CLINIC_CONFIG.shiftStartMinute)) {
+          if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
             isLate = true;
-            minutesLate = (now.getHours() - CLINIC_CONFIG.shiftStartHour) * 60 + (now.getMinutes() - CLINIC_CONFIG.shiftStartMinute);
+            minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
           }
 
-          // Build Log Entry
           const logEntry = {
             pin: activeUser.pin,
             name: activeUser.name,
             timestamp: timestampStr,
-            monthKey: `${now.getFullYear()}-${now.getMonth()+1}`,
             distance: `${distance}m`,
             approved: isWithinRadius,
             isLate: isWithinRadius ? isLate : false,
             minutesLate: isWithinRadius ? minutesLate : 0
           };
 
-          // Save attempt log
           saveLog(logEntry);
 
           if (isWithinRadius) {
@@ -382,7 +612,7 @@
           } else {
             badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
             badge.textContent = "Access Denied";
-            desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range!</span> You are <strong>${distance}m away</strong> (Must be within ${CLINIC_CONFIG.radiusMeters}m).`;
+            desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
           }
 
           btn.disabled = false;
@@ -401,19 +631,15 @@
 
     function renderStaffLateRecords() {
       const logs = getLogs();
-      const now = new Date();
-      const currentMonth = `${now.getFullYear()}-${now.getMonth()+1}`;
-
-      const staffLogs = logs.filter(l => l.pin === activeUser.pin && l.approved && l.monthKey === currentMonth);
+      const staffLogs = logs.filter(l => l.pin === activeUser.pin && l.approved);
       const lateLogs = staffLogs.filter(l => l.isLate);
       
       const resets = getResetStates();
       const resetCount = resets[activeUser.pin] || 0;
       const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
 
-      document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late (This Month)`;
+      document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late`;
 
-      // Show Dr Gerald Warning if late >= 3
       const warningBanner = document.getElementById('dr-gerald-warning');
       if (effectiveLateCount >= 3) {
         warningBanner.classList.remove('hidden');
@@ -421,10 +647,9 @@
         warningBanner.classList.add('hidden');
       }
 
-      // Render Late List
       const list = document.getElementById('staff-late-list');
       if (lateLogs.length === 0) {
-        list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records this month.</li>`;
+        list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
       } else {
         list.innerHTML = lateLogs.map(l => `
           <li class="py-1.5 flex justify-between">
@@ -435,10 +660,33 @@
       }
     }
 
-    // --- ADMIN DASHBOARD & BENTO GRID ---
+    // --- ADMIN NAVIGATION & TABS ---
+    function switchAdminTab(tab) {
+      ['dashboard', 'staff', 'clinics', 'hours'].forEach(t => {
+        document.getElementById(`atab-${t}`).classList.add('hidden');
+        document.getElementById(`atab-btn-${t}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700";
+      });
+      document.getElementById(`atab-${tab}`).classList.remove('hidden');
+      document.getElementById(`atab-btn-${tab}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white";
+
+      if (tab === 'dashboard') renderAdminDashboard();
+      if (tab === 'staff') renderStaffDirectoryTable();
+      if (tab === 'clinics') renderClinicsTable();
+      if (tab === 'hours') renderShiftsTable();
+    }
+
+    function toggleShowInactiveStaff() {
+      showInactiveStaff = !showInactiveStaff;
+      const btn = document.getElementById('btn-toggle-inactive');
+      btn.textContent = showInactiveStaff ? "Show Active Staff Only" : "Show All Staff (Includes Resigned)";
+      renderAdminDashboard();
+    }
+
+    // --- ADMIN DASHBOARD RENDER ---
     function renderAdminDashboard() {
       const logs = getLogs();
       const resets = getResetStates();
+      const staffList = getStaffList();
       const bentoContainer = document.getElementById('bento-grid');
       const tableBody = document.getElementById('master-log-table');
       bentoContainer.innerHTML = '';
@@ -448,14 +696,15 @@
       let totalLate = 0;
       const staffLateMap = {};
 
-      Object.keys(STAFF_ACCOUNTS).forEach(pin => {
-        const staff = STAFF_ACCOUNTS[pin];
-        const staffLogs = logs.filter(l => l.pin === pin);
+      const filteredStaff = showInactiveStaff ? staffList : staffList.filter(s => !s.lastDay || new Date(s.lastDay) >= new Date());
+
+      filteredStaff.forEach(staff => {
+        const staffLogs = logs.filter(l => l.pin === staff.pin);
         const approvedLogs = staffLogs.filter(l => l.approved);
         const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
         const lateLogs = approvedLogs.filter(l => l.isLate);
         
-        const resetOffset = resets[pin] || 0;
+        const resetOffset = resets[staff.pin] || 0;
         const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
 
         totalOnTime += onTimeCount;
@@ -463,20 +712,20 @@
         staffLateMap[staff.name] = lateLogs.length;
 
         const isWarning = effectiveLate >= 3;
+        const isResigned = staff.lastDay && new Date(staff.lastDay) < new Date();
 
-        // Bento Card HTML
         const card = document.createElement('div');
         card.className = `p-5 rounded-2xl border transition shadow-sm flex flex-col justify-between ${
-          isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200'
+          isResigned ? 'opacity-40 bg-slate-100 border-slate-300' : (isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200')
         }`;
 
         card.innerHTML = `
           <div>
-            <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center justify-between mb-1">
               <span class="font-bold text-slate-800">${staff.name}</span>
-              ${isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : ''}
+              ${isResigned ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-slate-300 text-slate-700 rounded">RESIGNED</span>' : (isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : '')}
             </div>
-            <p class="text-xs text-slate-500 mb-4">${staff.role}</p>
+            <p class="text-xs text-slate-500 mb-3">${staff.role}</p>
 
             <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4">
               <div class="bg-white/80 p-2 rounded-lg border">
@@ -491,12 +740,12 @@
           </div>
 
           <div class="space-y-2 pt-2 border-t border-slate-200/60">
-            ${isWarning ? `
-              <button onclick="acknowledgeAction('${pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
-                <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset)
+            ${isWarning && !isResigned ? `
+              <button onclick="acknowledgeAction('${staff.pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset Count)
               </button>
             ` : ''}
-            <button onclick="openStaffModal('${pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
+            <button onclick="openStaffModal('${staff.pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
               View Detailed Logs
             </button>
           </div>
@@ -504,7 +753,6 @@
         bentoContainer.appendChild(card);
       });
 
-      // Render Master Table
       if (logs.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No verification attempts logged yet.</td></tr>`;
       } else {
@@ -528,7 +776,6 @@
         });
       }
 
-      // Render Charts
       renderCharts(totalOnTime, totalLate, staffLateMap);
     }
 
@@ -539,8 +786,198 @@
       renderAdminDashboard();
     }
 
+    // --- STAFF DIRECTORY CRUD ---
+    function renderStaffDirectoryTable() {
+      const list = getStaffList();
+      const tbody = document.getElementById('staff-directory-tbody');
+      tbody.innerHTML = list.map(s => {
+        const isResigned = s.lastDay && new Date(s.lastDay) < new Date();
+        return `
+          <tr class="${isResigned ? 'bg-slate-100 opacity-60' : 'hover:bg-slate-50'}">
+            <td class="p-3 font-bold text-sky-600">${s.pin}</td>
+            <td class="p-3 font-bold text-slate-800">${s.name}</td>
+            <td class="p-3">${s.role}</td>
+            <td class="p-3">${s.dateJoined || '-'}</td>
+            <td class="p-3">${s.lastDay || '-'}</td>
+            <td class="p-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isResigned ? 'bg-slate-300 text-slate-700' : 'bg-emerald-100 text-emerald-700'}">
+                ${isResigned ? 'Resigned' : 'Active'}
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
+              <button onclick="deleteStaff('${s.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function handleSaveStaff(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-staff-id').value;
+      const pin = document.getElementById('input-staff-pin').value.trim();
+      const name = document.getElementById('input-staff-name').value.trim();
+      const role = document.getElementById('input-staff-role').value.trim();
+      const join = document.getElementById('input-staff-join').value;
+      const lastDay = document.getElementById('input-staff-lastday').value;
+
+      const list = getStaffList();
+
+      if (id) {
+        const index = list.findIndex(s => s.id === id);
+        if (index !== -1) {
+          list[index] = { id, pin, name, role, dateJoined: join, lastDay };
+        }
+      } else {
+        list.push({ id: 'S' + Date.now(), pin, name, role, dateJoined: join, lastDay });
+      }
+
+      saveStaffList(list);
+      resetStaffForm();
+      renderStaffDirectoryTable();
+    }
+
+    function editStaff(id) {
+      const staff = getStaffList().find(s => s.id === id);
+      if (!staff) return;
+      document.getElementById('edit-staff-id').value = staff.id;
+      document.getElementById('input-staff-pin').value = staff.pin;
+      document.getElementById('input-staff-name').value = staff.name;
+      document.getElementById('input-staff-role').value = staff.role;
+      document.getElementById('input-staff-join').value = staff.dateJoined || '';
+      document.getElementById('input-staff-lastday').value = staff.lastDay || '';
+      document.getElementById('staff-form-title').textContent = "Update Staff Member";
+    }
+
+    function deleteStaff(id) {
+      if (confirm("Delete this staff member?")) {
+        const list = getStaffList().filter(s => s.id !== id);
+        saveStaffList(list);
+        renderStaffDirectoryTable();
+      }
+    }
+
+    function resetStaffForm() {
+      document.getElementById('edit-staff-id').value = '';
+      document.getElementById('input-staff-pin').value = '';
+      document.getElementById('input-staff-name').value = '';
+      document.getElementById('input-staff-role').value = '';
+      document.getElementById('input-staff-join').value = '';
+      document.getElementById('input-staff-lastday').value = '';
+      document.getElementById('staff-form-title').textContent = "Add New Staff Member";
+    }
+
+    // --- CLINICS CRUD ---
+    function renderClinicsTable() {
+      const list = getClinicsList();
+      const tbody = document.getElementById('clinics-tbody');
+      tbody.innerHTML = list.map(c => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3 font-bold text-slate-800">${c.name}</td>
+          <td class="p-3">${c.lat}</td>
+          <td class="p-3">${c.lng}</td>
+          <td class="p-3">${c.radius}m</td>
+          <td class="p-3 text-right">
+            <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
+            <button onclick="deleteClinic('${c.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function handleSaveClinic(e) {
+      e.preventDefault();
+      const id = document.getElementById('edit-clinic-id').value;
+      const name = document.getElementById('input-clinic-name').value.trim();
+      const lat = parseFloat(document.getElementById('input-clinic-lat').value);
+      const lng = parseFloat(document.getElementById('input-clinic-lng').value);
+      const radius = parseInt(document.getElementById('input-clinic-radius').value);
+
+      const list = getClinicsList();
+      if (id) {
+        const idx = list.findIndex(c => c.id === id);
+        if (idx !== -1) list[idx] = { id, name, lat, lng, radius };
+      } else {
+        list.push({ id: 'C' + Date.now(), name, lat, lng, radius });
+      }
+
+      saveClinicsList(list);
+      resetClinicForm();
+      renderClinicsTable();
+    }
+
+    function editClinic(id) {
+      const c = getClinicsList().find(item => item.id === id);
+      if (!c) return;
+      document.getElementById('edit-clinic-id').value = c.id;
+      document.getElementById('input-clinic-name').value = c.name;
+      document.getElementById('input-clinic-lat').value = c.lat;
+      document.getElementById('input-clinic-lng').value = c.lng;
+      document.getElementById('input-clinic-radius').value = c.radius;
+      document.getElementById('clinic-form-title').textContent = "Update Clinic Location";
+    }
+
+    function deleteClinic(id) {
+      if (confirm("Delete this clinic location?")) {
+        const list = getClinicsList().filter(c => c.id !== id);
+        saveClinicsList(list);
+        renderClinicsTable();
+      }
+    }
+
+    function resetClinicForm() {
+      document.getElementById('edit-clinic-id').value = '';
+      document.getElementById('input-clinic-name').value = '';
+      document.getElementById('input-clinic-lat').value = '';
+      document.getElementById('input-clinic-lng').value = '';
+      document.getElementById('input-clinic-radius').value = 50;
+      document.getElementById('clinic-form-title').textContent = "Add New Clinic Branch";
+    }
+
+    function setClinicFormToCurrentGPS() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          document.getElementById('input-clinic-lat').value = pos.coords.latitude;
+          document.getElementById('input-clinic-lng').value = pos.coords.longitude;
+        });
+      }
+    }
+
+    // --- SHIFTS MANAGEMENT ---
+    function renderShiftsTable() {
+      const shifts = getShiftSchedule();
+      const tbody = document.getElementById('shifts-tbody');
+      tbody.innerHTML = Object.keys(shifts).map(day => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3 font-bold text-slate-800">${day}</td>
+          <td class="p-3 text-sky-600 font-bold">${shifts[day]} SGT</td>
+          <td class="p-3 text-right">
+            <button onclick="quickSetShift('${day}')" class="text-sky-600 hover:underline font-semibold">Modify</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function handleSaveShift(e) {
+      e.preventDefault();
+      const day = document.getElementById('input-shift-day').value;
+      const time = document.getElementById('input-shift-time').value;
+
+      const shifts = getShiftSchedule();
+      shifts[day] = time;
+      saveShiftSchedule(shifts);
+      renderShiftsTable();
+    }
+
+    function quickSetShift(day) {
+      document.getElementById('input-shift-day').value = day;
+      document.getElementById('input-shift-time').value = getShiftSchedule()[day] || "09:00";
+    }
+
+    // --- MODAL & EXPORT ---
     function openStaffModal(pin) {
-      const staff = STAFF_ACCOUNTS[pin];
+      const staff = getStaffList().find(s => s.pin === pin) || { name: "Staff", role: "Staff" };
       const logs = getLogs().filter(l => l.pin === pin);
       const approved = logs.filter(l => l.approved);
 
@@ -591,7 +1028,6 @@
       a.click();
     }
 
-    // --- CHARTS (PIE & BAR) ---
     function renderCharts(onTime, late, staffMap) {
       if (pieChartInstance) pieChartInstance.destroy();
       if (barChartInstance) barChartInstance.destroy();
@@ -601,10 +1037,7 @@
         type: 'pie',
         data: {
           labels: ['On-Time', 'Late'],
-          datasets: [{
-            data: [onTime, late],
-            backgroundColor: ['#10b981', '#f59e0b']
-          }]
+          datasets: [{ data: [onTime, late], backgroundColor: ['#10b981', '#f59e0b'] }]
         },
         options: { responsive: true, maintainAspectRatio: false }
       });
@@ -614,17 +1047,12 @@
         type: 'bar',
         data: {
           labels: Object.keys(staffMap),
-          datasets: [{
-            label: 'Late Count',
-            data: Object.values(staffMap),
-            backgroundColor: '#f43f5e'
-          }]
+          datasets: [{ label: 'Late Count', data: Object.values(staffMap), backgroundColor: '#f43f5e' }]
         },
         options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
       });
     }
 
-    // --- HAVERSINE MATH FORMULA ---
     function haversineDistance(lat1, lon1, lat2, lon2) {
       const R = 6371e3;
       const rad = Math.PI / 180;
