@@ -433,791 +433,791 @@
 
   </main>
 
-  <script>
-    // --- FIREBASE INITIALIZATION & CONFIGURATION ---
-    const firebaseConfig = {
-      apiKey: "AIzaSyAqJGrMv1BMvMJIkgADtKZeaRmySHOfvDc",
-      authDomain: "medicheck-c83c6.firebaseapp.com",
-      databaseURL: "https://medicheck-c83c6-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "medicheck-c83c6",
-      storageBucket: "medicheck-c83c6.firebasestorage.app",
-      messagingSenderId: "857574484746",
-      appId: "1:857574484746:web:bd24dc4fd3e4c289b768f3"
-    };
+<script>
+  // --- FIREBASE INITIALIZATION & CONFIGURATION ---
+  const firebaseConfig = {
+    apiKey: "AIzaSyAqJGrMv1BMvMJIkgADtKZeaRmySHOfvDc",
+    authDomain: "medicheck-c83c6.firebaseapp.com",
+    databaseURL: "https://medicheck-c83c6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "medicheck-c83c6",
+    storageBucket: "medicheck-c83c6.firebasestorage.app",
+    messagingSenderId: "857574484746",
+    appId: "1:857574484746:web:bd24dc4fd3e4c289b768f3"
+  };
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
-    // In-memory cache populated live from Firebase
-    let dbState = {
-      staff: [
-        { id: "S1", pin: "1234", name: "Dr. Sarah Tan", role: "General Practitioner", dateJoined: "2023-01-15", lastDay: "" },
-        { id: "S2", pin: "5678", name: "Nurse John Doe", role: "Senior Nurse", dateJoined: "2023-05-20", lastDay: "" },
-        { id: "S3", pin: "2468", name: "Mary Lim", role: "Receptionist", dateJoined: "2024-02-01", lastDay: "2026-10-01" }
-      ],
-      clinics: [
-        { id: "C1", name: "Beacon Heights (8 Mar Thoma)", lat: 1.326375, lng: 103.862142, radius: 150 },
-        { id: "C2", name: "Main Medical Clinic", lat: 1.3521, lng: 103.8198, radius: 150 }
-      ],
-      shifts: {
-        "Monday": "09:00", "Tuesday": "09:00", "Wednesday": "09:00",
-        "Thursday": "09:00", "Friday": "09:00", "Saturday": "09:00", "Sunday": "09:00"
-      },
-      logs: [],
-      resets: {}
-    };
+  // In-memory cache populated live from Firebase
+  let dbState = {
+    staff: [
+      { id: "S1", pin: "1234", name: "Dr. Sarah Tan", role: "General Practitioner", dateJoined: "2023-01-15", lastDay: "" },
+      { id: "S2", pin: "5678", name: "Nurse John Doe", role: "Senior Nurse", dateJoined: "2023-05-20", lastDay: "" },
+      { id: "S3", pin: "2468", name: "Mary Lim", role: "Receptionist", dateJoined: "2024-02-01", lastDay: "2026-10-01" }
+    ],
+    clinics: [
+      { id: "C1", name: "Beacon Heights (8 Mar Thoma)", lat: 1.326375, lng: 103.862142, radius: 150 },
+      { id: "C2", name: "Main Medical Clinic", lat: 1.3521, lng: 103.8198, radius: 150 }
+    ],
+    shifts: {
+      "Monday": "09:00", "Tuesday": "09:00", "Wednesday": "09:00",
+      "Thursday": "09:00", "Friday": "09:00", "Saturday": "09:00", "Sunday": "09:00"
+    },
+    logs: [],
+    resets: {}
+  };
 
-    const ADMIN_PIN = "9999";
-    let activeUser = null;
-    let showInactiveStaff = false;
-    let pieChartInstance = null;
-    let barChartInstance = null;
+  const ADMIN_PIN = "9999";
+  let activeUser = null;
+  let showInactiveStaff = false;
+  let pieChartInstance = null;
+  let barChartInstance = null;
 
-    // --- REALTIME SYNC LISTENERS ---
-    db.ref("mediCheck").on("value", (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        if (data.staff) dbState.staff = data.staff;
-        if (data.clinics) dbState.clinics = data.clinics;
-        if (data.shifts) dbState.shifts = data.shifts;
-        if (data.logs) {
-          const rawLogs = typeof data.logs === 'object' ? Object.values(data.logs) : data.logs;
-          dbState.logs = rawLogs.reverse();
-        } else {
-          dbState.logs = [];
-        }
-        if (data.resets) dbState.resets = data.resets;
-
-        // Auto-refresh active views
-        if (activeUser) {
-          if (activeUser.role === "admin") {
-            renderAdminDashboard();
-            renderStaffDirectoryTable();
-            renderClinicsTable();
-            renderShiftsTable();
-          } else {
-            setupStaffUI();
-          }
-        }
+  // --- REALTIME SYNC LISTENERS ---
+  db.ref("mediCheck").on("value", (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+      if (data.staff) dbState.staff = data.staff;
+      if (data.clinics) dbState.clinics = data.clinics;
+      if (data.shifts) dbState.shifts = data.shifts;
+      if (data.logs) {
+        const rawLogs = typeof data.logs === 'object' ? Object.values(data.logs) : data.logs;
+        dbState.logs = rawLogs.reverse();
       } else {
-        db.ref("mediCheck").set(dbState);
+        dbState.logs = [];
       }
-    });
+      if (data.resets) dbState.resets = data.resets;
 
-    // --- CLOUD STORAGE ACCESSORS ---
-    function getStaffList() { return dbState.staff; }
-    function saveStaffList(list) {
-      dbState.staff = list;
-      db.ref("mediCheck/staff").set(list);
-    }
-
-    function getClinicsList() { return dbState.clinics; }
-    function saveClinicsList(list) {
-      dbState.clinics = list;
-      db.ref("mediCheck/clinics").set(list);
-    }
-
-    function getShiftSchedule() { return dbState.shifts; }
-    function saveShiftSchedule(shifts) {
-      dbState.shifts = shifts;
-      db.ref("mediCheck/shifts").set(shifts);
-    }
-
-    function getLogs() { return dbState.logs; }
-    function saveLog(entry) {
-      db.ref("mediCheck/logs").push(entry);
-    }
-
-    function getResetStates() { return dbState.resets; }
-    function setResetState(pin, value) {
-      dbState.resets[pin] = value;
-      db.ref(`mediCheck/resets/${pin}`).set(value);
-    }
-
-    // --- DATE & TIME HELPER FOR SAME-DAY CHECK ---
-    function getTodaySGTString() {
-      const now = new Date();
-      return now.toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
-    }
-
-    function hasSubmittedToday(pin) {
-      const logs = getLogs();
-      const todayStr = getTodaySGTString();
-      return logs.find(l => {
-        if (l.pin !== pin || !l.approved) return false;
-        const logDateStr = new Date(l.timestamp).toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
-        return logDateStr === todayStr;
-      });
-    }
-
-    // --- HAVERSINE DISTANCE MATH ---
-    function haversineDistance(lat1, lon1, lat2, lon2) {
-      const R = 6371000;
-      const dLat = (lat2 - lat1) * Math.PI / 180;
-      const dLon = (lon2 - lon1) * Math.PI / 180;
-      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      return R * c;
-    }
-
-    // --- AUTHENTICATION ---
-    function handleAuth(e) {
-      e.preventDefault();
-      const pin = document.getElementById('pin-input').value.trim();
-      const err = document.getElementById('login-error');
-      const staffList = getStaffList();
-
-      if (pin === ADMIN_PIN) {
-        activeUser = { role: "admin" };
-        err.classList.add('hidden');
-        document.getElementById('pin-input').value = '';
-        showSection('view-admin');
-        renderAdminDashboard();
-      } else {
-        const staff = staffList.find(s => s.pin === pin);
-        if (staff) {
-          if (staff.lastDay && new Date(staff.lastDay) < new Date()) {
-            err.textContent = "This staff account has been deactivated (last day passed).";
-            err.classList.remove('hidden');
-            return;
-          }
-          activeUser = staff;
-          err.classList.add('hidden');
-          document.getElementById('pin-input').value = '';
-          showSection('view-staff');
+      // Auto-refresh active views
+      if (activeUser) {
+        if (activeUser.role === "admin") {
+          renderAdminDashboard();
+          renderStaffDirectoryTable();
+          renderClinicsTable();
+          renderShiftsTable();
+        } else {
           setupStaffUI();
-        } else {
-          err.textContent = "Invalid PIN. Please try again.";
-          err.classList.remove('hidden');
         }
       }
+    } else {
+      db.ref("mediCheck").set(dbState);
     }
-
-    function logout() {
-      activeUser = null;
-      showSection('view-login');
-    }
-
-    function showSection(id) {
-      document.getElementById('view-login').classList.add('hidden');
-      document.getElementById('view-staff').classList.add('hidden');
-      document.getElementById('view-admin').classList.add('hidden');
-      document.getElementById(id).classList.remove('hidden');
-    }
-
-    // --- STAFF MOBILE CHECK-IN ---
-    function setupStaffUI() {
-      document.getElementById('staff-greeting-name').textContent = activeUser.name;
-      document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
-      
-      const badge = document.getElementById('status-badge');
-      const desc = document.getElementById('status-description');
-      const btn = document.getElementById('btn-verify');
-      const timeBox = document.getElementById('timestamp-box');
-      const timeEl = document.getElementById('current-timestamp');
-
-      // SAME-DAY SUBMISSION CHECK
-      const existingTodayLog = hasSubmittedToday(activeUser.pin);
-
-      if (existingTodayLog) {
-        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
-        badge.textContent = "Submitted Today";
-        desc.innerHTML = `<span class="text-emerald-700 font-semibold">You have already completed attendance for today.</span> Check-in recorded at ${existingTodayLog.timestamp}.`;
-        
-        timeEl.textContent = existingTodayLog.timestamp;
-        timeBox.classList.remove('hidden');
-
-        btn.disabled = true;
-        btn.className = "w-full py-3.5 bg-slate-200 text-slate-500 font-semibold rounded-xl cursor-not-allowed transition flex items-center justify-center gap-2";
-        btn.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> Attendance Submitted For Today`;
-      } else {
-        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full";
-        badge.textContent = "Pending";
-        desc.textContent = "After verifying your GPS status, tap on the submit button below.";
-        timeBox.classList.add('hidden');
-
-        btn.disabled = false;
-        btn.className = "w-full py-3.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl shadow-md shadow-sky-100 transition flex items-center justify-center gap-2";
-        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
-      }
-
-      renderStaffLateRecords();
-    }
-
-    function checkGPSAccuracy() {
-      const output = document.getElementById('gps-debug-status');
-      output.innerHTML = "Fetching GPS fix from device...";
-
-      if (!navigator.geolocation) {
-        output.innerHTML = "<span class='text-rose-600 font-bold'>Geolocation not supported by browser.</span>";
-        return;
-      }
-
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 15000,
-        maximumAge: 0
-      };
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude.toFixed(6);
-          const lng = position.coords.longitude.toFixed(6);
-          const accuracy = Math.round(position.coords.accuracy);
-
-          let statusColor = "text-emerald-600";
-          let statusText = "Excellent (True GPS/Wi-Fi)";
-
-          if (accuracy > 500) {
-            statusColor = "text-rose-600";
-            statusText = "Poor (Cell Tower Fallback)";
-          } else if (accuracy > 100) {
-            statusColor = "text-amber-600";
-            statusText = "Moderate (Needs 150m Radius)";
-          }
-
-          output.innerHTML = `
-            • <strong>Lat/Lng:</strong> ${lat}, ${lng}<br/>
-            • <strong>Accuracy:</strong> <span class="${statusColor} font-bold">±${accuracy} meters</span><br/>
-            • <strong>Signal:</strong> ${statusText}
-          `;
-        },
-        (error) => {
-          output.innerHTML = `<span class='text-rose-600 font-bold'>GPS Error (${error.code}): ${error.message}</span>`;
-        },
-        options
-      );
-    }
-
-    function verifyAndSubmitAttendance() {
-      if (hasSubmittedToday(activeUser.pin)) {
-        alert("You have already submitted your attendance for today.");
-        setupStaffUI();
-        return;
-      }
-
-      const btn = document.getElementById('btn-verify');
-      const badge = document.getElementById('status-badge');
-      const desc = document.getElementById('status-description');
-      const timeBox = document.getElementById('timestamp-box');
-      const timeEl = document.getElementById('current-timestamp');
-
-      btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
-
-      if (!navigator.geolocation) {
-        alert("Geolocation is not supported by your browser.");
-        btn.disabled = false;
-        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const userLat = pos.coords.latitude;
-          const userLng = pos.coords.longitude;
-          
-          const clinics = getClinicsList();
-          if (!clinics || clinics.length === 0) {
-            alert("No clinic locations configured in Admin!");
-            btn.disabled = false;
-            btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
-            return;
-          }
-
-          // MULTI-CLINIC AUTO-DETECTION: Find nearest clinic
-          let closestClinic = null;
-          let shortestDistance = Infinity;
-
-          clinics.forEach(c => {
-            const dist = Math.round(haversineDistance(userLat, userLng, c.lat, c.lng));
-            if (dist < shortestDistance) {
-              shortestDistance = dist;
-              closestClinic = c;
-            }
-          });
-
-          const distance = shortestDistance;
-          const targetClinic = closestClinic;
-          
-          const now = new Date();
-          const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
-          timeEl.textContent = timestampStr;
-          timeBox.classList.remove('hidden');
-
-          const isWithinRadius = distance <= targetClinic.radius;
-          
-          const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          const currentDayName = days[now.getDay()];
-          const shifts = getShiftSchedule();
-          const shiftStartStr = shifts[currentDayName] || "09:00";
-          const [sHour, sMin] = shiftStartStr.split(":").map(Number);
-
-          let isLate = false;
-          let minutesLate = 0;
-          if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
-            isLate = true;
-            minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
-          }
-
-          const logEntry = {
-            pin: activeUser.pin,
-            name: activeUser.name,
-            timestamp: timestampStr,
-            distance: `${distance}m (${targetClinic.name})`,
-            approved: isWithinRadius,
-            isLate: isWithinRadius ? isLate : false,
-            minutesLate: isWithinRadius ? minutesLate : 0
-          };
-
-          saveLog(logEntry);
-
-          if (isWithinRadius) {
-            setupStaffUI();
-          } else {
-            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
-            badge.textContent = "Access Denied";
-            desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range for ${targetClinic.name}!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
-            btn.disabled = false;
-            btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
-          }
-
-          renderStaffLateRecords();
-        },
-        (err) => {
-          alert("GPS Error: " + err.message);
-          btn.disabled = false;
-          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
-      );
-    }
-
-    function renderStaffLateRecords() {
-      const logs = getLogs();
-      const staffLogs = logs.filter(l => l.pin === activeUser.pin && l.approved);
-      const lateLogs = staffLogs.filter(l => l.isLate);
-      
-      const resets = getResetStates();
-      const resetCount = resets[activeUser.pin] || 0;
-      const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
-
-      document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late`;
-
-      const warningBanner = document.getElementById('dr-gerald-warning');
-      if (effectiveLateCount >= 3) {
-        warningBanner.classList.remove('hidden');
-      } else {
-        warningBanner.classList.add('hidden');
-      }
-
-      const list = document.getElementById('staff-late-list');
-      if (lateLogs.length === 0) {
-        list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
-      } else {
-        list.innerHTML = lateLogs.map(l => `
-          <li class="py-1.5 flex justify-between">
-            <span>${l.timestamp}</span>
-            <span class="text-amber-600 font-bold">${l.minutesLate} mins late</span>
-          </li>
-        `).join('');
-      }
-    }
-
-    // --- ADMIN NAVIGATION & TABS ---
-    function switchAdminTab(tab) {
-      ['dashboard', 'staff', 'clinics', 'hours'].forEach(t => {
-        document.getElementById(`atab-${t}`).classList.add('hidden');
-        document.getElementById(`atab-btn-${t}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700";
-      });
-      document.getElementById(`atab-${tab}`).classList.remove('hidden');
-      document.getElementById(`atab-btn-${tab}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white";
-
-      if (tab === 'dashboard') renderAdminDashboard();
-      if (tab === 'staff') renderStaffDirectoryTable();
-      if (tab === 'clinics') renderClinicsTable();
-      if (tab === 'hours') renderShiftsTable();
-    }
-
-    function toggleShowInactiveStaff() {
-      showInactiveStaff = !showInactiveStaff;
-      const btn = document.getElementById('btn-toggle-inactive');
-      btn.textContent = showInactiveStaff ? "Show Active Staff Only" : "Show All Staff (Includes Resigned)";
-      renderAdminDashboard();
-    }
-
-    // --- ADMIN DASHBOARD RENDER ---
-function renderAdminDashboard() {
-  const logs = getLogs();
-  const resets = getResetStates();
-  const staffList = getStaffList();
-  const bentoContainer = document.getElementById('bento-grid');
-  const tableBody = document.getElementById('master-log-table');
-  bentoContainer.innerHTML = '';
-  tableBody.innerHTML = '';
-
-  let totalOnTime = 0;
-  let totalLate = 0;
-  const staffLateMap = {};
-
-  const filteredStaff = showInactiveStaff ? staffList : staffList.filter(s => !s.lastDay || new Date(s.lastDay) >= new Date());
-
-  filteredStaff.forEach(staff => {
-    const staffLogs = logs.filter(l => l.pin === staff.pin);
-    const approvedLogs = staffLogs.filter(l => l.approved);
-    const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
-    const lateLogs = approvedLogs.filter(l => l.isLate);
-    
-    const resetOffset = resets[staff.pin] || 0;
-    const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
-
-    totalOnTime += onTimeCount;
-    totalLate += lateLogs.length;
-    staffLateMap[staff.name] = lateLogs.length;
-
-    const isWarning = effectiveLate >= 3;
-    const isResigned = staff.lastDay && new Date(staff.lastDay) < new Date();
-
-    const card = document.createElement('div');
-    card.className = `p-5 rounded-2xl border transition shadow-sm flex flex-col justify-between ${
-      isResigned ? 'opacity-40 bg-slate-100 border-slate-300' : (isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200')
-    }`;
-
-    card.innerHTML = `
-      <div>
-        <div class="flex items-center justify-between mb-1">
-          <span class="font-bold text-slate-800">${staff.name}</span>
-          ${isResigned ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-slate-300 text-slate-700 rounded">RESIGNED</span>' : (isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : '')}
-        </div>
-        <p class="text-xs text-slate-500 mb-3">${staff.role}</p>
-
-        <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4">
-          <div class="bg-white/80 p-2 rounded-lg border">
-            <span class="block text-slate-400 text-[10px]">ON TIME</span>
-            <span class="font-bold text-emerald-600 text-sm">${onTimeCount}</span>
-          </div>
-          <div class="bg-white/80 p-2 rounded-lg border">
-            <span class="block text-slate-400 text-[10px]">LATE COUNT</span>
-            <span class="font-bold ${isWarning ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="space-y-2 pt-2 border-t border-slate-200/60">
-        ${isWarning && !isResigned ? `
-          <button onclick="acknowledgeAction('${staff.pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
-            <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset Count)
-          </button>
-        ` : ''}
-        <button onclick="openStaffModal('${staff.pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
-          View Detailed Logs
-        </button>
-      </div>
-    `;
-    bentoContainer.appendChild(card);
   });
 
-  if (logs.length === 0) {
-    tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No verification attempts logged yet.</td></tr>`;
-  } else {
-    logs.forEach(l => {
-      const tr = document.createElement('tr');
-      tr.className = "hover:bg-slate-50";
-      tr.innerHTML = `
-        <td class="p-3 text-slate-500">${l.timestamp}</td>
-        <td class="p-3 font-semibold text-slate-800">${l.name}</td>
-        <td class="p-3 text-slate-600">${l.distance}</td>
-        <td class="p-3">
-          <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
-            ${l.approved ? 'Approved' : 'Denied'}
-          </span>
-        </td>
-        <td class="p-3">
-          ${l.approved ? (l.isLate ? `<span class="text-amber-600 font-bold">${l.minutesLate}m Late</span>` : `<span class="text-emerald-600 font-bold">On-Time</span>`) : '<span class="text-slate-400">N/A</span>'}
-        </td>
-      `;
-      tableBody.appendChild(tr);
+  // --- CLOUD STORAGE ACCESSORS ---
+  function getStaffList() { return dbState.staff; }
+  function saveStaffList(list) {
+    dbState.staff = list;
+    db.ref("mediCheck/staff").set(list);
+  }
+
+  function getClinicsList() { return dbState.clinics; }
+  function saveClinicsList(list) {
+    dbState.clinics = list;
+    db.ref("mediCheck/clinics").set(list);
+  }
+
+  function getShiftSchedule() { return dbState.shifts; }
+  function saveShiftSchedule(shifts) {
+    dbState.shifts = shifts;
+    db.ref("mediCheck/shifts").set(shifts);
+  }
+
+  function getLogs() { return dbState.logs; }
+  function saveLog(entry) {
+    db.ref("mediCheck/logs").push(entry);
+  }
+
+  function getResetStates() { return dbState.resets; }
+  function setResetState(pin, value) {
+    dbState.resets[pin] = value;
+    db.ref(`mediCheck/resets/${pin}`).set(value);
+  }
+
+  // --- DATE & TIME HELPER FOR SAME-DAY CHECK (SINGAPORE TIME) ---
+  function getTodaySGTString() {
+    const now = new Date();
+    return now.toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
+  }
+
+  function hasSubmittedToday(pin) {
+    const logs = getLogs();
+    const todayStr = getTodaySGTString();
+    return logs.find(l => {
+      if (l.pin !== pin || !l.approved) return false;
+      const logDateStr = new Date(l.timestamp).toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
+      return logDateStr === todayStr;
     });
   }
 
-  renderCharts(totalOnTime, totalLate, staffLateMap);
-}
+  // --- HAVERSINE DISTANCE MATH ---
+  function haversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371000;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+  }
 
-    function acknowledgeAction(pin) {
-      const logs = getLogs();
-      const lateCount = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
-      setResetState(pin, lateCount);
+  // --- AUTHENTICATION ---
+  function handleAuth(e) {
+    e.preventDefault();
+    const pin = document.getElementById('pin-input').value.trim();
+    const err = document.getElementById('login-error');
+    const staffList = getStaffList();
+
+    if (pin === ADMIN_PIN) {
+      activeUser = { role: "admin" };
+      err.classList.add('hidden');
+      document.getElementById('pin-input').value = '';
+      showSection('view-admin');
       renderAdminDashboard();
-    }
-
-    // --- STAFF DIRECTORY CRUD ---
-    function renderStaffDirectoryTable() {
-      const list = getStaffList();
-      const tbody = document.getElementById('staff-directory-tbody');
-      tbody.innerHTML = list.map(s => {
-        const isResigned = s.lastDay && new Date(s.lastDay) < new Date();
-        return `
-          <tr class="${isResigned ? 'bg-slate-100 opacity-60' : 'hover:bg-slate-50'}">
-            <td class="p-3 font-bold text-sky-600">${s.pin}</td>
-            <td class="p-3 font-bold text-slate-800">${s.name}</td>
-            <td class="p-3">${s.role}</td>
-            <td class="p-3">${s.dateJoined || '-'}</td>
-            <td class="p-3">${s.lastDay || '-'}</td>
-            <td class="p-3">
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isResigned ? 'bg-slate-300 text-slate-700' : 'bg-emerald-100 text-emerald-700'}">
-                ${isResigned ? 'Resigned' : 'Active'}
-              </span>
-            </td>
-            <td class="p-3 text-right">
-              <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
-              <button onclick="deleteStaff('${s.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
-            </td>
-          </tr>
-        `;
-      }).join('');
-    }
-
-    function handleSaveStaff(e) {
-      e.preventDefault();
-      const id = document.getElementById('edit-staff-id').value;
-      const pin = document.getElementById('input-staff-pin').value.trim();
-      const name = document.getElementById('input-staff-name').value.trim();
-      const role = document.getElementById('input-staff-role').value.trim();
-      const join = document.getElementById('input-staff-join').value;
-      const lastDay = document.getElementById('input-staff-lastday').value;
-
-      const list = getStaffList();
-
-      if (id) {
-        const index = list.findIndex(s => s.id === id);
-        if (index !== -1) {
-          list[index] = { id, pin, name, role, dateJoined: join, lastDay };
+    } else {
+      const staff = staffList.find(s => s.pin === pin);
+      if (staff) {
+        if (staff.lastDay && new Date(staff.lastDay) < new Date()) {
+          err.textContent = "This staff account has been deactivated (last day passed).";
+          err.classList.remove('hidden');
+          return;
         }
+        activeUser = staff;
+        err.classList.add('hidden');
+        document.getElementById('pin-input').value = '';
+        showSection('view-staff');
+        setupStaffUI();
       } else {
-        list.push({ id: 'S' + Date.now(), pin, name, role, dateJoined: join, lastDay });
-      }
-
-      saveStaffList(list);
-      resetStaffForm();
-      renderStaffDirectoryTable();
-    }
-
-    function editStaff(id) {
-      const staff = getStaffList().find(s => s.id === id);
-      if (!staff) return;
-      document.getElementById('edit-staff-id').value = staff.id;
-      document.getElementById('input-staff-pin').value = staff.pin;
-      document.getElementById('input-staff-name').value = staff.name;
-      document.getElementById('input-staff-role').value = staff.role;
-      document.getElementById('input-staff-join').value = staff.dateJoined || '';
-      document.getElementById('input-staff-lastday').value = staff.lastDay || '';
-      document.getElementById('staff-form-title').textContent = "Update Staff Member";
-    }
-
-    function deleteStaff(id) {
-      if (confirm("Delete this staff member?")) {
-        const list = getStaffList().filter(s => s.id !== id);
-        saveStaffList(list);
-        renderStaffDirectoryTable();
+        err.textContent = "Invalid PIN. Please try again.";
+        err.classList.remove('hidden');
       }
     }
+  }
 
-    function resetStaffForm() {
-      document.getElementById('edit-staff-id').value = '';
-      document.getElementById('input-staff-pin').value = '';
-      document.getElementById('input-staff-name').value = '';
-      document.getElementById('input-staff-role').value = '';
-      document.getElementById('input-staff-join').value = '';
-      document.getElementById('input-staff-lastday').value = '';
-      document.getElementById('staff-form-title').textContent = "Add New Staff Member";
+  function logout() {
+    activeUser = null;
+    showSection('view-login');
+  }
+
+  function showSection(id) {
+    document.getElementById('view-login').classList.add('hidden');
+    document.getElementById('view-staff').classList.add('hidden');
+    document.getElementById('view-admin').classList.add('hidden');
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  // --- STAFF MOBILE CHECK-IN ---
+  function setupStaffUI() {
+    document.getElementById('staff-greeting-name').textContent = activeUser.name;
+    document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
+    
+    const badge = document.getElementById('status-badge');
+    const desc = document.getElementById('status-description');
+    const btn = document.getElementById('btn-verify');
+    const timeBox = document.getElementById('timestamp-box');
+    const timeEl = document.getElementById('current-timestamp');
+
+    // SAME-DAY SUBMISSION LOCK CHECK
+    const existingTodayLog = hasSubmittedToday(activeUser.pin);
+
+    if (existingTodayLog) {
+      badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
+      badge.textContent = "Submitted Today";
+      desc.innerHTML = `<span class="text-emerald-700 font-semibold">You have already completed attendance for today.</span> Check-in recorded at ${existingTodayLog.timestamp}.`;
+      
+      timeEl.textContent = existingTodayLog.timestamp;
+      timeBox.classList.remove('hidden');
+
+      btn.disabled = true;
+      btn.className = "w-full py-3.5 bg-slate-200 text-slate-500 font-semibold rounded-xl cursor-not-allowed transition flex items-center justify-center gap-2";
+      btn.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> Attendance Submitted For Today`;
+    } else {
+      badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full";
+      badge.textContent = "Pending";
+      desc.textContent = "After verifying your GPS status, tap on the submit button below.";
+      timeBox.classList.add('hidden');
+
+      btn.disabled = false;
+      btn.className = "w-full py-3.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl shadow-md shadow-sky-100 transition flex items-center justify-center gap-2";
+      btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
     }
 
-    // --- CLINICS CRUD ---
-    function renderClinicsTable() {
-      const list = getClinicsList();
-      const tbody = document.getElementById('clinics-tbody');
-      tbody.innerHTML = list.map(c => `
-        <tr class="hover:bg-slate-50">
-          <td class="p-3 font-bold text-slate-800">${c.name}</td>
-          <td class="p-3">${c.lat}</td>
-          <td class="p-3">${c.lng}</td>
-          <td class="p-3">${c.radius}m</td>
-          <td class="p-3 text-right">
-            <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
-            <button onclick="deleteClinic('${c.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
-          </td>
-        </tr>
-      `).join('');
+    renderStaffLateRecords();
+  }
+
+  function checkGPSAccuracy() {
+    const output = document.getElementById('gps-debug-status');
+    output.innerHTML = "Fetching GPS fix from device...";
+
+    if (!navigator.geolocation) {
+      output.innerHTML = "<span class='text-rose-600 font-bold'>Geolocation not supported by browser.</span>";
+      return;
     }
 
-    function handleSaveClinic(e) {
-      e.preventDefault();
-      const id = document.getElementById('edit-clinic-id').value;
-      const name = document.getElementById('input-clinic-name').value.trim();
-      const lat = parseFloat(document.getElementById('input-clinic-lat').value);
-      const lng = parseFloat(document.getElementById('input-clinic-lng').value);
-      const radius = parseInt(document.getElementById('input-clinic-radius').value);
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 15000,
+      maximumAge: 0
+    };
 
-      const list = getClinicsList();
-      if (id) {
-        const idx = list.findIndex(c => c.id === id);
-        if (idx !== -1) list[idx] = { id, name, lat, lng, radius };
-      } else {
-        list.push({ id: 'C' + Date.now(), name, lat, lng, radius });
-      }
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude.toFixed(6);
+        const lng = position.coords.longitude.toFixed(6);
+        const accuracy = Math.round(position.coords.accuracy);
 
-      saveClinicsList(list);
-      resetClinicForm();
-      renderClinicsTable();
+        let statusColor = "text-emerald-600";
+        let statusText = "Excellent (True GPS/Wi-Fi)";
+
+        if (accuracy > 500) {
+          statusColor = "text-rose-600";
+          statusText = "Poor (Cell Tower Fallback)";
+        } else if (accuracy > 100) {
+          statusColor = "text-amber-600";
+          statusText = "Moderate (Needs 150m Radius)";
+        }
+
+        output.innerHTML = `
+          • <strong>Lat/Lng:</strong> ${lat}, ${lng}<br/>
+          • <strong>Accuracy:</strong> <span class="${statusColor} font-bold">±${accuracy} meters</span><br/>
+          • <strong>Signal:</strong> ${statusText}
+        `;
+      },
+      (error) => {
+        output.innerHTML = `<span class='text-rose-600 font-bold'>GPS Error (${error.code}): ${error.message}</span>`;
+      },
+      options
+    );
+  }
+
+  function verifyAndSubmitAttendance() {
+    if (hasSubmittedToday(activeUser.pin)) {
+      alert("You have already submitted your attendance for today.");
+      setupStaffUI();
+      return;
     }
 
-    function editClinic(id) {
-      const c = getClinicsList().find(item => item.id === id);
-      if (!c) return;
-      document.getElementById('edit-clinic-id').value = c.id;
-      document.getElementById('input-clinic-name').value = c.name;
-      document.getElementById('input-clinic-lat').value = c.lat;
-      document.getElementById('input-clinic-lng').value = c.lng;
-      document.getElementById('input-clinic-radius').value = c.radius;
-      document.getElementById('clinic-form-title').textContent = "Update Clinic Location";
+    const btn = document.getElementById('btn-verify');
+    const badge = document.getElementById('status-badge');
+    const desc = document.getElementById('status-description');
+    const timeBox = document.getElementById('timestamp-box');
+    const timeEl = document.getElementById('current-timestamp');
+
+    btn.disabled = true;
+    btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
+
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser.");
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
+      return;
     }
 
-    function deleteClinic(id) {
-      if (confirm("Delete this clinic location?")) {
-        const list = getClinicsList().filter(c => c.id !== id);
-        saveClinicsList(list);
-        renderClinicsTable();
-      }
-    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const userLat = pos.coords.latitude;
+        const userLng = pos.coords.longitude;
+        
+        const clinics = getClinicsList();
+        if (!clinics || clinics.length === 0) {
+          alert("No clinic locations configured in Admin!");
+          btn.disabled = false;
+          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
+          return;
+        }
 
-    function resetClinicForm() {
-      document.getElementById('edit-clinic-id').value = '';
-      document.getElementById('input-clinic-name').value = '';
-      document.getElementById('input-clinic-lat').value = '';
-      document.getElementById('input-clinic-lng').value = '';
-      document.getElementById('input-clinic-radius').value = 150;
-      document.getElementById('clinic-form-title').textContent = "Add New Clinic Branch";
-    }
+        // MULTI-CLINIC AUTO-DETECTION: Find nearest clinic
+        let closestClinic = null;
+        let shortestDistance = Infinity;
 
-    function setClinicFormToCurrentGPS() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(pos => {
-          document.getElementById('input-clinic-lat').value = pos.coords.latitude;
-          document.getElementById('input-clinic-lng').value = pos.coords.longitude;
+        clinics.forEach(c => {
+          const dist = Math.round(haversineDistance(userLat, userLng, c.lat, c.lng));
+          if (dist < shortestDistance) {
+            shortestDistance = dist;
+            closestClinic = c;
+          }
         });
-      }
+
+        const distance = shortestDistance;
+        const targetClinic = closestClinic;
+        
+        const now = new Date();
+        const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
+        timeEl.textContent = timestampStr;
+        timeBox.classList.remove('hidden');
+
+        const isWithinRadius = distance <= targetClinic.radius;
+        
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        const currentDayName = days[now.getDay()];
+        const shifts = getShiftSchedule();
+        const shiftStartStr = shifts[currentDayName] || "09:00";
+        const [sHour, sMin] = shiftStartStr.split(":").map(Number);
+
+        let isLate = false;
+        let minutesLate = 0;
+        if (now.getHours() > sHour || (now.getHours() === sHour && now.getMinutes() > sMin)) {
+          isLate = true;
+          minutesLate = (now.getHours() - sHour) * 60 + (now.getMinutes() - sMin);
+        }
+
+        const logEntry = {
+          pin: activeUser.pin,
+          name: activeUser.name,
+          timestamp: timestampStr,
+          distance: `${distance}m (${targetClinic.name})`,
+          approved: isWithinRadius,
+          isLate: isWithinRadius ? isLate : false,
+          minutesLate: isWithinRadius ? minutesLate : 0
+        };
+
+        saveLog(logEntry);
+
+        if (isWithinRadius) {
+          setupStaffUI();
+        } else {
+          badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
+          badge.textContent = "Access Denied";
+          desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range for ${targetClinic.name}!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
+          btn.disabled = false;
+          btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
+        }
+
+        renderStaffLateRecords();
+      },
+      (err) => {
+        alert("GPS Error: " + err.message);
+        btn.disabled = false;
+        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+    );
+  }
+
+  function renderStaffLateRecords() {
+    const logs = getLogs();
+    const staffLogs = logs.filter(l => l.pin === activeUser.pin && l.approved);
+    const lateLogs = staffLogs.filter(l => l.isLate);
+    
+    const resets = getResetStates();
+    const resetCount = resets[activeUser.pin] || 0;
+    const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
+
+    document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late`;
+
+    const warningBanner = document.getElementById('dr-gerald-warning');
+    if (effectiveLateCount >= 3) {
+      warningBanner.classList.remove('hidden');
+    } else {
+      warningBanner.classList.add('hidden');
     }
 
-    // --- SHIFTS MANAGEMENT ---
-    function renderShiftsTable() {
-      const shifts = getShiftSchedule();
-      const tbody = document.getElementById('shifts-tbody');
-      tbody.innerHTML = Object.keys(shifts).map(day => `
-        <tr class="hover:bg-slate-50">
-          <td class="p-3 font-bold text-slate-800">${day}</td>
-          <td class="p-3 text-sky-600 font-bold">${shifts[day]} SGT</td>
-          <td class="p-3 text-right">
-            <button onclick="quickSetShift('${day}')" class="text-sky-600 hover:underline font-semibold">Modify</button>
-          </td>
-        </tr>
+    const list = document.getElementById('staff-late-list');
+    if (lateLogs.length === 0) {
+      list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
+    } else {
+      list.innerHTML = lateLogs.map(l => `
+        <li class="py-1.5 flex justify-between">
+          <span>${l.timestamp}</span>
+          <span class="text-amber-600 font-bold">${l.minutesLate} mins late</span>
+        </li>
       `).join('');
     }
+  }
 
-    function handleSaveShift(e) {
-      e.preventDefault();
-      const day = document.getElementById('input-shift-day').value;
-      const time = document.getElementById('input-shift-time').value;
+  // --- ADMIN NAVIGATION & TABS ---
+  function switchAdminTab(tab) {
+    ['dashboard', 'staff', 'clinics', 'hours'].forEach(t => {
+      document.getElementById(`atab-${t}`).classList.add('hidden');
+      document.getElementById(`atab-btn-${t}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700";
+    });
+    document.getElementById(`atab-${tab}`).classList.remove('hidden');
+    document.getElementById(`atab-btn-${tab}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white";
 
-      const shifts = getShiftSchedule();
-      shifts[day] = time;
-      saveShiftSchedule(shifts);
-      renderShiftsTable();
-    }
+    if (tab === 'dashboard') renderAdminDashboard();
+    if (tab === 'staff') renderStaffDirectoryTable();
+    if (tab === 'clinics') renderClinicsTable();
+    if (tab === 'hours') renderShiftsTable();
+  }
 
-    function quickSetShift(day) {
-      document.getElementById('input-shift-day').value = day;
-      document.getElementById('input-shift-time').value = getShiftSchedule()[day] || "09:00";
-    }
+  function toggleShowInactiveStaff() {
+    showInactiveStaff = !showInactiveStaff;
+    const btn = document.getElementById('btn-toggle-inactive');
+    btn.textContent = showInactiveStaff ? "Show Active Staff Only" : "Show All Staff (Includes Resigned)";
+    renderAdminDashboard();
+  }
 
-    // --- MODAL & EXPORT ---
-    function openStaffModal(pin) {
-      const staff = getStaffList().find(s => s.pin === pin) || { name: "Staff", role: "Staff" };
-      const logs = getLogs().filter(l => l.pin === pin);
-      const approved = logs.filter(l => l.approved);
+  // --- ADMIN DASHBOARD RENDER ---
+  function renderAdminDashboard() {
+    const logs = getLogs();
+    const resets = getResetStates();
+    const staffList = getStaffList();
+    const bentoContainer = document.getElementById('bento-grid');
+    const tableBody = document.getElementById('master-log-table');
+    bentoContainer.innerHTML = '';
+    tableBody.innerHTML = '';
 
-      document.getElementById('modal-staff-name').textContent = staff.name;
-      document.getElementById('modal-staff-role').textContent = staff.role;
+    let totalOnTime = 0;
+    let totalLate = 0;
+    const staffLateMap = {};
 
-      document.getElementById('modal-ontime-count').textContent = approved.filter(l => !l.isLate).length;
-      document.getElementById('modal-late-count').textContent = approved.filter(l => l.isLate).length;
-      document.getElementById('modal-denied-count').textContent = logs.filter(l => !l.approved).length;
+    const filteredStaff = showInactiveStaff ? staffList : staffList.filter(s => !s.lastDay || new Date(s.lastDay) >= new Date());
 
-      const tbody = document.getElementById('modal-log-tbody');
-      tbody.innerHTML = logs.map(l => `
-        <tr>
-          <td class="p-2 text-slate-500">${l.timestamp}</td>
-          <td class="p-2">${l.distance}</td>
-          <td class="p-2">
-            <span class="px-1.5 py-0.5 text-[9px] font-bold rounded ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
-              ${l.approved ? 'APPROVED' : 'DENIED'}
+    filteredStaff.forEach(staff => {
+      const staffLogs = logs.filter(l => l.pin === staff.pin);
+      const approvedLogs = staffLogs.filter(l => l.approved);
+      const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
+      const lateLogs = approvedLogs.filter(l => l.isLate);
+      
+      const resetOffset = resets[staff.pin] || 0;
+      const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
+
+      totalOnTime += onTimeCount;
+      totalLate += lateLogs.length;
+      staffLateMap[staff.name] = lateLogs.length;
+
+      const isWarning = effectiveLate >= 3;
+      const isResigned = staff.lastDay && new Date(staff.lastDay) < new Date();
+
+      const card = document.createElement('div');
+      card.className = `p-5 rounded-2xl border transition shadow-sm flex flex-col justify-between ${
+        isResigned ? 'opacity-40 bg-slate-100 border-slate-300' : (isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200')
+      }`;
+
+      card.innerHTML = `
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-bold text-slate-800">${staff.name}</span>
+            ${isResigned ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-slate-300 text-slate-700 rounded">RESIGNED</span>' : (isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : '')}
+          </div>
+          <p class="text-xs text-slate-500 mb-3">${staff.role}</p>
+
+          <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4">
+            <div class="bg-white/80 p-2 rounded-lg border">
+              <span class="block text-slate-400 text-[10px]">ON TIME</span>
+              <span class="font-bold text-emerald-600 text-sm">${onTimeCount}</span>
+            </div>
+            <div class="bg-white/80 p-2 rounded-lg border">
+              <span class="block text-slate-400 text-[10px]">LATE COUNT</span>
+              <span class="font-bold ${isWarning ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2 border-t border-slate-200/60">
+          ${isWarning && !isResigned ? `
+            <button onclick="acknowledgeAction('${staff.pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
+              <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset Count)
+            </button>
+          ` : ''}
+          <button onclick="openStaffModal('${staff.pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
+            View Detailed Logs
+          </button>
+        </div>
+      `;
+      bentoContainer.appendChild(card);
+    });
+
+    if (logs.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No verification attempts logged yet.</td></tr>`;
+    } else {
+      logs.forEach(l => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-50";
+        tr.innerHTML = `
+          <td class="p-3 text-slate-500">${l.timestamp}</td>
+          <td class="p-3 font-semibold text-slate-800">${l.name}</td>
+          <td class="p-3 text-slate-600">${l.distance}</td>
+          <td class="p-3">
+            <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+              ${l.approved ? 'Approved' : 'Denied'}
             </span>
           </td>
-          <td class="p-2 text-slate-600">${l.approved ? (l.isLate ? `${l.minutesLate}m Late` : 'On Time') : 'Out of Radius'}</td>
+          <td class="p-3">
+            ${l.approved ? (l.isLate ? `<span class="text-amber-600 font-bold">${l.minutesLate}m Late</span>` : `<span class="text-emerald-600 font-bold">On-Time</span>`) : '<span class="text-slate-400">N/A</span>'}
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    renderCharts(totalOnTime, totalLate, staffLateMap);
+  }
+
+  function acknowledgeAction(pin) {
+    const logs = getLogs();
+    const lateCount = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
+    setResetState(pin, lateCount);
+    renderAdminDashboard();
+  }
+
+  // --- STAFF DIRECTORY CRUD ---
+  function renderStaffDirectoryTable() {
+    const list = getStaffList();
+    const tbody = document.getElementById('staff-directory-tbody');
+    tbody.innerHTML = list.map(s => {
+      const isResigned = s.lastDay && new Date(s.lastDay) < new Date();
+      return `
+        <tr class="${isResigned ? 'bg-slate-100 opacity-60' : 'hover:bg-slate-50'}">
+          <td class="p-3 font-bold text-sky-600">${s.pin}</td>
+          <td class="p-3 font-bold text-slate-800">${s.name}</td>
+          <td class="p-3">${s.role}</td>
+          <td class="p-3">${s.dateJoined || '-'}</td>
+          <td class="p-3">${s.lastDay || '-'}</td>
+          <td class="p-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isResigned ? 'bg-slate-300 text-slate-700' : 'bg-emerald-100 text-emerald-700'}">
+              ${isResigned ? 'Resigned' : 'Active'}
+            </span>
+          </td>
+          <td class="p-3 text-right">
+            <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
+            <button onclick="deleteStaff('${s.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
+          </td>
         </tr>
-      `).join('');
+      `;
+    }).join('');
+  }
 
-      document.getElementById('modal-staff-detail').classList.remove('hidden');
-      document.getElementById('modal-staff-detail').classList.add('flex');
+  function handleSaveStaff(e) {
+    e.preventDefault();
+    const id = document.getElementById('edit-staff-id').value;
+    const pin = document.getElementById('input-staff-pin').value.trim();
+    const name = document.getElementById('input-staff-name').value.trim();
+    const role = document.getElementById('input-staff-role').value.trim();
+    const join = document.getElementById('input-staff-join').value;
+    const lastDay = document.getElementById('input-staff-lastday').value;
+
+    const list = getStaffList();
+
+    if (id) {
+      const index = list.findIndex(s => s.id === id);
+      if (index !== -1) {
+        list[index] = { id, pin, name, role, dateJoined: join, lastDay };
+      }
+    } else {
+      list.push({ id: 'S' + Date.now(), pin, name, role, dateJoined: join, lastDay });
     }
 
-    function closeModal() {
-      document.getElementById('modal-staff-detail').classList.add('hidden');
-      document.getElementById('modal-staff-detail').classList.remove('flex');
+    saveStaffList(list);
+    resetStaffForm();
+    renderStaffDirectoryTable();
+  }
+
+  function editStaff(id) {
+    const staff = getStaffList().find(s => s.id === id);
+    if (!staff) return;
+    document.getElementById('edit-staff-id').value = staff.id;
+    document.getElementById('input-staff-pin').value = staff.pin;
+    document.getElementById('input-staff-name').value = staff.name;
+    document.getElementById('input-staff-role').value = staff.role;
+    document.getElementById('input-staff-join').value = staff.dateJoined || '';
+    document.getElementById('input-staff-lastday').value = staff.lastDay || '';
+    document.getElementById('staff-form-title').textContent = "Update Staff Member";
+  }
+
+  function deleteStaff(id) {
+    if (confirm("Delete this staff member?")) {
+      const list = getStaffList().filter(s => s.id !== id);
+      saveStaffList(list);
+      renderStaffDirectoryTable();
+    }
+  }
+
+  function resetStaffForm() {
+    document.getElementById('edit-staff-id').value = '';
+    document.getElementById('input-staff-pin').value = '';
+    document.getElementById('input-staff-name').value = '';
+    document.getElementById('input-staff-role').value = '';
+    document.getElementById('input-staff-join').value = '';
+    document.getElementById('input-staff-lastday').value = '';
+    document.getElementById('staff-form-title').textContent = "Add New Staff Member";
+  }
+
+  // --- CLINICS CRUD ---
+  function renderClinicsTable() {
+    const list = getClinicsList();
+    const tbody = document.getElementById('clinics-tbody');
+    tbody.innerHTML = list.map(c => `
+      <tr class="hover:bg-slate-50">
+        <td class="p-3 font-bold text-slate-800">${c.name}</td>
+        <td class="p-3">${c.lat}</td>
+        <td class="p-3">${c.lng}</td>
+        <td class="p-3">${c.radius}m</td>
+        <td class="p-3 text-right">
+          <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
+          <button onclick="deleteClinic('${c.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  function handleSaveClinic(e) {
+    e.preventDefault();
+    const id = document.getElementById('edit-clinic-id').value;
+    const name = document.getElementById('input-clinic-name').value.trim();
+    const lat = parseFloat(document.getElementById('input-clinic-lat').value);
+    const lng = parseFloat(document.getElementById('input-clinic-lng').value);
+    const radius = parseInt(document.getElementById('input-clinic-radius').value);
+
+    const list = getClinicsList();
+    if (id) {
+      const idx = list.findIndex(c => c.id === id);
+      if (idx !== -1) list[idx] = { id, name, lat, lng, radius };
+    } else {
+      list.push({ id: 'C' + Date.now(), name, lat, lng, radius });
     }
 
-    function exportAllLogsCSV() {
-      const logs = getLogs();
-      if (logs.length === 0) return alert("No logs available to export.");
+    saveClinicsList(list);
+    resetClinicForm();
+    renderClinicsTable();
+  }
 
-      let csv = "Timestamp,Staff Name,Distance,Status,Punctuality\n";
-      logs.forEach(l => {
-        const punctuality = l.approved ? (l.isLate ? `${l.minutesLate} mins late` : 'On Time') : 'Denied Scan';
-        csv += `"${l.timestamp}","${l.name}","${l.distance}","${l.approved ? 'Approved' : 'Denied'}","${punctuality}"\n`;
+  function editClinic(id) {
+    const c = getClinicsList().find(item => item.id === id);
+    if (!c) return;
+    document.getElementById('edit-clinic-id').value = c.id;
+    document.getElementById('input-clinic-name').value = c.name;
+    document.getElementById('input-clinic-lat').value = c.lat;
+    document.getElementById('input-clinic-lng').value = c.lng;
+    document.getElementById('input-clinic-radius').value = c.radius;
+    document.getElementById('clinic-form-title').textContent = "Update Clinic Location";
+  }
+
+  function deleteClinic(id) {
+    if (confirm("Delete this clinic location?")) {
+      const list = getClinicsList().filter(c => c.id !== id);
+      saveClinicsList(list);
+      renderClinicsTable();
+    }
+  }
+
+  function resetClinicForm() {
+    document.getElementById('edit-clinic-id').value = '';
+    document.getElementById('input-clinic-name').value = '';
+    document.getElementById('input-clinic-lat').value = '';
+    document.getElementById('input-clinic-lng').value = '';
+    document.getElementById('input-clinic-radius').value = 150;
+    document.getElementById('clinic-form-title').textContent = "Add New Clinic Branch";
+  }
+
+  function setClinicFormToCurrentGPS() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        document.getElementById('input-clinic-lat').value = pos.coords.latitude;
+        document.getElementById('input-clinic-lng').value = pos.coords.longitude;
       });
-
-      const blob = new Blob([csv], { type: 'text/csv' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `clinic_attendance_master_log.csv`;
-      a.click();
     }
+  }
 
-    function renderCharts(onTime, late, staffMap) {
-      if (pieChartInstance) pieChartInstance.destroy();
-      if (barChartInstance) barChartInstance.destroy();
+  // --- SHIFTS MANAGEMENT ---
+  function renderShiftsTable() {
+    const shifts = getShiftSchedule();
+    const tbody = document.getElementById('shifts-tbody');
+    tbody.innerHTML = Object.keys(shifts).map(day => `
+      <tr class="hover:bg-slate-50">
+        <td class="p-3 font-bold text-slate-800">${day}</td>
+        <td class="p-3 text-sky-600 font-bold">${shifts[day]} SGT</td>
+        <td class="p-3 text-right">
+          <button onclick="quickSetShift('${day}')" class="text-sky-600 hover:underline font-semibold">Modify</button>
+        </td>
+      </tr>
+    `).join('');
+  }
 
-      const pieCtx = document.getElementById('chart-pie').getContext('2d');
-      pieChartInstance = new Chart(pieCtx, {
-        type: 'pie',
-        data: {
-          labels: ['On-Time', 'Late'],
-          datasets: [{ data: [onTime, late], backgroundColor: ['#10b981', '#f59e0b'] }]
-        },
-        options: { responsive: true, maintainAspectRatio: false }
-      });
+  function handleSaveShift(e) {
+    e.preventDefault();
+    const day = document.getElementById('input-shift-day').value;
+    const time = document.getElementById('input-shift-time').value;
 
-      const barCtx = document.getElementById('chart-bar').getContext('2d');
-      barChartInstance = new Chart(barCtx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(staffMap),
-          datasets: [{ label: 'Late Count', data: Object.values(staffMap), backgroundColor: '#f43f5e' }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
-      });
-    }
-  </script>
+    const shifts = getShiftSchedule();
+    shifts[day] = time;
+    saveShiftSchedule(shifts);
+    renderShiftsTable();
+  }
+
+  function quickSetShift(day) {
+    document.getElementById('input-shift-day').value = day;
+    document.getElementById('input-shift-time').value = getShiftSchedule()[day] || "09:00";
+  }
+
+  // --- MODAL & EXPORT ---
+  function openStaffModal(pin) {
+    const staff = getStaffList().find(s => s.pin === pin) || { name: "Staff", role: "Staff" };
+    const logs = getLogs().filter(l => l.pin === pin);
+    const approved = logs.filter(l => l.approved);
+
+    document.getElementById('modal-staff-name').textContent = staff.name;
+    document.getElementById('modal-staff-role').textContent = staff.role;
+
+    document.getElementById('modal-ontime-count').textContent = approved.filter(l => !l.isLate).length;
+    document.getElementById('modal-late-count').textContent = approved.filter(l => l.isLate).length;
+    document.getElementById('modal-denied-count').textContent = logs.filter(l => !l.approved).length;
+
+    const tbody = document.getElementById('modal-log-tbody');
+    tbody.innerHTML = logs.map(l => `
+      <tr>
+        <td class="p-2 text-slate-500">${l.timestamp}</td>
+        <td class="p-2">${l.distance}</td>
+        <td class="p-2">
+          <span class="px-1.5 py-0.5 text-[9px] font-bold rounded ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+            ${l.approved ? 'APPROVED' : 'DENIED'}
+          </span>
+        </td>
+        <td class="p-2 text-slate-600">${l.approved ? (l.isLate ? `${l.minutesLate}m Late` : 'On Time') : 'Out of Radius'}</td>
+      </tr>
+    `).join('');
+
+    document.getElementById('modal-staff-detail').classList.remove('hidden');
+    document.getElementById('modal-staff-detail').classList.add('flex');
+  }
+
+  function closeModal() {
+    document.getElementById('modal-staff-detail').classList.add('hidden');
+    document.getElementById('modal-staff-detail').classList.remove('flex');
+  }
+
+  function exportAllLogsCSV() {
+    const logs = getLogs();
+    if (logs.length === 0) return alert("No logs available to export.");
+
+    let csv = "Timestamp,Staff Name,Distance,Status,Punctuality\n";
+    logs.forEach(l => {
+      const punctuality = l.approved ? (l.isLate ? `${l.minutesLate} mins late` : 'On Time') : 'Denied Scan';
+      csv += `"${l.timestamp}","${l.name}","${l.distance}","${l.approved ? 'Approved' : 'Denied'}","${punctuality}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `clinic_attendance_master_log.csv`;
+    a.click();
+  }
+
+  function renderCharts(onTime, late, staffMap) {
+    if (pieChartInstance) pieChartInstance.destroy();
+    if (barChartInstance) barChartInstance.destroy();
+
+    const pieCtx = document.getElementById('chart-pie').getContext('2d');
+    pieChartInstance = new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['On-Time', 'Late'],
+        datasets: [{ data: [onTime, late], backgroundColor: ['#10b981', '#f59e0b'] }]
+      },
+      options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    const barCtx = document.getElementById('chart-bar').getContext('2d');
+    barChartInstance = new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(staffMap),
+        datasets: [{ label: 'Late Count', data: Object.values(staffMap), backgroundColor: '#f43f5e' }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+    });
+  }
+</script>
 </body>
 </html>
