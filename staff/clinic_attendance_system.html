@@ -40,3 +40,601 @@
 
     <!-- 2. STAFF MOBILE CHECK-IN VIEW -->
     <section id="view-staff" class="hidden space-y-6 max-w-lg mx-auto">
+      
+      <!-- Top Header / Greeting -->
+      <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-sky-500 text-white font-bold rounded-xl flex items-center justify-center text-sm" id="staff-initials">
+            --
+          </div>
+          <div>
+            <p class="text-xs text-slate-500">Welcome back,</p>
+            <h2 class="text-base font-bold text-slate-800" id="staff-greeting-name">Staff Member</h2>
+          </div>
+        </div>
+        <button onclick="logout()" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-lg transition">
+          <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+        </button>
+      </div>
+
+      <!-- Main Mobile Check-in Card -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-5">
+        <div class="text-center">
+          <span class="px-2.5 py-1 bg-sky-50 text-sky-700 text-xs font-semibold rounded-full uppercase tracking-wider">Mobile Check-In</span>
+          <h3 class="text-xl font-bold text-slate-800 mt-2">Clinic Attendance</h3>
+        </div>
+
+        <!-- Location Status Card -->
+        <div id="status-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-600">Location Status</span>
+            <span id="status-badge" class="px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full">Pending</span>
+          </div>
+          <p id="status-description" class="text-xs text-slate-500">Tap below to verify location and submit attendance.</p>
+          <div id="timestamp-box" class="text-[11px] font-mono text-slate-400 hidden pt-1 border-t border-slate-200/60">
+            Current Timestamp: <span id="current-timestamp" class="text-slate-700">--</span>
+          </div>
+        </div>
+
+        <!-- Verify & Submit Button -->
+        <button onclick="verifyAndSubmitAttendance()" id="btn-verify" class="w-full py-3.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl shadow-md shadow-sky-100 transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit
+        </button>
+      </div>
+
+      <!-- Warning & Late History Card for Staff -->
+      <div id="staff-late-card" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between border-b pb-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Monthly Attendance Warnings</h4>
+          <span id="staff-late-count-badge" class="px-2 py-0.5 text-xs font-bold bg-slate-100 text-slate-700 rounded-md">0 Late</span>
+        </div>
+
+        <!-- Warning Alert Banner -->
+        <div id="dr-gerald-warning" class="hidden p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-xs flex items-start gap-2.5">
+          <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base mt-0.5"></i>
+          <div>
+            <p class="font-bold">Warning: 3 Late Check-ins Reached!</p>
+            <p class="mt-0.5">You have been late 3 times this month. <strong>Dr. Gerald has been notified.</strong></p>
+          </div>
+        </div>
+
+        <!-- Late Breakdown List -->
+        <div>
+          <p class="text-xs text-slate-500 mb-2">Detailed Late Records (This Month):</p>
+          <ul id="staff-late-list" class="divide-y text-xs font-mono text-slate-600">
+            <li class="py-1.5 text-slate-400 italic">No late records this month.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ADMIN DASHBOARD VIEW -->
+    <section id="view-admin" class="hidden space-y-6">
+      
+      <!-- Top Admin Header -->
+      <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Admin Dashboard</h2>
+          <p class="text-xs text-slate-500">Clinic Attendance Overview & Staff Analytics</p>
+        </div>
+        <button onclick="logout()" class="px-3.5 py-1.5 text-xs font-medium bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-lg transition">
+          <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout Admin
+        </button>
+      </div>
+
+      <!-- Analytics Charts Row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+          <h3 class="text-xs font-bold text-slate-600 uppercase mb-3">Attendance Distribution</h3>
+          <div class="h-48 flex justify-center">
+            <canvas id="chart-pie"></canvas>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+          <h3 class="text-xs font-bold text-slate-600 uppercase mb-3">Staff Late Breakdown</h3>
+          <div class="h-48 flex justify-center">
+            <canvas id="chart-bar"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Staff Bento Grid -->
+      <div>
+        <h3 class="text-sm font-bold text-slate-700 mb-3">Staff Attendance Summary (Bento Grid)</h3>
+        <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamic Staff Bento Cards -->
+        </div>
+      </div>
+
+      <!-- Full Attendance Table Log -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-bold text-slate-800">Master Attendance & Distance Log</h3>
+            <p class="text-xs text-slate-500">Logs every single verification attempt and distance from clinic.</p>
+          </div>
+          <button onclick="exportAllLogsCSV()" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+            <i class="fa-solid fa-file-excel"></i> Export Excel (CSV)
+          </button>
+        </div>
+
+        <div class="overflow-x-auto border border-slate-200 rounded-xl">
+          <table class="w-full text-left text-xs font-mono">
+            <thead class="bg-slate-50 border-b text-slate-500 uppercase">
+              <tr>
+                <th class="p-3">Timestamp</th>
+                <th class="p-3">Staff Name</th>
+                <th class="p-3">Distance</th>
+                <th class="p-3">Result</th>
+                <th class="p-3">Punctuality</th>
+              </tr>
+            </thead>
+            <tbody id="master-log-table" class="divide-y divide-slate-100">
+              <!-- Dynamic Rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN STAFF DETAIL MODAL -->
+    <div id="modal-staff-detail" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-2xl border border-slate-200 max-w-2xl w-full p-6 space-y-4 shadow-xl">
+        <div class="flex items-center justify-between border-b pb-3">
+          <div>
+            <h3 class="text-lg font-bold text-slate-800" id="modal-staff-name">Staff Details</h3>
+            <p class="text-xs text-slate-500" id="modal-staff-role">Role</p>
+          </div>
+          <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-lg">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Detailed Metrics -->
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <p class="text-xs text-slate-500">On Time</p>
+            <p class="text-lg font-bold text-emerald-600" id="modal-ontime-count">0</p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <p class="text-xs text-slate-500">Late Count</p>
+            <p class="text-lg font-bold text-amber-600" id="modal-late-count">0</p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <p class="text-xs text-slate-500">Denied Scans</p>
+            <p class="text-lg font-bold text-rose-600" id="modal-denied-count">0</p>
+          </div>
+        </div>
+
+        <!-- History Table -->
+        <div>
+          <h4 class="text-xs font-bold text-slate-700 mb-2">Detailed Log History</h4>
+          <div class="max-h-60 overflow-y-auto border rounded-xl">
+            <table class="w-full text-left text-xs font-mono">
+              <thead class="bg-slate-50 border-b">
+                <tr>
+                  <th class="p-2">Timestamp</th>
+                  <th class="p-2">Distance</th>
+                  <th class="p-2">Status</th>
+                  <th class="p-2">Notes</th>
+                </tr>
+              </thead>
+              <tbody id="modal-log-tbody" class="divide-y"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="closeModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-semibold rounded-lg">Close</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // --- CLINIC & WORK SHIFT CONFIGURATION ---
+    const CLINIC_CONFIG = {
+      targetLat: 1.3521,    // Replace with your clinic latitude
+      targetLng: 103.8198,  // Replace with your clinic longitude
+      radiusMeters: 50,     // Max allowed radius in meters
+      shiftStartHour: 9,    // 09:00 AM work start time
+      shiftStartMinute: 0
+    };
+
+    // Preset Staff Accounts
+    const STAFF_ACCOUNTS = {
+      "1234": { id: "S1", name: "Dr. Sarah Tan", role: "General Practitioner" },
+      "5678": { id: "S2", name: "Nurse John Doe", role: "Senior Nurse" },
+      "2468": { id: "S3", name: "Mary Lim", role: "Clinic Receptionist" }
+    };
+    const ADMIN_PIN = "9999";
+
+    let activeUser = null; // Currently logged in user
+    let pieChartInstance = null;
+    let barChartInstance = null;
+
+    // Local Storage Helpers
+    function getLogs() {
+      return JSON.parse(localStorage.getItem('mediCheck_logs') || "[]");
+    }
+    function saveLog(entry) {
+      const logs = getLogs();
+      logs.unshift(entry);
+      localStorage.setItem('mediCheck_logs', JSON.stringify(logs));
+    }
+    function getResetStates() {
+      return JSON.parse(localStorage.getItem('mediCheck_resets') || "{}");
+    }
+    function setResetState(pin, value) {
+      const states = getResetStates();
+      states[pin] = value;
+      localStorage.setItem('mediCheck_resets', JSON.stringify(states));
+    }
+
+    // --- AUTHENTICATION ---
+    function handleAuth(e) {
+      e.preventDefault();
+      const pin = document.getElementById('pin-input').value.trim();
+      const err = document.getElementById('login-error');
+
+      if (pin === ADMIN_PIN) {
+        activeUser = { role: "admin" };
+        err.classList.add('hidden');
+        document.getElementById('pin-input').value = '';
+        showSection('view-admin');
+        renderAdminDashboard();
+      } else if (STAFF_ACCOUNTS[pin]) {
+        activeUser = { pin: pin, ...STAFF_ACCOUNTS[pin] };
+        err.classList.add('hidden');
+        document.getElementById('pin-input').value = '';
+        showSection('view-staff');
+        setupStaffUI();
+      } else {
+        err.textContent = "Invalid PIN. Please try again.";
+        err.classList.remove('hidden');
+      }
+    }
+
+    function logout() {
+      activeUser = null;
+      showSection('view-login');
+    }
+
+    function showSection(id) {
+      document.getElementById('view-login').classList.add('hidden');
+      document.getElementById('view-staff').classList.add('hidden');
+      document.getElementById('view-admin').classList.add('hidden');
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    // --- STAFF MOBILE CHECK-IN LOGIC ---
+    function setupStaffUI() {
+      document.getElementById('staff-greeting-name').textContent = activeUser.name;
+      document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
+      
+      // Reset Check-in Card Status
+      document.getElementById('status-badge').className = "px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full";
+      document.getElementById('status-badge').textContent = "Pending";
+      document.getElementById('status-description').textContent = "Tap below to verify location and submit attendance.";
+      document.getElementById('timestamp-box').classList.add('hidden');
+
+      renderStaffLateRecords();
+    }
+
+    function verifyAndSubmitAttendance() {
+      const btn = document.getElementById('btn-verify');
+      const badge = document.getElementById('status-badge');
+      const desc = document.getElementById('status-description');
+      const timeBox = document.getElementById('timestamp-box');
+      const timeEl = document.getElementById('current-timestamp');
+
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Verifying GPS Location...`;
+
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser.");
+        btn.disabled = false;
+        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const userLat = pos.coords.latitude;
+          const userLng = pos.coords.longitude;
+          const distance = Math.round(haversineDistance(userLat, userLng, CLINIC_CONFIG.targetLat, CLINIC_CONFIG.targetLng));
+          
+          const now = new Date();
+          const timestampStr = now.toLocaleString();
+          timeEl.textContent = timestampStr;
+          timeBox.classList.remove('hidden');
+
+          const isWithinRadius = distance <= CLINIC_CONFIG.radiusMeters;
+          
+          // Calculate if late (After 09:00 AM)
+          let isLate = false;
+          let minutesLate = 0;
+          if (now.getHours() > CLINIC_CONFIG.shiftStartHour || (now.getHours() === CLINIC_CONFIG.shiftStartHour && now.getMinutes() > CLINIC_CONFIG.shiftStartMinute)) {
+            isLate = true;
+            minutesLate = (now.getHours() - CLINIC_CONFIG.shiftStartHour) * 60 + (now.getMinutes() - CLINIC_CONFIG.shiftStartMinute);
+          }
+
+          // Build Log Entry
+          const logEntry = {
+            pin: activeUser.pin,
+            name: activeUser.name,
+            timestamp: timestampStr,
+            monthKey: `${now.getFullYear()}-${now.getMonth()+1}`,
+            distance: `${distance}m`,
+            approved: isWithinRadius,
+            isLate: isWithinRadius ? isLate : false,
+            minutesLate: isWithinRadius ? minutesLate : 0
+          };
+
+          // Save attempt log
+          saveLog(logEntry);
+
+          if (isWithinRadius) {
+            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
+            badge.textContent = "Approved & Submitted";
+            desc.innerHTML = `<span class="text-emerald-700 font-semibold">Location Verified! (${distance}m from clinic).</span> ${isLate ? `You checked in <strong>${minutesLate} mins late</strong>.` : 'Checked in on time!'}`;
+          } else {
+            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
+            badge.textContent = "Access Denied";
+            desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range!</span> You are <strong>${distance}m away</strong> (Must be within ${CLINIC_CONFIG.radiusMeters}m).`;
+          }
+
+          btn.disabled = false;
+          btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
+          
+          renderStaffLateRecords();
+        },
+        (err) => {
+          alert("GPS Error: " + err.message);
+          btn.disabled = false;
+          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+        },
+        { enableHighAccuracy: true, timeout: 10000 }
+      );
+    }
+
+    function renderStaffLateRecords() {
+      const logs = getLogs();
+      const now = new Date();
+      const currentMonth = `${now.getFullYear()}-${now.getMonth()+1}`;
+
+      const staffLogs = logs.filter(l => l.pin === activeUser.pin && l.approved && l.monthKey === currentMonth);
+      const lateLogs = staffLogs.filter(l => l.isLate);
+      
+      const resets = getResetStates();
+      const resetCount = resets[activeUser.pin] || 0;
+      const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
+
+      document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late (This Month)`;
+
+      // Show Dr Gerald Warning if late >= 3
+      const warningBanner = document.getElementById('dr-gerald-warning');
+      if (effectiveLateCount >= 3) {
+        warningBanner.classList.remove('hidden');
+      } else {
+        warningBanner.classList.add('hidden');
+      }
+
+      // Render Late List
+      const list = document.getElementById('staff-late-list');
+      if (lateLogs.length === 0) {
+        list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records this month.</li>`;
+      } else {
+        list.innerHTML = lateLogs.map(l => `
+          <li class="py-1.5 flex justify-between">
+            <span>${l.timestamp}</span>
+            <span class="text-amber-600 font-bold">${l.minutesLate} mins late</span>
+          </li>
+        `).join('');
+      }
+    }
+
+    // --- ADMIN DASHBOARD & BENTO GRID ---
+    function renderAdminDashboard() {
+      const logs = getLogs();
+      const resets = getResetStates();
+      const bentoContainer = document.getElementById('bento-grid');
+      const tableBody = document.getElementById('master-log-table');
+      bentoContainer.innerHTML = '';
+      tableBody.innerHTML = '';
+
+      let totalOnTime = 0;
+      let totalLate = 0;
+      const staffLateMap = {};
+
+      Object.keys(STAFF_ACCOUNTS).forEach(pin => {
+        const staff = STAFF_ACCOUNTS[pin];
+        const staffLogs = logs.filter(l => l.pin === pin);
+        const approvedLogs = staffLogs.filter(l => l.approved);
+        const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
+        const lateLogs = approvedLogs.filter(l => l.isLate);
+        
+        const resetOffset = resets[pin] || 0;
+        const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
+
+        totalOnTime += onTimeCount;
+        totalLate += lateLogs.length;
+        staffLateMap[staff.name] = lateLogs.length;
+
+        const isWarning = effectiveLate >= 3;
+
+        // Bento Card HTML
+        const card = document.createElement('div');
+        card.className = `p-5 rounded-2xl border transition shadow-sm flex flex-col justify-between ${
+          isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200'
+        }`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-bold text-slate-800">${staff.name}</span>
+              ${isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : ''}
+            </div>
+            <p class="text-xs text-slate-500 mb-4">${staff.role}</p>
+
+            <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4">
+              <div class="bg-white/80 p-2 rounded-lg border">
+                <span class="block text-slate-400 text-[10px]">ON TIME</span>
+                <span class="font-bold text-emerald-600 text-sm">${onTimeCount}</span>
+              </div>
+              <div class="bg-white/80 p-2 rounded-lg border">
+                <span class="block text-slate-400 text-[10px]">LATE</span>
+                <span class="font-bold ${isWarning ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-2 pt-2 border-t border-slate-200/60">
+            ${isWarning ? `
+              <button onclick="acknowledgeAction('${pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
+                <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset)
+              </button>
+            ` : ''}
+            <button onclick="openStaffModal('${pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
+              View Detailed Logs
+            </button>
+          </div>
+        `;
+        bentoContainer.appendChild(card);
+      });
+
+      // Render Master Table
+      if (logs.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No verification attempts logged yet.</td></tr>`;
+      } else {
+        logs.forEach(l => {
+          const tr = document.createElement('tr');
+          tr.className = "hover:bg-slate-50";
+          tr.innerHTML = `
+            <td class="p-3 text-slate-500">${l.timestamp}</td>
+            <td class="p-3 font-semibold text-slate-800">${l.name}</td>
+            <td class="p-3 text-slate-600">${l.distance}</td>
+            <td class="p-3">
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+                ${l.approved ? 'Approved' : 'Denied'}
+              </span>
+            </td>
+            <td class="p-3">
+              ${l.approved ? (l.isLate ? `<span class="text-amber-600 font-bold">${l.minutesLate}m Late</span>` : `<span class="text-emerald-600 font-bold">On-Time</span>`) : '<span class="text-slate-400">N/A</span>'}
+            </td>
+          `;
+          tableBody.appendChild(tr);
+        });
+      }
+
+      // Render Charts
+      renderCharts(totalOnTime, totalLate, staffLateMap);
+    }
+
+    function acknowledgeAction(pin) {
+      const logs = getLogs();
+      const lateCount = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
+      setResetState(pin, lateCount);
+      renderAdminDashboard();
+    }
+
+    function openStaffModal(pin) {
+      const staff = STAFF_ACCOUNTS[pin];
+      const logs = getLogs().filter(l => l.pin === pin);
+      const approved = logs.filter(l => l.approved);
+
+      document.getElementById('modal-staff-name').textContent = staff.name;
+      document.getElementById('modal-staff-role').textContent = staff.role;
+
+      document.getElementById('modal-ontime-count').textContent = approved.filter(l => !l.isLate).length;
+      document.getElementById('modal-late-count').textContent = approved.filter(l => l.isLate).length;
+      document.getElementById('modal-denied-count').textContent = logs.filter(l => !l.approved).length;
+
+      const tbody = document.getElementById('modal-log-tbody');
+      tbody.innerHTML = logs.map(l => `
+        <tr>
+          <td class="p-2 text-slate-500">${l.timestamp}</td>
+          <td class="p-2">${l.distance}</td>
+          <td class="p-2">
+            <span class="px-1.5 py-0.5 text-[9px] font-bold rounded ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+              ${l.approved ? 'APPROVED' : 'DENIED'}
+            </span>
+          </td>
+          <td class="p-2 text-slate-600">${l.approved ? (l.isLate ? `${l.minutesLate}m Late` : 'On Time') : 'Out of Radius'}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('modal-staff-detail').classList.remove('hidden');
+      document.getElementById('modal-staff-detail').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-staff-detail').classList.add('hidden');
+      document.getElementById('modal-staff-detail').classList.remove('flex');
+    }
+
+    function exportAllLogsCSV() {
+      const logs = getLogs();
+      if (logs.length === 0) return alert("No logs available to export.");
+
+      let csv = "Timestamp,Staff Name,Distance,Status,Punctuality\n";
+      logs.forEach(l => {
+        const punctuality = l.approved ? (l.isLate ? `${l.minutesLate} mins late` : 'On Time') : 'Denied Scan';
+        csv += `"${l.timestamp}","${l.name}","${l.distance}","${l.approved ? 'Approved' : 'Denied'}","${punctuality}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `clinic_attendance_master_log.csv`;
+      a.click();
+    }
+
+    // --- CHARTS (PIE & BAR) ---
+    function renderCharts(onTime, late, staffMap) {
+      if (pieChartInstance) pieChartInstance.destroy();
+      if (barChartInstance) barChartInstance.destroy();
+
+      const pieCtx = document.getElementById('chart-pie').getContext('2d');
+      pieChartInstance = new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+          labels: ['On-Time', 'Late'],
+          datasets: [{
+            data: [onTime, late],
+            backgroundColor: ['#10b981', '#f59e0b']
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      const barCtx = document.getElementById('chart-bar').getContext('2d');
+      barChartInstance = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(staffMap),
+          datasets: [{
+            label: 'Late Count',
+            data: Object.values(staffMap),
+            backgroundColor: '#f43f5e'
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+      });
+    }
+
+    // --- HAVERSINE MATH FORMULA ---
+    function haversineDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371e3;
+      const rad = Math.PI / 180;
+      const dLat = (lat2 - lat1) * rad;
+      const dLon = (lon2 - lon1) * rad;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+  </script>
+</body>
+</html>
