@@ -55,7 +55,6 @@
             <p class="text-xs text-slate-500">Welcome back,</p>
             <h2 class="text-base font-bold text-slate-800" id="staff-greeting-name">Staff Member</h2>
           </div>
-          
         </div>
         <button onclick="logout()" class="px-3 py-1.5 text-xs font-medium bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-lg transition">
           <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
@@ -77,9 +76,8 @@
               Click Here to Test Accuracy
             </button>
           </div>
-          <p id="gps-debug-status" class="text-slate-500 text-[11px]">Please note that you must be within 100m radius of the clinic.</p>
+          <p id="gps-debug-status" class="text-slate-500 text-[11px]">Please note that you must be within required radius of the clinic.</p>
         </div>
-        <!-- END GPS DEBUG BOX -->
         
         <!-- Location Status Card -->
         <div id="status-card" class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-2">
@@ -483,7 +481,6 @@
         if (data.clinics) dbState.clinics = data.clinics;
         if (data.shifts) dbState.shifts = data.shifts;
         if (data.logs) {
-          // Convert logs object to array sorted newest first
           const rawLogs = typeof data.logs === 'object' ? Object.values(data.logs) : data.logs;
           dbState.logs = rawLogs.reverse();
         } else {
@@ -495,15 +492,14 @@
         if (activeUser) {
           if (activeUser.role === "admin") {
             renderAdminDashboard();
-            renderStaffDirectory();
-            renderClinicsList();
-            renderShiftsList();
+            renderStaffDirectoryTable();
+            renderClinicsTable();
+            renderShiftsTable();
           } else {
-            renderStaffLateRecords();
+            setupStaffUI();
           }
         }
       } else {
-        // Seed default database state if fresh setup
         db.ref("mediCheck").set(dbState);
       }
     });
@@ -536,6 +532,22 @@
     function setResetState(pin, value) {
       dbState.resets[pin] = value;
       db.ref(`mediCheck/resets/${pin}`).set(value);
+    }
+
+    // --- DATE & TIME HELPER FOR SAME-DAY CHECK ---
+    function getTodaySGTString() {
+      const now = new Date();
+      return now.toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
+    }
+
+    function hasSubmittedToday(pin) {
+      const logs = getLogs();
+      const todayStr = getTodaySGTString();
+      return logs.find(l => {
+        if (l.pin !== pin || !l.approved) return false;
+        const logDateStr = new Date(l.timestamp).toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
+        return logDateStr === todayStr;
+      });
     }
 
     // --- HAVERSINE DISTANCE MATH ---
@@ -600,10 +612,36 @@
       document.getElementById('staff-greeting-name').textContent = activeUser.name;
       document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
       
-      document.getElementById('status-badge').className = "px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full";
-      document.getElementById('status-badge').textContent = "Pending";
-      document.getElementById('status-description').textContent = "Tap below to verify location and submit attendance.";
-      document.getElementById('timestamp-box').classList.add('hidden');
+      const badge = document.getElementById('status-badge');
+      const desc = document.getElementById('status-description');
+      const btn = document.getElementById('btn-verify');
+      const timeBox = document.getElementById('timestamp-box');
+      const timeEl = document.getElementById('current-timestamp');
+
+      // SAME-DAY SUBMISSION CHECK
+      const existingTodayLog = hasSubmittedToday(activeUser.pin);
+
+      if (existingTodayLog) {
+        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
+        badge.textContent = "Submitted Today";
+        desc.innerHTML = `<span class="text-emerald-700 font-semibold">You have already completed attendance for today.</span> Check-in recorded at ${existingTodayLog.timestamp}.`;
+        
+        timeEl.textContent = existingTodayLog.timestamp;
+        timeBox.classList.remove('hidden');
+
+        btn.disabled = true;
+        btn.className = "w-full py-3.5 bg-slate-200 text-slate-500 font-semibold rounded-xl cursor-not-allowed transition flex items-center justify-center gap-2";
+        btn.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> Attendance Submitted For Today`;
+      } else {
+        badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-slate-200 text-slate-600 rounded-full";
+        badge.textContent = "Pending";
+        desc.textContent = "After verifying your GPS status, tap on the submit button below.";
+        timeBox.classList.add('hidden');
+
+        btn.disabled = false;
+        btn.className = "w-full py-3.5 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-xl shadow-md shadow-sky-100 transition flex items-center justify-center gap-2";
+        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
+      }
 
       renderStaffLateRecords();
     }
@@ -654,6 +692,12 @@
     }
 
     function verifyAndSubmitAttendance() {
+      if (hasSubmittedToday(activeUser.pin)) {
+        alert("You have already submitted your attendance for today.");
+        setupStaffUI();
+        return;
+      }
+
       const btn = document.getElementById('btn-verify');
       const badge = document.getElementById('status-badge');
       const desc = document.getElementById('status-description');
@@ -666,7 +710,7 @@
       if (!navigator.geolocation) {
         alert("Geolocation is not supported by your browser.");
         btn.disabled = false;
-        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+        btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
         return;
       }
 
@@ -679,30 +723,32 @@
           if (!clinics || clinics.length === 0) {
             alert("No clinic locations configured in Admin!");
             btn.disabled = false;
-            btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+            btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
             return;
           }
 
+          // MULTI-CLINIC AUTO-DETECTION: Find nearest clinic
           let closestClinic = null;
-          let minDistance = Infinity;
+          let shortestDistance = Infinity;
 
-          clinics.forEach(clinic => {
-            const dist = Math.round(haversineDistance(userLat, userLng, clinic.lat, clinic.lng));
-            if (dist < minDistance) {
-              minDistance = dist;
-              closestClinic = clinic;
+          clinics.forEach(c => {
+            const dist = Math.round(haversineDistance(userLat, userLng, c.lat, c.lng));
+            if (dist < shortestDistance) {
+              shortestDistance = dist;
+              closestClinic = c;
             }
           });
 
-          const distance = minDistance;
+          const distance = shortestDistance;
           const targetClinic = closestClinic;
-          const isWithinRadius = distance <= targetClinic.radius;
-
+          
           const now = new Date();
           const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
           timeEl.textContent = timestampStr;
           timeBox.classList.remove('hidden');
 
+          const isWithinRadius = distance <= targetClinic.radius;
+          
           const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
           const currentDayName = days[now.getDay()];
           const shifts = getShiftSchedule();
@@ -729,24 +775,21 @@
           saveLog(logEntry);
 
           if (isWithinRadius) {
-            badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-emerald-100 text-emerald-700 rounded-full";
-            badge.textContent = "Approved & Submitted";
-            desc.innerHTML = `<span class="text-emerald-700 font-semibold">Location Verified at ${targetClinic.name}! (${distance}m away).</span> ${isLate ? `You checked in <strong>${minutesLate} mins late</strong>.` : 'Checked in on time!'}`;
+            setupStaffUI();
           } else {
             badge.className = "px-2.5 py-0.5 text-[11px] font-bold bg-rose-100 text-rose-700 rounded-full";
             badge.textContent = "Access Denied";
             desc.innerHTML = `<span class="text-rose-700 font-semibold">Outside required range for ${targetClinic.name}!</span> You are <strong>${distance}m away</strong> (Must be within ${targetClinic.radius}m).`;
+            btn.disabled = false;
+            btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
           }
 
-          btn.disabled = false;
-          btn.innerHTML = `<i class="fa-solid fa-rotate-right"></i> Re-Verify Location`;
-          
           renderStaffLateRecords();
         },
         (err) => {
           alert("GPS Error: " + err.message);
           btn.disabled = false;
-          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Verify GPS & Submit`;
+          btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
         },
         { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
       );
@@ -762,7 +805,7 @@
       const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
 
       document.getElementById('staff-late-count-badge').textContent = `${effectiveLateCount} Late`;
-      
+
       const warningBanner = document.getElementById('dr-gerald-warning');
       if (effectiveLateCount >= 3) {
         warningBanner.classList.remove('hidden');
@@ -770,20 +813,20 @@
         warningBanner.classList.add('hidden');
       }
 
-      const listEl = document.getElementById('staff-late-list');
+      const list = document.getElementById('staff-late-list');
       if (lateLogs.length === 0) {
-        listEl.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
+        list.innerHTML = `<li class="py-1.5 text-slate-400 italic">No late records found.</li>`;
       } else {
-        listEl.innerHTML = lateLogs.map(l => `
-          <li class="py-1.5 flex items-center justify-between">
+        list.innerHTML = lateLogs.map(l => `
+          <li class="py-1.5 flex justify-between">
             <span>${l.timestamp}</span>
-            <span class="text-amber-600 font-bold">+${l.minutesLate} mins</span>
+            <span class="text-amber-600 font-bold">${l.minutesLate} mins late</span>
           </li>
         `).join('');
       }
     }
 
-    // --- ADMIN NAVIGATION & TAB SWITCHING ---
+    // --- ADMIN NAVIGATION & TABS ---
     function switchAdminTab(tab) {
       ['dashboard', 'staff', 'clinics', 'hours'].forEach(t => {
         document.getElementById(`atab-${t}`).classList.add('hidden');
@@ -793,9 +836,9 @@
       document.getElementById(`atab-btn-${tab}`).className = "px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white";
 
       if (tab === 'dashboard') renderAdminDashboard();
-      if (tab === 'staff') renderStaffDirectory();
-      if (tab === 'clinics') renderClinicsList();
-      if (tab === 'hours') renderShiftsList();
+      if (tab === 'staff') renderStaffDirectoryTable();
+      if (tab === 'clinics') renderClinicsTable();
+      if (tab === 'hours') renderShiftsTable();
     }
 
     function toggleShowInactiveStaff() {
@@ -805,166 +848,135 @@
       renderAdminDashboard();
     }
 
-    // --- ADMIN DASHBOARD RENDER & CHARTS ---
-    function renderAdminDashboard() {
-      const logs = getLogs();
-      const staffList = getStaffList();
-      const resets = getResetStates();
+    // --- ADMIN DASHBOARD RENDER ---
+function renderAdminDashboard() {
+  const logs = getLogs();
+  const resets = getResetStates();
+  const staffList = getStaffList();
+  const bentoContainer = document.getElementById('bento-grid');
+  const tableBody = document.getElementById('master-log-table');
+  bentoContainer.innerHTML = '';
+  tableBody.innerHTML = '';
 
-      // Master Log Table
-      const logTbody = document.getElementById('master-log-table');
-      if (logs.length === 0) {
-        logTbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400 italic">No attendance records logged yet.</td></tr>`;
-      } else {
-        logTbody.innerHTML = logs.map(l => {
-          const resBadge = l.approved 
-            ? `<span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-700 rounded-md">APPROVED</span>`
-            : `<span class="px-2.5 py-0.5 text-[10px] font-bold bg-rose-100 text-rose-700 rounded-md">DENIED</span>`;
-          
-          let puncBadge = `<span class="text-slate-400">--</span>`;
-          if (l.approved) {
-            puncBadge = l.isLate 
-              ? `<span class="text-amber-600 font-bold">Late (+${l.minutesLate}m)</span>`
-              : `<span class="text-emerald-600 font-bold">On Time</span>`;
-          }
-          return `
-            <tr class="hover:bg-slate-50">
-              <td class="p-3">${l.timestamp}</td>
-              <td class="p-3 font-semibold text-slate-800">${l.name}</td>
-              <td class="p-3 text-slate-500">${l.distance}</td>
-              <td class="p-3">${resBadge}</td>
-              <td class="p-3">${puncBadge}</td>
-            </tr>
-          `;
-        }).join('');
-      }
+  let totalOnTime = 0;
+  let totalLate = 0;
+  const staffLateMap = {};
 
-      // Filter staff for Bento Grid
-      const filteredStaff = staffList.filter(s => {
-        if (showInactiveStaff) return true;
-        return !s.lastDay || new Date(s.lastDay) >= new Date();
-      });
+  const filteredStaff = showInactiveStaff ? staffList : staffList.filter(s => !s.lastDay || new Date(s.lastDay) >= new Date());
 
-      // Bento Grid Cards
-      const bento = document.getElementById('bento-grid');
-      bento.innerHTML = filteredStaff.map(s => {
-        const sLogs = logs.filter(l => l.pin === s.pin && l.approved);
-        const lateLogs = sLogs.filter(l => l.isLate);
-        const resetCount = resets[s.pin] || 0;
-        const effectiveLate = Math.max(0, lateLogs.length - resetCount);
-        const isDeactivated = s.lastDay && new Date(s.lastDay) < new Date();
+  filteredStaff.forEach(staff => {
+    const staffLogs = logs.filter(l => l.pin === staff.pin);
+    const approvedLogs = staffLogs.filter(l => l.approved);
+    const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
+    const lateLogs = approvedLogs.filter(l => l.isLate);
+    
+    const resetOffset = resets[staff.pin] || 0;
+    const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
 
-        return `
-          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-4 ${isDeactivated ? 'opacity-60 bg-slate-50' : ''}">
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded-full ${isDeactivated ? 'bg-slate-200 text-slate-600' : 'bg-sky-100 text-sky-700'}">
-                  ${isDeactivated ? 'Resigned / Inactive' : 'Active Staff'}
-                </span>
-                <span class="text-xs font-mono text-slate-400">PIN: ${s.pin}</span>
-              </div>
-              <h4 class="font-bold text-slate-800 text-base">${s.name}</h4>
-              <p class="text-xs text-slate-500">${s.role}</p>
-            </div>
+    totalOnTime += onTimeCount;
+    totalLate += lateLogs.length;
+    staffLateMap[staff.name] = lateLogs.length;
 
-            <div class="grid grid-cols-2 gap-2 text-center border-y py-3 text-xs font-mono">
-              <div>
-                <p class="text-slate-400">Total Check-ins</p>
-                <p class="font-bold text-slate-700 text-sm">${sLogs.length}</p>
-              </div>
-              <div>
-                <p class="text-slate-400">Effective Late</p>
-                <p class="font-bold ${effectiveLate >= 3 ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate} Mths</p>
-              </div>
-            </div>
+    const isWarning = effectiveLate >= 3;
+    const isResigned = staff.lastDay && new Date(staff.lastDay) < new Date();
 
-            <div class="flex gap-2">
-              <button onclick="viewStaffDetails('${s.pin}')" class="flex-1 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
-                <i class="fa-solid fa-clock-rotate-left mr-1"></i> View Logs
-              </button>
-              <button onclick="resetStaffLateCounter('${s.pin}')" class="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 text-xs font-semibold rounded-lg transition" title="Reset Warning Counter">
-                <i class="fa-solid fa-rotate-left mr-1"></i> Reset Late
-              </button>
-            </div>
+    const card = document.createElement('div');
+    card.className = `p-5 rounded-2xl border transition shadow-sm flex flex-col justify-between ${
+      isResigned ? 'opacity-40 bg-slate-100 border-slate-300' : (isWarning ? 'bg-rose-50/70 border-rose-300 ring-2 ring-rose-400' : 'bg-white border-slate-200')
+    }`;
+
+    card.innerHTML = `
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-bold text-slate-800">${staff.name}</span>
+          ${isResigned ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-slate-300 text-slate-700 rounded">RESIGNED</span>' : (isWarning ? '<span class="px-2 py-0.5 text-[10px] font-bold bg-rose-600 text-white rounded-full uppercase">3x Late Alert</span>' : '')}
+        </div>
+        <p class="text-xs text-slate-500 mb-3">${staff.role}</p>
+
+        <div class="grid grid-cols-2 gap-2 text-center text-xs font-mono mb-4">
+          <div class="bg-white/80 p-2 rounded-lg border">
+            <span class="block text-slate-400 text-[10px]">ON TIME</span>
+            <span class="font-bold text-emerald-600 text-sm">${onTimeCount}</span>
           </div>
+          <div class="bg-white/80 p-2 rounded-lg border">
+            <span class="block text-slate-400 text-[10px]">LATE COUNT</span>
+            <span class="font-bold ${isWarning ? 'text-rose-600' : 'text-amber-600'} text-sm">${effectiveLate}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-2 pt-2 border-t border-slate-200/60">
+        ${isWarning && !isResigned ? `
+          <button onclick="acknowledgeAction('${staff.pin}')" class="w-full py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition shadow-sm">
+            <i class="fa-solid fa-check mr-1"></i> Action Taken (Reset Count)
+          </button>
+        ` : ''}
+        <button onclick="openStaffModal('${staff.pin}')" class="w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition">
+          View Detailed Logs
+        </button>
+      </div>
+    `;
+    bentoContainer.appendChild(card);
+  });
+
+  if (logs.length === 0) {
+    tableBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">No verification attempts logged yet.</td></tr>`;
+  } else {
+    logs.forEach(l => {
+      const tr = document.createElement('tr');
+      tr.className = "hover:bg-slate-50";
+      tr.innerHTML = `
+        <td class="p-3 text-slate-500">${l.timestamp}</td>
+        <td class="p-3 font-semibold text-slate-800">${l.name}</td>
+        <td class="p-3 text-slate-600">${l.distance}</td>
+        <td class="p-3">
+          <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+            ${l.approved ? 'Approved' : 'Denied'}
+          </span>
+        </td>
+        <td class="p-3">
+          ${l.approved ? (l.isLate ? `<span class="text-amber-600 font-bold">${l.minutesLate}m Late</span>` : `<span class="text-emerald-600 font-bold">On-Time</span>`) : '<span class="text-slate-400">N/A</span>'}
+        </td>
+      `;
+      tableBody.appendChild(tr);
+    });
+  }
+
+  renderCharts(totalOnTime, totalLate, staffLateMap);
+}
+
+    function acknowledgeAction(pin) {
+      const logs = getLogs();
+      const lateCount = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
+      setResetState(pin, lateCount);
+      renderAdminDashboard();
+    }
+
+    // --- STAFF DIRECTORY CRUD ---
+    function renderStaffDirectoryTable() {
+      const list = getStaffList();
+      const tbody = document.getElementById('staff-directory-tbody');
+      tbody.innerHTML = list.map(s => {
+        const isResigned = s.lastDay && new Date(s.lastDay) < new Date();
+        return `
+          <tr class="${isResigned ? 'bg-slate-100 opacity-60' : 'hover:bg-slate-50'}">
+            <td class="p-3 font-bold text-sky-600">${s.pin}</td>
+            <td class="p-3 font-bold text-slate-800">${s.name}</td>
+            <td class="p-3">${s.role}</td>
+            <td class="p-3">${s.dateJoined || '-'}</td>
+            <td class="p-3">${s.lastDay || '-'}</td>
+            <td class="p-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold ${isResigned ? 'bg-slate-300 text-slate-700' : 'bg-emerald-100 text-emerald-700'}">
+                ${isResigned ? 'Resigned' : 'Active'}
+              </span>
+            </td>
+            <td class="p-3 text-right">
+              <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
+              <button onclick="deleteStaff('${s.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
+            </td>
+          </tr>
         `;
       }).join('');
-
-      // Render Charts
-      renderAnalyticsCharts(logs, staffList);
-    }
-
-    function renderAnalyticsCharts(logs, staffList) {
-      const approvedCount = logs.filter(l => l.approved).length;
-      const deniedCount = logs.filter(l => !l.approved).length;
-
-      // Pie Chart
-      const pieCtx = document.getElementById('chart-pie').getContext('2d');
-      if (pieChartInstance) pieChartInstance.destroy();
-      pieChartInstance = new Chart(pieCtx, {
-        type: 'doughnut',
-        data: {
-          labels: ['Approved', 'Denied'],
-          datasets: [{
-            data: [approvedCount, deniedCount],
-            backgroundColor: ['#10b981', '#f43f5e']
-          }]
-        },
-        options: { responsive: true, maintainAspectRatio: false }
-      });
-
-      // Bar Chart (Late Counts per Staff)
-      const staffNames = staffList.map(s => s.name.split(' ')[1] || s.name);
-      const lateCounts = staffList.map(s => logs.filter(l => l.pin === s.pin && l.approved && l.isLate).length);
-
-      const barCtx = document.getElementById('chart-bar').getContext('2d');
-      if (barChartInstance) barChartInstance.destroy();
-      barChartInstance = new Chart(barCtx, {
-        type: 'bar',
-        data: {
-          labels: staffNames,
-          datasets: [{
-            label: 'Late Occurrences',
-            data: lateCounts,
-            backgroundColor: '#f59e0b'
-          }]
-        },
-        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
-      });
-    }
-
-    function resetStaffLateCounter(pin) {
-      if (confirm("Reset the monthly late warning counter for this staff member?")) {
-        const logs = getLogs();
-        const totalLate = logs.filter(l => l.pin === pin && l.approved && l.isLate).length;
-        setResetState(pin, totalLate);
-        renderAdminDashboard();
-        alert("Late counter successfully reset to 0.");
-      }
-    }
-
-    // --- STAFF DIRECTORY TAB LOGIC ---
-    function renderStaffDirectory() {
-      const staff = getStaffList();
-      const tbody = document.getElementById('staff-directory-tbody');
-      tbody.innerHTML = staff.map(s => `
-        <tr class="hover:bg-slate-50">
-          <td class="p-3 font-bold">${s.pin}</td>
-          <td class="p-3">${s.name}</td>
-          <td class="p-3 text-slate-500">${s.role}</td>
-          <td class="p-3">${s.dateJoined}</td>
-          <td class="p-3">${s.lastDay || '--'}</td>
-          <td class="p-3">
-            <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${s.lastDay && new Date(s.lastDay) < new Date() ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">
-              ${s.lastDay && new Date(s.lastDay) < new Date() ? 'Deactivated' : 'Active'}
-            </span>
-          </td>
-          <td class="p-3 text-right">
-            <button onclick="editStaff('${s.id}')" class="text-sky-600 hover:text-sky-800 font-bold mr-2">Edit</button>
-            <button onclick="deleteStaff('${s.id}')" class="text-rose-600 hover:text-rose-800 font-bold">Delete</button>
-          </td>
-        </tr>
-      `).join('');
     }
 
     function handleSaveStaff(e) {
@@ -974,38 +986,41 @@
       const name = document.getElementById('input-staff-name').value.trim();
       const role = document.getElementById('input-staff-role').value.trim();
       const join = document.getElementById('input-staff-join').value;
-      const last = document.getElementById('input-staff-lastday').value;
+      const lastDay = document.getElementById('input-staff-lastday').value;
 
-      let list = getStaffList();
+      const list = getStaffList();
+
       if (id) {
-        list = list.map(s => s.id === id ? { id, pin, name, role, dateJoined: join, lastDay: last } : s);
+        const index = list.findIndex(s => s.id === id);
+        if (index !== -1) {
+          list[index] = { id, pin, name, role, dateJoined: join, lastDay };
+        }
       } else {
-        list.push({ id: "S" + Date.now(), pin, name, role, dateJoined: join, lastDay: last });
+        list.push({ id: 'S' + Date.now(), pin, name, role, dateJoined: join, lastDay });
       }
 
       saveStaffList(list);
       resetStaffForm();
-      renderStaffDirectory();
+      renderStaffDirectoryTable();
     }
 
     function editStaff(id) {
       const staff = getStaffList().find(s => s.id === id);
-      if (staff) {
-        document.getElementById('edit-staff-id').value = staff.id;
-        document.getElementById('input-staff-pin').value = staff.pin;
-        document.getElementById('input-staff-name').value = staff.name;
-        document.getElementById('input-staff-role').value = staff.role;
-        document.getElementById('input-staff-join').value = staff.dateJoined;
-        document.getElementById('input-staff-lastday').value = staff.lastDay || '';
-        document.getElementById('staff-form-title').textContent = "Edit Staff Member";
-      }
+      if (!staff) return;
+      document.getElementById('edit-staff-id').value = staff.id;
+      document.getElementById('input-staff-pin').value = staff.pin;
+      document.getElementById('input-staff-name').value = staff.name;
+      document.getElementById('input-staff-role').value = staff.role;
+      document.getElementById('input-staff-join').value = staff.dateJoined || '';
+      document.getElementById('input-staff-lastday').value = staff.lastDay || '';
+      document.getElementById('staff-form-title').textContent = "Update Staff Member";
     }
 
     function deleteStaff(id) {
-      if (confirm("Are you sure you want to delete this staff member?")) {
+      if (confirm("Delete this staff member?")) {
         const list = getStaffList().filter(s => s.id !== id);
         saveStaffList(list);
-        renderStaffDirectory();
+        renderStaffDirectoryTable();
       }
     }
 
@@ -1019,19 +1034,19 @@
       document.getElementById('staff-form-title').textContent = "Add New Staff Member";
     }
 
-    // --- CLINICS TAB LOGIC ---
-    function renderClinicsList() {
-      const clinics = getClinicsList();
+    // --- CLINICS CRUD ---
+    function renderClinicsTable() {
+      const list = getClinicsList();
       const tbody = document.getElementById('clinics-tbody');
-      tbody.innerHTML = clinics.map(c => `
+      tbody.innerHTML = list.map(c => `
         <tr class="hover:bg-slate-50">
           <td class="p-3 font-bold text-slate-800">${c.name}</td>
           <td class="p-3">${c.lat}</td>
           <td class="p-3">${c.lng}</td>
-          <td class="p-3 font-bold text-sky-600">${c.radius}m</td>
+          <td class="p-3">${c.radius}m</td>
           <td class="p-3 text-right">
-            <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:text-sky-800 font-bold mr-2">Edit</button>
-            <button onclick="deleteClinic('${c.id}')" class="text-rose-600 hover:text-rose-800 font-bold">Delete</button>
+            <button onclick="editClinic('${c.id}')" class="text-sky-600 hover:underline mr-2 font-semibold">Edit</button>
+            <button onclick="deleteClinic('${c.id}')" class="text-rose-500 hover:underline font-semibold">Delete</button>
           </td>
         </tr>
       `).join('');
@@ -1045,35 +1060,35 @@
       const lng = parseFloat(document.getElementById('input-clinic-lng').value);
       const radius = parseInt(document.getElementById('input-clinic-radius').value);
 
-      let list = getClinicsList();
+      const list = getClinicsList();
       if (id) {
-        list = list.map(c => c.id === id ? { id, name, lat, lng, radius } : c);
+        const idx = list.findIndex(c => c.id === id);
+        if (idx !== -1) list[idx] = { id, name, lat, lng, radius };
       } else {
-        list.push({ id: "C" + Date.now(), name, lat, lng, radius });
+        list.push({ id: 'C' + Date.now(), name, lat, lng, radius });
       }
 
       saveClinicsList(list);
       resetClinicForm();
-      renderClinicsList();
+      renderClinicsTable();
     }
 
     function editClinic(id) {
       const c = getClinicsList().find(item => item.id === id);
-      if (c) {
-        document.getElementById('edit-clinic-id').value = c.id;
-        document.getElementById('input-clinic-name').value = c.name;
-        document.getElementById('input-clinic-lat').value = c.lat;
-        document.getElementById('input-clinic-lng').value = c.lng;
-        document.getElementById('input-clinic-radius').value = c.radius;
-        document.getElementById('clinic-form-title').textContent = "Edit Clinic Location";
-      }
+      if (!c) return;
+      document.getElementById('edit-clinic-id').value = c.id;
+      document.getElementById('input-clinic-name').value = c.name;
+      document.getElementById('input-clinic-lat').value = c.lat;
+      document.getElementById('input-clinic-lng').value = c.lng;
+      document.getElementById('input-clinic-radius').value = c.radius;
+      document.getElementById('clinic-form-title').textContent = "Update Clinic Location";
     }
 
     function deleteClinic(id) {
       if (confirm("Delete this clinic location?")) {
         const list = getClinicsList().filter(c => c.id !== id);
         saveClinicsList(list);
-        renderClinicsList();
+        renderClinicsTable();
       }
     }
 
@@ -1082,28 +1097,29 @@
       document.getElementById('input-clinic-name').value = '';
       document.getElementById('input-clinic-lat').value = '';
       document.getElementById('input-clinic-lng').value = '';
-      document.getElementById('input-clinic-radius').value = '150';
+      document.getElementById('input-clinic-radius').value = 150;
       document.getElementById('clinic-form-title').textContent = "Add New Clinic Branch";
     }
 
     function setClinicFormToCurrentGPS() {
-      if (!navigator.geolocation) return alert("Geolocation not supported");
-      navigator.geolocation.getCurrentPosition(pos => {
-        document.getElementById('input-clinic-lat').value = pos.coords.latitude.toFixed(6);
-        document.getElementById('input-clinic-lng').value = pos.coords.longitude.toFixed(6);
-      }, err => alert("GPS Error: " + err.message), { enableHighAccuracy: true });
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          document.getElementById('input-clinic-lat').value = pos.coords.latitude;
+          document.getElementById('input-clinic-lng').value = pos.coords.longitude;
+        });
+      }
     }
 
-    // --- SHIFTS TAB LOGIC ---
-    function renderShiftsList() {
+    // --- SHIFTS MANAGEMENT ---
+    function renderShiftsTable() {
       const shifts = getShiftSchedule();
       const tbody = document.getElementById('shifts-tbody');
-      tbody.innerHTML = Object.entries(shifts).map(([day, time]) => `
+      tbody.innerHTML = Object.keys(shifts).map(day => `
         <tr class="hover:bg-slate-50">
           <td class="p-3 font-bold text-slate-800">${day}</td>
-          <td class="p-3 font-mono font-bold text-sky-600">${time} SGT</td>
+          <td class="p-3 text-sky-600 font-bold">${shifts[day]} SGT</td>
           <td class="p-3 text-right">
-            <button onclick="editShift('${day}', '${time}')" class="text-sky-600 hover:text-sky-800 font-bold">Edit</button>
+            <button onclick="quickSetShift('${day}')" class="text-sky-600 hover:underline font-semibold">Modify</button>
           </td>
         </tr>
       `).join('');
@@ -1117,37 +1133,38 @@
       const shifts = getShiftSchedule();
       shifts[day] = time;
       saveShiftSchedule(shifts);
-      renderShiftsList();
+      renderShiftsTable();
     }
 
-    function editShift(day, time) {
+    function quickSetShift(day) {
       document.getElementById('input-shift-day').value = day;
-      document.getElementById('input-shift-time').value = time;
+      document.getElementById('input-shift-time').value = getShiftSchedule()[day] || "09:00";
     }
 
-    // --- MODAL LOG HISTORY ---
-    function viewStaffDetails(pin) {
-      const staff = getStaffList().find(s => s.pin === pin);
+    // --- MODAL & EXPORT ---
+    function openStaffModal(pin) {
+      const staff = getStaffList().find(s => s.pin === pin) || { name: "Staff", role: "Staff" };
       const logs = getLogs().filter(l => l.pin === pin);
-      
-      document.getElementById('modal-staff-name').textContent = staff ? staff.name : 'Staff Details';
-      document.getElementById('modal-staff-role').textContent = staff ? staff.role : '';
+      const approved = logs.filter(l => l.approved);
 
-      const onTime = logs.filter(l => l.approved && !l.isLate).length;
-      const late = logs.filter(l => l.approved && l.isLate).length;
-      const denied = logs.filter(l => !l.approved).length;
+      document.getElementById('modal-staff-name').textContent = staff.name;
+      document.getElementById('modal-staff-role').textContent = staff.role;
 
-      document.getElementById('modal-ontime-count').textContent = onTime;
-      document.getElementById('modal-late-count').textContent = late;
-      document.getElementById('modal-denied-count').textContent = denied;
+      document.getElementById('modal-ontime-count').textContent = approved.filter(l => !l.isLate).length;
+      document.getElementById('modal-late-count').textContent = approved.filter(l => l.isLate).length;
+      document.getElementById('modal-denied-count').textContent = logs.filter(l => !l.approved).length;
 
       const tbody = document.getElementById('modal-log-tbody');
       tbody.innerHTML = logs.map(l => `
         <tr>
-          <td class="p-2">${l.timestamp}</td>
+          <td class="p-2 text-slate-500">${l.timestamp}</td>
           <td class="p-2">${l.distance}</td>
-          <td class="p-2 font-bold ${l.approved ? 'text-emerald-600' : 'text-rose-600'}">${l.approved ? 'APPROVED' : 'DENIED'}</td>
-          <td class="p-2 text-slate-500">${l.approved ? (l.isLate ? `Late +${l.minutesLate}m` : 'On Time') : 'Out of Range'}</td>
+          <td class="p-2">
+            <span class="px-1.5 py-0.5 text-[9px] font-bold rounded ${l.approved ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}">
+              ${l.approved ? 'APPROVED' : 'DENIED'}
+            </span>
+          </td>
+          <td class="p-2 text-slate-600">${l.approved ? (l.isLate ? `${l.minutesLate}m Late` : 'On Time') : 'Out of Radius'}</td>
         </tr>
       `).join('');
 
@@ -1160,23 +1177,46 @@
       document.getElementById('modal-staff-detail').classList.remove('flex');
     }
 
-    // --- EXPORT TO EXCEL (CSV) ---
     function exportAllLogsCSV() {
       const logs = getLogs();
       if (logs.length === 0) return alert("No logs available to export.");
 
-      let csv = "Timestamp,Staff PIN,Staff Name,Distance & Location,Status,Punctuality\n";
+      let csv = "Timestamp,Staff Name,Distance,Status,Punctuality\n";
       logs.forEach(l => {
-        const punc = l.approved ? (l.isLate ? `Late (+${l.minutesLate} mins)` : 'On Time') : 'N/A';
-        csv += `"${l.timestamp}","${l.pin}","${l.name}","${l.distance}","${l.approved ? 'APPROVED' : 'DENIED'}","${punc}"\n`;
+        const punctuality = l.approved ? (l.isLate ? `${l.minutesLate} mins late` : 'On Time') : 'Denied Scan';
+        csv += `"${l.timestamp}","${l.name}","${l.distance}","${l.approved ? 'Approved' : 'Denied'}","${punctuality}"\n`;
       });
 
       const blob = new Blob([csv], { type: 'text/csv' });
-      const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.setAttribute('href', url);
-      a.setAttribute('download', `MediCheck_Attendance_Export_${Date.now()}.csv`);
+      a.href = URL.createObjectURL(blob);
+      a.download = `clinic_attendance_master_log.csv`;
       a.click();
+    }
+
+    function renderCharts(onTime, late, staffMap) {
+      if (pieChartInstance) pieChartInstance.destroy();
+      if (barChartInstance) barChartInstance.destroy();
+
+      const pieCtx = document.getElementById('chart-pie').getContext('2d');
+      pieChartInstance = new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+          labels: ['On-Time', 'Late'],
+          datasets: [{ data: [onTime, late], backgroundColor: ['#10b981', '#f59e0b'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      const barCtx = document.getElementById('chart-bar').getContext('2d');
+      barChartInstance = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(staffMap),
+          datasets: [{ label: 'Late Count', data: Object.values(staffMap), backgroundColor: '#f43f5e' }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+      });
     }
   </script>
 </body>
