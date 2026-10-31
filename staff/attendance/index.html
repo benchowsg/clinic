@@ -1099,6 +1099,52 @@ function verifyAndSubmitAttendance() {
                 Math.sin(dLon / 2) * Math.sin(dLon / 2);
       return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
+
+
+    function checkGPSAccuracy() {
+        const output = document.getElementById('gps-debug-status');
+        output.innerHTML = "Fetching GPS fix from device...";
+      
+        if (!navigator.geolocation) {
+          output.innerHTML = "<span class='text-rose-600 font-bold'>Geolocation not supported by browser.</span>";
+          return;
+        }
+      
+        const options = {
+          enableHighAccuracy: true,
+          timeout: 15000,
+          maximumAge: 0
+        };
+      
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude.toFixed(6);
+            const lng = position.coords.longitude.toFixed(6);
+            const accuracy = Math.round(position.coords.accuracy);
+      
+            let statusColor = "text-emerald-600";
+            let statusText = "Excellent (True GPS/Wi-Fi)";
+      
+            if (accuracy > 500) {
+              statusColor = "text-rose-600";
+              statusText = "Poor (Cell Tower Fallback)";
+            } else if (accuracy > 100) {
+              statusColor = "text-amber-600";
+              statusText = "Moderate (Needs 150m Radius)";
+            }
+      
+            output.innerHTML = `
+              • <strong>Lat/Lng:</strong> ${lat}, ${lng}<br/>
+              • <strong>Accuracy:</strong> <span class="${statusColor} font-bold">±${accuracy} meters</span><br/>
+              • <strong>Signal:</strong> ${statusText}
+            `;
+          },
+          (error) => {
+            output.innerHTML = `<span class='text-rose-600 font-bold'>GPS Error (${error.code}): ${error.message}</span>`;
+          },
+          options
+        );
+      }
   </script>
 </body>
 </html>
