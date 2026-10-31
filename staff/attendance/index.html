@@ -534,7 +534,7 @@
     db.ref(`mediCheck/resets/${pin}`).set(value);
   }
 
-  // --- DATE & TIME HELPER FOR SAME-DAY CHECK (SINGAPORE TIME) ---
+  // --- FIXED DATE & TIME HELPER FOR SAME-DAY CHECK (SINGAPORE TIME) ---
   function getTodaySGTString() {
     const now = new Date();
     return now.toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
@@ -542,10 +542,12 @@
 
   function hasSubmittedToday(pin) {
     const logs = getLogs();
-    const todayStr = getTodaySGTString();
+    const todayStr = getTodaySGTString(); // e.g., "31/10/2026"
+    
     return logs.find(l => {
       if (l.pin !== pin || !l.approved) return false;
-      const logDateStr = new Date(l.timestamp).toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
+      // Extract the raw date string prior to the comma in timestamp
+      const logDateStr = l.timestamp.split(',')[0].trim();
       return logDateStr === todayStr;
     });
   }
@@ -607,7 +609,7 @@
     document.getElementById(id).classList.remove('hidden');
   }
 
-  // --- STAFF MOBILE CHECK-IN ---
+  // --- STAFF MOBILE CHECK-IN UI SETUP ---
   function setupStaffUI() {
     document.getElementById('staff-greeting-name').textContent = activeUser.name;
     document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
@@ -952,7 +954,7 @@
     renderAdminDashboard();
   }
 
-  // --- STAFF DIRECTORY CRUD ---
+  // --- STAFF DIRECTORY CRUD WITH CASCADING LOG PURGE ---
   function renderStaffDirectoryTable() {
     const list = getStaffList();
     const tbody = document.getElementById('staff-directory-tbody');
@@ -1017,9 +1019,31 @@
   }
 
   function deleteStaff(id) {
-    if (confirm("Delete this staff member?")) {
-      const list = getStaffList().filter(s => s.id !== id);
-      saveStaffList(list);
+    const staff = getStaffList().find(s => s.id === id);
+    if (!staff) return;
+
+    if (confirm(`Delete staff member ${staff.name}? This will also delete all historical attendance records linked to PIN ${staff.pin}.`)) {
+      // 1. Remove staff member from directory
+      const updatedList = getStaffList().filter(s => s.id !== id);
+      saveStaffList(updatedList);
+
+      // 2. Cascade delete matching logs from Firebase
+      const logsRef = db.ref("mediCheck/logs");
+      logsRef.once("value", (snapshot) => {
+        const logs = snapshot.val();
+        if (logs) {
+          Object.keys(logs).forEach(key => {
+            if (logs[key].pin === staff.pin) {
+              logsRef.child(key).remove();
+            }
+          });
+        }
+      });
+
+      // 3. Reset late action state
+      db.ref(`mediCheck/resets/${staff.pin}`).remove();
+
+      resetStaffForm();
       renderStaffDirectoryTable();
     }
   }
@@ -1219,5 +1243,6 @@
     });
   }
 </script>
+  
 </body>
 </html>
