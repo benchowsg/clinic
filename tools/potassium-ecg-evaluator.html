@@ -1,0 +1,398 @@
+---
+layout: default
+permalink: /potassium-ecg-evaluator
+title: "Potassium Imbalance & Cardiac Conduction Evaluator"
+description: "An evidence-based clinical tool mapping serum potassium (K+) variations to cardiac action potential alterations and ECG waveforms."
+---
+
+<style>
+  /* Base Container and Layout Elements */
+  .article-container { padding-top: 100px; padding-bottom: 80px; background-color: #fbfcfc; }
+  .main-title { color: #2c4964; font-size: 2.6rem; letter-spacing: -1px; line-height: 1.2; }
+  
+  /* Modern Glassmorphism Main Component Card */
+  .tool-card {
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 20px 50px rgba(44, 73, 100, 0.05);
+    border: 1px solid #edf2f7;
+  }
+
+  /* Custom Target Sliders */
+  .form-range::-webkit-slider-thumb { background: #008080; }
+  .form-range::-moz-range-thumb { background: #008080; }
+  
+  /* Spaced Custom Selection Wrappers */
+  .input-box-custom {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input-box-custom select, .input-box-custom input {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    color: #2c4964;
+    font-size: 1rem;
+    line-height: 1.6;
+    cursor: pointer;
+    white-space: normal;
+  }
+  .input-box-custom select:focus, .input-box-custom input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Dynamic Results Dashboard */
+  .timeline-badge {
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-block;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .k-highlight {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #2c4964 0%, #008080 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .insight-panel {
+    background: #fdfdfd;
+    border-left: 5px solid #008080;
+    border-radius: 0 24px 24px 0;
+  }
+
+  /* ECG Interactive Waveform Simulator Display Box */
+  .ecg-display-box {
+    background: #0d1b2a;
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid #1b263b;
+    color: #00ffcc;
+    font-family: monospace;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ecg-grid-overlay {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+
+  /* Informational Modules and Citations Block */
+  .reference-box {
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #edf2f7;
+  }
+  .study-citation-list {
+    font-size: 0.8rem;
+    color: #718096;
+    line-height: 1.6;
+    padding-left: 1.25rem;
+  }
+
+  /* Structural Clinical Caveat Header Banner */
+  .clinical-caveat {
+    background: #fffaf0;
+    border: 1px solid #feebc8;
+    border-radius: 16px;
+    color: #c05621;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* Deep Conversational Engagement Footer Panel */
+  .cta-dark-box {
+    background: #2c4964;
+    color: white;
+    border-radius: 32px;
+    padding: 50px;
+    margin-top: 40px;
+  }
+  .btn-stewardship {
+    background: #008080;
+    color: white !important;
+    padding: 16px 40px;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s;
+  }
+  .btn-stewardship:hover { background: #006666; transform: translateY(-2px); }
+</style>
+
+<main class="article-container">
+  <div class="container">
+    
+    <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+      <span class="badge rounded-pill px-3 py-2 mb-3" style="background: #e6f2f2; color: #008080; font-weight: 600;">ELECTROLYTE & CARDIAC MONITOR</span>
+      <h1 class="main-title fw-bold">Serum Potassium & ECG Waveform Evaluator</h1>
+      <p class="lead text-muted mt-3">
+        Serum potassium ($K^+$) tightly regulates cardiac membrane potentials. Explore how variations from severe hypokalemia to life-threatening hyperkalemia alter cardiac conduction, ECG morphology, and clinical risks.
+      </p>
+    </div>
+
+    <div class="tool-card p-4 p-md-5">
+      
+      <div class="clinical-caveat p-3 mb-5 d-flex align-items-start gap-2">
+        <span style="font-size: 1.1rem; line-height: 1;">💡</span>
+        <div>
+          <strong>Clinical Note:</strong> This interactive model illustrates the classic electrophysiological progression of potassium dysregulation. Serum potassium levels do not always correlate perfectly with ECG changes in every individual. Severe electrolyte disorders require urgent blood chemistry testing and formal diagnostic evaluation by <strong>Dr. Gerald Thang</strong>.
+        </div>
+      </div>
+
+      <div class="row g-5">
+        
+        <div class="col-lg-5">
+          <h4 class="fw-bold mb-4" style="color: #2c4964; letter-spacing: -0.5px;">Interactive Parameters</h4>
+          
+          <div style="margin-bottom: 2.5rem;">
+            <div class="d-flex justify-content-between mb-3">
+              <label class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.5px;">Serum Potassium Concentration ($K^+$)</label>
+              <span id="kVal" class="fw-bold px-3 py-1 rounded-3" style="background: #e6f2f2; color: #008080 !important; font-size: 0.9rem;">4.0 mEq/L</span>
+            </div>
+            <input type="range" class="form-range" id="kInput" min="2.0" max="8.0" step="0.1" value="4.0" style="cursor: pointer;">
+            <div class="d-flex justify-content-between text-muted small mt-1" style="font-size: 0.75rem;">
+              <span>2.0 (Hypo)</span>
+              <span>3.5 - 5.0 (Normal)</span>
+              <span>8.0+ (Hyper)</span>
+            </div>
+          </div>
+
+          <div id="wrapper-etiology" style="margin-bottom: 2rem; transition: all 0.3s ease;">
+            <label class="small text-muted fw-bold text-uppercase mb-2 d-block" style="letter-spacing: 0.5px;">Clinical Etiology / Context</label>
+            <div class="input-box-custom">
+              <select id="etiologySelect" class="form-select p-0">
+                <option value="routine" selected>Routine Screening / Asymptomatic Baseline</option>
+                <option value="kidney">Chronic Kidney Disease (CKD) / Impaired Renal Excretion</option>
+                <option value="diuretic">Diuretic Therapy (Loop/Thiazide) or GI Losses</option>
+                <option value="meds">ACEi / ARB / Spironolactone Medication Usage</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="calculateBtn" class="btn btn-stewardship w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="letter-spacing: 0.5px;">Evaluate Conduction & Risk</button>
+        </div>
+
+        <div id="resultPanel" class="col-lg-7">
+          <div class="h-100 d-flex flex-column justify-content-center text-center text-lg-start ps-lg-4">
+            
+            <div class="mb-2">
+              <span id="timelineBadge" class="timeline-badge" style="background: #e6f2f2; color: #008080;">NORMOKALEMIA (NORMAL)</span>
+            </div>
+            
+            <h4 class="fw-bold text-dark mb-1">Evaluated Potassium Level:</h4>
+            <div class="my-2">
+              <span id="kOutput" class="k-highlight">4.0</span>
+              <span class="h3 fw-bold text-muted">mEq/L</span>
+            </div>
+
+            <!-- ECG Visualizer Simulation Box -->
+            <div class="ecg-display-box ecg-grid-overlay my-3">
+              <div class="d-flex justify-content-between text-uppercase small mb-2" style="color: #7f5af0; font-weight: 700;">
+                <span>Simulated Lead II ECG Morphology</span>
+                <span id="stageLabelText" style="color: #00ffcc;">Stage 2: Baseline</span>
+              </div>
+              <div id="ecgSvgContainer" class="d-flex justify-content-center align-items-center py-2" style="min-height: 100px;">
+                <!-- Dynamic SVG ECG waveform rendered via JS -->
+              </div>
+            </div>
+
+            <div id="narrativeText" class="insight-panel p-4 bg-light text-start small text-muted shadow-sm">
+              <h6 class="fw-bold text-dark mb-2">Stage 2: Normokalemia ($K^+ = 3.5 - 5.0\text{ mEq/L}$)</h6>
+              <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex architecture with normal baseline timing.</p>
+              <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular depolarization and repolarization phases.</p>
+              <p class="mb-0"><strong>Clinical Action:</strong> Maintain routine monitoring and balanced dietary intake.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Informational Modules -->
+    <div class="row g-4 my-5">
+      <div class="col-md-6">
+        <div class="reference-box h-100">
+          <h5 class="fw-bold" style="color: #2c4964;">Hypokalemia & Ventricular Arhythmia</h5>
+          <p class="small text-muted mb-0">
+            When serum potassium falls below $3.5\text{ mEq/L}$, myocardial cell membranes become hyperpolarized, delaying Phase 3 repolarization. This prolongation generates prominent <strong>U waves</strong> and ST-segment depression. As the T wave fuses with the U wave, the resulting prolonged QU interval creates high susceptibility to dangerous re-entrant ventricular arrhythmias, including <strong>Torsades de Pointes</strong>.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="reference-box h-100">
+          <h5 class="fw-bold" style="color: #008080;">Hyperkalemia & The Classical "Sine Wave"</h5>
+          <p class="small text-muted mb-0">
+            Elevated potassium ($> 5.5\text{ mEq/L}$) accelerates repolarization, producing early <strong>tall, peaked T waves</strong>. As concentrations rise above $7.0 - 7.9\text{ mEq/L}$, cardiac sodium channel inactivation slows impulse conduction across the ventricles. The P wave flattens and disappears, while the QRS complex widens significantly, merging into the T wave to form a lethal <strong>Sine Wave pattern</strong> preceding cardiac arrest.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Research Citations -->
+    <div class="row my-5">
+      <div class="col-12">
+        <div class="p-4 bg-white border border-light rounded-4 shadow-sm">
+          <h6 class="fw-bold text-dark mb-3" style="font-size: 0.95rem;">Scientific Framework & Clinical Guidelines</h6>
+          <p class="small text-muted mb-3" style="line-height: 1.6;">
+            The electrophysiological relationships mapped in this diagnostic tool correspond with international cardiology consensus standards and local Singapore clinical practice guidelines:
+          </p>
+          <ul class="study-citation-list">
+            <li class="mb-2"><strong>European Society of Cardiology (ESC) Guidelines on Acute Electrocardiography:</strong> Definitive diagnostic criteria linking serum potassium alterations to membrane resting potentials and cardiac action potential Phase 0–4 kinetics.</li>
+            <li class="mb-2"><strong>MOH ACE Clinical Guidance on Electrolyte & Renal Management:</strong> Ministry of Health Singapore guidance outlining safety protocols, medication-induced potassium imbalances (ACEi/ARB/MRA therapies), and emergency monitoring thresholds.</li>
+            <li class="mb-2"><strong>Singapore Renal Registry (SRR) Data:</strong> Clinical epidemiologic tracking establishing chronic kidney disease (CKD) as the primary catalyst for chronic hyperkalemia in local patient populations.</li>
+            <li class="mb-2"><strong>SingHealth & National Heart Centre Singapore (NHCS) Clinical Protocols:</strong> Institutional protocols defining immediate IV calcium stabilization requirements upon detection of hyperkalemic QRS widening or sinusoidal ECG configurations.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div id="ctaBox" class="cta-dark-box">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <span class="text-uppercase small fw-bold" style="color: #00cbcb; letter-spacing: 1.5px;">Cardiovascular & Metabolic Care</span>
+          <h2 class="fw-bold mt-2 mb-3">Comprehensive Heart & Metabolic Health Assessments</h2>
+          <p class="mb-0 opacity-75 fs-5">
+            Electrolyte balances, blood pressure regulation, and cardiac conduction are tightly linked to your kidney and metabolic baseline. <strong>Dr. Gerald Thang</strong> provides thorough functional evaluations to detect early metabolic slowing, cardiovascular risks, and organ stability.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn btn-stewardship py-3 px-5 fs-5 shadow">Book a Medical Evaluation</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+const kInput = document.getElementById('kInput');
+const kVal = document.getElementById('kVal');
+const kOutput = document.getElementById('kOutput');
+const timelineBadge = document.getElementById('timelineBadge');
+const stageLabelText = document.getElementById('stageLabelText');
+const ecgSvgContainer = document.getElementById('ecgSvgContainer');
+const narrativeText = document.getElementById('narrativeText');
+
+// SVG Waveform Renderers for the 4 Stages
+function renderECGWaveform(stage) {
+  let svgContent = '';
+  
+  if (stage === 1) { // Hypokalemia (ST Depression, Flat T, Prominent U)
+    svgContent = `
+      <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #ff4a5a; stroke-width: 2.5; fill: none;">
+        <path d="M 0 35 L 40 35 L 45 32 L 50 35 L 70 35 L 75 10 L 82 60 L 88 35 L 105 42 L 130 42 L 140 40 L 160 40 L 180 25 L 200 35 L 300 35" />
+      </svg>`;
+  } else if (stage === 2) { // Normal
+    svgContent = `
+      <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #00ffcc; stroke-width: 2.5; fill: none;">
+        <path d="M 0 35 L 40 35 L 50 25 L 60 35 L 80 35 L 85 10 L 92 60 L 98 35 L 120 35 L 145 18 L 170 35 L 300 35" />
+      </svg>`;
+  } else if (stage === 3) { // Mild Hyperkalemia (Tall Peaked T)
+    svgContent = `
+      <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #ffb703; stroke-width: 2.5; fill: none;">
+        <path d="M 0 35 L 50 35 L 60 30 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 2 L 155 35 L 300 35" />
+      </svg>`;
+  } else { // Severe Hyperkalemia (Sine Wave)
+    svgContent = `
+      <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #e53e3e; stroke-width: 3; fill: none;">
+        <path d="M 0 35 Q 37.5 -10, 75 35 T 150 35 T 225 35 T 300 35" />
+      </svg>`;
+  }
+  
+  ecgSvgContainer.innerHTML = svgContent;
+}
+
+function updateEvaluation() {
+  const val = parseFloat(kInput.value);
+  kVal.innerText = val.toFixed(1) + " mEq/L";
+  kOutput.innerText = val.toFixed(1);
+
+  if (val < 3.0) {
+    // Stage 1: Severe Hypokalemia
+    timelineBadge.innerText = "STAGE 1: SEVERE HYPOKALEMIA";
+    timelineBadge.style.background = "#fff5f5";
+    timelineBadge.style.color = "#e53e3e";
+    stageLabelText.innerText = "Stage 1: K+ " + val.toFixed(1) + " mEq/L";
+    stageLabelText.style.color = "#ff4a5a";
+    
+    renderECGWaveform(1);
+    
+    narrativeText.innerHTML = `
+      <h6 class="fw-bold text-danger mb-2">Stage 1: Severe Hypokalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <p class="mb-1"><strong>Visual ECG Waveform:</strong> ST-segment depression, flattened/inverted T waves, and prominent raised <strong>U waves</strong> (T-U fusion).</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Delayed myocardial repolarization due to hyperpolarized membrane potential.</p>
+      <p class="mb-0"><strong>Key Risks:</strong> Prolonged QU interval, susceptibility to <strong>Torsades de Pointes</strong> and re-entrant ventricular arrhythmias.</p>
+    `;
+  } else if (val >= 3.0 && val <= 5.2) {
+    // Stage 2: Normokalemia
+    timelineBadge.innerText = "STAGE 2: NORMOKALEMIA (NORMAL)";
+    timelineBadge.style.background = "#e6f2f2";
+    timelineBadge.style.color = "#008080";
+    stageLabelText.innerText = "Stage 2: Baseline";
+    stageLabelText.style.color = "#00ffcc";
+    
+    renderECGWaveform(2);
+    
+    narrativeText.innerHTML = `
+      <h6 class="fw-bold text-success mb-2">Stage 2: Normokalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex waveform.</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular conduction and repolarization timing.</p>
+      <p class="mb-0"><strong>Clinical Action:</strong> Baseline cardiac conduction operating optimally.</p>
+    `;
+  } else if (val > 5.2 && val <= 6.8) {
+    // Stage 3: Mild to Moderate Hyperkalemia
+    timelineBadge.innerText = "STAGE 3: MILD / MODERATE HYPERKALEMIA";
+    timelineBadge.style.background = "#fffaf0";
+    timelineBadge.style.color = "#c05621";
+    stageLabelText.innerText = "Stage 3: K+ " + val.toFixed(1) + " mEq/L";
+    stageLabelText.style.color = "#ffb703";
+    
+    renderECGWaveform(3);
+    
+    narrativeText.innerHTML = `
+      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: Mild/Moderate Hyperkalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <p class="mb-1"><strong>Visual ECG Waveform:</strong> T wave sharpens into a tall, narrow, <strong>"tent-shaped" peak</strong>. PR interval prolongs; P wave flattens.</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Accelerated Phase 3 repolarization and mild slowing of intra-atrial conduction.</p>
+      <p class="mb-0"><strong>Clinical Action:</strong> Evaluate renal function, hydration, and medication usage (ACEi/ARBs/spironolactone).</p>
+    `;
+  } else {
+    // Stage 4: Severe Hyperkalemia
+    timelineBadge.innerText = "STAGE 4: SEVERE HYPERKALEMIA (EMERGENCY)";
+    timelineBadge.style.background = "#fff5f5";
+    timelineBadge.style.color = "#e53e3e";
+    stageLabelText.innerText = "Stage 4: Sine Wave Pattern";
+    stageLabelText.style.color = "#e53e3e";
+    
+    renderECGWaveform(4);
+    
+    narrativeText.innerHTML = `
+      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe Hyperkalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <p class="mb-1"><strong>Visual ECG Waveform:</strong> P wave disappears; widened QRS complex merges smoothly into the T wave to form a continuous <strong>Sine Wave</strong>.</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Inactivation of cardiac fast sodium channels leading to severe intraventricular conduction delay.</p>
+      <p class="mb-0"><strong>Key Risks:</strong> Impending <strong>Ventricular Fibrillation (VF)</strong> or Asystolic Cardiac Arrest. Medical Emergency requiring immediate IV calcium membrane stabilization.</p>
+    `;
+  }
+}
+
+kInput.addEventListener('input', updateEvaluation);
+document.getElementById('calculateBtn').addEventListener('click', updateEvaluation);
+
+// Initial execution on load
+updateEvaluation();
+</script>
