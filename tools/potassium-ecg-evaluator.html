@@ -6,35 +6,53 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
 ---
 
 <style>
-  /* Base Container and Layout Elements */
-  .article-container { padding-top: 100px; padding-bottom: 80px; background-color: #fbfcfc; }
-  .main-title { color: #2c4964; font-size: 2.6rem; letter-spacing: -1px; line-height: 1.2; }
-  
-  /* Modern Glassmorphism Main Component Card */
-  .tool-card {
-    background: white;
-    border-radius: 32px;
-    box-shadow: 0 20px 50px rgba(44, 73, 100, 0.05);
-    border: 1px solid #edf2f7;
+  /* Base Container and Mobile-Optimized Typography */
+  .article-container { 
+    padding-top: 60px; 
+    padding-bottom: 60px; 
+    background-color: #fbfcfc; 
+  }
+  @media (min-width: 768px) {
+    .article-container { padding-top: 100px; padding-bottom: 80px; }
   }
 
-  /* Spaced Custom Selection & Input Wrappers */
+  .main-title { 
+    color: #2c4964; 
+    font-size: clamp(1.8rem, 4vw, 2.6rem); 
+    letter-spacing: -0.5px; 
+    line-height: 1.25; 
+  }
+  
+  /* Modern Glassmorphism Card with Mobile Padding */
+  .tool-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(44, 73, 100, 0.06);
+    border: 1px solid #edf2f7;
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .tool-card { border-radius: 32px; padding: 3rem; }
+  }
+
+  /* Spaced Mobile Input Wrappers */
   .input-box-custom {
     background: #f8fafc;
-    border-radius: 16px;
-    padding: 16px 20px;
-    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 18px;
+    border: 1.5px solid #cbd5e0;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     position: relative;
+    min-height: 52px;
   }
   
   .input-box-custom input[type="number"] {
     background: transparent;
     border: none;
     font-weight: 700;
-    color: #2c4964;
-    font-size: 1.25rem;
-    line-height: 1.6;
+    color: #1a202c;
+    font-size: 1.35rem;
+    line-height: 1.5;
     width: 100%;
   }
   .input-box-custom input[type="number"]:focus {
@@ -46,7 +64,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     background: transparent;
     border: none;
     font-weight: 600;
-    color: #2c4964;
+    color: #1a202c;
     font-size: 1rem;
     line-height: 1.6;
     cursor: pointer;
@@ -56,13 +74,14 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     -moz-appearance: none;
     padding-right: 30px;
   }
+  
   /* Custom Dropdown Chevron Icon */
   .select-wrapper::after {
     content: "▼";
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: #008080;
     position: absolute;
-    right: 20px;
+    right: 18px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
@@ -70,16 +89,17 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
 
   /* Dynamic Results Dashboard */
   .timeline-badge {
-    padding: 10px 24px;
+    padding: 8px 20px;
     border-radius: 50px;
     font-weight: 700;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 0.5px;
+    line-height: 1.4;
   }
   
   .k-highlight {
-    font-size: 3.5rem;
+    font-size: clamp(2.8rem, 6vw, 3.8rem);
     font-weight: 800;
     line-height: 1;
     background: linear-gradient(135deg, #2c4964 0%, #008080 100%);
@@ -90,48 +110,57 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
   .insight-panel {
     background: #fdfdfd;
     border-left: 5px solid #008080;
-    border-radius: 0 24px 24px 0;
+    border-radius: 0 20px 20px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  /* Retro Oscilloscope Display Box */
+  /* High-Readability Oscilloscope Box */
   .ecg-display-box {
     background-color: #0b253a;
     border-radius: 16px;
-    padding: 24px;
-    border: 3px solid #0f3856;
+    padding: 16px;
+    border: 2px solid #164e63;
     color: #00ffcc;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     position: relative;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
+  }
+  @media (min-width: 768px) {
+    .ecg-display-box { padding: 24px; }
   }
 
   .ecg-grid-overlay {
     background-image: 
-      linear-gradient(rgba(0, 255, 204, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 204, 0.07) 1px, transparent 1px);
+      linear-gradient(rgba(0, 255, 204, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 204, 0.08) 1px, transparent 1px);
     background-size: 15px 15px;
   }
 
   .retro-green-text {
-    color: #2bfd6c;
+    color: #34d399;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 0 0 6px rgba(43, 253, 108, 0.4);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px rgba(52, 211, 153, 0.3);
   }
 
   .retro-cyan-text {
-    color: #00ffcc;
+    color: #22d3ee;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 0 0 6px rgba(0, 255, 204, 0.4);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 6px rgba(34, 211, 238, 0.3);
   }
 
-  /* Informational Modules Block */
+  /* Mobile-Friendly Reference Cards */
   .reference-box {
     background: #f8fafc;
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 18px;
+    padding: 20px;
     border: 1px solid #edf2f7;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   /* Structural Clinical Caveat Banner */
@@ -140,49 +169,57 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     border: 1px solid #feebc8;
     border-radius: 16px;
     color: #c05621;
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   /* Step Counter Badges */
   .step-number {
     background: #2c4964;
     color: white;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    margin-right: 8px;
+    margin-right: 10px;
+    flex-shrink: 0;
   }
 
-  /* Deep Engagement Footer Panel */
-  .cta-dark-box {
-    background: #2c4964;
-    color: white;
-    border-radius: 32px;
-    padding: 50px;
-    margin-top: 40px;
-  }
+  /* Mobile Action Buttons */
   .btn-stewardship {
     background: #008080;
     color: white !important;
-    padding: 16px 40px;
+    padding: 16px 32px;
     font-weight: 700;
+    font-size: 1.1rem;
     border-radius: 50px;
     border: none;
     transition: all 0.3s;
+    width: 100%;
   }
   .btn-stewardship:hover { background: #006666; transform: translateY(-2px); }
 
-  /* Accordion Custom Styling */
+  /* Accordion Custom Mobile Styling */
+  .accordion-button {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #2c4964;
+    padding: 1rem;
+  }
   .accordion-button:not(.collapsed) {
     color: #008080;
     background-color: #e6f2f2;
     font-weight: 700;
+  }
+  .accordion-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4a5568;
   }
 </style>
 
@@ -191,9 +228,9 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     
     <!-- Page Header -->
     <div class="text-center mx-auto mb-4" style="max-width: 800px;">
-      <span class="badge rounded-pill px-3 py-2 mb-3" style="background: #e6f2f2; color: #008080; font-weight: 600;">EASY LAB & RHYTHM GUIDE</span>
+      <span class="badge rounded-pill px-3 py-2 mb-3" style="background: #e6f2f2; color: #008080; font-weight: 700; font-size: 0.85rem;">EASY LAB & RHYTHM GUIDE</span>
       <h1 class="main-title fw-bold">Potassium & Heart Rhythm Visualizer</h1>
-      <p class="lead text-muted mt-3">
+      <p class="lead text-muted mt-3" style="font-size: 1.05rem; line-height: 1.6;">
         Potassium acts as the essential electrical spark plug for your heart muscles. Use our step-by-step evaluator below to see what your lab numbers mean for your day-to-day health.
       </p>
     </div>
@@ -201,8 +238,8 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     <!-- REAL-WORLD SCENARIO UPFRONT SECTION -->
     <div class="mb-5">
       <div class="text-center mb-4">
-        <h3 class="fw-bold" style="color: #2c4964;">Real-World Scenarios: How Potassium Shifts Look & Feel</h3>
-        <p class="text-muted">What happens externally, how your heart trace reacts, and why routine blood tracking is vital.</p>
+        <h2 class="h3 fw-bold" style="color: #2c4964;">Real-World Scenarios: How Potassium Shifts Look & Feel</h2>
+        <p class="text-muted small" style="font-size: 0.95rem;">What happens externally, how your heart trace reacts, and why routine blood tracking is vital.</p>
       </div>
 
       <div class="row g-4">
@@ -211,15 +248,15 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
         <div class="col-md-6">
           <div class="reference-box h-100">
             <span class="badge rounded-pill px-3 py-1 mb-2" style="background: #fff5f5; color: #e53e3e; font-weight: 700; font-size: 0.75rem;">SCENARIO A: POTASSIUM DROPS (HYPOKALEMIA)</span>
-            <h5 class="fw-bold mt-1 mb-3" style="color: #2c4964;">The Sudden Drain & Flutter</h5>
+            <h3 class="h5 fw-bold mt-1 mb-3" style="color: #2c4964;">The Sudden Drain & Flutter</h3>
             
-            <p class="small text-muted mb-2">
+            <p class="text-secondary mb-2">
               <strong>What Happens Externally:</strong> Imagine exercising under the tropical sun or recovering from a stomach flu. Suddenly, your calf muscles cramp up violently, your legs feel heavy like lead, and you feel a sudden "fluttering" or skipping sensation in your chest.
             </p>
-            <p class="small text-muted mb-2">
+            <p class="text-secondary mb-2">
               <strong>What We Immediately See on a Monitor:</strong> The heart muscle struggles to recharge between beats. The standard recovery wave flattens out, and an extra electrical bump (a U-wave) appears, signaling an unsteady cardiac rhythm.
             </p>
-            <p class="small text-muted mb-0">
+            <p class="text-secondary mb-0">
               <strong>The Quick Remedy:</strong> Replenishing oral electrolytes, drinking coconut water, or receiving clinical oral potassium under medical supervision restores normal muscle electrical charging.
             </p>
           </div>
@@ -229,15 +266,15 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
         <div class="col-md-6">
           <div class="reference-box h-100">
             <span class="badge rounded-pill px-3 py-1 mb-2" style="background: #fffaf0; color: #c05621; font-weight: 700; font-size: 0.75rem;">SCENARIO B: POTASSIUM BUILDS UP (HYPERKALEMIA)</span>
-            <h5 class="fw-bold mt-1 mb-3" style="color: #008080;">The Silent Electrical Slowdown</h5>
+            <h3 class="h5 fw-bold mt-1 mb-3" style="color: #008080;">The Silent Electrical Slowdown</h3>
             
-            <p class="small text-muted mb-2">
+            <p class="text-secondary mb-2">
               <strong>What Happens Externally:</strong> A patient with reduced kidney function or taking blood pressure medication feels completely fine walking into a routine appointment—or notices only subtle muscle fatigue and mild nausea. Externally, high potassium is often completely silent.
             </p>
-            <p class="small text-muted mb-2">
+            <p class="text-secondary mb-2">
               <strong>What We Immediately See on a Monitor:</strong> Beneath the surface, the heart's electrical system is over-excited. The heart trace shoots up into tall, sharp "tent-shaped" waves, and as levels rise higher, the pulse signal dangerously widens into a smooth rolling sine wave.
             </p>
-            <p class="small text-muted mb-0">
+            <p class="text-secondary mb-0">
               <strong>Why Monitoring Matters & Remedy:</strong> Because high potassium rarely gives early warning signs, routine blood testing is essential. Immediate clinical remedies include medication adjustments, dietary modifications, or emergency IV calcium membrane protection.
             </p>
           </div>
@@ -247,10 +284,10 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     </div>
 
     <!-- Main Tool Input Card -->
-    <div class="tool-card p-4 p-md-5 mb-5">
+    <div class="tool-card mb-5">
       
       <div class="clinical-caveat p-3 mb-4 d-flex align-items-start gap-2">
-        <span style="font-size: 1.1rem; line-height: 1;">💡</span>
+        <span style="font-size: 1.2rem; line-height: 1;">💡</span>
         <div>
           <strong>A Friendly Note:</strong> This guide is designed to help you understand your health screening report. Everyone’s body reacts differently—some people feel symptoms right away, while others feel fine even when levels are out of range. If you have concerns about your lab report, consult directly with <strong>Dr. Gerald Thang</strong>.
         </div>
@@ -262,13 +299,13 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
           <!-- STEP 1 -->
           <div id="wrapper-kInput" class="mb-4">
             <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
-              <span class="step-number">1</span> Key in the Potassium Level on Your Lab Report (e.g., 4.0)
+              <span class="step-number">1</span> Key in the Potassium Level on Your Lab Report
             </label>
             <div class="input-box-custom d-flex align-items-center justify-content-between">
               <input type="number" id="kInput" placeholder="Enter number (e.g. 4.2)" step="0.1" min="1.0" max="10.0">
-              <span class="fw-bold text-muted ms-2" style="font-size: 1.1rem; white-space: nowrap;">mmol/L</span>
+              <span class="fw-bold text-secondary ms-2" style="font-size: 1.05rem; white-space: nowrap;">mmol/L</span>
             </div>
-            <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.8rem;">
+            <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.85rem;">
               <span>Healthy Singapore Reference Range: <strong>3.5 – 5.0 mmol/L</strong></span>
             </div>
           </div>
@@ -291,8 +328,8 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
 
           <!-- STEP 3 -->
           <div class="mt-4 pt-2">
-            <button id="calculateBtn" class="btn btn-stewardship w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="letter-spacing: 0.5px;">
-              See What This Means For You
+            <button id="calculateBtn" class="btn btn-stewardship shadow-sm">
+              Step 3: See What This Means For You
             </button>
           </div>
 
@@ -301,10 +338,10 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     </div>
 
     <!-- RESULTS DISPLAY PANEL (Hidden until Step 3 button click) -->
-    <div id="resultPanel" class="tool-card p-4 p-md-5 mb-5 d-none">
+    <div id="resultPanel" class="tool-card mb-5 d-none">
       <div class="text-center mb-4">
         <span id="timelineBadge" class="timeline-badge mb-2">HEALTHY & BALANCED RANGE</span>
-        <h3 class="fw-bold text-dark">Your Potassium Evaluation Result</h3>
+        <h2 class="h3 fw-bold text-dark">Your Potassium Evaluation Result</h2>
       </div>
 
       <div class="row align-items-center g-4">
@@ -313,7 +350,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
           <span class="text-muted small fw-bold text-uppercase d-block mb-1">Entered Reading</span>
           <div class="my-1">
             <span id="kOutput" class="k-highlight">4.0</span>
-            <span class="h4 fw-bold text-muted">mmol/L</span>
+            <span class="h4 fw-bold text-muted ms-1">mmol/L</span>
           </div>
           <p class="small text-muted mb-0">Standard Singapore Clinical Reference Range: 3.5 – 5.0 mmol/L</p>
         </div>
@@ -322,8 +359,8 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
           <!-- Retro Oscilloscope Display Box -->
           <div class="ecg-display-box ecg-grid-overlay mb-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <span class="retro-green-text fs-6">Heart Trace Monitor</span>
-              <span class="retro-cyan-text fs-6">K<sup>+</sup>: <span id="monitorKVal">4.0</span> mmol/L</span>
+              <span class="retro-green-text">Heart Trace Monitor</span>
+              <span class="retro-cyan-text">K<sup>+</sup>: <span id="monitorKVal">4.0</span> mmol/L</span>
             </div>
 
             <div id="ecgSvgContainer" class="d-flex justify-content-center align-items-center py-2" style="min-height: 100px;">
@@ -331,11 +368,11 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
             </div>
 
             <div class="text-end" style="min-height: 24px;">
-              <span id="ecgFeatureAnnotation" class="retro-cyan-text fs-6">Steady, Normal Heartbeat</span>
+              <span id="ecgFeatureAnnotation" class="retro-cyan-text">Steady, Normal Heartbeat</span>
             </div>
           </div>
 
-          <div id="narrativeText" class="insight-panel p-4 bg-light text-start small text-muted shadow-sm">
+          <div id="narrativeText" class="insight-panel p-4 bg-light text-start shadow-sm">
             <!-- Dynamic narrative generated by JS -->
           </div>
         </div>
@@ -346,59 +383,59 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
     <div class="my-5">
       <div class="text-center mb-4">
-        <h3 class="fw-bold" style="color: #2c4964;">Frequently Asked Questions</h3>
-        <p class="text-muted">Common questions patients ask about potassium blood tests and heart health.</p>
+        <h2 class="h3 fw-bold" style="color: #2c4964;">Frequently Asked Questions</h2>
+        <p class="text-muted small">Common questions patients ask about potassium blood tests and heart health.</p>
       </div>
 
       <div class="accordion shadow-sm rounded-4 overflow-hidden" id="patientFaqAccordion">
         
         <div class="accordion-item border-0 border-bottom">
-          <h2 class="accordion-header" id="faqHeadingOne">
-            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+          <h3 class="accordion-header" id="faqHeadingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
               Why is potassium reported in "mmol/L" on Singapore blood tests?
             </button>
-          </h2>
+          </h3>
           <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#patientFaqAccordion">
-            <div class="accordion-body text-muted small">
+            <div class="accordion-body">
               Singapore clinical laboratories (such as SGH, NUH, SingHealth, and private diagnostic centers) use <strong>mmol/L (millimoles per liter)</strong> as standard SI units for electrolyte reporting. 1 mmol/L of potassium is identical to 1 mEq/L used in some international references.
             </div>
           </div>
         </div>
 
         <div class="accordion-item border-0 border-bottom">
-          <h2 class="accordion-header" id="faqHeadingTwo">
-            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+          <h3 class="accordion-header" id="faqHeadingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
               Can eating bananas fix low potassium immediately?
             </button>
-          </h2>
+          </h3>
           <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#patientFaqAccordion">
-            <div class="accordion-body text-muted small">
+            <div class="accordion-body">
               While dietary foods like bananas, spinach, and coconut water provide potassium, severe drops (below 3.0 mmol/L) or chronic imbalances require a clinical review to identify the underlying cause (such as medication side effects or kidney losses) before taking high-dose supplements.
             </div>
           </div>
         </div>
 
         <div class="accordion-item border-0 border-bottom">
-          <h2 class="accordion-header" id="faqHeadingThree">
-            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+          <h3 class="accordion-header" id="faqHeadingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
               Why do blood pressure medications affect potassium levels?
             </button>
-          </h2>
+          </h3>
           <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#patientFaqAccordion">
-            <div class="accordion-body text-muted small">
+            <div class="accordion-body">
               Certain blood pressure medications (like ACE inhibitors, ARBs, or spironolactone) protect your heart and blood vessels by helping your body release excess salt. In doing so, they can cause your kidneys to retain potassium, which is why routine monitoring is recommended.
             </div>
           </div>
         </div>
 
         <div class="accordion-item border-0">
-          <h2 class="accordion-header" id="faqHeadingFour">
-            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+          <h3 class="accordion-header" id="faqHeadingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
               When should I see Dr. Gerald Thang for an evaluation?
             </button>
-          </h2>
+          </h3>
           <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#patientFaqAccordion">
-            <div class="accordion-body text-muted small">
+            <div class="accordion-body">
               If your health check report shows potassium levels outside 3.5 – 5.0 mmol/L, or if you experience unexplained muscle weakness, fatigue, or heart palpitations, scheduling a medical assessment ensures your medications, organ functions, and cardiovascular rhythm are safely aligned.
             </div>
           </div>
@@ -412,13 +449,13 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
       <div class="row align-items-center g-4">
         <div class="col-lg-8">
           <span class="text-uppercase small fw-bold" style="color: #00cbcb; letter-spacing: 1.5px;">Clear Medical Guidance</span>
-          <h2 class="fw-bold mt-2 mb-3">Unsure About Your Blood Test Results?</h2>
-          <p class="mb-0 opacity-75 fs-5">
+          <h2 class="h3 fw-bold mt-2 mb-3">Unsure About Your Blood Test Results?</h2>
+          <p class="mb-0 opacity-75 fs-6" style="line-height: 1.6;">
             Lab numbers only tell part of the story. <strong>Dr. Gerald Thang</strong> helps patients review their blood chemistry, medication lists, and heart health together to create a personalized, easy-to-follow wellness plan.
           </p>
         </div>
         <div class="col-lg-4 text-lg-end">
-          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn btn-stewardship py-3 px-5 fs-5 shadow">Schedule a Consultation</a>
+          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn btn-stewardship shadow">Schedule a Consultation</a>
         </div>
       </div>
     </div>
@@ -440,7 +477,7 @@ const wrapperKInput = document.getElementById('wrapper-kInput');
 const wrapperEtiology = document.getElementById('wrapper-etiology');
 
 function renderECGWaveform(val) {
-  let strokeColor = "#2bfd6c"; // Retro Neon Green
+  let strokeColor = "#34d399"; // Retro Neon Green
   let annotation = "";
   let svgPath = "";
 
@@ -449,11 +486,11 @@ function renderECGWaveform(val) {
     annotation = "Skipped Beat Pattern & Extra U Wave";
     svgPath = "M 0 35 L 40 35 L 45 32 L 50 35 L 70 35 L 75 10 L 82 60 L 88 35 L 105 42 L 130 42 L 140 40 L 160 40 L 180 25 L 200 35 L 300 35";
   } else if (val >= 3.0 && val <= 4.5) {
-    strokeColor = "#2bfd6c";
+    strokeColor = "#34d399";
     annotation = "Steady, Normal Heartbeat Pattern";
     svgPath = "M 0 35 L 40 35 L 50 25 L 60 35 L 80 35 L 85 10 L 92 60 L 98 35 L 120 35 L 145 18 L 170 35 L 300 35";
   } else if (val > 4.5 && val <= 6.4) {
-    strokeColor = "#2bfd6c";
+    strokeColor = "#34d399";
     annotation = "Taller, Pointed Recovery Wave";
     svgPath = "M 0 35 L 50 35 L 60 30 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 2 L 155 35 L 300 35";
   } else if (val > 6.4 && val <= 7.0) {
@@ -503,8 +540,8 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
   const selectContainer = wrapperEtiology.querySelector('.input-box-custom');
 
   // Reset border styling
-  inputContainer.style.borderColor = '#e2e8f0';
-  selectContainer.style.borderColor = '#e2e8f0';
+  inputContainer.style.borderColor = '#cbd5e0';
+  selectContainer.style.borderColor = '#cbd5e0';
 
   let hasError = false;
 
@@ -538,10 +575,10 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#e53e3e";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 1: Low Potassium Level (${formattedVal} mmol/L)</h6>
-      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> A subtle dip after the main pulse, showing that your heart muscle is taking longer to recharge.</p>
-      <p class="mb-1"><strong>Symptoms You Might Notice:</strong> Muscle cramps (especially in calves or feet), feeling unusually weak, or noticing fluttering heartbeats.</p>
-      <p class="mb-1"><strong>Next Step:</strong> Consult Dr. Gerald Thang to identify the cause of the drop and safely restore your electrolyte balance.</p>
+      <h3 class="h6 fw-bold text-danger mb-2">Stage 1: Low Potassium Level (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> A subtle dip after the main pulse, showing that your heart muscle is taking longer to recharge.</p>
+      <p class="mb-2"><strong>Symptoms You Might Notice:</strong> Muscle cramps (especially in calves or feet), feeling unusually weak, or noticing fluttering heartbeats.</p>
+      <p class="mb-2"><strong>Next Step:</strong> Consult Dr. Gerald Thang to identify the cause of the drop and safely restore your electrolyte balance.</p>
       ${etiologyText}
     `;
   } else if (val >= 3.0 && val <= 5.2) {
@@ -550,10 +587,10 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#008080";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-success mb-2">Stage 2: Optimal Potassium Level (${formattedVal} mmol/L)</h6>
-      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> A crisp, regular waveform indicating your heart's electrical system is firing smoothly.</p>
-      <p class="mb-1"><strong>Symptoms You Might Notice:</strong> Steady physical stamina, normal muscle contractions, and steady pulse rate.</p>
-      <p class="mb-1"><strong>Next Step:</strong> Keep maintaining your healthy daily lifestyle and routine annual checkups.</p>
+      <h3 class="h6 fw-bold text-success mb-2">Stage 2: Optimal Potassium Level (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> A crisp, regular waveform indicating your heart's electrical system is firing smoothly.</p>
+      <p class="mb-2"><strong>Symptoms You Might Notice:</strong> Steady physical stamina, normal muscle contractions, and steady pulse rate.</p>
+      <p class="mb-2"><strong>Next Step:</strong> Keep maintaining your healthy daily lifestyle and routine annual checkups.</p>
       ${etiologyText}
     `;
   } else if (val > 5.2 && val <= 7.5) {
@@ -562,10 +599,10 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#c05621";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: High Potassium Level (${formattedVal} mmol/L)</h6>
-      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> Taller, pointier recovery waves as electrical resetting speeds up, followed by a widening pulse signal.</p>
-      <p class="mb-1"><strong>Symptoms You Might Notice:</strong> High potassium often causes <em>no obvious symptoms</em>, though some people feel mild nausea or muscle heaviness.</p>
-      <p class="mb-1"><strong>Next Step:</strong> Schedule a follow-up review to check your kidney baseline and review any blood pressure medications you are taking.</p>
+      <h3 class="h6 fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: High Potassium Level (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> Taller, pointier recovery waves as electrical resetting speeds up, followed by a widening pulse signal.</p>
+      <p class="mb-2"><strong>Symptoms You Might Notice:</strong> High potassium often causes <em>no obvious symptoms</em>, though some people feel mild nausea or muscle heaviness.</p>
+      <p class="mb-2"><strong>Next Step:</strong> Schedule a follow-up review to check your kidney baseline and review any blood pressure medications you are taking.</p>
       ${etiologyText}
     `;
   } else {
@@ -574,10 +611,10 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#e53e3e";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe High Potassium (${formattedVal} mmol/L)</h6>
-      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> The heartbeat signal loses its normal shape and turns into a smooth, rolling wave pattern (Sine Wave).</p>
-      <p class="mb-1"><strong>Why This Matters:</strong> Very high potassium interferes with the heart's ability to pump effectively and requires urgent medical attention.</p>
-      <p class="mb-1"><strong>Next Step:</strong> If your lab report shows this reading, seek urgent medical evaluation at an emergency clinic or hospital immediately.</p>
+      <h3 class="h6 fw-bold text-danger mb-2">Stage 4: Severe High Potassium (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> The heartbeat signal loses its normal shape and turns into a smooth, rolling wave pattern (Sine Wave).</p>
+      <p class="mb-2"><strong>Why This Matters:</strong> Very high potassium interferes with the heart's ability to pump effectively and requires urgent medical attention.</p>
+      <p class="mb-2"><strong>Next Step:</strong> If your lab report shows this reading, seek urgent medical evaluation at an emergency clinic or hospital immediately.</p>
       ${etiologyText}
     `;
   }
