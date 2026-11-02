@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /potassium-ecg-evaluator
-title: "Potassium Imbalance & Cardiac Conduction Evaluator"
-description: "An evidence-based clinical tool mapping serum potassium (K+) variations to cardiac action potential alterations and ECG waveforms."
+title: "Potassium & Heart Rhythm Check"
+description: "Understand how your body's potassium levels affect your heart's electrical system, muscle energy, and daily well-being."
 ---
 
 <style>
@@ -151,10 +151,10 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
   <div class="container">
     
     <div class="text-center mx-auto mb-5" style="max-width: 800px;">
-      <span class="badge rounded-pill px-3 py-2 mb-3" style="background: #e6f2f2; color: #008080; font-weight: 600;">ELECTROLYTE & CARDIAC MONITOR</span>
-      <h1 class="main-title fw-bold">Serum Potassium & ECG Waveform Evaluator</h1>
+      <span class="badge rounded-pill px-3 py-2 mb-3" style="background: #e6f2f2; color: #008080; font-weight: 600;">EASY LAB & RHYTHM GUIDE</span>
+      <h1 class="main-title fw-bold">Potassium & Heart Rhythm Visualizer</h1>
       <p class="lead text-muted mt-3">
-        Serum potassium (K<sup>+</sup>) tightly regulates cardiac membrane potentials. Explore how variations from severe hypokalemia to life-threatening hyperkalemia alter cardiac conduction, ECG morphology, and clinical risks.
+        Potassium is the essential spark plug that keeps your heart beating in a steady, smooth rhythm. Slide the bar below to see how changes in your blood potassium levels affect your heart's electrical signal and how you might feel.
       </p>
     </div>
 
@@ -163,61 +163,61 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
       <div class="clinical-caveat p-3 mb-5 d-flex align-items-start gap-2">
         <span style="font-size: 1.1rem; line-height: 1;">💡</span>
         <div>
-          <strong>Clinical Note:</strong> This interactive model illustrates the classic electrophysiological progression of potassium dysregulation. Serum potassium levels do not always correlate perfectly with ECG changes in every individual. Severe electrolyte disorders require urgent blood chemistry testing and formal diagnostic evaluation by <strong>Dr. Gerald Thang</strong>.
+          <strong>A Friendly Note:</strong> This tool is designed to help you understand your health check report. Everyone’s body reacts a little differently—some people feel symptoms right away, while others feel fine even when levels are out of range. If you have concerns about your blood test results, speak directly with <strong>Dr. Gerald Thang</strong>.
         </div>
       </div>
 
       <div class="row g-5">
         
         <div class="col-lg-5">
-          <h4 class="fw-bold mb-4" style="color: #2c4964; letter-spacing: -0.5px;">Interactive Parameters</h4>
+          <h4 class="fw-bold mb-4" style="color: #2c4964; letter-spacing: -0.5px;">Test Your Level</h4>
           
           <div style="margin-bottom: 2.5rem;">
             <div class="d-flex justify-content-between mb-3">
-              <label class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.5px;">Serum Potassium Concentration (K<sup>+</sup>)</label>
-              <span id="kVal" class="fw-bold px-3 py-1 rounded-3" style="background: #e6f2f2; color: #008080 !important; font-size: 0.9rem;">4.0 mEq/L</span>
+              <label class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.5px;">Potassium Level on Your Lab Report</label>
+              <span id="kVal" class="fw-bold px-3 py-1 rounded-3" style="background: #e6f2f2; color: #008080 !important; font-size: 0.9rem;">4.0 mmol/L</span>
             </div>
             <input type="range" class="form-range" id="kInput" min="2.0" max="9.5" step="0.1" value="4.0" style="cursor: pointer;">
             <div class="d-flex justify-content-between text-muted small mt-1" style="font-size: 0.75rem;">
-              <span>2.0 (Hypo)</span>
-              <span>3.5 - 5.0 (Normal)</span>
-              <span>9.5+ (Critical)</span>
+              <span>2.0 (Too Low)</span>
+              <span>3.5 - 5.0 (Healthy Range)</span>
+              <span>9.5+ (Very High)</span>
             </div>
           </div>
 
           <div id="wrapper-etiology" style="margin-bottom: 2rem; transition: all 0.3s ease;">
-            <label class="small text-muted fw-bold text-uppercase mb-2 d-block" style="letter-spacing: 0.5px;">Clinical Etiology / Context</label>
+            <label class="small text-muted fw-bold text-uppercase mb-2 d-block" style="letter-spacing: 0.5px;">Your Current Health Situation</label>
             <div class="input-box-custom">
               <select id="etiologySelect" class="form-select p-0">
-                <option value="routine" selected>Routine Screening / Asymptomatic Baseline</option>
-                <option value="kidney">Chronic Kidney Disease (CKD) / Impaired Renal Excretion</option>
-                <option value="diuretic">Diuretic Therapy (Loop/Thiazide) or GI Losses</option>
-                <option value="meds">ACEi / ARB / Spironolactone Medication Usage</option>
+                <option value="routine" selected>Just a Routine Wellness Checkup</option>
+                <option value="kidney">I Have Kidney Issues / Reduced Kidney Function</option>
+                <option value="diuretic">I Take Water Pills (Diuretics) or Had Bad Vomiting/Diarrhea</option>
+                <option value="meds">I Take Blood Pressure Medication (ACE Inhibitors/ARBs)</option>
               </select>
             </div>
           </div>
 
-          <button id="calculateBtn" class="btn btn-stewardship w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="letter-spacing: 0.5px;">Evaluate Conduction & Risk</button>
+          <button id="calculateBtn" class="btn btn-stewardship w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="letter-spacing: 0.5px;">See What This Means For You</button>
         </div>
 
         <div id="resultPanel" class="col-lg-7">
           <div class="h-100 d-flex flex-column justify-content-center text-center text-lg-start ps-lg-4">
             
             <div class="mb-2">
-              <span id="timelineBadge" class="timeline-badge" style="background: #e6f2f2; color: #008080;">STAGE 2: NORMOKALEMIA (NORMAL)</span>
+              <span id="timelineBadge" class="timeline-badge" style="background: #e6f2f2; color: #008080;">HEALTHY & BALANCED RANGE</span>
             </div>
             
-            <h4 class="fw-bold text-dark mb-1">Evaluated Potassium Level:</h4>
+            <h4 class="fw-bold text-dark mb-1">Selected Potassium Reading:</h4>
             <div class="my-2">
               <span id="kOutput" class="k-highlight">4.0</span>
-              <span class="h3 fw-bold text-muted">mEq/L</span>
+              <span class="h3 fw-bold text-muted">mmol/L</span>
             </div>
 
             <!-- Retro Oscilloscope ECG Display Box -->
             <div class="ecg-display-box ecg-grid-overlay my-3">
               <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="retro-green-text fs-5">Hyperkalaemia</span>
-                <span class="retro-cyan-text fs-5">K<sup>+</sup>: <span id="monitorKVal">4.0</span></span>
+                <span class="retro-green-text fs-5">Heart Trace Monitor</span>
+                <span class="retro-cyan-text fs-5">K<sup>+</sup>: <span id="monitorKVal">4.0</span> mmol/L</span>
               </div>
 
               <div id="ecgSvgContainer" class="d-flex justify-content-center align-items-center py-3" style="min-height: 120px;">
@@ -225,16 +225,16 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
               </div>
 
               <div class="text-end mt-2" style="min-height: 28px;">
-                <span id="ecgFeatureAnnotation" class="retro-cyan-text fs-6">Normal ECG</span>
+                <span id="ecgFeatureAnnotation" class="retro-cyan-text fs-6">Steady, Normal Heartbeat</span>
               </div>
             </div>
 
             <div id="narrativeText" class="insight-panel p-4 bg-light text-start small text-muted shadow-sm">
-              <h6 class="fw-bold text-success mb-2">Stage 2: Normokalemia (K<sup>+</sup> = 4.0 mEq/L)</h6>
-              <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex waveform.</p>
-              <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular conduction timing.</p>
-              <p class="mb-1"><strong>Clinical Action:</strong> Baseline cardiac conduction operating within optimal limits.</p>
-              <div class="mt-2 pt-2 border-top"><strong>Clinical Context:</strong> Routine screening context. Correlate blood levels with daily symptoms and baseline renal function.</div>
+              <h6 class="fw-bold text-success mb-2">Stage 2: Healthy Baseline (4.0 mmol/L)</h6>
+              <p class="mb-1"><strong>What Your Heart Trace Looks Like:</strong> Smooth, rhythmic spikes and waves indicating normal electrical timing.</p>
+              <p class="mb-1"><strong>How You Likely Feel:</strong> Good physical energy, steady heart rate, and normal muscle strength.</p>
+              <p class="mb-1"><strong>What You Should Do:</strong> Maintain your normal balanced diet and stay hydrated.</p>
+              <div class="mt-2 pt-2 border-top"><strong>Health Context:</strong> Routine checkup status. Keep up your regular annual wellness evaluations.</div>
             </div>
 
           </div>
@@ -243,21 +243,21 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
       </div>
     </div>
 
-    <!-- Informational Modules -->
+    <!-- Patient-Friendly Educational Modules -->
     <div class="row g-4 my-5">
       <div class="col-md-6">
         <div class="reference-box h-100">
-          <h5 class="fw-bold" style="color: #2c4964;">Hypokalemia & Ventricular Arrhythmia</h5>
+          <h5 class="fw-bold" style="color: #2c4964;">What Happens When Potassium Drops Too Low?</h5>
           <p class="small text-muted mb-0">
-            When serum potassium falls below 3.5 mEq/L, myocardial cell membranes become hyperpolarized, delaying Phase 3 repolarization. This prolongation generates prominent <strong>U waves</strong> and ST-segment depression. As the T wave fuses with the U wave, the resulting prolonged QU interval creates high susceptibility to dangerous re-entrant ventricular arrhythmias, including <strong>Torsades de Pointes</strong>.
+            When your potassium drops below 3.5 mmol/L (often from intense sweating, water pills, or stomach flus), your heart muscle cells have to work much harder to reset between beats. You might experience <strong>muscle cramps, weakness, sudden fatigue, or a feeling that your heart is skipping a beat or fluttering</strong>. 
           </p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="reference-box h-100">
-          <h5 class="fw-bold" style="color: #008080;">Hyperkalemia & The Classical "Sine Wave"</h5>
+          <h5 class="fw-bold" style="color: #008080;">What Happens When Potassium Gets Too High?</h5>
           <p class="small text-muted mb-0">
-            Elevated potassium (> 5.5 mEq/L) accelerates repolarization, producing early <strong>tall, peaked T waves</strong>. As concentrations rise above 7.0 - 7.9 mEq/L, cardiac sodium channel inactivation slows impulse conduction across the ventricles. The P wave flattens and disappears, while the QRS complex widens significantly, merging into the T wave to form a lethal <strong>Sine Wave pattern</strong> preceding cardiac arrest.
+            If potassium builds up above 5.5 mmol/L (common in kidney conditions or with certain blood pressure medications), it over-excites your heart's electrical system. This causes the heartbeat signal to stretch out and slow down. Surprisingly, high potassium often has <strong>no noticeable symptoms until it reaches dangerous levels</strong>, making blood tests essential.
           </p>
         </div>
       </div>
@@ -267,15 +267,14 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
     <div class="row my-5">
       <div class="col-12">
         <div class="p-4 bg-white border border-light rounded-4 shadow-sm">
-          <h6 class="fw-bold text-dark mb-3" style="font-size: 0.95rem;">Scientific Framework & Clinical Guidelines</h6>
+          <h6 class="fw-bold text-dark mb-3" style="font-size: 0.95rem;">Medical Sources & Local Clinical Standards</h6>
           <p class="small text-muted mb-3" style="line-height: 1.6;">
-            The electrophysiological relationships mapped in this diagnostic tool correspond with international cardiology consensus standards and local Singapore clinical practice guidelines:
+            The ranges and heart trace patterns shown in this educational tool are based on established clinical guidelines used across Singapore clinics and hospitals:
           </p>
           <ul class="study-citation-list">
-            <li class="mb-2"><strong>European Society of Cardiology (ESC) Guidelines on Acute Electrocardiography:</strong> Definitive diagnostic criteria linking serum potassium alterations to membrane resting potentials and cardiac action potential Phase 0–4 kinetics.</li>
-            <li class="mb-2"><strong>MOH ACE Clinical Guidance on Electrolyte & Renal Management:</strong> Ministry of Health Singapore guidance outlining safety protocols, medication-induced potassium imbalances (ACEi/ARB/MRA therapies), and emergency monitoring thresholds.</li>
-            <li class="mb-2"><strong>Singapore Renal Registry (SRR) Data:</strong> Clinical epidemiologic tracking establishing chronic kidney disease (CKD) as the primary catalyst for chronic hyperkalemia in local patient populations.</li>
-            <li class="mb-2"><strong>SingHealth & National Heart Centre Singapore (NHCS) Clinical Protocols:</strong> Institutional protocols defining immediate IV calcium membrane stabilization requirements upon detection of hyperkalemic QRS widening or sinusoidal ECG configurations.</li>
+            <li class="mb-2"><strong>MOH Agency for Care Effectiveness (ACE) Guidelines:</strong> National Singapore clinical guidance for managing blood mineral balances, medication safety, and kidney checks.</li>
+            <li class="mb-2"><strong>Singapore Laboratory Reference Standards:</strong> Standardized reporting formats used by SGH, NUH, and local diagnostic centers where 3.5 to 5.0 mmol/L is recognized as the healthy baseline.</li>
+            <li class="mb-2"><strong>European Society of Cardiology (ESC) Clinical Guidance:</strong> World-recognized diagnostic standards mapping blood chemistry levels to heart monitor patterns.</li>
           </ul>
         </div>
       </div>
@@ -285,14 +284,14 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
     <div id="ctaBox" class="cta-dark-box">
       <div class="row align-items-center g-4">
         <div class="col-lg-8">
-          <span class="text-uppercase small fw-bold" style="color: #00cbcb; letter-spacing: 1.5px;">Cardiovascular & Metabolic Care</span>
-          <h2 class="fw-bold mt-2 mb-3">Comprehensive Heart & Metabolic Health Assessments</h2>
+          <span class="text-uppercase small fw-bold" style="color: #00cbcb; letter-spacing: 1.5px;">Clear Medical Guidance</span>
+          <h2 class="fw-bold mt-2 mb-3">Unsure About Your Blood Test Results?</h2>
           <p class="mb-0 opacity-75 fs-5">
-            Electrolyte balances, blood pressure regulation, and cardiac conduction are tightly linked to your kidney and metabolic baseline. <strong>Dr. Gerald Thang</strong> provides thorough functional evaluations to detect early metabolic slowing, cardiovascular risks, and organ stability.
+            Lab numbers only tell part of the story. <strong>Dr. Gerald Thang</strong> helps patients review their blood chemistry, medication lists, and heart health together to create a personalized, easy-to-follow wellness plan.
           </p>
         </div>
         <div class="col-lg-4 text-lg-end">
-          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn btn-stewardship py-3 px-5 fs-5 shadow">Book a Medical Evaluation</a>
+          <a href="https://www.ahealingheartmedical.com/heart-health-screening" class="btn btn-stewardship py-3 px-5 fs-5 shadow">Schedule a Consultation</a>
         </div>
       </div>
     </div>
@@ -319,37 +318,37 @@ function renderECGWaveform(val) {
   if (val < 3.0) {
     // Severe Hypokalemia
     strokeColor = "#ff4a5a";
-    annotation = "ST depression & Prominent U wave";
+    annotation = "Skipped Beat Pattern & Extra U Wave";
     svgPath = "M 0 35 L 40 35 L 45 32 L 50 35 L 70 35 L 75 10 L 82 60 L 88 35 L 105 42 L 130 42 L 140 40 L 160 40 L 180 25 L 200 35 L 300 35";
   } else if (val >= 3.0 && val <= 4.5) {
     // Normal ECG
     strokeColor = "#2bfd6c";
-    annotation = "Normal ECG";
+    annotation = "Steady, Normal Heartbeat Pattern";
     svgPath = "M 0 35 L 40 35 L 50 25 L 60 35 L 80 35 L 85 10 L 92 60 L 98 35 L 120 35 L 145 18 L 170 35 L 300 35";
   } else if (val > 4.5 && val <= 6.4) {
     // Peaked T Wave
     strokeColor = "#2bfd6c";
-    annotation = "Peaked T wave";
+    annotation = "Taller, Pointed Recovery Wave";
     svgPath = "M 0 35 L 50 35 L 60 30 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 2 L 155 35 L 300 35";
   } else if (val > 6.4 && val <= 7.0) {
     // Flattened P Wave
     strokeColor = "#ffb703";
-    annotation = "Flattened P wave";
+    annotation = "Slowing Electrical Signal";
     svgPath = "M 0 35 L 50 35 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 0 L 155 35 L 300 35";
   } else if (val > 7.0 && val <= 7.7) {
     // Flattened P Wave + Widened QRS
     strokeColor = "#ffb703";
-    annotation = "Flattened P wave | Widened QRS";
+    annotation = "Significantly Widened Heart Signal";
     svgPath = "M 0 35 L 50 35 L 70 35 L 80 35 L 88 5 L 97 65 L 110 35 L 125 35 L 142 -5 L 160 35 L 300 35";
   } else if (val > 7.7 && val <= 9.0) {
     // Classic Sine Wave
     strokeColor = "#e53e3e";
-    annotation = "Sine wave";
+    annotation = "Irregular Sine Wave (Urgent Warning)";
     svgPath = "M 0 35 Q 37.5 -15, 75 35 T 150 35 T 225 35 T 300 35";
   } else {
     // Game Over / Flatline
     strokeColor = "#ff4a5a";
-    annotation = "<span style='color: #ff4a5a; font-weight: 800;'>Game Over (Cardiac arrest)</span>";
+    annotation = "<span style='color: #ff4a5a; font-weight: 800;'>Flatline / Medical Emergency</span>";
     svgPath = "M 0 35 L 300 35";
   }
 
@@ -363,20 +362,20 @@ function renderECGWaveform(val) {
 
 function getEtiologyNote(etiology) {
   if (etiology === 'kidney') {
-    return `<div class="mt-2 pt-2 border-top"><strong>CKD Risk Context:</strong> Impaired renal excretion accelerates potassium accumulation. Even moderate elevation requires strict serum monitoring and nephrology/cardiology coordination.</div>`;
+    return `<div class="mt-2 pt-2 border-top"><strong>Kidney Care Tip:</strong> When kidney function slows down, your body can't clear extra potassium as easily through urine. It's important to monitor potassium regularly and review high-potassium foods with Dr. Gerald Thang.</div>`;
   } else if (etiology === 'diuretic') {
-    return `<div class="mt-2 pt-2 border-top"><strong>Diuretic / GI Context:</strong> Loop/thiazide diuretics or fluid losses drive rapid extracellular potassium shifts, significantly predisposing the heart to ventricular irritability.</div>`;
+    return `<div class="mt-2 pt-2 border-top"><strong>Diuretic / Fluid Loss Tip:</strong> Water pills and bouts of diarrhea can flush potassium out of your system quickly. Replacing fluids and checking electrolyte levels helps prevent sudden leg cramps or heart flutters.</div>`;
   } else if (etiology === 'meds') {
-    return `<div class="mt-2 pt-2 border-top"><strong>Medication Context:</strong> RAAS inhibitors (ACEi/ARBs/spironolactone) reduce renal aldosterone excretion. Baseline blood tests are necessary before adjusting therapeutic dosages.</div>`;
+    return `<div class="mt-2 pt-2 border-top"><strong>Medication Tip:</strong> Many effective blood pressure medications help protect your heart and kidneys, but they can cause your body to hold onto potassium. A simple routine blood test ensures your dosage remains safe.</div>`;
   }
-  return `<div class="mt-2 pt-2 border-top"><strong>Clinical Context:</strong> Routine screening context. Correlate blood levels with daily symptoms and baseline renal function.</div>`;
+  return `<div class="mt-2 pt-2 border-top"><strong>Wellness Tip:</strong> Routine wellness check. If you ever feel unusual muscle weakness or rapid heart palpitations, bring your test results in for a quick review.</div>`;
 }
 
 function updateEvaluation() {
   const val = parseFloat(kInput.value);
   const etiology = etiologySelect.value;
   
-  kVal.innerText = val.toFixed(1) + " mEq/L";
+  kVal.innerText = val.toFixed(1) + " mmol/L";
   kOutput.innerText = val.toFixed(1);
   monitorKVal.innerText = val.toFixed(1);
 
@@ -385,51 +384,51 @@ function updateEvaluation() {
   renderECGWaveform(val);
 
   if (val < 3.0) {
-    timelineBadge.innerText = "STAGE 1: SEVERE HYPOKALEMIA";
+    timelineBadge.innerText = "STAGE 1: LOW POTASSIUM (HYPOKALEMIA)";
     timelineBadge.style.background = "#fff5f5";
     timelineBadge.style.color = "#e53e3e";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 1: Severe Hypokalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
-      <p class="mb-1"><strong>Visual ECG Waveform:</strong> ST-segment depression, flattened T waves, and prominent raised <strong>U waves</strong> (T-U fusion).</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Delayed myocardial repolarization due to hyperpolarized cell membrane potential.</p>
-      <p class="mb-1"><strong>Key Risks:</strong> Prolonged QU interval, susceptibility to <strong>Torsades de Pointes</strong> and re-entrant ventricular arrhythmias.</p>
+      <h6 class="fw-bold text-danger mb-2">Stage 1: Low Potassium Level (${val.toFixed(1)} mmol/L)</h6>
+      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> A subtle dip after the main pulse, showing that your heart muscle is taking longer to recharge.</p>
+      <p class="mb-1"><strong>Symptoms You Might Notice:</strong> Muscle cramps (especially in calves or feet), feeling unusually weak, or noticing fluttering heartbeats.</p>
+      <p class="mb-1"><strong>Next Step:</strong> Consult Dr. Gerald Thang to identify the cause of the drop and safely restore your electrolyte balance.</p>
       ${etiologyText}
     `;
   } else if (val >= 3.0 && val <= 5.2) {
-    timelineBadge.innerText = "STAGE 2: NORMOKALEMIA (NORMAL)";
+    timelineBadge.innerText = "STAGE 2: HEALTHY & BALANCED RANGE";
     timelineBadge.style.background = "#e6f2f2";
     timelineBadge.style.color = "#008080";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-success mb-2">Stage 2: Normokalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
-      <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex waveform.</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular conduction timing.</p>
-      <p class="mb-1"><strong>Clinical Action:</strong> Baseline cardiac conduction operating within optimal limits.</p>
+      <h6 class="fw-bold text-success mb-2">Stage 2: Optimal Potassium Level (${val.toFixed(1)} mmol/L)</h6>
+      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> A crisp, regular waveform indicating your heart's electrical system is firing smoothly.</p>
+      <p class="mb-1"><strong>Symptoms You Might Notice:</strong> Steady physical stamina, normal muscle contractions, and steady pulse rate.</p>
+      <p class="mb-1"><strong>Next Step:</strong> Keep maintaining your healthy daily lifestyle and routine annual checkups.</p>
       ${etiologyText}
     `;
   } else if (val > 5.2 && val <= 7.5) {
-    timelineBadge.innerText = "STAGE 3: MILD / MODERATE HYPERKALEMIA";
+    timelineBadge.innerText = "STAGE 3: ELEVATED POTASSIUM (HYPERKALEMIA)";
     timelineBadge.style.background = "#fffaf0";
     timelineBadge.style.color = "#c05621";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: Mild/Moderate Hyperkalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
-      <p class="mb-1"><strong>Visual ECG Waveform:</strong> T wave sharpens into a tall, narrow, <strong>"tent-shaped" peak</strong>. PR interval prolongs; P wave flattens while QRS widens.</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Accelerated Phase 3 repolarization and progressive intraventricular conduction delay.</p>
-      <p class="mb-1"><strong>Clinical Action:</strong> Evaluate renal function, hydration, and medication usage.</p>
+      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: High Potassium Level (${val.toFixed(1)} mmol/L)</h6>
+      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> Taller, pointier recovery waves as electrical resetting speeds up, followed by a widening pulse signal.</p>
+      <p class="mb-1"><strong>Symptoms You Might Notice:</strong> High potassium often causes <em>no obvious symptoms</em>, though some people feel mild nausea or muscle heaviness.</p>
+      <p class="mb-1"><strong>Next Step:</strong> Schedule a follow-up review to check your kidney baseline and review any blood pressure medications you are taking.</p>
       ${etiologyText}
     `;
   } else {
-    timelineBadge.innerText = "STAGE 4: SEVERE HYPERKALEMIA (EMERGENCY)";
+    timelineBadge.innerText = "STAGE 4: CRITICAL POTASSIUM LEVEL (SEEK IMMEDIATE CARE)";
     timelineBadge.style.background = "#fff5f5";
     timelineBadge.style.color = "#e53e3e";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe Hyperkalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
-      <p class="mb-1"><strong>Visual ECG Waveform:</strong> P wave disappears; widened QRS complex merges smoothly into the T wave to form a continuous <strong>Sine Wave</strong>, ultimately degenerating into asystole / cardiac arrest.</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Severe inactivation of cardiac sodium channels causing total loss of organized electrical activity.</p>
-      <p class="mb-1"><strong>Key Risks:</strong> Impending <strong>Ventricular Fibrillation (VF)</strong> or Asystole. Emergency requiring immediate medical stabilization.</p>
+      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe High Potassium (${val.toFixed(1)} mmol/L)</h6>
+      <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> The heartbeat signal loses its normal shape and turns into a smooth, rolling wave pattern (Sine Wave).</p>
+      <p class="mb-1"><strong>Why This Matters:</strong> Very high potassium interferes with the heart's ability to pump effectively and requires urgent medical attention.</p>
+      <p class="mb-1"><strong>Next Step:</strong> If your lab report shows this reading, seek urgent medical evaluation at an emergency clinic or hospital immediately.</p>
       ${etiologyText}
     `;
   }
