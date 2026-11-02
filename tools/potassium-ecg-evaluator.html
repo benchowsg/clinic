@@ -284,16 +284,16 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
 const kInput = document.getElementById('kInput');
 const kVal = document.getElementById('kVal');
 const kOutput = document.getElementById('kOutput');
+const etiologySelect = document.getElementById('etiologySelect');
 const timelineBadge = document.getElementById('timelineBadge');
 const stageLabelText = document.getElementById('stageLabelText');
 const ecgSvgContainer = document.getElementById('ecgSvgContainer');
 const narrativeText = document.getElementById('narrativeText');
 
-// SVG Waveform Renderers for the 4 Stages
+// SVG Waveform Renderers
 function renderECGWaveform(stage) {
   let svgContent = '';
-  
-  if (stage === 1) { // Hypokalemia (ST Depression, Flat T, Prominent U)
+  if (stage === 1) { // Hypokalemia
     svgContent = `
       <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #ff4a5a; stroke-width: 2.5; fill: none;">
         <path d="M 0 35 L 40 35 L 45 32 L 50 35 L 70 35 L 75 10 L 82 60 L 88 35 L 105 42 L 130 42 L 140 40 L 160 40 L 180 25 L 200 35 L 300 35" />
@@ -303,28 +303,42 @@ function renderECGWaveform(stage) {
       <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #00ffcc; stroke-width: 2.5; fill: none;">
         <path d="M 0 35 L 40 35 L 50 25 L 60 35 L 80 35 L 85 10 L 92 60 L 98 35 L 120 35 L 145 18 L 170 35 L 300 35" />
       </svg>`;
-  } else if (stage === 3) { // Mild Hyperkalemia (Tall Peaked T)
+  } else if (stage === 3) { // Mild/Moderate Hyperkalemia
     svgContent = `
       <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #ffb703; stroke-width: 2.5; fill: none;">
         <path d="M 0 35 L 50 35 L 60 30 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 2 L 155 35 L 300 35" />
       </svg>`;
-  } else { // Severe Hyperkalemia (Sine Wave)
+  } else { // Severe Hyperkalemia
     svgContent = `
       <svg width="300" height="70" viewBox="0 0 300 70" style="stroke: #e53e3e; stroke-width: 3; fill: none;">
         <path d="M 0 35 Q 37.5 -10, 75 35 T 150 35 T 225 35 T 300 35" />
       </svg>`;
   }
-  
   ecgSvgContainer.innerHTML = svgContent;
+}
+
+// Etiology Clinical Insights Helper
+function getEtiologyNote(etiology, kVal) {
+  if (etiology === 'kidney') {
+    return `<div class="mt-2 pt-2 border-top"><strong>CKD Risk Context:</strong> Impaired renal excretion accelerates potassium accumulation. Even moderate elevation requires strict serum monitoring and nephrology/cardiology coordination.</div>`;
+  } else if (etiology === 'diuretic') {
+    return `<div class="mt-2 pt-2 border-top"><strong>Diuretic / GI Context:</strong> Loop/thiazide diuretics or fluid losses drive rapid extracellular potassium shifts, significantly predisposing the heart to ventricular irritability.</div>`;
+  } else if (etiology === 'meds') {
+    return `<div class="mt-2 pt-2 border-top"><strong>Medication Context:</strong> RAAS inhibitors (ACEi/ARBs/spironolactone) reduce renal aldosterone excretion. Baseline blood tests are necessary before adjusting therapeutic dosages.</div>`;
+  }
+  return `<div class="mt-2 pt-2 border-top"><strong>Clinical Context:</strong> Routine screening context. Correlate blood levels with daily symptoms and baseline renal function.</div>`;
 }
 
 function updateEvaluation() {
   const val = parseFloat(kInput.value);
+  const etiology = etiologySelect.value;
+  
   kVal.innerText = val.toFixed(1) + " mEq/L";
   kOutput.innerText = val.toFixed(1);
 
+  const etiologyText = getEtiologyNote(etiology, val);
+
   if (val < 3.0) {
-    // Stage 1: Severe Hypokalemia
     timelineBadge.innerText = "STAGE 1: SEVERE HYPOKALEMIA";
     timelineBadge.style.background = "#fff5f5";
     timelineBadge.style.color = "#e53e3e";
@@ -335,12 +349,12 @@ function updateEvaluation() {
     
     narrativeText.innerHTML = `
       <h6 class="fw-bold text-danger mb-2">Stage 1: Severe Hypokalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
-      <p class="mb-1"><strong>Visual ECG Waveform:</strong> ST-segment depression, flattened/inverted T waves, and prominent raised <strong>U waves</strong> (T-U fusion).</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Delayed myocardial repolarization due to hyperpolarized membrane potential.</p>
-      <p class="mb-0"><strong>Key Risks:</strong> Prolonged QU interval, susceptibility to <strong>Torsades de Pointes</strong> and re-entrant ventricular arrhythmias.</p>
+      <p class="mb-1"><strong>Visual ECG Waveform:</strong> ST-segment depression, flattened T waves, and prominent raised <strong>U waves</strong> (T-U fusion).</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Delayed myocardial repolarization due to hyperpolarized cell membrane potential.</p>
+      <p class="mb-1"><strong>Key Risks:</strong> Prolonged QU interval, susceptibility to <strong>Torsades de Pointes</strong> and re-entrant ventricular arrhythmias.</p>
+      ${etiologyText}
     `;
   } else if (val >= 3.0 && val <= 5.2) {
-    // Stage 2: Normokalemia
     timelineBadge.innerText = "STAGE 2: NORMOKALEMIA (NORMAL)";
     timelineBadge.style.background = "#e6f2f2";
     timelineBadge.style.color = "#008080";
@@ -352,11 +366,11 @@ function updateEvaluation() {
     narrativeText.innerHTML = `
       <h6 class="fw-bold text-success mb-2">Stage 2: Normokalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex waveform.</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular conduction and repolarization timing.</p>
-      <p class="mb-0"><strong>Clinical Action:</strong> Baseline cardiac conduction operating optimally.</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular conduction timing.</p>
+      <p class="mb-1"><strong>Clinical Action:</strong> Baseline cardiac conduction operating within optimal limits.</p>
+      ${etiologyText}
     `;
   } else if (val > 5.2 && val <= 6.8) {
-    // Stage 3: Mild to Moderate Hyperkalemia
     timelineBadge.innerText = "STAGE 3: MILD / MODERATE HYPERKALEMIA";
     timelineBadge.style.background = "#fffaf0";
     timelineBadge.style.color = "#c05621";
@@ -369,10 +383,10 @@ function updateEvaluation() {
       <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: Mild/Moderate Hyperkalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> T wave sharpens into a tall, narrow, <strong>"tent-shaped" peak</strong>. PR interval prolongs; P wave flattens.</p>
       <p class="mb-1"><strong>Electrophysiology:</strong> Accelerated Phase 3 repolarization and mild slowing of intra-atrial conduction.</p>
-      <p class="mb-0"><strong>Clinical Action:</strong> Evaluate renal function, hydration, and medication usage (ACEi/ARBs/spironolactone).</p>
+      <p class="mb-1"><strong>Clinical Action:</strong> Evaluate renal function, hydration, and medication usage.</p>
+      ${etiologyText}
     `;
   } else {
-    // Stage 4: Severe Hyperkalemia
     timelineBadge.innerText = "STAGE 4: SEVERE HYPERKALEMIA (EMERGENCY)";
     timelineBadge.style.background = "#fff5f5";
     timelineBadge.style.color = "#e53e3e";
@@ -384,15 +398,18 @@ function updateEvaluation() {
     narrativeText.innerHTML = `
       <h6 class="fw-bold text-danger mb-2">Stage 4: Severe Hyperkalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> P wave disappears; widened QRS complex merges smoothly into the T wave to form a continuous <strong>Sine Wave</strong>.</p>
-      <p class="mb-1"><strong>Electrophysiology:</strong> Inactivation of cardiac fast sodium channels leading to severe intraventricular conduction delay.</p>
-      <p class="mb-0"><strong>Key Risks:</strong> Impending <strong>Ventricular Fibrillation (VF)</strong> or Asystolic Cardiac Arrest. Medical Emergency requiring immediate IV calcium membrane stabilization.</p>
+      <p class="mb-1"><strong>Electrophysiology:</strong> Inactivation of cardiac fast sodium channels causing severe intraventricular conduction delay.</p>
+      <p class="mb-1"><strong>Key Risks:</strong> Impending <strong>Ventricular Fibrillation (VF)</strong> or Asystole. Medical emergency requiring immediate IV calcium membrane stabilization.</p>
+      ${etiologyText}
     `;
   }
 }
 
+// Event Listeners
 kInput.addEventListener('input', updateEvaluation);
+etiologySelect.addEventListener('change', updateEvaluation);
 document.getElementById('calculateBtn').addEventListener('click', updateEvaluation);
 
-// Initial execution on load
+// Initial run on page load
 updateEvaluation();
 </script>
