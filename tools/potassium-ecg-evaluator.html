@@ -211,7 +211,7 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
             </div>
 
             <div id="narrativeText" class="insight-panel p-4 bg-light text-start small text-muted shadow-sm">
-              <h6 class="fw-bold text-dark mb-2">Stage 2: Normokalemia ($K^+ = 3.5 - 5.0\text{ mEq/L}$)</h6>
+              <h6 class="fw-bold text-dark mb-2">Stage 2: Normokalemia (K<sup>+</sup> = 3.5 - 5.0 mEq/L)</h6>
               <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex architecture with normal baseline timing.</p>
               <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular depolarization and repolarization phases.</p>
               <p class="mb-0"><strong>Clinical Action:</strong> Maintain routine monitoring and balanced dietary intake.</p>
@@ -229,7 +229,7 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
         <div class="reference-box h-100">
           <h5 class="fw-bold" style="color: #2c4964;">Hypokalemia & Ventricular Arhythmia</h5>
           <p class="small text-muted mb-0">
-            When serum potassium falls below $3.5\text{ mEq/L}$, myocardial cell membranes become hyperpolarized, delaying Phase 3 repolarization. This prolongation generates prominent <strong>U waves</strong> and ST-segment depression. As the T wave fuses with the U wave, the resulting prolonged QU interval creates high susceptibility to dangerous re-entrant ventricular arrhythmias, including <strong>Torsades de Pointes</strong>.
+            When serum potassium falls below 3.5 mEq/L, myocardial cell membranes become hyperpolarized, delaying Phase 3 repolarization. This prolongation generates prominent <strong>U waves</strong> and ST-segment depression. As the T wave fuses with the U wave, the resulting prolonged QU interval creates high susceptibility to dangerous re-entrant ventricular arrhythmias, including <strong>Torsades de Pointes</strong>.
           </p>
         </div>
       </div>
@@ -237,7 +237,7 @@ description: "An evidence-based clinical tool mapping serum potassium (K+) varia
         <div class="reference-box h-100">
           <h5 class="fw-bold" style="color: #008080;">Hyperkalemia & The Classical "Sine Wave"</h5>
           <p class="small text-muted mb-0">
-            Elevated potassium ($> 5.5\text{ mEq/L}$) accelerates repolarization, producing early <strong>tall, peaked T waves</strong>. As concentrations rise above $7.0 - 7.9\text{ mEq/L}$, cardiac sodium channel inactivation slows impulse conduction across the ventricles. The P wave flattens and disappears, while the QRS complex widens significantly, merging into the T wave to form a lethal <strong>Sine Wave pattern</strong> preceding cardiac arrest.
+            Elevated potassium (> 5.5 mEq/L) accelerates repolarization, producing early <strong>tall, peaked T waves</strong>. As concentrations rise above 7.0 - 7.9 mEq/L, cardiac sodium channel inactivation slows impulse conduction across the ventricles. The P wave flattens and disappears, while the QRS complex widens significantly, merging into the T wave to form a lethal <strong>Sine Wave pattern</strong> preceding cardiac arrest.
           </p>
         </div>
       </div>
@@ -334,7 +334,7 @@ function updateEvaluation() {
     renderECGWaveform(1);
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 1: Severe Hypokalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <h6 class="fw-bold text-danger mb-2">Stage 1: Severe Hypokalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> ST-segment depression, flattened/inverted T waves, and prominent raised <strong>U waves</strong> (T-U fusion).</p>
       <p class="mb-1"><strong>Electrophysiology:</strong> Delayed myocardial repolarization due to hyperpolarized membrane potential.</p>
       <p class="mb-0"><strong>Key Risks:</strong> Prolonged QU interval, susceptibility to <strong>Torsades de Pointes</strong> and re-entrant ventricular arrhythmias.</p>
@@ -350,7 +350,7 @@ function updateEvaluation() {
     renderECGWaveform(2);
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-success mb-2">Stage 2: Normokalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <h6 class="fw-bold text-success mb-2">Stage 2: Normokalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> Standard, crisp P-QRS-T complex waveform.</p>
       <p class="mb-1"><strong>Electrophysiology:</strong> Normal, synchronized atrial and ventricular conduction and repolarization timing.</p>
       <p class="mb-0"><strong>Clinical Action:</strong> Baseline cardiac conduction operating optimally.</p>
@@ -366,7 +366,7 @@ function updateEvaluation() {
     renderECGWaveform(3);
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: Mild/Moderate Hyperkalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: Mild/Moderate Hyperkalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> T wave sharpens into a tall, narrow, <strong>"tent-shaped" peak</strong>. PR interval prolongs; P wave flattens.</p>
       <p class="mb-1"><strong>Electrophysiology:</strong> Accelerated Phase 3 repolarization and mild slowing of intra-atrial conduction.</p>
       <p class="mb-0"><strong>Clinical Action:</strong> Evaluate renal function, hydration, and medication usage (ACEi/ARBs/spironolactone).</p>
@@ -382,7 +382,7 @@ function updateEvaluation() {
     renderECGWaveform(4);
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe Hyperkalemia ($K^+ = ${val.toFixed(1)}\text{ mEq/L}$)</h6>
+      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe Hyperkalemia (K<sup>+</sup> = ${val.toFixed(1)} mEq/L)</h6>
       <p class="mb-1"><strong>Visual ECG Waveform:</strong> P wave disappears; widened QRS complex merges smoothly into the T wave to form a continuous <strong>Sine Wave</strong>.</p>
       <p class="mb-1"><strong>Electrophysiology:</strong> Inactivation of cardiac fast sodium channels leading to severe intraventricular conduction delay.</p>
       <p class="mb-0"><strong>Key Risks:</strong> Impending <strong>Ventricular Fibrillation (VF)</strong> or Asystolic Cardiac Arrest. Medical Emergency requiring immediate IV calcium membrane stabilization.</p>
