@@ -18,11 +18,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     border: 1px solid #edf2f7;
   }
 
-  /* Custom Target Sliders */
-  .form-range::-webkit-slider-thumb { background: #008080; }
-  .form-range::-moz-range-thumb { background: #008080; }
-  
-  /* Custom Selection Wrappers & Dropdown Arrow Fix */
+  /* Spaced Custom Selection & Input Wrappers */
   .input-box-custom {
     background: #f8fafc;
     border-radius: 16px;
@@ -31,6 +27,21 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     position: relative;
   }
+  
+  .input-box-custom input[type="number"] {
+    background: transparent;
+    border: none;
+    font-weight: 700;
+    color: #2c4964;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    width: 100%;
+  }
+  .input-box-custom input[type="number"]:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
   .input-box-custom select {
     background: transparent;
     border: none;
@@ -46,7 +57,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     padding-right: 30px;
   }
   /* Custom Dropdown Chevron Icon */
-  .input-box-custom::after {
+  .select-wrapper::after {
     content: "▼";
     font-size: 0.75rem;
     color: #008080;
@@ -55,10 +66,6 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-  }
-  .input-box-custom select:focus {
-    outline: none;
-    box-shadow: none;
   }
 
   /* Dynamic Results Dashboard */
@@ -119,7 +126,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
     text-shadow: 0 0 6px rgba(0, 255, 204, 0.4);
   }
 
-  /* Informational Modules and Citations Block */
+  /* Informational Modules Block */
   .reference-box {
     background: #f8fafc;
     border-radius: 20px;
@@ -205,21 +212,16 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
         <div class="col-lg-10">
           
           <!-- STEP 1 -->
-          <div class="mb-4">
+          <div id="wrapper-kInput" class="mb-4">
             <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
-              <span class="step-number">1</span> Select the Potassium Level on Your Lab Report
+              <span class="step-number">1</span> Key in the Potassium Level on Your Lab Report (e.g., 4.0)
             </label>
-            <div class="p-4 rounded-4" style="background: #f8fafc; border: 1px solid #e2e8f0;">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.5px;">Potassium Reading (K<sup>+</sup>)</span>
-                <span id="kVal" class="fw-bold px-3 py-1 rounded-3" style="background: #e6f2f2; color: #008080 !important; font-size: 1rem;">4.0 mmol/L</span>
-              </div>
-              <input type="range" class="form-range" id="kInput" min="2.0" max="9.5" step="0.1" value="4.0" style="cursor: pointer;">
-              <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.8rem;">
-                <span>2.0 (Too Low)</span>
-                <span>3.5 - 5.0 (Healthy Range)</span>
-                <span>9.5+ (Very High)</span>
-              </div>
+            <div class="input-box-custom d-flex align-items-center justify-content-between">
+              <input type="number" id="kInput" placeholder="Enter number (e.g. 4.2)" step="0.1" min="1.0" max="10.0">
+              <span class="fw-bold text-muted ms-2" style="font-size: 1.1rem; white-space: nowrap;">mmol/L</span>
+            </div>
+            <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.8rem;">
+              <span>Healthy Singapore Reference Range: <strong>3.5 – 5.0 mmol/L</strong></span>
             </div>
           </div>
 
@@ -228,7 +230,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
             <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
               <span class="step-number">2</span> Select Your Current Health Situation
             </label>
-            <div class="input-box-custom">
+            <div class="input-box-custom select-wrapper">
               <select id="etiologySelect" class="form-select p-0">
                 <option value="" selected disabled hidden>Select your health situation...</option>
                 <option value="routine">Just a Routine Wellness Checkup</option>
@@ -260,7 +262,7 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
       <div class="row align-items-center g-4">
         
         <div class="col-lg-4 text-center">
-          <span class="text-muted small fw-bold text-uppercase d-block mb-1">Selected Reading</span>
+          <span class="text-muted small fw-bold text-uppercase d-block mb-1">Entered Reading</span>
           <div class="my-1">
             <span id="kOutput" class="k-highlight">4.0</span>
             <span class="h4 fw-bold text-muted">mmol/L</span>
@@ -405,7 +407,6 @@ description: "An easy-to-use lab guide mapping your blood potassium levels to he
 
 <script>
 const kInput = document.getElementById('kInput');
-const kVal = document.getElementById('kVal');
 const kOutput = document.getElementById('kOutput');
 const monitorKVal = document.getElementById('monitorKVal');
 const etiologySelect = document.getElementById('etiologySelect');
@@ -414,12 +415,8 @@ const ecgSvgContainer = document.getElementById('ecgSvgContainer');
 const ecgFeatureAnnotation = document.getElementById('ecgFeatureAnnotation');
 const narrativeText = document.getElementById('narrativeText');
 const resultPanel = document.getElementById('resultPanel');
+const wrapperKInput = document.getElementById('wrapper-kInput');
 const wrapperEtiology = document.getElementById('wrapper-etiology');
-
-// Update slider text label as user drags
-kInput.addEventListener('input', function() {
-  kVal.innerText = parseFloat(this.value).toFixed(1) + " mmol/L";
-});
 
 function renderECGWaveform(val) {
   let strokeColor = "#2bfd6c"; // Retro Neon Green
@@ -477,22 +474,39 @@ function getEtiologyNote(etiology) {
 
 // Step 3 Button Click Handler
 document.getElementById('calculateBtn').addEventListener('click', function() {
+  const kValRaw = kInput.value.trim();
+  const val = parseFloat(kValRaw);
   const etiology = etiologySelect.value;
-  const customBox = wrapperEtiology.querySelector('.input-box-custom');
-
-  // Step 2 Selection Validation
-  if (!etiology) {
-    customBox.style.borderColor = '#e53e3e';
-    alert('Please select your current health situation in Step 2 before proceeding.');
-    return;
-  }
   
-  // Reset border styling
-  customBox.style.borderColor = '#e2e8f0';
+  const inputContainer = wrapperKInput.querySelector('.input-box-custom');
+  const selectContainer = wrapperEtiology.querySelector('.input-box-custom');
 
-  const val = parseFloat(kInput.value);
-  kOutput.innerText = val.toFixed(1);
-  monitorKVal.innerText = val.toFixed(1);
+  // Reset border styling
+  inputContainer.style.borderColor = '#e2e8f0';
+  selectContainer.style.borderColor = '#e2e8f0';
+
+  let hasError = false;
+
+  // Step 1 Validation
+  if (!kValRaw || isNaN(val) || val < 1.0 || val > 10.0) {
+    inputContainer.style.borderColor = '#e53e3e';
+    alert('Please key in a valid potassium level between 1.0 and 10.0 mmol/L.');
+    hasError = true;
+  }
+
+  // Step 2 Validation
+  if (!etiology) {
+    selectContainer.style.borderColor = '#e53e3e';
+    if (!hasError) alert('Please select your current health situation in Step 2 before proceeding.');
+    hasError = true;
+  }
+
+  if (hasError) return;
+
+  // Format to 1 decimal place cleanly
+  const formattedVal = val.toFixed(1);
+  kOutput.innerText = formattedVal;
+  monitorKVal.innerText = formattedVal;
 
   const etiologyText = getEtiologyNote(etiology);
   renderECGWaveform(val);
@@ -503,7 +517,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#e53e3e";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 1: Low Potassium Level (${val.toFixed(1)} mmol/L)</h6>
+      <h6 class="fw-bold text-danger mb-2">Stage 1: Low Potassium Level (${formattedVal} mmol/L)</h6>
       <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> A subtle dip after the main pulse, showing that your heart muscle is taking longer to recharge.</p>
       <p class="mb-1"><strong>Symptoms You Might Notice:</strong> Muscle cramps (especially in calves or feet), feeling unusually weak, or noticing fluttering heartbeats.</p>
       <p class="mb-1"><strong>Next Step:</strong> Consult Dr. Gerald Thang to identify the cause of the drop and safely restore your electrolyte balance.</p>
@@ -515,7 +529,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#008080";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-success mb-2">Stage 2: Optimal Potassium Level (${val.toFixed(1)} mmol/L)</h6>
+      <h6 class="fw-bold text-success mb-2">Stage 2: Optimal Potassium Level (${formattedVal} mmol/L)</h6>
       <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> A crisp, regular waveform indicating your heart's electrical system is firing smoothly.</p>
       <p class="mb-1"><strong>Symptoms You Might Notice:</strong> Steady physical stamina, normal muscle contractions, and steady pulse rate.</p>
       <p class="mb-1"><strong>Next Step:</strong> Keep maintaining your healthy daily lifestyle and routine annual checkups.</p>
@@ -527,7 +541,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#c05621";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: High Potassium Level (${val.toFixed(1)} mmol/L)</h6>
+      <h6 class="fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: High Potassium Level (${formattedVal} mmol/L)</h6>
       <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> Taller, pointier recovery waves as electrical resetting speeds up, followed by a widening pulse signal.</p>
       <p class="mb-1"><strong>Symptoms You Might Notice:</strong> High potassium often causes <em>no obvious symptoms</em>, though some people feel mild nausea or muscle heaviness.</p>
       <p class="mb-1"><strong>Next Step:</strong> Schedule a follow-up review to check your kidney baseline and review any blood pressure medications you are taking.</p>
@@ -539,7 +553,7 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
     timelineBadge.style.color = "#e53e3e";
     
     narrativeText.innerHTML = `
-      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe High Potassium (${val.toFixed(1)} mmol/L)</h6>
+      <h6 class="fw-bold text-danger mb-2">Stage 4: Severe High Potassium (${formattedVal} mmol/L)</h6>
       <p class="mb-1"><strong>What Your Heart Trace Shows:</strong> The heartbeat signal loses its normal shape and turns into a smooth, rolling wave pattern (Sine Wave).</p>
       <p class="mb-1"><strong>Why This Matters:</strong> Very high potassium interferes with the heart's ability to pump effectively and requires urgent medical attention.</p>
       <p class="mb-1"><strong>Next Step:</strong> If your lab report shows this reading, seek urgent medical evaluation at an emergency clinic or hospital immediately.</p>
