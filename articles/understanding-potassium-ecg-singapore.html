@@ -1,0 +1,641 @@
+---
+layout: default
+permalink: /articles/understanding-potassium-ecg-singapore
+category: Cardiology
+title: "The Silent Electrician: How Serum Potassium (K+) Controls Your Heart Rhythm & Daily Energy"
+description: "Discover how serum potassium shifts cause muscle cramps, heart flutters, or silent ECG changes. Learn how to test your reading using our Singapore lab guide."
+last_reviewed: 2026-11-02
+author_name: "Dr. Gerald Thang"
+custom_schema: |
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      "@headline": "The Silent Electrician: How Serum Potassium (K+) Controls Your Heart Rhythm & Daily Energy",
+      "@description": "A clinical patient guide mapping serum potassium levels (mmol/L) to cardiac action potentials, ECG changes, muscle cramps, and hyper/hypokalemia risk in Singapore.",
+      "lastReviewed": "2026-11-02",
+      "medicalSpecialty": [
+        "Cardiovascular",
+        "Primary Care"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Gerald Thang",
+        "jobTitle": "Principal Physician",
+        "url": "https://www.ahealingheartmedical.com/team/dr-thang-gerald"
+      },
+      "isPartOf": {
+        "@type": "MedicalBusiness",
+        "@id": "https://www.ahealingheartmedical.com"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is potassium reported in mmol/L on Singapore blood tests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Singapore clinical laboratories (such as SGH, NUH, SingHealth, and private diagnostic centers) use mmol/L (millimoles per liter) as standard SI units. 1 mmol/L of potassium is numerically identical to 1 mEq/L used in some international references."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do symptoms of high and low potassium feel so similar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both high and low potassium disrupt muscle cell membrane charging, leading to overlapping symptoms like muscle weakness and heart palpitations. However, low potassium typically presents with painful muscle cramps and constipation, while high potassium causes painless muscle heaviness, numbness, and nausea."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do blood pressure medications affect potassium levels?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Medications like ACE inhibitors, ARBs, or spironolactone protect blood vessels by helping the body release excess sodium. In doing so, they cause the kidneys to retain potassium, making routine blood screening essential."
+          }
+        }
+      ]
+    }
+  ]
+---
+
+<style>
+  .article-content { padding-top: 140px; }
+  .article-body p { line-height: 1.8; margin-bottom: 1.5rem; color: #334155; font-size: 1.05rem; }
+  .quick-facts { background: #e6f2f2; border: 1px solid #99d6d6; border-radius: 15px; padding: 25px; margin-bottom: 35px; }
+  .lifestyle-callout { background: #fffaf0; border-radius: 16px; padding: 25px; margin: 30px 0; border-left: 5px solid #c05621; }
+  .author-box { background: #f8fafc; padding: 22px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 35px; }
+  .section-heading { color: #0f172a; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.2rem; }
+  .check-list { list-style: none; padding-left: 0; }
+  .check-list li { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 1.05rem; color: #334155; line-height: 1.6; }
+  .check-list li::before { content: "✓"; color: #008080; font-weight: bold; position: absolute; left: 0; font-size: 1.2rem; }
+  .cta-banner { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 16px; padding: 32px; color: #ffffff; text-align: center; margin: 40px 0; }
+  .ip-notice-box { background: #ffffff; border: 1px solid #e2e8f0; border-left: 4px solid #94a3b8; padding: 18px; font-size: 0.85rem; color: #64748b; border-radius: 8px; margin-top: 50px; }
+  
+  .btn-custom-primary { background: #008080; color: #ffffff !important; font-weight: 700; padding: 10px 22px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
+  .btn-custom-primary:hover { background: #006666; transform: translateY(-1px); }
+  .btn-custom-secondary { background: #ffffff; color: #0f172a !important; font-weight: 700; padding: 10px 20px; border-radius: 50px; border: 1px solid #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
+  .btn-custom-secondary:hover { background: #f8fafc; border-color: #94a3b8; color: #008080 !important; }
+  .custom-table-wrapper { overflow-x: auto; border-radius: 12px; }
+
+  /* Interactive Calculator Component Styling */
+  .interactive-calculator-card { background: #ffffff; border-radius: 24px; border: 1px solid #cbd5e1; box-shadow: 0 10px 25px rgba(0,0,0,0.05); padding: 25px; margin: 35px 0; }
+  
+  .input-box-custom {
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 14px 18px;
+    border: 1.5px solid #cbd5e0;
+    transition: border-color 0.2s ease;
+    position: relative;
+  }
+  .input-box-custom input[type="number"] {
+    background: transparent;
+    border: none;
+    font-weight: 700;
+    color: #1a202c;
+    font-size: 1.25rem;
+    width: 100%;
+  }
+  .input-box-custom input[type="number"]:focus { outline: none; }
+  .input-box-custom select {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    color: #1a202c;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 30px;
+  }
+  .select-wrapper::after {
+    content: "▼";
+    font-size: 0.8rem;
+    color: #008080;
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .step-number {
+    background: #2c4964;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .ecg-display-box {
+    background-color: #0b253a;
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid #164e63;
+    color: #00ffcc;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+    position: relative;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
+  }
+  .ecg-grid-overlay {
+    background-image: 
+      linear-gradient(rgba(0, 255, 204, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 204, 0.08) 1px, transparent 1px);
+    background-size: 15px 15px;
+  }
+  .retro-green-text { color: #34d399; font-weight: 700; font-size: 0.9rem; }
+  .retro-cyan-text { color: #22d3ee; font-weight: 700; font-size: 0.9rem; }
+  
+  .timeline-badge {
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+  }
+  .k-highlight {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #2c4964 0%, #008080 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .insight-panel {
+    background: #fdfdfd;
+    border-left: 5px solid #008080;
+    border-radius: 0 16px 16px 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>
+
+<main id="main" class="article-content">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/articles/">Health Library</a></li>
+            <li class="breadcrumb-item active">Preventive Cardiology Guide</li>
+          </ol>
+        </nav>
+
+        <h1 class="display-6 fw-bold mb-3" style="color: #0f172a;">The Silent Electrician: How Serum Potassium (K<sup>+</sup>) Controls Your Heart Rhythm & Daily Energy</h1>
+        <p class="subtitle fs-5 mb-4 text-muted">Potassium is not just a mineral—it is the electrical spark plug of your heart. Learn how subtle shifts cause leg cramps, heart flutters, or silent heart trace changes.</p>
+
+        <div class="author-box d-flex align-items-center">
+          <img src="/assets/img/team/Dr-Thang-Gerald-ahealingheartmedical-clinic.webp" class="rounded-circle me-3" style="width: 70px; height: 70px; object-fit: cover;" alt="Dr Gerald Thang">
+          <div>
+            <p class="mb-0 fw-bold text-dark">Written & Reviewed by Dr. Gerald Thang</p>
+            <p class="mb-0 text-primary fw-bold small text-uppercase" style="letter-spacing: 1px;">Principal Physician</p>
+            <p class="mb-0 small text-muted">MBBS (Singapore), MRCP (UK), Graduate Diploma in Cardiology (Singapore)</p>
+          </div>
+        </div>
+
+        <div class="quick-facts" role="region" aria-label="Quick Clinical Summary">
+          <h2 class="h5 fw-bold text-dark mb-3">⚡ Quick Summary: Potassium & Heart Conduction</h2>
+          <ul class="mb-0 ps-3" style="line-height: 1.8; color: #1e293b;">
+            <li><strong>The Cellular Reset Button:</strong> Serum potassium regulates muscle cell membrane potentials. It determines how effectively your heart muscle recharges between beats.</li>
+            <li><strong>Singapore Reference Standard:</strong> Local labs measure potassium in <strong>mmol/L</strong> (healthy baseline: <strong>3.5 – 5.0 mmol/L</strong>).</li>
+            <li><strong>Low Potassium (Hypokalemia):</strong> Triggers painful muscle cramps, leg weakness, constipation, and irregular heart flutters (prominent U-waves on ECG).</li>
+            <li><strong>High Potassium (Hyperkalemia):</strong> Often completely silent in early stages, but progresses to peaked T-waves, pulse slowing, and sinusoidal heart trace emergencies.</li>
+            <li><strong>Medication & Kidney Risk:</strong> Patients taking blood pressure medications (ACEi/ARBs) or with kidney conditions require routine blood monitoring.</li>
+          </ul>
+        </div>
+
+        <div class="article-body">
+          <p>When reviewing blood chemistry panels, attention naturally turns to cholesterol, fasting glucose, or kidney function numbers. However, **serum potassium ($K^+$)** is the unsung mineral quietly keeping your heart's internal electrician working smoothly.</p>
+          
+          <p>Every single beat of your heart relies on a delicate balance between sodium inside heart cells and potassium outside them. When potassium levels drift outside the narrow normal range, your physical stamina, muscle tone, and cardiac electrical conduction can be significantly altered.</p>
+
+          <h2 id="real-world-scenarios" class="section-heading h4">Real-World Scenarios: How Potassium Shifts Look & Feel</h2>
+          <p>Potassium imbalances do not manifest identically in everyone. Understanding the distinct ways low and high potassium behave in daily life helps clarify when to get checked.</p>
+
+          <div class="row g-4 my-3">
+            <!-- Scenario 1: Low Potassium -->
+            <div class="col-md-6">
+              <div class="p-4 rounded-4 h-100" style="background: #f8fafc; border: 1px solid #edf2f7;">
+                <span class="badge rounded-pill px-3 py-1 mb-2" style="background: #fff5f5; color: #e53e3e; font-weight: 700; font-size: 0.75rem;">SCENARIO A: POTASSIUM DROPS</span>
+                <h3 class="h5 fw-bold mt-1 mb-3" style="color: #2c4964;">The Sudden Drain & Flutter</h3>
+                <p class="small text-muted mb-2"><strong>What Happens Externally:</strong> Following intense outdoor exercise or a stomach flu, calf muscles cramp up violently, legs feel heavy like lead, and a "fluttering" sensation occurs in the chest.</p>
+                <p class="small text-muted mb-2"><strong>What Is Seen on a Heart Trace:</strong> The heart muscle struggles to recharge. Recovery waves flatten out and an extra U-wave appears, creating rhythm instability.</p>
+                <p class="small text-muted mb-0"><strong>The Quick Remedy:</strong> Replenishing oral electrolytes, drinking coconut water, or taking clinical oral supplements under medical guidance safely restores cell charging.</p>
+              </div>
+            </div>
+
+            <!-- Scenario 2: High Potassium -->
+            <div class="col-md-6">
+              <div class="p-4 rounded-4 h-100" style="background: #f8fafc; border: 1px solid #edf2f7;">
+                <span class="badge rounded-pill px-3 py-1 mb-2" style="background: #fffaf0; color: #c05621; font-weight: 700; font-size: 0.75rem;">SCENARIO B: POTASSIUM BUILDS UP</span>
+                <h3 class="h5 fw-bold mt-1 mb-3" style="color: #008080;">The Silent Electrical Slowdown</h3>
+                <p class="small text-muted mb-2"><strong>What Happens Externally:</strong> A patient taking blood pressure medications or with reduced kidney function feels completely fine—or notices only subtle muscle heaviness. High potassium is often completely silent.</p>
+                <p class="small text-muted mb-2"><strong>What Is Seen on a Heart Trace:</strong> The electrical trace shoots up into tall, sharp "tent-shaped" waves. As levels rise higher, the pulse signal dangerously widens into a smooth sine wave.</p>
+                <p class="small text-muted mb-0"><strong>Why Monitoring Matters:</strong> Because high potassium rarely gives early warning signs, routine blood testing is essential to guide safe medication adjustments.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE CALCULATOR SECTION -->
+          <h2 id="interactive-k-evaluator" class="section-heading h4">Interactive Potassium & Heart Rhythm Visualizer</h2>
+          <p>Follow the 3 simple steps below to enter your latest blood lab reading and see how it maps to heart conduction patterns and health insights.</p>
+
+          <div class="interactive-calculator-card">
+            <div class="row justify-content-center">
+              <div class="col-lg-11">
+                
+                <!-- STEP 1 -->
+                <div id="wrapper-kInput" class="mb-4">
+                  <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
+                    <span class="step-number">1</span> Key in the Potassium Level on Your Lab Report
+                  </label>
+                  <div class="input-box-custom d-flex align-items-center justify-content-between">
+                    <input type="number" id="kInput" placeholder="Enter number (e.g. 4.0)" step="0.1" min="1.0" max="10.0">
+                    <span class="fw-bold text-secondary ms-2" style="font-size: 1.05rem; white-space: nowrap;">mmol/L</span>
+                  </div>
+                  <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.85rem;">
+                    <span>Healthy Singapore Reference Range: <strong>3.5 – 5.0 mmol/L</strong></span>
+                  </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="wrapper-etiology" class="mb-4">
+                  <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
+                    <span class="step-number">2</span> Select Your Current Health Situation
+                  </label>
+                  <div class="input-box-custom select-wrapper">
+                    <select id="etiologySelect" class="form-select p-0">
+                      <option value="" selected disabled hidden>Select your health situation...</option>
+                      <option value="routine">Just a Routine Wellness Checkup</option>
+                      <option value="kidney">I Have Kidney Issues / Reduced Kidney Function</option>
+                      <option value="diuretic">I Take Water Pills (Diuretics) or Had Bad Vomiting/Diarrhea</option>
+                      <option value="meds">I Take Blood Pressure Medication (ACE Inhibitors / ARBs)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="mt-4 pt-2">
+                  <button id="calculateBtn" class="btn btn-custom-primary w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="justify-content: center;">
+                    Step 3: See What This Means For You
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- RESULTS PANEL (Hidden until Step 3) -->
+            <div id="resultPanel" class="mt-5 pt-4 border-top d-none">
+              <div class="text-center mb-4">
+                <span id="timelineBadge" class="timeline-badge mb-2">HEALTHY & BALANCED RANGE</span>
+                <h3 class="h4 fw-bold text-dark">Your Evaluation Result</h3>
+              </div>
+
+              <div class="row align-items-center g-4">
+                <div class="col-lg-4 text-center">
+                  <span class="text-muted small fw-bold text-uppercase d-block mb-1">Entered Reading</span>
+                  <div class="my-1">
+                    <span id="kOutput" class="k-highlight">4.0</span>
+                    <span class="h4 fw-bold text-muted ms-1">mmol/L</span>
+                  </div>
+                  <p class="small text-muted mb-0">Singapore Reference Range: 3.5 – 5.0 mmol/L</p>
+                </div>
+
+                <div class="col-lg-8">
+                  <div class="ecg-display-box ecg-grid-overlay mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="retro-green-text">Heart Trace Monitor</span>
+                      <span class="retro-cyan-text">K<sup>+</sup>: <span id="monitorKVal">4.0</span> mmol/L</span>
+                    </div>
+
+                    <div id="ecgSvgContainer" class="d-flex justify-content-center align-items-center py-2" style="min-height: 100px;">
+                      <!-- Rendered via JS -->
+                    </div>
+
+                    <div class="text-end" style="min-height: 24px;">
+                      <span id="ecgFeatureAnnotation" class="retro-cyan-text">Steady, Normal Heartbeat</span>
+                    </div>
+                  </div>
+
+                  <div id="narrativeText" class="insight-panel p-4 bg-light text-start shadow-sm">
+                    <!-- Rendered via JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="mt-4 p-3 rounded-2 text-muted extra-small" style="background: #fafafa; border: 1px solid #e2e8f0; font-size: 0.78rem; line-height: 1.45;">
+              <strong>⚖️ Important Medical Notice:</strong> This visual guide is created for patient education under MOH preventive guidelines. It is not a diagnostic device or a substitute for medical interpretation. Blood electrolyte values must always be interpreted by a doctor alongside your clinical history.
+            </div>
+          </div>
+
+          <h2 id="symptom-differentiators" class="section-heading h4">Key Differentiators: Painful Cramps vs. Silent Heaviness</h2>
+          <p>Because muscle weakness and heart palpitations occur in both high and low potassium, relying on symptoms alone is unreliable. However, two clinical differentiators help separate them:</p>
+
+          <div class="custom-table-wrapper my-4">
+            <table class="table table-bordered table-striped align-middle mb-0" style="border-color: #e2e8f0;">
+              <thead style="background-color: #0f172a; color: #ffffff;">
+                <tr>
+                  <th scope="col" style="width: 25%;">Feature</th>
+                  <th scope="col" style="width: 37.5%;">Low Potassium (&downarrow; Hypokalemia)</th>
+                  <th scope="col" style="width: 37.5%;">High Potassium (&uparrow; Hyperkalemia)</th>
+                </tr>
+              </thead>
+              <tbody style="font-size: 0.95rem; color: #334155;">
+                <tr>
+                  <td><strong>Muscle Signal</strong></td>
+                  <td><strong>Painful cramps</strong> & sudden calf spasms</td>
+                  <td><strong>Painless heaviness</strong> & numbness/tingling</td>
+                </tr>
+                <tr>
+                  <td><strong>Gut Response</strong></td>
+                  <td><strong>Constipation</strong> & intestinal bloating</td>
+                  <td><strong>Nausea</strong> & hyperactive stomach upset</td>
+                </tr>
+                <tr>
+                  <td><strong>Common Causes</strong></td>
+                  <td>Heavy sweating, fluid loss, water pills</td>
+                  <td>Reduced kidney clearing, ACEi/ARB meds</td>
+                </tr>
+                <tr>
+                  <td><strong>Early Warning</strong></td>
+                  <td>Noticeable physical symptoms early on</td>
+                  <td>Often <strong>completely silent</strong> until severe</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 id="clinical-management" class="section-heading h4">Managing Electrolytes Safely</h2>
+          <p>Balancing potassium is a precise medical task. Because taking over-the-counter potassium supplements when blood levels are actually high can be dangerous, structured steps are essential:</p>
+
+          <ul class="check-list">
+            <li><strong>Perform a Finger-Prick or Lab Blood Test:</strong> Always verify your exact blood reading before starting any high-dose potassium supplements or restrictive diets.</li>
+            <li><strong>Review Blood Pressure Medications:</strong> If you take ACE inhibitors or ARBs, routine blood monitoring ensures your kidneys are clearing electrolytes safely.</li>
+            <li><strong>Stay Adequately Hydrated:</strong> Tropical weather in Singapore accelerates fluid loss through sweat. Replenish with balanced electrolyte drinks during prolonged activity.</li>
+          </ul>
+
+          <!-- CTA Banner -->
+          <div class="cta-banner">
+            <div class="row align-items-center">
+              <div class="col-lg-12 text-center">
+                <span class="badge bg-light text-dark fw-bold mb-3 px-3 py-2" style="font-size: 0.85rem; letter-spacing: 0.5px;">ON-SITE RAPID BLOOD SCREENING</span>
+                <h3 class="h4 fw-bold text-white mb-3">Unsure About Your Blood Test Results?</h3>
+                <p class="text-white-50 mb-4 mx-auto" style="max-width: 650px; line-height: 1.6;">
+                  Lab numbers only tell part of the story. Dr. Gerald Thang helps patients review their blood chemistry, medication lists, and heart health together.
+                </p>
+              </div>
+            </div>
+
+            <div class="text-center pt-2">
+              <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="https://www.ahealingheartmedical.com/health-screening" class="btn-custom-primary" style="padding: 12px 28px; font-size: 1rem;">Book Health Screening →</a>
+                <a href="https://wa.me/6569621362?text=Hi%20A%20Healing%20Heart%20Medical,%20I%20would%20like%20to%20enquire%20about%20potassium%20and%20electrolyte%20screening." target="_blank" rel="noopener" class="btn-custom-secondary" style="padding: 12px 24px; font-size: 1rem;">WhatsApp Clinic Desk</a>
+              </div>
+            </div>
+          </div>
+
+          <h2 id="physician-note" class="section-heading h4">A Personal Note from Dr. Gerald Thang</h2>
+          <p>"Electrolyte balance is one of the most actionable windows in preventive medicine. Whether adjusting medication dosages or identifying fluid losses early, knowing your exact potassium reading gives us the power to protect your cardiac conduction before symptoms interfere with your daily life."</p>
+
+          <div id="faq" class="faq-section mt-5 pt-4 border-top">
+            <h2 class="section-heading h4 mb-4">Frequently Asked Questions</h2>
+            
+            <div class="accordion shadow-sm rounded-4 overflow-hidden" id="patientFaqAccordion">
+              
+              <div class="accordion-item border-0 border-bottom">
+                <h3 class="accordion-header" id="faqHeadingOne">
+                  <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+                    Why is potassium reported in "mmol/L" on Singapore blood tests?
+                  </button>
+                </h3>
+                <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#patientFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Singapore clinical laboratories (such as SGH, NUH, SingHealth, and private diagnostic centers) use <strong>mmol/L (millimoles per liter)</strong> as standard SI units for electrolyte reporting. 1 mmol/L of potassium is identical to 1 mEq/L used in some international references.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 border-bottom">
+                <h3 class="accordion-header" id="faqHeadingTwo">
+                  <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                    Can eating bananas fix low potassium immediately?
+                  </button>
+                </h3>
+                <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#patientFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    While dietary foods like bananas, spinach, and coconut water provide potassium, severe drops (below 3.0 mmol/L) or chronic imbalances require a clinical review to identify the underlying cause (such as medication side effects or kidney losses) before taking high-dose supplements.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0 border-bottom">
+                <h3 class="accordion-header" id="faqHeadingThree">
+                  <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                    Why do blood pressure medications affect potassium levels?
+                  </button>
+                </h3>
+                <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#patientFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    Certain blood pressure medications (like ACE inhibitors, ARBs, or spironolactone) protect your heart and blood vessels by helping your body release excess salt. In doing so, they can cause your kidneys to retain potassium, which is why routine monitoring is recommended.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border-0">
+                <h3 class="accordion-header" id="faqHeadingFour">
+                  <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                    When should I see Dr. Gerald Thang for an evaluation?
+                  </button>
+                </h3>
+                <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#patientFaqAccordion">
+                  <div class="accordion-body text-muted small">
+                    If your health check report shows potassium levels outside 3.5 – 5.0 mmol/L, or if you experience unexplained muscle weakness, fatigue, or heart palpitations, scheduling a medical assessment ensures your medications, organ functions, and cardiovascular rhythm are safely aligned.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="ip-notice-box">
+            Intellectual Property Notice: Clinical protocols and patient guidelines are the intellectual property of A Healing Heart Medical Clinic and Dr. Gerald Thang.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+const kInput = document.getElementById('kInput');
+const kOutput = document.getElementById('kOutput');
+const monitorKVal = document.getElementById('monitorKVal');
+const etiologySelect = document.getElementById('etiologySelect');
+const timelineBadge = document.getElementById('timelineBadge');
+const ecgSvgContainer = document.getElementById('ecgSvgContainer');
+const ecgFeatureAnnotation = document.getElementById('ecgFeatureAnnotation');
+const narrativeText = document.getElementById('narrativeText');
+const resultPanel = document.getElementById('resultPanel');
+const wrapperKInput = document.getElementById('wrapper-kInput');
+const wrapperEtiology = document.getElementById('wrapper-etiology');
+
+function renderECGWaveform(val) {
+  let strokeColor = "#34d399";
+  let annotation = "";
+  let svgPath = "";
+
+  if (val < 3.0) {
+    strokeColor = "#ff4a5a";
+    annotation = "Skipped Beat Pattern & Extra U Wave";
+    svgPath = "M 0 35 L 40 35 L 45 32 L 50 35 L 70 35 L 75 10 L 82 60 L 88 35 L 105 42 L 130 42 L 140 40 L 160 40 L 180 25 L 200 35 L 300 35";
+  } else if (val >= 3.0 && val <= 4.5) {
+    strokeColor = "#34d399";
+    annotation = "Steady, Normal Heartbeat Pattern";
+    svgPath = "M 0 35 L 40 35 L 50 25 L 60 35 L 80 35 L 85 10 L 92 60 L 98 35 L 120 35 L 145 18 L 170 35 L 300 35";
+  } else if (val > 4.5 && val <= 6.4) {
+    strokeColor = "#34d399";
+    annotation = "Taller, Pointed Recovery Wave";
+    svgPath = "M 0 35 L 50 35 L 60 30 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 2 L 155 35 L 300 35";
+  } else if (val > 6.4 && val <= 7.0) {
+    strokeColor = "#ffb703";
+    annotation = "Slowing Electrical Signal";
+    svgPath = "M 0 35 L 50 35 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 0 L 155 35 L 300 35";
+  } else if (val > 7.0 && val <= 7.7) {
+    strokeColor = "#ffb703";
+    annotation = "Significantly Widened Heart Signal";
+    svgPath = "M 0 35 L 50 35 L 70 35 L 80 35 L 88 5 L 97 65 L 110 35 L 125 35 L 142 -5 L 160 35 L 300 35";
+  } else if (val > 7.7 && val <= 9.0) {
+    strokeColor = "#e53e3e";
+    annotation = "Irregular Sine Wave (Urgent Warning)";
+    svgPath = "M 0 35 Q 37.5 -15, 75 35 T 150 35 T 225 35 T 300 35";
+  } else {
+    strokeColor = "#ff4a5a";
+    annotation = "<span style='color: #ff4a5a; font-weight: 800;'>Flatline / Medical Emergency</span>";
+    svgPath = "M 0 35 L 300 35";
+  }
+
+  ecgSvgContainer.innerHTML = `
+    <svg width="100%" height="80" viewBox="0 0 300 70" preserveAspectRatio="none" style="stroke: ${strokeColor}; stroke-width: 3; fill: none; filter: drop-shadow(0px 0px 4px ${strokeColor});">
+      <path d="${svgPath}" />
+    </svg>`;
+
+  ecgFeatureAnnotation.innerHTML = annotation;
+}
+
+function getEtiologyNote(etiology) {
+  if (etiology === 'kidney') {
+    return `<div class="mt-2 pt-2 border-top"><strong>Kidney Care Tip:</strong> When kidney function slows down, your body can't clear extra potassium as easily through urine. It's important to monitor potassium regularly and review high-potassium foods with Dr. Gerald Thang.</div>`;
+  } else if (etiology === 'diuretic') {
+    return `<div class="mt-2 pt-2 border-top"><strong>Diuretic / Fluid Loss Tip:</strong> Water pills and bouts of diarrhea can flush potassium out of your system quickly. Replacing fluids and checking electrolyte levels helps prevent sudden leg cramps or heart flutters.</div>`;
+  } else if (etiology === 'meds') {
+    return `<div class="mt-2 pt-2 border-top"><strong>Medication Tip:</strong> Many effective blood pressure medications help protect your heart and kidneys, but they can cause your body to hold onto potassium. A simple routine blood test ensures your dosage remains safe.</div>`;
+  }
+  return `<div class="mt-2 pt-2 border-top"><strong>Wellness Tip:</strong> Routine wellness check. If you ever feel unusual muscle weakness or rapid heart palpitations, bring your test results in for a quick review.</div>`;
+}
+
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  const kValRaw = kInput.value.trim();
+  const val = parseFloat(kValRaw);
+  const etiology = etiologySelect.value;
+  
+  const inputContainer = wrapperKInput.querySelector('.input-box-custom');
+  const selectContainer = wrapperEtiology.querySelector('.input-box-custom');
+
+  inputContainer.style.borderColor = '#cbd5e0';
+  selectContainer.style.borderColor = '#cbd5e0';
+
+  let hasError = false;
+
+  if (!kValRaw || isNaN(val) || val < 1.0 || val > 10.0) {
+    inputContainer.style.borderColor = '#e53e3e';
+    alert('Please key in a valid potassium level between 1.0 and 10.0 mmol/L.');
+    hasError = true;
+  }
+
+  if (!etiology) {
+    selectContainer.style.borderColor = '#e53e3e';
+    if (!hasError) alert('Please select your current health situation in Step 2 before proceeding.');
+    hasError = true;
+  }
+
+  if (hasError) return;
+
+  const formattedVal = val.toFixed(1);
+  kOutput.innerText = formattedVal;
+  monitorKVal.innerText = formattedVal;
+
+  const etiologyText = getEtiologyNote(etiology);
+  renderECGWaveform(val);
+
+  if (val < 3.0) {
+    timelineBadge.innerText = "STAGE 1: LOW POTASSIUM (HYPOKALEMIA)";
+    timelineBadge.style.background = "#fff5f5";
+    timelineBadge.style.color = "#e53e3e";
+    
+    narrativeText.innerHTML = `
+      <h3 class="h6 fw-bold text-danger mb-2">Stage 1: Low Potassium Level (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> A subtle dip after the main pulse, showing that your heart muscle is taking longer to recharge.</p>
+      <p class="mb-2"><strong>Symptoms You Might Notice:</strong> Muscle cramps (especially in calves or feet), feeling unusually weak, or noticing fluttering heartbeats.</p>
+      <p class="mb-2"><strong>Next Step:</strong> Consult Dr. Gerald Thang to identify the cause of the drop and safely restore your electrolyte balance.</p>
+      ${etiologyText}
+    `;
+  } else if (val >= 3.0 && val <= 5.2) {
+    timelineBadge.innerText = "STAGE 2: HEALTHY & BALANCED RANGE";
+    timelineBadge.style.background = "#e6f2f2";
+    timelineBadge.style.color = "#008080";
+    
+    narrativeText.innerHTML = `
+      <h3 class="h6 fw-bold text-success mb-2">Stage 2: Optimal Potassium Level (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> A crisp, regular waveform indicating your heart's electrical system is firing smoothly.</p>
+      <p class="mb-2"><strong>Symptoms You Might Notice:</strong> Steady physical stamina, normal muscle contractions, and steady pulse rate.</p>
+      <p class="mb-2"><strong>Next Step:</strong> Keep maintaining your healthy daily lifestyle and routine annual checkups.</p>
+      ${etiologyText}
+    `;
+  } else if (val > 5.2 && val <= 7.5) {
+    timelineBadge.innerText = "STAGE 3: ELEVATED POTASSIUM (HYPERKALEMIA)";
+    timelineBadge.style.background = "#fffaf0";
+    timelineBadge.style.color = "#c05621";
+    
+    narrativeText.innerHTML = `
+      <h3 class="h6 fw-bold text-warning mb-2" style="color: #c05621 !important;">Stage 3: High Potassium Level (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> Taller, pointier recovery waves as electrical resetting speeds up, followed by a widening pulse signal.</p>
+      <p class="mb-2"><strong>Symptoms You Might Notice:</strong> High potassium often causes <em>no obvious symptoms</em>, though some people feel mild nausea or muscle heaviness.</p>
+      <p class="mb-2"><strong>Next Step:</strong> Schedule a follow-up review to check your kidney baseline and review any blood pressure medications you are taking.</p>
+      ${etiologyText}
+    `;
+  } else {
+    timelineBadge.innerText = "STAGE 4: CRITICAL POTASSIUM LEVEL (SEEK IMMEDIATE CARE)";
+    timelineBadge.style.background = "#fff5f5";
+    timelineBadge.style.color = "#e53e3e";
+    
+    narrativeText.innerHTML = `
+      <h3 class="h6 fw-bold text-danger mb-2">Stage 4: Severe High Potassium (${formattedVal} mmol/L)</h3>
+      <p class="mb-2"><strong>What Your Heart Trace Shows:</strong> The heartbeat signal loses its normal shape and turns into a smooth, rolling wave pattern (Sine Wave).</p>
+      <p class="mb-2"><strong>Why This Matters:</strong> Very high potassium interferes with the heart's ability to pump effectively and requires urgent medical attention.</p>
+      <p class="mb-2"><strong>Next Step:</strong> If your lab report shows this reading, seek urgent medical evaluation at an emergency clinic or hospital immediately.</p>
+      ${etiologyText}
+    `;
+  }
+
+  resultPanel.classList.remove('d-none');
+  resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+</script>
