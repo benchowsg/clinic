@@ -1,8 +1,8 @@
 ---
 layout: default
 permalink: /potassium-ecg-evaluator
-title: "Potassium & Heart Rhythm Check"
-description: "Understand how your body's potassium levels affect your heart's electrical system, muscle energy, and daily well-being."
+title: "Potassium & Heart Rhythm Guide"
+description: "An easy-to-use lab guide mapping your blood potassium levels to heart rhythm health and daily energy."
 ---
 
 <style>
@@ -22,15 +22,16 @@ description: "Understand how your body's potassium levels affect your heart's el
   .form-range::-webkit-slider-thumb { background: #008080; }
   .form-range::-moz-range-thumb { background: #008080; }
   
-  /* Spaced Custom Selection Wrappers */
+  /* Custom Selection Wrappers & Dropdown Arrow Fix */
   .input-box-custom {
     background: #f8fafc;
     border-radius: 16px;
-    padding: 20px;
-    border: 1px solid #e2e8f0;
+    padding: 16px 20px;
+    border: 1.5px solid #e2e8f0;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
   }
-  .input-box-custom select, .input-box-custom input {
+  .input-box-custom select {
     background: transparent;
     border: none;
     font-weight: 600;
@@ -38,9 +39,24 @@ description: "Understand how your body's potassium levels affect your heart's el
     font-size: 1rem;
     line-height: 1.6;
     cursor: pointer;
-    white-space: normal;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
   }
-  .input-box-custom select:focus, .input-box-custom input:focus {
+  /* Custom Dropdown Chevron Icon */
+  .input-box-custom::after {
+    content: "▼";
+    font-size: 0.75rem;
+    color: #008080;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .input-box-custom select:focus {
     outline: none;
     box-shadow: none;
   }
@@ -56,7 +72,7 @@ description: "Understand how your body's potassium levels affect your heart's el
   }
   
   .k-highlight {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 800;
     line-height: 1;
     background: linear-gradient(135deg, #2c4964 0%, #008080 100%);
@@ -110,14 +126,8 @@ description: "Understand how your body's potassium levels affect your heart's el
     padding: 25px;
     border: 1px solid #edf2f7;
   }
-  .study-citation-list {
-    font-size: 0.8rem;
-    color: #718096;
-    line-height: 1.6;
-    padding-left: 1.25rem;
-  }
 
-  /* Structural Clinical Caveat Header Banner */
+  /* Structural Clinical Caveat Banner */
   .clinical-caveat {
     background: #fffaf0;
     border: 1px solid #feebc8;
@@ -127,7 +137,22 @@ description: "Understand how your body's potassium levels affect your heart's el
     line-height: 1.5;
   }
 
-  /* Deep Conversational Engagement Footer Panel */
+  /* Step Counter Badges */
+  .step-number {
+    background: #2c4964;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  /* Deep Engagement Footer Panel */
   .cta-dark-box {
     background: #2c4964;
     color: white;
@@ -145,138 +170,217 @@ description: "Understand how your body's potassium levels affect your heart's el
     transition: all 0.3s;
   }
   .btn-stewardship:hover { background: #006666; transform: translateY(-2px); }
+
+  /* Accordion Custom Styling */
+  .accordion-button:not(.collapsed) {
+    color: #008080;
+    background-color: #e6f2f2;
+    font-weight: 700;
+  }
 </style>
 
 <main class="article-container">
   <div class="container">
     
+    <!-- Page Header -->
     <div class="text-center mx-auto mb-5" style="max-width: 800px;">
       <span class="badge rounded-pill px-3 py-2 mb-3" style="background: #e6f2f2; color: #008080; font-weight: 600;">EASY LAB & RHYTHM GUIDE</span>
       <h1 class="main-title fw-bold">Potassium & Heart Rhythm Visualizer</h1>
       <p class="lead text-muted mt-3">
-        Potassium is the essential spark plug that keeps your heart beating in a steady, smooth rhythm. Slide the bar below to see how changes in your blood potassium levels affect your heart's electrical signal and how you might feel.
+        Potassium is the essential spark plug that keeps your heart beating in a steady, smooth rhythm. Follow the 3 simple steps below to see how your blood potassium level affects your heart's electrical trace and daily health.
       </p>
     </div>
 
-    <div class="tool-card p-4 p-md-5">
+    <!-- Main Tool Input Card -->
+    <div class="tool-card p-4 p-md-5 mb-5">
       
-      <div class="clinical-caveat p-3 mb-5 d-flex align-items-start gap-2">
+      <div class="clinical-caveat p-3 mb-4 d-flex align-items-start gap-2">
         <span style="font-size: 1.1rem; line-height: 1;">💡</span>
         <div>
-          <strong>A Friendly Note:</strong> This tool is designed to help you understand your health check report. Everyone’s body reacts a little differently—some people feel symptoms right away, while others feel fine even when levels are out of range. If you have concerns about your blood test results, speak directly with <strong>Dr. Gerald Thang</strong>.
+          <strong>A Friendly Note:</strong> This guide is designed to help you understand your health screening report. Everyone’s body reacts differently—some people feel symptoms right away, while others feel fine even when levels are out of range. If you have concerns about your lab report, consult directly with <strong>Dr. Gerald Thang</strong>.
         </div>
       </div>
 
-      <div class="row g-5">
-        
-        <div class="col-lg-5">
-          <h4 class="fw-bold mb-4" style="color: #2c4964; letter-spacing: -0.5px;">Test Your Level</h4>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
           
-          <div style="margin-bottom: 2.5rem;">
-            <div class="d-flex justify-content-between mb-3">
-              <label class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.5px;">Potassium Level on Your Lab Report</label>
-              <span id="kVal" class="fw-bold px-3 py-1 rounded-3" style="background: #e6f2f2; color: #008080 !important; font-size: 0.9rem;">4.0 mmol/L</span>
-            </div>
-            <input type="range" class="form-range" id="kInput" min="2.0" max="9.5" step="0.1" value="4.0" style="cursor: pointer;">
-            <div class="d-flex justify-content-between text-muted small mt-1" style="font-size: 0.75rem;">
-              <span>2.0 (Too Low)</span>
-              <span>3.5 - 5.0 (Healthy Range)</span>
-              <span>9.5+ (Very High)</span>
+          <!-- STEP 1 -->
+          <div class="mb-4">
+            <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
+              <span class="step-number">1</span> Select the Potassium Level on Your Lab Report
+            </label>
+            <div class="p-4 rounded-4" style="background: #f8fafc; border: 1px solid #e2e8f0;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="small text-muted fw-bold text-uppercase" style="letter-spacing: 0.5px;">Potassium Reading (K<sup>+</sup>)</span>
+                <span id="kVal" class="fw-bold px-3 py-1 rounded-3" style="background: #e6f2f2; color: #008080 !important; font-size: 1rem;">4.0 mmol/L</span>
+              </div>
+              <input type="range" class="form-range" id="kInput" min="2.0" max="9.5" step="0.1" value="4.0" style="cursor: pointer;">
+              <div class="d-flex justify-content-between text-muted small mt-2" style="font-size: 0.8rem;">
+                <span>2.0 (Too Low)</span>
+                <span>3.5 - 5.0 (Healthy Range)</span>
+                <span>9.5+ (Very High)</span>
+              </div>
             </div>
           </div>
 
-          <div id="wrapper-etiology" style="margin-bottom: 2rem; transition: all 0.3s ease;">
-            <label class="small text-muted fw-bold text-uppercase mb-2 d-block" style="letter-spacing: 0.5px;">Your Current Health Situation</label>
+          <!-- STEP 2 -->
+          <div id="wrapper-etiology" class="mb-4">
+            <label class="fw-bold text-dark mb-2 d-flex align-items-center" style="font-size: 1.05rem;">
+              <span class="step-number">2</span> Select Your Current Health Situation
+            </label>
             <div class="input-box-custom">
               <select id="etiologySelect" class="form-select p-0">
-                <option value="routine" selected>Just a Routine Wellness Checkup</option>
+                <option value="" selected disabled hidden>Select your health situation...</option>
+                <option value="routine">Just a Routine Wellness Checkup</option>
                 <option value="kidney">I Have Kidney Issues / Reduced Kidney Function</option>
                 <option value="diuretic">I Take Water Pills (Diuretics) or Had Bad Vomiting/Diarrhea</option>
-                <option value="meds">I Take Blood Pressure Medication (ACE Inhibitors/ARBs)</option>
+                <option value="meds">I Take Blood Pressure Medication (ACE Inhibitors / ARBs)</option>
               </select>
             </div>
           </div>
 
-          <button id="calculateBtn" class="btn btn-stewardship w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="letter-spacing: 0.5px;">See What This Means For You</button>
+          <!-- STEP 3 -->
+          <div class="mt-4 pt-2">
+            <button id="calculateBtn" class="btn btn-stewardship w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm" style="letter-spacing: 0.5px;">
+              Step 3: See What This Means For You
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS DISPLAY PANEL (Hidden until Step 3 button click) -->
+    <div id="resultPanel" class="tool-card p-4 p-md-5 mb-5 d-none">
+      <div class="text-center mb-4">
+        <span id="timelineBadge" class="timeline-badge mb-2">HEALTHY & BALANCED RANGE</span>
+        <h3 class="fw-bold text-dark">Your Potassium Evaluation Result</h3>
+      </div>
+
+      <div class="row align-items-center g-4">
+        
+        <div class="col-lg-4 text-center">
+          <span class="text-muted small fw-bold text-uppercase d-block mb-1">Selected Reading</span>
+          <div class="my-1">
+            <span id="kOutput" class="k-highlight">4.0</span>
+            <span class="h4 fw-bold text-muted">mmol/L</span>
+          </div>
+          <p class="small text-muted mb-0">Standard Singapore Clinical Reference Range: 3.5 – 5.0 mmol/L</p>
         </div>
 
-        <div id="resultPanel" class="col-lg-7">
-          <div class="h-100 d-flex flex-column justify-content-center text-center text-lg-start ps-lg-4">
-            
-            <div class="mb-2">
-              <span id="timelineBadge" class="timeline-badge" style="background: #e6f2f2; color: #008080;">HEALTHY & BALANCED RANGE</span>
-            </div>
-            
-            <h4 class="fw-bold text-dark mb-1">Selected Potassium Reading:</h4>
-            <div class="my-2">
-              <span id="kOutput" class="k-highlight">4.0</span>
-              <span class="h3 fw-bold text-muted">mmol/L</span>
+        <div class="col-lg-8">
+          <!-- Retro Oscilloscope Display Box -->
+          <div class="ecg-display-box ecg-grid-overlay mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="retro-green-text fs-6">Heart Trace Monitor</span>
+              <span class="retro-cyan-text fs-6">K<sup>+</sup>: <span id="monitorKVal">4.0</span> mmol/L</span>
             </div>
 
-            <!-- Retro Oscilloscope ECG Display Box -->
-            <div class="ecg-display-box ecg-grid-overlay my-3">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="retro-green-text fs-5">Heart Trace Monitor</span>
-                <span class="retro-cyan-text fs-5">K<sup>+</sup>: <span id="monitorKVal">4.0</span> mmol/L</span>
-              </div>
-
-              <div id="ecgSvgContainer" class="d-flex justify-content-center align-items-center py-3" style="min-height: 120px;">
-                <!-- Rendered via JS -->
-              </div>
-
-              <div class="text-end mt-2" style="min-height: 28px;">
-                <span id="ecgFeatureAnnotation" class="retro-cyan-text fs-6">Steady, Normal Heartbeat</span>
-              </div>
+            <div id="ecgSvgContainer" class="d-flex justify-content-center align-items-center py-2" style="min-height: 100px;">
+              <!-- Dynamic SVG wave rendered by JS -->
             </div>
 
-            <div id="narrativeText" class="insight-panel p-4 bg-light text-start small text-muted shadow-sm">
-              <h6 class="fw-bold text-success mb-2">Stage 2: Healthy Baseline (4.0 mmol/L)</h6>
-              <p class="mb-1"><strong>What Your Heart Trace Looks Like:</strong> Smooth, rhythmic spikes and waves indicating normal electrical timing.</p>
-              <p class="mb-1"><strong>How You Likely Feel:</strong> Good physical energy, steady heart rate, and normal muscle strength.</p>
-              <p class="mb-1"><strong>What You Should Do:</strong> Maintain your normal balanced diet and stay hydrated.</p>
-              <div class="mt-2 pt-2 border-top"><strong>Health Context:</strong> Routine checkup status. Keep up your regular annual wellness evaluations.</div>
+            <div class="text-end" style="min-height: 24px;">
+              <span id="ecgFeatureAnnotation" class="retro-cyan-text fs-6">Steady, Normal Heartbeat</span>
             </div>
+          </div>
 
+          <div id="narrativeText" class="insight-panel p-4 bg-light text-start small text-muted shadow-sm">
+            <!-- Dynamic narrative generated by JS -->
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- Patient-Friendly Educational Modules -->
-    <div class="row g-4 my-5">
-      <div class="col-md-6">
-        <div class="reference-box h-100">
-          <h5 class="fw-bold" style="color: #2c4964;">What Happens When Potassium Drops Too Low?</h5>
-          <p class="small text-muted mb-0">
-            When your potassium drops below 3.5 mmol/L (often from intense sweating, water pills, or stomach flus), your heart muscle cells have to work much harder to reset between beats. You might experience <strong>muscle cramps, weakness, sudden fatigue, or a feeling that your heart is skipping a beat or fluttering</strong>. 
-          </p>
-        </div>
+    <!-- IN-DEPTH EXPLANATION SECTION -->
+    <div class="my-5">
+      <div class="text-center mb-4">
+        <h3 class="fw-bold" style="color: #2c4964;">Understanding Your Body's Potassium Balance</h3>
+        <p class="text-muted">How a simple blood mineral powers your muscle contraction, heart rhythm, and nerve signaling.</p>
       </div>
-      <div class="col-md-6">
-        <div class="reference-box h-100">
-          <h5 class="fw-bold" style="color: #008080;">What Happens When Potassium Gets Too High?</h5>
-          <p class="small text-muted mb-0">
-            If potassium builds up above 5.5 mmol/L (common in kidney conditions or with certain blood pressure medications), it over-excites your heart's electrical system. This causes the heartbeat signal to stretch out and slow down. Surprisingly, high potassium often has <strong>no noticeable symptoms until it reaches dangerous levels</strong>, making blood tests essential.
-          </p>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="reference-box h-100">
+            <h5 class="fw-bold" style="color: #2c4964;">What Happens When Potassium Drops Too Low?</h5>
+            <p class="small text-muted mb-0">
+              When potassium falls below 3.5 mmol/L (often due to intense sweating, water pills, or gastrointestinal fluid loss), your heart muscle cells take much longer to recharge between beats. You might experience <strong>muscle cramps (especially in your calves), leg weakness, fatigue, or feelings of skipping a beat or fluttering</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="reference-box h-100">
+            <h5 class="fw-bold" style="color: #008080;">What Happens When Potassium Gets Too High?</h5>
+            <p class="small text-muted mb-0">
+              If potassium builds up above 5.5 mmol/L (common in kidney conditions or with certain blood pressure medications), it over-excites your heart's electrical system, slowing down the pulse signal. High potassium often causes <strong>no noticeable symptoms until it reaches critical levels</strong>, making routine blood screening vital.
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Scientific Research Citations -->
-    <div class="row my-5">
-      <div class="col-12">
-        <div class="p-4 bg-white border border-light rounded-4 shadow-sm">
-          <h6 class="fw-bold text-dark mb-3" style="font-size: 0.95rem;">Medical Sources & Local Clinical Standards</h6>
-          <p class="small text-muted mb-3" style="line-height: 1.6;">
-            The ranges and heart trace patterns shown in this educational tool are based on established clinical guidelines used across Singapore clinics and hospitals:
-          </p>
-          <ul class="study-citation-list">
-            <li class="mb-2"><strong>MOH Agency for Care Effectiveness (ACE) Guidelines:</strong> National Singapore clinical guidance for managing blood mineral balances, medication safety, and kidney checks.</li>
-            <li class="mb-2"><strong>Singapore Laboratory Reference Standards:</strong> Standardized reporting formats used by SGH, NUH, and local diagnostic centers where 3.5 to 5.0 mmol/L is recognized as the healthy baseline.</li>
-            <li class="mb-2"><strong>European Society of Cardiology (ESC) Clinical Guidance:</strong> World-recognized diagnostic standards mapping blood chemistry levels to heart monitor patterns.</li>
-          </ul>
+    <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
+    <div class="my-5">
+      <div class="text-center mb-4">
+        <h3 class="fw-bold" style="color: #2c4964;">Frequently Asked Questions</h3>
+        <p class="text-muted">Common questions patients ask about potassium blood tests and heart health.</p>
+      </div>
+
+      <div class="accordion shadow-sm rounded-4 overflow-hidden" id="patientFaqAccordion">
+        
+        <div class="accordion-item border-0 border-bottom">
+          <h2 class="accordion-header" id="faqHeadingOne">
+            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+              Why is potassium reported in "mmol/L" on Singapore blood tests?
+            </button>
+          </h2>
+          <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#patientFaqAccordion">
+            <div class="accordion-body text-muted small">
+              Singapore clinical laboratories (such as SGH, NUH, SingHealth, and private diagnostic centers) use <strong>mmol/L (millimoles per liter)</strong> as standard SI units for electrolyte reporting. 1 mmol/L of potassium is identical to 1 mEq/L used in some international references.
+            </div>
+          </div>
         </div>
+
+        <div class="accordion-item border-0 border-bottom">
+          <h2 class="accordion-header" id="faqHeadingTwo">
+            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+              Can eating bananas fix low potassium immediately?
+            </button>
+          </h2>
+          <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#patientFaqAccordion">
+            <div class="accordion-body text-muted small">
+              While dietary foods like bananas, spinach, and coconut water provide potassium, severe drops (below 3.0 mmol/L) or chronic imbalances require a clinical review to identify the underlying cause (such as medication side effects or kidney losses) before taking high-dose supplements.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0 border-bottom">
+          <h2 class="accordion-header" id="faqHeadingThree">
+            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+              Why do blood pressure medications affect potassium levels?
+            </button>
+          </h2>
+          <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#patientFaqAccordion">
+            <div class="accordion-body text-muted small">
+              Certain blood pressure medications (like ACE inhibitors, ARBs, or spironolactone) protect your heart and blood vessels by helping your body release excess salt. In doing so, they can cause your kidneys to retain potassium, which is why routine monitoring is recommended.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0">
+          <h2 class="accordion-header" id="faqHeadingFour">
+            <button class="accordion-button collapsed py-3" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+              When should I see Dr. Gerald Thang for an evaluation?
+            </button>
+          </h2>
+          <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#patientFaqAccordion">
+            <div class="accordion-body text-muted small">
+              If your health check report shows potassium levels outside 3.5 – 5.0 mmol/L, or if you experience unexplained muscle weakness, fatigue, or heart palpitations, scheduling a medical assessment ensures your medications, organ functions, and cardiovascular rhythm are safely aligned.
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -309,6 +413,13 @@ const timelineBadge = document.getElementById('timelineBadge');
 const ecgSvgContainer = document.getElementById('ecgSvgContainer');
 const ecgFeatureAnnotation = document.getElementById('ecgFeatureAnnotation');
 const narrativeText = document.getElementById('narrativeText');
+const resultPanel = document.getElementById('resultPanel');
+const wrapperEtiology = document.getElementById('wrapper-etiology');
+
+// Update slider text label as user drags
+kInput.addEventListener('input', function() {
+  kVal.innerText = parseFloat(this.value).toFixed(1) + " mmol/L";
+});
 
 function renderECGWaveform(val) {
   let strokeColor = "#2bfd6c"; // Retro Neon Green
@@ -316,37 +427,30 @@ function renderECGWaveform(val) {
   let svgPath = "";
 
   if (val < 3.0) {
-    // Severe Hypokalemia
     strokeColor = "#ff4a5a";
     annotation = "Skipped Beat Pattern & Extra U Wave";
     svgPath = "M 0 35 L 40 35 L 45 32 L 50 35 L 70 35 L 75 10 L 82 60 L 88 35 L 105 42 L 130 42 L 140 40 L 160 40 L 180 25 L 200 35 L 300 35";
   } else if (val >= 3.0 && val <= 4.5) {
-    // Normal ECG
     strokeColor = "#2bfd6c";
     annotation = "Steady, Normal Heartbeat Pattern";
     svgPath = "M 0 35 L 40 35 L 50 25 L 60 35 L 80 35 L 85 10 L 92 60 L 98 35 L 120 35 L 145 18 L 170 35 L 300 35";
   } else if (val > 4.5 && val <= 6.4) {
-    // Peaked T Wave
     strokeColor = "#2bfd6c";
     annotation = "Taller, Pointed Recovery Wave";
     svgPath = "M 0 35 L 50 35 L 60 30 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 2 L 155 35 L 300 35";
   } else if (val > 6.4 && val <= 7.0) {
-    // Flattened P Wave
     strokeColor = "#ffb703";
     annotation = "Slowing Electrical Signal";
     svgPath = "M 0 35 L 50 35 L 70 35 L 85 35 L 90 15 L 97 55 L 103 35 L 125 35 L 140 0 L 155 35 L 300 35";
   } else if (val > 7.0 && val <= 7.7) {
-    // Flattened P Wave + Widened QRS
     strokeColor = "#ffb703";
     annotation = "Significantly Widened Heart Signal";
     svgPath = "M 0 35 L 50 35 L 70 35 L 80 35 L 88 5 L 97 65 L 110 35 L 125 35 L 142 -5 L 160 35 L 300 35";
   } else if (val > 7.7 && val <= 9.0) {
-    // Classic Sine Wave
     strokeColor = "#e53e3e";
     annotation = "Irregular Sine Wave (Urgent Warning)";
     svgPath = "M 0 35 Q 37.5 -15, 75 35 T 150 35 T 225 35 T 300 35";
   } else {
-    // Game Over / Flatline
     strokeColor = "#ff4a5a";
     annotation = "<span style='color: #ff4a5a; font-weight: 800;'>Flatline / Medical Emergency</span>";
     svgPath = "M 0 35 L 300 35";
@@ -371,16 +475,26 @@ function getEtiologyNote(etiology) {
   return `<div class="mt-2 pt-2 border-top"><strong>Wellness Tip:</strong> Routine wellness check. If you ever feel unusual muscle weakness or rapid heart palpitations, bring your test results in for a quick review.</div>`;
 }
 
-function updateEvaluation() {
-  const val = parseFloat(kInput.value);
+// Step 3 Button Click Handler
+document.getElementById('calculateBtn').addEventListener('click', function() {
   const etiology = etiologySelect.value;
+  const customBox = wrapperEtiology.querySelector('.input-box-custom');
+
+  // Step 2 Selection Validation
+  if (!etiology) {
+    customBox.style.borderColor = '#e53e3e';
+    alert('Please select your current health situation in Step 2 before proceeding.');
+    return;
+  }
   
-  kVal.innerText = val.toFixed(1) + " mmol/L";
+  // Reset border styling
+  customBox.style.borderColor = '#e2e8f0';
+
+  const val = parseFloat(kInput.value);
   kOutput.innerText = val.toFixed(1);
   monitorKVal.innerText = val.toFixed(1);
 
   const etiologyText = getEtiologyNote(etiology);
-
   renderECGWaveform(val);
 
   if (val < 3.0) {
@@ -432,13 +546,9 @@ function updateEvaluation() {
       ${etiologyText}
     `;
   }
-}
 
-// Event Listeners
-kInput.addEventListener('input', updateEvaluation);
-etiologySelect.addEventListener('change', updateEvaluation);
-document.getElementById('calculateBtn').addEventListener('click', updateEvaluation);
-
-// Initial execution on load
-updateEvaluation();
+  // Reveal results panel & scroll smoothly into view
+  resultPanel.classList.remove('d-none');
+  resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
 </script>
