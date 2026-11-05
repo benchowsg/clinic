@@ -102,11 +102,12 @@ custom_schema: |
     display: inline-block;
   }
 
-    /* Audio Control Panel (a11y Enhanced) */
+  /* Audio Control Panel Styling */
   .tts-container { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 12px; padding: 15px 20px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
   .tts-info { display: flex; align-items: center; gap: 10px; color: #0f172a; font-size: 0.95rem; font-weight: 700; }
   .tts-controls { display: flex; align-items: center; gap: 10px; }
-  .tts-btn { background: #ffffff; border: 1px solid #94a3b8; border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; font-weight: 700; color: #1e293b; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+  .tts-btn { background: #ffffff; border: 1px solid #94a3b8; border-radius: 8px; padding: 8px 16px; font-size: 0.9rem; font-weight: 700; color: #1e293b; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+  .tts-btn:hover { background: #f8fafc; border-color: #008080; }
   .tts-btn:focus { outline: 3px solid #008080; }
 </style>
 
@@ -145,7 +146,7 @@ custom_schema: |
           </ul>
         </div>
 
-      <!-- Accessible Audio Control Panel -->
+        <!-- Accessible Audio Control Panel -->
         <div class="tts-container" aria-label="Audio Reader">
           <div class="tts-info">
             <span aria-hidden="true" style="font-size: 1.3rem;">🔊</span>
@@ -161,7 +162,7 @@ custom_schema: |
           </div>
         </div>
 
-        <div class="article-body">
+        <div class="article-body" id="read-article-content">
           <div class="case-disclaimer">
             📋 <em>Clinical Educational Note: The patient scenario below is an illustrative composite based on common clinical presentations to assist patient understanding.</em>
           </div>
@@ -333,3 +334,119 @@ custom_schema: |
     </div>
   </div>
 </main>
+
+<!-- Embedded Web Speech API TTS Engine -->
+<script>
+  let synth = window.speechSynthesis;
+  let currentUtterance = null;
+  let isPlaying = false;
+  let isPaused = false;
+
+  const playBtn = document.getElementById('btn-tts-play');
+  const stopBtn = document.getElementById('btn-tts-stop');
+  const playIcon = document.getElementById('play-icon');
+  const playText = document.getElementById('play-text');
+  const statusText = document.getElementById('audio-status-text');
+
+  // Check Web Speech API support
+  if (!('speechSynthesis' in window)) {
+    statusText.innerText = "(Not Supported)";
+    playBtn.disabled = true;
+    playBtn.style.opacity = "0.5";
+    playBtn.style.cursor = "not-allowed";
+  }
+
+  function getCleanArticleText() {
+    const articleEl = document.getElementById('read-article-content');
+    if (!articleEl) return "";
+    
+    // Extract paragraphs and headings while ignoring disclaimers, tables, and CTAs
+    const elements = articleEl.querySelectorAll('p, h2, h3, li');
+    let textArray = [];
+    
+    elements.forEach(el => {
+      // Skip disclaimers, CTAs, and internal notices
+      if (el.closest('.cta-banner') || el.closest('.ip-notice-box') || el.closest('.case-disclaimer') || el.closest('.faq-section')) {
+        return;
+      }
+      const cleanText = el.innerText.trim();
+      if (cleanText.length > 0) {
+        textArray.push(cleanText);
+      }
+    });
+
+    return textArray.join('. ');
+  }
+
+  function togglePlayPause() {
+    if (!synth) return;
+
+    if (isPlaying && !isPaused) {
+      // Pause audio
+      synth.pause();
+      isPaused = true;
+      playIcon.innerText = "▶";
+      playText.innerText = "Resume Audio";
+      statusText.innerText = "(Paused)";
+    } else if (isPlaying && isPaused) {
+      // Resume audio
+      synth.resume();
+      isPaused = false;
+      playIcon.innerText = "⏸";
+      playText.innerText = "Pause Audio";
+      statusText.innerText = "(Playing)";
+    } else {
+      // Start fresh reading
+      const fullText = getCleanArticleText();
+      if (!fullText) return;
+
+      synth.cancel(); // Reset queue
+
+      currentUtterance = new SpeechSynthesisUtterance(fullText);
+      currentUtterance.rate = 0.95; // Slightly slower, natural pacing
+      currentUtterance.pitch = 1.0;
+      currentUtterance.lang = 'en-US';
+
+      currentUtterance.onstart = function () {
+        isPlaying = true;
+        isPaused = false;
+        playIcon.innerText = "⏸";
+        playText.innerText = "Pause Audio";
+        statusText.innerText = "(Playing)";
+        stopBtn.disabled = false;
+        stopBtn.style.opacity = "1";
+        stopBtn.style.cursor = "pointer";
+      };
+
+      currentUtterance.onend = function () {
+        resetAudioUI();
+        statusText.innerText = "(Completed)";
+      };
+
+      currentUtterance.onerror = function () {
+        resetAudioUI();
+        statusText.innerText = "(Error)";
+      };
+
+      synth.speak(currentUtterance);
+    }
+  }
+
+  function stopAudio() {
+    if (synth) {
+      synth.cancel();
+    }
+    resetAudioUI();
+    statusText.innerText = "(Stopped)";
+  }
+
+  function resetAudioUI() {
+    isPlaying = false;
+    isPaused = false;
+    playIcon.innerText = "▶";
+    playText.innerText = "Play Audio";
+    stopBtn.disabled = true;
+    stopBtn.style.opacity = "0.5";
+    stopBtn.style.cursor = "not-allowed";
+  }
+</script>
