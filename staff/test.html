@@ -63,17 +63,17 @@
         </button>
       </div>
 
-      <!-- LATE WARNING & CHRONIC STREAK BANNERS (PROMINENT COUNTER & EXPANDABLE LIST) -->
+      <!-- LATE WARNING & CHRONIC STREAK BANNERS -->
       <div id="staff-late-card" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
         <div class="flex items-center justify-between border-b pb-3">
           <div>
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Monthly Attendance</h4>
             <p class="text-xs text-slate-400">Current cycle late counter</p>
           </div>
-          <!-- Large Prominent Metric Display -->
-          <div id="staff-late-count-badge" class="px-5 py-2.5 bg-slate-100 border border-slate-200 text-slate-800 rounded-2xl font-black text-xl tracking-tight shadow-sm flex items-center gap-2">
-            <i class="fa-solid fa-clock-triangle-exclamation text-amber-500 text-base"></i>
-            <span>0 LATE</span>
+          <!-- Large Prominent Metric Display (Displays ON-TIME when 0) -->
+          <div id="staff-late-count-badge" class="px-5 py-2.5 bg-emerald-100 border border-emerald-200 text-emerald-800 rounded-2xl font-black text-xl tracking-tight shadow-sm flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
+            <span>ON-TIME</span>
           </div>
         </div>
 
@@ -86,13 +86,13 @@
           </div>
         </div>
 
-        <!-- Chronic/Persistent Late Alert -->
+        <!-- SIMPLIFIED CRITICAL TARDINESS BANNER -->
         <div id="chronic-late-banner" class="hidden p-4 bg-rose-600 text-white rounded-xl shadow-md space-y-1">
           <div class="flex items-center gap-2 text-base font-bold">
             <i class="fa-solid fa-circle-exclamation text-xl"></i>
-            <span>CRITICAL: Persistent Tardiness Detected</span>
+            <span>Critical!</span>
           </div>
-          <p class="text-xs text-rose-100">You have been consistently late. Dr. Gerald Thang and Management have been flagged for formal review.</p>
+          <p class="text-xs text-rose-100">You have been consistently late. Dr Gerald Thang has been informed to conduct a formal review.</p>
         </div>
 
         <!-- Collapsible Expandable Late History Dropdown -->
@@ -122,7 +122,7 @@
             <span id="status-badge" class="px-2.5 py-0.5 text-xs font-bold bg-slate-200 text-slate-600 rounded-full">Pending</span>
           </div>
 
-          <!-- GPS Debug/Status Box with Prominent Action Button -->
+          <!-- GPS Status & Action Button -->
           <div id="gps-debug" class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-3">
             <div class="flex items-start justify-between gap-2">
               <div>
@@ -131,7 +131,6 @@
               </div>
             </div>
             
-            <!-- Prominent Actionable GPS Button -->
             <button type="button" onclick="checkGPSAccuracy()" class="w-full py-2.5 bg-sky-600 hover:bg-sky-700 active:scale-[0.99] text-white font-bold rounded-xl text-xs shadow-sm transition flex items-center justify-center gap-2">
               <i class="fa-solid fa-satellite-dish text-sm animate-pulse"></i>
               <span>Click to Test Signal</span>
@@ -152,7 +151,7 @@
 
         <hr class="border-slate-200">
 
-        <!-- STEP 2: CLINIC OPENING DUTIES CHECKLIST (AUTO-ASSIGNED FIRST CHECK-IN) -->
+        <!-- STEP 2: CLINIC OPENING DUTIES CHECKLIST -->
         <div class="space-y-4">
           <div class="flex items-center justify-between">
             <span class="px-2.5 py-1 bg-amber-100 text-amber-900 text-xs font-bold rounded-full uppercase tracking-wider">Step 2: Opening Duties</span>
@@ -170,12 +169,12 @@
 
           <!-- Dynamic Leader Status Banner -->
           <div id="leader-status-banner" class="p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900 hidden">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
                 <i class="fa-solid fa-user-shield text-sky-600 text-base"></i>
                 <span id="leader-status-text">--</span>
               </div>
-              <button onclick="reassignOpeningLeader()" id="btn-transfer-leader" class="hidden px-2.5 py-1 bg-slate-200 hover:bg-slate-300 text-slate-700 text-[11px] font-bold rounded-lg transition">
+              <button onclick="openTransferModal()" id="btn-transfer-leader" class="hidden px-2.5 py-1.5 bg-slate-800 hover:bg-slate-900 text-white text-[11px] font-bold rounded-lg transition shadow-sm">
                 Transfer Role
               </button>
             </div>
@@ -327,7 +326,7 @@
                   <th class="p-3">Timestamp</th>
                   <th class="p-3">Opening Leader</th>
                   <th class="p-3">Compliance Status</th>
-                  <th class="p-3">Tasks Completed</th>
+                  <th class="p-3">Transfer Trail / Details</th>
                 </tr>
               </thead>
               <tbody id="duty-log-tbody" class="divide-y divide-slate-100"></tbody>
@@ -492,6 +491,33 @@
 
     </section>
 
+    <!-- 4. BUTTON-BASED TRANSFER LEADER MODAL -->
+    <div id="modal-transfer-leader" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-2xl border border-slate-200 max-w-md w-full p-6 space-y-4 shadow-xl">
+        <div class="flex items-center justify-between border-b pb-3">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Transfer Opening Leader Role</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Select a staff member below to transfer responsibility.</p>
+          </div>
+          <button onclick="closeTransferModal()" class="text-slate-400 hover:text-slate-600 text-lg">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Staff Choice Buttons -->
+        <div class="space-y-2 max-h-60 overflow-y-auto" id="transfer-staff-buttons"></div>
+
+        <div class="flex items-center justify-end gap-2 pt-3 border-t">
+          <button onclick="closeTransferModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition">
+            Cancel
+          </button>
+          <button onclick="confirmLeaderTransfer()" id="btn-confirm-transfer" disabled class="px-4 py-2 bg-sky-500 text-white text-xs font-bold rounded-xl shadow-sm opacity-50 cursor-not-allowed transition">
+            Confirm Transfer
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- ADMIN STAFF DETAIL MODAL -->
     <div id="modal-staff-detail" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
       <div class="bg-white rounded-2xl border border-slate-200 max-w-2xl w-full p-6 space-y-4 shadow-xl">
@@ -582,6 +608,7 @@
 
   const ADMIN_PIN = "21061979";
   let activeUser = null;
+  let selectedTransferStaff = null;
   let showInactiveStaff = false;
   let pieChartInstance = null;
   let barChartInstance = null;
@@ -670,45 +697,104 @@
         pin: staffUser.pin,
         name: staffUser.name,
         timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }),
-        autoAssigned: true
+        autoAssigned: true,
+        transferred: false
       };
       dbState.dutyLeaders[key] = leaderData;
       db.ref(`mediCheck/dutyLeaders/${key}`).set(leaderData);
     }
   }
 
-  function reassignOpeningLeader() {
+  // BUTTON-BASED TRANSFER LEADER MODAL SYSTEM
+  function openTransferModal() {
     const currentLeader = getTodayDutyLeader();
     if (!currentLeader) return;
-    
-    if (activeUser.pin !== currentLeader.pin && activeUser.role !== 'admin') {
-      alert("Only current Leader or Admin can transfer the role.");
+
+    if (currentLeader.transferred) {
+      alert("Role has already been transferred once today. Multiple transfers are prevented.");
       return;
     }
 
-    const staffList = getStaffList().filter(s => s.pin !== currentLeader.pin && (!s.lastDay || new Date(s.lastDay) >= new Date()));
-    if (staffList.length === 0) return alert("No other staff available to reassign.");
-
-    let options = "Select new Opening Leader PIN:\n" + staffList.map(s => `${s.pin} - ${s.name}`).join("\n");
-    let chosenPin = prompt(options);
-    if (!chosenPin) return;
-
-    const targetStaff = staffList.find(s => s.pin === chosenPin.trim());
-    if (targetStaff) {
-      const key = getTodayKey();
-      const leaderData = {
-        pin: targetStaff.pin,
-        name: targetStaff.name,
-        timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }),
-        reassignedBy: activeUser.name
-      };
-      dbState.dutyLeaders[key] = leaderData;
-      db.ref(`mediCheck/dutyLeaders/${key}`).set(leaderData);
-      setupStaffUI();
-      alert(`Opening Leader role transferred to ${targetStaff.name}.`);
-    } else {
-      alert("Invalid staff PIN selected.");
+    if (activeUser.pin !== currentLeader.pin && activeUser.role !== 'admin') {
+      alert("Only the current Opening Leader or Admin can transfer the role.");
+      return;
     }
+
+    const availableStaff = getStaffList().filter(s => s.pin !== currentLeader.pin && (!s.lastDay || new Date(s.lastDay) >= new Date()));
+    const container = document.getElementById('transfer-staff-buttons');
+    selectedTransferStaff = null;
+    
+    const confirmBtn = document.getElementById('btn-confirm-transfer');
+    confirmBtn.disabled = true;
+    confirmBtn.className = "px-4 py-2 bg-sky-500 text-white text-xs font-bold rounded-xl shadow-sm opacity-50 cursor-not-allowed transition";
+
+    if (availableStaff.length === 0) {
+      container.innerHTML = `<p class="text-xs text-slate-400 italic p-3 text-center">No other active staff available to transfer to.</p>`;
+    } else {
+      container.innerHTML = availableStaff.map(s => `
+        <button type="button" onclick="selectTransferStaff('${s.pin}', this)" class="transfer-staff-btn w-full p-3 border-2 border-slate-200 hover:border-sky-400 rounded-xl text-left flex items-center justify-between transition">
+          <div>
+            <p class="font-bold text-xs text-slate-800">${s.name}</p>
+            <p class="text-[11px] text-slate-500">${s.role}</p>
+          </div>
+          <i class="fa-solid fa-circle-check text-sky-500 text-lg opacity-0 check-icon"></i>
+        </button>
+      `).join('');
+    }
+
+    const modal = document.getElementById('modal-transfer-leader');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function selectTransferStaff(pin, btnEl) {
+    const staff = getStaffList().find(s => s.pin === pin);
+    if (!staff) return;
+
+    selectedTransferStaff = staff;
+
+    // Reset styles on all buttons
+    document.querySelectorAll('.transfer-staff-btn').forEach(b => {
+      b.className = "transfer-staff-btn w-full p-3 border-2 border-slate-200 hover:border-sky-400 rounded-xl text-left flex items-center justify-between transition bg-white";
+      b.querySelector('.check-icon').classList.add('opacity-0');
+    });
+
+    // Highlight selected button
+    btnEl.className = "transfer-staff-btn w-full p-3 border-2 border-sky-500 bg-sky-50 rounded-xl text-left flex items-center justify-between transition shadow-sm";
+    btnEl.querySelector('.check-icon').classList.remove('opacity-0');
+
+    // Enable confirm button
+    const confirmBtn = document.getElementById('btn-confirm-transfer');
+    confirmBtn.disabled = false;
+    confirmBtn.className = "px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold rounded-xl shadow-md transition active:scale-95 cursor-pointer";
+  }
+
+  function confirmLeaderTransfer() {
+    if (!selectedTransferStaff) return;
+    const currentLeader = getTodayDutyLeader();
+    const key = getTodayKey();
+
+    const updatedLeaderData = {
+      pin: selectedTransferStaff.pin,
+      name: selectedTransferStaff.name,
+      timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }),
+      transferred: true,
+      previousLeader: currentLeader ? currentLeader.name : "System",
+      transferredBy: activeUser.name
+    };
+
+    dbState.dutyLeaders[key] = updatedLeaderData;
+    db.ref(`mediCheck/dutyLeaders/${key}`).set(updatedLeaderData);
+
+    closeTransferModal();
+    setupStaffUI();
+    alert(`Opening Leader role successfully transferred from ${currentLeader.name} to ${selectedTransferStaff.name}.`);
+  }
+
+  function closeTransferModal() {
+    const modal = document.getElementById('modal-transfer-leader');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
   }
 
   function format12HourTime(timeStr) {
@@ -846,11 +932,20 @@
       // Leader assigned
       leaderBanner.classList.remove('hidden');
 
+      const transferNotice = currentLeader.transferred ? ` <span class="text-[11px] font-normal text-slate-500 block mt-0.5">(Transferred from ${currentLeader.previousLeader})</span>` : '';
+
       if (currentLeader.pin === activeUser.pin) {
         // Active user is Leader
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-amber-50 border-amber-200 text-amber-900";
-        leaderText.innerHTML = `<i class="fa-solid fa-crown text-amber-600 text-sm"></i> You are Today's Opening Leader! Complete & sign off tasks below.`;
-        btnTransfer.classList.remove('hidden');
+        leaderText.innerHTML = `<div><i class="fa-solid fa-crown text-amber-600 text-sm mr-1"></i> You are Today's Opening Leader! Complete & sign off tasks below.${transferNotice}</div>`;
+        
+        // Show transfer button only if not already transferred
+        if (!currentLeader.transferred) {
+          btnTransfer.classList.remove('hidden');
+        } else {
+          btnTransfer.classList.add('hidden');
+        }
+
         checklistContainer.classList.remove('hidden');
         btnSubmitDuties.classList.remove('hidden');
         btnSubmitDuties.disabled = false;
@@ -858,7 +953,7 @@
       } else {
         // Active user is not Leader
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900";
-        leaderText.innerHTML = `<i class="fa-solid fa-user-gear text-sky-600 text-sm"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong> (Completing prep...)`;
+        leaderText.innerHTML = `<div><i class="fa-solid fa-user-gear text-sky-600 text-sm mr-1"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong> (Completing prep...)${transferNotice}</div>`;
         btnTransfer.classList.add('hidden');
         checklistContainer.classList.add('hidden');
         btnSubmitDuties.classList.add('hidden');
@@ -1003,12 +1098,16 @@
     const currentTotalMins = (now.getHours() * 60) + now.getMinutes();
     const isOverdue = currentTotalMins > dutyInfo.deadlineTotalMins;
 
+    const currentLeader = getTodayDutyLeader();
+    const transferNote = (currentLeader && currentLeader.transferred) ? `Transferred from ${currentLeader.previousLeader}` : 'Original Leader';
+
     const dutyEntry = {
       pin: activeUser.pin,
       name: activeUser.name,
       timestamp: timestampStr,
       isOverdue: isOverdue,
-      tasksCompleted: 6
+      tasksCompleted: 6,
+      transferTrail: transferNote
     };
 
     saveDutyLog(dutyEntry);
@@ -1025,17 +1124,17 @@
     const resetCount = resets[activeUser.pin] || 0;
     const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
 
-    // PROMINENT LARGE METRIC DISPLAY UPDATE
+    // DISPLAY ON-TIME WHEN LATE COUNT IS ZERO
     const lateBadge = document.getElementById('staff-late-count-badge');
-    if (effectiveLateCount >= 5) {
+    if (effectiveLateCount === 0) {
+      lateBadge.className = "px-5 py-2.5 bg-emerald-100 border border-emerald-200 text-emerald-800 rounded-2xl font-black text-xl tracking-tight shadow-sm flex items-center gap-2";
+      lateBadge.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i><span>ON-TIME</span>`;
+    } else if (effectiveLateCount >= 5) {
       lateBadge.className = "px-5 py-2.5 bg-rose-600 border border-rose-700 text-white rounded-2xl font-black text-xl tracking-tight shadow-md flex items-center gap-2 animate-pulse";
       lateBadge.innerHTML = `<i class="fa-solid fa-circle-exclamation text-white text-lg"></i><span>${effectiveLateCount} LATE</span>`;
-    } else if (effectiveLateCount >= 3) {
+    } else {
       lateBadge.className = "px-5 py-2.5 bg-amber-500 border border-amber-600 text-white rounded-2xl font-black text-xl tracking-tight shadow-sm flex items-center gap-2";
       lateBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-white text-lg"></i><span>${effectiveLateCount} LATE</span>`;
-    } else {
-      lateBadge.className = "px-5 py-2.5 bg-slate-100 border border-slate-200 text-slate-800 rounded-2xl font-black text-xl tracking-tight shadow-sm flex items-center gap-2";
-      lateBadge.innerHTML = `<i class="fa-solid fa-clock-triangle-exclamation text-slate-400 text-base"></i><span>${effectiveLateCount} LATE</span>`;
     }
 
     const warningBanner = document.getElementById('dr-gerald-warning');
@@ -1131,7 +1230,7 @@
           <div class="flex items-center justify-between mb-1">
             <span class="font-bold text-slate-800 text-sm">${staff.name}</span>
             ${isResigned ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-slate-300 text-slate-700 rounded">RESIGNED</span>' : 
-             (isChronic ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-rose-600 text-white rounded-full uppercase animate-pulse">Chronic Late</span>' :
+             (isChronic ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-rose-600 text-white rounded-full uppercase animate-pulse">Critical</span>' :
              (isWarning ? '<span class="px-2 py-0.5 text-[9px] font-bold bg-amber-500 text-white rounded-full uppercase">3x Late Alert</span>' : ''))}
           </div>
           <p class="text-xs text-slate-500 mb-3">${staff.role}</p>
@@ -1203,7 +1302,7 @@
               ${d.isOverdue ? 'OVERDUE' : 'Completed On-Time'}
             </span>
           </td>
-          <td class="p-3 font-semibold text-slate-700">${d.tasksCompleted} / 6 Tasks Signed Off</td>
+          <td class="p-3 font-medium text-slate-600">${d.transferTrail || 'Original Leader'} (6/6 Tasks)</td>
         </tr>
       `).join('');
     }
