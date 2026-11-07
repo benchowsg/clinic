@@ -103,7 +103,7 @@
         <!-- STEP 1: ATTENDANCE CHECK-IN -->
         <div class="space-y-3">
           <div class="flex items-center justify-between border-b pb-2">
-            <span class="px-2.5 py-1 bg-sky-100 text-sky-800 text-xs font-bold rounded-full uppercase tracking-wider">Step 1: Self Check-In By 9:00 AM</span>
+            <span class="px-2.5 py-1 bg-sky-100 text-sky-800 text-xs font-bold rounded-full uppercase tracking-wider">Step 1: Attendance Check</span>
             <span id="status-badge" class="px-2.5 py-0.5 text-xs font-bold bg-slate-200 text-slate-600 rounded-full">Pending</span>
           </div>
 
@@ -132,7 +132,7 @@
 
         <hr class="border-slate-200">
 
-        <!-- STEP 2: CLINIC OPENING DUTIES CHECKLIST -->
+        <!-- STEP 2: CLINIC OPENING DUTIES CHECKLIST (WITH LEADER CLAIM ROLE) -->
         <div class="space-y-4">
           <div class="flex items-center justify-between">
             <span class="px-2.5 py-1 bg-amber-100 text-amber-900 text-xs font-bold rounded-full uppercase tracking-wider">Step 2: Opening Duties</span>
@@ -145,48 +145,56 @@
               <i class="fa-solid fa-clock-rotate-left text-amber-600"></i>
               <span id="duty-reminder-title">Opening Prep Deadline: --</span>
             </div>
-            <p class="text-slate-600">Staff must complete and sign off all 6 opening tasks prior to deadline. Please delegate and assign tasks among the team.</p>
+            <p class="text-slate-600">One staff member claims the opening leader role to sign off clinic setup.</p>
           </div>
 
-          <!-- Duty Status Alert -->
-          <div id="duty-status-card" class="hidden p-3 rounded-xl text-xs font-bold border">
-            <p id="duty-status-text"></p>
+          <!-- Dynamic Leader Status Banner -->
+          <div id="leader-status-banner" class="p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900 hidden">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-user-shield text-sky-600 text-base"></i>
+              <span id="leader-status-text">--</span>
+            </div>
           </div>
+
+          <!-- Claim Leader Role Button (Shown if nobody claimed yet) -->
+          <button onclick="claimOpeningLeader()" id="btn-claim-leader" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm rounded-xl shadow-md transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-crown"></i> I am In-Charge of Opening Duty Today
+          </button>
 
           <!-- Checklist Form -->
-          <div class="space-y-2.5 pt-1">
+          <div id="checklist-container" class="space-y-2.5 pt-1 hidden">
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
               <input type="checkbox" id="duty-1" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
-              <span class="text-xs font-medium text-slate-800">Clean and sanitize entrance & waiting area (vacuum, sweep, mop, wipe down)</span>
+              <span class="text-xs font-medium text-slate-800">Clean and sanitize entrance & waiting area (vacuum, sweep, wipe)</span>
             </label>
 
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
               <input type="checkbox" id="duty-2" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
-              <span class="text-xs font-medium text-slate-800">Restock medication and supplies at the reception counter</span>
+              <span class="text-xs font-medium text-slate-800">Restock medication and supplies at the front counter</span>
             </label>
 
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
               <input type="checkbox" id="duty-3" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
-              <span class="text-xs font-medium text-slate-800">Prepare and disinfect all consultation & triage rooms</span>
+              <span class="text-xs font-medium text-slate-800">Prepare and disinfect all consultation and triage rooms</span>
             </label>
 
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
               <input type="checkbox" id="duty-4" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
-              <span class="text-xs font-medium text-slate-800">Clean, disinfect, and restock restroom (toilet paper, soap, paper towels)</span>
+              <span class="text-xs font-medium text-slate-800">Clean, disinfect, and restock restrooms (soap & paper)</span>
             </label>
 
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
               <input type="checkbox" id="duty-5" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
-              <span class="text-xs font-medium text-slate-800">Turn on all computers, payment terminals, and medical equipment</span>
+              <span class="text-xs font-medium text-slate-800">Turn on all computers, payment terminals, and equipment</span>
             </label>
 
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-100 transition">
               <input type="checkbox" id="duty-6" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
-              <span class="text-xs font-medium text-slate-800">Turn on clinic lighting, air conditioning/fans, and background audio</span>
+              <span class="text-xs font-medium text-slate-800">Turn on clinic lights, air-conditioning/fans, and speakers</span>
             </label>
           </div>
 
-          <button onclick="submitOpeningDuties()" id="btn-submit-duties" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base rounded-xl shadow-md shadow-emerald-100 transition flex items-center justify-center gap-2">
+          <button onclick="submitOpeningDuties()" id="btn-submit-duties" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base rounded-xl shadow-md shadow-emerald-100 transition hidden flex items-center justify-center gap-2">
             <i class="fa-solid fa-broom"></i> Complete Opening Duty
           </button>
         </div>
@@ -297,7 +305,7 @@
               <thead class="bg-slate-50 border-b text-slate-500 uppercase">
                 <tr>
                   <th class="p-3">Timestamp</th>
-                  <th class="p-3">Staff Name</th>
+                  <th class="p-3">Opening Leader</th>
                   <th class="p-3">Compliance Status</th>
                   <th class="p-3">Tasks Completed</th>
                 </tr>
@@ -548,6 +556,7 @@
     },
     logs: [],
     dutyLogs: [],
+    dutyLeaders: {},
     resets: {}
   };
 
@@ -576,6 +585,7 @@
       } else {
         dbState.dutyLogs = [];
       }
+      if (data.dutyLeaders) dbState.dutyLeaders = data.dutyLeaders;
       if (data.resets) dbState.resets = data.resets;
 
       if (activeUser) {
@@ -611,19 +621,28 @@
     return new Date().toLocaleDateString("en-SG", { timeZone: "Asia/Singapore" });
   }
 
+  function getTodayKey() {
+    const d = new Date();
+    return `${d.getFullYear()}_${d.getMonth()+1}_${d.getDate()}`;
+  }
+
   function hasSubmittedToday(pin) {
     const logs = getLogs();
     const todayStr = getTodaySGTString();
     return logs.find(l => l.pin === pin && l.approved && l.timestamp.split(',')[0].trim() === todayStr);
   }
 
-  function hasSubmittedDutyToday(pin) {
+  function getTodayDutyCompletedLog() {
     const dutyLogs = getDutyLogs();
     const todayStr = getTodaySGTString();
-    return dutyLogs.find(d => d.pin === pin && d.timestamp.split(',')[0].trim() === todayStr);
+    return dutyLogs.find(d => d.timestamp.split(',')[0].trim() === todayStr);
   }
 
-  // Helper to convert time string (e.g. "09:25") to 12-hour format string (e.g. "9:25 AM")
+  function getTodayDutyLeader() {
+    const key = getTodayKey();
+    return dbState.dutyLeaders ? dbState.dutyLeaders[key] : null;
+  }
+
   function format12HourTime(timeStr) {
     const [h, m] = timeStr.split(':').map(Number);
     const ampm = h >= 12 ? 'PM' : 'AM';
@@ -632,7 +651,6 @@
     return `${displayHour}:${displayMin} ${ampm}`;
   }
 
-  // Calculate dynamic duty deadline (Shift Start + 25 Minutes)
   function getDynamicDutyDeadlineInfo() {
     const now = new Date();
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -707,11 +725,11 @@
     document.getElementById('staff-greeting-name').textContent = activeUser.name;
     document.getElementById('staff-initials').textContent = activeUser.name.split(' ').map(n=>n[0]).join('').substring(0,2);
     
-    // Dynamic Duty Deadline Display Update
     const dutyInfo = getDynamicDutyDeadlineInfo();
     document.getElementById('duty-deadline-badge').textContent = `Deadline: ${dutyInfo.display12h}`;
     document.getElementById('duty-reminder-title').textContent = `Opening Prep Deadline: ${dutyInfo.display12h}`;
 
+    // STEP 1: ATTENDANCE CARD SETUP
     const badge = document.getElementById('status-badge');
     const desc = document.getElementById('status-description');
     const btn = document.getElementById('btn-verify');
@@ -738,34 +756,66 @@
       btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
     }
 
-    const existingDuty = hasSubmittedDutyToday(activeUser.pin);
-    const btnDuty = document.getElementById('btn-submit-duties');
-    const dutyStatusCard = document.getElementById('duty-status-card');
-    const dutyStatusText = document.getElementById('duty-status-text');
+    // STEP 2: OPENING DUTIES LEADER & CHECKLIST SETUP
+    const completedDutyLog = getTodayDutyCompletedLog();
+    const currentLeader = getTodayDutyLeader();
+    const btnClaimLeader = document.getElementById('btn-claim-leader');
+    const leaderBanner = document.getElementById('leader-status-banner');
+    const leaderText = document.getElementById('leader-status-text');
+    const checklistContainer = document.getElementById('checklist-container');
+    const btnSubmitDuties = document.getElementById('btn-submit-duties');
     const dutyCheckboxes = [1, 2, 3, 4, 5, 6].map(i => document.getElementById(`duty-${i}`));
 
-    if (existingDuty) {
-      dutyCheckboxes.forEach(cb => { cb.checked = true; cb.disabled = true; });
-      dutyStatusCard.classList.remove('hidden');
-      if (existingDuty.isOverdue) {
-        dutyStatusCard.className = "p-3 rounded-xl text-xs font-bold bg-rose-50 border border-rose-200 text-rose-800";
-        dutyStatusText.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-600 mr-1"></i> Opening Duty Submitted OVERDUE at ${existingDuty.timestamp}`;
+    if (completedDutyLog) {
+      // Clinic opening duties fully signed off for today
+      btnClaimLeader.classList.add('hidden');
+      leaderBanner.classList.remove('hidden');
+      leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-emerald-50 border-emerald-200 text-emerald-900";
+      leaderText.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i> Opening duties signed off by ${completedDutyLog.name} at ${completedDutyLog.timestamp}`;
+      checklistContainer.classList.add('hidden');
+      btnSubmitDuties.classList.add('hidden');
+    } else if (currentLeader) {
+      // Someone has claimed the leader role today
+      btnClaimLeader.classList.add('hidden');
+      leaderBanner.classList.remove('hidden');
+
+      if (currentLeader.pin === activeUser.pin) {
+        // Active user IS the Leader
+        leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-amber-50 border-amber-200 text-amber-900";
+        leaderText.innerHTML = `<i class="fa-solid fa-crown text-amber-600 text-sm"></i> You are Today's Opening Leader! Complete & sign off tasks below.`;
+        checklistContainer.classList.remove('hidden');
+        btnSubmitDuties.classList.remove('hidden');
+        btnSubmitDuties.disabled = false;
+        dutyCheckboxes.forEach(cb => { cb.disabled = false; });
       } else {
-        dutyStatusCard.className = "p-3 rounded-xl text-xs font-bold bg-emerald-50 border border-emerald-200 text-emerald-800";
-        dutyStatusText.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> Opening Duty Completed On-Time at ${existingDuty.timestamp}`;
+        // Active user is NOT the Leader (Locked view)
+        leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900";
+        leaderText.innerHTML = `<i class="fa-solid fa-user-gear text-sky-600 text-sm"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong> (Completing prep...)`;
+        checklistContainer.classList.add('hidden');
+        btnSubmitDuties.classList.add('hidden');
       }
-      btnDuty.disabled = true;
-      btnDuty.className = "w-full py-3.5 bg-slate-200 text-slate-500 font-bold text-base rounded-xl cursor-not-allowed flex items-center justify-center gap-2";
-      btnDuty.innerHTML = `<i class="fa-solid fa-check-double text-emerald-600"></i> Opening Duties Signed Off`;
     } else {
-      dutyCheckboxes.forEach(cb => { cb.checked = false; cb.disabled = false; });
-      dutyStatusCard.classList.add('hidden');
-      btnDuty.disabled = false;
-      btnDuty.className = "w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base rounded-xl shadow-md shadow-emerald-100 transition flex items-center justify-center gap-2";
-      btnDuty.innerHTML = `<i class="fa-solid fa-broom"></i> Complete Opening Duty`;
+      // Nobody has claimed the leader role yet
+      btnClaimLeader.classList.remove('hidden');
+      leaderBanner.classList.add('hidden');
+      checklistContainer.classList.add('hidden');
+      btnSubmitDuties.classList.add('hidden');
     }
 
     renderStaffLateRecords();
+  }
+
+  function claimOpeningLeader() {
+    const key = getTodayKey();
+    const leaderData = {
+      pin: activeUser.pin,
+      name: activeUser.name,
+      timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" })
+    };
+
+    dbState.dutyLeaders[key] = leaderData;
+    db.ref(`mediCheck/dutyLeaders/${key}`).set(leaderData);
+    setupStaffUI();
   }
 
   function checkGPSAccuracy() {
@@ -873,8 +923,8 @@
   }
 
   function submitOpeningDuties() {
-    if (hasSubmittedDutyToday(activeUser.pin)) {
-      alert("Opening duties have already been submitted for today.");
+    if (getTodayDutyCompletedLog()) {
+      alert("Opening duties have already been completed for today.");
       return;
     }
 
@@ -889,7 +939,6 @@
     const now = new Date();
     const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
     
-    // DYNAMIC OVERDUE CHECK (Shift Start + 25 Minutes)
     const dutyInfo = getDynamicDutyDeadlineInfo();
     const currentTotalMins = (now.getHours() * 60) + now.getMinutes();
     const isOverdue = currentTotalMins > dutyInfo.deadlineTotalMins;
