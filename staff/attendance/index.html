@@ -188,6 +188,15 @@
             <p id="non-leader-notice-text">This is today's opening duty list. Please check with the Opening Leader for your assigned tasks.</p>
           </div>
 
+          <!-- Leader Responsibility Notice Box -->
+          <div id="leader-responsibility-notice" class="hidden p-3.5 bg-amber-50 border border-amber-300 rounded-xl text-xs text-amber-900 space-y-1">
+            <div class="flex items-center gap-2 font-bold text-amber-900">
+              <i class="fa-solid fa-shield-halved text-amber-600 text-sm"></i>
+              <span>Opening Leader Accountability</span>
+            </div>
+            <p class="text-amber-800">You are responsible for ensuring all 6 tasks are complete before signing off. Spot-check failures are attributed to the Opening Leader.</p>
+          </div>
+
           <!-- Checklist Form (Visible to all, editable only by Leader) -->
           <div id="checklist-container" class="space-y-2.5 pt-1 hidden">
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 transition" id="label-duty-1">
@@ -512,7 +521,6 @@
           </button>
         </div>
 
-        <!-- Staff Choice Buttons -->
         <div class="space-y-2 max-h-60 overflow-y-auto" id="transfer-staff-buttons"></div>
 
         <div class="flex items-center justify-end gap-2 pt-3 border-t">
@@ -713,7 +721,6 @@
     }
   }
 
-  // BUTTON-BASED TRANSFER LEADER MODAL SYSTEM
   function openTransferModal() {
     const currentLeader = getTodayDutyLeader();
     if (!currentLeader) return;
@@ -816,15 +823,24 @@
     const shiftStartStr = getShiftSchedule()[days[now.getDay()]] || "09:00";
     const [sHour, sMin] = shiftStartStr.split(":").map(Number);
 
-    const deadlineTotalMins = (sHour * 60) + sMin + 25;
+    const deadlineTotalMins = (sHour * 60) + sMin + 25; // 9:25 AM
     const deadlineHour = Math.floor(deadlineTotalMins / 60) % 24;
     const deadlineMin = deadlineTotalMins % 60;
 
+    // 5 minutes before deadline (e.g. 9:20 AM)
+    const earlyGuardMins = deadlineTotalMins - 5;
+    const earlyGuardHour = Math.floor(earlyGuardMins / 60) % 24;
+    const earlyGuardMin = earlyGuardMins % 60;
+
     const timeString = `${deadlineHour < 10 ? '0' + deadlineHour : deadlineHour}:${deadlineMin < 10 ? '0' + deadlineMin : deadlineMin}`;
+    const earlyGuardTimeString = `${earlyGuardHour < 10 ? '0' + earlyGuardHour : earlyGuardHour}:${earlyGuardMin < 10 ? '0' + earlyGuardMin : earlyGuardMin}`;
+
     return {
       deadlineTotalMins,
+      earlyGuardMins,
       timeString,
-      display12h: format12HourTime(timeString)
+      display12h: format12HourTime(timeString),
+      earlyGuardDisplay12h: format12HourTime(earlyGuardTimeString)
     };
   }
 
@@ -925,6 +941,7 @@
     const btnSubmitDuties = document.getElementById('btn-submit-duties');
     const nonLeaderNotice = document.getElementById('non-leader-notice');
     const nonLeaderNoticeText = document.getElementById('non-leader-notice-text');
+    const leaderRespNotice = document.getElementById('leader-responsibility-notice');
     const dutyCheckboxes = [1, 2, 3, 4, 5, 6].map(i => document.getElementById(`duty-${i}`));
 
     if (completedDutyLog) {
@@ -934,6 +951,7 @@
       leaderText.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i> Opening duties signed off by ${completedDutyLog.name} at ${completedDutyLog.timestamp}`;
       btnTransfer.classList.add('hidden');
       nonLeaderNotice.classList.add('hidden');
+      leaderRespNotice.classList.add('hidden');
       checklistContainer.classList.add('hidden');
       btnSubmitDuties.classList.add('hidden');
     } else if (currentLeader) {
@@ -953,6 +971,7 @@
         }
 
         nonLeaderNotice.classList.add('hidden');
+        leaderRespNotice.classList.remove('hidden');
         checklistContainer.classList.remove('hidden');
         btnSubmitDuties.classList.remove('hidden');
         btnSubmitDuties.disabled = false;
@@ -967,6 +986,7 @@
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900";
         leaderText.innerHTML = `<div><i class="fa-solid fa-user-gear text-sky-600 text-sm mr-1"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong> (Completing prep...)${transferNotice}</div>`;
         btnTransfer.classList.add('hidden');
+        leaderRespNotice.classList.add('hidden');
         
         // Show read-only guidance notice for non-leader
         nonLeaderNoticeText.textContent = `This is today's opening duty list. Please check with Opening Leader (${currentLeader.name}) for your assigned tasks.`;
@@ -989,6 +1009,7 @@
       leaderText.innerHTML = `<i class="fa-solid fa-circle-info text-sky-600 mr-1"></i> Opening Leader will be automatically assigned to the first staff member checking in.`;
       btnTransfer.classList.add('hidden');
       nonLeaderNotice.classList.add('hidden');
+      leaderRespNotice.classList.add('hidden');
       checklistContainer.classList.add('hidden');
       btnSubmitDuties.classList.add('hidden');
     }
@@ -1116,10 +1137,21 @@
     }
 
     const now = new Date();
-    const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
-    
     const dutyInfo = getDynamicDutyDeadlineInfo();
     const currentTotalMins = (now.getHours() * 60) + now.getMinutes();
+
+    // 5-MINUTE DURATION GUARD BEFORE 9:25 AM DEADLINE
+    if (currentTotalMins < dutyInfo.earlyGuardMins) {
+      alert(
+        `[ATTENTION: OPENING LEADER RESPONSIBILITY]\n\n` +
+        `Early duty sign-off is restricted before ${dutyInfo.earlyGuardDisplay12h}.\n\n` +
+        `As Opening Leader, you are directly responsible for ensuring all clinic setup and cleaning tasks are properly completed. ` +
+        `If clinic conditions during management spot-checks are unsatisfactory, the Opening Leader bears full responsibility.`
+      );
+      return;
+    }
+
+    const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
     const isOverdue = currentTotalMins > dutyInfo.deadlineTotalMins;
 
     const currentLeader = getTodayDutyLeader();
