@@ -17,7 +17,7 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage((payload) => {
   const title = payload.notification?.title || "MediCheck Inspection Reminder";
   const options = {
-    body: payload.notification?.body || "READY FOR INSPECTION? Check that you have completed the opening duties.",
+    body: payload.notification?.body || "Check that you have completed the opening duties.",
     icon: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/user-check.svg",
     tag: "medicheck-opening-duty",
     renotify: true
