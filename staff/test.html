@@ -14,6 +14,7 @@
   <!-- FIREBASE SDKs (Compatibility Build) -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
 </head>
 <body class="bg-slate-100 font-sans text-slate-800 min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
 
@@ -60,6 +61,17 @@
         </div>
         <button onclick="logout()" class="px-3.5 py-2 text-xs font-bold bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-600 rounded-xl transition">
           <i class="fa-solid fa-right-from-bracket mr-1"></i> Logout
+        </button>
+      </div>
+
+      <!-- Push Notification & Wake Lock Permission Bar -->
+      <div id="push-permission-box" class="hidden p-3.5 bg-sky-50 border border-sky-200 rounded-2xl flex items-center justify-between gap-3 text-xs">
+        <div class="flex items-center gap-2 text-sky-900 font-medium">
+          <i class="fa-solid fa-bell text-sky-600 text-base"></i>
+          <span>Enable lock-screen alert at 9:25 AM cutoff</span>
+        </div>
+        <button onclick="enablePushNotifications()" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition shadow-sm whitespace-nowrap">
+          Enable Alerts
         </button>
       </div>
 
@@ -197,7 +209,16 @@
             <p class="text-amber-800">You are responsible for ensuring all 6 tasks are complete before signing off. Spot-check failures are attributed to the Opening Leader.</p>
           </div>
 
-          <!-- Checklist Form (Visible to all, editable only by Leader) -->
+          <!-- 9:25 AM Inspection Notification Banner -->
+          <div id="inspection-alert-banner" class="hidden p-4 bg-rose-600 text-white rounded-xl shadow-md space-y-1.5 animate-pulse">
+            <div class="flex items-center justify-between">
+              <span class="font-black text-sm uppercase tracking-wide"><i class="fa-solid fa-bell mr-1"></i> Session Ended (9:25 AM)</span>
+              <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded font-mono">Cutoff Reached</span>
+            </div>
+            <p class="text-xs font-bold text-rose-100">READY FOR INSPECTION? CHECK THAT YOU HAVE COMPLETED THE OPENING DUTIES.</p>
+          </div>
+
+          <!-- Checklist Form -->
           <div id="checklist-container" class="space-y-2.5 pt-1 hidden">
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 transition" id="label-duty-1">
               <input type="checkbox" id="duty-1" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
@@ -240,8 +261,6 @@
 
     <!-- 3. ADMIN DASHBOARD VIEW -->
     <section id="view-admin" class="hidden space-y-6">
-      
-      <!-- Top Admin Header -->
       <div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
         <div>
           <h2 class="text-xl font-bold text-slate-900">Admin Control Panel</h2>
@@ -330,20 +349,23 @@
       <!-- ADMIN TAB 2: DUTY LOGS -->
       <div id="atab-duties" class="hidden space-y-6">
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between flex-wrap gap-2">
             <div>
-              <h3 class="text-base font-bold text-slate-800">Opening Cleanliness & Setup Duty Logs</h3>
-              <p class="text-xs text-slate-500">Log of daily clinic opening checklists completed by staff (Dynamic 25-Min Grace Deadline)</p>
+              <h3 class="text-base font-bold text-slate-800">Opening Leader & Cleanliness Duty Logs</h3>
+              <p class="text-xs text-slate-500">Log of Leader Assignments, Transfers & Daily Checklists (9:25 AM Grace Cutoff)</p>
             </div>
+            <button onclick="resetTodayDutyState()" class="px-3 py-1.5 bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs font-bold rounded-lg transition flex items-center gap-1">
+              <i class="fa-solid fa-rotate-left"></i> Reset Today's Duty State
+            </button>
           </div>
           <div class="overflow-x-auto border border-slate-200 rounded-xl">
             <table class="w-full text-left text-xs font-mono">
               <thead class="bg-slate-50 border-b text-slate-500 uppercase">
                 <tr>
                   <th class="p-3">Timestamp</th>
-                  <th class="p-3">Opening Leader</th>
-                  <th class="p-3">Compliance Status</th>
-                  <th class="p-3">Transfer Trail / Details</th>
+                  <th class="p-3">Staff / Leader</th>
+                  <th class="p-3">Event Type / Compliance</th>
+                  <th class="p-3">Details / Audit Trail</th>
                 </tr>
               </thead>
               <tbody id="duty-log-tbody" class="divide-y divide-slate-100"></tbody>
@@ -601,6 +623,15 @@
 
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
+  let messaging = null;
+
+  try {
+    if (firebase.messaging.isSupported()) {
+      messaging = firebase.messaging();
+    }
+  } catch(e) {
+    console.warn("FCM Messaging unsupported in current environment.");
+  }
 
   let dbState = {
     staff: [
@@ -628,6 +659,25 @@
   let showInactiveStaff = false;
   let pieChartInstance = null;
   let barChartInstance = null;
+  let hasAlerted925 = false;
+  let wakeLock = null;
+
+  // REGISTER SERVICE WORKER FOR WEB PUSH ON GITHUB PAGES
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./firebase-messaging-sw.js')
+      .then(reg => {
+        console.log("Service Worker registered successfully on GitHub Pages scope:", reg.scope);
+        if (messaging) messaging.useServiceWorker(reg);
+      })
+      .catch(err => console.error("Service Worker registration failed:", err));
+  }
+
+  // Real-time 9:25 AM Inspection Notification Timer Loop
+  setInterval(() => {
+    if (activeUser && activeUser.role !== "admin") {
+      check925InspectionTrigger();
+    }
+  }, 10000);
 
   // --- FIREBASE REALTIME SYNC ---
   db.ref("mediCheck").on("value", (snapshot) => {
@@ -698,7 +748,7 @@
   function getTodayDutyCompletedLog() {
     const dutyLogs = getDutyLogs();
     const todayStr = getTodaySGTString();
-    return dutyLogs.find(d => d.timestamp.split(',')[0].trim() === todayStr);
+    return dutyLogs.find(d => d.type === 'COMPLETED' && d.timestamp.split(',')[0].trim() === todayStr);
   }
 
   function getTodayDutyLeader() {
@@ -709,15 +759,24 @@
   function assignLeaderIfNone(staffUser) {
     const key = getTodayKey();
     if (!dbState.dutyLeaders[key]) {
+      const timestampStr = new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
       const leaderData = {
         pin: staffUser.pin,
         name: staffUser.name,
-        timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }),
+        timestamp: timestampStr,
         autoAssigned: true,
         transferred: false
       };
       dbState.dutyLeaders[key] = leaderData;
       db.ref(`mediCheck/dutyLeaders/${key}`).set(leaderData);
+
+      saveDutyLog({
+        type: 'LEADER_ASSIGNED',
+        pin: staffUser.pin,
+        name: staffUser.name,
+        timestamp: timestampStr,
+        details: 'Automatically designated as Today\'s Opening Leader upon first check-in.'
+      });
     }
   }
 
@@ -785,11 +844,12 @@
     if (!selectedTransferStaff) return;
     const currentLeader = getTodayDutyLeader();
     const key = getTodayKey();
+    const timestampStr = new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
 
     const updatedLeaderData = {
       pin: selectedTransferStaff.pin,
       name: selectedTransferStaff.name,
-      timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }),
+      timestamp: timestampStr,
       transferred: true,
       previousLeader: currentLeader ? currentLeader.name : "System",
       transferredBy: activeUser.name
@@ -797,6 +857,14 @@
 
     dbState.dutyLeaders[key] = updatedLeaderData;
     db.ref(`mediCheck/dutyLeaders/${key}`).set(updatedLeaderData);
+
+    saveDutyLog({
+      type: 'LEADER_TRANSFERRED',
+      pin: selectedTransferStaff.pin,
+      name: selectedTransferStaff.name,
+      timestamp: timestampStr,
+      details: `Opening Leader transferred from ${currentLeader ? currentLeader.name : 'Previous Leader'} to ${selectedTransferStaff.name} by ${activeUser.name}.`
+    });
 
     closeTransferModal();
     setupStaffUI();
@@ -827,8 +895,7 @@
     const deadlineHour = Math.floor(deadlineTotalMins / 60) % 24;
     const deadlineMin = deadlineTotalMins % 60;
 
-    // 5 minutes before deadline (e.g. 9:20 AM)
-    const earlyGuardMins = deadlineTotalMins - 5;
+    const earlyGuardMins = deadlineTotalMins - 5; // 9:20 AM
     const earlyGuardHour = Math.floor(earlyGuardMins / 60) % 24;
     const earlyGuardMin = earlyGuardMins % 60;
 
@@ -842,6 +909,65 @@
       display12h: format12HourTime(timeString),
       earlyGuardDisplay12h: format12HourTime(earlyGuardTimeString)
     };
+  }
+
+  function check925InspectionTrigger() {
+    const currentLeader = getTodayDutyLeader();
+    if (!currentLeader) return;
+
+    const dutyInfo = getDynamicDutyDeadlineInfo();
+    const now = new Date();
+    const currentTotalMins = (now.getHours() * 60) + now.getMinutes();
+    const alertBanner = document.getElementById('inspection-alert-banner');
+
+    if (currentTotalMins >= dutyInfo.deadlineTotalMins) {
+      if (alertBanner) alertBanner.classList.remove('hidden');
+
+      if (currentLeader.pin === activeUser.pin && !hasAlerted925 && !getTodayDutyCompletedLog()) {
+        hasAlerted925 = true;
+        alert("READY FOR INSPECTION? CHECK THAT YOU HAVE COMPLETED THE OPENING DUTIES.\n\nThe 9:25 AM opening session cutoff has been reached.");
+      }
+    } else {
+      if (alertBanner) alertBanner.classList.add('hidden');
+    }
+  }
+
+  // PUSH NOTIFICATION PERMISSION & FCM TOKEN REGISTRATION
+  async function enablePushNotifications() {
+    if (!messaging) return alert("Push messaging is not supported in your browser.");
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        // REPLACE WITH YOUR FIREBASE CONSOLE VAPID KEY
+        const token = await messaging.getToken({ vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' });
+        if (token && activeUser) {
+          db.ref(`mediCheck/pushTokens/${activeUser.pin}`).set(token);
+          document.getElementById('push-permission-box').classList.add('hidden');
+          alert("Lock-screen notifications enabled successfully!");
+        }
+      }
+    } catch(err) {
+      console.error("Error setting up push notifications:", err);
+    }
+  }
+
+  // SCREEN WAKE LOCK API (Prevents screen from going idle during duty)
+  async function requestWakeLock() {
+    try {
+      if ('wakeLock' in navigator) {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log("Screen Wake Lock active.");
+      }
+    } catch (err) {
+      console.warn("Wake lock failed:", err);
+    }
+  }
+
+  function releaseWakeLock() {
+    if (wakeLock !== null) {
+      wakeLock.release();
+      wakeLock = null;
+    }
   }
 
   function haversineDistance(lat1, lon1, lat2, lon2) {
@@ -879,6 +1005,7 @@
         document.getElementById('pin-input').value = '';
         showSection('view-staff');
         setupStaffUI();
+        requestWakeLock();
       } else {
         err.textContent = "Invalid PIN. Please try again.";
         err.classList.remove('hidden');
@@ -888,6 +1015,8 @@
 
   function logout() {
     activeUser = null;
+    hasAlerted925 = false;
+    releaseWakeLock();
     showSection('view-login');
   }
 
@@ -903,6 +1032,13 @@
     const dutyInfo = getDynamicDutyDeadlineInfo();
     document.getElementById('duty-deadline-badge').textContent = `Deadline: ${dutyInfo.display12h}`;
     document.getElementById('duty-reminder-title').textContent = `Opening Prep Deadline: ${dutyInfo.display12h}`;
+
+    // Prompt Push Permission Bar if not granted
+    if ('Notification' in window && Notification.permission !== 'granted') {
+      document.getElementById('push-permission-box').classList.remove('hidden');
+    } else {
+      document.getElementById('push-permission-box').classList.add('hidden');
+    }
 
     // STEP 1: ATTENDANCE CARD SETUP
     const badge = document.getElementById('status-badge');
@@ -945,7 +1081,6 @@
     const dutyCheckboxes = [1, 2, 3, 4, 5, 6].map(i => document.getElementById(`duty-${i}`));
 
     if (completedDutyLog) {
-      // Duties completed
       leaderBanner.classList.remove('hidden');
       leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-emerald-50 border-emerald-200 text-emerald-900";
       leaderText.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i> Opening duties signed off by ${completedDutyLog.name} at ${completedDutyLog.timestamp}`;
@@ -955,12 +1090,10 @@
       checklistContainer.classList.add('hidden');
       btnSubmitDuties.classList.add('hidden');
     } else if (currentLeader) {
-      // Leader assigned
       leaderBanner.classList.remove('hidden');
       const transferNotice = currentLeader.transferred ? ` <span class="text-[11px] font-normal text-slate-500 block mt-0.5">(Transferred from ${currentLeader.previousLeader})</span>` : '';
 
       if (currentLeader.pin === activeUser.pin) {
-        // Active user is Leader -> Editable checklist
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-amber-50 border-amber-200 text-amber-900";
         leaderText.innerHTML = `<div><i class="fa-solid fa-crown text-amber-600 text-sm mr-1"></i> You are Today's Opening Leader! Complete & sign off tasks below.${transferNotice}</div>`;
         
@@ -982,17 +1115,14 @@
           cb.parentElement.classList.add('cursor-pointer', 'hover:bg-slate-100');
         });
       } else {
-        // Active user is NOT Leader -> Read-only checklist view with notice
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900";
         leaderText.innerHTML = `<div><i class="fa-solid fa-user-gear text-sky-600 text-sm mr-1"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong> (Completing prep...)${transferNotice}</div>`;
         btnTransfer.classList.add('hidden');
         leaderRespNotice.classList.add('hidden');
         
-        // Show read-only guidance notice for non-leader
         nonLeaderNoticeText.textContent = `This is today's opening duty list. Please check with Opening Leader (${currentLeader.name}) for your assigned tasks.`;
         nonLeaderNotice.classList.remove('hidden');
         
-        // Render checklist in read-only mode
         checklistContainer.classList.remove('hidden');
         btnSubmitDuties.classList.add('hidden');
         
@@ -1003,7 +1133,6 @@
         });
       }
     } else {
-      // Waiting for first attendance check-in
       leaderBanner.classList.remove('hidden');
       leaderBanner.className = "p-3 rounded-xl text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-600";
       leaderText.innerHTML = `<i class="fa-solid fa-circle-info text-sky-600 mr-1"></i> Opening Leader will be automatically assigned to the first staff member checking in.`;
@@ -1014,6 +1143,7 @@
       btnSubmitDuties.classList.add('hidden');
     }
 
+    check925InspectionTrigger();
     renderStaffLateRecords();
   }
 
@@ -1140,7 +1270,6 @@
     const dutyInfo = getDynamicDutyDeadlineInfo();
     const currentTotalMins = (now.getHours() * 60) + now.getMinutes();
 
-    // 5-MINUTE DURATION GUARD BEFORE 9:25 AM DEADLINE
     if (currentTotalMins < dutyInfo.earlyGuardMins) {
       alert(
         `[ATTENTION: OPENING LEADER RESPONSIBILITY]\n\n` +
@@ -1158,12 +1287,14 @@
     const transferNote = (currentLeader && currentLeader.transferred) ? `Transferred from ${currentLeader.previousLeader}` : 'Original Leader';
 
     const dutyEntry = {
+      type: 'COMPLETED',
       pin: activeUser.pin,
       name: activeUser.name,
       timestamp: timestampStr,
       isOverdue: isOverdue,
       tasksCompleted: 6,
-      transferTrail: transferNote
+      transferTrail: transferNote,
+      details: 'Signed off all 6 opening cleanliness and clinic setup tasks.'
     };
 
     saveDutyLog(dutyEntry);
@@ -1348,18 +1479,40 @@
     if (dutyLogs.length === 0) {
       tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">No opening duty logs recorded yet.</td></tr>`;
     } else {
-      tbody.innerHTML = dutyLogs.map(d => `
-        <tr class="hover:bg-slate-50">
-          <td class="p-3 text-slate-500">${d.timestamp}</td>
-          <td class="p-3 font-semibold text-slate-800">${d.name}</td>
-          <td class="p-3">
-            <span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${d.isOverdue ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">
-              ${d.isOverdue ? 'OVERDUE' : 'Completed On-Time'}
-            </span>
-          </td>
-          <td class="p-3 font-medium text-slate-600">${d.transferTrail || 'Original Leader'} (6/6 Tasks)</td>
-        </tr>
-      `).join('');
+      tbody.innerHTML = dutyLogs.map(d => {
+        let eventBadge = '';
+        if (d.type === 'LEADER_ASSIGNED') {
+          eventBadge = `<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-sky-100 text-sky-800">LEADER ASSIGNED</span>`;
+        } else if (d.type === 'LEADER_TRANSFERRED') {
+          eventBadge = `<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-100 text-amber-900">LEADER TRANSFERRED</span>`;
+        } else {
+          eventBadge = `<span class="px-2 py-0.5 text-[10px] font-bold rounded-full ${d.isOverdue ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}">${d.isOverdue ? 'OVERDUE SIGN-OFF' : 'COMPLETED ON-TIME'}</span>`;
+        }
+
+        return `
+          <tr class="hover:bg-slate-50">
+            <td class="p-3 text-slate-500">${d.timestamp}</td>
+            <td class="p-3 font-semibold text-slate-800">${d.name}</td>
+            <td class="p-3">${eventBadge}</td>
+            <td class="p-3 font-medium text-slate-600">${d.details || d.transferTrail || 'Clinic Setup Duty'}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+  }
+
+  function resetTodayDutyState() {
+    if (confirm("Reset today's opening leader state and completed duty logs for testing?")) {
+      const key = getTodayKey();
+      db.ref(`mediCheck/dutyLeaders/${key}`).remove();
+      db.ref("mediCheck/dutyLogs").remove();
+      hasAlerted925 = false;
+      alert("Today's opening duty state has been reset.");
+      if (activeUser.role === 'admin') {
+        renderDutyLogsTable();
+      } else {
+        setupStaffUI();
+      }
     }
   }
 
