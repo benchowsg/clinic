@@ -917,7 +917,7 @@
     try {
       const permission = await Notification.requestPermission();
       if (permission === 'granted') {
-        const token = await messaging.getToken({ vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' });
+        const token = await messaging.getToken({ vapidKey: 'BF5-HiJl4abtWCfKjTWb0slnPCEBTBXRMFQFEIwBRFTZtnmNUE40OmEFrQ76oBXzfLtQWflffRSsgGfsFSWAxvI' });
         if (token && activeUser) {
           db.ref(`mediCheck/pushTokens/${activeUser.pin}`).set(token);
           document.getElementById('push-permission-box').classList.add('hidden');
