@@ -35,7 +35,7 @@
         <form onsubmit="handleAuth(event)" class="space-y-5">
           <div class="text-left">
             <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">Staff Authentication</label>
-            <input type="password" id="pin-input" maxlength="8" placeholder="ENTER PIN" class="w-full text-center text-3xl font-mono tracking-widest py-4 border-2 border-slate-300 rounded-2xl focus:ring-4 focus:ring-sky-100 focus:border-sky-500 focus:outline-none transition">
+            <input type="password" id="pin-input" maxlength="8" autocomplete="current-password" placeholder="ENTER PIN" class="w-full text-center text-3xl font-mono tracking-widest py-4 border-2 border-slate-300 rounded-2xl focus:ring-4 focus:ring-sky-100 focus:border-sky-500 focus:outline-none transition">
           </div>
           <p id="login-error" class="text-sm text-rose-600 hidden font-bold"></p>
           <button type="submit" class="w-full py-4 bg-sky-500 hover:bg-sky-600 active:scale-[0.99] text-white font-bold text-lg rounded-2xl shadow-lg shadow-sky-200 transition">
@@ -64,7 +64,7 @@
         </button>
       </div>
 
-      <!-- Push Notification & Wake Lock Permission Bar -->
+      <!-- Push Notification Permission Bar -->
       <div id="push-permission-box" class="hidden p-3.5 bg-sky-50 border border-sky-200 rounded-2xl flex items-center justify-between gap-3 text-xs">
         <div class="flex items-center gap-2 text-sky-900 font-medium">
           <i class="fa-solid fa-bell text-sky-600 text-base"></i>
@@ -88,7 +88,6 @@
           </div>
         </div>
 
-        <!-- 3 Late Warning Banner -->
         <div id="dr-gerald-warning" class="hidden p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs flex items-start gap-2.5">
           <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg mt-0.5"></i>
           <div>
@@ -97,7 +96,6 @@
           </div>
         </div>
 
-        <!-- SIMPLIFIED CRITICAL TARDINESS BANNER -->
         <div id="chronic-late-banner" class="hidden p-4 bg-rose-600 text-white rounded-xl shadow-md space-y-1">
           <div class="flex items-center gap-2 text-base font-bold">
             <i class="fa-solid fa-circle-exclamation text-xl"></i>
@@ -106,7 +104,6 @@
           <p class="text-xs text-rose-100">You have been consistently late. Dr Gerald Thang has been informed to conduct a formal review.</p>
         </div>
 
-        <!-- Collapsible Expandable Late History Dropdown -->
         <details class="group pt-1">
           <summary class="flex items-center justify-between text-xs font-bold text-slate-600 cursor-pointer list-none py-2 px-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl transition">
             <span class="flex items-center gap-2">
@@ -133,7 +130,6 @@
             <span id="status-badge" class="px-2.5 py-0.5 text-xs font-bold bg-slate-200 text-slate-600 rounded-full">Pending</span>
           </div>
 
-          <!-- GPS Status & Action Button -->
           <div id="gps-debug" class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-3">
             <div class="flex items-start justify-between gap-2">
               <div>
@@ -169,7 +165,6 @@
             <span id="duty-deadline-badge" class="text-xs font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200">Deadline: --</span>
           </div>
 
-          <!-- Opening Duties Notice Banner -->
           <div id="duty-reminder-box" class="p-3 bg-amber-50/80 border border-amber-200 rounded-xl text-xs text-amber-900 space-y-1">
             <div class="flex items-center gap-1.5 font-bold">
               <i class="fa-solid fa-clock-rotate-left text-amber-600"></i>
@@ -178,7 +173,6 @@
             <p class="text-slate-600">First staff member to check in is automatically assigned as Opening Leader.</p>
           </div>
 
-          <!-- Dynamic Leader Status Banner -->
           <div id="leader-status-banner" class="p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900 hidden">
             <div class="flex items-center justify-between flex-wrap gap-2">
               <div class="flex items-center gap-2">
@@ -191,7 +185,6 @@
             </div>
           </div>
 
-          <!-- Delegation Notice Box for Non-Leaders -->
           <div id="non-leader-notice" class="hidden p-3 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-700 space-y-1">
             <div class="flex items-center gap-2 font-bold text-slate-800">
               <i class="fa-solid fa-comments text-sky-600"></i>
@@ -200,7 +193,6 @@
             <p id="non-leader-notice-text">This is today's opening duty list. Please check with the Opening Leader for your assigned tasks.</p>
           </div>
 
-          <!-- Leader Responsibility Notice Box -->
           <div id="leader-responsibility-notice" class="hidden p-3.5 bg-amber-50 border border-amber-300 rounded-xl text-xs text-amber-900 space-y-1">
             <div class="flex items-center gap-2 font-bold text-amber-900">
               <i class="fa-solid fa-shield-halved text-amber-600 text-sm"></i>
@@ -209,7 +201,6 @@
             <p class="text-amber-800">You are responsible for ensuring all 6 tasks are complete before signing off. Spot-check failures are attributed to the Opening Leader.</p>
           </div>
 
-          <!-- 9:25 AM Inspection Notification Banner -->
           <div id="inspection-alert-banner" class="hidden p-4 bg-rose-600 text-white rounded-xl shadow-md space-y-1.5 animate-pulse">
             <div class="flex items-center justify-between">
               <span class="font-black text-sm uppercase tracking-wide"><i class="fa-solid fa-bell mr-1"></i> Session Ended (9:25 AM)</span>
@@ -218,7 +209,6 @@
             <p class="text-xs font-bold text-rose-100">READY FOR INSPECTION? CHECK THAT YOU HAVE COMPLETED THE OPENING DUTIES.</p>
           </div>
 
-          <!-- Checklist Form -->
           <div id="checklist-container" class="space-y-2.5 pt-1 hidden">
             <label class="flex items-start gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200 transition" id="label-duty-1">
               <input type="checkbox" id="duty-1" class="w-5 h-5 accent-sky-600 rounded mt-0.5">
@@ -271,7 +261,6 @@
         </button>
       </div>
 
-      <!-- Admin Navigation Tabs -->
       <div class="flex gap-2 border-b border-slate-200 pb-2 overflow-x-auto">
         <button onclick="switchAdminTab('dashboard')" id="atab-btn-dashboard" class="px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white whitespace-nowrap">
           <i class="fa-solid fa-chart-pie mr-1.5"></i> Dashboard & Bento
@@ -290,7 +279,6 @@
         </button>
       </div>
 
-      <!-- ADMIN TAB 1: DASHBOARD & BENTO -->
       <div id="atab-dashboard" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
@@ -317,7 +305,6 @@
           <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
         </div>
 
-        <!-- Master Attendance Log -->
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
           <div class="flex items-center justify-between">
             <div>
@@ -346,7 +333,6 @@
         </div>
       </div>
 
-      <!-- ADMIN TAB 2: DUTY LOGS -->
       <div id="atab-duties" class="hidden space-y-6">
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
           <div class="flex items-center justify-between flex-wrap gap-2">
@@ -374,7 +360,6 @@
         </div>
       </div>
 
-      <!-- ADMIN TAB 3: STAFF DIRECTORY MANAGEMENT -->
       <div id="atab-staff" class="hidden space-y-6">
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
           <h3 class="text-base font-bold text-slate-800" id="staff-form-title">Add New Staff Member</h3>
@@ -429,7 +414,6 @@
         </div>
       </div>
 
-      <!-- ADMIN TAB 4: CLINIC LOCATIONS MANAGEMENT -->
       <div id="atab-clinics" class="hidden space-y-6">
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
           <h3 class="text-base font-bold text-slate-800" id="clinic-form-title">Add New Clinic Branch</h3>
@@ -483,7 +467,6 @@
         </div>
       </div>
 
-      <!-- ADMIN TAB 5: WORKING HOURS MANAGEMENT -->
       <div id="atab-hours" class="hidden space-y-6">
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
           <h3 class="text-base font-bold text-slate-800">Working Shift Schedule (Singapore Time)</h3>
@@ -530,7 +513,7 @@
 
     </section>
 
-    <!-- 4. BUTTON-BASED TRANSFER LEADER MODAL -->
+    <!-- 4. TRANSFER LEADER MODAL -->
     <div id="modal-transfer-leader" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
       <div class="bg-white rounded-2xl border border-slate-200 max-w-md w-full p-6 space-y-4 shadow-xl">
         <div class="flex items-center justify-between border-b pb-3">
@@ -630,7 +613,17 @@
       messaging = firebase.messaging();
     }
   } catch(e) {
-    console.warn("FCM Messaging unsupported in current environment.");
+    console.warn("FCM Messaging unsupported in current browser environment.");
+  }
+
+  // SERVICE WORKER REGISTRATION (Using relative path for /staff/ directory)
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./attendance/firebase-messaging-sw.js')
+      .then(reg => {
+        console.log("Service Worker registered successfully:", reg.scope);
+        if (messaging) messaging.useServiceWorker(reg);
+      })
+      .catch(err => console.error("Service Worker registration failed:", err));
   }
 
   let dbState = {
@@ -662,24 +655,12 @@
   let hasAlerted925 = false;
   let wakeLock = null;
 
-  // REGISTER SERVICE WORKER FOR WEB PUSH ON GITHUB PAGES
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./firebase-messaging-sw.js')
-      .then(reg => {
-        console.log("Service Worker registered successfully on GitHub Pages scope:", reg.scope);
-        if (messaging) messaging.useServiceWorker(reg);
-      })
-      .catch(err => console.error("Service Worker registration failed:", err));
-  }
-
-  // Real-time 9:25 AM Inspection Notification Timer Loop
   setInterval(() => {
     if (activeUser && activeUser.role !== "admin") {
       check925InspectionTrigger();
     }
   }, 10000);
 
-  // --- FIREBASE REALTIME SYNC ---
   db.ref("mediCheck").on("value", (snapshot) => {
     const data = snapshot.val();
     if (data) {
@@ -785,7 +766,7 @@
     if (!currentLeader) return;
 
     if (currentLeader.transferred) {
-      alert("Role has already been transferred once today. Multiple transfers are prevented.");
+      alert("Role has already been transferred once today.");
       return;
     }
 
@@ -803,7 +784,7 @@
     confirmBtn.className = "px-4 py-2 bg-sky-500 text-white text-xs font-bold rounded-xl shadow-sm opacity-50 cursor-not-allowed transition";
 
     if (availableStaff.length === 0) {
-      container.innerHTML = `<p class="text-xs text-slate-400 italic p-3 text-center">No other active staff available to transfer to.</p>`;
+      container.innerHTML = `<p class="text-xs text-slate-400 italic p-3 text-center">No other active staff available.</p>`;
     } else {
       container.innerHTML = availableStaff.map(s => `
         <button type="button" onclick="selectTransferStaff('${s.pin}', this)" class="transfer-staff-btn w-full p-3 border-2 border-slate-200 hover:border-sky-400 rounded-xl text-left flex items-center justify-between transition">
@@ -824,7 +805,6 @@
   function selectTransferStaff(pin, btnEl) {
     const staff = getStaffList().find(s => s.pin === pin);
     if (!staff) return;
-
     selectedTransferStaff = staff;
 
     document.querySelectorAll('.transfer-staff-btn').forEach(b => {
@@ -868,7 +848,7 @@
 
     closeTransferModal();
     setupStaffUI();
-    alert(`Opening Leader role successfully transferred from ${currentLeader.name} to ${selectedTransferStaff.name}.`);
+    alert(`Role transferred to ${selectedTransferStaff.name}.`);
   }
 
   function closeTransferModal() {
@@ -891,11 +871,11 @@
     const shiftStartStr = getShiftSchedule()[days[now.getDay()]] || "09:00";
     const [sHour, sMin] = shiftStartStr.split(":").map(Number);
 
-    const deadlineTotalMins = (sHour * 60) + sMin + 25; // 9:25 AM
+    const deadlineTotalMins = (sHour * 60) + sMin + 25;
     const deadlineHour = Math.floor(deadlineTotalMins / 60) % 24;
     const deadlineMin = deadlineTotalMins % 60;
 
-    const earlyGuardMins = deadlineTotalMins - 5; // 9:20 AM
+    const earlyGuardMins = deadlineTotalMins - 5;
     const earlyGuardHour = Math.floor(earlyGuardMins / 60) % 24;
     const earlyGuardMin = earlyGuardMins % 60;
 
@@ -932,14 +912,12 @@
     }
   }
 
-  // PUSH NOTIFICATION PERMISSION & FCM TOKEN REGISTRATION
   async function enablePushNotifications() {
     if (!messaging) return alert("Push messaging is not supported in your browser.");
     try {
       const permission = await Notification.requestPermission();
       if (permission === 'granted') {
-        // REPLACE WITH YOUR FIREBASE CONSOLE VAPID KEY
-        const token = await messaging.getToken({ vapidKey: 'BF5-HiJl4abtWCfKjTWb0slnPCEBTBXRMFQFEIwBRFTZtnmNUE40OmEFrQ76oBXzfLtQWflffRSsgGfsFSWAxvI' });
+        const token = await messaging.getToken({ vapidKey: 'YOUR_PUBLIC_VAPID_KEY_HERE' });
         if (token && activeUser) {
           db.ref(`mediCheck/pushTokens/${activeUser.pin}`).set(token);
           document.getElementById('push-permission-box').classList.add('hidden');
@@ -951,7 +929,6 @@
     }
   }
 
-  // SCREEN WAKE LOCK API (Prevents screen from going idle during duty)
   async function requestWakeLock() {
     try {
       if ('wakeLock' in navigator) {
@@ -1033,14 +1010,12 @@
     document.getElementById('duty-deadline-badge').textContent = `Deadline: ${dutyInfo.display12h}`;
     document.getElementById('duty-reminder-title').textContent = `Opening Prep Deadline: ${dutyInfo.display12h}`;
 
-    // Prompt Push Permission Bar if not granted
     if ('Notification' in window && Notification.permission !== 'granted') {
       document.getElementById('push-permission-box').classList.remove('hidden');
     } else {
       document.getElementById('push-permission-box').classList.add('hidden');
     }
 
-    // STEP 1: ATTENDANCE CARD SETUP
     const badge = document.getElementById('status-badge');
     const desc = document.getElementById('status-description');
     const btn = document.getElementById('btn-verify');
@@ -1067,7 +1042,6 @@
       btn.innerHTML = `<i class="fa-solid fa-crosshairs"></i> Submit Attendance`;
     }
 
-    // STEP 2: OPENING DUTIES LEADER & CHECKLIST SETUP
     const completedDutyLog = getTodayDutyCompletedLog();
     const currentLeader = getTodayDutyLeader();
     const leaderBanner = document.getElementById('leader-status-banner');
@@ -1095,7 +1069,7 @@
 
       if (currentLeader.pin === activeUser.pin) {
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-amber-50 border-amber-200 text-amber-900";
-        leaderText.innerHTML = `<div><i class="fa-solid fa-crown text-amber-600 text-sm mr-1"></i> You are Today's Opening Leader! Complete & sign off tasks below.${transferNotice}</div>`;
+        leaderText.innerHTML = `<div><i class="fa-solid fa-crown text-amber-600 text-sm mr-1"></i> You are Today's Opening Leader! Complete tasks below.${transferNotice}</div>`;
         
         if (!currentLeader.transferred) {
           btnTransfer.classList.remove('hidden');
@@ -1116,13 +1090,12 @@
         });
       } else {
         leaderBanner.className = "p-3.5 rounded-xl text-xs font-bold border bg-sky-50 border-sky-200 text-sky-900";
-        leaderText.innerHTML = `<div><i class="fa-solid fa-user-gear text-sky-600 text-sm mr-1"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong> (Completing prep...)${transferNotice}</div>`;
+        leaderText.innerHTML = `<div><i class="fa-solid fa-user-gear text-sky-600 text-sm mr-1"></i> Today's Opening Leader: <strong>${currentLeader.name}</strong>${transferNotice}</div>`;
         btnTransfer.classList.add('hidden');
         leaderRespNotice.classList.add('hidden');
         
-        nonLeaderNoticeText.textContent = `This is today's opening duty list. Please check with Opening Leader (${currentLeader.name}) for your assigned tasks.`;
+        nonLeaderNoticeText.textContent = `Check with Opening Leader (${currentLeader.name}) for your assigned tasks.`;
         nonLeaderNotice.classList.remove('hidden');
-        
         checklistContainer.classList.remove('hidden');
         btnSubmitDuties.classList.add('hidden');
         
@@ -1135,7 +1108,7 @@
     } else {
       leaderBanner.classList.remove('hidden');
       leaderBanner.className = "p-3 rounded-xl text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-600";
-      leaderText.innerHTML = `<i class="fa-solid fa-circle-info text-sky-600 mr-1"></i> Opening Leader will be automatically assigned to the first staff member checking in.`;
+      leaderText.innerHTML = `<i class="fa-solid fa-circle-info text-sky-600 mr-1"></i> Opening Leader will be auto-assigned to the first staff member checking in.`;
       btnTransfer.classList.add('hidden');
       nonLeaderNotice.classList.add('hidden');
       leaderRespNotice.classList.add('hidden');
@@ -1271,22 +1244,16 @@
     const currentTotalMins = (now.getHours() * 60) + now.getMinutes();
 
     if (currentTotalMins < dutyInfo.earlyGuardMins) {
-      alert(
-        `[ATTENTION: OPENING LEADER RESPONSIBILITY]\n\n` +
-        `Early duty sign-off is restricted before ${dutyInfo.earlyGuardDisplay12h}.\n\n` +
-        `As Opening Leader, you are directly responsible for ensuring all clinic setup and cleaning tasks are properly completed. ` +
-        `If clinic conditions during management spot-checks are unsatisfactory, the Opening Leader bears full responsibility.`
-      );
+      alert(`Early duty sign-off is restricted before ${dutyInfo.earlyGuardDisplay12h}.`);
       return;
     }
 
     const timestampStr = now.toLocaleString("en-SG", { timeZone: "Asia/Singapore" });
     const isOverdue = currentTotalMins > dutyInfo.deadlineTotalMins;
-
     const currentLeader = getTodayDutyLeader();
     const transferNote = (currentLeader && currentLeader.transferred) ? `Transferred from ${currentLeader.previousLeader}` : 'Original Leader';
 
-    const dutyEntry = {
+    saveDutyLog({
       type: 'COMPLETED',
       pin: activeUser.pin,
       name: activeUser.name,
@@ -1295,18 +1262,16 @@
       tasksCompleted: 6,
       transferTrail: transferNote,
       details: 'Signed off all 6 opening cleanliness and clinic setup tasks.'
-    };
+    });
 
-    saveDutyLog(dutyEntry);
     setupStaffUI();
-    alert(isOverdue ? `Opening duties submitted (Logged as OVERDUE after ${dutyInfo.display12h}).` : "Opening duties successfully completed and logged on-time!");
+    alert(isOverdue ? `Opening duties submitted (Logged as OVERDUE after ${dutyInfo.display12h}).` : "Opening duties successfully completed!");
   }
 
   function renderStaffLateRecords() {
     const logs = getLogs();
     const staffLogs = logs.filter(l => l.pin === activeUser.pin && l.approved);
     const lateLogs = staffLogs.filter(l => l.isLate);
-    
     const resets = getResetStates();
     const resetCount = resets[activeUser.pin] || 0;
     const effectiveLateCount = Math.max(0, lateLogs.length - resetCount);
@@ -1392,7 +1357,6 @@
       const approvedLogs = staffLogs.filter(l => l.approved);
       const onTimeCount = approvedLogs.filter(l => !l.isLate).length;
       const lateLogs = approvedLogs.filter(l => l.isLate);
-      
       const resetOffset = resets[staff.pin] || 0;
       const effectiveLate = Math.max(0, lateLogs.length - resetOffset);
 
@@ -1586,8 +1550,7 @@
   function deleteStaff(id) {
     const staff = getStaffList().find(s => s.id === id);
     if (!staff) return;
-
-    if (confirm(`Delete staff member ${staff.name}? This will remove directory entries and historical logs.`)) {
+    if (confirm(`Delete staff member ${staff.name}?`)) {
       saveStaffList(getStaffList().filter(s => s.id !== id));
       db.ref(`mediCheck/resets/${staff.pin}`).remove();
       resetStaffForm();
