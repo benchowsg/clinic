@@ -1678,7 +1678,7 @@ function findClashingLeave(staffId, startStr, endStr, duration, leaveType, nplTr
       return null;
     }
 
-    async function handleSubmitLeave(e) {
+async function handleSubmitLeave(e) {
       e.preventDefault();
       const errBox = document.getElementById('leave-form-error');
       errBox.classList.add('hidden');
@@ -1721,13 +1721,32 @@ function findClashingLeave(staffId, startStr, endStr, duration, leaveType, nplTr
         return showLeaveError(`Paid leave requires 3 continuous months of service (eligible ${t.eligibleDateStr}). Please select No Pay Leave (NPL).`);
       }
 
+      let isUrgentLeave = false;
       if (type === 'Annual Leave') {
-        const advanceNoticeDays = daysBetween(today, startDate);
-        if (advanceNoticeDays < 14) {
-          return showLeaveError(`Annual Leave must be applied at least 14 days (2 weeks) before the first date (currently ${advanceNoticeDays} days in advance).`);
-        }
         if ((bal.remainingAL - days) < -3.0) {
           return showLeaveError(`Annual Leave advance borrowing cannot exceed 3.0 days (your remaining balance is ${bal.remainingAL.toFixed(1)} days). Please submit excess days as No Pay Leave (NPL).`);
+        }
+
+        const advanceNoticeDays = daysBetween(today, startDate);
+        if (advanceNoticeDays < 14) {
+          if (reason.length < 10 || reason.toLowerCase() === 'taking leave') {
+            return showLeaveError(
+              `Because this leave is less than 14 days in advance (${advanceNoticeDays} day(s)), it is treated as URGENT LEAVE. Please enter a specific urgent reason in Remarks (at least 10 characters) before submitting.`
+            );
+          }
+
+          const caveatMsg =
+            `URGENT ANNUAL LEAVE NOTICE (${advanceNoticeDays} day(s) advance)\n\n` +
+            `Annual Leave normally requires 14 days advance notice. Submitting now will classify this as URGENT LEAVE subject to the following caveats:\n` +
+            `1. Discretionary Approval: Subject strictly to clinic manpower & colleague leave coverage.\n` +
+            `2. No Presumed Approval: You MUST alert Clinic Admin directly and obtain approval before taking leave (otherwise absence may be treated as No Pay Leave / AWOL).\n` +
+            `3. Supporting Proof: Admin may require documentary proof for urgent personal/family matters.\n\n` +
+            `Click OK to acknowledge these conditions and submit as Urgent Leave.`;
+
+          if (!confirm(caveatMsg)) {
+            return;
+          }
+          isUrgentLeave = true;
         }
       }
 
@@ -1803,7 +1822,7 @@ function findClashingLeave(staffId, startStr, endStr, duration, leaveType, nplTr
         }
       }
 
-let attachmentName = '';
+      let attachmentName = '';
       let attachmentData = '';
       if (fileInput.files && fileInput.files.length > 0) {
         const file = fileInput.files[0];
@@ -1842,6 +1861,7 @@ let attachmentName = '';
         days,
         reason: reason || (subType ? `${subType} Leave` : type),
         status: 'Pending',
+        isUrgentLeave,
         submittedAt: getNowTimestampSGT(),
         attachmentName,
         attachmentData,
@@ -1855,15 +1875,19 @@ let attachmentName = '';
         to: appState.settings.adminEmail,
         cc: currentUser.email,
         triggerType: 'LEAVE_SUBMITTED',
-        subject: `[MediLeave] New ${type} Request — ${currentUser.name} (${startDate} to ${endDate})`,
-        body: `Dear Clinic Admin,\n\n${currentUser.name} (${currentUser.role}) has submitted a new leave application:\n\n• Leave Type: ${type}${subType ? ' (' + subType + ')' : ''}${nplTrack ? ' (' + nplTrack + ' Track)' : ''}\n• Dates: ${startDate} to ${endDate} (${days.toFixed(1)} working day(s), ${duration})\n• Reason: ${newReq.reason}\n• Supporting Document: ${attachmentName || 'None attached'}\n${type === 'Annual Leave' ? '• SLA Reminder: Please review and approve at least 1 week prior to ' + startDate + '.\n' : ''}\nPlease log in to the MediLeave Admin Control Panel to approve or reject this request.\n\nRegards,\nMediLeave Automated Portal`
+        subject: `${isUrgentLeave ? '[URGENT LEAVE <14D] ' : ''}[MediLeave] New ${type} Request — ${currentUser.name} (${startDate} to ${endDate})`,
+        body: `Dear Clinic Admin,\n\n${currentUser.name} (${currentUser.role}) has submitted a new leave application:\n\n• Leave Type: ${type}${subType ? ' (' + subType + ')' : ''}${nplTrack ? ' (' + nplTrack + ' Track)' : ''}${isUrgentLeave ? ' [URGENT LEAVE — <14 DAYS NOTICE]' : ''}\n• Dates: ${startDate} to ${endDate} (${days.toFixed(1)} working day(s), ${duration})\n• Reason: ${newReq.reason}\n• Supporting Document: ${attachmentName || 'None attached'}\n${isUrgentLeave ? '• URGENT CAVEAT ACKNOWLEDGED: Staff acknowledged that approval is discretionary, subject to manpower coverage, and requires direct Admin confirmation.\n' : (type === 'Annual Leave' ? '• SLA Reminder: Please review and approve at least 1 week prior to ' + startDate + '.\n' : '')}\nPlease log in to the MediLeave Admin Control Panel to approve or reject this request.\n\nRegards,\nMediLeave Automated Portal`
       });
 
       e.target.reset();
       recalculateLeaveDays();
       onLeaveTypeChange();
       renderStaffPortal();
-      alert('Leave request submitted successfully. Automated notification email has been queued.');
+      alert(
+        isUrgentLeave
+          ? 'Urgent Leave request submitted. Please notify Clinic Admin directly to confirm approval before taking leave.'
+          : 'Leave request submitted successfully. Automated notification email has been queued.'
+      );
     }
 
     function getTomorrowSGT() {
@@ -2471,6 +2495,7 @@ function renderPendingApprovals() {
         const staff = appState.staff.find(s => s.id === r.staffId) || { name: 'Unknown', role: '' };
         const daysToStart = daysBetween(today, r.startDate);
         const isSLAUrgent = r.type === 'Annual Leave' && daysToStart <= 7;
+        const isUrgentCard = Boolean(r.isUrgentLeave || r.isUrgentChange);
 
         const reqSessions = getRequestSessionMap(r.startDate, r.endDate, r.duration);
         const colleagueOverlap = appState.requests.find(other => {
@@ -2485,12 +2510,19 @@ function renderPendingApprovals() {
           ? (appState.staff.find(s => s.id === colleagueOverlap.staffId) || { name: 'Colleague' })
           : null;
 
+        const cardStyle = isUrgentCard
+          ? 'bg-rose-50/70 border-rose-300'
+          : isSLAUrgent
+            ? 'bg-amber-50/70 border-amber-300'
+            : 'bg-slate-50 border-slate-200';
+
         return `
-          <div class="p-4 rounded-xl border ${isSLAUrgent ? 'bg-amber-50/70 border-amber-300' : 'bg-slate-50 border-slate-200'} flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="p-4 rounded-xl border ${cardStyle} flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="space-y-1">
               <div class="flex items-center gap-2 flex-wrap">
                 <span class="text-sm font-bold text-slate-900">${staff.name}</span>
                 <span class="px-2 py-0.5 bg-sky-100 text-sky-800 text-[11px] font-bold rounded-full">${r.type}${r.subType ? ' • ' + r.subType : ''}${r.nplTrack ? ' • ' + r.nplTrack : ''}</span>
+                ${r.isUrgentLeave ? `<span class="px-2 py-0.5 bg-rose-600 text-white text-[10px] font-extrabold rounded-full uppercase animate-pulse">Urgent Leave (&lt;14d)</span>` : ''}
                 ${isSLAUrgent ? `<span class="px-2 py-0.5 bg-rose-600 text-white text-[10px] font-extrabold rounded-full uppercase animate-pulse">SLA Reminder: Starts in ${daysToStart}d</span>` : ''}
                 ${overlapStaff ? `<span class="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-extrabold rounded-full uppercase">Medical Overlap: ${overlapStaff.name} Also Off</span>` : ''}
                 ${r.isDateChange ? `<span class="px-2 py-0.5 bg-indigo-600 text-white text-[10px] font-extrabold rounded-full uppercase">Date Change Request</span>` : ''}
