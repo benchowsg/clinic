@@ -951,76 +951,12 @@
         {
           id: 'stf_admin',
           pin: '9999',
-          name: 'Dr. Gerald Thang',
+          name: 'Clinic Admin',
           email: 'gerald@ahealingheartmedical.com',
           role: 'Admin',
           startDate: '2021-01-01',
           endDate: '',
           nationality: 'SG Citizen',
-          familyStatus: 'Married with Children',
-          nsLiability: 'No',
-          children: [{ name: 'Ethan Thang', dob: '2022-05-14', nationality: 'SG Citizen' }],
-          edd: '',
-          birthDate: '2022-05-14',
-          status: 'Active'
-        },
-        {
-          id: 'stf_1',
-          pin: '1234',
-          name: 'Dr. Sarah Tan',
-          email: 'sarah.tan@clinic.com.sg',
-          role: 'Senior Doctor',
-          startDate: '2023-03-01',
-          endDate: '',
-          nationality: 'SG Citizen',
-          familyStatus: 'Married with Children',
-          nsLiability: 'No',
-          children: [{ name: 'Chloe Tan', dob: '2023-08-20', nationality: 'SG Citizen' }],
-          edd: '',
-          birthDate: '2023-08-20',
-          status: 'Active'
-        },
-        {
-          id: 'stf_2',
-          pin: '2345',
-          name: 'Mei Ling',
-          email: 'meiling@clinic.com.sg',
-          role: 'Clinic Nurse',
-          startDate: '2025-02-10',
-          endDate: '',
-          nationality: 'SG Citizen',
-          familyStatus: 'Pregnant',
-          nsLiability: 'No',
-          children: [],
-          edd: '2027-02-15',
-          birthDate: '',
-          status: 'Active'
-        },
-        {
-          id: 'stf_3',
-          pin: '3456',
-          name: 'Kevin Lim',
-          email: 'kevin.lim@clinic.com.sg',
-          role: 'Clinic Assistant',
-          startDate: '2024-06-15',
-          endDate: '',
-          nationality: 'SG Citizen',
-          familyStatus: 'Single',
-          nsLiability: 'Yes',
-          children: [],
-          edd: '',
-          birthDate: '',
-          status: 'Active'
-        },
-        {
-          id: 'stf_4',
-          pin: '4567',
-          name: 'Chloe Ng',
-          email: 'chloe.ng@clinic.com.sg',
-          role: 'Clinic Assistant',
-          startDate: '2026-10-01',
-          endDate: '',
-          nationality: 'PR',
           familyStatus: 'Single',
           nsLiability: 'No',
           children: [],
@@ -1029,43 +965,7 @@
           status: 'Active'
         }
       ],
-      requests: [
-        {
-          id: 'req_101',
-          staffId: 'stf_1',
-          type: 'Annual Leave',
-          subType: '',
-          nplTrack: '',
-          startDate: '2026-12-04',
-          endDate: '2026-12-05',
-          duration: 'FULL',
-          days: 2.0,
-          reason: 'Family year-end trip (includes Saturday full day)',
-          status: 'Pending',
-          submittedAt: '2026-11-16 09:40:00',
-          attachmentName: '',
-          attachmentData: '',
-          claimStatus: ''
-        },
-        {
-          id: 'req_102',
-          staffId: 'stf_3',
-          type: 'NS Reservist',
-          subType: '',
-          nplTrack: '',
-          nsNotifiedDate: '2026-10-15',
-          startDate: '2026-12-14',
-          endDate: '2026-12-18',
-          duration: 'FULL',
-          days: 5.0,
-          reason: 'Annual High-Key ICT at Kranji Camp',
-          status: 'Approved',
-          submittedAt: '2026-10-16 14:15:00',
-          attachmentName: 'SAF100_KevinLim_ICT.pdf',
-          attachmentData: 'data:text/plain;base64,U0FGMTAwIE5PVElDRSAtIEtFVklOIExJTSAtIElDVA==',
-          claimStatus: 'Pending SAF Claim'
-        }
-      ],
+      requests: [],
       awolLogs: [],
       emailOutbox: []
     };
@@ -1109,6 +1009,23 @@
           }
           dbFirestore = firebase.firestore();
           firebaseEnabled = true;
+
+          // Sync latest live clinic data from Firestore on startup
+          dbFirestore.collection('medileave_state').doc('clinic_main').get()
+            .then((doc) => {
+              if (doc.exists) {
+                const cloudData = doc.data();
+                cloudData.publicHolidays = cloudData.publicHolidays || [];
+                cloudData.settings = Object.assign({}, DEFAULT_STATE.settings, cloudData.settings || {});
+                appState = cloudData;
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+                if (currentUser) {
+                  if (currentUser.role === 'Admin') renderAdminDashboard();
+                  else renderStaffPortal();
+                }
+              }
+            })
+            .catch((err) => console.warn('Firestore initial fetch skipped:', err));
 
           const badge = document.getElementById('backend-mode-badge');
           if (badge) {
