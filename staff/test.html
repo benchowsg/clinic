@@ -883,6 +883,75 @@
       </div>
     </div>
 
+    <!-- MODAL 3: MODIFY / CANCEL LEAVE MODAL -->
+    <div id="modal-modify-leave" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
+        <div class="flex items-center justify-between border-b pb-3">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Modify or Cancel Upcoming Leave</h3>
+            <p class="text-xs text-slate-500">Dates past 00:00h SGT are locked as exercised and cannot be changed</p>
+          </div>
+          <button type="button" onclick="toggleModifyLeaveModal(false)" class="text-slate-400 hover:text-slate-600 text-lg">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <input type="hidden" id="mod-req-id">
+
+        <div id="mod-exercised-banner" class="hidden p-3 bg-slate-100 border border-slate-300 rounded-xl text-xs text-slate-700"></div>
+        <div id="mod-urgent-banner" class="hidden p-3 bg-rose-50 border border-rose-300 rounded-xl text-xs text-rose-800 font-semibold"></div>
+        <div id="mod-error-box" class="hidden p-3 bg-rose-100 border border-rose-400 rounded-xl text-xs text-rose-900 font-bold"></div>
+
+        <div class="space-y-3 text-xs">
+          <div class="p-3 bg-sky-50 border border-sky-200 rounded-xl flex justify-between items-center">
+            <div>
+              <span class="text-[11px] font-bold text-sky-700 uppercase">Current Application</span>
+              <p id="mod-current-summary" class="font-bold text-slate-900 mt-0.5"></p>
+            </div>
+            <span id="mod-current-status" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-white border"></span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">New First Date</label>
+              <input type="date" id="mod-start" onchange="recalculateModifyDays()" class="w-full p-2.5 border rounded-xl bg-white">
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">New Last Date</label>
+              <input type="date" id="mod-end" onchange="recalculateModifyDays()" class="w-full p-2.5 border rounded-xl bg-white">
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">New Duration Option</label>
+            <select id="mod-duration" onchange="recalculateModifyDays()" class="w-full p-2.5 border rounded-xl bg-white"></select>
+          </div>
+
+          <div class="flex items-center justify-between p-3 bg-slate-50 border rounded-xl">
+            <span class="font-bold text-slate-700">Recalculated Total Leave Days:</span>
+            <span id="mod-days-badge" class="px-3 py-1 bg-sky-600 text-white font-extrabold rounded-lg">0.0 Days</span>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Reason for Date Change / Cancellation</label>
+            <textarea id="mod-reason" rows="2" placeholder="State reason for modifying or cancelling leave..." class="w-full p-2.5 border rounded-xl bg-white"></textarea>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t">
+          <button type="button" onclick="submitCancelRemainingLeave()" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold rounded-xl">
+            <i class="fa-solid fa-ban mr-1"></i> Cancel Future Leave
+          </button>
+          <div class="flex gap-2">
+            <button type="button" onclick="toggleModifyLeaveModal(false)" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl">Close</button>
+            <button type="button" onclick="submitModifyLeave()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl">
+              Submit Date Change
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- MODAL 3: ATTACHMENT PREVIEW & DOWNLOAD MODAL -->
     <div id="modal-attachment-viewer" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
       <div class="bg-white rounded-2xl border border-slate-200 max-w-xl w-full p-6 space-y-4 shadow-2xl">
@@ -1576,16 +1645,16 @@ function recalculateLeaveDays() {
       return map;
     }
 
-    function findClashingLeave(staffId, startStr, endStr, duration, leaveType, nplTrack) {
-      const newSessions = getRequestSessionMap(startStr, endStr, duration);
-      const isMedicalException =
-        leaveType === 'Medical Leave' ||
-        leaveType === 'Hospitalisation Leave' ||
-        (leaveType === 'No Pay Leave' && nplTrack === 'Medical');
+function findClashingLeave(staffId, startStr, endStr, duration, leaveType, nplTrack, excludeReqId = null) {
+   const newSessions = getRequestSessionMap(startStr, endStr, duration);
+   const isMedicalException =
+     leaveType === 'Medical Leave' ||
+     leaveType === 'Hospitalisation Leave' ||
+     (leaveType === 'No Pay Leave' && nplTrack === 'Medical');
 
-      const activeReqs = appState.requests.filter(
-        r => r.status === 'Pending' || r.status === 'Approved'
-      );
+   const activeReqs = appState.requests.filter(
+     r => r.id !== excludeReqId && (r.status === 'Pending' || r.status === 'Approved')
+   );
 
       for (const existing of activeReqs) {
         const isSelf = existing.staffId === staffId;
@@ -1797,6 +1866,315 @@ let attachmentName = '';
       alert('Leave request submitted successfully. Automated notification email has been queued.');
     }
 
+    function getTomorrowSGT() {
+      const today = parseDateLocal(getTodaySGT());
+      today.setDate(today.getDate() + 1);
+      return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    }
+
+    function countWorkingDaysBetween(startStr, endStr) {
+      if (endStr <= startStr) return 0;
+      const holidays = appState.publicHolidays || [];
+      const cur = parseDateLocal(startStr);
+      const end = parseDateLocal(endStr);
+      cur.setDate(cur.getDate() + 1);
+      let count = 0;
+      while (cur <= end) {
+        const iso = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}-${String(cur.getDate()).padStart(2, '0')}`;
+        if (cur.getDay() !== 0 && !holidays.some(h => h.date === iso)) count++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      return count;
+    }
+
+    function calculateWorkingDaysForRange(startStr, endStr, duration) {
+      const start = parseDateLocal(startStr);
+      const end = parseDateLocal(endStr);
+      if (end < start) return 0;
+      const holidays = appState.publicHolidays || [];
+      let workingDays = 0;
+      const cur = new Date(start);
+      while (cur <= end) {
+        const iso = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}-${String(cur.getDate()).padStart(2, '0')}`;
+        if (cur.getDay() !== 0 && !holidays.some(h => h.date === iso)) workingDays++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      if (workingDays <= 0) return 0;
+      if (startStr === endStr) {
+        return (duration === 'AM' || duration === 'PM') ? 0.5 : 1.0;
+      }
+      if (duration === 'START_PM' || duration === 'END_AM') return workingDays - 0.5;
+      if (duration === 'START_PM_END_AM') return Math.max(0, workingDays - 1.0);
+      return workingDays;
+    }
+
+    function toggleModifyLeaveModal(show) {
+      const modal = document.getElementById('modal-modify-leave');
+      if (!show) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        return;
+      }
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function openModifyLeaveModal(reqId) {
+      const req = appState.requests.find(r => r.id === reqId);
+      if (!req) return;
+
+      const today = getTodaySGT();
+      const tomorrow = getTomorrowSGT();
+      if (req.endDate <= today) {
+        alert('This leave has already passed 00:00h SGT and is locked as exercised.');
+        return;
+      }
+
+      document.getElementById('mod-req-id').value = req.id;
+      document.getElementById('mod-error-box').classList.add('hidden');
+      document.getElementById('mod-urgent-banner').classList.add('hidden');
+      document.getElementById('mod-reason').value = '';
+      document.getElementById('mod-current-summary').textContent = `${req.type}: ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)}d)`;
+      document.getElementById('mod-current-status').textContent = req.status;
+
+      const startInput = document.getElementById('mod-start');
+      const endInput = document.getElementById('mod-end');
+      const exercisedBanner = document.getElementById('mod-exercised-banner');
+
+      // 00:00h SGT cutoff: any day <= today is locked as exercised
+      if (req.startDate <= today) {
+        const exercisedDays = calculateWorkingDaysForRange(req.startDate, today, req.duration === 'START_PM' || req.duration === 'START_PM_END_AM' ? 'START_PM' : 'FULL');
+        exercisedBanner.classList.remove('hidden');
+        exercisedBanner.innerHTML = `<i class="fa-solid fa-lock mr-1"></i> <strong>00:00h SGT Lock:</strong> ${req.startDate} to ${today} (${exercisedDays.toFixed(1)}d) has already commenced and is deducted as taken. Only dates from <strong>${tomorrow}</strong> onward can be modified.`;
+        startInput.min = tomorrow;
+        startInput.value = tomorrow;
+      } else {
+        exercisedBanner.classList.add('hidden');
+        startInput.min = tomorrow;
+        startInput.value = req.startDate;
+      }
+
+      endInput.min = tomorrow;
+      endInput.value = req.endDate;
+      document.getElementById('mod-duration').value = req.duration;
+
+      recalculateModifyDays();
+      toggleModifyLeaveModal(true);
+    }
+
+    function recalculateModifyDays() {
+      const req = appState.requests.find(r => r.id === document.getElementById('mod-req-id').value);
+      if (!req) return 0;
+
+      const today = getTodaySGT();
+      const startStr = document.getElementById('mod-start').value;
+      const endStr = document.getElementById('mod-end').value;
+      const durationSel = document.getElementById('mod-duration');
+      const badge = document.getElementById('mod-days-badge');
+      const urgentBanner = document.getElementById('mod-urgent-banner');
+
+      if (!startStr || !endStr || endStr < startStr) {
+        badge.textContent = 'Invalid Range';
+        return 0;
+      }
+
+      const start = parseDateLocal(startStr);
+      const end = parseDateLocal(endStr);
+      const isSingle = startStr === endStr;
+      const startIsSat = start.getDay() === 6;
+      const endIsSat = end.getDay() === 6;
+      const prevVal = durationSel.value;
+
+      if (isSingle) {
+        durationSel.innerHTML = `
+          <option value="FULL">Full Day (1.0 day)</option>
+          <option value="AM">Half Day - AM (0.5d)</option>
+          <option value="PM">Half Day - PM (0.5d)</option>
+        `;
+        durationSel.disabled = startIsSat;
+        durationSel.value = (!startIsSat && ['FULL', 'AM', 'PM'].includes(prevVal)) ? prevVal : 'FULL';
+      } else {
+        durationSel.disabled = false;
+        durationSel.innerHTML = `
+          <option value="FULL">All Full Days (1.0d/day)</option>
+          <option value="START_PM" ${startIsSat ? 'disabled' : ''}>First Day PM Half + Remaining Full (-0.5d)</option>
+          <option value="END_AM" ${endIsSat ? 'disabled' : ''}>Full Days + Last Day AM Half (-0.5d)</option>
+          <option value="START_PM_END_AM" ${(startIsSat || endIsSat) ? 'disabled' : ''}>First Day PM + Last Day AM (-1.0d)</option>
+        `;
+        durationSel.value = ['FULL', 'START_PM', 'END_AM', 'START_PM_END_AM'].includes(prevVal) ? prevVal : 'FULL';
+      }
+
+      const futureDays = calculateWorkingDaysForRange(startStr, endStr, durationSel.value);
+      const lockedDays = req.startDate <= today
+        ? calculateWorkingDaysForRange(req.startDate, today, (req.duration === 'START_PM' || req.duration === 'START_PM_END_AM') ? 'START_PM' : 'FULL')
+        : 0;
+      const totalDays = lockedDays + futureDays;
+      badge.textContent = `${totalDays.toFixed(1)} Day${totalDays === 1 ? '' : 's'}`;
+
+      // < 3 working days urgent check
+      const workingNotice = Math.min(
+        countWorkingDaysBetween(today, startStr),
+        countWorkingDaysBetween(today, req.startDate <= today ? getTomorrowSGT() : req.startDate)
+      );
+      if (workingNotice < 3) {
+        urgentBanner.classList.remove('hidden');
+        urgentBanner.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>URGENT CHANGE (&lt;3 Working Days Notice):</strong> Because this change is within 3 working days, please also message/alert Clinic Admin directly after submitting so they can approve or disapprove promptly.`;
+      } else {
+        urgentBanner.classList.add('hidden');
+      }
+
+      return totalDays;
+    }
+
+    function submitModifyLeave() {
+      const req = appState.requests.find(r => r.id === document.getElementById('mod-req-id').value);
+      if (!req) return;
+
+      const errBox = document.getElementById('mod-error-box');
+      errBox.classList.add('hidden');
+
+      const today = getTodaySGT();
+      const tomorrow = getTomorrowSGT();
+      const newStart = document.getElementById('mod-start').value;
+      const newEnd = document.getElementById('mod-end').value;
+      const newDuration = document.getElementById('mod-duration').value;
+      const changeReason = document.getElementById('mod-reason').value.trim();
+
+      if (!newStart || !newEnd || newEnd < newStart) {
+        errBox.textContent = 'Please select a valid future date range.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+      if (newStart < tomorrow) {
+        errBox.textContent = `Dates on or before today (${today} 00:00h SGT) are locked. New dates must start on or after ${tomorrow}.`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+      if (!changeReason) {
+        errBox.textContent = 'Please state a reason for modifying the leave dates.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      // First-Come, First-Served Colleague Clash Check
+      const clash = findClashingLeave(currentUser.id, newStart, newEnd, newDuration, req.type, req.nplTrack, req.id);
+      if (clash) {
+        errBox.textContent = clash.isSelf
+          ? `Date clash: ${clash.date} (${clash.sessions}) overlaps with another one of your active leave requests.`
+          : `The dates chosen (${clash.date} • ${clash.sessions}) are already taken by another colleague. Please select other dates for approval.`;
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      const isPartiallyExercised = req.startDate <= today;
+      const finalStart = isPartiallyExercised ? req.startDate : newStart;
+      const totalNewDays = recalculateModifyDays();
+      if (totalNewDays <= 0) {
+        errBox.textContent = 'Selected range contains 0 working days.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      // Balance check for increased days
+      const deltaDays = totalNewDays - req.days;
+      if (deltaDays > 0 && req.type === 'Annual Leave') {
+        const bal = getStaffBalances(currentUser);
+        if ((bal.remainingAL - deltaDays) < -3.0) {
+          errBox.textContent = `Insufficient Annual Leave balance (exceeds -3.0d advance borrowing cap).`;
+          errBox.classList.remove('hidden');
+          return;
+        }
+      }
+
+      const workingNotice = countWorkingDaysBetween(today, newStart);
+      const isUrgentChange = workingNotice < 3;
+
+      // Save original snapshot so Admin can revert if disapproved
+      if (!req.previousSnapshot) {
+        req.previousSnapshot = {
+          startDate: req.startDate,
+          endDate: req.endDate,
+          duration: req.duration,
+          days: req.days,
+          status: req.status
+        };
+      }
+
+      req.startDate = finalStart;
+      req.endDate = newEnd;
+      req.duration = isPartiallyExercised ? 'FULL' : newDuration;
+      req.days = totalNewDays;
+      req.status = 'Pending';
+      req.isDateChange = true;
+      req.isUrgentChange = isUrgentChange;
+      req.changeReason = changeReason;
+      req.submittedAt = getNowTimestampSGT();
+
+      saveState();
+
+      queueAutomatedEmail({
+        to: appState.settings.adminEmail,
+        cc: currentUser.email,
+        triggerType: 'LEAVE_DATE_CHANGED',
+        subject: `${isUrgentChange ? '[URGENT <3D] ' : ''}[MediLeave] Leave Date Change Request — ${currentUser.name}`,
+        body: `Dear Clinic Admin,\n\n${currentUser.name} has requested a LEAVE DATE CHANGE (requires Admin approval before taking):\n\n• Leave Type: ${req.type}\n• Previous Dates: ${req.previousSnapshot.startDate} to ${req.previousSnapshot.endDate} (${req.previousSnapshot.days.toFixed(1)}d)\n• Requested New Dates: ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)}d)\n• Change Reason: ${changeReason}\n${isUrgentChange ? '• URGENT ALERT: Less than 3 working days notice given. Staff has been instructed to alert Admin directly.\n' : ''}\nPlease log in to MediLeave Admin Control Panel to approve or disapprove.\n\nRegards,\nMediLeave Automated Portal`
+      });
+
+      toggleModifyLeaveModal(false);
+      renderStaffPortal();
+      alert(
+        isUrgentChange
+          ? 'Date change submitted for Admin approval. URGENT (<3 working days): Please alert Clinic Admin directly so they can review it promptly!'
+          : 'Date change submitted. Your new dates remain Pending until Clinic Admin approves.'
+      );
+    }
+
+    function submitCancelRemainingLeave() {
+      const req = appState.requests.find(r => r.id === document.getElementById('mod-req-id').value);
+      if (!req) return;
+
+      const changeReason = document.getElementById('mod-reason').value.trim();
+      if (!changeReason) {
+        const errBox = document.getElementById('mod-error-box');
+        errBox.textContent = 'Please state a reason before cancelling your upcoming leave.';
+        errBox.classList.remove('hidden');
+        return;
+      }
+
+      const today = getTodaySGT();
+      const workingNotice = countWorkingDaysBetween(today, req.startDate <= today ? getTomorrowSGT() : req.startDate);
+      const isUrgent = workingNotice < 3;
+
+      if (req.startDate <= today) {
+        // Partially exercised: lock days <= today as Approved/Taken, release remaining future days
+        const lockedDays = calculateWorkingDaysForRange(req.startDate, today, (req.duration === 'START_PM' || req.duration === 'START_PM_END_AM') ? 'START_PM' : 'FULL');
+        req.endDate = today;
+        req.days = lockedDays;
+        req.status = 'Approved';
+        req.reason += ` [Cancelled remaining future days: ${changeReason}]`;
+      } else {
+        // Entire leave is in the future: mark Rejected/Cancelled so 100% of days return to balance
+        req.status = 'Rejected';
+        req.reason += ` [Cancelled by Staff: ${changeReason}]`;
+      }
+
+      saveState();
+
+      queueAutomatedEmail({
+        to: appState.settings.adminEmail,
+        cc: currentUser.email,
+        triggerType: 'LEAVE_CANCELLED',
+        subject: `${isUrgent ? '[URGENT <3D] ' : ''}[MediLeave] Upcoming Leave Cancelled — ${currentUser.name}`,
+        body: `Dear Clinic Admin,\n\n${currentUser.name} has cancelled their upcoming ${req.type} (${req.startDate} to ${req.endDate}).\n• Reason: ${changeReason}\n${isUrgent ? '• URGENT NOTICE: Cancelled with less than 3 working days notice.\n' : ''}\nUnused leave days have been automatically restored to the staff member's balance.\n\nRegards,\nMediLeave Automated Portal`
+      });
+
+      toggleModifyLeaveModal(false);
+      renderStaffPortal();
+      alert(isUrgent
+        ? 'Upcoming leave cancelled and balance restored. Because this was within 3 working days, please also notify Clinic Admin directly.'
+        : 'Upcoming leave cancelled and your leave balance has been restored.');
+    }
+
     function showLeaveError(msg) {
       const errBox = document.getElementById('leave-form-error');
       errBox.textContent = msg;
@@ -1813,41 +2191,49 @@ let attachmentName = '';
       });
     }
 
-    function renderStaffRequestsList() {
-      const container = document.getElementById('staff-requests-list');
+function renderStaffRequestsList() {
+      const tbody = document.getElementById('staff-requests-tbody');
       const myReqs = appState.requests.filter(r => r.staffId === currentUser.id);
+      const todaySGT = getTodaySGT();
 
       if (!myReqs.length) {
-        container.innerHTML = '<p class="text-xs text-slate-400 italic py-2">No leave requests submitted yet.</p>';
+        tbody.innerHTML = '<tr><td colspan="6" class="py-6 text-center text-slate-400">No leave requests submitted yet.</td></tr>';
         return;
       }
 
-      container.innerHTML = myReqs.map(r => {
-        let badgeCls = 'bg-amber-100 text-amber-800';
-        if (r.status === 'Approved') badgeCls = 'bg-emerald-100 text-emerald-800';
-        if (r.status === 'Rejected') badgeCls = 'bg-rose-100 text-rose-800';
+      tbody.innerHTML = myReqs.map(r => {
+        const badgeClass =
+          r.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' :
+          r.status === 'Rejected' ? 'bg-rose-100 text-rose-800' :
+          'bg-amber-100 text-amber-800';
+
+        const canModify = (r.status === 'Pending' || r.status === 'Approved') && r.endDate > todaySGT;
 
         return `
-          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
-            <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-bold text-slate-900">${r.type}${r.subType ? ' (' + r.subType + ')' : ''}</span>
-              <span class="px-2.5 py-0.5 text-[10px] font-extrabold rounded-full uppercase ${badgeCls}">${r.status}</span>
-            </div>
-            <p class="text-[11px] font-mono text-slate-600">${r.startDate} to ${r.endDate} &bull; <strong>${r.days.toFixed(1)}d</strong> (${r.duration})</p>
-            <p class="text-[11px] text-slate-500">${r.reason}</p>
-            <div class="flex items-center justify-between pt-1">
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3 font-semibold text-slate-900">
+              ${r.type}${r.subType ? ' (' + r.subType + ')' : ''}${r.nplTrack ? ' (' + r.nplTrack + ')' : ''}
+              ${r.isDateChange ? '<span class="ml-1.5 px-1.5 py-0.5 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded">Date Change</span>' : ''}
+            </td>
+            <td class="px-4 py-3 font-mono text-xs text-slate-600">${r.startDate} to ${r.endDate}</td>
+            <td class="px-4 py-3 font-bold text-slate-800">${r.days.toFixed(1)}d <span class="text-[11px] font-normal text-slate-400">(${r.duration})</span></td>
+            <td class="px-4 py-3 text-xs text-slate-600 max-w-xs truncate">${r.reason}</td>
+            <td class="px-4 py-3">
               ${r.attachmentName
-                ? `<button type="button" onclick="openAttachmentModal('${r.id}')" class="text-[11px] font-bold text-sky-600 hover:underline"><i class="fa-solid fa-paperclip mr-1"></i>${r.attachmentName}</button>`
-                : '<span class="text-[10px] text-slate-400">No attachment</span>'}
-              ${r.status === 'Pending'
-                ? `<button type="button" onclick="cancelStaffRequest('${r.id}')" class="text-[11px] font-bold text-rose-600 hover:underline">Cancel</button>`
+                ? `<button type="button" onclick="openAttachmentModal('${r.id}')" class="text-xs font-semibold text-sky-600 hover:underline"><i class="fa-solid fa-paperclip mr-1"></i>${r.attachmentName}</button>`
+                : '<span class="text-xs text-slate-400">-</span>'}
+            </td>
+            <td class="px-4 py-3 whitespace-nowrap">
+              <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${badgeClass}">${r.status}</span>
+              ${canModify
+                ? `<button type="button" onclick="openModifyLeaveModal('${r.id}')" class="ml-2 px-2.5 py-1 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded-lg text-[11px] font-bold">Modify / Cancel</button>`
                 : ''}
-            </div>
-          </div>
+            </td>
+          </tr>
         `;
       }).join('');
     }
-
+    
     function cancelStaffRequest(reqId) {
       appState.requests = appState.requests.filter(r => r.id !== reqId);
       saveState();
@@ -2106,7 +2492,10 @@ function renderPendingApprovals() {
                 <span class="px-2 py-0.5 bg-sky-100 text-sky-800 text-[11px] font-bold rounded-full">${r.type}${r.subType ? ' • ' + r.subType : ''}${r.nplTrack ? ' • ' + r.nplTrack : ''}</span>
                 ${isSLAUrgent ? `<span class="px-2 py-0.5 bg-rose-600 text-white text-[10px] font-extrabold rounded-full uppercase animate-pulse">SLA Reminder: Starts in ${daysToStart}d</span>` : ''}
                 ${overlapStaff ? `<span class="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-extrabold rounded-full uppercase">Medical Overlap: ${overlapStaff.name} Also Off</span>` : ''}
+                ${r.isDateChange ? `<span class="px-2 py-0.5 bg-indigo-600 text-white text-[10px] font-extrabold rounded-full uppercase">Date Change Request</span>` : ''}
+                ${r.isUrgentChange ? `<span class="px-2 py-0.5 bg-rose-600 text-white text-[10px] font-extrabold rounded-full uppercase animate-pulse">Urgent &lt;3 Working Days</span>` : ''}
               </div>
+              ${r.previousSnapshot ? `<p class="text-[11px] text-indigo-700 font-semibold">Previous Dates: ${r.previousSnapshot.startDate} to ${r.previousSnapshot.endDate} (${r.previousSnapshot.days.toFixed(1)}d) &rarr; Change Reason: ${r.changeReason}</p>` : ''}
               <p class="text-xs font-mono text-slate-700">${r.startDate} to ${r.endDate} &bull; <strong>${r.days.toFixed(1)} Day(s)</strong> (${r.duration})</p>
               <p class="text-xs text-slate-600">Reason: ${r.reason}</p>
               ${r.attachmentName
@@ -2127,44 +2516,46 @@ function renderPendingApprovals() {
       }).join('');
     }
 
-    function decideLeaveRequest(reqId, decision) {
-      const idx = appState.requests.findIndex(r => r.id === reqId);
-      if (idx === -1) return;
+function decideLeaveRequest(reqId, decision) {
+      const req = appState.requests.find(r => r.id === reqId);
+      if (!req) return;
+      const staff = appState.staff.find(s => s.id === req.staffId) || { name: 'Staff', email: '' };
 
-      const req = appState.requests[idx];
-      const staff = appState.staff.find(s => s.id === req.staffId);
-      let rejectReason = '';
+      const wasDateChange = Boolean(req.isDateChange && req.previousSnapshot);
+      const revertedToOriginal =
+        decision === 'Rejected' &&
+        wasDateChange &&
+        req.previousSnapshot.startDate > getTodaySGT();
 
-      if (decision === 'Rejected') {
-        rejectReason = prompt('Enter reason for disapproving this leave request (will be included in email to staff):', 'Clinic operational manpower requirements');
-        if (rejectReason === null) return;
+      if (revertedToOriginal) {
+        req.startDate = req.previousSnapshot.startDate;
+        req.endDate = req.previousSnapshot.endDate;
+        req.duration = req.previousSnapshot.duration;
+        req.days = req.previousSnapshot.days;
+        req.status = req.previousSnapshot.status;
+        delete req.previousSnapshot;
+        req.isDateChange = false;
+        req.isUrgentChange = false;
+      } else {
+        req.status = decision;
+        delete req.previousSnapshot;
+        req.isDateChange = false;
+        req.isUrgentChange = false;
       }
 
-      req.status = decision;
-      req.decidedAt = getNowTimestampSGT();
-      if (rejectReason) req.rejectReason = rejectReason;
       saveState();
 
-      if (staff) {
-        const bal = getStaffBalances(staff);
-        if (decision === 'Approved') {
-          queueAutomatedEmail({
-            to: staff.email,
-            cc: appState.settings.adminEmail,
-            triggerType: 'LEAVE_APPROVED',
-            subject: `[MediLeave] Leave Approved — ${req.type} (${req.startDate} to ${req.endDate})`,
-            body: `Dear ${staff.name},\n\nYour ${req.type} application for ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)} working day(s)) has been APPROVED.\n\nUpdated Calendar Year Balances:\n• Annual Leave Remaining: ${bal.remainingAL.toFixed(1)} days\n• Other Leave Remaining: ${bal.remainingOther.toFixed(1)} days\n• Medical Leave (MC) Remaining: ${bal.remainingMC.toFixed(1)} days\n• Hospitalisation Leave Remaining: ${bal.remainingHosp.toFixed(1)} days\n\nRegards,\nClinic Administration`
-          });
-        } else {
-          queueAutomatedEmail({
-            to: staff.email,
-            cc: appState.settings.adminEmail,
-            triggerType: 'LEAVE_DISAPPROVED',
-            subject: `[MediLeave] Leave Not Approved — ${req.type} (${req.startDate} to ${req.endDate})`,
-            body: `Dear ${staff.name},\n\nYour ${req.type} application for ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)} working day(s)) has NOT been approved.\n\nReason: ${rejectReason}\n\nPlease note that you are expected to report for duty as scheduled. Any unexcused absence without valid supporting documentation will be recorded as AWOL.\n\nRegards,\nClinic Administration`
-          });
-        }
-      }
+      const statusLabel = revertedToOriginal
+        ? 'DATE CHANGE DISAPPROVED (Reverted to Original Approved Dates)'
+        : decision.toUpperCase();
+
+      queueAutomatedEmail({
+        to: staff.email || appState.settings.adminEmail,
+        cc: appState.settings.adminEmail,
+        triggerType: decision === 'Approved' ? 'LEAVE_APPROVED' : 'LEAVE_REJECTED',
+        subject: `[MediLeave] Leave Application ${statusLabel} — ${req.type} (${req.startDate} to ${req.endDate})`,
+        body: `Dear ${staff.name},\n\nYour leave application has been reviewed by Clinic Admin:\n\n• Outcome: ${statusLabel}\n• Leave Type: ${req.type}\n• Active Dates: ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)} working day(s))\n${decision === 'Rejected' && !revertedToOriginal && req.type === 'No Pay Leave' ? '• IMPORTANT NOTICE: Because your No Pay Leave was NOT approved, you are required to report for duty as scheduled. Unexcused absence will be treated as AWOL.\n' : ''}\nRegards,\nClinic Management (MediLeave)`
+      });
 
       renderAdminDashboard();
     }
