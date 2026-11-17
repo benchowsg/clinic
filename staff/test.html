@@ -579,7 +579,7 @@
             </div>
             <div>
               <label class="block text-[11px] font-bold text-slate-500 mb-1">Work Email Address</label>
-              <input type="email" id="input-staff-email" placeholder="sarah@clinic.com.sg" required class="w-full p-2 text-xs border rounded-lg">
+              <input type="email" id="input-staff-email" placeholder="staff@example.com" required class="w-full p-2 text-xs border rounded-lg">
             </div>
             <div>
               <label class="block text-[11px] font-bold text-slate-500 mb-1">Role / Access Level</label>
@@ -708,7 +708,7 @@
               <p class="text-xs text-slate-500">Leave submissions, approvals, and disapprovals dispatch automatically. AWOL &amp; disciplinary notices are reviewed/edited prior to sending.</p>
             </div>
             <span class="px-3 py-1 bg-sky-50 border border-sky-200 text-sky-800 text-xs font-bold rounded-lg">
-              Sender: <span id="display-sender-email">hr@clinic.com.sg</span>
+              Sender: <span id="display-sender-email">Clinic HR Portal</span>
             </span>
           </div>
           <div class="space-y-3" id="email-outbox-list"></div>
@@ -727,11 +727,11 @@
             <div class="space-y-3">
               <div>
                 <label class="block text-[11px] font-bold text-slate-600 mb-1">Clinic Official Sender Email (From Address)</label>
-                <input type="email" id="fb-sender-email" placeholder="hr@yourclinic.com.sg" class="w-full p-2.5 text-xs border rounded-xl font-mono">
+                <input type="text" id="fb-sender-email" placeholder="hr@example.com" class="w-full p-2.5 text-xs border rounded-xl font-mono">
               </div>
               <div>
-                <label class="block text-[11px] font-bold text-slate-600 mb-1">Admin Notification &amp; CC Email</label>
-                <input type="email" id="fb-admin-email" placeholder="gerald.thang@yourclinic.com.sg" class="w-full p-2.5 text-xs border rounded-xl font-mono">
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Admin Notification &amp; CC Email (or ADMIN)</label>
+                <input type="text" id="fb-admin-email" placeholder="ADMIN" class="w-full p-2.5 text-xs border rounded-xl font-mono">
               </div>
               <div>
                 <label class="block text-[11px] font-bold text-slate-600 mb-1">Firebase Project ID</label>
@@ -1015,22 +1015,19 @@
 
     const DEFAULT_STATE = {
       settings: {
-        senderEmail: 'ben@ahealingheartmedical.com',
-        adminEmail: 'ben@ahealingheartmedical.com, gerald@ahealingheartmedical.com',
-        driveWebhookUrl: 'https://script.google.com/macros/s/AKfycbyB1FI3gi4RB4FmXrR1sMM053a3mfIOMqpiR7B9SR1Ce3N2W7pH7RwmMQsqVBcYhbow/exec',
-        firebaseConfig: {
-          projectId: 'medileave-90623',
-          apiKey: 'AIzaSyCfppCxFW3cMrqR3T-cxt-qZDSbDHbMMiE',
-          storageBucket: ''
+        senderEmail: '',
+        adminEmail: 'ADMIN',
+        driveWebhookUrl: '',
+        firebaseConfig: { ... }
         }
       },
       publicHolidays: [],
-      staff: [
+staff: [
         {
           id: 'stf_admin',
-          pin: '9999',
+          pin: '',
           name: 'Clinic Admin',
-          email: 'gerald@ahealingheartmedical.com',
+          email: 'ADMIN',
           role: 'Admin',
           startDate: '2021-01-01',
           endDate: '',
@@ -1130,8 +1127,15 @@
       return `${cleanStaff}_${cleanCat}_${dateTag}.${ext}`;
     }
 
-async function uploadAttachmentToGoogleDrive(file, customFileName) {
-      const webhookUrl = appState.settings.driveWebhookUrl;
+    async function uploadAttachmentToGoogleDrive(file, customFileName) {
+      const webhookUrl =
+        (appState.settings && appState.settings.driveWebhookUrl) ||
+        (DEFAULT_STATE.settings && DEFAULT_STATE.settings.driveWebhookUrl) ||
+        '';
+      const bridgeToken =
+        (appState.settings && appState.settings.bridgeToken) ||
+        (DEFAULT_STATE.settings && DEFAULT_STATE.settings.bridgeToken) ||
+        '';
       if (!file || !webhookUrl) return null;
 
       return new Promise((resolve) => {
@@ -1143,6 +1147,7 @@ async function uploadAttachmentToGoogleDrive(file, customFileName) {
               method: 'POST',
               headers: { 'Content-Type': 'text/plain;charset=utf-8' },
               body: JSON.stringify({
+                token: bridgeToken,
                 filename: customFileName,
                 mimeType: file.type || 'application/octet-stream',
                 base64: base64Data
@@ -1326,12 +1331,16 @@ async function uploadAttachmentToGoogleDrive(file, customFileName) {
         (appState.settings && appState.settings.driveWebhookUrl) ||
         (DEFAULT_STATE.settings && DEFAULT_STATE.settings.driveWebhookUrl) ||
         '';
+      const bridgeToken =
+        (appState.settings && appState.settings.bridgeToken) ||
+        (DEFAULT_STATE.settings && DEFAULT_STATE.settings.bridgeToken) ||
+        '';
 
       const emailRecord = {
         id: 'mail_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
-        from: appState.settings.senderEmail || 'ben@ahealingheartmedical.com',
-        to,
-        cc: cc || appState.settings.adminEmail || 'ben@ahealingheartmedical.com, gerald@ahealingheartmedical.com',
+        from: appState.settings.senderEmail || 'Clinic HR Portal',
+        to: to || 'ADMIN',
+        cc: cc || appState.settings.adminEmail || 'ADMIN',
         subject,
         body,
         triggerType,
@@ -1350,6 +1359,7 @@ async function uploadAttachmentToGoogleDrive(file, customFileName) {
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             action: 'sendEmail',
+            token: bridgeToken,
             to: emailRecord.to,
             cc: emailRecord.cc,
             subject: emailRecord.subject,
@@ -1372,7 +1382,7 @@ async function uploadAttachmentToGoogleDrive(file, customFileName) {
         dbFirestore.collection('mail').add({
           to: [emailRecord.to],
           cc: emailRecord.cc ? [emailRecord.cc] : [],
-          replyTo: appState.settings.adminEmail,
+          replyTo: appState.settings.adminEmail || 'ADMIN',
           message: {
             subject: emailRecord.subject,
             text: emailRecord.body
@@ -3173,9 +3183,9 @@ function renderStaffDirectoryTab() {
       document.getElementById('fb-storage-bucket').value = appState.settings.firebaseConfig.storageBucket || '';
     }
 
-    function saveFirebaseConfig() {
-      appState.settings.senderEmail = document.getElementById('fb-sender-email').value.trim() || 'hr@clinic.com.sg';
-      appState.settings.adminEmail = document.getElementById('fb-admin-email').value.trim() || 'gerald.thang@clinic.com.sg';
+  function saveFirebaseConfig() {
+      appState.settings.senderEmail = document.getElementById('fb-sender-email').value.trim() || '';
+      appState.settings.adminEmail = document.getElementById('fb-admin-email').value.trim() || 'ADMIN';
       appState.settings.firebaseConfig = {
         projectId: document.getElementById('fb-project-id').value.trim(),
         apiKey: document.getElementById('fb-api-key').value.trim(),
