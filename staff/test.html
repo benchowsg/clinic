@@ -1527,6 +1527,62 @@ function recalculateLeaveDays() {
       return totalDays;
     }
 
+    function getRequestSessionMap(startStr, endStr, duration) {
+      const map = {};
+      const start = parseDateLocal(startStr);
+      const end = parseDateLocal(endStr);
+      const holidays = appState.publicHolidays || [];
+      const isSingleDay = startStr === endStr;
+      const cur = new Date(start);
+
+      while (cur <= end) {
+        const dayOfWeek = cur.getDay();
+        const iso = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}-${String(cur.getDate()).padStart(2, '0')}`;
+        const isPH = holidays.some(h => h.date === iso);
+
+        if (dayOfWeek !== 0 && !isPH) {
+          let sessions = ['AM', 'PM'];
+          if (isSingleDay) {
+            if (duration === 'AM') sessions = ['AM'];
+            else if (duration === 'PM') sessions = ['PM'];
+          } else {
+            if (iso === startStr && (duration === 'START_PM' || duration === 'START_PM_END_AM')) {
+              sessions = ['PM'];
+            } else if (iso === endStr && (duration === 'END_AM' || duration === 'START_PM_END_AM')) {
+              sessions = ['AM'];
+            }
+          }
+          map[iso] = sessions;
+        }
+        cur.setDate(cur.getDate() + 1);
+      }
+      return map;
+    }
+
+    function findClashingLeave(staffId, startStr, endStr, duration) {
+      const newSessions = getRequestSessionMap(startStr, endStr, duration);
+      const activeReqs = appState.requests.filter(
+        r => r.staffId === staffId && (r.status === 'Pending' || r.status === 'Approved')
+      );
+
+      for (const existing of activeReqs) {
+        const existingSessions = getRequestSessionMap(existing.startDate, existing.endDate, existing.duration);
+        for (const dateIso of Object.keys(newSessions)) {
+          if (existingSessions[dateIso]) {
+            const overlap = newSessions[dateIso].filter(s => existingSessions[dateIso].includes(s));
+            if (overlap.length > 0) {
+              return {
+                date: dateIso,
+                sessions: overlap.length === 2 ? 'Full Day' : `${overlap[0]} Session`,
+                existing
+              };
+            }
+          }
+        }
+      }
+      return null;
+    }
+
     async function handleSubmitLeave(e) {
       e.preventDefault();
       const errBox = document.getElementById('leave-form-error');
@@ -1547,6 +1603,13 @@ function recalculateLeaveDays() {
 
       if (startDate.slice(0, 4) !== endDate.slice(0, 4)) {
         return showLeaveError('Leave requests cannot span across 31 Dec. Please submit separate applications per calendar year.');
+      }
+
+      const clash = findClashingLeave(currentUser.id, startDate, endDate, duration);
+      if (clash) {
+        return showLeaveError(
+          `Date clash detected: ${clash.date} (${clash.sessions}) overlaps with your existing ${clash.existing.status.toLowerCase()} ${clash.existing.type} (${clash.existing.startDate} to ${clash.existing.endDate}).`
+        );
       }
 
       const bal = getStaffBalances(currentUser);
