@@ -1021,16 +1021,20 @@
     let dbFirestore = null;
     let storageBucket = null;
 
-    const DEFAULT_STATE = {
+  const DEFAULT_STATE = {
       settings: {
         senderEmail: '',
         adminEmail: 'ADMIN',
         driveWebhookUrl: '',
         bridgeToken: '',
-        firebaseConfig: { ... }
+        firebaseConfig: {
+          projectId: '',
+          apiKey: '',
+          storageBucket: ''
+        }
       },
       publicHolidays: [],
-staff: [
+  staff: [
         {
           id: 'stf_admin',
           pin: '',
