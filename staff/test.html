@@ -2192,16 +2192,18 @@ let attachmentName = '';
     }
 
 function renderStaffRequestsList() {
-      const tbody = document.getElementById('staff-requests-tbody');
+      const container = document.getElementById('staff-requests-list') || document.getElementById('staff-requests-tbody');
+      if (!container) return;
+
       const myReqs = appState.requests.filter(r => r.staffId === currentUser.id);
       const todaySGT = getTodaySGT();
 
       if (!myReqs.length) {
-        tbody.innerHTML = '<tr><td colspan="6" class="py-6 text-center text-slate-400">No leave requests submitted yet.</td></tr>';
+        container.innerHTML = '<p class="text-xs text-slate-400 italic py-4 text-center">No leave requests submitted yet.</p>';
         return;
       }
 
-      tbody.innerHTML = myReqs.map(r => {
+      container.innerHTML = myReqs.map(r => {
         const badgeClass =
           r.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' :
           r.status === 'Rejected' ? 'bg-rose-100 text-rose-800' :
@@ -2210,26 +2212,25 @@ function renderStaffRequestsList() {
         const canModify = (r.status === 'Pending' || r.status === 'Approved') && r.endDate > todaySGT;
 
         return `
-          <tr class="hover:bg-slate-50">
-            <td class="px-4 py-3 font-semibold text-slate-900">
-              ${r.type}${r.subType ? ' (' + r.subType + ')' : ''}${r.nplTrack ? ' (' + r.nplTrack + ')' : ''}
-              ${r.isDateChange ? '<span class="ml-1.5 px-1.5 py-0.5 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded">Date Change</span>' : ''}
-            </td>
-            <td class="px-4 py-3 font-mono text-xs text-slate-600">${r.startDate} to ${r.endDate}</td>
-            <td class="px-4 py-3 font-bold text-slate-800">${r.days.toFixed(1)}d <span class="text-[11px] font-normal text-slate-400">(${r.duration})</span></td>
-            <td class="px-4 py-3 text-xs text-slate-600 max-w-xs truncate">${r.reason}</td>
-            <td class="px-4 py-3">
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-sm font-bold text-slate-900">${r.type}${r.subType ? ' (' + r.subType + ')' : ''}${r.nplTrack ? ' (' + r.nplTrack + ')' : ''}</span>
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${badgeClass}">${r.status}</span>
+                ${r.isDateChange ? '<span class="px-2 py-0.5 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded-full">Date Change</span>' : ''}
+              </div>
+              <p class="text-xs font-mono text-slate-600">${r.startDate} to ${r.endDate} &bull; <strong>${r.days.toFixed(1)}d</strong> (${r.duration})</p>
+              <p class="text-xs text-slate-500">${r.reason}</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
               ${r.attachmentName
-                ? `<button type="button" onclick="openAttachmentModal('${r.id}')" class="text-xs font-semibold text-sky-600 hover:underline"><i class="fa-solid fa-paperclip mr-1"></i>${r.attachmentName}</button>`
-                : '<span class="text-xs text-slate-400">-</span>'}
-            </td>
-            <td class="px-4 py-3 whitespace-nowrap">
-              <span class="px-2.5 py-1 rounded-full text-[11px] font-bold ${badgeClass}">${r.status}</span>
-              ${canModify
-                ? `<button type="button" onclick="openModifyLeaveModal('${r.id}')" class="ml-2 px-2.5 py-1 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded-lg text-[11px] font-bold">Modify / Cancel</button>`
+                ? `<button type="button" onclick="openAttachmentModal('${r.id}')" class="px-2.5 py-1.5 bg-white border border-slate-200 text-xs font-semibold text-sky-600 rounded-lg hover:bg-sky-50"><i class="fa-solid fa-paperclip mr-1"></i>Doc</button>`
                 : ''}
-            </td>
-          </tr>
+              ${canModify
+                ? `<button type="button" onclick="openModifyLeaveModal('${r.id}')" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-700 text-white rounded-lg text-xs font-bold shadow-sm">Modify / Cancel</button>`
+                : ''}
+            </div>
+          </div>
         `;
       }).join('');
     }
