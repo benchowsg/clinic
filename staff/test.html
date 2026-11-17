@@ -927,7 +927,7 @@
       return Math.round((b - a) / (1000 * 60 * 60 * 24));
     }
 
-    // =========================================================================
+// =========================================================================
     // 2. STATE & FIREBASE CLOUD CONNECTOR
     // =========================================================================
     const STORAGE_KEY = 'medileave_state_v3';
@@ -937,11 +937,12 @@
 
     const DEFAULT_STATE = {
       settings: {
-        senderEmail: 'hr@clinic.com.sg',
-        adminEmail: 'gerald.thang@clinic.com.sg',
+        senderEmail: 'ben@ahealingheartmedical.com',
+        adminEmail: 'ben@ahealingheartmedical.com, gerald@ahealingheartmedical.com',
+        driveWebhookUrl: 'https://script.google.com/macros/s/AKfycbyB1FI3gi4RB4FmXrR1sMM053a3mfIOMqpiR7B9SR1Ce3N2W7pH7RwmMQsqVBcYhbow/exec',
         firebaseConfig: {
-          projectId: '',
-          apiKey: '',
+          projectId: 'medileave-90623',
+          apiKey: 'AIzaSyCfppCxFW3cMrqR3T-cxt-qZDSbDHbMMiE',
           storageBucket: ''
         }
       },
@@ -951,7 +952,7 @@
           id: 'stf_admin',
           pin: '9999',
           name: 'Dr. Gerald Thang',
-          email: 'gerald.thang@clinic.com.sg',
+          email: 'gerald@ahealingheartmedical.com',
           role: 'Admin',
           startDate: '2021-01-01',
           endDate: '',
@@ -1081,6 +1082,7 @@
         if (saved) {
           const parsed = JSON.parse(saved);
           parsed.publicHolidays = parsed.publicHolidays || [];
+          parsed.settings = Object.assign({}, DEFAULT_STATE.settings, parsed.settings || {});
           return parsed;
         }
       } catch (e) {}
@@ -1106,7 +1108,6 @@
             });
           }
           dbFirestore = firebase.firestore();
-          storageBucket = firebase.storage();
           firebaseEnabled = true;
 
           const badge = document.getElementById('backend-mode-badge');
@@ -1123,6 +1124,42 @@
           console.warn('Firebase init fallback to sandbox:', err);
         }
       }
+    }
+
+    async function uploadAttachmentToGoogleDrive(file, staffId) {
+      const webhookUrl = appState.settings.driveWebhookUrl;
+      if (!file || !webhookUrl) return null;
+
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = async function (evt) {
+          try {
+            const base64Data = evt.target.result.split(',')[1];
+            const cleanName = `${staffId}_${Date.now()}_${file.name}`;
+            const res = await fetch(webhookUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify({
+                filename: cleanName,
+                mimeType: file.type || 'application/octet-stream',
+                base64: base64Data
+              })
+            });
+            const data = await res.json();
+            if (data.status === 'ok' && data.fileUrl) {
+              resolve(data.fileUrl);
+            } else {
+              console.warn('Google Drive upload warning:', data);
+              resolve(null);
+            }
+          } catch (err) {
+            console.warn('Google Drive upload failed:', err);
+            resolve(null);
+          }
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      });
     }
 
     // =========================================================================
@@ -1653,11 +1690,11 @@
       if (fileInput.files && fileInput.files.length > 0) {
         const file = fileInput.files[0];
         attachmentName = file.name;
-        attachmentData = await readFileAsDataURL(file);
-
-        if (firebaseEnabled && storageBucket) {
-          const storageRef = storageBucket.ref(`attachments/${currentUser.id}/${Date.now()}_${file.name}`);
-          storageRef.put(file).catch(() => {});
+        const driveUrl = await uploadAttachmentToGoogleDrive(file, currentUser.id);
+        if (driveUrl) {
+          attachmentData = driveUrl;
+        } else {
+          attachmentData = await readFileAsDataURL(file);
         }
       }
 
@@ -2558,14 +2595,24 @@ function renderStaffDirectoryTab() {
       document.getElementById('att-modal-meta').textContent = `${req.type} • Submitted ${req.submittedAt}`;
       const dl = document.getElementById('att-modal-download');
       dl.href = req.attachmentData || '#';
-      dl.download = req.attachmentName;
 
       const preview = document.getElementById('att-modal-preview');
-      if (req.attachmentData && req.attachmentData.startsWith('data:image/')) {
+      if (req.attachmentData && req.attachmentData.startsWith('http')) {
+        dl.target = '_blank';
+        dl.rel = 'noopener noreferrer';
+        dl.removeAttribute('download');
+        preview.innerHTML = `<div class="text-center space-y-2 py-6"><i class="fa-brands fa-google-drive text-3xl text-emerald-600"></i><p class="font-bold text-slate-700">${req.attachmentName}</p><p class="text-xs text-slate-500">Stored securely in Clinic Google Drive.</p><a href="${req.attachmentData}" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 px-4 py-2 bg-sky-600 text-white text-xs font-bold rounded-xl">Open in Google Drive</a></div>`;
+      } else if (req.attachmentData && req.attachmentData.startsWith('data:image/')) {
+        dl.removeAttribute('target');
+        dl.download = req.attachmentName;
         preview.innerHTML = `<img src="${req.attachmentData}" alt="Attachment" class="max-h-80 rounded-lg shadow-sm">`;
       } else if (req.attachmentData && req.attachmentData.startsWith('data:application/pdf')) {
+        dl.removeAttribute('target');
+        dl.download = req.attachmentName;
         preview.innerHTML = `<iframe src="${req.attachmentData}" class="w-full h-80 rounded-lg border-0"></iframe>`;
       } else {
+        dl.removeAttribute('target');
+        dl.download = req.attachmentName;
         preview.innerHTML = `<div class="text-center space-y-2 py-6"><i class="fa-solid fa-file-shield text-3xl text-sky-500"></i><p class="font-bold text-slate-700">${req.attachmentName}</p><p>Click Download File below to inspect the document.</p></div>`;
       }
 
