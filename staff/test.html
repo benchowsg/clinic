@@ -1527,7 +1527,7 @@ function recalculateLeaveDays() {
       return totalDays;
     }
 
-    function getRequestSessionMap(startStr, endStr, duration) {
+  function getRequestSessionMap(startStr, endStr, duration) {
       const map = {};
       const start = parseDateLocal(startStr);
       const end = parseDateLocal(endStr);
@@ -1559,19 +1559,28 @@ function recalculateLeaveDays() {
       return map;
     }
 
-    function findClashingLeave(staffId, startStr, endStr, duration) {
+    function findClashingLeave(staffId, startStr, endStr, duration, leaveType, nplTrack) {
       const newSessions = getRequestSessionMap(startStr, endStr, duration);
+      const isMedicalException =
+        leaveType === 'Medical Leave' ||
+        leaveType === 'Hospitalisation Leave' ||
+        (leaveType === 'No Pay Leave' && nplTrack === 'Medical');
+
       const activeReqs = appState.requests.filter(
-        r => r.staffId === staffId && (r.status === 'Pending' || r.status === 'Approved')
+        r => r.status === 'Pending' || r.status === 'Approved'
       );
 
       for (const existing of activeReqs) {
+        const isSelf = existing.staffId === staffId;
+        if (!isSelf && isMedicalException) continue;
+
         const existingSessions = getRequestSessionMap(existing.startDate, existing.endDate, existing.duration);
         for (const dateIso of Object.keys(newSessions)) {
           if (existingSessions[dateIso]) {
             const overlap = newSessions[dateIso].filter(s => existingSessions[dateIso].includes(s));
             if (overlap.length > 0) {
               return {
+                isSelf,
                 date: dateIso,
                 sessions: overlap.length === 2 ? 'Full Day' : `${overlap[0]} Session`,
                 existing
@@ -1605,11 +1614,18 @@ function recalculateLeaveDays() {
         return showLeaveError('Leave requests cannot span across 31 Dec. Please submit separate applications per calendar year.');
       }
 
-      const clash = findClashingLeave(currentUser.id, startDate, endDate, duration);
+      const nplTrackVal = type === 'No Pay Leave' ? document.getElementById('npl-track').value : '';
+      const clash = findClashingLeave(currentUser.id, startDate, endDate, duration, type, nplTrackVal);
       if (clash) {
-        return showLeaveError(
-          `Date clash detected: ${clash.date} (${clash.sessions}) overlaps with your existing ${clash.existing.status.toLowerCase()} ${clash.existing.type} (${clash.existing.startDate} to ${clash.existing.endDate}).`
-        );
+        if (clash.isSelf) {
+          return showLeaveError(
+            `Date clash detected: ${clash.date} (${clash.sessions}) overlaps with your existing ${clash.existing.status.toLowerCase()} ${clash.existing.type} (${clash.existing.startDate} to ${clash.existing.endDate}).`
+          );
+        } else {
+          return showLeaveError(
+            `The dates chosen (${clash.date} • ${clash.sessions}) are already taken by another colleague (${clash.existing.status}). Please choose other leave dates.`
+          );
+        }
       }
 
       const bal = getStaffBalances(currentUser);
@@ -1966,7 +1982,7 @@ function recalculateLeaveDays() {
       document.getElementById('kpi-claims').textContent = pendingClaims;
     }
 
-    function renderPendingApprovals() {
+function renderPendingApprovals() {
       const container = document.getElementById('pending-approvals-list');
       const pending = appState.requests.filter(r => r.status === 'Pending');
       const today = getTodaySGT();
@@ -1981,6 +1997,19 @@ function recalculateLeaveDays() {
         const daysToStart = daysBetween(today, r.startDate);
         const isSLAUrgent = r.type === 'Annual Leave' && daysToStart <= 7;
 
+        const reqSessions = getRequestSessionMap(r.startDate, r.endDate, r.duration);
+        const colleagueOverlap = appState.requests.find(other => {
+          if (other.id === r.id || other.staffId === r.staffId) return false;
+          if (other.status !== 'Pending' && other.status !== 'Approved') return false;
+          const otherSessions = getRequestSessionMap(other.startDate, other.endDate, other.duration);
+          return Object.keys(reqSessions).some(d =>
+            otherSessions[d] && reqSessions[d].some(s => otherSessions[d].includes(s))
+          );
+        });
+        const overlapStaff = colleagueOverlap
+          ? (appState.staff.find(s => s.id === colleagueOverlap.staffId) || { name: 'Colleague' })
+          : null;
+
         return `
           <div class="p-4 rounded-xl border ${isSLAUrgent ? 'bg-amber-50/70 border-amber-300' : 'bg-slate-50 border-slate-200'} flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="space-y-1">
@@ -1988,6 +2017,7 @@ function recalculateLeaveDays() {
                 <span class="text-sm font-bold text-slate-900">${staff.name}</span>
                 <span class="px-2 py-0.5 bg-sky-100 text-sky-800 text-[11px] font-bold rounded-full">${r.type}${r.subType ? ' • ' + r.subType : ''}${r.nplTrack ? ' • ' + r.nplTrack : ''}</span>
                 ${isSLAUrgent ? `<span class="px-2 py-0.5 bg-rose-600 text-white text-[10px] font-extrabold rounded-full uppercase animate-pulse">SLA Reminder: Starts in ${daysToStart}d</span>` : ''}
+                ${overlapStaff ? `<span class="px-2 py-0.5 bg-amber-600 text-white text-[10px] font-extrabold rounded-full uppercase">Medical Overlap: ${overlapStaff.name} Also Off</span>` : ''}
               </div>
               <p class="text-xs font-mono text-slate-700">${r.startDate} to ${r.endDate} &bull; <strong>${r.days.toFixed(1)} Day(s)</strong> (${r.duration})</p>
               <p class="text-xs text-slate-600">Reason: ${r.reason}</p>
