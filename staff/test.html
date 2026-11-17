@@ -823,13 +823,13 @@
       </div>
     </div>
 
-    <!-- MODAL 2: FAMILY / CHILDREN / PREGNANCY PROFILE MODAL -->
+<!-- MODAL 2: FAMILY / CHILDREN / PREGNANCY PROFILE MODAL -->
     <div id="modal-family-profile" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
-      <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 space-y-4 shadow-2xl">
+      <div class="bg-white rounded-2xl border border-slate-200 max-w-lg w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
         <div class="flex items-center justify-between border-b pb-3">
           <div>
             <h3 class="text-base font-bold text-slate-900">Family &amp; Statutory Leave Profile</h3>
-            <p class="text-xs text-slate-500">Required to determine Childcare, Maternity &amp; Paternity leave entitlements</p>
+            <p class="text-xs text-slate-500">Upload supporting certificates for Childcare, Maternity &amp; Paternity claims</p>
           </div>
           <button onclick="toggleFamilyProfileModal(false)" class="text-slate-400 hover:text-slate-600 text-lg">
             <i class="fa-solid fa-xmark"></i>
@@ -848,9 +848,15 @@
             </select>
           </div>
 
+          <div id="fam-marriage-section" class="hidden space-y-1.5 p-3 bg-sky-50/70 border border-sky-200 rounded-xl">
+            <label class="block font-bold text-sky-900">Marriage Certificate (PDF / JPG / PNG)</label>
+            <input type="file" id="fam-marriage-file" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs">
+            <div id="fam-marriage-existing" class="text-[11px] text-sky-700 font-semibold"></div>
+          </div>
+
           <div id="fam-children-section" class="hidden space-y-2 p-3 bg-slate-50 border rounded-xl">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-slate-800">Registered Children (Name, DOB &amp; Nationality)</span>
+              <span class="font-bold text-slate-800">Registered Children &amp; Birth Certificates</span>
               <button type="button" onclick="addChildRow()" class="px-2.5 py-1 bg-sky-600 text-white text-[11px] font-bold rounded-lg">
                 + Add Child
               </button>
@@ -862,6 +868,9 @@
           <div id="fam-delivery-section" class="hidden space-y-2 p-3 bg-pink-50/70 border border-pink-200 rounded-xl">
             <label class="block font-bold text-pink-900">Expected Delivery Date (EDD)</label>
             <input type="date" id="fam-edd" class="w-full p-2 border rounded-lg bg-white">
+            <label class="block font-bold text-pink-900 pt-1">EDD Doctor's Letter (PDF / JPG / PNG)</label>
+            <input type="file" id="fam-edd-file" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs">
+            <div id="fam-edd-existing" class="text-[11px] text-pink-700 font-semibold"></div>
             <label class="block font-bold text-pink-900 pt-1">Actual Child Birthdate (Once Delivered)</label>
             <input type="date" id="fam-birth-date" class="w-full p-2 border rounded-lg bg-white">
           </div>
@@ -869,7 +878,7 @@
 
         <div class="flex justify-end gap-2 pt-3 border-t">
           <button type="button" onclick="toggleFamilyProfileModal(false)" class="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl">Cancel</button>
-          <button type="button" onclick="saveFamilyProfile()" class="px-5 py-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold rounded-xl">Save Family Profile</button>
+          <button type="button" id="btn-save-family" onclick="saveFamilyProfile()" class="px-5 py-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold rounded-xl">Save Family Profile</button>
         </div>
       </div>
     </div>
@@ -1043,7 +1052,16 @@
       }
     }
 
-    async function uploadAttachmentToGoogleDrive(file, staffId) {
+    function buildStandardFileName(staffName, category, refDate, originalFileName) {
+      const cleanStaff = (staffName || 'Staff').replace(/[^a-zA-Z0-9]/g, '');
+      const cleanCat = (category || 'DOC').toUpperCase().replace(/[^A-Z0-9_]/g, '_');
+      const dateTag = refDate || getTodaySGT();
+      const extMatch = (originalFileName || '').match(/\.([a-zA-Z0-9]+)$/);
+      const ext = extMatch ? extMatch[1].toLowerCase() : 'pdf';
+      return `${cleanStaff}_${cleanCat}_${dateTag}.${ext}`;
+    }
+
+async function uploadAttachmentToGoogleDrive(file, customFileName) {
       const webhookUrl = appState.settings.driveWebhookUrl;
       if (!file || !webhookUrl) return null;
 
@@ -1052,12 +1070,11 @@
         reader.onload = async function (evt) {
           try {
             const base64Data = evt.target.result.split(',')[1];
-            const cleanName = `${staffId}_${Date.now()}_${file.name}`;
             const res = await fetch(webhookUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'text/plain;charset=utf-8' },
               body: JSON.stringify({
-                filename: cleanName,
+                filename: customFileName,
                 mimeType: file.type || 'application/octet-stream',
                 base64: base64Data
               })
@@ -1717,12 +1734,18 @@ function recalculateLeaveDays() {
         }
       }
 
-      let attachmentName = '';
+let attachmentName = '';
       let attachmentData = '';
       if (fileInput.files && fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        attachmentName = file.name;
-        const driveUrl = await uploadAttachmentToGoogleDrive(file, currentUser.id);
+        let docCategory = 'SUPPORTING_DOC';
+        if (type === 'Medical Leave' || (type === 'No Pay Leave' && nplTrack === 'Medical')) docCategory = 'MC';
+        else if (type === 'Hospitalisation Leave') docCategory = 'HOSP_MC';
+        else if (type === 'NS Reservist') docCategory = 'SAF100';
+        else if (type === 'Other Leave' && subType === 'Compassionate') docCategory = 'COMPASSIONATE_DOC';
+
+        attachmentName = buildStandardFileName(currentUser.name, docCategory, startDate, file.name);
+        const driveUrl = await uploadAttachmentToGoogleDrive(file, attachmentName);
         if (driveUrl) {
           attachmentData = driveUrl;
         } else {
@@ -1831,7 +1854,7 @@ function recalculateLeaveDays() {
       renderStaffPortal();
     }
 
-    // =========================================================================
+// =========================================================================
     // 7. FAMILY PROFILE MODAL
     // =========================================================================
     function toggleFamilyProfileModal(show) {
@@ -1845,6 +1868,15 @@ function recalculateLeaveDays() {
       document.getElementById('fam-status-select').value = currentUser.familyStatus || 'Single';
       document.getElementById('fam-edd').value = currentUser.edd || '';
       document.getElementById('fam-birth-date').value = currentUser.birthDate || '';
+      document.getElementById('fam-marriage-file').value = '';
+      document.getElementById('fam-edd-file').value = '';
+
+      document.getElementById('fam-marriage-existing').innerHTML = currentUser.marriageCertUrl
+        ? `<a href="${currentUser.marriageCertUrl}" target="_blank" rel="noopener noreferrer" class="underline"><i class="fa-solid fa-file-check mr-1"></i>Uploaded: ${currentUser.marriageCertName}</a>`
+        : '';
+      document.getElementById('fam-edd-existing').innerHTML = currentUser.eddDocUrl
+        ? `<a href="${currentUser.eddDocUrl}" target="_blank" rel="noopener noreferrer" class="underline"><i class="fa-solid fa-file-check mr-1"></i>Uploaded: ${currentUser.eddDocName}</a>`
+        : '';
 
       const rowsBox = document.getElementById('fam-children-rows');
       rowsBox.innerHTML = '';
@@ -1857,8 +1889,12 @@ function recalculateLeaveDays() {
 
     function onFamilyModalStatusChange() {
       const val = document.getElementById('fam-status-select').value;
+      const marriageSec = document.getElementById('fam-marriage-section');
       const childSec = document.getElementById('fam-children-section');
       const delivSec = document.getElementById('fam-delivery-section');
+
+      if (val !== 'Single') marriageSec.classList.remove('hidden');
+      else marriageSec.classList.add('hidden');
 
       if (val === 'Married with Children' || val === 'Father (Expecting/Newborn)') {
         childSec.classList.remove('hidden');
@@ -1873,49 +1909,101 @@ function recalculateLeaveDays() {
       }
     }
 
-    function addChildRow(child = { name: '', dob: '', nationality: 'SG Citizen' }) {
+    function addChildRow(child = { name: '', dob: '', nationality: 'SG Citizen', birthCertName: '', birthCertUrl: '' }) {
       const rowsBox = document.getElementById('fam-children-rows');
       const div = document.createElement('div');
-      div.className = 'grid grid-cols-3 gap-1.5 items-center child-row';
+      div.className = 'p-2.5 bg-white border rounded-xl space-y-1.5 child-row';
+      div.dataset.existingName = child.birthCertName || '';
+      div.dataset.existingUrl = child.birthCertUrl || '';
       div.innerHTML = `
-        <input type="text" placeholder="Child Name" value="${child.name || ''}" class="c-name p-2 text-xs border rounded-lg bg-white">
-        <input type="date" value="${child.dob || ''}" class="c-dob p-2 text-xs border rounded-lg bg-white">
-        <div class="flex gap-1">
-          <select class="c-nat p-2 text-xs border rounded-lg bg-white w-full">
-            <option value="SG Citizen" ${child.nationality === 'SG Citizen' ? 'selected' : ''}>SG Citizen</option>
-            <option value="Non-Citizen" ${child.nationality !== 'SG Citizen' ? 'selected' : ''}>Non-Citizen</option>
-          </select>
-          <button type="button" onclick="this.parentElement.parentElement.remove()" class="px-2 bg-rose-100 text-rose-700 rounded-lg text-xs font-bold">&times;</button>
+        <div class="grid grid-cols-3 gap-1.5 items-center">
+          <input type="text" placeholder="Child Name" value="${child.name || ''}" class="c-name p-2 text-xs border rounded-lg bg-white">
+          <input type="date" value="${child.dob || ''}" class="c-dob p-2 text-xs border rounded-lg bg-white">
+          <div class="flex gap-1">
+            <select class="c-nat p-2 text-xs border rounded-lg bg-white w-full">
+              <option value="SG Citizen" ${child.nationality === 'SG Citizen' ? 'selected' : ''}>SG Citizen</option>
+              <option value="Non-Citizen" ${child.nationality !== 'SG Citizen' ? 'selected' : ''}>Non-Citizen</option>
+            </select>
+            <button type="button" onclick="this.closest('.child-row').remove()" class="px-2 bg-rose-100 text-rose-700 rounded-lg text-xs font-bold">&times;</button>
+          </div>
+        </div>
+        <div class="flex items-center justify-between gap-2 pt-1">
+          <label class="text-[11px] font-bold text-slate-600 shrink-0">Birth Cert:</label>
+          <input type="file" accept=".pdf,.jpg,.jpeg,.png" class="c-birth-file text-[11px] w-full">
+          ${child.birthCertUrl ? `<a href="${child.birthCertUrl}" target="_blank" rel="noopener noreferrer" class="text-[11px] text-sky-600 font-bold underline shrink-0">View</a>` : ''}
         </div>
       `;
       rowsBox.appendChild(div);
     }
 
-    function saveFamilyProfile() {
-      const status = document.getElementById('fam-status-select').value;
-      const edd = document.getElementById('fam-edd').value;
-      const birthDate = document.getElementById('fam-birth-date').value;
+    async function saveFamilyProfile() {
+      const btn = document.getElementById('btn-save-family');
+      btn.disabled = true;
+      btn.textContent = 'Uploading & Saving...';
 
-      const children = [];
-      document.querySelectorAll('#fam-children-rows .child-row').forEach(row => {
-        const name = row.querySelector('.c-name').value.trim();
-        const dob = row.querySelector('.c-dob').value;
-        const nationality = row.querySelector('.c-nat').value;
-        if (name && dob) children.push({ name, dob, nationality });
-      });
+      try {
+        const status = document.getElementById('fam-status-select').value;
+        const edd = document.getElementById('fam-edd').value;
+        const birthDate = document.getElementById('fam-birth-date').value;
 
-      const idx = appState.staff.findIndex(s => s.id === currentUser.id);
-      if (idx !== -1) {
-        appState.staff[idx].familyStatus = status;
-        appState.staff[idx].edd = edd;
-        appState.staff[idx].birthDate = birthDate;
-        appState.staff[idx].children = children;
-        currentUser = appState.staff[idx];
-        saveState();
+        let marriageCertName = currentUser.marriageCertName || '';
+        let marriageCertUrl = currentUser.marriageCertUrl || '';
+        const marriageFile = document.getElementById('fam-marriage-file').files[0];
+        if (marriageFile) {
+          marriageCertName = buildStandardFileName(currentUser.name, 'MARRIAGE_CERT', getTodaySGT(), marriageFile.name);
+          const url = await uploadAttachmentToGoogleDrive(marriageFile, marriageCertName);
+          marriageCertUrl = url || await readFileAsDataURL(marriageFile);
+        }
+
+        let eddDocName = currentUser.eddDocName || '';
+        let eddDocUrl = currentUser.eddDocUrl || '';
+        const eddFile = document.getElementById('fam-edd-file').files[0];
+        if (eddFile) {
+          eddDocName = buildStandardFileName(currentUser.name, 'EDD_LETTER', edd || getTodaySGT(), eddFile.name);
+          const url = await uploadAttachmentToGoogleDrive(eddFile, eddDocName);
+          eddDocUrl = url || await readFileAsDataURL(eddFile);
+        }
+
+        const children = [];
+        const rows = Array.from(document.querySelectorAll('#fam-children-rows .child-row'));
+        for (const row of rows) {
+          const name = row.querySelector('.c-name').value.trim();
+          const dob = row.querySelector('.c-dob').value;
+          const nationality = row.querySelector('.c-nat').value;
+          if (!name || !dob) continue;
+
+          let birthCertName = row.dataset.existingName || '';
+          let birthCertUrl = row.dataset.existingUrl || '';
+          const certFile = row.querySelector('.c-birth-file').files[0];
+          if (certFile) {
+            const cleanChild = name.replace(/[^a-zA-Z0-9]/g, '');
+            birthCertName = buildStandardFileName(currentUser.name, `BIRTH_CERT_${cleanChild}`, dob, certFile.name);
+            const url = await uploadAttachmentToGoogleDrive(certFile, birthCertName);
+            birthCertUrl = url || await readFileAsDataURL(certFile);
+          }
+          children.push({ name, dob, nationality, birthCertName, birthCertUrl });
+        }
+
+        const idx = appState.staff.findIndex(s => s.id === currentUser.id);
+        if (idx !== -1) {
+          appState.staff[idx].familyStatus = status;
+          appState.staff[idx].edd = edd;
+          appState.staff[idx].birthDate = birthDate;
+          appState.staff[idx].marriageCertName = marriageCertName;
+          appState.staff[idx].marriageCertUrl = marriageCertUrl;
+          appState.staff[idx].eddDocName = eddDocName;
+          appState.staff[idx].eddDocUrl = eddDocUrl;
+          appState.staff[idx].children = children;
+          currentUser = appState.staff[idx];
+          saveState();
+        }
+
+        toggleFamilyProfileModal(false);
+        renderStaffPortal();
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Save Family Profile';
       }
-
-      toggleFamilyProfileModal(false);
-      renderStaffPortal();
     }
 
     // =========================================================================
