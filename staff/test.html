@@ -1920,7 +1920,7 @@ async function handleSubmitLeave(e) {
         cc: currentUser.email,
         triggerType: 'LEAVE_SUBMITTED',
         subject: `${isUrgentLeave ? '[URGENT LEAVE <14D] ' : ''}[MediLeave] New ${type} Request — ${currentUser.name} (${startDate} to ${endDate})`,
-        body: `Dear Clinic Admin,\n\n${currentUser.name} (${currentUser.role}) has submitted a new leave application:\n\n• Leave Type: ${type}${subType ? ' (' + subType + ')' : ''}${nplTrack ? ' (' + nplTrack + ' Track)' : ''}${isUrgentLeave ? ' [URGENT LEAVE — <14 DAYS NOTICE]' : ''}\n• Dates: ${startDate} to ${endDate} (${days.toFixed(1)} working day(s), ${duration})\n• Reason: ${newReq.reason}\n• Supporting Document: ${attachmentName || 'None attached'}\n${isUrgentLeave ? '• URGENT CAVEAT ACKNOWLEDGED: Staff acknowledged that approval is discretionary, subject to manpower coverage, and requires direct Admin confirmation.\n' : (type === 'Annual Leave' ? '• SLA Reminder: Please review and approve at least 1 week prior to ' + startDate + '.\n' : '')}\nPlease log in to the MediLeave Admin Control Panel to approve or reject this request.\n\nRegards,\nMediLeave Automated Portal`
+        body: `Dear Clinic Admin,\n\n${currentUser.name} (${currentUser.role}) has submitted a new leave application:\n\n• Leave Type: ${type}${subType ? ' (' + subType + ')' : ''}${nplTrack ? ' (' + nplTrack + ' Track)' : ''}${isUrgentLeave ? ' [URGENT LEAVE — <14 DAYS NOTICE]' : ''}\n• Dates: ${startDate} to ${endDate} (${days.toFixed(1)} working day(s), ${duration})\n• Reason: ${newReq.reason}\n• Supporting Document: ${attachmentName || 'None attached'}\n${isUrgentLeave ? '• URGENT CAVEAT ACKNOWLEDGED: Staff acknowledged that approval is discretionary, subject to manpower coverage, and requires direct Admin confirmation.\n' : (type === 'Annual Leave' ? '• SLA Reminder: Please review and approve at least 1 week prior to ' + startDate + '.\n' : '')}\nPlease log in to the MediLeave Admin Control Panel to approve or reject this request.\n\nRegards,\nA Healing Heart Medical Pte. Ltd.\nMediLeave Automated Portal`
       });
 
       e.target.reset();
@@ -2233,7 +2233,7 @@ async function handleSubmitLeave(e) {
         cc: currentUser.email,
         triggerType: 'LEAVE_CANCELLED',
         subject: `${isUrgent ? '[URGENT <3D] ' : ''}[MediLeave] Upcoming Leave Cancelled — ${currentUser.name}`,
-        body: `Dear Clinic Admin,\n\n${currentUser.name} has cancelled their upcoming ${req.type} (${req.startDate} to ${req.endDate}).\n• Reason: ${changeReason}\n${isUrgent ? '• URGENT NOTICE: Cancelled with less than 3 working days notice.\n' : ''}\nUnused leave days have been automatically restored to the staff member's balance.\n\nRegards,\nMediLeave Automated Portal`
+        body: `Dear Clinic Admin,\n\n${currentUser.name} has cancelled their upcoming ${req.type} (${req.startDate} to ${req.endDate}).\n• Reason: ${changeReason}\n${isUrgent ? '• URGENT NOTICE: Cancelled with less than 3 working days notice.\n' : ''}\nUnused leave days have been automatically restored to the staff member's balance.\n\nRegards,\nA Healing Heart Medical Pte. Ltd.\nMediLeave Automated Portal`
       });
 
       toggleModifyLeaveModal(false);
@@ -2631,7 +2631,7 @@ function decideLeaveRequest(reqId, decision) {
         cc: appState.settings.adminEmail,
         triggerType: decision === 'Approved' ? 'LEAVE_APPROVED' : 'LEAVE_REJECTED',
         subject: `[MediLeave] Leave Application ${statusLabel} — ${req.type} (${req.startDate} to ${req.endDate})`,
-        body: `Dear ${staff.name},\n\nYour leave application has been reviewed by Clinic Admin:\n\n• Outcome: ${statusLabel}\n• Leave Type: ${req.type}\n• Active Dates: ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)} working day(s))\n${decision === 'Rejected' && !revertedToOriginal && req.type === 'No Pay Leave' ? '• IMPORTANT NOTICE: Because your No Pay Leave was NOT approved, you are required to report for duty as scheduled. Unexcused absence will be treated as AWOL.\n' : ''}\nRegards,\nClinic Management (MediLeave)`
+        body: `Dear ${staff.name},\n\nYour leave application has been reviewed by Clinic Admin:\n\n• Outcome: ${statusLabel}\n• Leave Type: ${req.type}\n• Active Dates: ${req.startDate} to ${req.endDate} (${req.days.toFixed(1)} working day(s))\n${decision === 'Rejected' && !revertedToOriginal && req.type === 'No Pay Leave' ? '• IMPORTANT NOTICE: Because your No Pay Leave was NOT approved, you are required to report for duty as scheduled. Unexcused absence will be treated as AWOL.\n' : ''}\nRegards,\nA Healing Heart Medical Pte. Ltd.\nMediLeave Automated Portal`
       });
 
       renderAdminDashboard();
