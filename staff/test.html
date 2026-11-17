@@ -1853,18 +1853,23 @@
     // 8. ADMIN DASHBOARD, APPROVALS, CHARTS & BENTO
     // =========================================================================
     function switchAdminTab(tab) {
-      const tabs = ['dashboard', 'awol', 'claims', 'staff', 'emails', 'firebase'];
+      const tabs = ['dashboard', 'awol', 'claims', 'staff', 'holidays', 'emails', 'firebase'];
       tabs.forEach(t => {
-        document.getElementById(`atab-${t}`).classList.add('hidden');
+        const panel = document.getElementById(`atab-${t}`);
         const btn = document.getElementById(`atab-btn-${t}`);
-        btn.className = 'px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700 whitespace-nowrap';
+        if (panel) panel.classList.add('hidden');
+        if (btn) btn.className = 'px-4 py-2 text-xs font-bold rounded-xl bg-slate-200 text-slate-700 whitespace-nowrap';
       });
-      document.getElementById(`atab-${tab}`).classList.remove('hidden');
-      document.getElementById(`atab-btn-${tab}`).className = 'px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white whitespace-nowrap';
+
+      const activePanel = document.getElementById(`atab-${tab}`);
+      const activeBtn = document.getElementById(`atab-btn-${tab}`);
+      if (activePanel) activePanel.classList.remove('hidden');
+      if (activeBtn) activeBtn.className = 'px-4 py-2 text-xs font-bold rounded-xl bg-sky-500 text-white whitespace-nowrap';
 
       if (tab === 'awol') renderAWOLTab();
       if (tab === 'claims') renderClaimsTab();
       if (tab === 'staff') renderStaffDirectoryTab();
+      if (tab === 'holidays') renderPublicHolidaysTab();
       if (tab === 'emails') renderEmailOutboxTab();
       if (tab === 'firebase') loadFirebaseForm();
     }
@@ -2352,7 +2357,7 @@
       }
     }
 
-    function renderStaffDirectoryTab() {
+function renderStaffDirectoryTab() {
       const tbody = document.getElementById('staff-directory-tbody');
       tbody.innerHTML = appState.staff.map(s => {
         const t = getTenureInfo(s);
@@ -2442,6 +2447,62 @@
       document.getElementById('input-staff-email').value = '';
       document.getElementById('input-staff-start').value = '';
       document.getElementById('input-staff-end').value = '';
+    }
+
+    function renderPublicHolidaysTab() {
+      const list = (appState.publicHolidays || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+      document.getElementById('ph-total-badge').textContent = `${list.length} Holiday${list.length === 1 ? '' : 's'} Configured`;
+
+      const tbody = document.getElementById('public-holidays-tbody');
+      if (!list.length) {
+        tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-center text-slate-400 italic">No public holidays added yet. Use the form above to add dates.</td></tr>';
+        return;
+      }
+
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      tbody.innerHTML = list.map(h => {
+        const d = parseDateLocal(h.date);
+        return `
+          <tr>
+            <td class="p-3 font-mono font-bold text-slate-800">${h.date}</td>
+            <td class="p-3 text-slate-600">${dayNames[d.getDay()]}</td>
+            <td class="p-3 font-semibold text-slate-900">${h.name}</td>
+            <td class="p-3 text-right">
+              <button type="button" onclick="deletePublicHoliday('${h.id}')" class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 text-[11px] font-bold rounded-lg">
+                Remove
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function handleAddPublicHoliday(e) {
+      e.preventDefault();
+      const date = document.getElementById('input-ph-date').value;
+      const name = document.getElementById('input-ph-name').value.trim();
+      if (!date || !name) return;
+
+      appState.publicHolidays = appState.publicHolidays || [];
+      if (appState.publicHolidays.some(h => h.date === date)) {
+        alert('This date is already listed in Public Holidays.');
+        return;
+      }
+
+      appState.publicHolidays.push({
+        id: 'ph_' + Date.now(),
+        date,
+        name
+      });
+      saveState();
+      e.target.reset();
+      renderPublicHolidaysTab();
+    }
+
+    function deletePublicHoliday(id) {
+      appState.publicHolidays = (appState.publicHolidays || []).filter(h => h.id !== id);
+      saveState();
+      renderPublicHolidaysTab();
     }
 
     function renderEmailOutboxTab() {
