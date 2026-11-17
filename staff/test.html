@@ -1700,7 +1700,21 @@ async function handleSubmitLeave(e) {
         return showLeaveError('Leave requests cannot span across 31 Dec. Please submit separate applications per calendar year.');
       }
 
+      const subType = type === 'Other Leave' ? document.getElementById('other-subtype').value : '';
       const nplTrackVal = type === 'No Pay Leave' ? document.getElementById('npl-track').value : '';
+
+      // Rule 1: Block backdated applications for planned leave types
+      const isPlannedLeaveType =
+        type === 'Annual Leave' ||
+        (type === 'Other Leave' && (subType === 'Study' || subType === 'Exam')) ||
+        (type === 'No Pay Leave' && nplTrackVal === 'Personal');
+
+      if (startDate < today && isPlannedLeaveType) {
+        return showLeaveError(
+          `${type}${subType ? ' (' + subType + ')' : ''}${nplTrackVal ? ' (' + nplTrackVal + ')' : ''} cannot be backdated for dates that have already passed. Please contact Clinic Admin directly.`
+        );
+      }
+
       const clash = findClashingLeave(currentUser.id, startDate, endDate, duration, type, nplTrackVal);
       if (clash) {
         if (clash.isSelf) {
@@ -1750,7 +1764,6 @@ async function handleSubmitLeave(e) {
         }
       }
 
-      const subType = type === 'Other Leave' ? document.getElementById('other-subtype').value : '';
       if (type === 'Other Leave') {
         if (days > bal.remainingOther) {
           return showLeaveError(`Insufficient Other Leave balance (${bal.remainingOther.toFixed(1)} days remaining).`);
@@ -1812,7 +1825,7 @@ async function handleSubmitLeave(e) {
         }
       }
 
-      const nplTrack = type === 'No Pay Leave' ? document.getElementById('npl-track').value : '';
+      const nplTrack = nplTrackVal;
       if (type === 'No Pay Leave') {
         if (nplTrack === 'Medical' && (!fileInput.files || !fileInput.files.length)) {
           return showLeaveError('Medical No Pay Leave requires a valid Medical Certificate (MC) attachment.');
