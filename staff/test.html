@@ -1318,24 +1318,55 @@ async function uploadAttachmentToGoogleDrive(file, customFileName) {
       document.getElementById(viewId).classList.remove('hidden');
     }
 
-    // =========================================================================
-    // 5. AUTOMATED EMAIL QUEUE (FIRESTORE MAIL COLLECTION)
+// =========================================================================
+    // 5. AUTOMATED EMAIL QUEUE (GOOGLE APPS SCRIPT + FIRESTORE MAIL)
     // =========================================================================
     function queueAutomatedEmail({ to, cc, subject, body, triggerType }) {
+      const appsScriptUrl =
+        (appState.settings && appState.settings.driveWebhookUrl) ||
+        (DEFAULT_STATE.settings && DEFAULT_STATE.settings.driveWebhookUrl) ||
+        '';
+
       const emailRecord = {
         id: 'mail_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
-        from: appState.settings.senderEmail || 'hr@clinic.com.sg',
+        from: appState.settings.senderEmail || 'ben@ahealingheartmedical.com',
         to,
-        cc: cc || appState.settings.adminEmail || 'gerald.thang@clinic.com.sg',
+        cc: cc || appState.settings.adminEmail || 'ben@ahealingheartmedical.com, gerald@ahealingheartmedical.com',
         subject,
         body,
         triggerType,
         sentAt: getNowTimestampSGT(),
-        deliveryStatus: firebaseEnabled ? 'QUEUED_FIRESTORE_MAIL' : 'LOGGED_SANDBOX'
+        deliveryStatus: appsScriptUrl
+          ? 'SENDING_VIA_APPS_SCRIPT'
+          : (firebaseEnabled ? 'QUEUED_FIRESTORE_MAIL' : 'LOGGED_SANDBOX')
       };
 
       appState.emailOutbox.unshift(emailRecord);
       saveState();
+
+      if (appsScriptUrl) {
+        fetch(appsScriptUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'sendEmail',
+            to: emailRecord.to,
+            cc: emailRecord.cc,
+            subject: emailRecord.subject,
+            body: emailRecord.body
+          })
+        })
+          .then(res => res.json())
+          .then(data => {
+            emailRecord.deliveryStatus = data.status === 'sent' ? 'SENT_GMAIL' : 'APPS_SCRIPT_ERROR';
+            saveState();
+          })
+          .catch(err => {
+            console.warn('Apps Script email dispatch error:', err);
+            emailRecord.deliveryStatus = 'DISPATCH_FAILED';
+            saveState();
+          });
+      }
 
       if (firebaseEnabled && dbFirestore) {
         dbFirestore.collection('mail').add({
@@ -1355,7 +1386,7 @@ async function uploadAttachmentToGoogleDrive(file, customFileName) {
 
       return emailRecord;
     }
-
+    
     // =========================================================================
     // 6. STAFF PORTAL LOGIC & LEAVE VALIDATION
     // =========================================================================
