@@ -741,9 +741,17 @@
                 <label class="block text-[11px] font-bold text-slate-600 mb-1">Firebase Web API Key</label>
                 <input type="text" id="fb-api-key" placeholder="AIzaSy..." class="w-full p-2.5 text-xs border rounded-xl font-mono">
               </div>
-              <div>
+               <div>
                 <label class="block text-[11px] font-bold text-slate-600 mb-1">Firebase Storage Bucket</label>
                 <input type="text" id="fb-storage-bucket" placeholder="medileave-clinic-sg.appspot.com" class="w-full p-2.5 text-xs border rounded-xl font-mono">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Google Apps Script Bridge URL (Gmail &amp; Drive)</label>
+                <input type="text" id="fb-webhook-url" placeholder="https://script.google.com/macros/s/.../exec" class="w-full p-2.5 text-xs border rounded-xl font-mono">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-600 mb-1">Apps Script Bridge Security Token</label>
+                <input type="password" id="fb-bridge-token" placeholder="Enter your BRIDGE_TOKEN" class="w-full p-2.5 text-xs border rounded-xl font-mono">
               </div>
               <button type="button" onclick="saveFirebaseConfig()" class="px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold rounded-xl shadow-sm">
                 Save &amp; Connect Firebase Backend
@@ -1018,8 +1026,8 @@
         senderEmail: '',
         adminEmail: 'ADMIN',
         driveWebhookUrl: '',
+        bridgeToken: '',
         firebaseConfig: { ... }
-        }
       },
       publicHolidays: [],
 staff: [
@@ -3175,17 +3183,21 @@ function renderStaffDirectoryTab() {
       `).join('');
     }
 
-    function loadFirebaseForm() {
+function loadFirebaseForm() {
       document.getElementById('fb-sender-email').value = appState.settings.senderEmail || '';
       document.getElementById('fb-admin-email').value = appState.settings.adminEmail || '';
       document.getElementById('fb-project-id').value = appState.settings.firebaseConfig.projectId || '';
       document.getElementById('fb-api-key').value = appState.settings.firebaseConfig.apiKey || '';
       document.getElementById('fb-storage-bucket').value = appState.settings.firebaseConfig.storageBucket || '';
+      document.getElementById('fb-webhook-url').value = appState.settings.driveWebhookUrl || '';
+      document.getElementById('fb-bridge-token').value = appState.settings.bridgeToken || '';
     }
 
   function saveFirebaseConfig() {
       appState.settings.senderEmail = document.getElementById('fb-sender-email').value.trim() || '';
       appState.settings.adminEmail = document.getElementById('fb-admin-email').value.trim() || 'ADMIN';
+      appState.settings.driveWebhookUrl = document.getElementById('fb-webhook-url').value.trim();
+      appState.settings.bridgeToken = document.getElementById('fb-bridge-token').value.trim();
       appState.settings.firebaseConfig = {
         projectId: document.getElementById('fb-project-id').value.trim(),
         apiKey: document.getElementById('fb-api-key').value.trim(),
@@ -3193,7 +3205,7 @@ function renderStaffDirectoryTab() {
       };
       saveState();
       initFirebaseIfConfigured();
-      alert('Email and Firebase backend settings saved.');
+      alert('Email, Bridge, and Firebase backend settings saved.');
     }
 
     // =========================================================================
