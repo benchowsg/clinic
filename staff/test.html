@@ -1437,7 +1437,7 @@
       container.appendChild(row);
     }
 
-    function recalculateLeaveDays() {
+function recalculateLeaveDays() {
       const startStr = document.getElementById('leave-start').value;
       const endStr = document.getElementById('leave-end').value;
       const durationSel = document.getElementById('leave-duration');
@@ -1456,10 +1456,10 @@
         return 0;
       }
 
+      const holidays = appState.publicHolidays || [];
       let hasSaturday = false;
       let workingDays = 0;
       const cur = new Date(start);
-      const holidays = appState.publicHolidays || [];
 
       while (cur <= end) {
         const dayOfWeek = cur.getDay();
@@ -1473,18 +1473,54 @@
         cur.setDate(cur.getDate() + 1);
       }
 
+      const isSingleDay = startStr === endStr;
+      const startIsSat = start.getDay() === 6;
+      const endIsSat = end.getDay() === 6;
+      const prevVal = durationSel.value;
+
+      if (isSingleDay) {
+        durationSel.innerHTML = `
+          <option value="FULL">Full Day (1.0 day)</option>
+          <option value="AM">Half Day - AM Session (0.5 day, Weekdays Only)</option>
+          <option value="PM">Half Day - PM Session (0.5 day, Weekdays Only)</option>
+        `;
+        if (startIsSat) {
+          durationSel.value = 'FULL';
+          durationSel.disabled = true;
+        } else {
+          durationSel.disabled = false;
+          if (['FULL', 'AM', 'PM'].includes(prevVal)) durationSel.value = prevVal;
+        }
+      } else {
+        durationSel.disabled = false;
+        durationSel.innerHTML = `
+          <option value="FULL">All Full Days (1.0 day per working day)</option>
+          <option value="START_PM" ${startIsSat ? 'disabled' : ''}>First Day PM Half + Remaining Full Days (-0.5d)${startIsSat ? ' [N/A: Starts Sat]' : ''}</option>
+          <option value="END_AM" ${endIsSat ? 'disabled' : ''}>Full Days + Last Day AM Half (-0.5d)${endIsSat ? ' [N/A: Ends Sat]' : ''}</option>
+          <option value="START_PM_END_AM" ${(startIsSat || endIsSat) ? 'disabled' : ''}>First Day PM Half + Last Day AM Half (-1.0d)${(startIsSat || endIsSat) ? ' [N/A: Sat Boundary]' : ''}</option>
+        `;
+        const allowed = ['FULL'];
+        if (!startIsSat) allowed.push('START_PM');
+        if (!endIsSat) allowed.push('END_AM');
+        if (!startIsSat && !endIsSat) allowed.push('START_PM_END_AM');
+        durationSel.value = allowed.includes(prevVal) ? prevVal : 'FULL';
+      }
+
       if (hasSaturday) {
         satNote.classList.remove('hidden');
-        durationSel.value = 'FULL';
-        durationSel.disabled = true;
+        satNote.innerHTML = '<i class="fa-solid fa-circle-info mr-1"></i> Saturday detected: Saturdays always count as 1.0 Full Day (half-day allowed on adjacent weekdays).';
       } else {
         satNote.classList.add('hidden');
-        durationSel.disabled = false;
       }
 
       let totalDays = workingDays;
-      if (!hasSaturday && (durationSel.value === 'AM' || durationSel.value === 'PM')) {
-        totalDays = workingDays * 0.5;
+      if (workingDays > 0) {
+        if (isSingleDay && (durationSel.value === 'AM' || durationSel.value === 'PM')) {
+          totalDays = 0.5;
+        } else if (!isSingleDay) {
+          if (durationSel.value === 'START_PM' || durationSel.value === 'END_AM') totalDays = workingDays - 0.5;
+          if (durationSel.value === 'START_PM_END_AM') totalDays = Math.max(0, workingDays - 1.0);
+        }
       }
 
       badge.textContent = `${totalDays.toFixed(1)} Day${totalDays === 1 ? '' : 's'}`;
