@@ -3039,14 +3039,35 @@ function renderStaffDirectoryTab() {
                 ${s.status}
               </span>
             </td>
-            <td class="p-3 text-right">
+            <td class="p-3 text-right space-x-1">
               <button type="button" onclick="editStaffRecord('${s.id}')" class="px-2.5 py-1 bg-slate-100 hover:bg-sky-100 text-slate-700 hover:text-sky-700 text-[11px] font-bold rounded-lg">
                 Edit
+              </button>
+              <button type="button" onclick="deleteStaffRecord('${s.id}')" class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 text-[11px] font-bold rounded-lg">
+                Delete
               </button>
             </td>
           </tr>
         `;
       }).join('');
+    }
+
+    function deleteStaffRecord(id) {
+      const target = appState.staff.find(item => item.id === id);
+      if (!target) return;
+      if (target.role === 'Admin' && appState.staff.filter(s => s.role === 'Admin').length <= 1) {
+        alert('Cannot delete the only Admin account.');
+        return;
+      }
+      if (!confirm(`Delete ${target.name} (PIN: ${target.pin}) and all their leave requests? Public holidays will not be affected.`)) return;
+
+      appState.staff = appState.staff.filter(item => item.id !== id);
+      appState.requests = (appState.requests || []).filter(r => r.staffId !== id);
+      saveState();
+      resetStaffForm();
+      renderStaffDirectoryTab();
+      renderStaffBentoGrid();
+      updateExecutiveKPIs();
     }
 
     function handleSaveStaff(e) {
