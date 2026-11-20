@@ -1647,18 +1647,18 @@ function handleAuth(e) {
     }
 
     function getMonthlyTimeOffUsed(staffId, yyyyMm) {
-        if (!yyyyMm || yyyyMm.length < 7) return 0;
-        return (appState.requests || [])
-          .filter(r =>
-            r.staffId === staffId &&
-            r.type === 'Time-Off' &&
-            (r.status === 'Approved' || r.status === 'Pending') &&
-            r.startDate && r.startDate.startsWith(yyyyMm)
-          )
-          .reduce((sum, r) => sum + (Number(r.hours) || 0), 0);
-      }
+          if (!yyyyMm || yyyyMm.length < 7) return 0;
+          return (appState.requests || [])
+            .filter(r =>
+              r.staffId === staffId &&
+              r.type === 'Time-Off' &&
+              (r.status === 'Approved' || r.status === 'Pending') &&
+              r.startDate && r.startDate.startsWith(yyyyMm)
+            )
+            .reduce((sum, r) => sum + (Number(r.hours) || 0), 0);
+        }
     
-    function onLeaveTypeChange() {
+function onLeaveTypeChange() {
       const type = document.getElementById('leave-type').value;
       const policyTitle = document.getElementById('leave-policy-title');
       const policyDesc = document.getElementById('leave-policy-desc');
@@ -1721,7 +1721,6 @@ function handleAuth(e) {
         } else {
           policyDesc.textContent = 'Non-medical NPL is subject to management approval. Detailed written reason is mandatory; unapproved absence is recorded as AWOL.';
         }
-
       } else if (type === 'Time-Off') {
         const startVal = document.getElementById('leave-start').value;
         const ym = startVal ? startVal.slice(0, 7) : getTodaySGT().slice(0, 7);
@@ -1730,7 +1729,7 @@ function handleAuth(e) {
         policyTitle.textContent = `Time-Off / Early Release (Discretionary • ${remHrs.toFixed(1)}h / 4.0h left in ${ym})`;
         policyDesc.textContent = 'Not an entitlement; requires explicit Admin approval before leaving. Max 2 hours/day and 4 hours/month (for continuous 4 hours, apply Half-Day/Full-Day leave). Requires 1-week notice; <7 days notice depends on clinic manpower availability.';
       }
-    
+
       recalculateLeaveDays();
     }
 
@@ -1757,14 +1756,43 @@ function handleAuth(e) {
 
 function recalculateLeaveDays() {
       const startStr = document.getElementById('leave-start').value;
+      const leaveType = document.getElementById('leave-type')?.value;
+
+      // Auto-fill Last Date when First Date is selected for Time-Off (always single-day)
+      if (leaveType === 'Time-Off' && startStr && !document.getElementById('leave-end').value) {
+        document.getElementById('leave-end').value = startStr;
+      }
+
       const endStr = document.getElementById('leave-end').value;
       const durationSel = document.getElementById('leave-duration');
       const satNote = document.getElementById('saturday-rule-note');
       const badge = document.getElementById('calculated-days-badge');
-      const leaveType = document.getElementById('leave-type')?.value;
+      const prevVal = durationSel.value;
+
+      // 1. Immediately swap Duration Option dropdown based on Leave Category (even before dates are picked)
+      if (leaveType === 'Time-Off') {
+        satNote.classList.add('hidden');
+        durationSel.disabled = false;
+        durationSel.innerHTML = `
+          <option value="TIMEOFF_1H">1 Hour Early Release (Max 2h/day)</option>
+          <option value="TIMEOFF_2H">2 Hours Early Release (Max 2h/day)</option>
+        `;
+        if (['TIMEOFF_1H', 'TIMEOFF_2H'].includes(prevVal)) {
+          durationSel.value = prevVal;
+        }
+      } else if (['TIMEOFF_1H', 'TIMEOFF_2H'].includes(prevVal)) {
+        durationSel.disabled = false;
+        durationSel.innerHTML = `
+          <option value="FULL">Full Day (1.0 day per working day)</option>
+          <option value="AM">Half Day - AM Session (0.5 day, Weekdays Only)</option>
+          <option value="PM">Half Day - PM Session (0.5 day, Weekdays Only)</option>
+        `;
+      }
 
       if (!startStr || !endStr) {
-        badge.textContent = leaveType === 'Time-Off' ? '0 Hrs' : '0.0 Days';
+        badge.textContent = leaveType === 'Time-Off'
+          ? (durationSel.value === 'TIMEOFF_2H' ? '2 Hrs' : '1 Hr')
+          : '0.0 Days';
         return 0;
       }
 
@@ -1795,20 +1823,9 @@ function recalculateLeaveDays() {
       const isSingleDay = startStr === endStr;
       const startIsSat = start.getDay() === 6;
       const endIsSat = end.getDay() === 6;
-      const prevVal = durationSel.value;
 
-      // TIME-OFF (EARLY RELEASE) BRANCH: Max 2 hrs/day, Max 4 hrs/month, Single working day only
+      // 2. TIME-OFF (EARLY RELEASE) CALCULATION: Max 2 hrs/day, Max 4 hrs/month, Single working day only
       if (leaveType === 'Time-Off') {
-        satNote.classList.add('hidden');
-        durationSel.disabled = false;
-        durationSel.innerHTML = `
-          <option value="TIMEOFF_1H">1 Hour Early Release (Max 2h/day)</option>
-          <option value="TIMEOFF_2H">2 Hours Early Release (Max 2h/day)</option>
-        `;
-        if (['TIMEOFF_1H', 'TIMEOFF_2H'].includes(prevVal)) {
-          durationSel.value = prevVal;
-        }
-
         if (!isSingleDay) {
           badge.textContent = '1 Day Max';
           return 0;
@@ -1829,10 +1846,10 @@ function recalculateLeaveDays() {
         }
 
         badge.textContent = `${hrs} Hr${hrs > 1 ? 's' : ''} (${remHrs.toFixed(1)}h left in ${ym})`;
-        return hrs; // Returns hours (1 or 2) when type === 'Time-Off'
+        return hrs;
       }
 
-      // STANDARD LEAVE DURATION BRANCH
+      // 3. STANDARD LEAVE DURATION BRANCH
       if (isSingleDay) {
         durationSel.innerHTML = `
           <option value="FULL">Full Day (1.0 day)</option>
