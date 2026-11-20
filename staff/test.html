@@ -1299,7 +1299,7 @@ function handleAuth(e) {
 
       const matched = appState.staff.find(s => s.pin === pin);
       if (!matched) {
-        err.textContent = 'Invalid PIN. Please verify your 4-digit staff PIN.';
+        err.textContent = 'Invalid PIN. Please verify your staff or admin PIN.';
         err.classList.remove('hidden');
         return;
       }
@@ -1326,6 +1326,18 @@ function handleAuth(e) {
         showView('view-staff');
         renderStaffPortal();
       }
+    }
+
+    function logout() {
+      currentUser = null;
+      showView('view-login');
+    }
+
+    function showView(viewId) {
+      ['view-login', 'view-staff', 'view-admin'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(viewId).classList.remove('hidden');
     }
 
 // =========================================================================
