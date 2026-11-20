@@ -1186,7 +1186,24 @@
     // =========================================================================
     // 3. MOM TENURE, PROBATION & ENTITLEMENT CALCULATIONS
     // =========================================================================
-function getTenureInfo(staff) {
+   function addWorkingDays(startDateObj, workingDaysToAdd, publicHolidays = []) {
+      const d = new Date(startDateObj.getFullYear(), startDateObj.getMonth(), startDateObj.getDate());
+      const holidaySet = new Set((publicHolidays || []).map(h => h.date));
+      let added = 0;
+
+      while (added < Math.round(workingDaysToAdd)) {
+        d.setDate(d.getDate() + 1);
+        const iso = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        const isSunday = d.getDay() === 0;
+        const isPH = holidaySet.has(iso);
+        if (!isSunday && !isPH) {
+          added++;
+        }
+      }
+      return d;
+    }
+
+    function getTenureInfo(staff) {
       const today = parseDateLocal(getTodaySGT());
       const start = parseDateLocal(staff.startDate);
       const currentYear = today.getFullYear();
@@ -1196,7 +1213,7 @@ function getTenureInfo(staff) {
         r => r.staffId === staff.id && r.status === 'Approved' && r.type === 'No Pay Leave'
       );
 
-      // 1. Total approved NPL days taken from start date onwards (extends 3-month probation)
+      // 1. Total approved NPL working days taken from start date onwards
       const totalNplSinceStart = approvedNplReqs
         .filter(r => r.startDate >= staff.startDate)
         .reduce((sum, r) => sum + (Number(r.days) || 0), 0);
@@ -1209,23 +1226,15 @@ function getTenureInfo(staff) {
       const diffMs = today - start;
       const daysWorked = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24)) - Math.round(totalNplSinceStart));
 
-      // Check 3 continuous months completion (extended by any NPL days taken during probation)
-      const threeMonthDate = new Date(
-        start.getFullYear(),
-        start.getMonth() + 3,
-        start.getDate() + Math.round(totalNplSinceStart)
-      );
+      // Check 3 continuous months completion, extended by exact NPL working days (Mon–Sat, excl. Sun & PH)
+      const baseThreeMonthDate = new Date(start.getFullYear(), start.getMonth() + 3, start.getDate());
+      const threeMonthDate = addWorkingDays(baseThreeMonthDate, totalNplSinceStart, appState.publicHolidays);
       const completedThreeMonths = today >= threeMonthDate;
 
-      // Completed years of service
-      // Effective service start date pushed forward by total approved NPL days
-      const effectiveStart = new Date(
-        start.getFullYear(),
-        start.getMonth(),
-        start.getDate() + Math.round(totalNplSinceStart)
-      );
+      // Effective service start date pushed forward by exact NPL working days
+      const effectiveStart = addWorkingDays(start, totalNplSinceStart, appState.publicHolidays);
 
-      // Completed years of active service (excluding NPL days)
+      // Completed years of active service (excluding NPL working days)
       let completedYears = today.getFullYear() - effectiveStart.getFullYear();
       const anniversaryThisYear = new Date(
         today.getFullYear(),
