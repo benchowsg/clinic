@@ -1269,6 +1269,7 @@
 
       return {
         daysWorked,
+        totalNplSinceStart,
         completedThreeMonths,
         eligibleDateStr,
         completedYears,
@@ -1588,11 +1589,14 @@ function handleAuth(e) {
       document.getElementById('bal-mc').textContent = bal.remainingMC.toFixed(1);
       document.getElementById('bal-hosp').textContent = bal.remainingHosp.toFixed(1);
 
-      const probBanner = document.getElementById('staff-probation-banner');
+    const probBanner = document.getElementById('staff-probation-banner');
       if (!t.completedThreeMonths) {
         probBanner.classList.remove('hidden');
-        document.getElementById('staff-probation-text').textContent =
-          `You have not yet completed 3 continuous months of service (eligible on ${t.eligibleDateStr}). Paid leave entitlements are locked until then; any absence must be submitted as No Pay Leave (NPL).`;
+        const nplExtensionNote = t.totalNplSinceStart > 0
+          ? ` (extended by ${t.totalNplSinceStart} approved NPL working day${t.totalNplSinceStart === 1 ? '' : 's'})`
+          : '';
+        document.getElementById('staff-probation-text').innerHTML =
+          `You have not yet completed 3 continuous months of service (eligible on <strong>${formatDateSG(t.eligibleDateStr)}</strong>${nplExtensionNote}). Paid leave entitlements are locked until then; any absence must be submitted as No Pay Leave (NPL), which extends your probation and eligibility date by the exact number of working days taken.`;
       } else {
         probBanner.classList.add('hidden');
       }
