@@ -1761,9 +1761,10 @@ function recalculateLeaveDays() {
       const durationSel = document.getElementById('leave-duration');
       const satNote = document.getElementById('saturday-rule-note');
       const badge = document.getElementById('calculated-days-badge');
+      const leaveType = document.getElementById('leave-type')?.value;
 
       if (!startStr || !endStr) {
-        badge.textContent = '0.0 Days';
+        badge.textContent = leaveType === 'Time-Off' ? '0 Hrs' : '0.0 Days';
         return 0;
       }
 
@@ -1796,6 +1797,42 @@ function recalculateLeaveDays() {
       const endIsSat = end.getDay() === 6;
       const prevVal = durationSel.value;
 
+      // TIME-OFF (EARLY RELEASE) BRANCH: Max 2 hrs/day, Max 4 hrs/month, Single working day only
+      if (leaveType === 'Time-Off') {
+        satNote.classList.add('hidden');
+        durationSel.disabled = false;
+        durationSel.innerHTML = `
+          <option value="TIMEOFF_1H">1 Hour Early Release (Max 2h/day)</option>
+          <option value="TIMEOFF_2H">2 Hours Early Release (Max 2h/day)</option>
+        `;
+        if (['TIMEOFF_1H', 'TIMEOFF_2H'].includes(prevVal)) {
+          durationSel.value = prevVal;
+        }
+
+        if (!isSingleDay) {
+          badge.textContent = '1 Day Max';
+          return 0;
+        }
+        if (workingDays === 0) {
+          badge.textContent = 'Non-Working Day';
+          return 0;
+        }
+
+        const hrs = durationSel.value === 'TIMEOFF_2H' ? 2 : 1;
+        const ym = startStr.slice(0, 7);
+        const usedHrs = getMonthlyTimeOffUsed(currentUser.id, ym);
+        const remHrs = Math.max(0, 4 - usedHrs);
+
+        const policyTitle = document.getElementById('leave-policy-title');
+        if (policyTitle) {
+          policyTitle.textContent = `Time-Off / Early Release (Discretionary • ${remHrs.toFixed(1)}h / 4.0h left in ${ym})`;
+        }
+
+        badge.textContent = `${hrs} Hr${hrs > 1 ? 's' : ''} (${remHrs.toFixed(1)}h left in ${ym})`;
+        return hrs; // Returns hours (1 or 2) when type === 'Time-Off'
+      }
+
+      // STANDARD LEAVE DURATION BRANCH
       if (isSingleDay) {
         durationSel.innerHTML = `
           <option value="FULL">Full Day (1.0 day)</option>
@@ -1925,7 +1962,11 @@ async function handleSubmitLeave(e) {
 
       const days = recalculateLeaveDays();
       if (days <= 0) {
-        return showLeaveError('Please select a valid working date range (excludes Sundays and configured Public Holidays).');
+        return showLeaveError(
+          type === 'Time-Off'
+            ? 'Time-Off (Early Release) must be on a single working day (First Date = Last Date, excluding Sundays and Public Holidays).'
+            : 'Please select a valid working date range (excludes Sundays and configured Public Holidays).'
+        );
       }
 
       if (startDate.slice(0, 4) !== endDate.slice(0, 4)) {
@@ -1938,6 +1979,7 @@ async function handleSubmitLeave(e) {
       // Rule 1: Block backdated applications for planned leave types
       const isPlannedLeaveType =
         type === 'Annual Leave' ||
+        type === 'Time-Off' ||
         (type === 'Other Leave' && (subType === 'Study' || subType === 'Exam')) ||
         (type === 'No Pay Leave' && nplTrackVal === 'Personal');
 
@@ -1963,7 +2005,7 @@ async function handleSubmitLeave(e) {
       const bal = getStaffBalances(currentUser);
       const t = bal.tenure;
 
-      if (!t.completedThreeMonths && type !== 'No Pay Leave' && type !== 'NS Reservist') {
+      if (!t.completedThreeMonths && type !== 'No Pay Leave' && type !== 'NS Reservist' && type !== 'Time-Off') {
         return showLeaveError(`Paid leave requires 3 continuous months of service (eligible ${t.eligibleDateStr}). Please select No Pay Leave (NPL).`);
       }
 
@@ -2067,6 +2109,47 @@ async function handleSubmitLeave(e) {
         }
       }
 
+      // TIME-OFF (EARLY RELEASE) VALIDATION & SHORT-NOTICE CAVEAT
+      let isShortNoticeTimeOff = false;
+      const hours = type === 'Time-Off' ? days : 0; // days holds 1 or 2 when type === 'Time-Off'
+      const actualDays = type === 'Time-Off' ? 0 : days; // 0 days so Annual/Other/MC balances are untouched
+
+      if (type === 'Time-Off') {
+        if (startDate !== endDate) {
+          return showLeaveError('Time-Off (Early Release) can only be applied for a single day (max 2 hours/day).');
+        }
+        if (hours > 2) {
+          return showLeaveError('Time-Off is capped at 2 hours per day. For continuous 4 hours, please apply for Half-Day or Full-Day leave.');
+        }
+
+        const ym = startDate.slice(0, 7);
+        const usedHrs = getMonthlyTimeOffUsed(currentUser.id, ym);
+        if ((usedHrs + hours) > 4) {
+          return showLeaveError(
+            `Monthly Time-Off cap (4.0 hrs/month) exceeded for ${ym}. You have already used/pending ${usedHrs.toFixed(1)} hr(s) (${Math.max(0, 4 - usedHrs).toFixed(1)} hr(s) remaining). For continuous 4 hours, please apply for Half-Day or Full-Day leave.`
+          );
+        }
+
+        if (reason.length < 5) {
+          return showLeaveError('Please state a clear reason for your Time-Off (Early Release) request.');
+        }
+
+        const advanceNoticeDays = daysBetween(today, startDate);
+        if (advanceNoticeDays < 7) {
+          const shortNoticeMsg =
+            `SHORT-NOTICE TIME-OFF CAVEAT (${advanceNoticeDays} day(s) notice)\n\n` +
+            `Time-Off (Early Release) requires at least 1 week (7 days) advance notice and is NOT an automatic entitlement.\n` +
+            `• Subject strictly to clinic manpower availability for ${startDate}.\n` +
+            `• You MUST obtain explicit Admin approval before leaving early.\n\n` +
+            `Click OK to acknowledge and submit this short-notice Time-Off request.`;
+
+          if (!confirm(shortNoticeMsg)) {
+            return;
+          }
+          isShortNoticeTimeOff = true;
+        }
+      }
+
       let attachmentName = '';
       let attachmentData = '';
       if (fileInput.files && fileInput.files.length > 0) {
@@ -2102,11 +2185,12 @@ async function handleSubmitLeave(e) {
         nsNotifiedDate,
         startDate,
         endDate,
-        duration,
-        days,
+        duration: type === 'Time-Off' ? `${hours} Hour${hours > 1 ? 's' : ''} (Early Release)` : duration,
+        days: actualDays,
+        hours,
         reason: reason || (subType ? `${subType} Leave` : type),
         status: 'Pending',
-        isUrgentLeave,
+        isUrgentLeave: isUrgentLeave || isShortNoticeTimeOff,
         submittedAt: getNowTimestampSGT(),
         attachmentName,
         attachmentData,
@@ -2116,12 +2200,20 @@ async function handleSubmitLeave(e) {
       appState.requests.unshift(newReq);
       saveState();
 
+      const durationSummary = type === 'Time-Off'
+        ? `${hours} hour(s) Early Release`
+        : `${actualDays.toFixed(1)} working day(s), ${duration}`;
+
+      const noticeTag = isUrgentLeave
+        ? '[URGENT LEAVE <14D] '
+        : (isShortNoticeTimeOff ? '[SHORT NOTICE TIME-OFF <7D] ' : '');
+
       queueAutomatedEmail({
         to: appState.settings.adminEmail,
         cc: currentUser.email,
         triggerType: 'LEAVE_SUBMITTED',
-        subject: `${isUrgentLeave ? '[URGENT LEAVE <14D] ' : ''}[MediLeave] New ${type} Request — ${currentUser.name} (${startDate} to ${endDate})`,
-        body: `Dear Clinic Admin,\n\n${currentUser.name} (${currentUser.role}) has submitted a new leave application:\n\n• Leave Type: ${type}${subType ? ' (' + subType + ')' : ''}${nplTrack ? ' (' + nplTrack + ' Track)' : ''}${isUrgentLeave ? ' [URGENT LEAVE — <14 DAYS NOTICE]' : ''}\n• Dates: ${startDate} to ${endDate} (${days.toFixed(1)} working day(s), ${duration})\n• Reason: ${newReq.reason}\n• Supporting Document: ${attachmentName || 'None attached'}\n${isUrgentLeave ? '• URGENT CAVEAT ACKNOWLEDGED: Staff acknowledged that approval is discretionary, subject to manpower coverage, and requires direct Admin confirmation.\n' : (type === 'Annual Leave' ? '• SLA Reminder: Please review and approve at least 1 week prior to ' + startDate + '.\n' : '')}\nPlease log in to the MediLeave Admin Control Panel to approve or reject this request.\n\nRegards,\nA Healing Heart Medical Pte. Ltd.\nMediLeave Automated Portal`
+        subject: `${noticeTag}[MediLeave] New ${type} Request — ${currentUser.name} (${startDate}${startDate !== endDate ? ' to ' + endDate : ''})`,
+        body: `Dear Clinic Admin,\n\n${currentUser.name} (${currentUser.role}) has submitted a new ${type === 'Time-Off' ? 'Time-Off (Early Release)' : 'leave'} application:\n\n• Category: ${type}${subType ? ' (' + subType + ')' : ''}${nplTrack ? ' (' + nplTrack + ' Track)' : ''}${isUrgentLeave ? ' [URGENT LEAVE — <14 DAYS NOTICE]' : ''}${isShortNoticeTimeOff ? ' [SHORT NOTICE — <7 DAYS NOTICE]' : ''}\n• Dates: ${startDate} to ${endDate} (${durationSummary})\n• Reason: ${newReq.reason}\n• Supporting Document: ${attachmentName || 'None attached'}\n${isUrgentLeave ? '• URGENT CAVEAT ACKNOWLEDGED: Staff acknowledged that approval is discretionary, subject to manpower coverage, and requires direct Admin confirmation.\n' : ''}${isShortNoticeTimeOff ? '• SHORT-NOTICE TIME-OFF CAVEAT ACKNOWLEDGED: Less than 1 week notice; subject to clinic manpower availability on ' + startDate + ' and prior Admin approval.\n' : ''}${type === 'Time-Off' && !isShortNoticeTimeOff ? '• NOTE: Time-Off is discretionary (not an entitlement) and requires prior Admin approval before proceeding.\n' : ''}${type === 'Annual Leave' && !isUrgentLeave ? '• SLA Reminder: Please review and approve at least 1 week prior to ' + startDate + '.\n' : ''}\nPlease log in to the MediLeave Admin Control Panel to approve or reject this request.\n\nRegards,\nA Healing Heart Medical Pte. Ltd.\nMediLeave Automated Portal`
       });
 
       e.target.reset();
@@ -2129,9 +2221,11 @@ async function handleSubmitLeave(e) {
       onLeaveTypeChange();
       renderStaffPortal();
       alert(
-        isUrgentLeave
-          ? 'Urgent Leave request submitted. Please notify Clinic Admin directly to confirm approval before taking leave.'
-          : 'Leave request submitted successfully. Automated notification email has been queued.'
+        type === 'Time-Off'
+          ? 'Time-Off request submitted (Pending Admin Approval). Please wait for Admin confirmation before leaving early.'
+          : (isUrgentLeave
+              ? 'Urgent Leave request submitted. Please notify Clinic Admin directly to confirm approval before taking leave.'
+              : 'Leave request submitted successfully. Automated notification email has been queued.')
       );
     }
 
