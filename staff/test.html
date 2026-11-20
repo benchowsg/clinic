@@ -1186,14 +1186,35 @@
     // =========================================================================
     // 3. MOM TENURE, PROBATION & ENTITLEMENT CALCULATIONS
     // =========================================================================
-    function getTenureInfo(staff) {
+function getTenureInfo(staff) {
       const today = parseDateLocal(getTodaySGT());
       const start = parseDateLocal(staff.startDate);
-      const diffMs = today - start;
-      const daysWorked = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const currentYear = today.getFullYear();
 
-      // Check 3 continuous months completion
-      const threeMonthDate = new Date(start.getFullYear(), start.getMonth() + 3, start.getDate());
+      // Gather approved No Pay Leave (NPL) days for this staff member
+      const approvedNplReqs = (appState.requests || []).filter(
+        r => r.staffId === staff.id && r.status === 'Approved' && r.type === 'No Pay Leave'
+      );
+
+      // 1. Total approved NPL days taken from start date onwards (extends 3-month probation)
+      const totalNplSinceStart = approvedNplReqs
+        .filter(r => r.startDate >= staff.startDate)
+        .reduce((sum, r) => sum + (Number(r.days) || 0), 0);
+
+      // Approved NPL days in the current calendar year (for AL pro-rating)
+      const currentYearNplDays = approvedNplReqs
+        .filter(r => r.startDate.startsWith(String(currentYear)))
+        .reduce((sum, r) => sum + (Number(r.days) || 0), 0);
+
+      const diffMs = today - start;
+      const daysWorked = Math.max(0, Math.floor(diffMs / (1000 * 60 * 60 * 24)) - Math.round(totalNplSinceStart));
+
+      // Check 3 continuous months completion (extended by any NPL days taken during probation)
+      const threeMonthDate = new Date(
+        start.getFullYear(),
+        start.getMonth() + 3,
+        start.getDate() + Math.round(totalNplSinceStart)
+      );
       const completedThreeMonths = today >= threeMonthDate;
 
       // Completed years of service
@@ -1204,7 +1225,18 @@
 
       // Base AL = 14 days, +1 day per completed year up to +3 days (max 17 days at 3rd completed year)
       const bonusDays = Math.min(completedYears, 3);
-      const annualEntitlement = completedThreeMonths ? (14 + bonusDays) : 0;
+      const baseAnnualEntitlement = 14 + bonusDays;
+
+      // 2. Pro-rate Annual Leave if total approved NPL in current year exceeds 14 days
+      let annualEntitlement = 0;
+      let nplProratedDeduction = 0;
+      if (completedThreeMonths) {
+        if (currentYearNplDays > 14) {
+          const rawDeduction = (currentYearNplDays / 365) * baseAnnualEntitlement;
+          nplProratedDeduction = Math.round(rawDeduction * 2) / 2; // round to nearest 0.5 day
+        }
+        annualEntitlement = Math.max(0, +(baseAnnualEntitlement - nplProratedDeduction).toFixed(1));
+      }
 
       const eligibleDateStr = `${threeMonthDate.getFullYear()}-${String(threeMonthDate.getMonth() + 1).padStart(2, '0')}-${String(threeMonthDate.getDate()).padStart(2, '0')}`;
 
@@ -1213,6 +1245,8 @@
         completedThreeMonths,
         eligibleDateStr,
         completedYears,
+        baseAnnualEntitlement,
+        nplProratedDeduction,
         annualEntitlement,
         otherEntitlement: completedThreeMonths ? 2 : 0,
         mcEntitlement: completedThreeMonths ? 14 : 0,
@@ -1222,7 +1256,7 @@
 
     function getStaffBalances(staff) {
       const tenure = getTenureInfo(staff);
-      const currentYear = new Date().getFullYear();
+      const currentYear = parseDateLocal(getTodaySGT()).getFullYear();
       const staffReqs = appState.requests.filter(r => r.staffId === staff.id && r.startDate.startsWith(String(currentYear)));
 
       let usedAL = 0;
