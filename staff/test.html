@@ -1218,8 +1218,20 @@ function getTenureInfo(staff) {
       const completedThreeMonths = today >= threeMonthDate;
 
       // Completed years of service
-      let completedYears = today.getFullYear() - start.getFullYear();
-      const anniversaryThisYear = new Date(today.getFullYear(), start.getMonth(), start.getDate());
+      // Effective service start date pushed forward by total approved NPL days
+      const effectiveStart = new Date(
+        start.getFullYear(),
+        start.getMonth(),
+        start.getDate() + Math.round(totalNplSinceStart)
+      );
+
+      // Completed years of active service (excluding NPL days)
+      let completedYears = today.getFullYear() - effectiveStart.getFullYear();
+      const anniversaryThisYear = new Date(
+        today.getFullYear(),
+        effectiveStart.getMonth(),
+        effectiveStart.getDate()
+      );
       if (today < anniversaryThisYear) completedYears--;
       if (completedYears < 0) completedYears = 0;
 
@@ -1248,7 +1260,7 @@ function getTenureInfo(staff) {
         baseAnnualEntitlement,
         nplProratedDeduction,
         annualEntitlement,
-        otherEntitlement: completedThreeMonths ? 2 : 0,
+        otherEntitlement: !completedThreeMonths ? 0 : (completedYears >= 1 ? 3 : 2),
         mcEntitlement: completedThreeMonths ? 14 : 0,
         hospEntitlement: completedThreeMonths ? 60 : 0
       };
