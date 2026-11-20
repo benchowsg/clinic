@@ -173,6 +173,9 @@
         </div>
       </div>
 
+      <!-- CLINIC LEAVE CALENDAR -->
+      <div id="clinic-availability-calendar" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm mb-4"></div>
+
       <!-- APPLY FOR LEAVE CARD -->
       <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
         <div class="flex items-center justify-between border-b pb-2.5">
@@ -1014,6 +1017,9 @@
       return Math.round((b - a) / (1000 * 60 * 60 * 24));
     }
 
+
+
+
 // =========================================================================
     // 2. STATE & FIREBASE CLOUD CONNECTOR
     // =========================================================================
@@ -1344,6 +1350,93 @@
       return age;
     }
 
+let calViewDate = parseDateLocal(getTodaySGT());
+
+    function changeCalMonth(delta) {
+      calViewDate = new Date(calViewDate.getFullYear(), calViewDate.getMonth() + delta, 1);
+      renderLeaveCalendar();
+    }
+
+    function renderLeaveCalendar() {
+      const container = document.getElementById('clinic-availability-calendar');
+      if (!container) return;
+
+      const year = calViewDate.getFullYear();
+      const month = calViewDate.getMonth();
+      const monthLabel = calViewDate.toLocaleDateString('en-SG', { month: 'long', year: 'numeric' });
+      const firstDow = new Date(year, month, 1).getDay(); // 0=Sun .. 6=Sat
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      const holidayMap = new Map((appState.publicHolidays || []).map(h => [h.date, h.name]));
+      const activeReqs = (appState.requests || []).filter(r => r.status === 'Approved' || r.status === 'Pending');
+      const currentUserId = currentUser ? String(currentUser.id) : '';
+      const isAdmin = currentUser && currentUser.role === 'Admin';
+
+      let cellsHtml = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        .map(d => `<div class="text-xs font-bold text-slate-400 pb-1.5 text-center">${d}</div>`)
+        .join('');
+
+      for (let i = 0; i < firstDow; i++) {
+        cellsHtml += `<div></div>`;
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const iso = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dow = new Date(year, month, day).getDay();
+        const isSun = dow === 0;
+        const phName = holidayMap.get(iso);
+
+        const dayReqs = activeReqs.filter(r => iso >= r.startDate && iso <= r.endDate);
+        const hasColleague = dayReqs.some(r => String(r.staffId) !== currentUserId);
+        const hasMine = dayReqs.some(r => String(r.staffId) === currentUserId);
+
+        let cellClass = 'border border-slate-200 bg-white text-slate-700';
+        let mark = '<span class="text-xs text-slate-300">&bull;</span>';
+        let title = '';
+
+        if (isSun) {
+          cellClass = 'border border-slate-100 bg-slate-50 text-slate-400';
+          mark = '<span class="text-[10px] font-medium text-slate-400">Off</span>';
+        } else if (phName) {
+          cellClass = 'border border-amber-200 bg-amber-50/60 text-amber-700';
+          mark = '<span class="text-[10px] font-bold text-amber-600">PH</span>';
+          title = phName;
+        } else if (hasColleague) {
+          cellClass = 'border border-rose-200 bg-rose-50 text-rose-700 font-bold';
+          mark = '<span class="text-sm font-extrabold text-rose-600">&#10005;</span>';
+          title = isAdmin
+            ? dayReqs.map(r => `${r.staffName} (${r.type})`).join(', ')
+            : 'Date booked by a colleague';
+        } else if (hasMine) {
+          cellClass = 'border border-teal-200 bg-teal-50 text-teal-800 font-bold';
+          mark = '<span class="text-[10px] font-bold text-teal-700">You</span>';
+          title = 'Your leave';
+        }
+
+        cellsHtml += `
+          <div class="rounded-xl p-1.5 min-h-[52px] flex flex-col items-center justify-between text-xs ${cellClass}" title="${title}">
+            <span>${day}</span>
+            ${mark}
+          </div>`;
+      }
+
+      container.innerHTML = `
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+          <button type="button" onclick="changeCalMonth(-1)" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg">&larr; Prev</button>
+          <span class="text-sm font-bold text-slate-800">Clinic Leave Calendar &bull; ${monthLabel}</span>
+          <button type="button" onclick="changeCalMonth(1)" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg">Next &rarr;</button>
+        </div>
+        <div class="grid grid-cols-7 gap-1.5">${cellsHtml}</div>
+        <div class="flex flex-wrap items-center gap-4 mt-3 pt-2.5 border-t border-slate-100 text-[11px] text-slate-500">
+          <span class="flex items-center gap-1"><strong class="text-rose-600 text-xs">&#10005;</strong> Booked by colleague</span>
+          <span class="flex items-center gap-1"><strong class="text-teal-700">You</strong> Your leave</span>
+          <span class="flex items-center gap-1"><strong class="text-amber-600">PH</strong> Public Holiday</span>
+          <span class="flex items-center gap-1"><strong class="text-slate-400">Off</strong> Sunday</span>
+        </div>
+      `;
+    }
+    
+
     // =========================================================================
     // 4. AUTHENTICATION & NAVIGATION
     // =========================================================================
@@ -1475,6 +1568,7 @@ function handleAuth(e) {
     function renderStaffPortal() {
       if (!currentUser) return;
       currentUser = appState.staff.find(s => s.id === currentUser.id) || currentUser;
+      renderLeaveCalendar();
 
       const initials = currentUser.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
       document.getElementById('staff-initials').textContent = initials;
