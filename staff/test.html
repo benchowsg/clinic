@@ -3111,13 +3111,18 @@ function renderStaffDirectoryTab() {
       }
       if (!confirm(`Delete ${target.name} (PIN: ${target.pin}) and all their leave requests? Public holidays will not be affected.`)) return;
 
+      const targetStaff = appState.staff.find(item => item.id === id);
       appState.staff = appState.staff.filter(item => item.id !== id);
       appState.requests = (appState.requests || []).filter(r => r.staffId !== id);
+      appState.awolLogs = (appState.awolLogs || []).filter(a => a.staffId !== id);
+      if (targetStaff) {
+        appState.emailLogs = (appState.emailLogs || []).filter(
+          e => e.staffId !== id && !(e.subject || '').includes(targetStaff.name)
+        );
+      }
       saveState();
       resetStaffForm();
-      renderStaffDirectoryTab();
-      renderStaffBentoGrid();
-      updateExecutiveKPIs();
+      renderAdminDashboard();
     }
 
     function handleSaveStaff(e) {
