@@ -196,6 +196,7 @@
               <option value="Paternity Leave">Paternity Leave (4 Weeks - GPPL Claimable)</option>
               <option value="NS Reservist">NS Reservist / ICT (SAF100 Mandatory)</option>
               <option value="No Pay Leave">No Pay Leave (NPL)</option>
+              <option value="Time-Off">Request for Time-Off (Max 2h/day, 4h/month)</option>
             </select>
           </div>
 
@@ -1645,6 +1646,18 @@ function handleAuth(e) {
       renderStaffRequestsList();
     }
 
+    function getMonthlyTimeOffUsed(staffId, yyyyMm) {
+        if (!yyyyMm || yyyyMm.length < 7) return 0;
+        return (appState.requests || [])
+          .filter(r =>
+            r.staffId === staffId &&
+            r.type === 'Time-Off' &&
+            (r.status === 'Approved' || r.status === 'Pending') &&
+            r.startDate && r.startDate.startsWith(yyyyMm)
+          )
+          .reduce((sum, r) => sum + (Number(r.hours) || 0), 0);
+      }
+    
     function onLeaveTypeChange() {
       const type = document.getElementById('leave-type').value;
       const policyTitle = document.getElementById('leave-policy-title');
@@ -1708,8 +1721,16 @@ function handleAuth(e) {
         } else {
           policyDesc.textContent = 'Non-medical NPL is subject to management approval. Detailed written reason is mandatory; unapproved absence is recorded as AWOL.';
         }
-      }
 
+      } else if (type === 'Time-Off') {
+        const startVal = document.getElementById('leave-start').value;
+        const ym = startVal ? startVal.slice(0, 7) : getTodaySGT().slice(0, 7);
+        const usedHrs = getMonthlyTimeOffUsed(currentUser.id, ym);
+        const remHrs = Math.max(0, 4 - usedHrs);
+        policyTitle.textContent = `Time-Off / Early Release (Discretionary • ${remHrs.toFixed(1)}h / 4.0h left in ${ym})`;
+        policyDesc.textContent = 'Not an entitlement; requires explicit Admin approval before leaving. Max 2 hours/day and 4 hours/month (for continuous 4 hours, apply Half-Day/Full-Day leave). Requires 1-week notice; <7 days notice depends on clinic manpower availability.';
+      }
+    
       recalculateLeaveDays();
     }
 
